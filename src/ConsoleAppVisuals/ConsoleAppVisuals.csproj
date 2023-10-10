@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
       <PackageId>ConsoleAppVisuals</PackageId>
       <Authors>MorganK</Authors>
-      <Version>1.0.3</Version>
+      <Version>1.0.4</Version>
       <Description>Easy to use C# library for any console app</Description>
       <PackageLicenceExpression>MIT</PackageLicenceExpression>
       <PackageTags>Visuals, ConsoleApp</PackageTags>
