@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+      <PackageId>ConsoleAppVisuals</PackageId>
+      <Authors>MorganK</Authors>
+      <Version>1.0.1</Version>
+      <Description>Visuals for console app</Description>
+      <PackageLicenceExpression>MIT</PackageLicenceExpression>
+      <PackageTags>Visuals, ConsoleApp</PackageTags>
+      <RepositoryUrl>https://github.com/MorganKryze/ConsoleAppVisuals</RepositoryUrl>
+      
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>
