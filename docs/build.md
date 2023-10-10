@@ -37,9 +37,20 @@ Start by changing the information in the "src/ConsoleAppVisuals/ConsoleAppVisual
       
     <GenerateDocumentationFile>true</GenerateDocumentationFile> <!-- This is optional, it will generate a .xml file with the documentation of your package if you put xml comments on your project -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild> <!-- This is optional, it will generate a .nupkg file of your package when you build your project automatically without doing a dotnet pack -->
-  </PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile> <!-- This is optional, it will add the README.md file of your project to the package -->
+    <PackageLicenseFile>LICENSE</PackageLicenseFile> <!-- This is optional, it will add the LICENSE file of your project to the package -->
+</PropertyGroup>
+
+<ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
+</ItemGroup>
 
 ```
+
+## Licence
+
+You need to change the licence of the project by your own licence.
 
 ## Build the project
 
