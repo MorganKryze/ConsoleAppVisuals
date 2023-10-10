@@ -7,7 +7,7 @@
       <PackageId>ConsoleAppVisuals</PackageId>
       <Authors>MorganK</Authors>
       <Version>1.0.3</Version>
-      <Description>Visuals for console app</Description>
+      <Description>Easy to use C# library for any console app</Description>
       <PackageLicenceExpression>MIT</PackageLicenceExpression>
       <PackageTags>Visuals, ConsoleApp</PackageTags>
       <RepositoryUrl>https://github.com/MorganKryze/ConsoleAppVisuals</RepositoryUrl>
