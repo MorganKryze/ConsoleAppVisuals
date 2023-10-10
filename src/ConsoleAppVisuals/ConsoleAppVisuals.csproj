@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
       <PackageId>ConsoleAppVisuals</PackageId>
       <Authors>MorganK</Authors>
-      <Version>1.0.2</Version>
+      <Version>1.0.3</Version>
       <Description>Visuals for console app</Description>
       <PackageLicenceExpression>MIT</PackageLicenceExpression>
       <PackageTags>Visuals, ConsoleApp</PackageTags>
@@ -14,6 +14,12 @@
       
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath=""/>
+  </ItemGroup>
 </Project>
