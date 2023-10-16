@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConsoleAppVisuals</name>
+    </assembly>
+    <members>
+        <member name="T:ConsoleAppVisuals.Core">
+            <summary> 
+            The <see cref="T:ConsoleAppVisuals.Core"/> classe contains all the visual elements for a console app.
+            </summary>
+        </member>
+        <member name="T:ConsoleAppVisuals.Core.Placement">
+            <summary> The <see cref="T:ConsoleAppVisuals.Core.Placement"/> enum defines the placement of a string in the console. </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Core.Placement.Left">
+            <summary> The string is placed at the left of the console. </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Core.Placement.Center">
+            <summary> The string is placed at the center of the console. </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Core.Placement.Right">
+            <summary> The string is placed at the right of the console. </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ChangeFont(System.ConsoleColor)">
+            <summary> this method changes the font color of the console. </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ClearPanel(System.Int32,System.Int32)">
+            <summary> This method clears a specified part of the console. </summary>
+            <param name="startIndex"> The index of the first line to clear. </param>
+            <param name="length"> The number of lines to clear. </param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ClearContent">
+            <summary> This method clears the content of the console. </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.WriteMatrix(System.Single[0:,0:],ConsoleAppVisuals.Core.Position,System.Int32)">
+            <summary> This method prints a float matrix in the console. </summary>
+            <param name="matrix"> The matrix to print. </param>
+            <param name="currentPosition"> The current position of the cursor. </param>
+            <param name="line"> The line where the matrix will be printed. </param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.WriteTitle">
+            <summary> This method prints the title of the console app. </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.WriteBanner(System.Nullable{System.ValueTuple{System.String,System.String,System.String}},System.Boolean,System.Boolean)">
+            <summary> This method prints a banner in the console. </summary>
+            <param name="banner"> The banner to print. </param>
+            <param name="header"> If true, the banner is printed at the top of the console. If false, the banner is printed at the bottom of the console. </param>
+            <param name="straight"> If true, the title is not continuously printed. </param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.WriteFullScreen(System.Boolean,System.String,System.Nullable{System.ValueTuple{System.String,System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
+            <summary> This method prints a full screen in the console. </summary>
+            <param name="straight"> If true, the title is not continuously printed. </param>
+            <param name="message"> The message to print. </param>
+            <param name="header"> The header of the screen. </param>
+            <param name="footer"> The footer of the screen. </param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.WritePrompt(System.String,System.Int32)">
+            <summary> This method prints a message in the console and gets a string written by the user. </summary>
+            <param name="message"> The message to print. </param>
+            <param name="line"> The line where the message will be printed. </param>
+            <returns> The string written by the user. </returns>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.WriteParagraph(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Int32)">
+            <summary> This method prints a paragraph in the console. </summary>
+            <param name="text"> The lines of the paragraph. </param>
+            <param name="negative"> If true, the paragraph is printed in the negative colors. </param>
+            <param name="line"> The height of the paragraph. </param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ScrollingMenu(System.String,System.String[],System.Int32)">
+            <summary> This method prints a menu in the console and gets the choice of the user. </summary>
+            <param name="question"> The question to print. </param>
+            <param name="choices"> The choices of the menu. </param>
+            <param name="line"> The line where the menu is printed. </param>
+            <returns> The choice of the user. </returns>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.NumberSelector(System.String,System.Single,System.Single,System.Single,System.Single,System.Int32)">
+            <summary> This method prints a menu in the console and gets the choice of the user. </summary>
+            <param name="question"> The question to print. </param>
+            <param name="min"> The minimum value of the number. </param>
+            <param name="max"> The maximum value of the number. </param>
+            <param name="start"> The starting value of the number. </param>
+            <param name="step"> The step of the number. </param>
+            <param name="line"> The line where the menu is printed. </param>
+            <returns> The number chose of the user. </returns>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.MatrixSelector(System.Single[0:,0:],System.String[],System.String,System.String,System.String,System.String,System.String)">
+            <summary> This method prints a matrix selcetor in the console. </summary>
+            <param name="matrix"> The matrix to print. </param>
+            <param name="instructionsInit"> The instructions to navigate into the matrix to print. </param>
+            <param name="instructionNumber"> The instruction to choose a number to print. </param>
+            <param name="questionNav"> The question message </param>
+            <param name="continueNav"> The continue message </param>
+            <param name="confirmNav"> the confirm message </param>
+            <param name="backNav"> The back message </param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.LoadingScreen(System.String)">
+            <summary> This method prints a loading screen in the console. </summary>
+            <param name="text"> The text to print. </param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ProcessLoadingSreen(System.String,System.Single@)">
+            <summary> This method prints a loading screen in the console. </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ProgramExit(System.String)">
+            <summary> This method exits the program. </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ResizeString(System.String,System.Int32,ConsoleAppVisuals.Core.Placement,System.Boolean)">
+            <summary> This method builds a string with a specific size and a specific placement. </summary>
+            <param name="str"> The string to build. </param>
+            <param name="size"> The size of the string. </param>
+            <param name="position"> The placement of the string. </param>
+            <param name="truncate"> If true, the string is truncated if it is too long. </param>
+            <returns> The built string. </returns>
+        </member>
+        <member name="T:ConsoleAppVisuals.Core.Position">
+            <summary>A class that stores the position into X and Y parameters.</summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Core.Position.X">
+            <summary>The x coordinate of the position.</summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Core.Position.Y">
+            <summary>The y coordinate of the position.</summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.Position.#ctor(System.Int32,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:Labyrinth.Position"/> class.</summary>
+            <param name="x">The x coordinate of the position.</param>
+            <param name="y">The y coordinate of the position.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.Position.#ctor(ConsoleAppVisuals.Core.Position)">
+            <summary>Initializes a new instance of the <see cref="T:Labyrinth.Position"/> class.</summary>
+            <param name="pos">The position to copy.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.Position.ToString">
+            <summary>This method is used to convert the position to a string.</summary>
+            <returns>The position as a string.</returns>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.Position.Equals(ConsoleAppVisuals.Core.Position)">
+            <summary>This method is used to chck if the position is equal to another position.</summary>
+            <param name="obj">The position to compare to.</param>
+            <returns>True if the positions are equal, false otherwise.</returns>
+        </member>
+    </members>
+</doc>
