@@ -18,4 +18,4 @@ using ConsoleAppVisuals;
 
 The main class you will use is the `Core` class where you will find all the methods to add visuals to your console app.
 
-If you want to learn more about how to build your library from this one, feel free to read the [build.md](https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/docs/build.md) file.
+If you want to learn more about how to build your library from this one, feel free to read the build file in the docs folder.
