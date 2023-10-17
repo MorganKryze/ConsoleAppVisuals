@@ -16,6 +16,6 @@ Then, add the following using statement to your file:
 using ConsoleAppVisuals;
 ```
 
-The main class you will use is the `Core` class where you will find all the methods to add visuals to your console app.
+The main class you will use is the `Use` class where you will find all the methods to add visuals to your console app. Some parameters may be modified to change the look of the visual in the `Core` class.
 
-If you want to learn more about how to build your library from this one, feel free to read the build file in the docs folder.
+If you want to learn more about the library from this one, feel free to read docs

@@ -12,6 +12,14 @@ public static class Extensions
     /// <param name="position">The placement of the string.</param>
     /// <param name="truncate">If true, the string is truncated if it is too long.</param>
     /// <returns>The built string.</returns>
+	/// <example> 
+	/// The following example shows how to call the <see cref="ResizeString"/> method :
+	/// <code>
+	/// string str = "Hello World";
+	/// string str2 = str.ResizeString(20, Placement.Right, true);
+	/// </code>
+	/// The value of str2 will be "        Hello World".
+	/// </example>
     public static string ResizeString(this string str, int size, Placement position = Placement.Center, bool truncate = true)
 	{
 		int padding = size - str.Length;
