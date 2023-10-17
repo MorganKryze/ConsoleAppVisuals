@@ -32,7 +32,7 @@
         <member name="M:ConsoleAppVisuals.Core.ClearContent">
             <summary> This method clears the content of the console. </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteMatrix(System.Single[0:,0:],ConsoleAppVisuals.Core.Position,System.Int32)">
+        <member name="M:ConsoleAppVisuals.Core.WriteMatrix(System.Single[0:,0:],Position,System.Int32)">
             <summary> This method prints a float matrix in the console. </summary>
             <param name="matrix"> The matrix to print. </param>
             <param name="currentPosition"> The current position of the cursor. </param>
@@ -111,29 +111,29 @@
             <param name="truncate"> If true, the string is truncated if it is too long. </param>
             <returns> The built string. </returns>
         </member>
-        <member name="T:ConsoleAppVisuals.Core.Position">
+        <member name="T:Position">
             <summary>A class that stores the position into X and Y parameters.</summary>
         </member>
-        <member name="F:ConsoleAppVisuals.Core.Position.X">
+        <member name="F:Position.X">
             <summary>The x coordinate of the position.</summary>
         </member>
-        <member name="F:ConsoleAppVisuals.Core.Position.Y">
+        <member name="F:Position.Y">
             <summary>The y coordinate of the position.</summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.Position.#ctor(System.Int32,System.Int32)">
+        <member name="M:Position.#ctor(System.Int32,System.Int32)">
             <summary>Initializes a new instance of the <see cref="T:Labyrinth.Position"/> class.</summary>
             <param name="x">The x coordinate of the position.</param>
             <param name="y">The y coordinate of the position.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.Position.#ctor(ConsoleAppVisuals.Core.Position)">
+        <member name="M:Position.#ctor(Position)">
             <summary>Initializes a new instance of the <see cref="T:Labyrinth.Position"/> class.</summary>
             <param name="pos">The position to copy.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.Position.ToString">
+        <member name="M:Position.ToString">
             <summary>This method is used to convert the position to a string.</summary>
             <returns>The position as a string.</returns>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.Position.Equals(ConsoleAppVisuals.Core.Position)">
+        <member name="M:Position.Equals(Position)">
             <summary>This method is used to chck if the position is equal to another position.</summary>
             <param name="obj">The position to compare to.</param>
             <returns>True if the positions are equal, false otherwise.</returns>
