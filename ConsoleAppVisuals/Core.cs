@@ -24,14 +24,14 @@ public static class Core
     /// <summary>
     /// This property is used to get and set the default header.
     /// </summary>
-    public static (string, string, string) DefaultHeader {
+    private static (string, string, string) DefaultHeader {
         get => (DefaultHeader.Item1 ?? "Header Left", DefaultHeader.Item2 ?? "Header Center", DefaultHeader.Item3 ?? "Header Right");
         set => DefaultHeader = (value.Item1 ?? "Header Left", value.Item2 ?? "Header Center", value.Item3 ?? "Header Right");
     }
     /// <summary>
     /// This property is used to get and set the default footer.
     /// </summary>
-    public static (string, string, string) DefaultFooter {
+    private static (string, string, string) DefaultFooter {
         get => (DefaultFooter.Item1 ?? "Footer Left", DefaultFooter.Item2 ?? "Footer Center", DefaultFooter.Item3 ?? "Footer Right");
         set => DefaultFooter = (value.Item1 ?? "Footer Left", value.Item2 ?? "Footer Center", value.Item3 ?? "Footer Right");
     }
@@ -55,9 +55,15 @@ public static class Core
     /// This property is used to get the start line of the content.
     /// </summary>
     public static int ContentHeigth => HeaderHeigth + 2;
+    /// <summary>
+    /// This property is used to check if the screen has been updated.
+    /// </summary>
+    /// <returns>True if the screen has been updated, false otherwise.</returns>
+    /// <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
+    public static bool IsScreenUpdated => WindowWidth != previousWindowWidth || WindowHeight != previousWindowHeight || colorPanel != initialColorPanel;
     #endregion
 
-    #region Methods
+    #region Low abstraction level methods
     /// <summary> 
     /// This method changes the font color of the console.
     /// </summary>
@@ -92,20 +98,16 @@ public static class Core
         BackgroundColor = negative ? colorPanel.Item1 : colorPanel.Item2;
     }
     /// <summary>
-    /// This method is used to check if the screen has been updated.
+    /// This method is used to update the screen display if it has encountered a change.
     /// </summary>
-    /// <returns>True if the screen has been updated, false otherwise.</returns>
-    /// <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
-    public static bool IsScreenUpdated()
+    public static void UpdateScreen()
     {
-        if (WindowWidth != previousWindowWidth || WindowHeight != previousWindowHeight || colorPanel != initialColorPanel)
-        {
+        if (IsScreenUpdated) {
             previousWindowWidth = WindowWidth;
             previousWindowHeight = WindowHeight;
             initialColorPanel = (colorPanel.Item1, colorPanel.Item2);
-            return true;
+            WriteFullScreen(default);
         }
-        return false;
     }
     /// <summary>
     /// This method is used to Clear a specified line in the console.
@@ -149,6 +151,9 @@ public static class Core
         Clear();
         colorPanel = (White, Black);
     }
+    #endregion
+
+    #region Middle abstraction level methods
     /// <summary>
     /// This method is used to write a string positionned in the console.
     /// </summary>
@@ -220,6 +225,341 @@ public static class Core
         }
         WritePositionnedString(str.ResizeString(WindowWidth, Placement.Center), default, negative, line);
         Sleep(additionalTime);
+    }
+    /// <summary> 
+    /// This method prints a float matrix in the console.
+    /// </summary>
+    /// <param name="matrix">The matrix to write on the console.</param>
+    /// <param name="currentPosition">The current position of the cursor.</param>
+    /// <param name="line">The line where the matrix will be printed.</param>
+    public static void WriteMatrix(float[,] matrix, Position currentPosition, int? line)
+    {
+        line??= CursorTop;
+        for(int i = (int)line; i < matrix.GetLength(0); i++)
+            ClearLine(i);
+        SetCursorPosition(0, (int)line);
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            Write("{0,"+((WindowWidth / 2) - (matrix.GetLength(1))) + "}","");
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                ApplyNegative(currentPosition.Equals(new Position(i, j)));
+                Write(matrix[i, j]);
+                ApplyNegative(default);
+                Write("  ");
+            }
+            WriteLine("");
+        }
+    }
+    /// <summary> 
+    /// This method prints the title in the console if the title is not empty. 
+    /// </summary>
+    public static void WriteTitle()
+    {
+        Clear();
+        SetCursorPosition(0, 0);
+        if(TitleContent is not null)
+            foreach (string line in TitleContent)
+            {
+                WritePositionnedString(line.ResizeString(WindowWidth, Placement.Center));
+                WriteLine("");
+            } 
+    }
+    /// <summary> 
+    /// This method prints a banner in the console. 
+    /// </summary>
+    /// <param name="banner">The banner to print.</param>
+    /// <param name="header">If true, the banner is printed at the top of the console. If false, the banner is printed at the bottom of the console.</param>
+    /// <param name="continuous">If true, the title is not continuously printed.</param>
+    public static void WriteBanner(bool header = true, bool continuous = true, (string, string, string)? banner = null)
+	{
+        (string, string, string) _banner = banner ?? (header ? DefaultHeader : DefaultFooter); // If banner is null, _banner is set to the default header or footer.
+		ApplyNegative(true);
+        if (continuous) 
+            WritePositionnedString(_banner.BannerToString(), default, true, header ? HeaderHeigth : FooterHeigth);
+        else
+		    WriteContinuousString(_banner.BannerToString(), header ? HeaderHeigth : FooterHeigth, true);
+		ApplyNegative(default);
+	}
+    /// <summary> This method prints a message in the console and gets a string written by the user. </summary>
+    /// <param name="message"> The message to print. </param>
+    /// <param name="line"> The line where the message will be printed. </param>
+    /// <returns> The string written by the user. </returns>
+    public static string WritePrompt(string message, int? line = null)
+    {
+        line ??= ContentHeigth;
+        WriteContinuousString(message, line, default, 1500, 50);
+        string prompt;
+        do
+        {
+            ClearLine(line + 1);
+            Write("{0," + ((WindowWidth / 2) - (message.Length / 2) + 2) + "}", "> ");
+            CursorVisible = true;
+            prompt = ReadLine() ?? "";
+            CursorVisible = false;
+        } while (prompt is "");
+        ClearMultipleLines(line, 3);
+        return prompt;
+    }
+    /// <summary> 
+    /// This method prints a paragraph in the console. 
+    /// </summary>
+    /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
+    /// <param name="line">The height of the paragraph.</param>
+    /// <param name="text">The lines of the paragraph.</param>
+    public static void WriteParagraph(bool negative = false, int? line = null, params string[] text)
+	{
+        line ??= ContentHeigth;
+        ApplyNegative(negative);
+		int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
+		foreach (string str in text)
+		{
+			WritePositionnedString(str.ResizeString(maxLength, Placement.Center), Placement.Center, negative, line++);
+			if (line >= WindowHeight - 1) 
+                break;
+		}
+        ApplyNegative(default);
+	}
+    /// <summary> 
+    /// This method prints a menu in the console and gets the choice of the user. 
+    /// </summary>
+    /// <param name="question">The question to print.</param>
+    /// <param name="line">The line where the menu is printed.</param>
+    /// <param name="choices">The choices of the menu.</param>
+    /// <returns>An integer representing the choice of the user.</returns>
+    public static int ScrollingMenuSelector(string question, int? line = null, params string[] choices)
+    {
+        line ??= ContentHeigth;
+        int _currentPosition = 0;
+        int _maxLength = choices.Length > 0 ? choices.Max(s => s.Length) : 0;
+        for (int i = 0; i < choices.Length; i++) 
+            choices[i] = choices[i].PadRight(_maxLength);
+
+        WriteContinuousString(question, line, default, 1500, 50);
+        int _choicesLine = (int)line + 2;
+        while (true)
+        {
+            string[] _choices = new string[choices.Length];
+            for (int i = 0; i < choices.Length; i++)
+            {
+                if (i == _currentPosition)
+                {
+                    _choices[i] = $" ▶ {choices[i]}  ";
+                    WritePositionnedString(_choices[i], Placement.Center, true, _choicesLine + i);
+                    continue;
+                }
+                _choices[i] = $"   {choices[i]}  ";
+                WritePositionnedString(_choices[i], Placement.Center, false, _choicesLine + i);
+            }
+            switch (ReadKey(true).Key)
+            {
+                case UpArrow: case Z: 
+                    if (_currentPosition == 0) 
+                        _currentPosition = choices.Length - 1; 
+                    else if (_currentPosition > 0)
+                        _currentPosition--; 
+                        break;
+                case DownArrow: case S: 
+                    if (_currentPosition == choices.Length - 1) 
+                        _currentPosition = 0;  
+                    else if (_currentPosition < choices.Length - 1) 
+                        _currentPosition++; 
+                        break;
+                case Enter: 
+                    ClearMultipleLines(line, choices.Length + 2);
+                    return _currentPosition;
+                case Escape: 
+                    ClearMultipleLines(line, choices.Length + 2);
+                    return -1;
+            }
+        }
+    }
+    /// <summary> This method prints a menu in the console and gets the choice of the user. </summary>
+    /// <param name="question"> The question to print. </param>
+    /// <param name="min"> The minimum value of the number. </param>
+    /// <param name="max"> The maximum value of the number. </param>
+    /// <param name="start"> The starting value of the number. </param>
+    /// <param name="step"> The step of the number. </param>
+    /// <param name="line"> The line where the menu is printed. </param>
+    /// <returns> The number chose of the user. </returns>
+    public static float ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
+    {
+        line ??= ContentHeigth;
+        WriteContinuousString(question, line, default, 1500, 50);
+        float _currentNumber = start;
+        int _lineSelector = (int)line + 2;
+        while (true)
+        {
+            WritePositionnedString($" ▶ {(float)Math.Round(_currentNumber, 1)} ◀ ", Placement.Center, true, line + 2);
+            
+            switch (ReadKey(true).Key)
+            {
+                case UpArrow: case Z: 
+                    if (_currentNumber + step <= max)
+                        _currentNumber += step;
+                    else if (_currentNumber + step > max)
+                        _currentNumber = min;
+                    break;
+                case DownArrow: case S: 
+                    if (_currentNumber - step >= min)
+                        _currentNumber -= step;
+                    else if (_currentNumber - step < min)
+                        _currentNumber = max;
+                        break;
+                case Enter: 
+                    ClearMultipleLines(line, 4);
+                    return _currentNumber;
+                case Escape: 
+                    ClearMultipleLines(line, 4);
+                    return -1;
+            }
+            Sleep(1);
+            ClearLine(_lineSelector);
+        }
+    }
+    /// <summary> 
+    /// This method prints a matrix selector in the console. 
+    /// </summary>
+    /// <param name="matrix">The matrix to print.</param>
+    /// <param name="line">The line where the matrix will be printed.</param>
+    /// <param name="questionNav">The question message</param>
+    /// <param name="continueNav">The continue message</param>
+    /// <param name="confirmNav">the confirm message</param>
+    /// <param name="backNav">The back message</param>
+    /// <param name="instructionNumber">The instruction to choose a number to print.</param>
+    /// <param name="instructionsInit">The instructions to navigate into the matrix to print. No lines limitations.</param>
+    public static float[,]? MatrixSelector(float[,] matrix,int? line = null, string instructionNumber = "You may type a float number to change the value of the selected number.", string questionNav = "You may choose what you want to do next.", string continueNav = "Continue", string confirmNav = "Confirm", string backNav = "Back", params string[]? instructionsInit)
+    {
+        line ??= ContentHeigth;
+        instructionsInit ??= new string[] { 
+            "Here is the default matrix. You may change it as you wish.", 
+            "Press [TAB] to select a number. Press [ENTER] to confirm.", 
+            "To go back to the previous menu press [ESC]." 
+            };
+        WriteParagraph(default, line, instructionsInit);
+
+        var _currentPosition = new Position(0, 0);
+        var _possiblePositions = new List<Position>();
+        for(int i = 0; i < matrix.GetLength(0); i++)
+            for(int j = 0; j < matrix.GetLength(1); j++)
+                _possiblePositions.Add(new Position(i, j));
+
+        while(true)
+        {
+            WriteMatrix(matrix, _currentPosition, line + 4);                    
+            switch(ReadKey(true).Key)
+            {
+                case UpArrow : case Z :
+                    if(_possiblePositions.Contains(new Position(_currentPosition.X - 1, _currentPosition.Y))) _currentPosition.X--;
+                    else if (_currentPosition.X == 0) _currentPosition.X = matrix.GetLength(0) - 1;
+                    break;
+                case DownArrow : case S :
+                    if(_possiblePositions.Contains(new Position(_currentPosition.X + 1, _currentPosition.Y))) _currentPosition.X++;
+                    else if (_currentPosition.X == matrix.GetLength(0) - 1) _currentPosition.X = 0;
+                    break;
+                case LeftArrow :case Q :
+                    if(_possiblePositions.Contains(new Position(_currentPosition.X, _currentPosition.Y - 1))) _currentPosition.Y--;
+                    else if (_currentPosition.Y == 0) _currentPosition.Y = matrix.GetLength(1) - 1;
+                    break;
+                case RightArrow : case D :
+                    if(_possiblePositions.Contains(new Position(_currentPosition.X, _currentPosition.Y + 1))) _currentPosition.Y++;
+                    else if (_currentPosition.Y == matrix.GetLength(1) - 1) _currentPosition.Y = 0;
+                    break;
+                case Tab:
+                    float number;
+                    while (true)
+                        if (float.TryParse(WritePrompt(instructionNumber, ContentHeigth + 3 + matrix.GetLength(0) + 2), out float value))
+                        {
+                            number = value;
+                            break;
+                        }
+                    ClearMultipleLines(ContentHeigth + 2 + matrix.GetLength(0) + 1, 10);
+                    matrix[_currentPosition.X, _currentPosition.Y] = number;
+                    break;
+                case Enter:
+                    switch(ScrollingMenuSelector(questionNav, ContentHeigth + 3 + matrix.GetLength(0) + 2,
+                        continueNav,
+                        confirmNav, 
+                        backNav))
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            return matrix;
+                        case 2: case -1:
+                            return null;
+                    }
+                    ClearMultipleLines(ContentHeigth + 2 + matrix.GetLength(0) + 1, 10);
+                    break;
+                case Escape :
+                    return null;
+            }
+        }
+    }
+    /// <summary> 
+    /// This method prints a loading screen in the console. 
+    /// </summary>
+    /// <param name="message">The message to print.</param>
+    /// <param name="line">The line where the message will be printed.</param>
+    public static void LoadingBar(string message = "[ Loading... ]", int? line = null)
+    {
+        line ??= ContentHeigth;
+        WritePositionnedString(message.ResizeString(WindowWidth, Placement.Center), default, default, line, true);
+        string _loadingBar = "";
+        for(int j = 0; j < message.Length; j++) 
+            _loadingBar += '█';
+        WriteContinuousString(_loadingBar, ContentHeigth + 2);
+    }
+    #endregion
+
+    #region High abstraction level methods
+    /// <summary>
+    /// This method prints a loading bar in the console linked with a process percentage so that the loading bar is updated.
+    /// </summary>
+    /// <param name="message">The message to print.</param>
+    /// <param name="processPercentage">The percentage of the process.</param>
+    /// <param name="line">The line where the message will be printed.</param>
+    public static void ProcessLoadingBar(string message, ref float processPercentage, int? line = null)
+    {
+        line ??= ContentHeigth;
+        WritePositionnedString(message, default, default, line, true);
+        while(processPercentage <= 1f)
+        {
+            string _loadingBar = "";
+            for(int j = 0; j <= (int)(message.Length * processPercentage); j++) 
+                _loadingBar += '█';
+            WritePositionnedString(_loadingBar.ResizeString(message.Length, Placement.Left), Placement.Center, default, line + 2, default);
+        }
+        Sleep(3000);
+        processPercentage = 0f;
+    }
+    /// <summary> 
+    /// This method prints a full screen in the console with a title, a header and a footer.
+    /// </summary>
+    /// <param name="continuous">If true, the title is not continuously printed.</param>
+    /// <param name="header"> The header of the screen. </param>
+    /// <param name="footer"> The footer of the screen. </param>
+    public static void WriteFullScreen(bool continuous = false, (string, string, string)? header = null, (string, string, string)? footer = null)
+    {
+        header ??= DefaultHeader;
+        footer ??= DefaultFooter;
+        CursorVisible = false;
+        WriteTitle();
+        WriteBanner(true, continuous, header);
+        WriteBanner(false, continuous, footer);
+        ClearContent();
+    }
+    /// <summary>
+    /// This method exits the program. 
+    /// </summary>
+    /// <param name="message">The message to print on the exit of the program.</param>
+    public static void ProgramExit(string message = "[ Exiting the program... ]")
+    {
+        ClearContent();
+        LoadingBar(message);
+        ClearWindow();
+        CursorVisible = true;
+        Environment.Exit(0);
     }
     #endregion
 }
