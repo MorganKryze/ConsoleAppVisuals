@@ -25,17 +25,11 @@ public static class Core
     /// <summary>
     /// This property is used to get and set the default header.
     /// </summary>
-    private static (string, string, string) DefaultHeader {
-        get => (DefaultHeader.Item1 ?? "Header Left", DefaultHeader.Item2 ?? "Header Center", DefaultHeader.Item3 ?? "Header Right");
-        set => DefaultHeader = (value.Item1 ?? "Header Left", value.Item2 ?? "Header Center", value.Item3 ?? "Header Right");
-    }
+    private static (string, string, string) DefaultHeader = ("Header Left", "Header Center", "Header Right");
     /// <summary>
     /// This property is used to get and set the default footer.
     /// </summary>
-    private static (string, string, string) DefaultFooter {
-        get => (DefaultFooter.Item1 ?? "Footer Left", DefaultFooter.Item2 ?? "Footer Center", DefaultFooter.Item3 ?? "Footer Right");
-        set => DefaultFooter = (value.Item1 ?? "Footer Left", value.Item2 ?? "Footer Center", value.Item3 ?? "Footer Right");
-    }
+    private static (string, string, string) DefaultFooter = ("Footer Left", "Footer Center", "Footer Right");
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>

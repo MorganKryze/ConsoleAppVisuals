@@ -50,5 +50,5 @@ public static class Extensions
     /// </summary>
     /// <param name="banner">The banner tuple.</param>
     /// <returns>The banner as a string.</returns>
-    public static string BannerToString(this (string, string, string) banner) => banner.Item1 + banner.Item2.ResizeString(Console.WindowWidth - banner.Item1.Length - banner.Item3.Length, Placement.Center, true) + banner.Item3;
+    public static string BannerToString(this (string, string, string) banner) => " " + banner.Item1 + banner.Item2.ResizeString(Console.WindowWidth - 2 - banner.Item1.Length - banner.Item3.Length, Placement.Center, true) + banner.Item3 + " ";
 }

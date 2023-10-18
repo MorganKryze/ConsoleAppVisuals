@@ -48,10 +48,37 @@ This way, you can use the methods directly, without having to specify the class 
 
 Here we will tackle the process and in what way you can make this library useful for you.
 
-### The process
+### The processes
 
 The process is quite simple. You have to define the different variables you want to display, and then display them according to their methods, then clean the console afterwards.
 
-Here is an example as a screenshot:
 
-![test](../images/test.png)
+
+#### Display a title
+
+By default, no title will be displayed as no file is being targeted. But you can load a file with the `LoadTitle` method and then display it with the `WriteTitle` method.
+
+```csharp
+Core.LoadTitle("data/title.example.txt");
+Core.WriteTitle();
+Console.ReadKey(); //[optional]: just to keep the console clean
+```
+
+![title](../images/title.png)
+*Demo with title.example.txt file*
+
+> [!NOTE]
+> The file has been added to the project "example" in the root folder if you want to try it.
+
+### Display a banner
+
+Now that we have seen the title, let's see how to display a banner. You may use the default parameters or define your own if you prefer an instant result, specify if you want to display the header or the footer or display your own banner.
+
+
+```csharp
+Core.WriteBanner();
+Console.ReadKey(); //[optional]: just to keep the console clean
+```
+
+![title](../images/banner.png)
+*Demo with default parameters for the header*
