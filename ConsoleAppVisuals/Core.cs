@@ -558,7 +558,7 @@ public static class Core
     /// This method exits the program. 
     /// </summary>
     /// <param name="message">The message to print on the exit of the program.</param>
-    public static void ProgramExit(string message = "[ Exiting the program... ]")
+    public static void ExitProgram(string message = "[ Exiting the program... ]")
     {
         ClearContent();
         LoadingBar(message);

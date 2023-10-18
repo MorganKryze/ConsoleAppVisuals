@@ -72,7 +72,7 @@ Console.ReadKey(); //[optional]: just to keep the console clean
 
 ### Display a banner
 
-Now that we have seen the title, let's see how to display a banner. You may use the default parameters or define your own if you prefer an instant result, specify if you want to display the header or the footer or display your own banner.
+Now that we have seen the title, let's see how to display a banner. You may use the default arguments or define your own if you prefer an instant result, specify if you want to display the header or the footer or display your own banner.
 
 
 ```csharp
@@ -81,4 +81,18 @@ Console.ReadKey(); //[optional]: just to keep the console clean
 ```
 
 ![title](../images/banner.png)
-*Demo with default parameters for the header*
+*Demo with default arguments for the header*
+
+To customize the banner, you can change the arguments or change the default header and footer with the `SetDefaultBanner` method.
+
+```csharp
+Core.SetDefaultBanner(("Left", "Top", "Right"));
+Core.WriteBanner();
+Console.ReadKey();
+```
+
+![title](../images/banner_customize.png)
+*Demo with custom arguments for the header*
+
+
+

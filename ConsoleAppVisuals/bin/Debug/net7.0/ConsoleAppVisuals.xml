@@ -224,7 +224,7 @@
             <param name="header">The header of the screen.</param>
             <param name="footer">The footer of the screen.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.ProgramExit(System.String)">
+        <member name="M:ConsoleAppVisuals.Core.ExitProgram(System.String)">
             <summary>
             This method exits the program. 
             </summary>

@@ -1,6 +1,8 @@
 # ConsoleAppVisuals [![NuGet](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=NuGet)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/)
 
-This library allows you to add visuals to your console app.
+This library allows you to add visuals to your console app like this:
+
+![title](../images/demo_code.gif)
 
 ## Installation
 
