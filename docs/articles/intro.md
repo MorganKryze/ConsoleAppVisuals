@@ -1,6 +1,4 @@
-# Console App Visuals
-
-## Introduction
+# Articles
 
 Welcome to the docs, here you will find all the information you need to use this library.
 
