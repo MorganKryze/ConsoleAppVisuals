@@ -135,8 +135,6 @@ Console.ReadKey();
 
 ![continuous](../images/continuous.gif)
 
-*Demo with continuous printing*
-
 #### Include color
 
 You can also specify the color of the elements and choose to apply the negative color to the text. Here are two exampe :
@@ -185,8 +183,6 @@ Console.ReadKey();
 ```
 
 ![menu](../images/menu.gif)
-
-*Demo with scrolling menu*
 
 #### Number selector
 
@@ -258,5 +254,3 @@ Console.ReadKey();
 ```
 
 ![exit](../images/exit.gif)
-
-*Demo with exit program*
