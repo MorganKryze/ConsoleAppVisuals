@@ -121,7 +121,8 @@ To ensure that the documentation is generated correctly (your /// comments are t
 
 Now your documentation is ready to be generated in the section "Api Documentation" in the generated site.
 
-For more customization, you may want update the "index.md" file in the "docfx_project" folder, and create wonderful articles in the "articles" folder to explain how to use your library.
+> [!NOTE]
+> For more customization, you may want update the "index.md" file in the "docfx_project" folder, and create wonderful articles in the "articles" folder to explain how to use your library.
 
 ## Deploy the doc
 
@@ -154,10 +155,18 @@ jobs:
         publish_dir: docs/_site
 ```
 
+Push on your branch, and create a pull request to merge it with the main branch if it is not already on the main.
+
 Now, on every push on the main branch, the documentation will be generated and deployed on GitHub Pages.
+
+### Notes
+
+> [!CAUTION]
+> If you get on 404 page after building, you may not have enabled GitHub Pages in the settings of your repository. Do so and select the "gh-pages" branch as the source (and the "/root" folder for precision).
 
 I recommend that you copy/paste the url into the home page of your repository on GitHub.com in order to display the documentation to your users.
 
 ## Sources
 
 - [DocFX doc](https://dotnet.github.io/docfx/index.html)
+- [Useful but not official doc](https://tehgm.net/blog/docfx-github-actions/)

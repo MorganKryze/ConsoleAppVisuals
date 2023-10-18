@@ -13,6 +13,7 @@ public static class Core
 {
     #region Attributes
     private static string? titlePath;
+    private static string[]? titleContent;
     private static int previousWindowWidth = WindowWidth;
     private static int previousWindowHeight = WindowHeight;
     private static (ConsoleColor, ConsoleColor) colorPanel = (White, Black);
@@ -36,13 +37,9 @@ public static class Core
         set => DefaultFooter = (value.Item1 ?? "Footer Left", value.Item2 ?? "Footer Center", value.Item3 ?? "Footer Right");
     }
     /// <summary>
-    /// This property is used to get the title content.
+    /// This property is used to get the height of the title.
     /// </summary>
-    public static string[]? TitleContent {
-        get; 
-        private set; 
-    }
-    private static int? TitleHeight => TitleContent?.Length;
+    public  static int? TitleHeight => titleContent?.Length;
     /// <summary>
     /// This property is used to get the height of the header.
     /// </summary>
@@ -82,10 +79,22 @@ public static class Core
     public static void LoadTitle(string path) {
         if (Exists(path)){
             titlePath =  path;
-            TitleContent = ReadAllLines(titlePath);
+            titleContent = ReadAllLines(titlePath);
         }
         else
             titlePath = null;
+    }
+    /// <summary>
+    /// This method is used to set the default header and footer.
+    /// </summary>
+    /// <param name="header">The default header input.</param>
+    /// <param name="footer">The default footer input.</param>
+    public static void SetDefaultBanner((string, string, string)? header = null, (string, string, string)? footer = null)
+    {
+        header ??= DefaultHeader;
+        footer ??= DefaultFooter;
+        DefaultHeader = header ?? DefaultHeader;
+        DefaultFooter = footer ?? DefaultFooter;
     }
     /// <summary>
     /// This method changes the font and background colors of the console in order to apply
@@ -122,8 +131,8 @@ public static class Core
     /// <summary> 
     /// This method clears a specified part of the console.
     /// </summary>
-    /// <param name="line"> The index of the first line to clear. </param>
-    /// <param name="length"> The number of lines to clear. </param>
+    /// <param name="line">The index of the first line to clear.</param>
+    /// <param name="length">The number of lines to clear.</param>
     public static void ClearMultipleLines(int? line, int? length)
     {
         line ??= CursorTop;
@@ -258,8 +267,8 @@ public static class Core
     {
         Clear();
         SetCursorPosition(0, 0);
-        if(TitleContent is not null)
-            foreach (string line in TitleContent)
+        if(titleContent is not null)
+            foreach (string line in titleContent)
             {
                 WritePositionnedString(line.ResizeString(WindowWidth, Placement.Center));
                 WriteLine("");
@@ -374,14 +383,16 @@ public static class Core
             }
         }
     }
-    /// <summary> This method prints a menu in the console and gets the choice of the user. </summary>
-    /// <param name="question"> The question to print. </param>
-    /// <param name="min"> The minimum value of the number. </param>
-    /// <param name="max"> The maximum value of the number. </param>
-    /// <param name="start"> The starting value of the number. </param>
-    /// <param name="step"> The step of the number. </param>
-    /// <param name="line"> The line where the menu is printed. </param>
-    /// <returns> The number chose of the user. </returns>
+    /// <summary> 
+    /// This method prints a menu in the console and gets the choice of the user. 
+    /// </summary>
+    /// <param name="question">The question to print.</param>
+    /// <param name="min">The minimum value of the number.</param>
+    /// <param name="max">The maximum value of the number.</param>
+    /// <param name="start">The starting value of the number.</param>
+    /// <param name="step">The step of the number.</param>
+    /// <param name="line">The line where the menu is printed.</param>
+    /// <returns>The number chose of the user.</returns>
     public static float ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
     {
         line ??= ContentHeigth;
@@ -537,8 +548,8 @@ public static class Core
     /// This method prints a full screen in the console with a title, a header and a footer.
     /// </summary>
     /// <param name="continuous">If true, the title is not continuously printed.</param>
-    /// <param name="header"> The header of the screen. </param>
-    /// <param name="footer"> The footer of the screen. </param>
+    /// <param name="header">The header of the screen.</param>
+    /// <param name="footer">The footer of the screen.</param>
     public static void WriteFullScreen(bool continuous = false, (string, string, string)? header = null, (string, string, string)? footer = null)
     {
         header ??= DefaultHeader;

@@ -11,4 +11,5 @@ You will find the following topics:
 
 And finally, you will find the global documenation in "Api Documentation".
 
-Feel free to contribute to the project by forking it and making a pull request or open an issue if you encounter a bug.
+> [!NOTE]
+> Feel free to contribute to the project by forking it and making a pull request or open an issue if you encounter a bug.
