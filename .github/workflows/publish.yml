@@ -1,4 +1,4 @@
-name: CD (Github & NuGet)
+name: Publish (Github & NuGet)
 on:
   push:
     tags:

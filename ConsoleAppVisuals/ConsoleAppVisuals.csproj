@@ -19,11 +19,13 @@
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
   
 
   <ItemGroup>
     <None Include="..\README.md" Pack="true" PackagePath=""/>
     <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+    <None Include="img/icon.png" Pack="true" PackagePath=""/>
   </ItemGroup>
 </Project>

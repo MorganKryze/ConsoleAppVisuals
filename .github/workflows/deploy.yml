@@ -1,0 +1,27 @@
+name: Deploy docs
+on:
+  push:
+    branches:
+    - main
+    - dev
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dotnet Setup
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.x
+
+    - run: dotnet tool update -g docfx
+    - run: docfx docs/docfx.json
+
+    - name: Deploy
+      if: github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_site
+        force_orphan: true
