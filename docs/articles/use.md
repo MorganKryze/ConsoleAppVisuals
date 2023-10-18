@@ -118,7 +118,7 @@ Console.ReadKey();
 ```
 
 ![position](../images/position.png)
-*Demo with*
+*Demo with placed strings*
 
 #### Include continuous printing
 
@@ -134,6 +134,7 @@ Console.ReadKey();
 ```
 
 ![continuous](../images/continuous.gif)
+
 *Demo with continuous printing*
 
 #### Include color
@@ -184,6 +185,7 @@ Console.ReadKey();
 ```
 
 ![menu](../images/menu.gif)
+
 *Demo with scrolling menu*
 
 #### Number selector
@@ -256,4 +258,5 @@ Console.ReadKey();
 ```
 
 ![exit](../images/exit.gif)
+
 *Demo with exit program*
