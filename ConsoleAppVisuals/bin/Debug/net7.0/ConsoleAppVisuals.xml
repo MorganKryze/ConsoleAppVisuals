@@ -153,11 +153,12 @@
             <param name="header">If true, the banner is printed at the top of the console. If false, the banner is printed at the bottom of the console.</param>
             <param name="continuous">If true, the title is not continuously printed.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WritePrompt(System.String,System.Nullable{System.Int32})">
-            <summary> This method prints a message in the console and gets a string written by the user. </summary>
-            <param name="message"> The message to print. </param>
-            <param name="line"> The line where the message will be printed. </param>
-            <returns> The string written by the user. </returns>
+        <member name="M:ConsoleAppVisuals.Core.WritePrompt(System.String,System.Nullable{System.Int32},System.Boolean)">
+            <summary>This method prints a message in the console and gets a string written by the user.</summary>
+            <param name="message">The message to print.</param>
+            <param name="line">The line where the message will be printed.</param>
+            <param name="continuous">If true, the message is not continuously printed.</param>
+            <returns>The string written by the user.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Core.WriteParagraph(System.Boolean,System.Nullable{System.Int32},System.String[])">
             <summary> 
@@ -187,19 +188,6 @@
             <param name="step">The step of the number.</param>
             <param name="line">The line where the menu is printed.</param>
             <returns>The number chose of the user.</returns>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.MatrixSelector(System.Single[0:,0:],System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.String,System.String[])">
-            <summary> 
-            This method prints a matrix selector in the console. 
-            </summary>
-            <param name="matrix">The matrix to print.</param>
-            <param name="line">The line where the matrix will be printed.</param>
-            <param name="questionNav">The question message</param>
-            <param name="continueNav">The continue message</param>
-            <param name="confirmNav">the confirm message</param>
-            <param name="backNav">The back message</param>
-            <param name="instructionNumber">The instruction to choose a number to print.</param>
-            <param name="instructionsInit">The instructions to navigate into the matrix to print. No lines limitations.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Core.LoadingBar(System.String,System.Nullable{System.Int32})">
             <summary> 
