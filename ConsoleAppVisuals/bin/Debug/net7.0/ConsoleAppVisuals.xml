@@ -132,14 +132,6 @@
             <param name="position">The position of the string in the console.</param>
             <param name="writeLine">If true, the string is written with a line break.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteMatrix(System.Single[0:,0:],ConsoleAppVisuals.Position,System.Nullable{System.Int32})">
-            <summary> 
-            This method prints a float matrix in the console.
-            </summary>
-            <param name="matrix">The matrix to write on the console.</param>
-            <param name="currentPosition">The current position of the cursor.</param>
-            <param name="line">The line where the matrix will be printed.</param>
-        </member>
         <member name="M:ConsoleAppVisuals.Core.WriteTitle">
             <summary> 
             This method prints the title in the console if the title is not empty. 
