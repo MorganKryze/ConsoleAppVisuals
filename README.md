@@ -2,7 +2,7 @@
 
 This library allows you to add stunning visuals to your console app like this:
 
-![title](docs/images/demo_code.gif)
+![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/demo_code.gif)
 
 ## Installation
 
