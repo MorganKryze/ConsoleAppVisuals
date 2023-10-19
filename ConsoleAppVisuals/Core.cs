@@ -230,31 +230,6 @@ public static class Core
         Sleep(additionalTime);
     }
     /// <summary> 
-    /// This method prints a float matrix in the console.
-    /// </summary>
-    /// <param name="matrix">The matrix to write on the console.</param>
-    /// <param name="currentPosition">The current position of the cursor.</param>
-    /// <param name="line">The line where the matrix will be printed.</param>
-    public static void WriteMatrix(float[,] matrix, Position currentPosition, int? line)
-    {
-        line??= CursorTop;
-        for(int i = (int)line; i < matrix.GetLength(0); i++)
-            ClearLine(i);
-        SetCursorPosition(0, (int)line);
-        for (int i = 0; i < matrix.GetLength(0); i++)
-        {
-            Write("{0,"+((WindowWidth / 2) - (matrix.GetLength(1))) + "}","");
-            for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-                ApplyNegative(currentPosition.Equals(new Position(i, j)));
-                Write(matrix[i, j]);
-                ApplyNegative(default);
-                Write("  ");
-            }
-            WriteLine("");
-        }
-    }
-    /// <summary> 
     /// This method prints the title in the console if the title is not empty. 
     /// </summary>
     public static void WriteTitle()
@@ -279,9 +254,9 @@ public static class Core
         (string, string, string) _banner = banner ?? (header ? DefaultHeader : DefaultFooter); // If banner is null, _banner is set to the default header or footer.
 		ApplyNegative(true);
         if (continuous) 
-            WritePositionnedString(_banner.BannerToString(), default, true, header ? HeaderHeigth : FooterHeigth);
-        else
 		    WriteContinuousString(_banner.BannerToString(), header ? HeaderHeigth : FooterHeigth, true);
+        else
+            WritePositionnedString(_banner.BannerToString(), default, true, header ? HeaderHeigth : FooterHeigth);
 		ApplyNegative(default);
 	}
     /// <summary>This method prints a message in the console and gets a string written by the user.</summary>
