@@ -213,7 +213,7 @@ public static class Core
             for(int j = 0; j < i; j++) 
                 continuous += str[j];
             continuous = continuous.PadRight(str.Length);
-            WritePositionnedString(continuous.ResizeString((int)length, position, default), default, negative, line, writeLine);
+            WritePositionnedString(continuous.ResizeString((int)length, position, default), position, negative, line, writeLine);
             Sleep(timeInterval);
 
             if(KeyAvailable)
@@ -226,7 +226,7 @@ public static class Core
                 }
             }
         }
-        WritePositionnedString(str.ResizeString(WindowWidth, Placement.Center), default, negative, line);
+        WritePositionnedString(str.ResizeString(length ?? str.Length, position, default), position, negative, line);
         Sleep(additionalTime);
     }
     /// <summary> 
