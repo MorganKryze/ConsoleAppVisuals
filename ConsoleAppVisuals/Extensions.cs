@@ -46,6 +46,55 @@ public static class Extensions
 		return str;
 	}
 	/// <summary>
+	/// Insert a specified string into another string, at a specified position.
+	/// </summary>
+	/// <param name="inserted">The string that recieves the other.</param>
+	/// <param name="toInsert">The string to insert.</param>
+	/// <param name="position">The placement of the string to insert.</param>
+	/// <param name="truncate">Whether or not the string is truncate.</param>
+	/// <returns>The final string after computing.</returns>
+	public static string InsertString(this string inserted, string toInsert ,Placement position = Placement.Center, bool truncate = true)
+	{
+        if (inserted.Length < toInsert.Length)
+        {
+            throw new ArgumentException("The string to insert is longer than the string to insert into");
+        }
+        switch (position)
+        {
+            case Placement.Center:
+                int center = inserted.Length / 2;
+                int start = center - (toInsert.Length / 2);
+                if (truncate)
+                {
+                    return inserted.Remove(start, toInsert.Length).Insert(start, toInsert);
+                }
+                else
+                {
+                    return inserted.Insert(start, toInsert);
+                }
+            case Placement.Left:
+                if (truncate)
+                {
+                    return inserted.Remove(0, toInsert.Length).Insert(0, toInsert);
+                }
+                else
+                {
+                    return inserted.Insert(0, toInsert);
+                }
+            case Placement.Right:
+                if (truncate)
+                {
+                    return inserted.Remove(inserted.Length - toInsert.Length, toInsert.Length).Insert(inserted.Length - toInsert.Length, toInsert);
+                }
+                else
+                {
+                    return inserted.Insert(inserted.Length - toInsert.Length, toInsert);
+                }
+            default:
+                throw new ArgumentException("The placement is not valid");
+        }
+	}
+	/// <summary>
     /// This method is used to convert the banner tuple into a string.
     /// </summary>
     /// <param name="banner">The banner tuple.</param>
