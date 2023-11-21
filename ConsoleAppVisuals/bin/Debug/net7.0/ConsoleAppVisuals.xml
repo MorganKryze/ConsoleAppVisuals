@@ -59,12 +59,17 @@
             </summary>
             <param name="color">The new background color.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.LoadTitle(System.String)">
+        <member name="M:ConsoleAppVisuals.Core.SetTitle(System.String)">
             <summary>
-            This method is used to set the path of the title file.
+            This method is used to set the title of the console.
             </summary>
-            <param name="path">The path of the title file.</param>
-            <remarks>If the path is empty, the title is not displayed. The file should be a .txt doc.</remarks>
+            <param name="str">The title input.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.SetStyler(System.String)">
+            <summary>
+            This method is used to set a new styler for the application.
+            </summary>
+            <param name="path">The path of the new styler files.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Core.SetDefaultBanner(System.Nullable{System.ValueTuple{System.String,System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
             <summary>
@@ -132,10 +137,22 @@
             <param name="position">The position of the string in the console.</param>
             <param name="writeLine">If true, the string is written with a line break.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteTitle">
-            <summary> 
-            This method prints the title in the console if the title is not empty. 
+        <member name="M:ConsoleAppVisuals.Core.WritePositionnedStyledText(System.String[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,ConsoleAppVisuals.Placement,System.Boolean)">
+            <summary>
+            This method is used to write a styled string in the console.
             </summary>
+            <param name="text">The styled string to write.</param>
+            <param name="line">The line where the string is written in the console. If null, will be written from the ContentHeight.</param>
+            <param name="width">The width of the string. If null, the width is the window width.</param>
+            <param name="margin">The upper and lower margin.</param>
+            <param name="position">The position of the string in the console.</param>
+            <param name="negative">If true, the text is highlighted.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.WriteTitle(System.Int32)">
+            <summary> 
+            This method prints the title in the console. 
+            </summary>
+            <param name="margin">The upper and lower margin.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Core.WriteBanner(System.Boolean,System.Boolean,System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
             <summary> 
@@ -233,12 +250,37 @@
             The value of str2 will be "        Hello World".
             </example>
         </member>
+        <member name="M:ConsoleAppVisuals.Extensions.InsertString(System.String,System.String,ConsoleAppVisuals.Placement,System.Boolean)">
+            <summary>
+            Insert a specified string into another string, at a specified position.
+            </summary>
+            <param name="inserted">The string that recieves the other.</param>
+            <param name="toInsert">The string to insert.</param>
+            <param name="position">The placement of the string to insert.</param>
+            <param name="truncate">Whether or not the string is truncate.</param>
+            <returns>The final string after computing.</returns>
+        </member>
         <member name="M:ConsoleAppVisuals.Extensions.BannerToString(System.ValueTuple{System.String,System.String,System.String})">
             <summary>
             This method is used to convert the banner tuple into a string.
             </summary>
             <param name="banner">The banner tuple.</param>
             <returns>The banner as a string.</returns>
+        </member>
+        <member name="T:ConsoleAppVisuals.FontYamlFile">
+            <summary>
+            The <see cref="T:ConsoleAppVisuals.FontYamlFile"/> class defines the structure of a yaml file used to store the height of each character of a font.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FontYamlFile.Name">
+            <summary>
+            The name of the font.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FontYamlFile.Chars">
+            <summary>
+            The height of the elements of the font.
+            </summary>
         </member>
         <member name="T:ConsoleAppVisuals.Placement">
             <summary>
@@ -330,6 +372,53 @@
             <param name="left">The first position to compare.</param>
             <param name="right">The second position to compare.</param>
             <returns>True if the positions are not equal, false otherwise.</returns>
+        </member>
+        <member name="T:ConsoleAppVisuals.TextStyler">
+            <summary>
+            The class that styles any text with specified font files.
+            </summary> 
+        </member>
+        <member name="F:ConsoleAppVisuals.TextStyler.fontPath">
+            <summary>
+            The path to the font files.
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.TextStyler.config">
+            <summary>
+            The config.yml file deserialized.
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.TextStyler.dictionary">
+            <summary>
+            A dictionary that stores the characters and their styled equivalent.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.TextStyler.#ctor(System.String)">
+            <summary>
+            The constructor of the TextStyler class.
+            </summary>
+            <param name="fontPath">The path to the font files.</param>
+            <exception cref="T:System.IO.FileNotFoundException">If the given path is incorrect or the config.yml file is absent.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.TextStyler.StyleTextToString(System.String)">
+            <summary>
+            Styles the given text with the font files.
+            </summary>
+            <param name="text">The text to style.</param>
+            <returns>The styled text.</returns>
+        </member>
+        <member name="M:ConsoleAppVisuals.TextStyler.StyleTextToStringArray(System.String)">
+            <summary>
+            Styles the given text with the font files.
+            </summary>
+            <param name="text">The text to style.</param>
+            <returns>The styled text as a string array.</returns>
+        </member>
+        <member name="M:ConsoleAppVisuals.TextStyler.ToString">
+            <summary>
+            Gives the caracteristics of the actual style (from the config.yml file).
+            </summary>
+            <returns>A string compiling these pieces of information.</returns>
         </member>
     </members>
 </doc>

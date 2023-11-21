@@ -1,6 +1,5 @@
 ﻿using static System.Console;
 using static System.Threading.Thread;
-using static System.IO.File;
 using static System.ConsoleColor;
 using static System.ConsoleKey;
 
@@ -12,8 +11,8 @@ namespace ConsoleAppVisuals;
 public static class Core
 {
     #region Attributes
-    private static string? titlePath;
-    private static string[]? titleContent;
+    private static string[]? title;
+    private static TextStyler styler = new();
     private static int previousWindowWidth = WindowWidth;
     private static int previousWindowHeight = WindowHeight;
     private static (ConsoleColor, ConsoleColor) colorPanel = (White, Black);
@@ -33,7 +32,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
-    public  static int? TitleHeight => titleContent?.Length;
+    public static int? TitleHeight => title?.Length;
     /// <summary>
     /// This property is used to get the height of the header.
     /// </summary>
@@ -66,18 +65,15 @@ public static class Core
     /// <param name="color">The new background color.</param>
     public static void ChangeBackground(ConsoleColor color) => colorPanel.Item2 = color;
     /// <summary>
-    /// This method is used to set the path of the title file.
+    /// This method is used to set the title of the console.
     /// </summary>
-    /// <param name="path">The path of the title file.</param>
-    /// <remarks>If the path is empty, the title is not displayed. The file should be a .txt doc.</remarks>
-    public static void LoadTitle(string path) {
-        if (Exists(path)){
-            titlePath =  path;
-            titleContent = ReadAllLines(titlePath);
-        }
-        else
-            titlePath = null;
-    }
+    /// <param name="str">The title input.</param>
+    public static void SetTitle(string str) => title = styler.StyleTextToStringArray(str);
+    /// <summary>
+    /// This method is used to set a new styler for the application.
+    /// </summary>
+    /// <param name="path">The path of the new styler files.</param>
+    public static void SetStyler(string path) => styler = new TextStyler(path);
     /// <summary>
     /// This method is used to set the default header and footer.
     /// </summary>
@@ -172,13 +168,13 @@ public static class Core
 		if (str.Length < WindowWidth) 
             switch (position)
 		    {
-		    	case (Placement.Left): 
+		    	case Placement.Left: 
                     SetCursorPosition(0, (int)line); 
                     break;
-		    	case (Placement.Center): 
+		    	case Placement.Center: 
                     SetCursorPosition((WindowWidth - str.Length) / 2, (int)line); 
                     break;
-		    	case (Placement.Right): 
+		    	case Placement.Right: 
                     SetCursorPosition(WindowWidth - str.Length, (int)line); 
                     break;
 		    }
@@ -229,20 +225,34 @@ public static class Core
         WritePositionnedString(str.ResizeString(length ?? str.Length, position, default), position, negative, line);
         Sleep(additionalTime);
     }
-    /// <summary> 
-    /// This method prints the title in the console if the title is not empty. 
+    /// <summary>
+    /// This method is used to write a styled string in the console.
     /// </summary>
-    public static void WriteTitle()
+    /// <param name="text">The styled string to write.</param>
+    /// <param name="line">The line where the string is written in the console. If null, will be written from the ContentHeight.</param>
+    /// <param name="width">The width of the string. If null, the width is the window width.</param>
+    /// <param name="margin">The upper and lower margin.</param>
+    /// <param name="position">The position of the string in the console.</param>
+    /// <param name="negative">If true, the text is highlighted.</param>
+    public static void WritePositionnedStyledText(string[]? text = null, int? line = null, int? width = null, int margin = 0, Placement position = Placement.Center, bool negative = false)
     {
-        Clear();
-        SetCursorPosition(0, 0);
-        if(titleContent is not null)
-            foreach (string line in titleContent)
-            {
-                WritePositionnedString(line.ResizeString(WindowWidth, Placement.Center));
-                WriteLine("");
-            } 
+        if (text is not null) 
+        {
+            SetCursorPosition(0, line ?? ContentHeigth);
+
+            for (int i = 0; i < margin; i++)
+                WritePositionnedString("".ResizeString(width ?? WindowWidth, position), position, negative, (line ?? ContentHeigth) + i, true);
+            for (int i = 0; i < text.Length; i++)
+                WritePositionnedString(text[i].ResizeString(width ?? WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + i, true);  
+            for (int i = 0; i < margin; i++)
+                WritePositionnedString("".ResizeString(width ?? WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + text.Length + i, true);
+        }  
     }
+    /// <summary> 
+    /// This method prints the title in the console. 
+    /// </summary>
+    /// <param name="margin">The upper and lower margin.</param>
+    public static void WriteTitle(int margin = 1) => WritePositionnedStyledText(title, 0, WindowWidth, margin, Placement.Center, false);
     /// <summary> 
     /// This method prints a banner in the console. 
     /// </summary>
@@ -456,6 +466,7 @@ public static class Core
         header ??= DefaultHeader;
         footer ??= DefaultFooter;
         CursorVisible = false;
+        Clear();
         WriteTitle();
         WriteBanner(true, continuous, header);
         WriteBanner(false, continuous, footer);

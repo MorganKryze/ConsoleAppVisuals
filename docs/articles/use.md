@@ -9,10 +9,13 @@ The library is composed of 4 main classes:
 
 ```bash
 ConsoleAppVisuals
+├───models
+│   ├───Position.cs
+│   ├───Placement.cs
+│   └───FontYamlFile.cs
 ├───Core.cs
 ├───Extensions.cs
-├───Placement.cs
-└───Position.cs
+└───TextStyler.cs
 ```
 
 ### Core.cs
@@ -25,6 +28,11 @@ This class contains different extensions methods for strings and tuples.
 
 With Position.cs and Placement.cs, it belongs to the tools classes.
 
+
+### TextStyler.cs
+
+This class is used to style the text. It contains the methods to apply a specific style to a text. Often used for the title. It may be useful to create your own style.
+
 ### Position.cs
 
 This class is used to define any position defined by an X and Y coordinate. It may be used in cases like matrix selectors for example.
@@ -32,6 +40,10 @@ This class is used to define any position defined by an X and Y coordinate. It m
 ### Placement.cs
 
 This class is used to define the placement of a text in the console. It may be useful to indicate where to place a text in a console, or to define the position of a text in a larger string.
+
+### FontYamlFile.cs
+
+This class is used to define a font from a yaml file. It may be useful to create your own font.
 
 ## How to use the library
 
@@ -43,6 +55,12 @@ using static ConsoleAppVisuals.Core;
 
 This way, you can use the methods directly, without having to specify the class name.
 
+However, if you want to use the library in a more traditional way, you can import the library like this:
+
+```csharp
+using ConsoleAppVisuals;
+```
+
 > [!NOTE]
 > The methods should speak of themselves, but if you need more information, you can take a look at the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/api/ConsoleAppVisuals.Core.html).
 
@@ -52,24 +70,34 @@ Here we will tackle the process and in what way you can make this library useful
 
 The process is quite simple. You have to define the different variables you want to display, and then display them according to their methods, then clean the console afterwards.
 
-
-
 #### Display a title
 
-By default, no title will be displayed as no file is being targeted. But you can load a file with the `LoadTitle` method and then display it with the `WriteTitle` method.
+By default, no title will be displayed as no title has been set. You can set a title with the `SetTitle` method and then display it with the `WriteTitle` method.
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteTitle();
 
 Console.ReadKey(); //[optional]: just to keep the console clean
 ```
 
 ![title](../images/title.png)
-*Demo with title.example.txt file*
+*Demo with an Example*
 
-> [!NOTE]
-> The file has been added to the project "example" in the root folder if you want to try it.
+### Create your own font
+
+You may create your own font by creating a font file following the format specified in the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) (it includes, the three .txt files and the .yaml file). Then, you can use the `SetFont` method to set your font.
+
+```csharp
+
+Core.SetFont("/path/to/your/font/folder/");
+
+```
+
+This will globally change the font of the library. 
+
+> [!WARNING]
+> By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionnedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
 
 ### Display a banner
 
@@ -77,10 +105,10 @@ Now that we have seen the title, let's see how to display a banner. You may use 
 
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteTitle();
 
-Core.WriteBanner();
+Core.WriteBanner(header: true);
 
 Console.ReadKey(); //[optional]: just to keep the console clean
 ```
@@ -92,13 +120,16 @@ To customize the banner, you can change the arguments or change the default head
 
 ```csharp
 Core.SetDefaultBanner(("Left", "Top", "Right"));
-Core.WriteBanner();
+Core.WriteBanner(header: true);
 
 Console.ReadKey();
 ```
 
 ![banner2](../images/banner_customize.png)
 *Demo with custom arguments for the header*
+
+> [!NOTE]
+> To display a footer, you may use the `WriteBanner` method with the `header` argument set to `false`.
 
 ### Write a text in the console
 
@@ -107,7 +138,7 @@ Console.ReadKey();
 The `WritePositionneString` method is the most basic method of the library. It allows you to write a string in the console, with the possibility to specify the placement of the string within the width of the console. 
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen();
 
 Core.WritePositionnedString("On the left", Placement.Left, default, 9, default);
@@ -125,7 +156,7 @@ Console.ReadKey();
 In addition to the placement, you can also specify if you want to print the string continuously or not. If you do, the string will be printed character by character, with a delay between each character. You may also interrupt the printing by pressing any key.
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen();
 
 Core.WriteContinuousString("Hello World! Welcome to this beautiful app.", 10);
@@ -140,7 +171,7 @@ Console.ReadKey();
 You can also specify the color of the elements and choose to apply the negative color to the text. Here are two exampe :
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen();
 
 Core.ChangeForeground(ConsoleColor.Green);
@@ -174,7 +205,7 @@ Core.ClearWindow(); // Clears the whole window with a continuous effect
 The `ScrollingMenuSelector` is a special block that allows you to display a menu with a scrolling effect. You may specify the question and the different choices.
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen(true);
 
 Core.ScrollingMenuSelector("New question asked ?", default, "Option 1", "Option 2", "Option 3");
@@ -189,7 +220,7 @@ Console.ReadKey();
 The `ScrollingNumberSelector` is a special block that allows you to display a scrolling element with a number. You may define the minimum and maximum values, the step and the initial value.
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen(true);
 
 Core.ScrollingNumberSelector("Please choose a number", 10, 50, 25, 5);
@@ -205,7 +236,7 @@ Console.ReadKey();
 The `LoadingBar` is a special block that allows you to display a loading bar. You may define the text to display while loading.
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen(true);
 
 Core.LoadingBar();
@@ -221,7 +252,7 @@ Console.ReadKey();
 The `ProcessLoadingBar` is a special block that allows you to display a loading bar with a text and a *true* loading bar. You may define the text to display while loading.
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen(true);
 
 var percentage = 0f;
@@ -245,7 +276,7 @@ Console.ReadKey();
 Last but no least, to exit the application, you can use the `ExitProgram` method. It will display a message and exit the application.
 
 ```csharp
-Core.LoadTitle("data/title.example.txt");
+Core.SetTitle("Example");
 Core.WriteFullScreen(true);
 
 Core.ExitProgram();
