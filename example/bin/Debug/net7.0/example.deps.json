@@ -8,17 +8,28 @@
     ".NETCoreApp,Version=v7.0": {
       "example/1.0.0": {
         "dependencies": {
-          "ConsoleAppVisuals": "2.0.0"
+          "ConsoleAppVisuals": "2.2.3"
         },
         "runtime": {
           "example.dll": {}
         }
       },
-      "ConsoleAppVisuals/2.0.0": {
+      "ConsoleAppVisuals/2.2.3": {
+        "dependencies": {
+          "YamlDotNet": "13.7.1"
+        },
         "runtime": {
           "lib/net7.0/ConsoleAppVisuals.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
+            "assemblyVersion": "2.2.3.0",
+            "fileVersion": "2.2.3.0"
+          }
+        }
+      },
+      "YamlDotNet/13.7.1": {
+        "runtime": {
+          "lib/net7.0/YamlDotNet.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.7.1.0"
           }
         }
       }
@@ -30,12 +41,19 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ConsoleAppVisuals/2.0.0": {
+    "ConsoleAppVisuals/2.2.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jIz6qFXFHHZecbQ40VSITHBoiUkZMD4ia43+4JMR9mXRAMSYZpeETErBcjLaA1lIy/m5Oh7b92sjfPJxXYj3UQ==",
-      "path": "consoleappvisuals/2.0.0",
-      "hashPath": "consoleappvisuals.2.0.0.nupkg.sha512"
+      "sha512": "sha512-6QsCwXSccc2wc/AWz5MREL6pPoG2C6Xk8f+pOGeF3UAV/mKXS1xs/1N4cbz00g3EZr9CVYYfGK9K5KyYOjYUIA==",
+      "path": "consoleappvisuals/2.2.3",
+      "hashPath": "consoleappvisuals.2.2.3.nupkg.sha512"
+    },
+    "YamlDotNet/13.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-X4m1PnFcJwvAj1sCDMntg/eZcX96CJLrWMiYnq41KqhFVZPuw63ZTSxIGqgdCwHWHvCAyTxheELC/VDf1HsU2A==",
+      "path": "yamldotnet/13.7.1",
+      "hashPath": "yamldotnet.13.7.1.nupkg.sha512"
     }
   }
 }
