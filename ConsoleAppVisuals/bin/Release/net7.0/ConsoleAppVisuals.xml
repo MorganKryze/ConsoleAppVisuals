@@ -403,7 +403,6 @@
             The constructor of the TextStyler class.
             </summary>
             <param name="fontPath">The path to the font files.</param>
-            <exception cref="T:System.IO.FileNotFoundException">If the given path is incorrect or the config.yml file is absent.</exception>
         </member>
         <member name="M:ConsoleAppVisuals.TextStyler.StyleTextToString(System.String)">
             <summary>

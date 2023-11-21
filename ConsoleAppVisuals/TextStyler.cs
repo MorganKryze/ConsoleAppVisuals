@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
@@ -9,21 +10,25 @@ namespace ConsoleAppVisuals;
 public class TextStyler
 {
     #region Constants
-    private const string DEFAULT_FONT_PATH = "fonts/ANSI_Shadow/";
-    private const string DEFAULT_CONFIG_PATH = "config.yml";
-    private const string DEFAULT_ALPHABET_PATH = "/data/alphabet.txt";
-    private const string DEFAULT_NUMBERS_PATH = "/data/numbers.txt";
-    private const string DEFAULT_SYMBOLS_PATH = "/data/symbols.txt";
-    private const string DEFAULT_SUPPORTED_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-    private const string DEFAULT_SUPPORTED_NUMBERS = "0123456789";
-    private const string DEFAULT_SUPPORTED_SYMBOLS = "?!:.,;/-_()[]%$^*@ ";
+    private const string DEFAULT_FONT_PATH = "ConsoleAppVisuals.fonts.ANSI_Shadow";
+    private const string DEFAULT_CONFIG_PATH = ".config.yml";
+    private const string DEFAULT_ALPHABET_PATH = ".data.alphabet.txt";
+    private const string DEFAULT_NUMBERS_PATH = ".data.numbers.txt";
+    private const string DEFAULT_SYMBOLS_PATH = ".data.symbols.txt";
+    private const string CONFIG_PATH = "config.yml";
+    private const string ALPHABET_PATH = "data/alphabet.txt";
+    private const string NUMBERS_PATH = "data/numbers.txt";
+    private const string SYMBOLS_PATH = "data/symbols.txt";
+    private const string SUPPORTED_ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    private const string SUPPORTED_NUMBERS = "0123456789";
+    private const string SUPPORTED_SYMBOLS = "?!:.,;/-_()[]%$^*@ ";
     #endregion
 
     #region Attributes
     /// <summary>
     /// The path to the font files.
     /// </summary>
-    private readonly string fontPath;
+    private readonly string? fontPath;
     /// <summary>
     /// The config.yml file deserialized.
     /// </summary>
@@ -33,62 +38,90 @@ public class TextStyler
     /// </summary>
     public Dictionary<char, string> dictionary;
     #endregion
-    
+
     #region Constructor
     /// <summary>
     /// The constructor of the TextStyler class.
     /// </summary>
     /// <param name="fontPath">The path to the font files.</param>
-    /// <exception cref="FileNotFoundException">If the given path is incorrect or the config.yml file is absent.</exception>
-    public TextStyler(string fontPath = DEFAULT_FONT_PATH)
+    public TextStyler(string? fontPath = null)
     {
         this.fontPath = fontPath;
         dictionary = new Dictionary<char, string>();
 
         string yamlContent;
-        try 
+        if (fontPath is null)
         {
-            yamlContent = File.ReadAllText(this.fontPath + DEFAULT_CONFIG_PATH);
+            var assembly = Assembly.GetExecutingAssembly();
+            using var stream = assembly.GetManifestResourceStream(DEFAULT_FONT_PATH + DEFAULT_CONFIG_PATH);
+            using var reader = new StreamReader(stream ?? throw new InvalidOperationException());
+            yamlContent = reader.ReadToEnd();
         }
-        catch (FileNotFoundException)
+        else 
         {
-            yamlContent = File.ReadAllText(DEFAULT_FONT_PATH + DEFAULT_CONFIG_PATH);
+            yamlContent = File.ReadAllText(this.fontPath + CONFIG_PATH);
         }
-        
+
         var deserializer = new DeserializerBuilder().WithNamingConvention(CamelCaseNamingConvention.Instance).Build();
         config = deserializer.Deserialize<FontYamlFile>(yamlContent);
-        
+
         DictionaryBuilder();
     }
     private void DictionaryBuilder()
     {
-        var alphabetStyled = File.ReadLines(fontPath + DEFAULT_ALPHABET_PATH).ToList();
-        var alphabetStyledGrouped = alphabetStyled
-            .Select((line, index) => new { line, index })
-            .GroupBy(x => x.index / config.Chars["alphabet"])
-            .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
-            .ToList();
+        List<string> alphabetStyled;
+        List<string> numbersStyled;
+        List<string> symbolsStyled;
 
-        var numbersStyled = File.ReadLines(fontPath + DEFAULT_NUMBERS_PATH).ToList();
-        var numbersStyledGrouped = numbersStyled
-            .Select((line, index) => new { line, index })
-            .GroupBy(x => x.index / config.Chars["numbers"])
-            .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
-            .ToList();
+        if (fontPath is null)
+        {
+            alphabetStyled = ReadResourceLines(DEFAULT_ALPHABET_PATH);
+            numbersStyled = ReadResourceLines(DEFAULT_NUMBERS_PATH);
+            symbolsStyled = ReadResourceLines(DEFAULT_SYMBOLS_PATH);
+        }
+        else 
+        {
+            alphabetStyled = ReadResourceLines(ALPHABET_PATH);
+            numbersStyled = ReadResourceLines(NUMBERS_PATH);
+            symbolsStyled = ReadResourceLines(SYMBOLS_PATH);
+        }
 
-        var symbolsStyled = File.ReadLines(fontPath + DEFAULT_SYMBOLS_PATH).ToList();
-        var symbolsStyledGrouped = symbolsStyled
-            .Select((line, index) => new { line, index })
-            .GroupBy(x => x.index / config.Chars["symbols"])
-            .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
-            .ToList();
-        
-        for (int i = 0; i < DEFAULT_SUPPORTED_ALPHABET.Length; i++)
-            dictionary.Add(DEFAULT_SUPPORTED_ALPHABET[i], alphabetStyledGrouped[i]);
-        for (int i = 0; i < DEFAULT_SUPPORTED_NUMBERS.Length; i++)
-            dictionary.Add(DEFAULT_SUPPORTED_NUMBERS[i], numbersStyledGrouped[i]);
-        for (int i = 0; i < DEFAULT_SUPPORTED_SYMBOLS.Length; i++)
-            dictionary.Add(DEFAULT_SUPPORTED_SYMBOLS[i], symbolsStyledGrouped[i]);
+            var alphabetStyledGrouped = alphabetStyled
+                .Select((line, index) => new { line, index })
+                .GroupBy(x => x.index / config.Chars["alphabet"])
+                .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
+                .ToList();
+
+            var numbersStyledGrouped = numbersStyled
+                .Select((line, index) => new { line, index })
+                .GroupBy(x => x.index / config.Chars["numbers"])
+                .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
+                .ToList();
+
+            var symbolsStyledGrouped = symbolsStyled
+                .Select((line, index) => new { line, index })
+                .GroupBy(x => x.index / config.Chars["symbols"])
+                .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
+                .ToList();
+
+            for (int i = 0; i < SUPPORTED_ALPHABET.Length; i++)
+                dictionary.Add(SUPPORTED_ALPHABET[i], alphabetStyledGrouped[i]);
+            for (int i = 0; i < SUPPORTED_NUMBERS.Length; i++)
+                dictionary.Add(SUPPORTED_NUMBERS[i], numbersStyledGrouped[i]);
+            for (int i = 0; i < SUPPORTED_SYMBOLS.Length; i++)
+                dictionary.Add(SUPPORTED_SYMBOLS[i], symbolsStyledGrouped[i]);
+    }
+    private List<string> ReadResourceLines(string path)
+    {
+        if (fontPath is null)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            using var stream = assembly.GetManifestResourceStream(DEFAULT_FONT_PATH + path);
+            using var reader = new StreamReader(stream ?? throw new InvalidOperationException());
+            return reader.ReadToEnd().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None).ToList();
+        }
+        else 
+            return File.ReadLines(fontPath + path).ToList();
     }
     #endregion
 
