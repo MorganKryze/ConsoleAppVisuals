@@ -1,17 +1,19 @@
-﻿using static System.Console;
+﻿using System.Text;
+
+using static System.Console;
 using static System.Threading.Thread;
 using static System.ConsoleColor;
 using static System.ConsoleKey;
 
 namespace ConsoleAppVisuals;
 /// <summary>
-/// The <see cref="Core"/> classe contains all the visual elements for a console app.
+/// The <see cref="Core"/> class contains all the visual elements for a console app.
 /// Most of the elements are on a low abstraction level.
 /// </summary>
 public static class Core
 {
     #region Attributes
-    private static string[]? title;
+    private static (string[]?, int?) title;
     private static TextStyler styler = new();
     private static int previousWindowWidth = WindowWidth;
     private static int previousWindowHeight = WindowHeight;
@@ -32,7 +34,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
-    public static int? TitleHeight => title?.Length;
+    public static int? TitleHeight => title.Item1?.Length + 2 * title.Item2;
     /// <summary>
     /// This property is used to get the height of the header.
     /// </summary>
@@ -68,7 +70,8 @@ public static class Core
     /// This method is used to set the title of the console.
     /// </summary>
     /// <param name="str">The title input.</param>
-    public static void SetTitle(string str) => title = styler.StyleTextToStringArray(str);
+    /// <param name="margin">The upper and lower margin of the title.</param>
+    public static void SetTitle(string str, int margin = 1) => title = (styler.StyleTextToStringArray(str), margin);
     /// <summary>
     /// This method is used to set a new styler for the application.
     /// </summary>
@@ -234,8 +237,10 @@ public static class Core
     /// <param name="margin">The upper and lower margin.</param>
     /// <param name="position">The position of the string in the console.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
-    public static void WritePositionnedStyledText(string[]? text = null, int? line = null, int? width = null, int margin = 0, Placement position = Placement.Center, bool negative = false)
+    public static void WritePositionnedStyledText(string[]? text = null, int? line = null, int? width = null, int? margin = null, Placement position = Placement.Center, bool negative = false)
     {
+        line ??= ContentHeigth;
+        margin ??= 0;
         if (text is not null) 
         {
             SetCursorPosition(0, line ?? ContentHeigth);
@@ -251,8 +256,7 @@ public static class Core
     /// <summary> 
     /// This method prints the title in the console. 
     /// </summary>
-    /// <param name="margin">The upper and lower margin.</param>
-    public static void WriteTitle(int margin = 1) => WritePositionnedStyledText(title, 0, WindowWidth, margin, Placement.Center, false);
+    public static void WriteTitle() => WritePositionnedStyledText(title.Item1, 0, WindowWidth, title.Item2, Placement.Center, false);
     /// <summary> 
     /// This method prints a banner in the console. 
     /// </summary>
@@ -269,29 +273,6 @@ public static class Core
             WritePositionnedString(_banner.BannerToString(), default, true, header ? HeaderHeigth : FooterHeigth);
 		ApplyNegative(default);
 	}
-    /// <summary>This method prints a message in the console and gets a string written by the user.</summary>
-    /// <param name="message">The message to print.</param>
-    /// <param name="line">The line where the message will be printed.</param>
-    /// <param name="continuous">If true, the message is not continuously printed.</param>
-    /// <returns>The string written by the user.</returns>
-    public static string WritePrompt(string message, int? line = null, bool continuous = true)
-    {
-        line ??= ContentHeigth;
-        if (continuous)
-            WriteContinuousString(message, line, default, 1500, 50);
-        else 
-            WritePositionnedString(message, Placement.Center, default, line, true);
-        string prompt;
-        do
-        {
-            ClearLine(line + 1);
-            Write("{0," + ((WindowWidth / 2) - (message.Length / 2) + 2) + "}", "> ");
-            CursorVisible = true;
-            prompt = ReadLine() ?? "";
-            CursorVisible = false;
-        } while (prompt is "");
-        return prompt;
-    }
     /// <summary> 
     /// This method prints a paragraph in the console. 
     /// </summary>
@@ -311,57 +292,109 @@ public static class Core
 		}
         ApplyNegative(default);
 	}
-    /// <summary> 
-    /// This method prints a menu in the console and gets the choice of the user. 
+    /// <summary>
+    /// This method prints a message in the console and gets a string written by the user.
     /// </summary>
-    /// <param name="question">The question to print.</param>
-    /// <param name="line">The line where the menu is printed.</param>
-    /// <param name="choices">The choices of the menu.</param>
-    /// <returns>An integer representing the choice of the user.</returns>
-    public static int ScrollingMenuSelector(string question, int? line = null, params string[] choices)
+    /// <param name="message">The message to print.</param>
+    /// <param name="defaultValue">The default value of the string.</param>
+    /// <param name="line">The line where the message will be printed.</param>
+    /// <param name="continuous">If true, the message is not continuously printed.</param>
+    /// <returns>A tuple containing the status of the prompt (-1 : escape, 0 : enter) and the string written by the user.</returns>
+    public static (int,string) WritePrompt(string message, string? defaultValue, int? line = null, bool continuous = true)
     {
         line ??= ContentHeigth;
-        int _currentPosition = 0;
-        int _maxLength = choices.Length > 0 ? choices.Max(s => s.Length) : 0;
-        for (int i = 0; i < choices.Length; i++) 
-            choices[i] = choices[i].PadRight(_maxLength);
+        if (continuous)
+            WriteContinuousString(message, line, negative: false, 1500, 50);
+        else
+            WritePositionnedString(message, Placement.Center, negative: false, line, writeLine: true);
 
-        WriteContinuousString(question, line, default, 1500, 50);
-        int _choicesLine = (int)line + 2;
+        var field = new StringBuilder(defaultValue);
+        ConsoleKeyInfo key;
+        CursorVisible = true;
+        do
+        {
+            ClearLine(line + 2);
+            SetCursorPosition(0, CursorTop);
+            Write("{0," + (WindowWidth / 2 - message.Length / 2 + 2) + "}", "> ");
+            Write($"{field}");
+            key = ReadKey();
+            if (key.Key == Backspace && field.Length > 0)
+                field.Remove(field.Length - 1, 1);
+            else if (key.Key != Enter && key.Key != Escape)
+                field.Append(key.KeyChar);
+        } while (key.Key != Enter && key.Key != Escape);
+        CursorVisible = false;
+        return key.Key == Enter ? (0,field.ToString()) : (-1,field.ToString());
+    }
+    /// <summary>
+    /// This method prints a menu in the console and gets the choice of the user.
+    /// </summary>
+    /// <param name="question">The question to print.</param>
+    /// <param name="defaultIndex">The default index of the menu.</param>
+    /// <param name="line">The line where the menu is printed.</param>
+    /// <param name="choices">The choices of the menu.</param>
+    /// <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the index of the choice of the user.</returns>
+    public static (int, int) ScrollingMenuSelector(string question, int? defaultIndex = null, int? line = null, params string[] choices)
+    {
+        int valueOrDefault = line.GetValueOrDefault();
+        if (!line.HasValue)
+        {
+            valueOrDefault = ContentHeigth;
+            line = valueOrDefault;
+        }
+        
+
+        int num = defaultIndex ??= 0;
+        int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
+        for (int i = 0; i < choices.Length; i++)
+        {
+            choices[i] = choices[i].PadRight(totalWidth);
+        }
+
+        WriteContinuousString(question, line, negative: false, 1500, 50);
+        int lineChoice = line.Value + 2;
         while (true)
         {
-            string[] _choices = new string[choices.Length];
-            for (int i = 0; i < choices.Length; i++)
+            string[] array = new string[choices.Length];
+            for (int j = 0; j < choices.Length; j++)
             {
-                if (i == _currentPosition)
+                if (j == num)
                 {
-                    _choices[i] = $" ▶ {choices[i]}  ";
-                    WritePositionnedString(_choices[i], Placement.Center, true, _choicesLine + i);
-                    continue;
+                    array[j] = " ▶ " + choices[j] + "  ";
+                    WritePositionnedString(array[j], Placement.Center, negative: true, lineChoice + j);
                 }
-                _choices[i] = $"   {choices[i]}  ";
-                WritePositionnedString(_choices[i], Placement.Center, false, _choicesLine + i);
+                else
+                {
+                    array[j] = "   " + choices[j] + "  ";
+                    WritePositionnedString(array[j], Placement.Center, negative: false, lineChoice + j);
+                }
             }
-            switch (ReadKey(true).Key)
+
+            switch (ReadKey(intercept: true).Key)
             {
-                case UpArrow: case Z: 
-                    if (_currentPosition == 0) 
-                        _currentPosition = choices.Length - 1; 
-                    else if (_currentPosition > 0)
-                        _currentPosition--; 
-                        break;
-                case DownArrow: case S: 
-                    if (_currentPosition == choices.Length - 1) 
-                        _currentPosition = 0;  
-                    else if (_currentPosition < choices.Length - 1) 
-                        _currentPosition++; 
-                        break;
-                case Enter: 
+                case UpArrow: case Z:
+                    if (num == 0)
+                        num = choices.Length - 1;
+                    else if (num > 0)
+                        num--;
+
+                    break;
+                case DownArrow: case S:
+                    if (num == choices.Length - 1)
+                        num = 0;
+                    else if (num < choices.Length - 1)
+                        num++;
+
+                    break;
+                case Enter:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return _currentPosition;
-                case Escape: 
+                    return (0, num);
+                case Escape:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return -1;
+                    return (-1, num);
+                case Backspace:
+                    ClearMultipleLines(line, choices.Length + 2);
+                    return (-2, num);
             }
         }
     }
@@ -374,8 +407,8 @@ public static class Core
     /// <param name="start">The starting value of the number.</param>
     /// <param name="step">The step of the number.</param>
     /// <param name="line">The line where the menu is printed.</param>
-    /// <returns>The number chose of the user.</returns>
-    public static float ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
+    /// <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the number chosen by the user.</returns>
+    public static (int, float) ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
     {
         line ??= ContentHeigth;
         WriteContinuousString(question, line, default, 1500, 50);
@@ -401,10 +434,13 @@ public static class Core
                         break;
                 case Enter: 
                     ClearMultipleLines(line, 4);
-                    return _currentNumber;
+                    return (0, _currentNumber);
                 case Escape: 
                     ClearMultipleLines(line, 4);
-                    return -1;
+                    return (-1, _currentNumber);
+                case Backspace:
+                    ClearMultipleLines(line, 4);
+                    return (-2, _currentNumber);
             }
             Sleep(1);
             ClearLine(_lineSelector);
@@ -458,16 +494,21 @@ public static class Core
     /// <summary> 
     /// This method prints a full screen in the console with a title, a header and a footer.
     /// </summary>
+    /// <param name="title">The title of the screen.</param>
     /// <param name="continuous">If true, the title is not continuously printed.</param>
     /// <param name="header">The header of the screen.</param>
     /// <param name="footer">The footer of the screen.</param>
-    public static void WriteFullScreen(bool continuous = false, (string, string, string)? header = null, (string, string, string)? footer = null)
+    public static void WriteFullScreen(string? title = null, bool continuous = false, (string, string, string)? header = null, (string, string, string)? footer = null)
     {
         header ??= DefaultHeader;
         footer ??= DefaultFooter;
         CursorVisible = false;
         Clear();
-        WriteTitle();
+        if (title is not null)
+        {
+            SetTitle(title);
+            WriteTitle();
+        }
         WriteBanner(true, continuous, header);
         WriteBanner(false, continuous, footer);
         ClearContent();
