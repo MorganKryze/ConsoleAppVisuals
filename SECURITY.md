@@ -7,7 +7,7 @@
 |  2.3.x  | :white_check_mark: |
 |  2.2.3  | :x:                |
 |  2.1.x  | :white_check_mark: |
-| < 2.0.x | :x:                |
+| < 2.0.x | :white_check_mark: |
 
 I strongly recommend you not to use the library between version 2.1.0 and 2.2.3 due to a new feature that caused the crash of the program on start. [RESOLVED] on version v2.2.4
 
