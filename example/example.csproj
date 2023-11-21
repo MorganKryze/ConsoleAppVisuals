@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ConsoleAppVisuals" Version="2.0.4" />
+    <PackageReference Include="ConsoleAppVisuals" Version="2.2.3" />
   </ItemGroup>
 
 </Project>
