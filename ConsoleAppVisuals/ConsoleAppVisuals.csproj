@@ -27,6 +27,13 @@
     <None Include="..\LICENSE" Pack="true" PackagePath="" />
     <None Include="img/icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="fonts\ANSI_Shadow\config.yml" />
+    <EmbeddedResource Include="fonts\ANSI_Shadow\data\alphabet.txt" />
+    <EmbeddedResource Include="fonts\ANSI_Shadow\data\numbers.txt" />
+    <EmbeddedResource Include="fonts\ANSI_Shadow\data\symbols.txt" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="yamldotnet" Version="13.7.1" />

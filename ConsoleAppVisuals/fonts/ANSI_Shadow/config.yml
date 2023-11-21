@@ -1,0 +1,6 @@
+name: ANSI Shadow
+
+chars:
+  alphabet: 6
+  numbers: 6
+  symbols: 6

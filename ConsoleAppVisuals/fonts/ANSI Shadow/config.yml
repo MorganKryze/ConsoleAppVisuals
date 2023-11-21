@@ -1,9 +1,0 @@
-name: ANSI Shadow
-
-chars:
-  - file: alphabet.txt
-    height: 6
-  - file: numbers.txt
-    height: 6
-  - file: signs.txt
-    height: 6
