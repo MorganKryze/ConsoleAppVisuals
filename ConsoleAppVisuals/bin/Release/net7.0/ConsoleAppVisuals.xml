@@ -6,7 +6,7 @@
     <members>
         <member name="T:ConsoleAppVisuals.Core">
             <summary>
-            The <see cref="T:ConsoleAppVisuals.Core"/> classe contains all the visual elements for a console app.
+            The <see cref="T:ConsoleAppVisuals.Core"/> class contains all the visual elements for a console app.
             Most of the elements are on a low abstraction level.
             </summary>
         </member>
@@ -59,11 +59,12 @@
             </summary>
             <param name="color">The new background color.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.SetTitle(System.String)">
+        <member name="M:ConsoleAppVisuals.Core.SetTitle(System.String,System.Int32)">
             <summary>
             This method is used to set the title of the console.
             </summary>
             <param name="str">The title input.</param>
+            <param name="margin">The upper and lower margin of the title.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Core.SetStyler(System.String)">
             <summary>
@@ -137,7 +138,7 @@
             <param name="position">The position of the string in the console.</param>
             <param name="writeLine">If true, the string is written with a line break.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WritePositionnedStyledText(System.String[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32,ConsoleAppVisuals.Placement,System.Boolean)">
+        <member name="M:ConsoleAppVisuals.Core.WritePositionnedStyledText(System.String[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},ConsoleAppVisuals.Placement,System.Boolean)">
             <summary>
             This method is used to write a styled string in the console.
             </summary>
@@ -148,11 +149,10 @@
             <param name="position">The position of the string in the console.</param>
             <param name="negative">If true, the text is highlighted.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteTitle(System.Int32)">
+        <member name="M:ConsoleAppVisuals.Core.WriteTitle">
             <summary> 
             This method prints the title in the console. 
             </summary>
-            <param name="margin">The upper and lower margin.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Core.WriteBanner(System.Boolean,System.Boolean,System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
             <summary> 
@@ -162,13 +162,6 @@
             <param name="header">If true, the banner is printed at the top of the console. If false, the banner is printed at the bottom of the console.</param>
             <param name="continuous">If true, the title is not continuously printed.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WritePrompt(System.String,System.Nullable{System.Int32},System.Boolean)">
-            <summary>This method prints a message in the console and gets a string written by the user.</summary>
-            <param name="message">The message to print.</param>
-            <param name="line">The line where the message will be printed.</param>
-            <param name="continuous">If true, the message is not continuously printed.</param>
-            <returns>The string written by the user.</returns>
-        </member>
         <member name="M:ConsoleAppVisuals.Core.WriteParagraph(System.Boolean,System.Nullable{System.Int32},System.String[])">
             <summary> 
             This method prints a paragraph in the console. 
@@ -177,14 +170,25 @@
             <param name="line">The height of the paragraph.</param>
             <param name="text">The lines of the paragraph.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.ScrollingMenuSelector(System.String,System.Nullable{System.Int32},System.String[])">
-            <summary> 
-            This method prints a menu in the console and gets the choice of the user. 
+        <member name="M:ConsoleAppVisuals.Core.WritePrompt(System.String,System.String,System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            This method prints a message in the console and gets a string written by the user.
+            </summary>
+            <param name="message">The message to print.</param>
+            <param name="defaultValue">The default value of the string.</param>
+            <param name="line">The line where the message will be printed.</param>
+            <param name="continuous">If true, the message is not continuously printed.</param>
+            <returns>A tuple containing the status of the prompt (-1 : escape, 0 : enter) and the string written by the user.</returns>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.ScrollingMenuSelector(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String[])">
+            <summary>
+            This method prints a menu in the console and gets the choice of the user.
             </summary>
             <param name="question">The question to print.</param>
+            <param name="defaultIndex">The default index of the menu.</param>
             <param name="line">The line where the menu is printed.</param>
             <param name="choices">The choices of the menu.</param>
-            <returns>An integer representing the choice of the user.</returns>
+            <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the index of the choice of the user.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Core.ScrollingNumberSelector(System.String,System.Single,System.Single,System.Single,System.Single,System.Nullable{System.Int32})">
             <summary> 
@@ -196,7 +200,7 @@
             <param name="start">The starting value of the number.</param>
             <param name="step">The step of the number.</param>
             <param name="line">The line where the menu is printed.</param>
-            <returns>The number chose of the user.</returns>
+            <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the number chosen by the user.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Core.LoadingBar(System.String,System.Nullable{System.Int32})">
             <summary> 
@@ -213,10 +217,11 @@
             <param name="processPercentage">The percentage of the process.</param>
             <param name="line">The line where the message will be printed.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteFullScreen(System.Boolean,System.Nullable{System.ValueTuple{System.String,System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
+        <member name="M:ConsoleAppVisuals.Core.WriteFullScreen(System.String,System.Boolean,System.Nullable{System.ValueTuple{System.String,System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
             <summary> 
             This method prints a full screen in the console with a title, a header and a footer.
             </summary>
+            <param name="title">The title of the screen.</param>
             <param name="continuous">If true, the title is not continuously printed.</param>
             <param name="header">The header of the screen.</param>
             <param name="footer">The footer of the screen.</param>

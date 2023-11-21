@@ -3,7 +3,7 @@
 > [!TIP]
 > Before doing anything, I recommend you to take a quick lookaround to the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) or the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/api/ConsoleAppVisuals.html).
 
-## Getting started
+# Getting started
 
 The library is composed of 4 main classes:
 
@@ -45,7 +45,7 @@ This class is used to define the placement of a text in the console. It may be u
 
 This class is used to define a font from a yaml file. It may be useful to create your own font.
 
-## How to use the library
+# How to use the library
 
 Most methods of the library are static, so you can use them directly. I recommend importing the library with the following line:
 
@@ -62,20 +62,14 @@ using ConsoleAppVisuals;
 ```
 
 > [!NOTE]
-> The methods should speak of themselves, but if you need more information, you can take a look at the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/api/ConsoleAppVisuals.Core.html).
+> The processes are quite simple. You have to define the different variables you want to display, and then display them according to their methods, then clean the console afterwards.
 
-Here we will tackle the process and in what way you can make this library useful for you.
-
-### The processes
-
-The process is quite simple. You have to define the different variables you want to display, and then display them according to their methods, then clean the console afterwards.
-
-#### Display a title
+## Display a title
 
 By default, no title will be displayed as no title has been set. You can set a title with the `SetTitle` method and then display it with the `WriteTitle` method.
 
 ```csharp
-Core.SetTitle("Example");
+Core.SetTitle(text: "Example", margin: 2);
 Core.WriteTitle();
 
 Console.ReadKey(); //[optional]: just to keep the console clean
@@ -84,7 +78,7 @@ Console.ReadKey(); //[optional]: just to keep the console clean
 ![title](../images/title.png)
 *Demo with an Example*
 
-### Create your own font
+## Create your own font
 
 You may create your own font by creating a font file following the format specified in the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) (it includes, the three .txt files and the .yaml file). Then, you can use the `SetFont` method to set your font.
 
@@ -99,13 +93,13 @@ This will globally change the font of the library.
 > [!WARNING]
 > By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionnedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
 
-### Display a banner
+## Display a banner
 
 Now that we have seen the title, let's see how to display a banner. You may use the default arguments or define your own if you prefer an instant result, specify if you want to display the header or the footer or display your own banner.
 
 
 ```csharp
-Core.SetTitle("Example");
+Core.SetTitle(text: "Example", margin: 2);
 Core.WriteTitle();
 
 Core.WriteBanner(header: true);
@@ -119,7 +113,7 @@ Console.ReadKey(); //[optional]: just to keep the console clean
 To customize the banner, you can change the arguments or change the default header and footer with the `SetDefaultBanner` method.
 
 ```csharp
-Core.SetDefaultBanner(("Left", "Top", "Right"));
+Core.SetDefaultBanner(header: ("Left", "Top", "Right"), footer: ("Left", "Top", "Right"));
 Core.WriteBanner(header: true);
 
 Console.ReadKey();
@@ -131,15 +125,12 @@ Console.ReadKey();
 > [!NOTE]
 > To display a footer, you may use the `WriteBanner` method with the `header` argument set to `false`.
 
-### Write a text in the console
-
-#### Include placement
+## Write a text in the console using placement
 
 The `WritePositionneString` method is the most basic method of the library. It allows you to write a string in the console, with the possibility to specify the placement of the string within the width of the console. 
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen();
+Core.WriteFullScreen(title: "Example");
 
 Core.WritePositionnedString("On the left", Placement.Left, default, 9, default);
 Core.WritePositionnedString("Centered", Placement.Center, default, 10, default);
@@ -151,13 +142,12 @@ Console.ReadKey();
 ![position](../images/position.png)
 *Demo with placed strings*
 
-#### Include continuous printing
+## Including continuous printing
 
 In addition to the placement, you can also specify if you want to print the string continuously or not. If you do, the string will be printed character by character, with a delay between each character. You may also interrupt the printing by pressing any key.
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen();
+Core.WriteFullScreen(title: "Example");
 
 Core.WriteContinuousString("Hello World! Welcome to this beautiful app.", 10);
 
@@ -166,13 +156,12 @@ Console.ReadKey();
 
 ![continuous](../images/continuous.gif)
 
-#### Include color
+## Including color
 
 You can also specify the color of the elements and choose to apply the negative color to the text. Here are two exampe :
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen();
+Core.WriteFullScreen(title: "Example");
 
 Core.ChangeForeground(ConsoleColor.Green);
 Core.WritePositionnedString("Hello World! Welcome to this beautiful app.", Placement.Center, false, 10);
@@ -187,7 +176,7 @@ Console.ReadKey();
 ![color](../images/color.png)
 *Demo with color*
 
-### Clear lines
+## Clear lines
 
 Based on a line index and a number, you can clean several lines of your console. This is useful if you want to clean a specific part of your console. This way, you can choose to clean only the lines you want, and not the entire console.
 
@@ -198,30 +187,26 @@ Core.ClearContent(); // Clears the space beetween the two banners, header and fo
 Core.ClearWindow(); // Clears the whole window with a continuous effect
 ```
 
-### Special blocks
-
-#### Scrolling menu
+## Scrolling menu
 
 The `ScrollingMenuSelector` is a special block that allows you to display a menu with a scrolling effect. You may specify the question and the different choices.
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen(true);
+Core.WriteFullScreen(title: "Example", continuous: true);
 
-Core.ScrollingMenuSelector("New question asked ?", default, "Option 1", "Option 2", "Option 3");
+Core.ScrollingMenuSelector(question: "New question asked ?", defaultindex: default, line: default, "Option 1", "Option 2", "Option 3");
 
 Console.ReadKey();
 ```
 
 ![menu](../images/menu.gif)
 
-#### Number selector
+## Number selector
 
 The `ScrollingNumberSelector` is a special block that allows you to display a scrolling element with a number. You may define the minimum and maximum values, the step and the initial value.
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen(true);
+Core.WriteFullScreen(title: "Example", continuous: true);
 
 Core.ScrollingNumberSelector("Please choose a number", 10, 50, 25, 5);
 
@@ -231,13 +216,12 @@ Console.ReadKey();
 ![number](../images/number.png)
 *Demo with number selector*
 
-#### Loading bar
+## Loading bar
 
 The `LoadingBar` is a special block that allows you to display a loading bar. You may define the text to display while loading.
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen(true);
+Core.WriteFullScreen(title: "Example", continuous: true);
 
 Core.LoadingBar();
 
@@ -247,13 +231,12 @@ Console.ReadKey();
 ![loading](../images/loading.png)
 *Demo with loading bar*
 
-#### Lawful loading bar
+## Lawful loading bar
 
 The `ProcessLoadingBar` is a special block that allows you to display a loading bar with a text and a *true* loading bar. You may define the text to display while loading.
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen(true);
+Core.WriteFullScreen(title: "Example", continuous: true);
 
 var percentage = 0f;
 var t_Loading = new Thread(() => Core.ProcessLoadingBar("[Lawful loading...]",ref percentage)); // Create a Thread to run the loading bar on the console
@@ -271,13 +254,12 @@ Console.ReadKey();
 ![lawful](../images/lawful_loading.png)
 *Demo with lawful loading bar*
 
-### Exit
+## Exit
 
 Last but no least, to exit the application, you can use the `ExitProgram` method. It will display a message and exit the application.
 
 ```csharp
-Core.SetTitle("Example");
-Core.WriteFullScreen(true);
+Core.WriteFullScreen(title: "Example", continuous: true);
 
 Core.ExitProgram();
 
