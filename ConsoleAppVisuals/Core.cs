@@ -300,9 +300,10 @@ public static class Core
     /// <param name="line">The line where the message will be printed.</param>
     /// <param name="continuous">If true, the message is not continuously printed.</param>
     /// <returns>A tuple containing the status of the prompt (-1 : escape, 0 : enter) and the string written by the user.</returns>
-    public static (int,string) WritePrompt(string message, string? defaultValue, int? line = null, bool continuous = true)
+    public static (int,string) WritePrompt(string message, string? defaultValue = null, int? line = null, bool continuous = true)
     {
         line ??= ContentHeigth;
+        defaultValue ??= "";
         if (continuous)
             WriteContinuousString(message, line, negative: false, 1500, 50);
         else
