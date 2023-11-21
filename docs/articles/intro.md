@@ -6,6 +6,7 @@ You will find the following topics:
 - [use the library](use.md)
 - [build your library](build.md) 
 - [build the docs](docs.md)
+- [create a font](font.md)
 
 And finally, you will find the global documenation in "Api Documentation".
 

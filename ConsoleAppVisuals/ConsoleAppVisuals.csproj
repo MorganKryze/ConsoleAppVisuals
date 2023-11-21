@@ -21,11 +21,14 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
-  
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath=""/>
-    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
-    <None Include="img/icon.png" Pack="true" PackagePath=""/>
+    <None Include="..\README.md" Pack="true" PackagePath="" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="" />
+    <None Include="img/icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="yamldotnet" Version="13.7.1" />
   </ItemGroup>
 </Project>
