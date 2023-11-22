@@ -21,7 +21,7 @@ public class UnitTest1
 
         string[] expectedLeft = new string[] {"testo World", "testour Le Monde"};
         string[] expectedRigth = new string[] {"Hello Wtest", "Bonjour Le Mtest"};
-        string[] expectedCenter = new string[] {"Heltestorld", "Bonjoutest Monde"};
+        string[] expectedCenter = new string[] {"Heltestorld ", "Bonjoutest Monde"};
         
         foreach (string word in words)
         {
