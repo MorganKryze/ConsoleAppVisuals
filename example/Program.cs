@@ -9,6 +9,8 @@ namespace example
             Console.Clear();
             Console.CursorVisible = false;
 
+            Test();
+
             Core.SetTitle("Example");
             Core.ChangeForeground(ConsoleColor.Cyan);
             Core.WriteTitle();
@@ -59,6 +61,10 @@ namespace example
             }
 
             Core.ExitProgram();
+        }
+        public static void Test()
+        {
+            // Test code placeholder
         }
     }
 }
