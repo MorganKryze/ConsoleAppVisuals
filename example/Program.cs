@@ -1,5 +1,4 @@
-﻿using System;
-using ConsoleAppVisuals;
+﻿using ConsoleAppVisuals;
 
 namespace example
 {
