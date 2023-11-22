@@ -15,8 +15,12 @@ ConsoleAppVisuals
 │   └───FontYamlFile.cs
 ├───Core.cs
 ├───Extensions.cs
-└───TextStyler.cs
+├───TextStyler.cs
+└───Usings.cs
 ```
+### Usings.cs
+
+This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library.
 
 ### Core.cs
 
