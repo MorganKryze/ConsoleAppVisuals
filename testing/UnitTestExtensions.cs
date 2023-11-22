@@ -1,7 +1,7 @@
 namespace testing;
 
 [TestClass]
-public class UnitTest1
+public class UnitTestExtensions
 {
     [TestMethod]
     public void TestResizeString()
@@ -14,29 +14,52 @@ public class UnitTest1
             Assert.AreEqual(expected[Array.IndexOf(words, word)], result);
         }
     }
+
     [TestMethod]
-    public void TestInsertString()
+    public void TestInsertStringLeft()
     {
         string[] words = new string[] { "Hello World", "Bonjour Le Monde" };
 
         string[] expectedLeft = new string[] {"testo World", "testour Le Monde"};
-        string[] expectedRigth = new string[] {"Hello Wtest", "Bonjour Le Mtest"};
-        string[] expectedCenter = new string[] {"Heltestorld", "Bonjoutest Monde"};
         
         foreach (string word in words)
         {
             string result = word.InsertString("test", Placement.Left);
             Assert.AreEqual(expectedLeft[Array.IndexOf(words, word)], result);
         }
+    }
+    [TestMethod]
+    public void TestInsertStringCenter()
+    {
+        string[] words = new string[] { "Hello World", "Bonjour Le Monde" };
+
+        string[] expectedRigth = new string[] {"Hello Wtest", "Bonjour Le Mtest"};
+        
         foreach (string word in words)
         {
             string result = word.InsertString("test", Placement.Right);
             Assert.AreEqual(expectedRigth[Array.IndexOf(words, word)], result);
         }
+    }
+    [TestMethod]
+    public void TestInsertStringRigth()
+    {
+        string[] words = new string[] { "Hello World", "Bonjour Le Monde" };
+
+        string[] expectedCenter = new string[] {"Heltestorld", "Bonjoutest Monde"};
+        
         foreach (string word in words)
         {
             string result = word.InsertString("test", Placement.Center);
             Assert.AreEqual(expectedCenter[Array.IndexOf(words, word)], result);
         }
+    }
+    [TestMethod]
+    public void TestBannerToString()
+    {
+        var banner = ("Hello", "World", "AI");
+        string result = banner.BannerToString();
+        int expectedLength = Console.WindowWidth;
+        Assert.AreEqual(expectedLength, result.Length);
     }
 }
