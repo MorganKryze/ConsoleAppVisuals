@@ -1,10 +1,7 @@
-﻿using System.Text;
-
-using static System.Console;
-using static System.Threading.Thread;
-using static System.ConsoleColor;
-using static System.ConsoleKey;
-
+﻿/*
+    MIT License 2023 MorganKryze
+    For full license information, please visit: https://opensource.org/licenses/MIT
+*/
 namespace ConsoleAppVisuals;
 /// <summary>
 /// The <see cref="Core"/> class contains all the visual elements for a console app.
@@ -15,11 +12,11 @@ public static class Core
     #region Attributes
     private static (string[]?, int?) title;
     private static TextStyler styler = new();
-    private static int previousWindowWidth = WindowWidth;
-    private static int previousWindowHeight = WindowHeight;
-    private static (ConsoleColor, ConsoleColor) colorPanel = (White, Black);
+    private static int previousWindowWidth = Console.WindowWidth;
+    private static int previousWindowHeight = Console.WindowHeight;
+    private static (ConsoleColor, ConsoleColor) colorPanel = (ConsoleColor.White, ConsoleColor.Black);
     private static (ConsoleColor, ConsoleColor) initialColorPanel = (colorPanel.Item1, colorPanel.Item2);
-    private static (ConsoleColor, ConsoleColor) terminalColorpanel = (ForegroundColor, BackgroundColor);
+    private static (ConsoleColor, ConsoleColor) terminalColorpanel = (Console.ForegroundColor, Console.BackgroundColor);
     #endregion
 
     #region Properties
@@ -42,17 +39,22 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the footer.
     /// </summary>
-    public static int FooterHeigth => WindowHeight - 1;
+    public static int FooterHeigth => Console.WindowHeight - 1;
     /// <summary>
     /// This property is used to get the start line of the content.
     /// </summary>
     public static int ContentHeigth => HeaderHeigth + 2;
     /// <summary>
+    /// This property is used to get the colors of the console.
+    /// </summary>
+    /// <returns>A tuple containing the font color and the background color.</returns>
+    public static (ConsoleColor, ConsoleColor) GetColorPanel => colorPanel;
+    /// <summary>
     /// This property is used to check if the screen has been updated.
     /// </summary>
     /// <returns>True if the screen has been updated, false otherwise.</returns>
     /// <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
-    public static bool IsScreenUpdated => WindowWidth != previousWindowWidth || WindowHeight != previousWindowHeight || colorPanel != initialColorPanel;
+    public static bool IsScreenUpdated => Console.WindowWidth != previousWindowWidth || Console.WindowHeight != previousWindowHeight || colorPanel != initialColorPanel;
     #endregion
 
     #region Low abstraction level methods
@@ -96,8 +98,8 @@ public static class Core
     /// <param name="negative">If true, the text is highlighted.</param>
     public static void ApplyNegative(bool negative = false)
     {
-        ForegroundColor = negative ? colorPanel.Item2 : colorPanel.Item1;
-        BackgroundColor = negative ? colorPanel.Item1 : colorPanel.Item2;
+        Console.ForegroundColor = negative ? colorPanel.Item2 : colorPanel.Item1;
+        Console.BackgroundColor = negative ? colorPanel.Item1 : colorPanel.Item2;
     }
     /// <summary>
     /// This method is used to update the screen display if it has encountered a change.
@@ -105,10 +107,10 @@ public static class Core
     public static void UpdateScreen()
     {
         if (IsScreenUpdated) {
-            previousWindowWidth = WindowWidth;
-            previousWindowHeight = WindowHeight;
+            previousWindowWidth = Console.WindowWidth;
+            previousWindowHeight = Console.WindowHeight;
             initialColorPanel = (colorPanel.Item1, colorPanel.Item2);
-            WriteFullScreen(default);
+            WriteFullScreen();
         }
     }
     /// <summary>
@@ -117,9 +119,9 @@ public static class Core
     /// <param name="line">The line to clear.If null, will be cleared where the cursor is.</param>
     public static void ClearLine(int? line)
 	{
-        line ??= CursorTop;
+        line ??= Console.CursorTop;
 		ApplyNegative(default);
-		WritePositionnedString("".PadRight(WindowWidth), Placement.Left, default, line);
+		WritePositionnedString("".PadRight(Console.WindowWidth), Placement.Left, default, line);
 	}
     /// <summary> 
     /// This method clears a specified part of the console.
@@ -128,7 +130,7 @@ public static class Core
     /// <param name="length">The number of lines to clear.</param>
     public static void ClearMultipleLines(int? line, int? length)
     {
-        line ??= CursorTop;
+        line ??= Console.CursorTop;
         length ??= 1;
         for (int i = (int)line; i < line + length; i++)
             ClearLine(i);
@@ -148,10 +150,10 @@ public static class Core
     public static void ClearWindow()
     {
         colorPanel = terminalColorpanel;
-        for (int i = 0; i < WindowHeight; i++)
-            WriteContinuousString("".PadRight(WindowWidth), i, default, 100, 10);
-        Clear();
-        colorPanel = (White, Black);
+        for (int i = 0; i < Console.WindowHeight; i++)
+            WriteContinuousString("".PadRight(Console.WindowWidth), i, default, 100, 10);
+        Console.Clear();
+        colorPanel = (ConsoleColor.White, ConsoleColor.Black);
     }
     #endregion
 
@@ -167,26 +169,26 @@ public static class Core
     public static void WritePositionnedString(string str, Placement position = Placement.Center, bool negative = false, int? line = null, bool writeLine = false)
 	{
         ApplyNegative(negative);
-		line ??= CursorTop;
-		if (str.Length < WindowWidth) 
+		line ??= Console.CursorTop;
+		if (str.Length < Console.WindowWidth) 
             switch (position)
 		    {
 		    	case Placement.Left: 
-                    SetCursorPosition(0, (int)line); 
+                    Console.SetCursorPosition(0, (int)line); 
                     break;
 		    	case Placement.Center: 
-                    SetCursorPosition((WindowWidth - str.Length) / 2, (int)line); 
+                    Console.SetCursorPosition((Console.WindowWidth - str.Length) / 2, (int)line); 
                     break;
 		    	case Placement.Right: 
-                    SetCursorPosition(WindowWidth - str.Length, (int)line); 
+                    Console.SetCursorPosition(Console.WindowWidth - str.Length, (int)line); 
                     break;
 		    }
 		else 
-            SetCursorPosition(0, (int)line);
+            Console.SetCursorPosition(0, (int)line);
 		if (writeLine) 
-            WriteLine(str);
+            Console.WriteLine(str);
         else 
-            Write(str);
+            Console.Write(str);
         ApplyNegative(default);
 	}
     /// <summary>
@@ -203,8 +205,8 @@ public static class Core
     /// <param name="writeLine">If true, the string is written with a line break.</param>
     public static void WriteContinuousString(string str, int? line, bool negative = false, int printTime = 2000, int additionalTime = 1000, int? length = null, Placement position = Placement.Center, bool writeLine = false)
     {
-        line ??= CursorTop;
-        length ??= WindowWidth;
+        line ??= Console.CursorTop;
+        length ??= Console.WindowWidth;
         int timeInterval = (int)(printTime / str.Length);
         for (int i = 0; i <= str.Length; i++)
         {
@@ -213,12 +215,12 @@ public static class Core
                 continuous += str[j];
             continuous = continuous.PadRight(str.Length);
             WritePositionnedString(continuous.ResizeString((int)length, position, default), position, negative, line, writeLine);
-            Sleep(timeInterval);
+            Thread.Sleep(timeInterval);
 
-            if(KeyAvailable)
+            if(Console.KeyAvailable)
             {
-                ConsoleKeyInfo keyPressed = ReadKey(true);
-                if(keyPressed.Key == Enter || keyPressed.Key == Escape)
+                ConsoleKeyInfo keyPressed = Console.ReadKey(true);
+                if(keyPressed.Key == ConsoleKey.Enter || keyPressed.Key == ConsoleKey.Escape)
                 {
                     i = str.Length;
                     break;
@@ -226,7 +228,7 @@ public static class Core
             }
         }
         WritePositionnedString(str.ResizeString(length ?? str.Length, position, default), position, negative, line);
-        Sleep(additionalTime);
+        Thread.Sleep(additionalTime);
     }
     /// <summary>
     /// This method is used to write a styled string in the console.
@@ -243,20 +245,20 @@ public static class Core
         margin ??= 0;
         if (text is not null) 
         {
-            SetCursorPosition(0, line ?? ContentHeigth);
+            Console.SetCursorPosition(0, line ?? ContentHeigth);
 
             for (int i = 0; i < margin; i++)
-                WritePositionnedString("".ResizeString(width ?? WindowWidth, position), position, negative, (line ?? ContentHeigth) + i, true);
+                WritePositionnedString("".ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeigth) + i, true);
             for (int i = 0; i < text.Length; i++)
-                WritePositionnedString(text[i].ResizeString(width ?? WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + i, true);  
+                WritePositionnedString(text[i].ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + i, true);  
             for (int i = 0; i < margin; i++)
-                WritePositionnedString("".ResizeString(width ?? WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + text.Length + i, true);
+                WritePositionnedString("".ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + text.Length + i, true);
         }  
     }
     /// <summary> 
     /// This method prints the title in the console. 
     /// </summary>
-    public static void WriteTitle() => WritePositionnedStyledText(title.Item1, 0, WindowWidth, title.Item2, Placement.Center, false);
+    public static void WriteTitle() => WritePositionnedStyledText(title.Item1, 0, Console.WindowWidth, title.Item2, Placement.Center, false);
     /// <summary> 
     /// This method prints a banner in the console. 
     /// </summary>
@@ -287,7 +289,7 @@ public static class Core
 		foreach (string str in text)
 		{
 			WritePositionnedString(str.ResizeString(maxLength, Placement.Center), Placement.Center, negative, line++);
-			if (line >= WindowHeight - 1) 
+			if (line >= Console.WindowHeight - 1) 
                 break;
 		}
         ApplyNegative(default);
@@ -311,21 +313,21 @@ public static class Core
 
         var field = new StringBuilder(defaultValue);
         ConsoleKeyInfo key;
-        CursorVisible = true;
+        Console.CursorVisible = true;
         do
         {
             ClearLine(line + 2);
-            SetCursorPosition(0, CursorTop);
-            Write("{0," + (WindowWidth / 2 - message.Length / 2 + 2) + "}", "> ");
-            Write($"{field}");
-            key = ReadKey();
-            if (key.Key == Backspace && field.Length > 0)
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write("{0," + (Console.WindowWidth / 2 - message.Length / 2 + 2) + "}", "> ");
+            Console.Write($"{field}");
+            key = Console.ReadKey();
+            if (key.Key == ConsoleKey.Backspace && field.Length > 0)
                 field.Remove(field.Length - 1, 1);
-            else if (key.Key != Enter && key.Key != Escape)
+            else if (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape)
                 field.Append(key.KeyChar);
-        } while (key.Key != Enter && key.Key != Escape);
-        CursorVisible = false;
-        return key.Key == Enter ? (0,field.ToString()) : (-1,field.ToString());
+        } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
+        Console.CursorVisible = false;
+        return key.Key == ConsoleKey.Enter ? (0,field.ToString()) : (-1,field.ToString());
     }
     /// <summary>
     /// This method prints a menu in the console and gets the choice of the user.
@@ -371,29 +373,29 @@ public static class Core
                 }
             }
 
-            switch (ReadKey(intercept: true).Key)
+            switch (Console.ReadKey(intercept: true).Key)
             {
-                case UpArrow: case Z:
+                case ConsoleKey.UpArrow: case ConsoleKey.Z:
                     if (num == 0)
                         num = choices.Length - 1;
                     else if (num > 0)
                         num--;
 
                     break;
-                case DownArrow: case S:
+                case ConsoleKey.DownArrow: case ConsoleKey.S:
                     if (num == choices.Length - 1)
                         num = 0;
                     else if (num < choices.Length - 1)
                         num++;
 
                     break;
-                case Enter:
+                case ConsoleKey.Enter:
                     ClearMultipleLines(line, choices.Length + 2);
                     return (0, num);
-                case Escape:
+                case ConsoleKey.Escape:
                     ClearMultipleLines(line, choices.Length + 2);
                     return (-1, num);
-                case Backspace:
+                case ConsoleKey.Backspace:
                     ClearMultipleLines(line, choices.Length + 2);
                     return (-2, num);
             }
@@ -419,31 +421,31 @@ public static class Core
         {
             WritePositionnedString($" ▶ {(float)Math.Round(_currentNumber, 1)} ◀ ", Placement.Center, true, line + 2);
             
-            switch (ReadKey(true).Key)
+            switch (Console.ReadKey(true).Key)
             {
-                case UpArrow: case Z: 
+                case ConsoleKey.UpArrow: case ConsoleKey.Z: 
                     if (_currentNumber + step <= max)
                         _currentNumber += step;
                     else if (_currentNumber + step > max)
                         _currentNumber = min;
                     break;
-                case DownArrow: case S: 
+                case ConsoleKey.DownArrow: case ConsoleKey.S: 
                     if (_currentNumber - step >= min)
                         _currentNumber -= step;
                     else if (_currentNumber - step < min)
                         _currentNumber = max;
                         break;
-                case Enter: 
+                case ConsoleKey.Enter: 
                     ClearMultipleLines(line, 4);
                     return (0, _currentNumber);
-                case Escape: 
+                case ConsoleKey.Escape: 
                     ClearMultipleLines(line, 4);
                     return (-1, _currentNumber);
-                case Backspace:
+                case ConsoleKey.Backspace:
                     ClearMultipleLines(line, 4);
                     return (-2, _currentNumber);
             }
-            Sleep(1);
+            Thread.Sleep(1);
             ClearLine(_lineSelector);
         }
     }
@@ -455,7 +457,7 @@ public static class Core
     public static void LoadingBar(string message = "[ Loading... ]", int? line = null)
     {
         line ??= ContentHeigth;
-        WritePositionnedString(message.ResizeString(WindowWidth, Placement.Center), default, default, line, true);
+        WritePositionnedString(message.ResizeString(Console.WindowWidth, Placement.Center), default, default, line, true);
         string _loadingBar = "";
         for(int j = 0; j < message.Length; j++) 
             _loadingBar += '█';
@@ -487,7 +489,7 @@ public static class Core
             BuildBar(message, processPercentage, line);
         }
         BuildBar(message, 1, line);
-        Sleep(3000);
+        Thread.Sleep(3000);
         processPercentage = 0f;
 
         
@@ -503,13 +505,15 @@ public static class Core
     {
         header ??= DefaultHeader;
         footer ??= DefaultFooter;
-        CursorVisible = false;
-        Clear();
+        Console.CursorVisible = false;
+        Console.Clear();
         if (title is not null)
         {
             SetTitle(title);
             WriteTitle();
         }
+        else if (Core.title.Item1 is not null)
+            WriteTitle();
         WriteBanner(true, continuous, header);
         WriteBanner(false, continuous, footer);
         ClearContent();
@@ -523,7 +527,7 @@ public static class Core
         ClearContent();
         LoadingBar(message);
         ClearWindow();
-        CursorVisible = true;
+        Console.CursorVisible = true;
         Environment.Exit(0);
     }
     #endregion

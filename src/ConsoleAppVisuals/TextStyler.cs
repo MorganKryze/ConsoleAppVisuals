@@ -1,8 +1,7 @@
-using System.Reflection;
-using System.Text;
-using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
-
+/*
+    MIT License 2023 MorganKryze
+    For full license information, please visit: https://opensource.org/licenses/MIT
+*/
 namespace ConsoleAppVisuals;
 /// <summary>
 /// The class that styles any text with specified font files.

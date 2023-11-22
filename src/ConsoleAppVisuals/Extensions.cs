@@ -1,3 +1,7 @@
+/*
+    MIT License 2023 MorganKryze
+    For full license information, please visit: https://opensource.org/licenses/MIT
+*/
 namespace ConsoleAppVisuals;
 /// <summary>
 /// This class provides extensions for System classes.

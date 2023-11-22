@@ -1,3 +1,7 @@
+/*
+    MIT License 2023 MorganKryze
+    For full license information, please visit: https://opensource.org/licenses/MIT
+*/
 namespace ConsoleAppVisuals;
 /// <summary>
 /// The <see cref="Placement"/> enum defines the placement of a string in some space. 

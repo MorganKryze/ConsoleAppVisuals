@@ -1,18 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace testing
 {
     [TestClass]
     public class UnitTestCore
     {
         [TestMethod]
-        public void TestMethod1()
+        [DataRow("Test Title", 2)]
+        [DataRow("New Test", 4)]
+        public void SetTitle_WithTitle_SetsTitleCorrectly(string title, int margin)
         {
-            Assert.IsTrue(true);
+            var defaultLetterHeigth = 6;
+            Core.SetTitle(title, margin);
+            Assert.AreEqual(Core.TitleHeight, defaultLetterHeigth + 2 * margin);
         }
     }
 }

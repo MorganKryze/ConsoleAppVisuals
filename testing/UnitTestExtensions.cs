@@ -4,54 +4,62 @@ namespace testing;
 public class UnitTestExtensions
 {
     [TestMethod]
-    public void TestResizeString()
+    [DataRow("Hello")]
+    [DataRow("World")]
+    public void TestResizeString(string value)
     {
-        string[] words = new string[] { "Hello", "World" };
-        string[] expected = new string[] { "     Hello     ", "     World     " };
-        foreach (string word in words)
+        if(value == "Hello")
         {
-            string result = word.ResizeString(15);
-            Assert.AreEqual(expected[Array.IndexOf(words, word)], result);
+            Assert.AreEqual("     Hello     ", value.ResizeString(15));
+        }
+        else if (value == "World")
+        {
+            Assert.AreEqual("     World     ", value.ResizeString(15));
         }
     }
 
     [TestMethod]
-    public void TestInsertStringLeft()
+    [DataRow("Hello World")]
+    [DataRow("Bonjour Le Monde")]
+    public void TestInsertStringLeft(string value)
     {
-        string[] words = new string[] { "Hello World", "Bonjour Le Monde" };
-
-        string[] expectedLeft = new string[] {"testo World", "testour Le Monde"};
-        
-        foreach (string word in words)
+        if(value == "Hello World")
         {
-            string result = word.InsertString("test", Placement.Left);
-            Assert.AreEqual(expectedLeft[Array.IndexOf(words, word)], result);
+            Assert.AreEqual("testo World", value.InsertString("test", Placement.Left));
+        }
+        else if (value == "Bonjour Le Monde")
+        {
+            Assert.AreEqual("testour Le Monde", value.InsertString("test", Placement.Left));
         }
     }
-    [TestMethod]
-    public void TestInsertStringCenter()
-    {
-        string[] words = new string[] { "Hello World", "Bonjour Le Monde" };
 
-        string[] expectedRigth = new string[] {"Hello Wtest", "Bonjour Le Mtest"};
-        
-        foreach (string word in words)
+    [TestMethod]
+    [DataRow("Hello World")]
+    [DataRow("Bonjour Le Monde")]
+    public void TestInsertStringRigth(string value)
+    {
+        if(value == "Hello World")
         {
-            string result = word.InsertString("test", Placement.Right);
-            Assert.AreEqual(expectedRigth[Array.IndexOf(words, word)], result);
+            Assert.AreEqual("Hello Wtest", value.InsertString("test", Placement.Right));
+        }
+        else if (value == "Bonjour Le Monde")
+        {
+            Assert.AreEqual("Bonjour Le Mtest", value.InsertString("test", Placement.Right));
         }
     }
+    
     [TestMethod]
-    public void TestInsertStringRigth()
+    [DataRow("Hello World")]
+    [DataRow("Bonjour Le Monde")]
+    public void TestInsertStringCenter(string value)
     {
-        string[] words = new string[] { "Hello World", "Bonjour Le Monde" };
-
-        string[] expectedCenter = new string[] {"Heltestorld", "Bonjoutest Monde"};
-
-        foreach (string word in words)
+        if(value == "Hello World")
         {
-            string result = word.InsertString("test", Placement.Center);
-            Assert.AreEqual(expectedCenter[Array.IndexOf(words, word)], result);
+            Assert.AreEqual("Heltestorld", value.InsertString("test", Placement.Center));
+        }
+        else if (value == "Bonjour Le Monde")
+        {
+            Assert.AreEqual("Bonjoutest Monde", value.InsertString("test", Placement.Center));
         }
     }
 }

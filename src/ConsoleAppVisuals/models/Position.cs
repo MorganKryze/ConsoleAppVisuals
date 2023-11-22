@@ -1,3 +1,7 @@
+/*
+    MIT License 2023 MorganKryze
+    For full license information, please visit: https://opensource.org/licenses/MIT
+*/
 namespace ConsoleAppVisuals;
 /// <summary>
 /// A class that stores the position into X and Y parameters of a position.

@@ -3,10 +3,10 @@ namespace testing
     [TestClass]
     public class UnitTestTextStyler
     {
+        private readonly TextStyler styler = new();
         [TestMethod]
         public void TestConstructorWithNullFontPath()
         {
-            var styler = new TextStyler();
             Assert.IsNotNull(styler.dictionary);
             var expected = @" █████╗  
 ██╔══██╗ 
@@ -18,56 +18,55 @@ namespace testing
         }
 
         [TestMethod]
-        public void TestConstructorWithFontPath()
+        [DataRow("../../../ressources/fonts/ANSI_Shadow/")]
+        public void TestConstructorWithFontPath(string path)
         {
-            var styler = new TextStyler("../../../ressources/fonts/ANSI_Shadow/");
+            var custom = new TextStyler(path);
             var expected = @" █████╗  
 ██╔══██╗ 
 ███████║ 
 ██╔══██║ 
 ██║  ██║ 
 ╚═╝  ╚═╝ ";
-            Assert.AreEqual(expected, styler.dictionary['a']);
-            Assert.IsNotNull(styler.dictionary);
+            Assert.AreEqual(expected, custom.dictionary['a']);
+            Assert.IsNotNull(custom.dictionary);
         }
 
         [TestMethod]
-        public void TestConstructorWithFontPathAndDefault()
+        [DataRow("../../../ressources/fonts/ANSI_Shadow/")]
+        public void TestConstructorWithFontPathAndDefault(string path)
         {
-            var stylerDefault = new TextStyler();
-            var stylerCustom = new TextStyler("../../../ressources/fonts/ANSI_Shadow/");
-            Assert.AreEqual(stylerDefault.dictionary['a'], stylerCustom.dictionary['a']);
+            var stylerCustom = new TextStyler(path);
+            Assert.AreEqual(styler.dictionary['a'], stylerCustom.dictionary['a']);
         }
 
         [TestMethod]
         [ExpectedException(typeof(DirectoryNotFoundException))]
-        public void TestConstructorWithInvalidFontPath()
+        [DataRow("invalid/path")]
+        public void TestConstructorWithInvalidFontPath(string path)
         {
-            new TextStyler("invalid/path");
+            new TextStyler(path);
         }
 
         [TestMethod]
-        public void TestStyleTextToString()
+        [DataRow("Hello World")]
+        public void TestStyleTextToString(string value)
         {
-            var styler = new TextStyler();
-            string text = "Hello World";
-            string styledText = styler.StyleTextToString(text);
+            string styledText = styler.StyleTextToString(value);
             Assert.IsNotNull(styledText);
         }
 
         [TestMethod]
-        public void TestStyleTextToStringArray()
+        [DataRow("Hello World")]
+        public void TestStyleTextToStringArray(string value)
         {
-            var styler = new TextStyler();
-            string text = "Hello World";
-            string[] styledText = styler.StyleTextToStringArray(text);
+            string[] styledText = styler.StyleTextToStringArray(value);
             Assert.IsNotNull(styledText);
         }
 
         [TestMethod]
         public void TestToString()
         {
-            var styler = new TextStyler();
             string result = styler.ToString();
             Assert.IsNotNull(result);
         }
