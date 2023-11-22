@@ -2,4 +2,5 @@
 obj
 .vsocde
 settings.json
-bin
+Debug
+testing/bin
