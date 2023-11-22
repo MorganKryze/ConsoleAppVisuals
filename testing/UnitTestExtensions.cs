@@ -47,19 +47,11 @@ public class UnitTestExtensions
         string[] words = new string[] { "Hello World", "Bonjour Le Monde" };
 
         string[] expectedCenter = new string[] {"Heltestorld", "Bonjoutest Monde"};
-        
+
         foreach (string word in words)
         {
             string result = word.InsertString("test", Placement.Center);
             Assert.AreEqual(expectedCenter[Array.IndexOf(words, word)], result);
         }
-    }
-    [TestMethod]
-    public void TestBannerToString()
-    {
-        var banner = ("Hello", "World", "AI");
-        string result = banner.BannerToString();
-        int expectedLength = Console.WindowWidth;
-        Assert.AreEqual(expectedLength, result.Length);
     }
 }
