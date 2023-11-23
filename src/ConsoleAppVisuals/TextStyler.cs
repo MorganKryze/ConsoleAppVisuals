@@ -185,7 +185,7 @@ public class TextStyler
         return result.ToArray();
     }
     /// <summary>
-    /// Gives the caracteristics of the actual style (from the config.yml file).
+    /// Get the info of the actual style (from the config.yml file).
     /// </summary>
     /// <returns>A string compiling these pieces of information.</returns>
     public override string ToString()

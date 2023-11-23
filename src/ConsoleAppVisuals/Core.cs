@@ -16,7 +16,7 @@ public static class Core
     private static int previousWindowHeight = Console.WindowHeight;
     private static (ConsoleColor, ConsoleColor) colorPanel = (ConsoleColor.White, ConsoleColor.Black);
     private static (ConsoleColor, ConsoleColor) initialColorPanel = (colorPanel.Item1, colorPanel.Item2);
-    private static (ConsoleColor, ConsoleColor) terminalColorpanel = (Console.ForegroundColor, Console.BackgroundColor);
+    private static (ConsoleColor, ConsoleColor) terminalColorPanel = (Console.ForegroundColor, Console.BackgroundColor);
     #endregion
 
     #region Properties
@@ -35,15 +35,15 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the header.
     /// </summary>
-    public static int HeaderHeigth => TitleHeight ?? 0;
+    public static int HeaderHeight => TitleHeight ?? 0;
     /// <summary>
     /// This property is used to get the height of the footer.
     /// </summary>
-    public static int FooterHeigth => Console.WindowHeight - 1;
+    public static int FooterHeight => Console.WindowHeight - 1;
     /// <summary>
     /// This property is used to get the start line of the content.
     /// </summary>
-    public static int ContentHeigth => HeaderHeigth + 2;
+    public static int ContentHeight => HeaderHeight + 2;
     /// <summary>
     /// This property is used to get the colors of the console.
     /// </summary>
@@ -93,7 +93,7 @@ public static class Core
     }
     /// <summary>
     /// This method changes the font and background colors of the console in order to apply
-    /// a negative to highligth the text or not.
+    /// a negative to highlight the text or not.
     /// </summary>
     /// <param name="negative">If true, the text is highlighted.</param>
     public static void ApplyNegative(bool negative = false)
@@ -121,7 +121,7 @@ public static class Core
 	{
         line ??= Console.CursorTop;
 		ApplyNegative(default);
-		WritePositionnedString("".PadRight(Console.WindowWidth), Placement.Left, default, line);
+		WritePositionedString("".PadRight(Console.WindowWidth), Placement.Left, default, line);
 	}
     /// <summary> 
     /// This method clears a specified part of the console.
@@ -141,7 +141,7 @@ public static class Core
     /// </summary>
     public static void ClearContent()
     {
-        for (int i = ContentHeigth - 1; i < FooterHeigth; i++)
+        for (int i = ContentHeight - 1; i < FooterHeight; i++)
             ClearLine(i);
     }
     /// <summary>
@@ -149,7 +149,7 @@ public static class Core
     /// </summary>
     public static void ClearWindow()
     {
-        colorPanel = terminalColorpanel;
+        colorPanel = terminalColorPanel;
         for (int i = 0; i < Console.WindowHeight; i++)
             WriteContinuousString("".PadRight(Console.WindowWidth), i, default, 100, 10);
         Console.Clear();
@@ -159,14 +159,14 @@ public static class Core
 
     #region Middle abstraction level methods
     /// <summary>
-    /// This method is used to write a string positionned in the console.
+    /// This method is used to write a string positioned in the console.
     /// </summary>
     /// <param name="str">The string to write.</param>
     /// <param name="position">The position of the string in the console.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <param name="line">The line where the string is written in the console. If null, will be written where the cursor is.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
-    public static void WritePositionnedString(string str, Placement position = Placement.Center, bool negative = false, int? line = null, bool writeLine = false)
+    public static void WritePositionedString(string str, Placement position = Placement.Center, bool negative = false, int? line = null, bool writeLine = false)
 	{
         ApplyNegative(negative);
 		line ??= Console.CursorTop;
@@ -214,7 +214,7 @@ public static class Core
             for(int j = 0; j < i; j++) 
                 continuous += str[j];
             continuous = continuous.PadRight(str.Length);
-            WritePositionnedString(continuous.ResizeString((int)length, position, default), position, negative, line, writeLine);
+            WritePositionedString(continuous.ResizeString((int)length, position, default), position, negative, line, writeLine);
             Thread.Sleep(timeInterval);
 
             if(Console.KeyAvailable)
@@ -227,7 +227,7 @@ public static class Core
                 }
             }
         }
-        WritePositionnedString(str.ResizeString(length ?? str.Length, position, default), position, negative, line);
+        WritePositionedString(str.ResizeString(length ?? str.Length, position, default), position, negative, line);
         Thread.Sleep(additionalTime);
     }
     /// <summary>
@@ -239,26 +239,26 @@ public static class Core
     /// <param name="margin">The upper and lower margin.</param>
     /// <param name="position">The position of the string in the console.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
-    public static void WritePositionnedStyledText(string[]? text = null, int? line = null, int? width = null, int? margin = null, Placement position = Placement.Center, bool negative = false)
+    public static void WritePositionedStyledText(string[]? text = null, int? line = null, int? width = null, int? margin = null, Placement position = Placement.Center, bool negative = false)
     {
-        line ??= ContentHeigth;
+        line ??= ContentHeight;
         margin ??= 0;
         if (text is not null) 
         {
-            Console.SetCursorPosition(0, line ?? ContentHeigth);
+            Console.SetCursorPosition(0, line ?? ContentHeight);
 
             for (int i = 0; i < margin; i++)
-                WritePositionnedString("".ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeigth) + i, true);
+                WritePositionedString("".ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeight) + i, true);
             for (int i = 0; i < text.Length; i++)
-                WritePositionnedString(text[i].ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + i, true);  
+                WritePositionedString(text[i].ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeight) + margin + i, true);  
             for (int i = 0; i < margin; i++)
-                WritePositionnedString("".ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeigth) + margin + text.Length + i, true);
+                WritePositionedString("".ResizeString(width ?? Console.WindowWidth, position), position, negative, (line ?? ContentHeight) + margin + text.Length + i, true);
         }  
     }
     /// <summary> 
     /// This method prints the title in the console. 
     /// </summary>
-    public static void WriteTitle() => WritePositionnedStyledText(title.Item1, 0, Console.WindowWidth, title.Item2, Placement.Center, false);
+    public static void WriteTitle() => WritePositionedStyledText(title.Item1, 0, Console.WindowWidth, title.Item2, Placement.Center, false);
     /// <summary> 
     /// This method prints a banner in the console. 
     /// </summary>
@@ -270,9 +270,9 @@ public static class Core
         (string, string, string) _banner = banner ?? (header ? DefaultHeader : DefaultFooter); // If banner is null, _banner is set to the default header or footer.
 		ApplyNegative(true);
         if (continuous) 
-		    WriteContinuousString(_banner.BannerToString(), header ? HeaderHeigth : FooterHeigth, true);
+		    WriteContinuousString(_banner.BannerToString(), header ? HeaderHeight : FooterHeight, true);
         else
-            WritePositionnedString(_banner.BannerToString(), default, true, header ? HeaderHeigth : FooterHeigth);
+            WritePositionedString(_banner.BannerToString(), default, true, header ? HeaderHeight : FooterHeight);
 		ApplyNegative(default);
 	}
     /// <summary> 
@@ -283,12 +283,12 @@ public static class Core
     /// <param name="text">The lines of the paragraph.</param>
     public static void WriteParagraph(bool negative = false, int? line = null, params string[] text)
 	{
-        line ??= ContentHeigth;
+        line ??= ContentHeight;
         ApplyNegative(negative);
 		int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
 		foreach (string str in text)
 		{
-			WritePositionnedString(str.ResizeString(maxLength, Placement.Center), Placement.Center, negative, line++);
+			WritePositionedString(str.ResizeString(maxLength, Placement.Center), Placement.Center, negative, line++);
 			if (line >= Console.WindowHeight - 1) 
                 break;
 		}
@@ -304,12 +304,12 @@ public static class Core
     /// <returns>A tuple containing the status of the prompt (-1 : escape, 0 : enter) and the string written by the user.</returns>
     public static (int,string) WritePrompt(string message, string? defaultValue = null, int? line = null, bool continuous = true)
     {
-        line ??= ContentHeigth;
+        line ??= ContentHeight;
         defaultValue ??= "";
         if (continuous)
             WriteContinuousString(message, line, negative: false, 1500, 50);
         else
-            WritePositionnedString(message, Placement.Center, negative: false, line, writeLine: true);
+            WritePositionedString(message, Placement.Center, negative: false, line, writeLine: true);
 
         var field = new StringBuilder(defaultValue);
         ConsoleKeyInfo key;
@@ -342,7 +342,7 @@ public static class Core
         int valueOrDefault = line.GetValueOrDefault();
         if (!line.HasValue)
         {
-            valueOrDefault = ContentHeigth;
+            valueOrDefault = ContentHeight;
             line = valueOrDefault;
         }
         
@@ -364,12 +364,12 @@ public static class Core
                 if (j == num)
                 {
                     array[j] = " ▶ " + choices[j] + "  ";
-                    WritePositionnedString(array[j], Placement.Center, negative: true, lineChoice + j);
+                    WritePositionedString(array[j], Placement.Center, negative: true, lineChoice + j);
                 }
                 else
                 {
                     array[j] = "   " + choices[j] + "  ";
-                    WritePositionnedString(array[j], Placement.Center, negative: false, lineChoice + j);
+                    WritePositionedString(array[j], Placement.Center, negative: false, lineChoice + j);
                 }
             }
 
@@ -413,13 +413,13 @@ public static class Core
     /// <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the number chosen by the user.</returns>
     public static (int, float) ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
     {
-        line ??= ContentHeigth;
+        line ??= ContentHeight;
         WriteContinuousString(question, line, default, 1500, 50);
         float _currentNumber = start;
         int _lineSelector = (int)line + 2;
         while (true)
         {
-            WritePositionnedString($" ▶ {(float)Math.Round(_currentNumber, 1)} ◀ ", Placement.Center, true, line + 2);
+            WritePositionedString($" ▶ {(float)Math.Round(_currentNumber, 1)} ◀ ", Placement.Center, true, line + 2);
             
             switch (Console.ReadKey(true).Key)
             {
@@ -456,12 +456,12 @@ public static class Core
     /// <param name="line">The line where the message will be printed.</param>
     public static void LoadingBar(string message = "[ Loading... ]", int? line = null)
     {
-        line ??= ContentHeigth;
-        WritePositionnedString(message.ResizeString(Console.WindowWidth, Placement.Center), default, default, line, true);
+        line ??= ContentHeight;
+        WritePositionedString(message.ResizeString(Console.WindowWidth, Placement.Center), default, default, line, true);
         string _loadingBar = "";
         for(int j = 0; j < message.Length; j++) 
             _loadingBar += '█';
-        WriteContinuousString(_loadingBar, ContentHeigth + 2);
+        WriteContinuousString(_loadingBar, ContentHeight + 2);
     }
     #endregion
 
@@ -479,11 +479,11 @@ public static class Core
             string _loadingBar = "";
             for (int j = 0; j <= (int)(message.Length * processPercentage); j++)
                 _loadingBar += '█';
-            WritePositionnedString(_loadingBar.ResizeString(message.Length, Placement.Left), Placement.Center, default, line + 2, default);
+            WritePositionedString(_loadingBar.ResizeString(message.Length, Placement.Left), Placement.Center, default, line + 2, default);
         }
 
-        line ??= ContentHeigth;
-        WritePositionnedString(message, Placement.Center, default, line, true);
+        line ??= ContentHeight;
+        WritePositionedString(message, Placement.Center, default, line, true);
         while(processPercentage <= 1f)
         {
             BuildBar(message, processPercentage, line);

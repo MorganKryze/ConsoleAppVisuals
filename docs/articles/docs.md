@@ -31,8 +31,7 @@ Open a terminal to the root of the project, and run the following command:
 docfx init -q
 ```
 
-Now you should have a new folder called "docfx_project" in the root of your project. Your folder structure should look like this (files are speficied with the dots):
-
+Now you should have a new folder called "docfx_project" in the root of your project. Your folder structure should look like this (files are specified with the dots):
 
 ```bash
 ConsoleAppVisuals  <-- root
@@ -54,6 +53,7 @@ ConsoleAppVisuals  <-- root
 │   └..─toc.yml
 └───example
 ```
+
 Open the file "docfx.json" and modify the following lines:
 
 ```json
@@ -109,7 +109,8 @@ You should see something like this:
 ...
 Serving ".../ConsoleAppVisuals/docfx_project/_site" on http://localhost:8080. Press Ctrl+C to shut down.
 ```
-Your documentation is now available on http://localhost:8080 if you want to see the preview.
+
+Your documentation is now available on <http://localhost:8080> if you want to see the preview.
 
 ## Customize your doc
 

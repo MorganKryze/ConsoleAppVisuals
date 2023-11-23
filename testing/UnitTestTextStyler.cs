@@ -18,7 +18,7 @@ namespace testing
         }
 
         [TestMethod]
-        [DataRow("../../../ressources/fonts/ANSI_Shadow/")]
+        [DataRow("../../../resources/fonts/ANSI_Shadow/")]
         public void TestConstructorWithFontPath(string path)
         {
             var custom = new TextStyler(path);
@@ -33,7 +33,7 @@ namespace testing
         }
 
         [TestMethod]
-        [DataRow("../../../ressources/fonts/ANSI_Shadow/")]
+        [DataRow("../../../resources/fonts/ANSI_Shadow/")]
         public void TestConstructorWithFontPathAndDefault(string path)
         {
             var stylerCustom = new TextStyler(path);

@@ -1,4 +1,6 @@
-# ConsoleAppVisuals [![NuGet](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=NuGet)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/)
+# ConsoleAppVisuals
+
+[![NuGet](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=NuGet)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 This library allows you to add stunning visuals to your console app like this:
 
@@ -13,17 +15,16 @@ dotnet add package ConsoleAppVisuals
 ```
 
 ## Usage
+
 Add the following using statement to your file:
 
 ```csharp
 using ConsoleAppVisuals;
 ```
 
-The main class you will use is the `Core` class where you will find all the methods to add visuals to your console app. 
+The main class you will use is the `Core` class where you will find all the methods to add visuals to your console app. If you want to learn more about the library from this one, feel free to read the following docs.
 
-If you want to learn more about the library from this one, feel free to read the following docs.
-
-```
+```markdown
 MIT License
 
 Copyright (c) 2023 MorganKryze
