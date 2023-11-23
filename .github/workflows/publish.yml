@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release /p:Version=${VERSION}
     - name: Pack
-      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+      run: dotnet pack src/ConsoleAppVisuals/ConsoleAppVisuals.csproj --configuration Release /p:Version=${VERSION} --no-build --output .
     - name: Push to GitHub Packages
       run: dotnet nuget push ConsoleAppVisuals.${VERSION}.nupkg --source https://nuget.pkg.github.com/MorganKryze/index.json --api-key ${GITHUB_TOKEN}
       env:
