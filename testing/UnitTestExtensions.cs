@@ -36,7 +36,7 @@ public class UnitTestExtensions
     [TestMethod]
     [DataRow("Hello World")]
     [DataRow("Bonjour Le Monde")]
-    public void TestInsertStringRigth(string value)
+    public void TestInsertStringRight(string value)
     {
         if(value == "Hello World")
         {

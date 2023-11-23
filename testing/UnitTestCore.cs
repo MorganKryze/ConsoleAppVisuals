@@ -8,9 +8,9 @@ namespace testing
         [DataRow("New Test", 4)]
         public void SetTitle_WithTitle_SetsTitleCorrectly(string title, int margin)
         {
-            var defaultLetterHeigth = 6;
+            var defaultLetterHeight = 6;
             Core.SetTitle(title, margin);
-            Assert.AreEqual(Core.TitleHeight, defaultLetterHeigth + 2 * margin);
+            Assert.AreEqual(Core.TitleHeight, defaultLetterHeight + 2 * margin);
         }
     }
 }

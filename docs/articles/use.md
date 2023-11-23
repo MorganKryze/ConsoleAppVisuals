@@ -1,9 +1,9 @@
 # Usage
 
 > [!TIP]
-> Before doing anything, I recommend you to take a quick lookaround to the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) or the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/api/ConsoleAppVisuals.html).
+> Before doing anything, I recommend you to take a quick look around to the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) or the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/api/ConsoleAppVisuals.html).
 
-# Getting started
+## Getting started
 
 The library is composed of 4 main classes:
 
@@ -18,6 +18,7 @@ ConsoleAppVisuals
 ├───TextStyler.cs
 └───Usings.cs
 ```
+
 ### Usings.cs
 
 This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library.
@@ -31,7 +32,6 @@ This class is the core of the library. It contains the methods to display the di
 This class contains different extensions methods for strings and tuples.
 
 With Position.cs and Placement.cs, it belongs to the tools classes.
-
 
 ### TextStyler.cs
 
@@ -49,7 +49,7 @@ This class is used to define the placement of a text in the console. It may be u
 
 This class is used to define a font from a yaml file. It may be useful to create your own font.
 
-# How to use the library
+## How to use the library
 
 Most methods of the library are static, so you can use them directly. I recommend importing the library with the following line:
 
@@ -92,15 +92,14 @@ Core.SetFont("/path/to/your/font/folder/");
 
 ```
 
-This will globally change the font of the library. 
+This will globally change the font of the library.
 
 > [!WARNING]
-> By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionnedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
+> By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
 
 ## Display a banner
 
 Now that we have seen the title, let's see how to display a banner. You may use the default arguments or define your own if you prefer an instant result, specify if you want to display the header or the footer or display your own banner.
-
 
 ```csharp
 Core.SetTitle(text: "Example", margin: 2);
@@ -131,14 +130,14 @@ Console.ReadKey();
 
 ## Write a text in the console using placement
 
-The `WritePositionneString` method is the most basic method of the library. It allows you to write a string in the console, with the possibility to specify the placement of the string within the width of the console. 
+The `WritePositionedString` method is the most basic method of the library. It allows you to write a string in the console, with the possibility to specify the placement of the string within the width of the console.
 
 ```csharp
 Core.WriteFullScreen(title: "Example");
 
-Core.WritePositionnedString("On the left", Placement.Left, default, 9, default);
-Core.WritePositionnedString("Centered", Placement.Center, default, 10, default);
-Core.WritePositionnedString("On the right", Placement.Right, default, 11, default);
+Core.WritePositionedString("On the left", Placement.Left, default, 9, default);
+Core.WritePositionedString("Centered", Placement.Center, default, 10, default);
+Core.WritePositionedString("On the right", Placement.Right, default, 11, default);
 
 Console.ReadKey();
 ```
@@ -162,16 +161,16 @@ Console.ReadKey();
 
 ## Including color
 
-You can also specify the color of the elements and choose to apply the negative color to the text. Here are two exampe :
+You can also specify the color of the elements and choose to apply the negative color to the text. Here are two example :
 
 ```csharp
 Core.WriteFullScreen(title: "Example");
 
 Core.ChangeForeground(ConsoleColor.Green);
-Core.WritePositionnedString("Hello World! Welcome to this beautiful app.", Placement.Center, false, 10);
+Core.WritePositionedString("Hello World! Welcome to this beautiful app.", Placement.Center, false, 10);
 
 Core.ApplyNegative(true);
-Core.WritePositionnedString("Press any key to exit.", Placement.Center, true, 12);
+Core.WritePositionedString("Press any key to exit.", Placement.Center, true, 12);
 Core.ApplyNegative(false);
 
 Console.ReadKey();
@@ -187,7 +186,7 @@ Based on a line index and a number, you can clean several lines of your console.
 ```csharp
 Core.ClearLine(10); // Clears the line 10
 Core.ClearMultipleLines(10, 2); // Clears the lines 10 and 11
-Core.ClearContent(); // Clears the space beetween the two banners, header and footer
+Core.ClearContent(); // Clears the space between the two banners, header and footer
 Core.ClearWindow(); // Clears the whole window with a continuous effect
 ```
 
@@ -198,7 +197,7 @@ The `ScrollingMenuSelector` is a special block that allows you to display a menu
 ```csharp
 Core.WriteFullScreen(title: "Example", continuous: true);
 
-Core.ScrollingMenuSelector(question: "New question asked ?", defaultindex: default, line: default, "Option 1", "Option 2", "Option 3");
+Core.ScrollingMenuSelector(question: "New question asked ?", defaultIndex: default, line: default, "Option 1", "Option 2", "Option 3");
 
 Console.ReadKey();
 ```

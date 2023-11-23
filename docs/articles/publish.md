@@ -1,30 +1,10 @@
-# Build the project 
+# Publish a package
 
-In your terminal, at the root directory of the project (ConsoleAppVisuals), run the following commands:
+## Edit files
 
-```bash
-dotnet build
+### Your .csproj
 
-dotnet pack -c Release
-```
-
-You will then find the NuGet package in the "bin/Release" folder of your project.
-
-# Publish the project
-
-> [!NOTE]
-> If you want to edit the project and publish it, feel free to fork it and follow these steps.
-
-## Create a NuGet account
-
-You need to create a NuGet account [here](https://www.nuget.org/users/account/LogOn?returnUrl=%2F).
-
-> [!TIP]
-> Preferably, use an outlook email address.
-
-## Modify informations
-
-Start by changing the information in the "src/ConsoleAppVisuals/ConsoleAppVisuals.csproj" file as you won't be able to push on my name obviously...
+Start by changing the information in the "src/ConsoleAppVisuals/ConsoleAppVisuals.csproj" file (as you won't be able to push on my name obviously...)
 
 ```xml
 <PropertyGroup>
@@ -51,8 +31,8 @@ Start by changing the information in the "src/ConsoleAppVisuals/ConsoleAppVisual
   
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath=""/>  <!-- This is mandatory, this include indicates the path to the files declared previously -->
-    <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+    <None Include="..\..\README.md" Pack="true" PackagePath=""/>  <!-- This is mandatory, this include indicates the path to the files declared previously -->
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
     <None Include="img/icon.png" Pack="true" PackagePath=""/>
   </ItemGroup>
 ```
@@ -60,15 +40,28 @@ Start by changing the information in the "src/ConsoleAppVisuals/ConsoleAppVisual
 > [!TIP]
 > You need to change the licence of the project by your own licence.
 
-## Build the project
+### Build the project
 
-In your terminal, run the following command:
+In your terminal, at the root directory of the project (ConsoleAppVisuals), run the following commands:
 
 ```bash
-dotnet build
+dotnet build -c Release
+
+dotnet pack -c Release
 ```
 
-## Create an API key
+You will then find the NuGet package in the "bin/Release" folder of your project.
+
+## NuGet account
+
+### Create a NuGet account
+
+You need to create a NuGet account [here](https://www.nuget.org/users/account/LogOn?returnUrl=%2F).
+
+> [!TIP]
+> Preferably, use an outlook email address.
+
+### Create an API key
 
 Then, you need to create an API key [here](https://www.nuget.org/account/apikeys) and copy it to your clipboard.
 
@@ -77,7 +70,7 @@ Then, you need to create an API key [here](https://www.nuget.org/account/apikeys
 
 You also need to create a GitHub personal API key. To do so, get to [this page](https://github.com/settings/tokens).
 
-## Publish your package
+### Publish your package
 
 Back to your source code, you may slightly modify the workflow ".github/workflows/publish.yml" file, to add your username.
 
@@ -93,16 +86,15 @@ Back to your source code, you may slightly modify the workflow ".github/workflow
 
 Then, commit your changes and push them to your repository. If you do not push directly to your main, you may want to create a pull request.
 
-Finally, create a new release and add a tag to it as follow "vX.X.X" where x is a number representing the version of your package.
+Finally, create a new release and add a tag to it as follow "vX.X.X" where X is a number representing the version of your package.
 
 > [!TIP]
 > Wait a few minutes and you will find your package on NuGet.org and GitHub packages, you will be notified by email.
 
+## Resources
 
-# Ressources 
 [Official NuGet documentation](https://learn.microsoft.com/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli)
 
 [Main Source](https://acraven.medium.com/a-nuget-package-workflow-using-github-actions-7da8c6557863)
 
 [Recap](https://levelup.gitconnected.com/publish-to-nuget-with-github-actions-4e1486e7c19f)
-

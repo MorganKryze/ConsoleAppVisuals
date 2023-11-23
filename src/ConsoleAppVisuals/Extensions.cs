@@ -52,7 +52,7 @@ public static class Extensions
 	/// <summary>
 	/// Insert a specified string into another string, at a specified position.
 	/// </summary>
-	/// <param name="inserted">The string that recieves the other.</param>
+	/// <param name="inserted">The string that receives the other.</param>
 	/// <param name="toInsert">The string to insert.</param>
 	/// <param name="position">The placement of the string to insert.</param>
 	/// <param name="truncate">Whether or not the string is truncate.</param>
