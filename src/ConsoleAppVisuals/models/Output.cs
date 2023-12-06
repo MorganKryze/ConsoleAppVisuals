@@ -2,7 +2,7 @@
     MIT License 2023 MorganKryze
     For full license information, please visit: https://opensource.org/licenses/MIT
 */
-namespace ConsoleAppVisuals.models;
+namespace ConsoleAppVisuals;
 /// <summary>
 /// Enum for the output of the scrolling menus.
 /// </summary>

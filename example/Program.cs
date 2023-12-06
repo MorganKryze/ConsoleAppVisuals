@@ -1,5 +1,4 @@
 ﻿using ConsoleAppVisuals;
-using ConsoleAppVisuals.models;
 
 namespace example
 {
@@ -70,8 +69,17 @@ namespace example
             Core.ExitProgram();
         }
         public static void Test()
-        {
+        {   
             // Test code placeholder
+            List<string> head = new () {"head1", "Head2", "OUI"};
+            List<string> test = new () {"test", "test2", "test3"};
+            List<string> test2 = new () {"test", "test2", "test3"};
+            List<string> test3 = new () {"test", "test2", "test3"};
+            List<List<string>> test4 = new () {test, test2, test3};
+            Table<string> tata = new (head, test4);
+            Console.WriteLine(tata);
+
+            Console.ReadKey();
         }
     }
 }
