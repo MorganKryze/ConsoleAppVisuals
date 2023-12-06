@@ -1,7 +1,11 @@
 - name: Getting Started
-  href: intro.md
-- name: Use the library
-  href: use.md
+  href: started.md
+- name: Homescreens methods
+  href: homescreen.md
+- name: Write on the console
+  href: write.md
+- name: Specific methods
+  href: specific.md
 - name: Publish your own library
   href: publish.md
 - name: Create your documentation

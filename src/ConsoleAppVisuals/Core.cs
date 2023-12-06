@@ -301,8 +301,8 @@ public static class Core
     /// <param name="defaultValue">The default value of the string.</param>
     /// <param name="line">The line where the message will be printed.</param>
     /// <param name="continuous">If true, the message is not continuously printed.</param>
-    /// <returns>A tuple containing the status of the prompt (-1 : escape, 0 : enter) and the string written by the user.</returns>
-    public static (int,string) WritePrompt(string message, string? defaultValue = null, int? line = null, bool continuous = true)
+    /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Select : pressed enter) and the string written by the user.</returns>
+    public static (Output,string) WritePrompt(string message, string? defaultValue = null, int? line = null, bool continuous = true)
     {
         line ??= ContentHeight;
         defaultValue ??= "";
@@ -327,7 +327,7 @@ public static class Core
                 field.Append(key.KeyChar);
         } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
         Console.CursorVisible = false;
-        return key.Key == ConsoleKey.Enter ? (0,field.ToString()) : (-1,field.ToString());
+        return key.Key == ConsoleKey.Enter ? (Output.Select,field.ToString()) : (Output.Exit,field.ToString());
     }
     /// <summary>
     /// This method prints a menu in the console and gets the choice of the user.
@@ -336,8 +336,8 @@ public static class Core
     /// <param name="defaultIndex">The default index of the menu.</param>
     /// <param name="line">The line where the menu is printed.</param>
     /// <param name="choices">The choices of the menu.</param>
-    /// <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the index of the choice of the user.</returns>
-    public static (int, int) ScrollingMenuSelector(string question, int? defaultIndex = null, int? line = null, params string[] choices)
+    /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the index of the choice of the user.</returns>
+    public static (Output, int) ScrollingMenuSelector(string question, int? defaultIndex = null, int? line = null, params string[] choices)
     {
         int valueOrDefault = line.GetValueOrDefault();
         if (!line.HasValue)
@@ -391,13 +391,13 @@ public static class Core
                     break;
                 case ConsoleKey.Enter:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return (0, num);
+                    return (Output.Select, num);
                 case ConsoleKey.Escape:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return (-1, num);
+                    return (Output.Exit, num);
                 case ConsoleKey.Backspace:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return (-2, num);
+                    return (Output.Delete, num);
             }
         }
     }
@@ -410,8 +410,8 @@ public static class Core
     /// <param name="start">The starting value of the number.</param>
     /// <param name="step">The step of the number.</param>
     /// <param name="line">The line where the menu is printed.</param>
-    /// <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the number chosen by the user.</returns>
-    public static (int, float) ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
+    /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the number chosen by the user.</returns>
+    public static (Output, float) ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
     {
         line ??= ContentHeight;
         WriteContinuousString(question, line, default, 1500, 50);
@@ -437,13 +437,13 @@ public static class Core
                         break;
                 case ConsoleKey.Enter: 
                     ClearMultipleLines(line, 4);
-                    return (0, _currentNumber);
+                    return (Output.Select, _currentNumber);
                 case ConsoleKey.Escape: 
                     ClearMultipleLines(line, 4);
-                    return (-1, _currentNumber);
+                    return (Output.Exit, _currentNumber);
                 case ConsoleKey.Backspace:
                     ClearMultipleLines(line, 4);
-                    return (-2, _currentNumber);
+                    return (Output.Delete, _currentNumber);
             }
             Thread.Sleep(1);
             ClearLine(_lineSelector);

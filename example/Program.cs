@@ -1,4 +1,5 @@
 ﻿using ConsoleAppVisuals;
+using ConsoleAppVisuals.models;
 
 namespace example
 {
@@ -23,7 +24,7 @@ namespace example
 
             var index = Core.ScrollingMenuSelector("What do you want to do?", default, default, "Select a number", "Answer some prompt","Display trivia", "Quit the app");
             switch (index.Item1){
-                case 0:
+                case Output.Select:
                     switch (index.Item2){
                         case 0:
                             Core.ClearContent();
@@ -48,14 +49,14 @@ namespace example
                             break;
                         }
                     break;
-                case -1: 
+                case Output.Exit: 
                     Core.ClearContent();
                     Core.UpdateScreen();
                     Core.WriteParagraph(true, default, "You have selected to quit the app. Press [Enter] to continue...");
                     Console.ReadKey();
                     Core.ClearContent();
                     break;
-                case -2: 
+                case Output.Delete: 
                     Core.ClearContent();
                     Core.UpdateScreen();
                     Core.WriteParagraph(true, default, "You have selected the backspace tile. Press [Enter] to continue...");
