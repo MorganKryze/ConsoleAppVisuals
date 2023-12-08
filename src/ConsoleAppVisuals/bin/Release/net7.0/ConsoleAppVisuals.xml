@@ -53,6 +53,13 @@
             <returns>True if the screen has been updated, false otherwise.</returns>
             <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
         </member>
+        <member name="M:ConsoleAppVisuals.Core.SetSelector(System.Char,System.Char)">
+            <summary>
+            This method is used to set the selector of the console menus.
+            </summary>
+            <param name="onward">The new selector facing forward.</param>
+            <param name="backward">The new selector facing backward.</param>
+        </member>
         <member name="M:ConsoleAppVisuals.Core.ChangeForeground(System.ConsoleColor)">
             <summary> 
             This method changes the font color of the console.
