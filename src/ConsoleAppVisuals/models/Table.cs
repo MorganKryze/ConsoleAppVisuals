@@ -84,6 +84,7 @@ public class Table<T>
                 for (int j = 0; j < rawLines[i].Count; j++)
                     if (rawLines[i][j]?.ToString()?.Length > localMax[j])
                         localMax[j] = rawLines[i][j]?.ToString()?.Length ?? 0;
+
             string header = "│ ";
             for (int i = 0; i < rawHeaders.Count; i++)
             {
@@ -94,8 +95,23 @@ public class Table<T>
                     header += " │";
             }
             stringList.Add(header);
-            stringList.Insert(0, "┌".PadRight(stringList[0].Length - 1, '─') + "┐");
-            stringList.Add("├".PadRight(header.Length - 1, '─') + "┤");
+
+            string border = "┌";
+            for (int i = 0; i < rawHeaders.Count; i++)
+            {
+                border += new string('─', localMax[i] + 2);
+                border += (i != rawHeaders.Count - 1) ? "┬" : "┐";
+            }
+            stringList.Insert(0, border);
+
+            border = "├";
+            for (int i = 0; i < rawHeaders.Count; i++)
+            {
+                border += new string('─', localMax[i] + 2);
+                border += (i != rawHeaders.Count - 1) ? "┼" : "┤";
+            }
+            stringList.Add(border);
+
             for (int i = 0; i < rawLines.Count; i++)
             {
                 string line = "│ ";
@@ -109,7 +125,15 @@ public class Table<T>
                 }
                 stringList.Add(line);
             }
-            stringList.Add("└".PadRight(header.Length - 1, '─') + "┘");
+
+            border = "└";
+            for (int i = 0; i < rawHeaders.Count; i++)
+            {
+                border += new string('─', localMax[i] + 2);
+                border += (i != rawHeaders.Count - 1) ? "┴" : "┘";
+            }
+            stringList.Add(border);
+
             displayArray = stringList.ToArray();
         }
     }
@@ -117,7 +141,7 @@ public class Table<T>
     /// 
     /// </summary>
     /// <returns></returns>
-    public (Output,int) ScrollingTableSelector(bool excludeHeader = false, bool excludeFooter = false, string? footerText = null, int? line = null)
+    public (Output,int) ScrollingTableSelector(bool excludeHeader = true, bool excludeFooter = true, string? footerText = null, int? line = null)
     {
         line ??= Core.ContentHeight;
         int startContentHeight = line.Value + 1;
@@ -130,7 +154,9 @@ public class Table<T>
             for (int j = 0; j < displayArray.Length ; j++)
             {
                 array[j] = displayArray[j];
-                Core.WritePositionedString(j == index && j == displayArray.Length - 1 ? array[j].InsertString($"┤ {footerText} ├", Placement.Center, true) : array[j], Placement.Center, negative: j == index, startContentHeight + j);
+                Core.WritePositionedString(array[j], Placement.Center, false, startContentHeight + j);
+                if (j == index)
+                    Core.WritePositionedString(j == displayArray.Length - 1 ? array[j].InsertString($"┤ {footerText} ├", Placement.Center, true)[1..^1] : array[j][1..^1], Placement.Center, true, startContentHeight + j);
             }
             switch (Console.ReadKey(intercept: true).Key)
             {
