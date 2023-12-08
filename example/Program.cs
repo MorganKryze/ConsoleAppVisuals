@@ -77,7 +77,12 @@ namespace example
             List<string> test3 = new () {"test", "test2", "test3"};
             List<List<string>> test4 = new () {test, test2, test3};
             Table<string> tata = new (head, test4);
+            Table<string> tata2 = new (null, test4);
             Console.WriteLine(tata);
+            tata.ScrollingTableSelector(true, true);
+
+            // Console.WriteLine(tata2);
+            // tata2.ScrollingTableSelector(false, true);
 
             Console.ReadKey();
         }

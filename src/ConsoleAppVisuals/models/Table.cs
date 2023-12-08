@@ -8,9 +8,9 @@ namespace ConsoleAppVisuals;
 /// </summary>
 public class Table<T>
 {
-    private List<string>? rawHeaders;
-    private List<List<T>>? rawLines;
-    private string[][]? data;
+    private readonly List<string>? rawHeaders;
+    private readonly List<List<T>>? rawLines;
+    private string[]? displayArray;
     /// <summary>
     /// 
     /// </summary>
@@ -48,93 +48,125 @@ public class Table<T>
     {
         if (rawHeaders is null && rawLines is not null)
         {
-            data = new string[rawLines.Count][];
-            for (int j = 0; j < rawLines.Count; j++)
+            var stringList = new List<string>();
+            var localMax = new int[rawLines[0].Count];
+            for (int i = 0; i < rawLines.Count; i++)
+                for (int j = 0; j < rawLines[i].Count; j++)
+                    if (rawLines[i][j]?.ToString()?.Length > localMax[j])
+                        localMax[j] = rawLines[i][j]?.ToString()?.Length ?? 0;
+            for (int i = 0; i < rawLines.Count; i++)
             {
-                data[j] = new string[rawLines[j].Count];
-                for (int k = 0; k < rawLines[j].Count; k++)
-                    data[j][k] = rawLines[j][k]?.ToString() ?? "null";
+                string line = "│ ";
+                for (int j = 0; j < rawLines[i].Count; j++)
+                {
+                    
+                    line += rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "";
+                    if (j != rawLines[i].Count - 1)
+                        line += " │ ";
+                    else
+                        line += " │";
+                }
+                stringList.Add(line);
             }
+            stringList.Insert(0, "┌".PadRight(stringList[0].Length - 1, '─') + "┐");
+            stringList.Add("└".PadRight(stringList[0].Length - 1, '─') + "┘");
+            displayArray = stringList.ToArray();
+
         }
         else if (rawHeaders is not null && rawLines is not null)
         {
-            data = new string[rawLines.Count + 1][];
-            data[0] = new string[rawHeaders.Count];
+            var stringList = new List<string>();
+            var localMax = new int[rawHeaders.Count];
             for (int i = 0; i < rawHeaders.Count; i++)
-                data[0][i] = rawHeaders[i];
-            for (int j = 0; j < rawLines.Count; j++)
+                if (rawHeaders[i]?.Length > localMax[i])
+                    localMax[i] = rawHeaders[i]?.Length ?? 0;
+            for (int i = 0; i < rawLines.Count; i++)
+                for (int j = 0; j < rawLines[i].Count; j++)
+                    if (rawLines[i][j]?.ToString()?.Length > localMax[j])
+                        localMax[j] = rawLines[i][j]?.ToString()?.Length ?? 0;
+            string header = "│ ";
+            for (int i = 0; i < rawHeaders.Count; i++)
             {
-                data[j + 1] = new string[rawLines[j].Count];
-                for (int k = 0; k < rawLines[j].Count; k++)
-                    data[j + 1][k] = rawLines[j][k]?.ToString() ?? "null";
+                header += rawHeaders[i]?.PadRight(localMax[i]) ?? "";
+                if (i != rawHeaders.Count - 1)
+                    header += " │ ";
+                else
+                    header += " │";
             }
+            stringList.Add(header);
+            stringList.Insert(0, "┌".PadRight(stringList[0].Length - 1, '─') + "┐");
+            stringList.Add("├".PadRight(header.Length - 1, '─') + "┤");
+            for (int i = 0; i < rawLines.Count; i++)
+            {
+                string line = "│ ";
+                for (int j = 0; j < rawLines[i].Count; j++)
+                {
+                    line += rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "";
+                    if (j != rawLines[i].Count - 1)
+                        line += " │ ";
+                    else 
+                        line += " │";
+                }
+                stringList.Add(line);
+            }
+            stringList.Add("└".PadRight(header.Length - 1, '─') + "┘");
+            displayArray = stringList.ToArray();
         }
     }
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="headers"></param>
-    /// <param name="line"></param>
-    /// <param name="negative"></param>
-    /// <param name="lines"></param>
     /// <returns></returns>
-    public static (Output,int) ScrollingTableSelector(string headers, int? line = null, bool negative = false, params string[] lines)
+    public (Output,int) ScrollingTableSelector(bool excludeHeader = false, bool excludeFooter = false, string? footerText = null, int? line = null)
     {
-        int valueOrDefault = line.GetValueOrDefault();
-        if (!line.HasValue)
-        {
-            valueOrDefault = Core.ContentHeight;
-            line = valueOrDefault;
-        }
-        int num = 0;
-        int totalWidth = (lines.Length != 0) ? lines.Max((string s) => s.Length) : 0;
-        for (int i = 0; i < lines.Length; i++)
-            lines[i] = lines[i].PadRight(totalWidth);
-        Core.WriteContinuousString(headers, line, negative, 1500, 50, headers.Length);
-        int num2 = line.Value + 1;
+        line ??= Core.ContentHeight;
+        int startContentHeight = line.Value + 1;
+        int minIndex = excludeHeader ? (rawHeaders is null ? 1 : 3) : 0;
+        int maxIndex = excludeFooter ? displayArray!.Length - 2 : displayArray!.Length - 1;
+        int index = minIndex;
         while (true)
         {
-            string[] array = new string[lines.Length];
-            for (int j = 0; j < lines.Length ; j++)
+            string[] array = new string[displayArray!.Length];
+            for (int j = 0; j < displayArray.Length ; j++)
             {
-                array[j] = lines[j];
-                Core.WritePositionedString(j == num && j == lines.Length - 1 ? array[j].InsertString("┤ Ajouter une ligne ├", Placement.Center, true) : array[j], Placement.Center, negative: j == num, num2 + j);
+                array[j] = displayArray[j];
+                Core.WritePositionedString(j == index && j == displayArray.Length - 1 ? array[j].InsertString($"┤ {footerText} ├", Placement.Center, true) : array[j], Placement.Center, negative: j == index, startContentHeight + j);
             }
             switch (Console.ReadKey(intercept: true).Key)
             {
                 case ConsoleKey.UpArrow:
                 case ConsoleKey.Z:
-                    if (num == 0)
+                    if (index == minIndex)
                     {
-                        num = lines.Length - 1;
+                        index = maxIndex;
                     }
-                    else if (num > 0)
+                    else if (index > minIndex)
                     {
-                        num--;
+                        index--;
                     }
 
                     break;
                 case ConsoleKey.DownArrow:
                 case ConsoleKey.S:
-                    if (num == lines.Length - 1)
+                    if (index == maxIndex)
                     {
-                        num = 0;
+                        index = minIndex;
                     }
-                    else if (num < lines.Length - 1)
+                    else if (index < maxIndex)
                     {
-                        num++;
+                        index++;
                     }
 
                     break;
                 case ConsoleKey.Enter:
-                    Core.ClearMultipleLines(line, lines.Length + 1);
-                    return (Output.Select,num);
+                    Core.ClearMultipleLines(line, displayArray.Length + 1);
+                    return (Output.Select,index);
                 case ConsoleKey.Escape:
-                    Core.ClearMultipleLines(line, lines.Length + 1);
+                    Core.ClearMultipleLines(line, displayArray.Length + 1);
                     return (Output.Exit, -1);
                 case ConsoleKey.Backspace:
-                    Core.ClearMultipleLines(line, lines.Length + 1);
-                    return (Output.Delete, num);
+                    Core.ClearMultipleLines(line, displayArray.Length + 1);
+                    return (Output.Delete, index);
             }
         }
     }
@@ -144,21 +176,13 @@ public class Table<T>
     /// <returns></returns>
     public override string ToString()
     {
-        if (data is null)
+        if (displayArray is null)
             throw new ArgumentNullException("Both headers and lines are null for the table.");
         else 
         {
             var sb = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data[i].Length; j++)
-                {
-                    sb.Append(data[i][j]);
-                    if (j < data[i].Length - 1)
-                        sb.Append(", ");
-                }
-                sb.AppendLine();
-            }
+            foreach (var item in displayArray)
+                sb.AppendLine(item);
             return sb.ToString();
         }
     }
