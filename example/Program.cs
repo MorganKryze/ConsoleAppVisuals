@@ -116,6 +116,20 @@ namespace example
         public static void Test()
         {   
             // Test code placeholder
+            Core.WriteFullScreen("Example");
+
+            List<string> headers = new () {"id", "name", "major", "grades"};
+            List<string> student1 = new () {"01", "Theo", "Technology", "97"};
+            List<string> student2 = new () {"02", "Paul", "Mathematics", "86"};
+            List<string> student3 = new () {"03", "Maxime", "Physics", "92"};
+            List<string> student4 = new () {"04", "Charles", "Computer Science", "100"};
+            Table<string> students = new (headers, new () {student1, student2, student3, student4});
+            students.ScrollingTableSelector(true, false, "Add student");
+
+            students.AddLine(new () {"05", "John", "Biology", "95"});
+            students.RemoveLine(4);
+            students.UpdateLine(3, new () {"04", "Charles", "Computer Science", "55"});
+            students.ScrollingTableSelector(true, false);
         }
     }
 }

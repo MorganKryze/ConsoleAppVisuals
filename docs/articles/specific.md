@@ -51,6 +51,39 @@ Console.ReadKey();
 ![prompt](../images/prompt.gif)
 *Demo with prompt*
 
+## Table selector
+
+First, you need to create a `Table` object giving the lines and optionally the headers just as in the example below.
+
+```csharp
+List<string> headers = new () {"id", "name", "major", "grades"};
+List<string> student1 = new () {"01", "Theo", "Technology", "97"};
+List<string> student2 = new () {"02", "Paul", "Mathematics", "86"};
+List<string> student3 = new () {"03", "Maxime", "Physics", "92"};
+List<string> student4 = new () {"04", "Charles", "Computer Science", "100"};
+Table<string> students = new (headers, new () {student1, student2, student3, student4});
+```
+
+The `ScrollingTableSelector` is a special block that allows you to display the table with a selector.
+
+```csharp
+students.ScrollingTableSelector(true, false, "Add student");
+```
+
+![table](../images/table.gif)
+*Demo with table selector*
+
+> [!NOTE]
+> Once you created the table, you can add, remove or update the data using the methods provided by the `Table` class (`AddLine`, `RemoveLine`, `UpdateLine`).
+
+Here is an example of a table of how to use them:
+
+```csharp
+students.AddLine(new () {"05", "John", "Biology", "95"});
+students.RemoveLine(4);
+students.UpdateLine(3, new () {"04", "Charles", "Computer Science", "55"});
+```
+
 ## Loading bar
 
 The `LoadingBar` is a special block that allows you to display a loading bar. You may define the text to display while loading.

@@ -8,13 +8,21 @@ namespace ConsoleAppVisuals;
 /// </summary>
 public class Table<T>
 {
+    #region Fields
     private readonly List<string>? rawHeaders;
-    private readonly List<List<T>>? rawLines;
+    private List<List<T>>? rawLines;
     private string[]? displayArray;
+    #endregion
+
+    #region Constructor
     /// <summary>
-    /// 
+    /// The <see cref="Table{T}"/> natural constructor.
     /// </summary>
-    public Table(List<string>? headers = null, List<List<T>>? lines = null)
+    /// <param name="lines">The lines of the table.</param>
+    /// <param name="headers">The headers of the table.</param>
+    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
+    public Table( List<string>? headers = null, List<List<T>>? lines = null)
     {
         rawHeaders = headers;
         rawLines = lines;
@@ -33,7 +41,7 @@ public class Table<T>
             return true;
         }
         else if (rawHeaders is not null && rawLines is null)
-            throw new ArgumentException("No body lines were provided.");
+            throw new NullReferenceException("No body lines were provided.");
         else if (rawHeaders is not null && rawLines is not null)
         {
             for (int i = 0; i < rawLines.Count; i++)
@@ -137,10 +145,89 @@ public class Table<T>
             displayArray = stringList.ToArray();
         }
     }
+    #endregion
+
+    #region Properties
     /// <summary>
-    /// 
+    /// This property returns the number of lines in the table.
     /// </summary>
-    /// <returns></returns>
+    public int Count => rawLines?.Count ?? 0;
+    /// <summary>
+    /// This property returns the specified line in the table.
+    /// </summary>
+    /// <param name="index">The index of the line to return.</param>
+    /// <returns>The line at the specified index.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    public List<T> GetLine(int index)
+    {
+        if (rawLines?.Count > 0)
+        {
+            if (index < 0 || index >= rawLines?.Count)
+                throw new ArgumentOutOfRangeException("The index is out of range.");
+        }
+        return rawLines![index];
+    }
+    /// <summary>
+    /// This method adds a line to the table.
+    /// </summary>
+    /// <param name="line">The line to add.</param>
+    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    public void AddLine(List<T> line)
+    {
+        if (rawLines?.Count > 0)
+        {
+            if (line.Count != rawLines?[0].Count)
+                throw new ArgumentException("The number of columns in the table is not consistent.");
+        }
+        else
+            rawLines?.Add(line);
+        BuildTable();
+    }
+    /// <summary>
+    /// This method removes a line from the table.
+    /// </summary>
+    /// <param name="index">The index of the line to remove.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    public void RemoveLine(int index)
+    {
+        if (rawLines?.Count > 0)
+        {
+            if (index < 0 || index >= rawLines?.Count)
+                throw new ArgumentOutOfRangeException("The index is out of range.");
+        }
+        rawLines?.RemoveAt(index);
+        BuildTable();
+    }
+    /// <summary>
+    /// This method updates a line in the table.
+    /// </summary>
+    /// <param name="index">The index of the line to update.</param>
+    /// <param name="line">The new line.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    public void UpdateLine(int index, List<T> line)
+    {
+        if (rawLines?.Count > 0)
+        {
+            if (index < 0 || index >= rawLines?.Count)
+                throw new ArgumentOutOfRangeException("The index is out of range.");
+            if (line.Count != rawHeaders?.Count)
+                throw new ArgumentException("The number of columns in the table is not consistent.");
+        }
+        rawLines![index] = line;
+        BuildTable();
+    }
+    #endregion
+
+    #region Methods
+    /// <summary>
+    /// This method displays the table and allows the user to select, delete a line or to ecape.
+    /// </summary>
+    /// <param name="excludeHeader">If true, the header will not be selectable.</param>
+    /// <param name="excludeFooter">If true, the footer will not be selectable.</param>
+    /// <param name="footerText">The text to display in the footer when selected.</param>
+    /// <param name="line">The start line to display the table on.</param>
+    /// <returns>A tuple containing the status of the selection (Output.Exit : pressed escape, Output.Select : pressed enter) and the index of the selection.</returns>
     public (Output,int) ScrollingTableSelector(bool excludeHeader = true, bool excludeFooter = true, string? footerText = null, int? line = null)
     {
         line ??= Core.ContentHeight;
@@ -196,20 +283,5 @@ public class Table<T>
             }
         }
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    public override string ToString()
-    {
-        if (displayArray is null)
-            throw new ArgumentNullException("Both headers and lines are null for the table.");
-        else 
-        {
-            var sb = new StringBuilder();
-            foreach (var item in displayArray)
-                sb.AppendLine(item);
-            return sb.ToString();
-        }
-    }
+    #endregion
 }

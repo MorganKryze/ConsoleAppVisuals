@@ -33,6 +33,7 @@ ConsoleAppVisuals
 │   └───FontYamlFile.cs
 ├───Core.cs
 ├───Extensions.cs
+├───Table.cs
 ├───TextStyler.cs
 └───Usings.cs
 ```
@@ -54,6 +55,10 @@ With Position.cs and Placement.cs, it belongs to the tools classes.
 ### TextStyler.cs
 
 This class is used to style the text. It contains the methods to apply a specific style to a text. Often used for the title. It may be useful to create your own style.
+
+### Table.cs
+
+This class is used to create a table. It may be useful to display data in a table on the screen.
 
 ### Position.cs
 
