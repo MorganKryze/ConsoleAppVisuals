@@ -1,8 +1,5 @@
 # Getting started
 
-> [!TIP]
-> Before doing anything, I recommend you to take a quick look around to the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) or the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/api/ConsoleAppVisuals.html).
-
 ## Outline
 
 Welcome to the docs, here you will find all the information you need to use this library.

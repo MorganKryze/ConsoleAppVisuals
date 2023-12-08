@@ -14,21 +14,6 @@ Console.ReadKey(); //[optional]: just to keep the console clean
 ![title](../images/title.png)
 *Demo with an Example*
 
-## Create your own font
-
-You may create your own font by creating a font file following the format specified in the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) (it includes, the three .txt files and the .yaml file). Then, you can use the `SetFont` method to set your font.
-
-```csharp
-
-Core.SetFont("/path/to/your/font/folder/");
-
-```
-
-This will globally change the font of the library.
-
-> [!WARNING]
-> By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
-
 ## Display a banner
 
 Now that we have seen the title, let's see how to display a banner. You may use the default arguments or define your own if you prefer an instant result, specify if you want to display the header or the footer or display your own banner.
