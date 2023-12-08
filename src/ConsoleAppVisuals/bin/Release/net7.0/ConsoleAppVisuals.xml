@@ -25,17 +25,17 @@
             This property is used to get the height of the title.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Core.HeaderHeigth">
+        <member name="P:ConsoleAppVisuals.Core.HeaderHeight">
             <summary>
             This property is used to get the height of the header.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Core.FooterHeigth">
+        <member name="P:ConsoleAppVisuals.Core.FooterHeight">
             <summary>
             This property is used to get the height of the footer.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Core.ContentHeigth">
+        <member name="P:ConsoleAppVisuals.Core.ContentHeight">
             <summary>
             This property is used to get the start line of the content.
             </summary>
@@ -52,6 +52,13 @@
             </summary>
             <returns>True if the screen has been updated, false otherwise.</returns>
             <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.SetSelector(System.Char,System.Char)">
+            <summary>
+            This method is used to set the selector of the console menus.
+            </summary>
+            <param name="onward">The new selector facing forward.</param>
+            <param name="backward">The new selector facing backward.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Core.ChangeForeground(System.ConsoleColor)">
             <summary> 
@@ -88,7 +95,7 @@
         <member name="M:ConsoleAppVisuals.Core.ApplyNegative(System.Boolean)">
             <summary>
             This method changes the font and background colors of the console in order to apply
-            a negative to highligth the text or not.
+            a negative to highlight the text or not.
             </summary>
             <param name="negative">If true, the text is highlighted.</param>
         </member>
@@ -120,9 +127,9 @@
             This method clears the window and resets the color panel to the default one.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WritePositionnedString(System.String,ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32},System.Boolean)">
+        <member name="M:ConsoleAppVisuals.Core.WritePositionedString(System.String,ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32},System.Boolean)">
             <summary>
-            This method is used to write a string positionned in the console.
+            This method is used to write a string positioned in the console.
             </summary>
             <param name="str">The string to write.</param>
             <param name="position">The position of the string in the console.</param>
@@ -144,7 +151,7 @@
             <param name="position">The position of the string in the console.</param>
             <param name="writeLine">If true, the string is written with a line break.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.WritePositionnedStyledText(System.String[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},ConsoleAppVisuals.Placement,System.Boolean)">
+        <member name="M:ConsoleAppVisuals.Core.WritePositionedStyledText(System.String[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},ConsoleAppVisuals.Placement,System.Boolean)">
             <summary>
             This method is used to write a styled string in the console.
             </summary>
@@ -184,7 +191,7 @@
             <param name="defaultValue">The default value of the string.</param>
             <param name="line">The line where the message will be printed.</param>
             <param name="continuous">If true, the message is not continuously printed.</param>
-            <returns>A tuple containing the status of the prompt (-1 : escape, 0 : enter) and the string written by the user.</returns>
+            <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Select : pressed enter) and the string written by the user.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Core.ScrollingMenuSelector(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String[])">
             <summary>
@@ -194,7 +201,7 @@
             <param name="defaultIndex">The default index of the menu.</param>
             <param name="line">The line where the menu is printed.</param>
             <param name="choices">The choices of the menu.</param>
-            <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the index of the choice of the user.</returns>
+            <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the index of the choice of the user.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Core.ScrollingNumberSelector(System.String,System.Single,System.Single,System.Single,System.Single,System.Nullable{System.Int32})">
             <summary> 
@@ -206,7 +213,7 @@
             <param name="start">The starting value of the number.</param>
             <param name="step">The step of the number.</param>
             <param name="line">The line where the menu is printed.</param>
-            <returns>A tuple containing the status of the prompt (-1 : escape, -2 : backspace, 0 : enter) and the number chosen by the user.</returns>
+            <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the number chosen by the user.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Core.LoadingBar(System.String,System.Nullable{System.Int32})">
             <summary> 
@@ -265,7 +272,7 @@
             <summary>
             Insert a specified string into another string, at a specified position.
             </summary>
-            <param name="inserted">The string that recieves the other.</param>
+            <param name="inserted">The string that receives the other.</param>
             <param name="toInsert">The string to insert.</param>
             <param name="position">The placement of the string to insert.</param>
             <param name="truncate">Whether or not the string is truncate.</param>
@@ -291,6 +298,26 @@
         <member name="P:ConsoleAppVisuals.FontYamlFile.Chars">
             <summary>
             The height of the elements of the font.
+            </summary>
+        </member>
+        <member name="T:ConsoleAppVisuals.Output">
+            <summary>
+            Enum for the output of the scrolling menus.
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Output.Select">
+            <summary>
+            Chose to validate the input.
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Output.Delete">
+            <summary>
+            Chose to delete an item.
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Output.Exit">
+            <summary>
+            Chose to exit the menu.
             </summary>
         </member>
         <member name="T:ConsoleAppVisuals.Placement">
@@ -384,6 +411,66 @@
             <param name="right">The second position to compare.</param>
             <returns>True if the positions are not equal, false otherwise.</returns>
         </member>
+        <member name="T:ConsoleAppVisuals.Table`1">
+            <summary>
+            The <see cref="T:ConsoleAppVisuals.Table`1"/> class that contains the methods to create a table and display it.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Table`1.#ctor(System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}})">
+            <summary>
+            The <see cref="T:ConsoleAppVisuals.Table`1"/> natural constructor.
+            </summary>
+            <param name="lines">The lines of the table.</param>
+            <param name="headers">The headers of the table.</param>
+            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+            <exception cref="T:System.NullReferenceException">Is thrown when no body lines were provided.</exception>
+        </member>
+        <member name="P:ConsoleAppVisuals.Table`1.Count">
+            <summary>
+            This property returns the number of lines in the table.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Table`1.GetLine(System.Int32)">
+            <summary>
+            This property returns the specified line in the table.
+            </summary>
+            <param name="index">The index of the line to return.</param>
+            <returns>The line at the specified index.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Table`1.AddLine(System.Collections.Generic.List{`0})">
+            <summary>
+            This method adds a line to the table.
+            </summary>
+            <param name="line">The line to add.</param>
+            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Table`1.RemoveLine(System.Int32)">
+            <summary>
+            This method removes a line from the table.
+            </summary>
+            <param name="index">The index of the line to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Table`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
+            <summary>
+            This method updates a line in the table.
+            </summary>
+            <param name="index">The index of the line to update.</param>
+            <param name="line">The new line.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Table`1.ScrollingTableSelector(System.Boolean,System.Boolean,System.String,System.Nullable{System.Int32})">
+            <summary>
+            This method displays the table and allows the user to select, delete a line or to ecape.
+            </summary>
+            <param name="excludeHeader">If true, the header will not be selectable.</param>
+            <param name="excludeFooter">If true, the footer will not be selectable.</param>
+            <param name="footerText">The text to display in the footer when selected.</param>
+            <param name="line">The start line to display the table on.</param>
+            <returns>A tuple containing the status of the selection (Output.Exit : pressed escape, Output.Select : pressed enter) and the index of the selection.</returns>
+        </member>
         <member name="T:ConsoleAppVisuals.TextStyler">
             <summary>
             The class that styles any text with specified font files.
@@ -426,7 +513,7 @@
         </member>
         <member name="M:ConsoleAppVisuals.TextStyler.ToString">
             <summary>
-            Gives the caracteristics of the actual style (from the config.yml file).
+            Get the info of the actual style (from the config.yml file).
             </summary>
             <returns>A string compiling these pieces of information.</returns>
         </member>

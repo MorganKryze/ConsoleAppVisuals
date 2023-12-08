@@ -88,6 +88,12 @@ if (IsScreenUpdated)
 }
 ```
 
+You can also change the cursor character for every menu with the `SetCursor` method by precising the onward and backward characters.
+
+```csharp
+Core.SetCursor('>', '<');
+```
+
 Finally, you may use the `GetColorPanel` property to get the color panel of the console.
 
 ```csharp

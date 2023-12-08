@@ -10,13 +10,14 @@ namespace ConsoleAppVisuals;
 public static class Core
 {
     #region Attributes
-    private static (string[]?, int?) title;
-    private static TextStyler styler = new();
-    private static int previousWindowWidth = Console.WindowWidth;
-    private static int previousWindowHeight = Console.WindowHeight;
-    private static (ConsoleColor, ConsoleColor) colorPanel = (ConsoleColor.White, ConsoleColor.Black);
-    private static (ConsoleColor, ConsoleColor) initialColorPanel = (colorPanel.Item1, colorPanel.Item2);
-    private static (ConsoleColor, ConsoleColor) terminalColorPanel = (Console.ForegroundColor, Console.BackgroundColor);
+    private static (string[]?, int?) s_title;
+    private static TextStyler s_styler = new();
+    private static (char, char) s_selector = ('▶', '◀');
+    private static int s_previousWindowWidth = Console.WindowWidth;
+    private static int s_previousWindowHeight = Console.WindowHeight;
+    private static (ConsoleColor, ConsoleColor) s_colorPanel = (ConsoleColor.White, ConsoleColor.Black);
+    private static (ConsoleColor, ConsoleColor) s_initialColorPanel = (s_colorPanel.Item1, s_colorPanel.Item2);
+    private static (ConsoleColor, ConsoleColor) s_terminalColorPanel = (Console.ForegroundColor, Console.BackgroundColor);
     #endregion
 
     #region Properties
@@ -31,7 +32,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
-    public static int? TitleHeight => title.Item1?.Length + 2 * title.Item2;
+    public static int? TitleHeight => s_title.Item1?.Length + 2 * s_title.Item2;
     /// <summary>
     /// This property is used to get the height of the header.
     /// </summary>
@@ -48,37 +49,43 @@ public static class Core
     /// This property is used to get the colors of the console.
     /// </summary>
     /// <returns>A tuple containing the font color and the background color.</returns>
-    public static (ConsoleColor, ConsoleColor) GetColorPanel => colorPanel;
+    public static (ConsoleColor, ConsoleColor) GetColorPanel => s_colorPanel;
     /// <summary>
     /// This property is used to check if the screen has been updated.
     /// </summary>
     /// <returns>True if the screen has been updated, false otherwise.</returns>
     /// <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
-    public static bool IsScreenUpdated => Console.WindowWidth != previousWindowWidth || Console.WindowHeight != previousWindowHeight || colorPanel != initialColorPanel;
+    public static bool IsScreenUpdated => Console.WindowWidth != s_previousWindowWidth || Console.WindowHeight != s_previousWindowHeight || s_colorPanel != s_initialColorPanel;
     #endregion
 
     #region Low abstraction level methods
+    /// <summary>
+    /// This method is used to set the selector of the console menus.
+    /// </summary>
+    /// <param name="onward">The new selector facing forward.</param>
+    /// <param name="backward">The new selector facing backward.</param>
+    public static void SetSelector(char onward, char backward) => s_selector = (onward, backward);
     /// <summary> 
     /// This method changes the font color of the console.
     /// </summary>
     /// <param name="color">The new font color.</param>
-    public static void ChangeForeground(ConsoleColor color) => colorPanel.Item1 = color;
+    public static void ChangeForeground(ConsoleColor color) => s_colorPanel.Item1 = color;
     /// <summary>
     /// This method changes the background color of the console.
     /// </summary>
     /// <param name="color">The new background color.</param>
-    public static void ChangeBackground(ConsoleColor color) => colorPanel.Item2 = color;
+    public static void ChangeBackground(ConsoleColor color) => s_colorPanel.Item2 = color;
     /// <summary>
     /// This method is used to set the title of the console.
     /// </summary>
     /// <param name="str">The title input.</param>
     /// <param name="margin">The upper and lower margin of the title.</param>
-    public static void SetTitle(string str, int margin = 1) => title = (styler.StyleTextToStringArray(str), margin);
+    public static void SetTitle(string str, int margin = 1) => s_title = (s_styler.StyleTextToStringArray(str), margin);
     /// <summary>
     /// This method is used to set a new styler for the application.
     /// </summary>
     /// <param name="path">The path of the new styler files.</param>
-    public static void SetStyler(string path) => styler = new TextStyler(path);
+    public static void SetStyler(string path) => s_styler = new TextStyler(path);
     /// <summary>
     /// This method is used to set the default header and footer.
     /// </summary>
@@ -98,8 +105,8 @@ public static class Core
     /// <param name="negative">If true, the text is highlighted.</param>
     public static void ApplyNegative(bool negative = false)
     {
-        Console.ForegroundColor = negative ? colorPanel.Item2 : colorPanel.Item1;
-        Console.BackgroundColor = negative ? colorPanel.Item1 : colorPanel.Item2;
+        Console.ForegroundColor = negative ? s_colorPanel.Item2 : s_colorPanel.Item1;
+        Console.BackgroundColor = negative ? s_colorPanel.Item1 : s_colorPanel.Item2;
     }
     /// <summary>
     /// This method is used to update the screen display if it has encountered a change.
@@ -107,9 +114,9 @@ public static class Core
     public static void UpdateScreen()
     {
         if (IsScreenUpdated) {
-            previousWindowWidth = Console.WindowWidth;
-            previousWindowHeight = Console.WindowHeight;
-            initialColorPanel = (colorPanel.Item1, colorPanel.Item2);
+            s_previousWindowWidth = Console.WindowWidth;
+            s_previousWindowHeight = Console.WindowHeight;
+            s_initialColorPanel = (s_colorPanel.Item1, s_colorPanel.Item2);
             WriteFullScreen();
         }
     }
@@ -149,11 +156,11 @@ public static class Core
     /// </summary>
     public static void ClearWindow()
     {
-        colorPanel = terminalColorPanel;
+        s_colorPanel = s_terminalColorPanel;
         for (int i = 0; i < Console.WindowHeight; i++)
             WriteContinuousString("".PadRight(Console.WindowWidth), i, default, 100, 10);
         Console.Clear();
-        colorPanel = (ConsoleColor.White, ConsoleColor.Black);
+        s_colorPanel = (ConsoleColor.White, ConsoleColor.Black);
     }
     #endregion
 
@@ -258,7 +265,7 @@ public static class Core
     /// <summary> 
     /// This method prints the title in the console. 
     /// </summary>
-    public static void WriteTitle() => WritePositionedStyledText(title.Item1, 0, Console.WindowWidth, title.Item2, Placement.Center, false);
+    public static void WriteTitle() => WritePositionedStyledText(s_title.Item1, 0, Console.WindowWidth, s_title.Item2, Placement.Center, false);
     /// <summary> 
     /// This method prints a banner in the console. 
     /// </summary>
@@ -363,7 +370,7 @@ public static class Core
             {
                 if (j == num)
                 {
-                    array[j] = " ▶ " + choices[j] + "  ";
+                    array[j] = $" {s_selector.Item1} " + choices[j] + "  ";
                     WritePositionedString(array[j], Placement.Center, negative: true, lineChoice + j);
                 }
                 else
@@ -419,7 +426,7 @@ public static class Core
         int _lineSelector = (int)line + 2;
         while (true)
         {
-            WritePositionedString($" ▶ {(float)Math.Round(_currentNumber, 1)} ◀ ", Placement.Center, true, line + 2);
+            WritePositionedString($" {s_selector.Item1} {(float)Math.Round(_currentNumber, 1)} {s_selector.Item2} ", Placement.Center, true, line + 2);
             
             switch (Console.ReadKey(true).Key)
             {
@@ -512,7 +519,7 @@ public static class Core
             SetTitle(title);
             WriteTitle();
         }
-        else if (Core.title.Item1 is not null)
+        else if (Core.s_title.Item1 is not null)
             WriteTitle();
         WriteBanner(true, continuous, header);
         WriteBanner(false, continuous, footer);
