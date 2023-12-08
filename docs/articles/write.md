@@ -94,6 +94,17 @@ You can also change the cursor character for every menu with the `SetCursor` met
 Core.SetCursor('>', '<');
 ```
 
+You may create your own font by creating a font file following the format specified in the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) (it includes, the three .txt files and the .yaml file). Then, you can use the `SetFont` method to globally set the font of your project.
+
+```csharp
+
+Core.SetFont("/path/to/your/font/folder/");
+
+```
+
+> [!WARNING]
+> By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
+
 Finally, you may use the `GetColorPanel` property to get the color panel of the console.
 
 ```csharp
