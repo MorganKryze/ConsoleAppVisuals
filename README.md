@@ -4,7 +4,7 @@
 
 This library allows you to add visuals to your console app like this:
 
-![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/blob/3415ad21ce904a3ae37cd48b4039e397fa15895a/full_demo.mp4)
+![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/full_demo.mp4)
 
 ## Installation
 
