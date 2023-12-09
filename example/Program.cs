@@ -16,7 +16,7 @@ namespace example
             Core.WriteBanner(true, true);
             Core.WriteBanner(false, true);
             Core.ClearContent();
-            Core.LoadingBar("[ Stunning example loading... ]");
+            Core.LoadingBar("[ Some example loading... ]");
             Core.UpdateScreen();
             Core.ClearContent();
 
@@ -94,6 +94,11 @@ namespace example
                             Core.UpdateScreen();
                             break;
                         default:
+                            Core.ClearContent();
+                            Core.UpdateScreen();
+                            Core.WriteParagraph(true, default, "You have selected to quit the app. Press [Enter] to continue...");
+                            Console.ReadKey();
+                            Core.ExitProgram();
                             break;
                         }
                     break;
