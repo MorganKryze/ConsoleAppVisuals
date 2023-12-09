@@ -4,7 +4,7 @@
 
 This library allows you to add visuals to your console app like this:
 
-![vid](images/full_demo.mp4)
+![presentation](images/presentation.gif)
 
 ## Installation
 
