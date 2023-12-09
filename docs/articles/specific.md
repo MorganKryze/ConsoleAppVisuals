@@ -48,7 +48,7 @@ string answer = Core.WritePrompt("Is your name John Doe ?", "John Doe");
 Console.ReadKey();
 ```
 
-![prompt](../images/prompt.gif)
+![prompt](../images/prompt.png)
 *Demo with prompt*
 
 ## Table selector
@@ -70,7 +70,7 @@ The `ScrollingTableSelector` is a special block that allows you to display the t
 students.ScrollingTableSelector(true, false, "Add student");
 ```
 
-![table](../images/table.gif)
+![table](../images/table.png)
 *Demo with table selector*
 
 > [!NOTE]

@@ -2,9 +2,9 @@
 
 [![NuGet](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=NuGet)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-This library allows you to add stunning visuals to your console app like this:
+This library allows you to add visuals to your console app like this:
 
-![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/demo_code.gif)
+![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/blob/3415ad21ce904a3ae37cd48b4039e397fa15895a/full_demo.mp4)
 
 ## Installation
 
