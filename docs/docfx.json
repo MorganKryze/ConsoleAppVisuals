@@ -1,7 +1,7 @@
 {
   "metadata": [{
     "src": [{
-      "files": ["**/bin/Release/**.dll"],
+      "files": ["**/bin/Release/net7.0/**.dll"],
       "src": "../src/ConsoleAppVisuals/"
     }],
     "dest": "api",
