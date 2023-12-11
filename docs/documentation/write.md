@@ -32,6 +32,20 @@ Console.ReadKey();
 ![continuous](../images/continuous.gif)
 *Demo with continuous printing*
 
+## Including Multiple Lines
+
+If you want to write a text with multiple lines, you can use the `WriteParagraph` method like this:
+
+```csharp
+Core.WriteFullScreen("Example");
+
+Core.WriteParagraph(default, default, "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,","lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),"," and component-oriented programming disciplines.", "", "Press [Enter] to continue...");
+Console.ReadKey();
+```
+
+![paragraph](../images/paragraph.png)
+*Demo with paragraph*
+
 ## Including color
 
 You can also specify the color of the elements and choose to apply the negative color to the text. Here are two example :
