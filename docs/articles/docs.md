@@ -7,7 +7,7 @@ The tool used to generate the documentation is [DocFX](https://dotnet.github.io/
 To install it, or update it,open any terminal and run the following command:
 
 ```bash
-dotnet tool install -g docfx
+dotnet tool update -g docfx
 ```
 
 ## The structure
@@ -85,14 +85,37 @@ To look like this:
 ```json
 "metadata": [{
     "src": [{
-      "files": ["**/bin/Release/**.dll"],
-      "src": "../"
+      "files": ["bin/**/*.dll"],
+      "src": "../TheNameOfYourProjectFolder"
     }],
     "dest": "api",
     "properties": {
       "TargetFramework": "net7.0"
     }
   }],
+```
+
+### Optional
+
+If you want to generate the documentation for the Release version only:
+
+```json
+"metadata": [{
+    "src": [{
+      "files": ["**/bin/Release/**.dll"],
+      "src": "../StillTheNameOfYourProjectFolder"
+    }],
+    "dest": "api",
+    "properties": {
+      "TargetFramework": "net7.0"
+    }
+  }],
+```
+
+Now when you want to build your project and update your xml file, type:
+  
+```bash
+dotnet build -c Release
 ```
 
 ## Preview your doc
@@ -123,7 +146,7 @@ To ensure that the documentation is generated correctly (your /// comments are t
 Now your documentation is ready to be generated in the section "Api Documentation" in the generated site.
 
 > [!NOTE]
-> For more customization, you may want update the "index.md" file in the "docfx_project" folder, and create wonderful articles in the "articles" folder to explain how to use your library.
+> For more customization, you may want update the "index.md" file in the "docfx_project" folder, and create wonderful articles in the "articles" folder to explain how to use your library. And **DO NOT** forget to update the "toc.yml" file to add your articles in the table of contents (else they will not be displayed).
 
 ## Deploy the doc
 
@@ -155,6 +178,10 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/_site
 ```
+
+> [!NOTE]
+> I you renamed your "docfx_project" folder, you will have to update the line :
+> run: docfx docfx_project/docfx.json -> run: docfx TheNameOfYourDocFxProjectFolder/docfx.json
 
 Push on your branch, and create a pull request to merge it with the main branch if it is not already on the main.
 

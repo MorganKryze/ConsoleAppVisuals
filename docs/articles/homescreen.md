@@ -22,7 +22,7 @@ Now that we have seen the title, let's see how to display a banner. You may use 
 Core.SetTitle("Example", 2);
 Core.WriteTitle();
 
-Core.WriteBanner(true);
+Core.WriteHeader();
 
 Console.ReadKey(); //[optional]: just to keep the console clean
 ```
@@ -30,20 +30,18 @@ Console.ReadKey(); //[optional]: just to keep the console clean
 ![banner](../images/banner.png)
 *Demo with default arguments for the header*
 
-To customize the banner, you can change the arguments or change the default header and footer with the `SetDefaultBanner` method.
+To customize the banner, you can change the arguments or change the default header and footer with the `SetDefaultHeader` or `SetDefaultFooter` methods.
 
 ```csharp
-Core.SetDefaultBanner(("Left", "Top", "Right"), ("Left", "Top", "Right"));
-Core.WriteBanner(true);
+Core.SetDefaultHeader(("Left", "Top", "Right"));
+Core.WriteHeader(true);
+Core.WriteFooter(true, ("Left", "Top", "Right"));
 
 Console.ReadKey();
 ```
 
 ![banner2](../images/banner_customize.png)
 *Demo with custom arguments for the header*
-
-> [!NOTE]
-> To display a footer, you may use the `WriteBanner` method with the `header` argument set to `false`.
 
 ## Easy display
 
@@ -56,9 +54,10 @@ Core.WriteFullScreen("Example");
 // Core.SetTitle("Example", 2);
 // Core.WriteTitle();
 // 
-// Core.SetDefaultBanner(("Left", "Top", "Right"), ("Left", "Bottom", "Right"));
-// Core.WriteBanner(true);
-// Core.WriteBanner(false);
+// Core.SetDefaultHeader(("Left", "Top", "Right"));
+// Core.SetDefaultFooter(("Left", "Top", "Right"));
+// Core.WriteHeader();
+// Core.WriteFooter();
 // 
 // Core.ClearContent();
 ```

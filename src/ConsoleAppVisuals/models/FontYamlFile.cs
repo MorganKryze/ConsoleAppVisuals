@@ -12,10 +12,10 @@ public class FontYamlFile
     /// The name of the font.
     /// </summary>
     // [YamlMember(Alias = "name", ApplyNamingConventions = false)]
-    public required string Name { get; set; }
+    public string? Name { get; set; }
     /// <summary>
     /// The height of the elements of the font.
     /// </summary>
-    public required Dictionary<string, int> Chars { get; set; }
+    public Dictionary<string, int>? Chars { get; set; }
     
 }

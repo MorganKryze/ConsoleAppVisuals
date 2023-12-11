@@ -91,6 +91,7 @@ public static class Core
     /// </summary>
     /// <param name="header">The default header input.</param>
     /// <param name="footer">The default footer input.</param>
+    [Obsolete("This method is deprecated. Use SetDefaultHeader and SetDefaultFooter instead. This method will be removed in a future release.", true)]
     public static void SetDefaultBanner((string, string, string)? header = null, (string, string, string)? footer = null)
     {
         header ??= DefaultHeader;
@@ -98,6 +99,20 @@ public static class Core
         DefaultHeader = header ?? DefaultHeader;
         DefaultFooter = footer ?? DefaultFooter;
     }
+    /// <summary>
+    /// This method is used to set the default header.
+    /// </summary>
+    /// <param name="left">The default header left input.</param>
+    /// <param name="center">The default header center input.</param>
+    /// <param name="right">The default header right input.</param>
+    public static void SetDefaultHeader(string left, string center, string right) => DefaultHeader = (left, center, right);
+    /// <summary>
+    /// This method is used to set the default footer.
+    /// </summary>
+    /// <param name="left">The default footer left input.</param>
+    /// <param name="center">The default footer center input.</param>
+    /// <param name="right">The default footer right input.</param>
+    public static void SetDefaultFooter(string left, string center, string right) => DefaultFooter = (left, center, right);
     /// <summary>
     /// This method changes the font and background colors of the console in order to apply
     /// a negative to highlight the text or not.
@@ -272,6 +287,7 @@ public static class Core
     /// <param name="banner">The banner to print.</param>
     /// <param name="header">If true, the banner is printed at the top of the console. If false, the banner is printed at the bottom of the console.</param>
     /// <param name="continuous">If true, the title is not continuously printed.</param>
+    [Obsolete("This method is deprecated. Use WriteHeader and WriteFooter instead. This method will be removed in a future release.", true)]
     public static void WriteBanner(bool header = true, bool continuous = true, (string, string, string)? banner = null)
 	{
         (string, string, string) _banner = banner ?? (header ? DefaultHeader : DefaultFooter); // If banner is null, _banner is set to the default header or footer.
@@ -282,6 +298,35 @@ public static class Core
             WritePositionedString(_banner.BannerToString(), default, true, header ? HeaderHeight : FooterHeight);
 		ApplyNegative(default);
 	}
+    /// <summary>
+    /// This method prints a header in the console.
+    /// </summary>
+    /// <param name="continuous">If true, the header is not continuously printed.</param>
+    /// <param name="header">The header to print.</param>
+    public static void WriteHeader(bool continuous = true, (string, string, string)? header = null)
+    {
+        (string, string, string) _banner = header ?? DefaultHeader;
+        ApplyNegative(true);
+        if (continuous) 
+		    WriteContinuousString(_banner.BannerToString(), HeaderHeight, true);
+        else
+            WritePositionedString(_banner.BannerToString(), default, true, HeaderHeight);
+		ApplyNegative(default);
+    }
+    /// <summary>
+    /// This method prints a footer in the console.
+    /// </summary>
+    /// <param name="continuous">If true, the footer is not continuously printed.</param>
+    /// <param name="footer">The footer to print.</param>
+    public static void WriteFooter(bool continuous = true, (string, string, string)? footer = null)
+    {
+        (string, string, string) _banner = footer ?? DefaultFooter;
+        ApplyNegative(true);
+        if (continuous) 
+            WriteContinuousString(_banner.BannerToString(), FooterHeight, true);
+        else
+            WritePositionedString(_banner.BannerToString(), default, true, FooterHeight);
+    }
     /// <summary> 
     /// This method prints a paragraph in the console. 
     /// </summary>
@@ -519,10 +564,10 @@ public static class Core
             SetTitle(title);
             WriteTitle();
         }
-        else if (Core.s_title.Item1 is not null)
+        else if (s_title.Item1 is not null)
             WriteTitle();
-        WriteBanner(true, continuous, header);
-        WriteBanner(false, continuous, footer);
+        WriteHeader(continuous, header);
+        WriteFooter(continuous, footer);
         ClearContent();
     }
     /// <summary>

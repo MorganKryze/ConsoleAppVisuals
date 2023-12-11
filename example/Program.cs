@@ -13,8 +13,8 @@ namespace example
 
             Core.SetTitle("Example");
             Core.WriteTitle();
-            Core.WriteBanner(true, true);
-            Core.WriteBanner(false, true);
+            Core.WriteHeader(true);
+            Core.WriteFooter(true);
             Core.ClearContent();
             Core.LoadingBar("[ Some example loading... ]");
             Core.UpdateScreen();
@@ -56,6 +56,7 @@ namespace example
                             List<string> student3 = new () {"03", "Maxime", "Physics", "92"};
                             List<string> student4 = new () {"04", "Charles", "Computer Science", "100"};
                             Table<string> students = new (headers, new () {student1, student2, student3, student4});
+                            students.SetRoundedCorners(true);
                             students.ScrollingTableSelector(true, false, "Add student");
                             Core.ClearContent();
                             break;
