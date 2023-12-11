@@ -84,6 +84,12 @@ students.RemoveLine(4);
 students.UpdateLine(3, new () {"04", "Charles", "Computer Science", "55"});
 ```
 
+You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the tables.
+
+```csharp
+Table.SetRoundedCorners(true);
+```
+
 ## Loading bar
 
 The `LoadingBar` is a special block that allows you to display a loading bar. You may define the text to display while loading.

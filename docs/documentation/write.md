@@ -40,11 +40,26 @@ If you want to write a text with multiple lines, you can use the `WriteParagraph
 Core.WriteFullScreen("Example");
 
 Core.WriteParagraph(default, default, "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,","lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),"," and component-oriented programming disciplines.", "", "Press [Enter] to continue...");
+
 Console.ReadKey();
 ```
 
 ![paragraph](../images/paragraph.png)
 *Demo with paragraph*
+
+## Include Styled Text
+
+You can also use the `WritePositionedStyledText` method to write a styled text in the console. You may specify the placement, the color, the background color and the font of the text. The `StyleText` method allows you to style a string according to the font selected.
+
+```csharp
+Core.WriteFullScreen("Example");
+
+Core.WritePositionedStyledText(Core.StyleText("Hello World!"));
+
+Console.ReadKey();
+```
+
+![style](../images/style.png)
 
 ## Including color
 
@@ -124,14 +139,6 @@ Core.SetFont("/path/to/your/font/folder/");
 
 > [!WARNING]
 > By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
-
-### Rounded corners
-
-You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the tables.
-
-```csharp
-Table.SetRoundedCorners(true);
-```
 
 ### Color panel
 
