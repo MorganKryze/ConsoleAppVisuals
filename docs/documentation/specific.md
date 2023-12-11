@@ -87,7 +87,50 @@ students.UpdateLine(3, new () {"04", "Charles", "Computer Science", "55"});
 You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the tables.
 
 ```csharp
-Table.SetRoundedCorners(true);
+students.SetRoundedCorners(true);
+```
+
+## Matrix display
+
+First, you need to create a `Matrix` object giving the data just as in the example below.
+
+```csharp
+List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
+List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
+List<int?> thirdRow = new() { 7, 8, null, 3, 4, 5 };
+List<int?> fourthRow = new() { null, 2, 3, 4, 5, 6 };
+List<List<int?>> data = new() { firstRow, secondRow, thirdRow, fourthRow };
+Matrix<int?> matrix = new(data);
+```
+
+The `WriteMatrix` is a special block that allows you to display the matrix. This is only visual, you can't select any element.
+
+```csharp
+matrix.WriteMatrix(Placement.Center);
+
+Console.ReadKey();
+```
+
+![matrix](../images/matrix.png)
+
+> [!NOTE]
+> Once you created the matrix, you can add, remove or update the lines using the methods provided by the `Matrix` class (`AddLine`, `RemoveLine`, `UpdateLine`) but also the elements using the `RemoveElement` and `UpdateElement` methods.
+
+Here is an example of a matrix of how to use them:
+
+```csharp
+
+matrix.AddLine(new () {2, 5, 7, 9, 3, 6});
+matrix.RemoveLine(3);
+matrix.UpdateLine(2, new () {3, 6, 8, 9, null, 2});
+matrix.RemoveElement(new Position(2, 2));
+matrix.UpdateElement(new Position(3,1), 7);
+```
+
+You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the matrix.
+
+```csharp
+matrix.SetRoundedCorners(true);
 ```
 
 ## Loading bar

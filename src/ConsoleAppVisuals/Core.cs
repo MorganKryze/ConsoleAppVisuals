@@ -339,6 +339,7 @@ public static class Core
     /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
+    [Obsolete("This method is deprecated. Use WriteParagraph with the placement attribute instead. This method will be removed in a future release.", true)]
     public static void WriteParagraph(bool negative = false, int? line = null, params string[] text)
 	{
         line ??= ContentHeight;
@@ -347,6 +348,26 @@ public static class Core
 		foreach (string str in text)
 		{
 			WritePositionedString(str.ResizeString(maxLength, Placement.Center), Placement.Center, negative, line++);
+			if (line >= Console.WindowHeight - 1) 
+                break;
+		}
+        ApplyNegative(default);
+	}
+    /// <summary> 
+    /// This method prints a paragraph in the console. 
+    /// </summary>
+    /// <param name="placement">The placement of the paragraph.</param>
+    /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
+    /// <param name="line">The height of the paragraph.</param>
+    /// <param name="text">The lines of the paragraph.</param>
+    public static void WriteMultiplePositionedLines(Placement placement = Placement.Center , bool negative = false, int? line = null, params string[] text)
+	{
+        line ??= ContentHeight;
+        ApplyNegative(negative);
+		int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
+		foreach (string str in text)
+		{
+			WritePositionedString(str.ResizeString(maxLength, placement), placement, negative, line++);
 			if (line >= Console.WindowHeight - 1) 
                 break;
 		}
