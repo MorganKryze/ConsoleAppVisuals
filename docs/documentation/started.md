@@ -4,16 +4,19 @@
 
 Welcome to the docs, here you will find all the information you need to use this library.
 
-You will find the following topics:
+You will find the following topics about the library:
 
 - [Homescreen visuals](homescreen.md)
 - [Write on the console](write.md)
 - [Specific methods](specific.md)
-- [publish your own library](publish.md)
-- [build the docs](docs.md)
 - [create a custom font](font.md)
 
-And finally, you will find the precise documentation in "Api Documentation".
+And those topics about the library development:
+
+- [publish your own library](publish.md)
+- [build the docs](docs.md)
+
+And finally, you will find the precise documentation in "References".
 
 > [!NOTE]
 > Feel free to contribute to the project by forking it and making a pull request or open an issue if you encounter a bug.

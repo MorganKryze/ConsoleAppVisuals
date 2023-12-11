@@ -43,7 +43,7 @@ The `WritePrompt` let you ask a prompt to the user and get the input. You may de
 ```csharp
 Core.WriteFullScreen("Example", true);
 
-string answer = Core.WritePrompt("Is your name John Doe ?", "John Doe");
+Core.WritePrompt("Is your name John Doe ?", "John Doe");
 
 Console.ReadKey();
 ```
@@ -82,6 +82,12 @@ Here is an example of a table of how to use them:
 students.AddLine(new () {"05", "John", "Biology", "95"});
 students.RemoveLine(4);
 students.UpdateLine(3, new () {"04", "Charles", "Computer Science", "55"});
+```
+
+You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the tables.
+
+```csharp
+Table.SetRoundedCorners(true);
 ```
 
 ## Loading bar

@@ -87,6 +87,12 @@ public static class Core
     /// <param name="path">The path of the new styler files.</param>
     public static void SetStyler(string path) => s_styler = new TextStyler(path);
     /// <summary>
+    /// This method is used to style a string.
+    /// </summary>
+    /// <param name="str">The string to style.</param>
+    /// <returns>The styled string.</returns>
+    public static string[] StyleText(string str) => s_styler.StyleTextToStringArray(str);
+    /// <summary>
     /// This method is used to set the default header and footer.
     /// </summary>
     /// <param name="header">The default header input.</param>
