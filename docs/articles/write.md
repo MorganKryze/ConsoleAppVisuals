@@ -111,6 +111,14 @@ Core.SetFont("/path/to/your/font/folder/");
 > [!WARNING]
 > By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the `WritePositionedStyledText` method (for an array) or a simple `Console.WriteLine` is enough for a styled string.
 
+### Rounded corners
+
+You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the tables.
+
+```csharp
+Core.SetRoundedCorners(true);
+```
+
 ### Color panel
 
 Finally, you may use the `GetColorPanel` property to get the color panel of the console.

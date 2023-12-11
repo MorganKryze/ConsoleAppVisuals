@@ -12,6 +12,7 @@ public class Table<T>
     private readonly List<string>? rawHeaders;
     private List<List<T>>? rawLines;
     private string[]? displayArray;
+    private bool roundedCorners = true;
     #endregion
 
     #region Constructor
@@ -76,8 +77,8 @@ public class Table<T>
                 }
                 stringList.Add(line);
             }
-            stringList.Insert(0, "┌".PadRight(stringList[0].Length - 1, '─') + "┐");
-            stringList.Add("└".PadRight(stringList[0].Length - 1, '─') + "┘");
+            stringList.Insert(0, corners[0].ToString().PadRight(stringList[0].Length - 1, '─') + corners[1]);
+            stringList.Add(corners[2].ToString().PadRight(stringList[0].Length - 1, '─') + corners[3]);
             displayArray = stringList.ToArray();
 
         }
@@ -104,11 +105,11 @@ public class Table<T>
             }
             stringList.Add(header);
 
-            string border = "┌";
+            string border = corners[0].ToString();
             for (int i = 0; i < rawHeaders.Count; i++)
             {
                 border += new string('─', localMax[i] + 2);
-                border += (i != rawHeaders.Count - 1) ? "┬" : "┐";
+                border += (i != rawHeaders.Count - 1) ? "┬" : corners[1].ToString();
             }
             stringList.Insert(0, border);
 
@@ -134,11 +135,11 @@ public class Table<T>
                 stringList.Add(line);
             }
 
-            border = "└";
+            border = corners[2].ToString();
             for (int i = 0; i < rawHeaders.Count; i++)
             {
                 border += new string('─', localMax[i] + 2);
-                border += (i != rawHeaders.Count - 1) ? "┴" : "┘";
+                border += (i != rawHeaders.Count - 1) ? "┴" : corners[3].ToString();
             }
             stringList.Add(border);
 
@@ -148,6 +149,15 @@ public class Table<T>
     #endregion
 
     #region Properties
+    private string corners => roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+    /// <summary>
+    /// Toggles the rounded corners of the table.
+    /// </summary>
+    public void SetRoundedCorners(bool value = true)
+    {
+        roundedCorners = value;
+        BuildTable();
+    }
     /// <summary>
     /// This property returns the number of lines in the table.
     /// </summary>
@@ -243,7 +253,7 @@ public class Table<T>
                 array[j] = displayArray[j];
                 Core.WritePositionedString(array[j], Placement.Center, false, startContentHeight + j);
                 if (j == index)
-                    Core.WritePositionedString(j == displayArray.Length - 1 ? array[j].InsertString($"┤ {footerText} ├", Placement.Center, true)[1..^1] : array[j][1..^1], Placement.Center, true, startContentHeight + j);
+                    Core.WritePositionedString(j == displayArray.Length - 1 ? array[j].InsertString($"┤ {footerText} ├", Placement.Center, true)[2..^2] : array[j][1..^1], Placement.Center, true, startContentHeight + j);
             }
             switch (Console.ReadKey(intercept: true).Key)
             {
