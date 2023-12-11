@@ -77,8 +77,8 @@ public class Table<T>
                 }
                 stringList.Add(line);
             }
-            stringList.Insert(0, corners[0].ToString().PadRight(stringList[0].Length - 1, '─') + corners[1]);
-            stringList.Add(corners[2].ToString().PadRight(stringList[0].Length - 1, '─') + corners[3]);
+            stringList.Insert(0, Corners[0].ToString().PadRight(stringList[0].Length - 1, '─') + Corners[1]);
+            stringList.Add(Corners[2].ToString().PadRight(stringList[0].Length - 1, '─') + Corners[3]);
             displayArray = stringList.ToArray();
 
         }
@@ -105,11 +105,11 @@ public class Table<T>
             }
             stringList.Add(header);
 
-            string border = corners[0].ToString();
+            string border = Corners[0].ToString();
             for (int i = 0; i < rawHeaders.Count; i++)
             {
                 border += new string('─', localMax[i] + 2);
-                border += (i != rawHeaders.Count - 1) ? "┬" : corners[1].ToString();
+                border += (i != rawHeaders.Count - 1) ? "┬" : Corners[1].ToString();
             }
             stringList.Insert(0, border);
 
@@ -135,11 +135,11 @@ public class Table<T>
                 stringList.Add(line);
             }
 
-            border = corners[2].ToString();
+            border = Corners[2].ToString();
             for (int i = 0; i < rawHeaders.Count; i++)
             {
                 border += new string('─', localMax[i] + 2);
-                border += (i != rawHeaders.Count - 1) ? "┴" : corners[3].ToString();
+                border += (i != rawHeaders.Count - 1) ? "┴" : Corners[3].ToString();
             }
             stringList.Add(border);
 
@@ -149,7 +149,7 @@ public class Table<T>
     #endregion
 
     #region Properties
-    private string corners => roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+    private string Corners => roundedCorners ? "╭╮╰╯" : "┌┐└┘";
     /// <summary>
     /// Toggles the rounded corners of the table.
     /// </summary>

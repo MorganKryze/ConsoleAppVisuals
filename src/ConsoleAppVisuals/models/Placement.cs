@@ -10,13 +10,13 @@ namespace ConsoleAppVisuals;
 public enum Placement
 {
     /// <summary>
-    /// The string is placed at the left of the console.
-    /// </summary>
-    Left,
-    /// <summary>
     /// The string is placed at the center of the console. 
     /// </summary>
     Center,
+    /// <summary>
+    /// The string is placed at the left of the console.
+    /// </summary>
+    Left,
     /// <summary>
     /// The string is placed at the right of the console.
     /// </summary>

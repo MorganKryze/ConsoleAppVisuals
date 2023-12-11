@@ -33,6 +33,7 @@ ConsoleAppVisuals
 │   └───FontYamlFile.cs
 ├───Core.cs
 ├───Extensions.cs
+├───Matrix.cs
 ├───Table.cs
 ├───TextStyler.cs
 └───Usings.cs
@@ -59,6 +60,10 @@ This class is used to style the text. It contains the methods to apply a specifi
 ### Table.cs
 
 This class is used to create a table. It may be useful to display data in a table on the screen.
+
+### Matrix.cs
+
+This class is used to create a matrix. It may be useful to display data in a matrix on the screen.
 
 ### Position.cs
 

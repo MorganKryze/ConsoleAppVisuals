@@ -9,12 +9,12 @@ namespace example
             Console.Clear();
             Console.CursorVisible = false;
 
-            Test();
+            Debugging();
 
             Core.SetTitle("Example");
             Core.WriteTitle();
-            Core.WriteHeader(true);
-            Core.WriteFooter(true);
+            Core.WriteHeader(false);
+            Core.WriteFooter(false);
             Core.ClearContent();
             Core.LoadingBar("[ Some example loading... ]");
             Core.UpdateScreen();
@@ -22,46 +22,22 @@ namespace example
 
             Menu:
 
-            var index = Core.ScrollingMenuSelector("What do you want to do?", default, default, "Select a number", "Answer some prompt","Display trivia", "Display table", "Change color", "Quit the app");
-            switch (index.Item1){
+            var index = Core.ScrollingMenuSelector("What will be your next action?", default, default, 
+            "Change Console color",
+            "Display paragraph", 
+            "Display a styled text", 
+            "Display a matrix",
+            "Answer some prompt",
+            "Select a number", 
+            "Display table", 
+            "Quit the app");
+            Core.ClearContent();
+            switch (index.Item1)
+            {
                 case Output.Select:
-                    switch (index.Item2){
+                    switch (index.Item2)
+                    {
                         case 0:
-                            Core.ClearContent();
-                            Core.UpdateScreen();
-                            var answerNumber = Core.ScrollingNumberSelector("Select a number", 10, 50, 25, 5);
-                            float number = answerNumber.Item2;
-                            Core.ClearContent();
-                            break;
-                        case 1:
-                            Core.ClearContent();
-                            Core.UpdateScreen();
-                            var answerPrompt = Core.WritePrompt("Hey! What is your name?");
-                            string name = answerPrompt.Item2;
-                            Core.ClearContent();
-                            break;
-                        case 2:
-                            Core.ClearContent();
-                            Core.UpdateScreen();
-                            Core.WriteParagraph(default, default, "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,","lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),"," and component-oriented programming disciplines.", "", "Press [Enter] to continue...");
-                            Console.ReadKey();
-                            Core.ClearContent();
-                            break;
-                        case 3:
-                            Core.ClearContent();
-                            Core.UpdateScreen();
-                            List<string> headers = new () {"id", "name", "major", "grades"};
-                            List<string> student1 = new () {"01", "Theo", "Technology", "97"};
-                            List<string> student2 = new () {"02", "Paul", "Mathematics", "86"};
-                            List<string> student3 = new () {"03", "Maxime", "Physics", "92"};
-                            List<string> student4 = new () {"04", "Charles", "Computer Science", "100"};
-                            Table<string> students = new (headers, new () {student1, student2, student3, student4});
-                            students.SetRoundedCorners(true);
-                            students.ScrollingTableSelector(true, false, "Add student");
-                            Core.ClearContent();
-                            break;
-                        case 4:
-                            Core.ClearContent();
                             Core.UpdateScreen();
                             var indexColor = Core.ScrollingMenuSelector("What color do you want to change?", default, default, "White", "Gray", "Red", "Green", "Blue", "Yellow", "Magenta", "Cyan");
                             switch(indexColor.Item2){
@@ -92,38 +68,133 @@ namespace example
                                 default:
                                     break;
                             }
-                            Core.UpdateScreen();
+                            Core.ClearContent();
                             break;
+
+                        case 1:
+                            Core.UpdateScreen();
+
+                            Core.WriteMultiplePositionedLines(default, default, default, "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,","lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),"," and component-oriented programming disciplines.", "", "Press [Enter] to continue...");
+
+                            Console.ReadKey();
+                            Core.ClearContent();
+                            break;
+
+                        case 2:
+                            Core.UpdateScreen();
+
+                            Core.WritePositionedStyledText(Core.StyleText("Hello World!"));
+
+                            Console.ReadKey();
+                            Core.ClearContent();
+
+                            Core.WritePositionedStyledText(Core.StyleText("Welcome Aboard!"));
+
+                            Console.ReadKey();
+                            Core.ClearContent();
+                            break;
+
+                        case 3:
+                            Core.UpdateScreen();
+
+                            List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
+                            List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
+                            List<int?> thirdRow = new() { 7, 8, null, 3, 4, 5 };
+                            List<int?> fourthRow = new() { null, 2, 3, 4, 5, 6 };
+                            List<List<int?>> data = new() { firstRow, secondRow, thirdRow, fourthRow };
+                            Matrix<int?> matrix = new(data);
+                            matrix.SetRoundedCorners(false);
+                            matrix.WriteMatrix(Placement.Center);
+
+                            Console.ReadKey();
+                            Core.ClearContent();
+
+                            matrix.Remove(new Position(0, 0));
+                            matrix.Remove(new Position(3, 5));
+                            matrix.WriteMatrix(Placement.Center);
+
+                            Console.ReadKey();
+                            Core.ClearContent();
+
+                            matrix.UpdateElement(new Position(0, 0), 1);
+                            matrix.UpdateElement(new Position(3, 5), 6);
+                            matrix.WriteMatrix(Placement.Center);
+
+                            Console.ReadKey();
+                            Core.ClearContent();
+                            break;
+
+                        case 4:
+                            Core.UpdateScreen();
+
+                            var answerPrompt = Core.WritePrompt("Hey! What is your name?", "Theo");
+                            string name = answerPrompt.Item2;
+
+                            Core.ClearContent();
+                            break;
+                        case 5:
+                            Core.UpdateScreen();
+
+                            var answerNumber = Core.ScrollingNumberSelector("Select a number", 10, 50, 25, 5);
+                            float number = answerNumber.Item2;
+
+                            Core.ClearContent();
+                            break;
+                        case 6:
+                            Core.UpdateScreen();
+
+                            List<string> headers = new () {"id", "name", "major", "grades"};
+                            List<string> student1 = new () {"01", "Theo", "Technology", "97"};
+                            List<string> student2 = new () {"02", "Paul", "Mathematics", "86"};
+                            List<string> student3 = new () {"03", "Maxime", "Physics", "92"};
+                            List<string> student4 = new () {"04", "Charles", "Computer Science", "100"};
+                            Table<string> students = new (headers, new () {student1, student2, student3, student4});
+                            students.SetRoundedCorners(false);
+                            students.ScrollingTableSelector(true, false, "Add student");
+
+                            students.UpdateLine(0, new () {"01", "Theo", "Biology", "100"});
+                            students.RemoveLine(3);
+                            students.ScrollingTableSelector(true, true);
+
+                            Core.ClearContent();
+                            break;
+
                         default:
                             Core.ClearContent();
                             Core.UpdateScreen();
-                            Core.WriteParagraph(true, default, "You have selected to quit the app. Press [Enter] to continue...");
-                            Console.ReadKey();
+                            
                             Core.ExitProgram();
                             break;
                         }
                     break;
+
                 case Output.Exit: 
                     Core.ClearContent();
                     Core.UpdateScreen();
-                    Core.WriteParagraph(true, default, "You have selected to quit the app. Press [Enter] to continue...");
+
+                    Core.WriteMultiplePositionedLines(default, true, default, "You have selected to quit the app. Press [Enter] to continue...");
+                    
                     Console.ReadKey();
                     Core.ExitProgram();
                     break;
+
                 case Output.Delete: 
                     Core.ClearContent();
                     Core.UpdateScreen();
-                    Core.WriteParagraph(true, default, "You have selected the backspace tile. Press [Enter] to continue...");
+
+                    Core.WriteMultiplePositionedLines(default, true, default, "You have selected the backspace tile. Press [Enter] to continue...");
+                    
                     Console.ReadKey();
                     break;
+
                 default:
                     break;
             }
             goto Menu;
         }
-        public static void Test()
+        public static void Debugging()
         {   
-            // Test code placeholder
+            // Debug code placeholder
         }
     }
 }
