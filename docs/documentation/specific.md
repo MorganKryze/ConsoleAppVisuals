@@ -43,7 +43,7 @@ The `WritePrompt` let you ask a prompt to the user and get the input. You may de
 ```csharp
 Core.WriteFullScreen("Example", true);
 
-string answer = Core.WritePrompt("Is your name John Doe ?", "John Doe");
+Core.WritePrompt("Is your name John Doe ?", "John Doe");
 
 Console.ReadKey();
 ```

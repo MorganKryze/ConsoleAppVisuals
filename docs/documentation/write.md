@@ -116,7 +116,7 @@ Core.SetFont("/path/to/your/font/folder/");
 You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the tables.
 
 ```csharp
-Core.SetRoundedCorners(true);
+Table.SetRoundedCorners(true);
 ```
 
 ### Color panel
