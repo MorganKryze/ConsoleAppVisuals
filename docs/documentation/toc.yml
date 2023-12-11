@@ -9,11 +9,11 @@ items:
     href: write.md
   - name: Specific methods
     href: specific.md
+  - name: Create your own font
+    href: font.md
 - name: To go further
   items:
   - name: Publish your own library
     href: publish.md
   - name: Create your documentation
     href: docs.md
-  - name: Create your own font
-    href: font.md
