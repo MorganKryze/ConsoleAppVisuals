@@ -43,6 +43,7 @@ public class TextStyler
     /// The constructor of the TextStyler class.
     /// </summary>
     /// <param name="fontPath">The path to the font files.</param>
+    /// <exception cref="NullReferenceException">Thrown when the config.yml file is empty.</exception>
     public TextStyler(string? fontPath = null)
     {
         this.fontPath = fontPath;
@@ -84,31 +85,31 @@ public class TextStyler
             numbersStyled = ReadResourceLines(NUMBERS_PATH);
             symbolsStyled = ReadResourceLines(SYMBOLS_PATH);
         }
+        if (config.Chars is null)
+            throw new NullReferenceException("The config.yml file is empty.");
 
-            var alphabetStyledGrouped = alphabetStyled
-                .Select((line, index) => new { line, index })
-                .GroupBy(x => x.index / config.Chars["alphabet"])
-                .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
-                .ToList();
+        var alphabetStyledGrouped = alphabetStyled
+            .Select((line, index) => new { line, index })
+            .GroupBy(x => x.index / config.Chars["alphabet"])
+            .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
+            .ToList();
+        var numbersStyledGrouped = numbersStyled
+            .Select((line, index) => new { line, index })
+            .GroupBy(x => x.index / config.Chars["numbers"])
+            .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
+            .ToList();
+        var symbolsStyledGrouped = symbolsStyled
+            .Select((line, index) => new { line, index })
+            .GroupBy(x => x.index / config.Chars["symbols"])
+            .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
+            .ToList();
 
-            var numbersStyledGrouped = numbersStyled
-                .Select((line, index) => new { line, index })
-                .GroupBy(x => x.index / config.Chars["numbers"])
-                .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
-                .ToList();
-
-            var symbolsStyledGrouped = symbolsStyled
-                .Select((line, index) => new { line, index })
-                .GroupBy(x => x.index / config.Chars["symbols"])
-                .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
-                .ToList();
-
-            for (int i = 0; i < SUPPORTED_ALPHABET.Length; i++)
-                dictionary.Add(SUPPORTED_ALPHABET[i], alphabetStyledGrouped[i]);
-            for (int i = 0; i < SUPPORTED_NUMBERS.Length; i++)
-                dictionary.Add(SUPPORTED_NUMBERS[i], numbersStyledGrouped[i]);
-            for (int i = 0; i < SUPPORTED_SYMBOLS.Length; i++)
-                dictionary.Add(SUPPORTED_SYMBOLS[i], symbolsStyledGrouped[i]);
+        for (int i = 0; i < SUPPORTED_ALPHABET.Length; i++)
+            dictionary.Add(SUPPORTED_ALPHABET[i], alphabetStyledGrouped[i]);
+        for (int i = 0; i < SUPPORTED_NUMBERS.Length; i++)
+            dictionary.Add(SUPPORTED_NUMBERS[i], numbersStyledGrouped[i]);
+        for (int i = 0; i < SUPPORTED_SYMBOLS.Length; i++)
+            dictionary.Add(SUPPORTED_SYMBOLS[i], symbolsStyledGrouped[i]);
     }
     private List<string> ReadResourceLines(string path)
     {
@@ -188,10 +189,13 @@ public class TextStyler
     /// Get the info of the actual style (from the config.yml file).
     /// </summary>
     /// <returns>A string compiling these pieces of information.</returns>
+    /// <exception cref="NullReferenceException">Thrown when the config.yml file is empty.</exception>
     public override string ToString()
     {
         var sb = new StringBuilder();
         sb.AppendLine($"Name: {config.Name}");
+        if(config.Chars is null)
+            throw new NullReferenceException("The config.yml file is empty.");
         foreach (KeyValuePair<string, int> pair in config.Chars)
         {
             sb.AppendLine($"File: {pair.Key}, Height: {pair.Value}");
