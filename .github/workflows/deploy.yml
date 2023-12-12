@@ -17,8 +17,12 @@ jobs:
       with:
         dotnet-version: 7.x
 
-    - run: dotnet tool update -g docfx
-    - run: docfx docs/docfx.json
+    - name: Build
+      run: dotnet build -c Release
+    - name: Install DocFX
+      run: dotnet tool update -g docfx
+    - name: Create docs
+      run: docfx docs/docfx.json
 
     - name: Deploy
       if: github.event_name == 'push'
