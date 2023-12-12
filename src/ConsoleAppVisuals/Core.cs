@@ -5,7 +5,6 @@
 namespace ConsoleAppVisuals;
 /// <summary>
 /// The <see cref="Core"/> class contains all the visual elements for a console app.
-/// Most of the elements are on a low abstraction level.
 /// </summary>
 public static class Core
 {

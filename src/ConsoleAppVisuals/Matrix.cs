@@ -9,110 +9,121 @@ namespace ConsoleAppVisuals;
 public class Matrix<T>
 {
 
-    private List<List<T?>> lines;
-    private string[]? displayArray;
-    private bool roundedCorners = true;
-    /// <summary>
-    /// The natural constructor of the matrix.
-    /// </summary>
-    /// <param name="rawLines">The matrix to be used.</param>
-    /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
-    public Matrix(List<List<T?>>? rawLines = null)
-    {
-        if (rawLines is not null)
-        {
-            lines = rawLines;
-            if (CompatibilityCheck())
-            {
-                BuildMatrix();
-            }
-        }
-        else 
-        {
-            lines = new List<List<T?>>();
-        }
-    }
-    private bool CompatibilityCheck()
-    {
-        if (lines.Count == 0)
-        {
-            throw new ArgumentException("The matrix is empty.");
-        }
-        int firstRowLength = lines[0].Count;
-        for (int i = 1; i < lines.Count; i++)
-        {
-            if (lines[i].Count != firstRowLength)
-            {
-                throw new ArgumentException("The matrix is not compatible.");
-            }
-        }
-        return true;
-    }
-    private void BuildMatrix()
-    {
-        
-        var stringList = new List<string>();
-        var localMax = new int[lines[0].Count]; 
+        #region Fields
+        private List<List<T?>> lines;
+        private string[]? displayArray;
+        private bool roundedCorners = true;
+        #endregion
 
-        for (int i = 0; i < lines.Count; i++)
+
+        #region Constructor
+        /// <summary>
+        /// The natural constructor of the matrix.
+        /// </summary>
+        /// <param name="rawLines">The matrix to be used.</param>
+        /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
+        public Matrix(List<List<T?>>? rawLines = null)
         {
-            for (int j = 0; j < lines[i].Count; j++)
+            if (rawLines is not null)
             {
-                if (lines[i][j]?.ToString()?.Length > localMax[j])
+                lines = rawLines;
+                if (CompatibilityCheck())
                 {
-                    localMax[j] = lines[i][j]?.ToString()?.Length ?? 0;
+                    BuildMatrix();
                 }
             }
-        }
-
-        string border = Corners[0].ToString();
-        for (int i = 0; i < lines[0].Count; i++)
-        {
-            border += new string('─', localMax[i] + 2);
-            border += (i != lines[0].Count - 1) ? "┬" : Corners[1].ToString();
-        }
-        stringList.Add(border);
-
-        var separator = "├";
-        for (int i = 0; i < lines[0].Count; i++)
-        {
-            separator += new string('─', localMax[i] + 2);
-            separator += (i != lines[0].Count - 1) ? "┼" : "┤";
-        }
-        
-
-        for (int i = 0; i < lines.Count; i++)
-        {
-            string line = "│ ";
-            for (int j = 0; j < lines[i].Count; j++)
+            else 
             {
-                line += lines[i][j]?.ToString()?.PadRight(localMax[j]) ?? " ".PadRight(localMax[j]);
-                if (j != lines[i].Count - 1)
-                    line += " │ ";
-                else 
-                    line += " │";
+                lines = new List<List<T?>>();
             }
-            stringList.Add(line);
-            if (i != lines.Count - 1)
-                stringList.Add(separator);
         }
-
-        border = Corners[2].ToString();
-        for (int i = 0; i < lines[0].Count; i++)
+        private bool CompatibilityCheck()
         {
-            border += new string('─', localMax[i] + 2);
-            border += (i != lines[0].Count - 1) ? "┴" : Corners[3].ToString();
+            if (lines.Count == 0)
+            {
+                throw new ArgumentException("The matrix is empty.");
+            }
+            int firstRowLength = lines[0].Count;
+            for (int i = 1; i < lines.Count; i++)
+            {
+                if (lines[i].Count != firstRowLength)
+                {
+                    throw new ArgumentException("The matrix is not compatible.");
+                }
+            }
+            return true;
         }
-        stringList.Add(border);
+        private void BuildMatrix()
+        {
+            
+            var stringList = new List<string>();
+            var localMax = new int[lines[0].Count]; 
+    
+            for (int i = 0; i < lines.Count; i++)
+            {
+                for (int j = 0; j < lines[i].Count; j++)
+                {
+                    if (lines[i][j]?.ToString()?.Length > localMax[j])
+                    {
+                        localMax[j] = lines[i][j]?.ToString()?.Length ?? 0;
+                    }
+                }
+            }
+    
+            string border = Corners[0].ToString();
+            for (int i = 0; i < lines[0].Count; i++)
+            {
+                border += new string('─', localMax[i] + 2);
+                border += (i != lines[0].Count - 1) ? "┬" : Corners[1].ToString();
+            }
+            stringList.Add(border);
+    
+            var separator = "├";
+            for (int i = 0; i < lines[0].Count; i++)
+            {
+                separator += new string('─', localMax[i] + 2);
+                separator += (i != lines[0].Count - 1) ? "┼" : "┤";
+            }
+            
+    
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string line = "│ ";
+                for (int j = 0; j < lines[i].Count; j++)
+                {
+                    line += lines[i][j]?.ToString()?.PadRight(localMax[j]) ?? " ".PadRight(localMax[j]);
+                    if (j != lines[i].Count - 1)
+                        line += " │ ";
+                    else 
+                        line += " │";
+                }
+                stringList.Add(line);
+                if (i != lines.Count - 1)
+                    stringList.Add(separator);
+            }
+    
+            border = Corners[2].ToString();
+            for (int i = 0; i < lines[0].Count; i++)
+            {
+                border += new string('─', localMax[i] + 2);
+                border += (i != lines[0].Count - 1) ? "┴" : Corners[3].ToString();
+            }
+            stringList.Add(border);
+    
+            displayArray = stringList.ToArray();
+            
+        }
+    #endregion
 
-        displayArray = stringList.ToArray();
-        
-    }
+    #region Properties
     private string Corners => roundedCorners ? "╭╮╰╯" : "┌┐└┘";
     /// <summary>
     /// Gets the number of lines in the matrix.
     /// </summary>
     public int Count => lines.Count;
+    #endregion
+
+    #region Methods
     /// <summary>
     /// Gets the element at the specified position.
     /// </summary>
@@ -229,4 +240,5 @@ public class Matrix<T>
             throw new NullReferenceException("The matrix has not been built yet. The matrix cannot be displayed");
         Core.WriteMultiplePositionedLines(placement, negative, line, displayArray);
     }
+    #endregion
 }
