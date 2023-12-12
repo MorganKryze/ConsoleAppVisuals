@@ -343,6 +343,19 @@
             <param name="rawLines">The matrix to be used.</param>
             <exception cref="T:System.ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
         </member>
+        <member name="P:ConsoleAppVisuals.Matrix`1.Count">
+            <summary>
+            Gets the number of lines in the matrix.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.GetElement(ConsoleAppVisuals.Position)">
+            <summary>
+            Gets the element at the specified position.
+            </summary>
+            <param name="position">The position of the element.</param>
+            <returns>The element at the specified position.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
+        </member>
         <member name="M:ConsoleAppVisuals.Matrix`1.SetRoundedCorners(System.Boolean)">
             <summary>
             Toggles the rounded corners of the table.
@@ -360,7 +373,7 @@
             Removes a line from the matrix.
             </summary>
             <param name="index">The index of the line to remove.</param>
-            <exception cref="T:System.IndexOutOfRangeException">Thrown when the index is out of range.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
         </member>
         <member name="M:ConsoleAppVisuals.Matrix`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
             <summary>
@@ -368,7 +381,7 @@
             </summary>
             <param name="index">The index of the line to update.</param>
             <param name="line">The new line.</param>
-            <exception cref="T:System.IndexOutOfRangeException">Thrown when the index is out of range.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
             <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
         </member>
         <member name="M:ConsoleAppVisuals.Matrix`1.Remove(ConsoleAppVisuals.Position)">
@@ -376,7 +389,7 @@
             Removes an element from the matrix.
             </summary>
             <param name="position">The position of the element to remove.</param>
-            <exception cref="T:System.IndexOutOfRangeException">Thrown when the position is out of range.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
         </member>
         <member name="M:ConsoleAppVisuals.Matrix`1.UpdateElement(ConsoleAppVisuals.Position,`0)">
             <summary>
@@ -384,7 +397,7 @@
             </summary>
             <param name="position">The position of the element to update.</param>
             <param name="newElement">The new element.</param>
-            <exception cref="T:System.IndexOutOfRangeException">Thrown when the position is out of range.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
         </member>
         <member name="M:ConsoleAppVisuals.Matrix`1.WriteMatrix(ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32})">
             <summary>
