@@ -1,9 +1,11 @@
 name: Deploy docs
+
 on:
   push:
     branches:
     - main
     - dev
+    
 jobs:
   publish-docs:
     runs-on: ubuntu-latest

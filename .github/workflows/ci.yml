@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     branches:
@@ -7,8 +8,9 @@ on:
   pull_request:
     branches:
     - main
+    
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
