@@ -1,9 +1,6 @@
-# Documentation
-
-> [!TIP]
-> Before doing anything, I recommend you to take a quick lookaround to the [source code](https://github.com/MorganKryze/ConsoleAppVisuals) or the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/api/ConsoleAppVisuals.html).
-
 # Getting started
+
+## Structure
 
 The library is composed of 4 main classes:
 
@@ -15,9 +12,12 @@ ConsoleAppVisuals
 │   └───FontYamlFile.cs
 ├───Core.cs
 ├───Extensions.cs
+├───Matrix.cs
+├───Table.cs
 ├───TextStyler.cs
 └───Usings.cs
 ```
+
 ### Usings.cs
 
 This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library.
@@ -32,10 +32,17 @@ This class contains different extensions methods for strings and tuples.
 
 With Position.cs and Placement.cs, it belongs to the tools classes.
 
-
 ### TextStyler.cs
 
 This class is used to style the text. It contains the methods to apply a specific style to a text. Often used for the title. It may be useful to create your own style.
+
+### Table.cs
+
+This class is used to create a table. It may be useful to display data in a table on the screen.
+
+### Matrix.cs
+
+This class is used to create a matrix. It may be useful to display data in a matrix on the screen.
 
 ### Position.cs
 
