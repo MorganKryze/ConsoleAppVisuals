@@ -15,7 +15,6 @@ public class Matrix<T>
         private bool roundedCorners = true;
         #endregion
 
-
         #region Constructor
         /// <summary>
         /// The natural constructor of the matrix.
