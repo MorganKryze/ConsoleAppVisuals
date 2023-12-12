@@ -9,7 +9,7 @@ namespace ConsoleAppVisuals;
 public class Matrix<T>
 {
 
-    private List<List<T?>> lines = new();
+    private List<List<T?>> lines;
     private string[]? displayArray;
     private bool roundedCorners = true;
     /// <summary>
@@ -27,12 +27,15 @@ public class Matrix<T>
                 BuildMatrix();
             }
         }
+        else 
+        {
+            lines = new List<List<T?>>();
+        }
     }
     private bool CompatibilityCheck()
     {
         if (lines.Count == 0)
         {
-            return false;
             throw new ArgumentException("The matrix is empty.");
         }
         int firstRowLength = lines[0].Count;
@@ -40,7 +43,6 @@ public class Matrix<T>
         {
             if (lines[i].Count != firstRowLength)
             {
-                return false;
                 throw new ArgumentException("The matrix is not compatible.");
             }
         }
@@ -48,8 +50,9 @@ public class Matrix<T>
     }
     private void BuildMatrix()
     {
+        
         var stringList = new List<string>();
-        var localMax = new int[lines[0].Count]; // Assuming rawLines is a List<List<T>> containing the grid data
+        var localMax = new int[lines[0].Count]; 
 
         for (int i = 0; i < lines.Count; i++)
         {
@@ -103,8 +106,27 @@ public class Matrix<T>
         stringList.Add(border);
 
         displayArray = stringList.ToArray();
+        
     }
     private string Corners => roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+    /// <summary>
+    /// Gets the number of lines in the matrix.
+    /// </summary>
+    public int Count => lines.Count;
+    /// <summary>
+    /// Gets the element at the specified position.
+    /// </summary>
+    /// <param name="position">The position of the element.</param>
+    /// <returns>The element at the specified position.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
+    public T? GetElement(Position position)
+    {
+        if (position.X >= lines.Count || position.Y >= lines[position.X].Count)
+        {
+            throw new ArgumentOutOfRangeException("Position is out of range.");
+        }
+        return lines[position.X][position.Y];
+    }
     /// <summary>
     /// Toggles the rounded corners of the table.
     /// </summary>
@@ -139,12 +161,12 @@ public class Matrix<T>
     /// Removes a line from the matrix.
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
-    /// <exception cref="IndexOutOfRangeException">Thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     public void RemoveLine(int index)
     {
         if (index < 0 || index >= lines.Count)
         {
-            throw new IndexOutOfRangeException("Index is out of range.");
+            throw new ArgumentOutOfRangeException("Index is out of range.");
         }
         lines.RemoveAt(index);
         BuildMatrix();
@@ -154,13 +176,13 @@ public class Matrix<T>
     /// </summary>
     /// <param name="index">The index of the line to update.</param>
     /// <param name="line">The new line.</param>
-    /// <exception cref="IndexOutOfRangeException">Thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
     public void UpdateLine(int index, List<T?> line)
     {
         if (index < 0 || index >= lines.Count)
         {
-            throw new IndexOutOfRangeException("Index is out of range.");
+            throw new ArgumentOutOfRangeException("Index is out of range.");
         }
         else if (line.Count != lines[0].Count)
         {
@@ -173,12 +195,12 @@ public class Matrix<T>
     /// Removes an element from the matrix.
     /// </summary>
     /// <param name="position">The position of the element to remove.</param>
-    /// <exception cref="IndexOutOfRangeException">Thrown when the position is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     public void Remove(Position position)
     {
         if (position.X >= lines.Count || position.Y >= lines[position.X].Count)
         {
-            throw new IndexOutOfRangeException("Position is out of range.");
+            throw new ArgumentOutOfRangeException("Position is out of range.");
         }
         lines[position.X][position.Y] = default(T);
         BuildMatrix();
@@ -188,12 +210,12 @@ public class Matrix<T>
     /// </summary>
     /// <param name="position">The position of the element to update.</param>
     /// <param name="newElement">The new element.</param>
-    /// <exception cref="IndexOutOfRangeException">Thrown when the position is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     public void UpdateElement(Position position, T newElement)
     {
         if (position.X >= lines.Count || position.Y >= lines[position.X].Count)
         {
-            throw new IndexOutOfRangeException("Position is out of range.");
+            throw new ArgumentOutOfRangeException("Position is out of range.");
         }
         lines[position.X][position.Y] = newElement;
         BuildMatrix();
