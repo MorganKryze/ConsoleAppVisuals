@@ -85,6 +85,13 @@
             </summary>
             <param name="path">The path of the new styler files.</param>
         </member>
+        <member name="M:ConsoleAppVisuals.Core.StyleText(System.String)">
+            <summary>
+            This method is used to style a string.
+            </summary>
+            <param name="str">The string to style.</param>
+            <returns>The styled string.</returns>
+        </member>
         <member name="M:ConsoleAppVisuals.Core.SetDefaultBanner(System.Nullable{System.ValueTuple{System.String,System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
             <summary>
             This method is used to set the default header and footer.
@@ -213,6 +220,15 @@
             <param name="line">The height of the paragraph.</param>
             <param name="text">The lines of the paragraph.</param>
         </member>
+        <member name="M:ConsoleAppVisuals.Core.WriteMultiplePositionedLines(ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32},System.String[])">
+            <summary> 
+            This method prints a paragraph in the console. 
+            </summary>
+            <param name="placement">The placement of the paragraph.</param>
+            <param name="negative">If true, the paragraph is printed in the negative colors.</param>
+            <param name="line">The height of the paragraph.</param>
+            <param name="text">The lines of the paragraph.</param>
+        </member>
         <member name="M:ConsoleAppVisuals.Core.WritePrompt(System.String,System.String,System.Nullable{System.Int32},System.Boolean)">
             <summary>
             This method prints a message in the console and gets a string written by the user.
@@ -315,6 +331,79 @@
             <param name="banner">The banner tuple.</param>
             <returns>The banner as a string.</returns>
         </member>
+        <member name="T:ConsoleAppVisuals.Matrix`1">
+            <summary>
+            A maxtrix class for the console.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{`0}})">
+            <summary>
+            The natural constructor of the matrix.
+            </summary>
+            <param name="rawLines">The matrix to be used.</param>
+            <exception cref="T:System.ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
+        </member>
+        <member name="P:ConsoleAppVisuals.Matrix`1.Count">
+            <summary>
+            Gets the number of lines in the matrix.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.GetElement(ConsoleAppVisuals.Position)">
+            <summary>
+            Gets the element at the specified position.
+            </summary>
+            <param name="position">The position of the element.</param>
+            <returns>The element at the specified position.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.SetRoundedCorners(System.Boolean)">
+            <summary>
+            Toggles the rounded corners of the table.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.AddLine(System.Collections.Generic.List{`0})">
+            <summary>
+            Adds a line to the matrix.
+            </summary>
+            <param name="line">The line to add.</param>
+            <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.RemoveLine(System.Int32)">
+            <summary>
+            Removes a line from the matrix.
+            </summary>
+            <param name="index">The index of the line to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
+            <summary>
+            Updates a line in the matrix.
+            </summary>
+            <param name="index">The index of the line to update.</param>
+            <param name="line">The new line.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.Remove(ConsoleAppVisuals.Position)">
+            <summary>
+            Removes an element from the matrix.
+            </summary>
+            <param name="position">The position of the element to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.UpdateElement(ConsoleAppVisuals.Position,`0)">
+            <summary>
+            Updates an element in the matrix.
+            </summary>
+            <param name="position">The position of the element to update.</param>
+            <param name="newElement">The new element.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.WriteMatrix(ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Writes the matrix instance to the console.
+            </summary>
+        </member>
         <member name="T:ConsoleAppVisuals.FontYamlFile">
             <summary>
             The <see cref="T:ConsoleAppVisuals.FontYamlFile"/> class defines the structure of a yaml file used to store the height of each character of a font.
@@ -356,14 +445,14 @@
             It could be another string or a console line.
             </summary>
         </member>
-        <member name="F:ConsoleAppVisuals.Placement.Left">
-            <summary>
-            The string is placed at the left of the console.
-            </summary>
-        </member>
         <member name="F:ConsoleAppVisuals.Placement.Center">
             <summary>
             The string is placed at the center of the console. 
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Placement.Left">
+            <summary>
+            The string is placed at the left of the console.
             </summary>
         </member>
         <member name="F:ConsoleAppVisuals.Placement.Right">

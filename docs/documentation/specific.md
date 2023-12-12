@@ -82,6 +82,8 @@ Here is an example of a table of how to use them:
 students.AddLine(new () {"05", "John", "Biology", "95"});
 students.RemoveLine(4);
 students.UpdateLine(3, new () {"04", "Charles", "Computer Science", "55"});
+
+students.Count
 ```
 
 You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the tables.
@@ -119,12 +121,14 @@ Console.ReadKey();
 Here is an example of a matrix of how to use them:
 
 ```csharp
-
 matrix.AddLine(new () {2, 5, 7, 9, 3, 6});
 matrix.RemoveLine(3);
 matrix.UpdateLine(2, new () {3, 6, 8, 9, null, 2});
 matrix.RemoveElement(new Position(2, 2));
 matrix.UpdateElement(new Position(3,1), 7);
+matrix.GetElement(new Position(2,1));
+
+matrix.Count
 ```
 
 You may also use the `SetRoundedCorners` method to set the rounded corners to true or false for the matrix.
