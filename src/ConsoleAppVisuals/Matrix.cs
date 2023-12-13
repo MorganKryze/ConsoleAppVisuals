@@ -17,7 +17,7 @@ public class Matrix<T>
 
         #region Constructor
         /// <summary>
-        /// The natural constructor of the matrix.
+        /// The natural constructor of the <see cref="Matrix{T}"/> class.
         /// </summary>
         /// <param name="rawLines">The matrix to be used.</param>
         /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
