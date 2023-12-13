@@ -4,7 +4,7 @@
 */
 namespace ConsoleAppVisuals;
 /// <summary>
-/// A maxtrix class for the console.
+/// A matrix class for the console.
 /// </summary>
 public class Matrix<T>
 {
