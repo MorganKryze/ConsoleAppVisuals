@@ -16,14 +16,6 @@ public static class Extensions
     /// <param name="position">The placement of the string.</param>
     /// <param name="truncate">If true, the string is truncated if it is too long.</param>
     /// <returns>The built string.</returns>
-	/// <example> 
-	/// The following example shows how to call the <see cref="ResizeString"/> method :
-	/// <code>
-	/// string str = "Hello World";
-	/// string str2 = str.ResizeString(20, Placement.Right, true);
-	/// </code>
-	/// The value of str2 will be "        Hello World".
-	/// </example>
     public static string ResizeString(this string str, int size, Placement position = Placement.Center, bool truncate = true)
 	{
 		int padding = size - str.Length;
@@ -102,6 +94,6 @@ public static class Extensions
     /// This method is used to convert the banner tuple into a string.
     /// </summary>
     /// <param name="banner">The banner tuple.</param>
-    /// <returns>The banner as a string.</returns>
+    /// <returns>Converts the banner to a string.</returns>
     public static string BannerToString(this (string, string, string) banner) => " " + banner.Item1 + banner.Item2.ResizeString(Console.WindowWidth - 2 - banner.Item1.Length - banner.Item3.Length, Placement.Center, true) + banner.Item3 + " ";
 }
