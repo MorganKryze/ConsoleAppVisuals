@@ -96,7 +96,7 @@ public static class Core
     /// </summary>
     /// <param name="header">The default header input.</param>
     /// <param name="footer">The default footer input.</param>
-    [Obsolete("This method is deprecated. Use SetDefaultHeader and SetDefaultFooter instead. This method will be removed in a future release.", true)]
+    [Obsolete("This method is deprecated. Use SetDefaultHeader and SetDefaultFooter instead. This method will be removed at v3.0.0", true)]
     public static void SetDefaultBanner((string, string, string)? header = null, (string, string, string)? footer = null)
     {
         header ??= DefaultHeader;
@@ -292,7 +292,7 @@ public static class Core
     /// <param name="banner">The banner to print.</param>
     /// <param name="header">If true, the banner is printed at the top of the console. If false, the banner is printed at the bottom of the console.</param>
     /// <param name="continuous">If true, the title is not continuously printed.</param>
-    [Obsolete("This method is deprecated. Use WriteHeader and WriteFooter instead. This method will be removed in a future release.", true)]
+    [Obsolete("This method is deprecated. Use WriteHeader and WriteFooter instead. This method will be removed at v3.0.0", true)]
     public static void WriteBanner(bool header = true, bool continuous = true, (string, string, string)? banner = null)
 	{
         (string, string, string) _banner = banner ?? (header ? DefaultHeader : DefaultFooter); // If banner is null, _banner is set to the default header or footer.
@@ -338,7 +338,7 @@ public static class Core
     /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
-    [Obsolete("This method is deprecated. Use WriteParagraph with the placement attribute instead. This method will be removed in a future release.", true)]
+    [Obsolete("This method is deprecated. Use WriteMultiplePositionedLines with the placement attribute instead. This method will be removed at v3.0.0", true)]
     public static void WriteParagraph(bool negative = false, int? line = null, params string[] text)
 	{
         line ??= ContentHeight;
