@@ -6,6 +6,7 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Enum for the output of the scrolling menus.
 /// </summary>
+/// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
 public enum Output
 {
     /// <summary>

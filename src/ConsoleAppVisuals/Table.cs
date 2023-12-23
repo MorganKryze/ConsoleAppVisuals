@@ -10,7 +10,7 @@ public class Table<T>
 {
     #region Fields
     private readonly List<string>? rawHeaders;
-    private List<List<T>>? rawLines;
+    private readonly List<List<T>>? rawLines;
     private string[]? displayArray;
     private bool roundedCorners = true;
     #endregion
@@ -23,6 +23,7 @@ public class Table<T>
     /// <param name="headers">The headers of the table.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public Table( List<string>? headers = null, List<List<T>>? lines = null)
     {
         rawHeaders = headers;
@@ -32,26 +33,59 @@ public class Table<T>
     }
     private bool CompatibilityCheck()
     {
-        if (rawHeaders is null && rawLines is null)
-            return false;
-        else if (rawHeaders is null && rawLines is not null)
+        if (rawHeaders is null)
         {
-            for (int i = 0; i < rawLines.Count; i++)
-                if (rawLines[i].Count != rawLines[0].Count)
-                    throw new ArgumentException("The number of columns in the table is not consistent.");
-            return true;
+            return CheckRawLines();
         }
-        else if (rawHeaders is not null && rawLines is null)
-            throw new NullReferenceException("No body lines were provided.");
-        else if (rawHeaders is not null && rawLines is not null)
+        else if (rawLines is null)
         {
-            for (int i = 0; i < rawLines.Count; i++)
-                if (rawLines[i].Count != rawHeaders.Count)
-                    throw new ArgumentException("The number of columns in the table is not consistent(Headers or Lines).");
-            return true;
+            throw new InvalidOperationException("No body lines were provided.");
         }
         else
+        {
+            return CheckRawHeadersAndLines();
+        }
+    }
+
+    private bool CheckRawLines()
+    {
+        if (rawLines is null || rawLines.Count == 0)
+        {
             return false;
+        }
+
+        for (int i = 0; i < rawLines.Count; i++)
+        {
+            if (rawLines[i].Count != rawLines[0].Count)
+            {
+                throw new ArgumentException("The number of columns in the table is not consistent.");
+            }
+        }
+
+        return true;
+    }
+
+    private bool CheckRawHeadersAndLines()
+    {
+        if (rawLines is null || rawLines.Count == 0)
+        {
+            return false;
+        }
+
+        if (rawLines.Count > 0)
+        {
+            for (int i = 0; i < rawLines.Count; i++)
+            {
+                if (rawLines[i].Count != rawHeaders?.Count)
+                {
+                    throw new ArgumentException("The number of columns in the table is not consistent(Headers or Lines).");
+                }
+            }
+
+            return true;
+        }
+
+        return false;
     }
     private void BuildTable()
     {
@@ -153,6 +187,7 @@ public class Table<T>
     /// <summary>
     /// Toggles the rounded corners of the table.
     /// </summary>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void SetRoundedCorners(bool value = true)
     {
         roundedCorners = value;
@@ -168,12 +203,12 @@ public class Table<T>
     /// <param name="index">The index of the line to return.</param>
     /// <returns>The line at the specified index.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public List<T> GetLine(int index)
     {
-        if (rawLines?.Count > 0)
+        if (index < 0 || index >= rawLines?.Count)
         {
-            if (index < 0 || index >= rawLines?.Count)
-                throw new ArgumentOutOfRangeException("The index is out of range.");
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
         }
         return rawLines![index];
     }
@@ -182,11 +217,12 @@ public class Table<T>
     /// </summary>
     /// <param name="line">The line to add.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void AddLine(List<T> line)
     {
         if (rawLines?.Count > 0)
         {
-            if (line.Count != rawLines?[0].Count)
+            if (line.Count != rawLines[0].Count)
                 throw new ArgumentException("The number of columns in the table is not consistent.");
         }
         else
@@ -198,13 +234,12 @@ public class Table<T>
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void RemoveLine(int index)
     {
-        if (rawLines?.Count > 0)
-        {
-            if (index < 0 || index >= rawLines?.Count)
-                throw new ArgumentOutOfRangeException("The index is out of range.");
-        }
+        if (rawLines?.Count > 0 && (index < 0 || index >= rawLines.Count))
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
+        
         rawLines?.RemoveAt(index);
         BuildTable();
     }
@@ -215,12 +250,13 @@ public class Table<T>
     /// <param name="line">The new line.</param>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void UpdateLine(int index, List<T> line)
     {
         if (rawLines?.Count > 0)
         {
-            if (index < 0 || index >= rawLines?.Count)
-                throw new ArgumentOutOfRangeException("The index is out of range.");
+            if (index < 0 || index >= rawLines.Count)
+                throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
             if (line.Count != rawHeaders?.Count)
                 throw new ArgumentException("The number of columns in the table is not consistent.");
         }
@@ -231,13 +267,14 @@ public class Table<T>
 
     #region Methods
     /// <summary>
-    /// This method displays the table and allows the user to select, delete a line or to ecape.
+    /// This method displays the table and allows the user to select, delete a line or to escape.
     /// </summary>
     /// <param name="excludeHeader">If true, the header will not be selectable.</param>
     /// <param name="excludeFooter">If true, the footer will not be selectable.</param>
     /// <param name="footerText">The text to display in the footer when selected.</param>
     /// <param name="line">The start line to display the table on.</param>
     /// <returns>A tuple containing the status of the selection (Output.Exit : pressed escape, Output.Select : pressed enter) and the index of the selection.</returns>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public (Output,int) ScrollingTableSelector(bool excludeHeader = true, bool excludeFooter = true, string? footerText = null, int? line = null)
     {
         line ??= Core.ContentHeight;

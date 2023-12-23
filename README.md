@@ -6,7 +6,7 @@ This library allows you to add visuals to your console app like this:
 
 ![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation.gif)
 
-## Installation
+## Install
 
 You can install this library with NuGet.
 
@@ -26,4 +26,4 @@ The main class you will use is the `Core` class where you will find all the meth
 
 ## License
 
-Distributed under the MIT License. See [`LICENSE.md`](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE) for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE) for more information.

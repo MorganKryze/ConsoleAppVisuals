@@ -7,7 +7,7 @@ The `ScrollingMenuSelector` is a special block that allows you to display a menu
 ```csharp
 Core.WriteFullScreen("Example", true);
 
-Core.ScrollingMenuSelector("New question asked ?", default, default, "Option 1", "Option 2", "Option 3");
+Core.ScrollingMenuSelector("New question asked ?", 0, Placement.Center, null, "Option 1", "Option 2", "Option 3");
 
 Console.ReadKey();
 ```
