@@ -17,17 +17,11 @@ public static class Core
     private static (ConsoleColor, ConsoleColor) s_colorPanel = (ConsoleColor.White, ConsoleColor.Black);
     private static (ConsoleColor, ConsoleColor) s_initialColorPanel = (s_colorPanel.Item1, s_colorPanel.Item2);
     private static (ConsoleColor, ConsoleColor) s_terminalColorPanel = (Console.ForegroundColor, Console.BackgroundColor);
+    private static (string, string, string) defaultHeader = ("Header Left", "Header Center", "Header Right");
+    private static (string, string, string) defaultFooter = ("Footer Left", "Footer Center", "Footer Right");
     #endregion
 
     #region Properties
-    /// <summary>
-    /// This property is used to get and set the default header.
-    /// </summary>
-    private static (string, string, string) DefaultHeader = ("Header Left", "Header Center", "Header Right");
-    /// <summary>
-    /// This property is used to get and set the default footer.
-    /// </summary>
-    private static (string, string, string) DefaultFooter = ("Footer Left", "Footer Center", "Footer Right");
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
@@ -68,17 +62,20 @@ public static class Core
     /// This method changes the font color of the console.
     /// </summary>
     /// <param name="color">The new font color.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void ChangeForeground(ConsoleColor color) => s_colorPanel.Item1 = color;
     /// <summary>
     /// This method changes the background color of the console.
     /// </summary>
     /// <param name="color">The new background color.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void ChangeBackground(ConsoleColor color) => s_colorPanel.Item2 = color;
     /// <summary>
     /// This method is used to set the title of the console.
     /// </summary>
     /// <param name="str">The title input.</param>
     /// <param name="margin">The upper and lower margin of the title.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void SetTitle(string str, int margin = 1) => s_title = (s_styler.StyleTextToStringArray(str), margin);
     /// <summary>
     /// This method is used to set a new styler for the application.
@@ -90,6 +87,7 @@ public static class Core
     /// </summary>
     /// <param name="str">The string to style.</param>
     /// <returns>The styled string.</returns>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static string[] StyleText(string str) => s_styler.StyleTextToStringArray(str);
     /// <summary>
     /// This method is used to set the default header and footer.
@@ -99,10 +97,10 @@ public static class Core
     [Obsolete("This method is deprecated. Use SetDefaultHeader and SetDefaultFooter instead. This method will be removed at v3.0.0", true)]
     public static void SetDefaultBanner((string, string, string)? header = null, (string, string, string)? footer = null)
     {
-        header ??= DefaultHeader;
-        footer ??= DefaultFooter;
-        DefaultHeader = header ?? DefaultHeader;
-        DefaultFooter = footer ?? DefaultFooter;
+        header ??= defaultHeader;
+        footer ??= defaultFooter;
+        defaultHeader = header ?? defaultHeader;
+        defaultFooter = footer ?? defaultFooter;
     }
     /// <summary>
     /// This method is used to set the default header.
@@ -110,19 +108,22 @@ public static class Core
     /// <param name="left">The default header left input.</param>
     /// <param name="center">The default header center input.</param>
     /// <param name="right">The default header right input.</param>
-    public static void SetDefaultHeader(string left, string center, string right) => DefaultHeader = (left, center, right);
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    public static void SetDefaultHeader(string left, string center, string right) => defaultHeader = (left, center, right);
     /// <summary>
     /// This method is used to set the default footer.
     /// </summary>
     /// <param name="left">The default footer left input.</param>
     /// <param name="center">The default footer center input.</param>
     /// <param name="right">The default footer right input.</param>
-    public static void SetDefaultFooter(string left, string center, string right) => DefaultFooter = (left, center, right);
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    public static void SetDefaultFooter(string left, string center, string right) => defaultFooter = (left, center, right);
     /// <summary>
     /// This method changes the font and background colors of the console in order to apply
     /// a negative to highlight the text or not.
     /// </summary>
     /// <param name="negative">If true, the text is highlighted.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void ApplyNegative(bool negative = false)
     {
         Console.ForegroundColor = negative ? s_colorPanel.Item2 : s_colorPanel.Item1;
@@ -131,6 +132,7 @@ public static class Core
     /// <summary>
     /// This method is used to update the screen display if it has encountered a change.
     /// </summary>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void UpdateScreen()
     {
         if (IsScreenUpdated) {
@@ -155,6 +157,7 @@ public static class Core
     /// </summary>
     /// <param name="line">The index of the first line to clear.</param>
     /// <param name="length">The number of lines to clear.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void ClearMultipleLines(int? line, int? length)
     {
         line ??= Console.CursorTop;
@@ -166,6 +169,7 @@ public static class Core
     /// <summary>
     /// This method clears the console EXCEPT the header and above, and the footer and below
     /// </summary>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void ClearContent()
     {
         for (int i = ContentHeight - 1; i < FooterHeight; i++)
@@ -193,6 +197,7 @@ public static class Core
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <param name="line">The line where the string is written in the console. If null, will be written where the cursor is.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WritePositionedString(string str, Placement position = Placement.Center, bool negative = false, int? line = null, bool writeLine = false)
 	{
         ApplyNegative(negative);
@@ -230,18 +235,19 @@ public static class Core
     /// <param name="length">The length of the string. If null, the length is the window width.</param>
     /// <param name="position">The position of the string in the console.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
-    public static void WriteContinuousString(string str, int? line, bool negative = false, int printTime = 2000, int additionalTime = 1000, int? length = null, Placement position = Placement.Center, bool writeLine = false)
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    public static void WriteContinuousString(string str, int? line, bool negative = false, int printTime = 2000, int additionalTime = 1000, int length = -1, Placement position = Placement.Center, bool writeLine = false)
     {
         line ??= Console.CursorTop;
-        length ??= Console.WindowWidth;
-        int timeInterval = (int)(printTime / str.Length);
+        length = length == -1 ? Console.WindowWidth : length;
+        int timeInterval = printTime / str.Length;
         for (int i = 0; i <= str.Length; i++)
         {
-            string continuous = "";
+            StringBuilder continuous = new StringBuilder();
             for(int j = 0; j < i; j++) 
-                continuous += str[j];
-            continuous = continuous.PadRight(str.Length);
-            WritePositionedString(continuous.ResizeString((int)length, position, default), position, negative, line, writeLine);
+                continuous.Append(str[j]);
+            string continuousStr = continuous.ToString().PadRight(str.Length);
+            WritePositionedString(continuousStr.ResizeString(length, position, default), position, negative, line, writeLine);
             Thread.Sleep(timeInterval);
 
             if(Console.KeyAvailable)
@@ -254,7 +260,7 @@ public static class Core
                 }
             }
         }
-        WritePositionedString(str.ResizeString(length ?? str.Length, position, default), position, negative, line);
+        WritePositionedString(str.ResizeString(length, position, default), position, negative, line);
         Thread.Sleep(additionalTime);
     }
     /// <summary>
@@ -266,6 +272,7 @@ public static class Core
     /// <param name="margin">The upper and lower margin.</param>
     /// <param name="position">The position of the string in the console.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WritePositionedStyledText(string[]? text = null, int? line = null, int? width = null, int? margin = null, Placement position = Placement.Center, bool negative = false)
     {
         line ??= ContentHeight;
@@ -285,6 +292,7 @@ public static class Core
     /// <summary> 
     /// This method prints the title in the console. 
     /// </summary>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteTitle() => WritePositionedStyledText(s_title.Item1, 0, Console.WindowWidth, s_title.Item2, Placement.Center, false);
     /// <summary> 
     /// This method prints a banner in the console. 
@@ -295,7 +303,7 @@ public static class Core
     [Obsolete("This method is deprecated. Use WriteHeader and WriteFooter instead. This method will be removed at v3.0.0", true)]
     public static void WriteBanner(bool header = true, bool continuous = true, (string, string, string)? banner = null)
 	{
-        (string, string, string) _banner = banner ?? (header ? DefaultHeader : DefaultFooter); // If banner is null, _banner is set to the default header or footer.
+        (string, string, string) _banner = banner ?? (header ? defaultHeader : defaultFooter); // If banner is null, _banner is set to the default header or footer.
 		ApplyNegative(true);
         if (continuous) 
 		    WriteContinuousString(_banner.BannerToString(), header ? HeaderHeight : FooterHeight, true);
@@ -308,9 +316,10 @@ public static class Core
     /// </summary>
     /// <param name="continuous">If true, the header is not continuously printed.</param>
     /// <param name="header">The header to print.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteHeader(bool continuous = true, (string, string, string)? header = null)
     {
-        (string, string, string) _banner = header ?? DefaultHeader;
+        (string, string, string) _banner = header ?? defaultHeader;
         ApplyNegative(true);
         if (continuous) 
 		    WriteContinuousString(_banner.BannerToString(), HeaderHeight, true);
@@ -323,9 +332,10 @@ public static class Core
     /// </summary>
     /// <param name="continuous">If true, the footer is not continuously printed.</param>
     /// <param name="footer">The footer to print.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteFooter(bool continuous = true, (string, string, string)? footer = null)
     {
-        (string, string, string) _banner = footer ?? DefaultFooter;
+        (string, string, string) _banner = footer ?? defaultFooter;
         ApplyNegative(true);
         if (continuous) 
             WriteContinuousString(_banner.BannerToString(), FooterHeight, true);
@@ -359,6 +369,7 @@ public static class Core
     /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteMultiplePositionedLines(Placement placement = Placement.Center , bool negative = false, int? line = null, params string[] text)
 	{
         line ??= ContentHeight;
@@ -380,6 +391,7 @@ public static class Core
     /// <param name="line">The line where the message will be printed.</param>
     /// <param name="continuous">If true, the message is not continuously printed.</param>
     /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Select : pressed enter) and the string written by the user.</returns>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static (Output,string) WritePrompt(string message, string? defaultValue = null, int? line = null, bool continuous = true)
     {
         line ??= ContentHeight;
@@ -415,67 +427,111 @@ public static class Core
     /// <param name="line">The line where the menu is printed.</param>
     /// <param name="choices">The choices of the menu.</param>
     /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the index of the choice of the user.</returns>
-    public static (Output, int) ScrollingMenuSelector(string question, int? defaultIndex = null, int? line = null, params string[] choices)
+    [Obsolete("This method is deprecated. Use ScrollingMenuSelector with the placement attribute instead. This method will be removed at v3.0.0", true)]
+    public static (Output, int) ScrollingMenuSelector(string question, int defaultIndex = 0, int? line = null, params string[] choices)
     {
-        int valueOrDefault = line.GetValueOrDefault();
-        if (!line.HasValue)
-        {
-            valueOrDefault = ContentHeight;
-            line = valueOrDefault;
-        }
-        
+        line ??= ContentHeight;
+        line = Math.Clamp(line.Value, ContentHeight, FooterHeight - choices.Length - 2);
+        defaultIndex = Math.Clamp(defaultIndex, 0, choices.Length - 1);
 
-        int num = defaultIndex ??= 0;
         int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
         for (int i = 0; i < choices.Length; i++)
         {
             choices[i] = choices[i].PadRight(totalWidth);
         }
 
-        WriteContinuousString(question, line, negative: false, 1500, 50);
+        WriteContinuousString(question, line, false, 1500, 50);
         int lineChoice = line.Value + 2;
         while (true)
         {
             string[] array = new string[choices.Length];
-            for (int j = 0; j < choices.Length; j++)
+            for (int i = 0; i < choices.Length; i++)
             {
-                if (j == num)
-                {
-                    array[j] = $" {s_selector.Item1} " + choices[j] + "  ";
-                    WritePositionedString(array[j], Placement.Center, negative: true, lineChoice + j);
-                }
-                else
-                {
-                    array[j] = "   " + choices[j] + "  ";
-                    WritePositionedString(array[j], Placement.Center, negative: false, lineChoice + j);
-                }
+                array[i] = (i == defaultIndex)
+                    ? $" {s_selector.Item1} {choices[i]}  "
+                    : $"   {choices[i]}  ";
+                WritePositionedString(array[i], Placement.Center, i == defaultIndex, lineChoice + i);
             }
 
             switch (Console.ReadKey(intercept: true).Key)
             {
-                case ConsoleKey.UpArrow: case ConsoleKey.Z:
-                    if (num == 0)
-                        num = choices.Length - 1;
-                    else if (num > 0)
-                        num--;
-
+                case ConsoleKey.UpArrow:
+                case ConsoleKey.Z:
+                    defaultIndex = (defaultIndex == 0) ? choices.Length - 1 : defaultIndex - 1;
                     break;
-                case ConsoleKey.DownArrow: case ConsoleKey.S:
-                    if (num == choices.Length - 1)
-                        num = 0;
-                    else if (num < choices.Length - 1)
-                        num++;
-
+                case ConsoleKey.DownArrow:
+                case ConsoleKey.S:
+                    defaultIndex = (defaultIndex == choices.Length - 1) ? 0 : defaultIndex + 1;
                     break;
                 case ConsoleKey.Enter:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return (Output.Select, num);
+                    return (Output.Select, defaultIndex);
                 case ConsoleKey.Escape:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return (Output.Exit, num);
+                    return (Output.Exit, defaultIndex);
                 case ConsoleKey.Backspace:
                     ClearMultipleLines(line, choices.Length + 2);
-                    return (Output.Delete, num);
+                    return (Output.Delete, defaultIndex);
+            }
+        }
+    }
+    /// <summary>
+    /// This method prints a menu in the console and gets the choice of the user.
+    /// </summary>
+    /// <param name="question">The question to print.</param>
+    /// <param name="defaultIndex">The default index of the menu.</param>
+    /// <param name="placement">The placement of the menu.</param>
+    /// <param name="line">The line where the menu is printed.</param>
+    /// <param name="choices">The choices of the menu.</param>
+    /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the index of the choice of the user.</returns>
+    public static (Output, int) ScrollingMenuSelector(string question, int defaultIndex = 0, Placement placement = Placement.Center, int? line = null, params string[] choices)
+    {
+        line ??= ContentHeight;
+        line = Math.Clamp(line.Value, ContentHeight, FooterHeight - choices.Length - 2);
+        defaultIndex = Math.Clamp(defaultIndex, 0, choices.Length - 1);
+        ApplySameWidth(choices);
+
+        WriteContinuousString(question, line, false, 1500, 50);
+        int lineChoice = line.Value + 2;
+        while (true)
+        {
+            string[] array = new string[choices.Length];
+            for (int i = 0; i < choices.Length; i++)
+            {
+                array[i] = (i == defaultIndex)
+                    ? $" {s_selector.Item1} {choices[i]}  "
+                    : $"   {choices[i]}  ";
+                WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
+            }
+
+            switch (Console.ReadKey(intercept: true).Key)
+            {
+                case ConsoleKey.UpArrow:
+                case ConsoleKey.Z:
+                    defaultIndex = (defaultIndex == 0) ? choices.Length - 1 : defaultIndex - 1;
+                    break;
+                case ConsoleKey.DownArrow:
+                case ConsoleKey.S:
+                    defaultIndex = (defaultIndex == choices.Length - 1) ? 0 : defaultIndex + 1;
+                    break;
+                case ConsoleKey.Enter:
+                    ClearMultipleLines(line, choices.Length + 2);
+                    return (Output.Select, defaultIndex);
+                case ConsoleKey.Escape:
+                    ClearMultipleLines(line, choices.Length + 2);
+                    return (Output.Exit, defaultIndex);
+                case ConsoleKey.Backspace:
+                    ClearMultipleLines(line, choices.Length + 2);
+                    return (Output.Delete, defaultIndex);
+            }
+        }
+
+        static void ApplySameWidth(string[] choices)
+        {
+            int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
+            for (int i = 0; i < choices.Length; i++)
+            {
+                choices[i] = choices[i].PadRight(totalWidth);
             }
         }
     }
@@ -489,6 +545,7 @@ public static class Core
     /// <param name="step">The step of the number.</param>
     /// <param name="line">The line where the menu is printed.</param>
     /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the number chosen by the user.</returns>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static (Output, float) ScrollingNumberSelector(string question, float min, float max, float start = 0,float step = 100, int? line = null)
     {
         line ??= ContentHeight;
@@ -532,6 +589,7 @@ public static class Core
     /// </summary>
     /// <param name="message">The message to print.</param>
     /// <param name="line">The line where the message will be printed.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void LoadingBar(string message = "[ Loading... ]", int? line = null)
     {
         line ??= ContentHeight;
@@ -581,8 +639,8 @@ public static class Core
     /// <param name="footer">The footer of the screen.</param>
     public static void WriteFullScreen(string? title = null, bool continuous = false, (string, string, string)? header = null, (string, string, string)? footer = null)
     {
-        header ??= DefaultHeader;
-        footer ??= DefaultFooter;
+        header ??= defaultHeader;
+        footer ??= defaultFooter;
         Console.CursorVisible = false;
         Console.Clear();
         if (title is not null)
@@ -600,6 +658,7 @@ public static class Core
     /// This method exits the program. 
     /// </summary>
     /// <param name="message">The message to print on the exit of the program.</param>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void ExitProgram(string message = "[ Exiting the program... ]")
     {
         ClearContent();

@@ -2,9 +2,9 @@
 
 namespace example
 {
-    class Program
+    public static class Program
     {
-        static void Main()
+        private static void Main()
         {
             Console.Clear();
             Console.CursorVisible = false;
@@ -22,8 +22,9 @@ namespace example
 
             Menu:
 
-            var index = Core.ScrollingMenuSelector("What will be your next action?", default, default, 
+            var index = Core.ScrollingMenuSelector("What will be your next action?", 0,  Placement.Center, null,
             "Change Console color",
+            "Write on the console",
             "Display paragraph", 
             "Display a styled text", 
             "Display a matrix",
@@ -39,30 +40,27 @@ namespace example
                     {
                         case 0:
                             Core.UpdateScreen();
-                            var indexColor = Core.ScrollingMenuSelector("What color do you want to change?", default, default, "White", "Gray", "Red", "Green", "Blue", "Yellow", "Magenta", "Cyan");
+                            var indexColor = Core.ScrollingMenuSelector("What color do you want to change?", 0, Placement.Center, default, "White", "Red", "Green", "Blue", "Yellow", "Magenta", "Cyan");
                             switch(indexColor.Item2){
                                 case 0:
                                     Core.ChangeForeground(ConsoleColor.White);
                                     break;
                                 case 1:
-                                    Core.ChangeForeground(ConsoleColor.Gray);
-                                    break;
-                                case 2:
                                     Core.ChangeForeground(ConsoleColor.Red);
                                     break;
-                                case 3:
+                                case 2:
                                     Core.ChangeForeground(ConsoleColor.Green);
                                     break;
-                                case 4:
+                                case 3:
                                     Core.ChangeForeground(ConsoleColor.Blue);
                                     break;
-                                case 5:
+                                case 4:
                                     Core.ChangeForeground(ConsoleColor.Yellow);
                                     break;
-                                case 6:
+                                case 5:
                                     Core.ChangeForeground(ConsoleColor.Magenta);
                                     break;
-                                case 7:
+                                case 6:
                                     Core.ChangeForeground(ConsoleColor.Cyan);
                                     break;
                                 default:
@@ -70,8 +68,19 @@ namespace example
                             }
                             Core.ClearContent();
                             break;
-
                         case 1:
+                            Core.UpdateScreen();
+                            Core.WriteContinuousString("Have a look on the console to see all the text!", Core.ContentHeight, true, 1500, 1000, default, default, true);
+                            Core.WritePositionedString("Bonjour le monde !", Placement.Left, false, Core.ContentHeight + 1, true);
+                            Core.WritePositionedString("Hola Mundo !", Placement.Right, false, Core.ContentHeight + 2, true);
+                            Core.WritePositionedString("Hallo Welt !", Placement.Center, false, Core.ContentHeight + 3, true);
+                            Core.WritePositionedString("Ciao mondo !", Placement.Left, false, Core.ContentHeight + 4, true);
+
+                            Console.ReadKey();
+                            Core.ClearContent();
+                            break;
+
+                        case 2:
                             Core.UpdateScreen();
 
                             Core.WriteMultiplePositionedLines(default, default, default, "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,","lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),"," and component-oriented programming disciplines.", "", "Press [Enter] to continue...");
@@ -80,7 +89,7 @@ namespace example
                             Core.ClearContent();
                             break;
 
-                        case 2:
+                        case 3:
                             Core.UpdateScreen();
 
                             Core.WritePositionedStyledText(Core.StyleText("Hello World!"));
@@ -94,7 +103,7 @@ namespace example
                             Core.ClearContent();
                             break;
 
-                        case 3:
+                        case 4:
                             Core.UpdateScreen();
 
                             List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
@@ -124,7 +133,7 @@ namespace example
                             Core.ClearContent();
                             break;
 
-                        case 4:
+                        case 5:
                             Core.UpdateScreen();
 
                             var answerPrompt = Core.WritePrompt("Hey! What is your name?", "Theo");
@@ -132,7 +141,7 @@ namespace example
 
                             Core.ClearContent();
                             break;
-                        case 5:
+                        case 6:
                             Core.UpdateScreen();
 
                             var answerNumber = Core.ScrollingNumberSelector("Select a number", 10, 50, 25, 5);
@@ -140,7 +149,7 @@ namespace example
 
                             Core.ClearContent();
                             break;
-                        case 6:
+                        case 7:
                             Core.UpdateScreen();
 
                             List<string> headers = new () {"id", "name", "major", "grades"};

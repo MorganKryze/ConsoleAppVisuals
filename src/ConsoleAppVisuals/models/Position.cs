@@ -6,17 +6,18 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// A class that stores the position into X and Y parameters of a position.
 /// </summary>
+/// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
 public struct Position : IEquatable<Position>
 {
     #region Attributes
     /// <summary>
     /// The x coordinate of the position.
     /// </summary>
-    public int X;
+    public int X { get; set; }
     /// <summary>
     /// The y coordinate of the position.
     /// </summary>
-    public int Y;
+    public int Y { get; set; }
     #endregion
 
     #region Constructors
