@@ -10,7 +10,7 @@ namespace testing
         [TestMethod]
         public void TestNullBody()
         {
-            Assert.ThrowsException<NullReferenceException>(() =>
+            Assert.ThrowsException<InvalidOperationException>(() =>
             {
                 Table<string> table = new (new List<string>(), null);
             });
