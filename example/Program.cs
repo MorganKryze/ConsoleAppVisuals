@@ -85,7 +85,8 @@ namespace example
                                     break;
                             }
                             Core.ClearContent();
-                            break;
+                            goto Menu;
+
                         case 1:
                             Core.UpdateScreen();
                             Core.WriteContinuousString(
@@ -129,7 +130,7 @@ namespace example
 
                             Console.ReadKey();
                             Core.ClearContent();
-                            break;
+                            goto Menu;
 
                         case 2:
                             Core.UpdateScreen();
@@ -147,7 +148,7 @@ namespace example
 
                             Console.ReadKey();
                             Core.ClearContent();
-                            break;
+                            goto Menu;
 
                         case 3:
                             Core.UpdateScreen();
@@ -161,7 +162,7 @@ namespace example
 
                             Console.ReadKey();
                             Core.ClearContent();
-                            break;
+                            goto Menu;
 
                         case 4:
                             Core.UpdateScreen();
@@ -192,7 +193,7 @@ namespace example
 
                             Console.ReadKey();
                             Core.ClearContent();
-                            break;
+                            goto Menu;
 
                         case 5:
                             Core.UpdateScreen();
@@ -201,7 +202,7 @@ namespace example
                             string name = answerPrompt.Item2;
 
                             Core.ClearContent();
-                            break;
+                            goto Menu;
                         case 6:
                             Core.UpdateScreen();
 
@@ -215,7 +216,7 @@ namespace example
                             float number = answerNumber.Item2;
 
                             Core.ClearContent();
-                            break;
+                            goto Menu;
                         case 7:
                             Core.UpdateScreen();
 
@@ -235,7 +236,7 @@ namespace example
                             students.ScrollingTableSelector(true, true);
 
                             Core.ClearContent();
-                            break;
+                            goto Menu;
 
                         default:
                             Core.ClearContent();
@@ -278,7 +279,6 @@ namespace example
                 default:
                     break;
             }
-            goto Menu;
         }
 
         public static void Debugging()
