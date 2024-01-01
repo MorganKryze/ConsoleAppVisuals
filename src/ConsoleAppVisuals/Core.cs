@@ -123,26 +123,6 @@ public static class Core
     public static string[] StyleText(string str) => s_styler.StyleTextToStringArray(str);
 
     /// <summary>
-    /// This method is used to set the default header and footer.
-    /// </summary>
-    /// <param name="header">The default header input.</param>
-    /// <param name="footer">The default footer input.</param>
-    [Obsolete(
-        "This method is deprecated. Use SetDefaultHeader and SetDefaultFooter instead. This method will be removed at v3.0.0",
-        true
-    )]
-    public static void SetDefaultBanner(
-        (string, string, string)? header = null,
-        (string, string, string)? footer = null
-    )
-    {
-        header ??= defaultHeader;
-        footer ??= defaultFooter;
-        defaultHeader = header ?? defaultHeader;
-        defaultFooter = footer ?? defaultFooter;
-    }
-
-    /// <summary>
     /// This method is used to set the default header.
     /// </summary>
     /// <param name="left">The default header left input.</param>
@@ -407,40 +387,6 @@ public static class Core
         );
 
     /// <summary>
-    /// This method prints a banner in the console.
-    /// </summary>
-    /// <param name="banner">The banner to print.</param>
-    /// <param name="header">If true, the banner is printed at the top of the console. If false, the banner is printed at the bottom of the console.</param>
-    /// <param name="continuous">If true, the title is not continuously printed.</param>
-    [Obsolete(
-        "This method is deprecated. Use WriteHeader and WriteFooter instead. This method will be removed at v3.0.0",
-        true
-    )]
-    public static void WriteBanner(
-        bool header = true,
-        bool continuous = true,
-        (string, string, string)? banner = null
-    )
-    {
-        (string, string, string) _banner = banner ?? (header ? defaultHeader : defaultFooter); // If banner is null, _banner is set to the default header or footer.
-        ApplyNegative(true);
-        if (continuous)
-            WriteContinuousString(
-                _banner.BannerToString(),
-                header ? HeaderHeight : FooterHeight,
-                true
-            );
-        else
-            WritePositionedString(
-                _banner.BannerToString(),
-                default,
-                true,
-                header ? HeaderHeight : FooterHeight
-            );
-        ApplyNegative(default);
-    }
-
-    /// <summary>
     /// This method prints a header in the console.
     /// </summary>
     /// <param name="continuous">If true, the header is not continuously printed.</param>
@@ -471,35 +417,6 @@ public static class Core
             WriteContinuousString(_banner.BannerToString(), FooterHeight, true);
         else
             WritePositionedString(_banner.BannerToString(), default, true, FooterHeight);
-    }
-
-    /// <summary>
-    /// This method prints a paragraph in the console.
-    /// </summary>
-    /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
-    /// <param name="line">The height of the paragraph.</param>
-    /// <param name="text">The lines of the paragraph.</param>
-    [Obsolete(
-        "This method is deprecated. Use WriteMultiplePositionedLines with the placement attribute instead. This method will be removed at v3.0.0",
-        true
-    )]
-    public static void WriteParagraph(bool negative = false, int? line = null, params string[] text)
-    {
-        line ??= ContentHeight;
-        ApplyNegative(negative);
-        int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
-        foreach (string str in text)
-        {
-            WritePositionedString(
-                str.ResizeString(maxLength, Placement.Center),
-                Placement.Center,
-                negative,
-                line++
-            );
-            if (line >= Console.WindowHeight - 1)
-                break;
-        }
-        ApplyNegative(default);
     }
 
     /// <summary>
@@ -582,81 +499,6 @@ public static class Core
         return key.Key == ConsoleKey.Enter
             ? (Output.Select, field.ToString())
             : (Output.Exit, field.ToString());
-    }
-
-    /// <summary>
-    /// This method prints a menu in the console and gets the choice of the user.
-    /// </summary>
-    /// <param name="question">The question to print.</param>
-    /// <param name="defaultIndex">The default index of the menu.</param>
-    /// <param name="line">The line where the menu is printed.</param>
-    /// <param name="choices">The choices of the menu.</param>
-    /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the index of the choice of the user.</returns>
-    [Obsolete(
-        "This method is deprecated. Use ScrollingMenuSelector with the placement attribute instead. This method will be removed at v3.0.0",
-        true
-    )]
-    public static (Output, int) ScrollingMenuSelector(
-        string question,
-        int defaultIndex = 0,
-        int? line = null,
-        params string[] choices
-    )
-    {
-        line ??= ContentHeight;
-        line = Math.Clamp(line.Value, ContentHeight, FooterHeight - choices.Length - 2);
-        defaultIndex = Math.Clamp(defaultIndex, 0, choices.Length - 1);
-        EqualizeChoicesLength(choices);
-
-        WriteContinuousString(question, line, false, 1500, 50);
-        int lineChoice = line.Value + 2;
-        while (true)
-        {
-            string[] array = new string[choices.Length];
-            for (int i = 0; i < choices.Length; i++)
-            {
-                array[i] =
-                    (i == defaultIndex)
-                        ? $" {s_selector.Item1} {choices[i]}  "
-                        : $"   {choices[i]}  ";
-                WritePositionedString(
-                    array[i],
-                    Placement.Center,
-                    i == defaultIndex,
-                    lineChoice + i
-                );
-            }
-
-            switch (Console.ReadKey(intercept: true).Key)
-            {
-                case ConsoleKey.UpArrow:
-                case ConsoleKey.Z:
-                    defaultIndex = (defaultIndex == 0) ? choices.Length - 1 : defaultIndex - 1;
-                    break;
-                case ConsoleKey.DownArrow:
-                case ConsoleKey.S:
-                    defaultIndex = (defaultIndex == choices.Length - 1) ? 0 : defaultIndex + 1;
-                    break;
-                case ConsoleKey.Enter:
-                    ClearMultipleLines(line, choices.Length + 2);
-                    return (Output.Select, defaultIndex);
-                case ConsoleKey.Escape:
-                    ClearMultipleLines(line, choices.Length + 2);
-                    return (Output.Exit, defaultIndex);
-                case ConsoleKey.Backspace:
-                    ClearMultipleLines(line, choices.Length + 2);
-                    return (Output.Delete, defaultIndex);
-            }
-        }
-
-        static void EqualizeChoicesLength(string[] choices)
-        {
-            int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
-            for (int i = 0; i < choices.Length; i++)
-            {
-                choices[i] = choices[i].PadRight(totalWidth);
-            }
-        }
     }
 
     /// <summary>
@@ -807,7 +649,7 @@ public static class Core
             line,
             true
         );
-        StringBuilder loadingBar = new ();
+        StringBuilder loadingBar = new();
         for (int j = 0; j < message.Length; j++)
             loadingBar.Append('█');
         WriteContinuousString(loadingBar.ToString(), ContentHeight + 2);
@@ -829,7 +671,7 @@ public static class Core
     {
         static void BuildBar(string message, float processPercentage, int? line)
         {
-            StringBuilder _loadingBar = new ();
+            StringBuilder _loadingBar = new();
             for (int j = 0; j <= (int)(message.Length * processPercentage); j++)
             {
                 _loadingBar.Append('█');
