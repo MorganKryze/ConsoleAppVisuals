@@ -17,7 +17,7 @@ public interface IElement
     /// <summary>
     /// The visibility of the element.
     /// </summary>
-    public bool Visibility { get; set; }
+    public bool Visibility { get; }
 
     /// <summary>
     /// The height of the element.
@@ -28,6 +28,16 @@ public interface IElement
     /// The width of the element.
     /// </summary>
     public int Width { get; }
+
+    /// <summary>
+    /// The maximum number of this element that can be drawn on the console.
+    /// </summary>
+    public int MaxNumberOfThisElement { get; }
+
+    /// <summary>
+    /// This method is used to toggle the visibility of the element.
+    /// </summary>
+    public void ToggleVisibility();
 
     /// <summary>
     /// This method is used to draw the element on the console.
