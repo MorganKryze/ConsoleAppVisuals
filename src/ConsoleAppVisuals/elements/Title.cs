@@ -21,7 +21,7 @@ public class Title : IElement
     /// <summary>
     /// The visibility of the title.
     /// </summary>
-    public bool Visibility { get; set; }
+    public bool Visibility { get; private set; }
 
     /// <summary>
     /// The height of the title.
@@ -38,6 +38,10 @@ public class Title : IElement
     {
         get { return Console.WindowWidth; }
     }
+    /// <summary>
+    /// The maximum number of this element that can be drawn on the console.
+    /// </summary>
+    public int MaxNumberOfThisElement => 1;
     #endregion
 
     #region Properties
@@ -50,14 +54,12 @@ public class Title : IElement
     /// </summary>
     /// <param name="text">The text of the title.</param>
     /// <param name="margin">The margin of the title.</param>
-    /// <param name="id">The id number of the title.</param>
-    /// <param name="visible">The visibility of the title.</param>
-    public Title(string text, int margin = 1, int? id = null, bool? visible = null)
+    public Title(string text, int margin = 1)
     {
         Text = text;
         Margin = margin;
-        Id = id ?? Window.NextId;
-        Visibility = visible ?? Window.DefaultVisibility;
+        Id = Window.NextId;
+        Visibility = Window.DefaultVisibility;
     }
     #endregion
 
@@ -79,7 +81,24 @@ public class Title : IElement
     {
         Margin = margin;
     }
-
+    /// <summary>
+    /// This method is used to toggle the visibility of the title.
+    /// </summary>
+    public void ToggleVisibility()
+    {
+        if (Visibility)
+        {
+            Visibility = false;
+        }
+        else if (Window.AllowVisibilityChange(Id))
+        {
+            Visibility = true;
+        }
+        else 
+        {
+            throw new InvalidOperationException($"Operation not allowed, too many elements of {GetType()} already toggled from the maximum of {MaxNumberOfThisElement}.");
+        }
+    }
     /// <summary>
     /// This method is used to draw the title on the console.
     /// </summary>
