@@ -125,7 +125,10 @@ public static class Window
         }
         else
         {
-            throw new ArgumentOutOfRangeException(nameof(element), "Invalid element. Not found in the window.");
+            throw new ArgumentOutOfRangeException(
+                nameof(element),
+                "Invalid element. Not found in the window."
+            );
         }
     }
 

@@ -294,18 +294,14 @@ public class Table<T>
             for (int i = 0; i < rawLines.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-                upperBorderBuilder.Append(
-                    (i != rawLines.Count - 1) ? "┬" : Corners[1].ToString()
-                );
+                upperBorderBuilder.Append((i != rawLines.Count - 1) ? "┬" : Corners[1].ToString());
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
             StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
             for (int i = 0; i < rawLines.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-                lowerBorderBuilder.Append(
-                    (i != rawLines.Count - 1) ? "┴" : Corners[3].ToString()
-                );
+                lowerBorderBuilder.Append((i != rawLines.Count - 1) ? "┴" : Corners[3].ToString());
             }
             stringList.Add(lowerBorderBuilder.ToString());
             displayArray = stringList.ToArray();
@@ -375,8 +371,6 @@ public class Table<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void AddLine(List<T> line)
     {
-        
-
         if (rawLines?.Count > 0 && line.Count != rawLines[0].Count)
         {
             throw new ArgumentException(
