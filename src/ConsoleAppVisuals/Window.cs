@@ -11,11 +11,13 @@ public static class Window
 {
     #region Fields
     private static readonly List<Element> _elements = new();
+    #endregion
 
+    #region Constants
     /// <summary>
     /// The default visibility of the elements.
     /// </summary>
-    public static bool DefaultVisibility { get; set; } = false;
+    public const bool DEFAULT_VISIBILITY = false;
     #endregion
 
     #region Properties
@@ -28,6 +30,24 @@ public static class Window
     /// Gives the number of elements in the window.
     /// </summary>
     public static int NumberOfElements => _elements.Count;
+
+    /// <summary>
+    /// Gives the last line available to draw an element on the console from the top.
+    /// </summary>
+    public static int LastTopLineAvailable =>
+        _elements
+            .Where(e => e.Placement.ToString().StartsWith("Top") && e.Visibility)
+            .Sum(e => e.Height);
+
+    /// <summary>
+    /// Gives the last line available to draw an element on the console from the bottom.
+    /// </summary>
+    public static int LastBottomLineAvailable =>
+        Console.WindowHeight
+        - 1
+        - _elements
+            .Where(e => e.Placement.ToString().StartsWith("Bottom") && e.Visibility)
+            .Sum(e => e.Height);
     #endregion
 
     #region Manipulation Methods
@@ -155,7 +175,15 @@ public static class Window
     /// </summary>
     public static void Clear()
     {
-        Console.Clear();
+        Core.ClearWindow(false, false);
+    }
+
+    /// <summary>
+    /// This method stops the execution of the program until a key is pressed.
+    /// </summary>
+    public static void StopExecution()
+    {
+        Console.ReadKey(true);
     }
 
     /// <summary>
@@ -252,9 +280,10 @@ public static class Window
     /// </summary>
     public static void RenderAll()
     {
-        foreach (var element in _elements)
+        Clear();
+        for (int i = 0; i < _elements.Count; i++)
         {
-            element.Render();
+            RenderOne(i);
         }
     }
 

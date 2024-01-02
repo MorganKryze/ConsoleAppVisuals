@@ -177,7 +177,7 @@ public static class Core
     {
         line ??= Console.CursorTop;
         ApplyNegative(default);
-        WritePositionedString("".PadRight(Console.WindowWidth), Placement.Left, default, line);
+        WritePositionedString("".PadRight(Console.WindowWidth), Placement.TopLeft, default, line);
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public static class Core
         {
             for (int i = 0; i < Console.WindowHeight; i++)
             {
-                WritePositionedString("".PadRight(Console.WindowWidth), Placement.Center, false, i);
+                WritePositionedString("".PadRight(Console.WindowWidth), Placement.TopCenter, false, i);
             }
         }
         s_colorPanel = (ConsoleColor.White, ConsoleColor.Black);
@@ -241,7 +241,7 @@ public static class Core
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WritePositionedString(
         string str,
-        Placement position = Placement.Center,
+        Placement position = Placement.TopCenter,
         bool negative = false,
         int? line = null,
         bool writeLine = false
@@ -252,13 +252,13 @@ public static class Core
         if (str.Length < Console.WindowWidth)
             switch (position)
             {
-                case Placement.Left:
+                case Placement.TopLeft:
                     Console.SetCursorPosition(0, (int)line);
                     break;
-                case Placement.Center:
+                case Placement.TopCenter:
                     Console.SetCursorPosition((Console.WindowWidth - str.Length) / 2, (int)line);
                     break;
-                case Placement.Right:
+                case Placement.TopRight:
                     Console.SetCursorPosition(Console.WindowWidth - str.Length, (int)line);
                     break;
             }
@@ -291,7 +291,7 @@ public static class Core
         int printTime = 2000,
         int additionalTime = 1000,
         int length = -1,
-        Placement position = Placement.Center,
+        Placement position = Placement.TopCenter,
         bool writeLine = false
     )
     {
@@ -346,7 +346,7 @@ public static class Core
         int? line = null,
         int? width = null,
         int? margin = null,
-        Placement position = Placement.Center,
+        Placement position = Placement.TopCenter,
         bool negative = false
     )
     {
@@ -393,7 +393,7 @@ public static class Core
             0,
             Console.WindowWidth,
             s_title.Item2,
-            Placement.Center,
+            Placement.TopCenter,
             false
         );
 
@@ -437,7 +437,7 @@ public static class Core
     /// <param name="text">The lines of the paragraph.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteMultiplePositionedLines(
-        Placement placement = Placement.Center,
+        Placement placement = Placement.TopCenter,
         bool negative = false,
         int? line = null,
         params string[] text
@@ -483,7 +483,7 @@ public static class Core
         else
             WritePositionedString(
                 message,
-                Placement.Center,
+                Placement.TopCenter,
                 negative: false,
                 line,
                 writeLine: true
@@ -522,7 +522,7 @@ public static class Core
     public static (Output, int) ScrollingMenuSelector(
         string question,
         int defaultIndex = 0,
-        Placement placement = Placement.Center,
+        Placement placement = Placement.TopCenter,
         int? line = null,
         params string[] choices
     )
@@ -606,7 +606,7 @@ public static class Core
         {
             WritePositionedString(
                 $" {s_selector.Item1} {(float)Math.Round(_currentNumber, 1)} {s_selector.Item2} ",
-                Placement.Center,
+                Placement.TopCenter,
                 true,
                 line + 2
             );
@@ -652,7 +652,7 @@ public static class Core
     {
         line ??= ContentHeight;
         WritePositionedString(
-            message.ResizeString(Console.WindowWidth, Placement.Center),
+            message.ResizeString(Console.WindowWidth, Placement.TopCenter),
             default,
             default,
             line,
@@ -686,8 +686,8 @@ public static class Core
                 _loadingBar.Append('█');
             }
             WritePositionedString(
-                _loadingBar.ToString().ResizeString(message.Length, Placement.Left),
-                Placement.Center,
+                _loadingBar.ToString().ResizeString(message.Length, Placement.TopLeft),
+                Placement.TopCenter,
                 default,
                 line + 2,
                 default
@@ -695,7 +695,7 @@ public static class Core
         }
 
         line ??= ContentHeight;
-        WritePositionedString(message, Placement.Center, default, line, true);
+        WritePositionedString(message, Placement.TopCenter, default, line, true);
         while (processPercentage <= 1f)
         {
             BuildBar(message, processPercentage, line);
@@ -762,7 +762,7 @@ public static class Core
     public static string ResizeString(
         this string str,
         int size,
-        Placement position = Placement.Center,
+        Placement position = Placement.TopCenter,
         bool truncate = true
     )
     {
@@ -770,22 +770,22 @@ public static class Core
         if (truncate && padding < 0)
             switch (position)
             {
-                case Placement.Left:
+                case Placement.TopLeft: case Placement.BottomLeft:
                     return str.Substring(0, size);
-                case Placement.Center:
+                case Placement.TopCenter: case Placement.BottomCenter:
                     return str.Substring((-padding) / 2, size);
-                case Placement.Right:
+                case Placement.TopRight: case Placement.BottomRight:
                     return str.Substring(-padding, size);
             }
         else
             switch (position)
             {
-                case Placement.Left:
+                case Placement.TopLeft: case Placement.BottomLeft:
                     return str.PadRight(size);
-                case Placement.Center:
+                case Placement.TopCenter: case Placement.BottomCenter:
                     return str.PadLeft(padding / 2 + padding % 2 + str.Length)
                         .PadRight(padding + str.Length);
-                case Placement.Right:
+                case Placement.TopRight: case Placement.BottomRight:
                     return str.PadLeft(size);
             }
         return str;
@@ -802,7 +802,7 @@ public static class Core
     public static string InsertString(
         this string inserted,
         string toInsert,
-        Placement position = Placement.Center,
+        Placement position = Placement.TopCenter,
         bool truncate = true
     )
     {
@@ -814,7 +814,7 @@ public static class Core
         }
         switch (position)
         {
-            case Placement.Center:
+            case Placement.TopCenter: case Placement.BottomCenter:
                 int center = inserted.Length / 2;
                 int start = center - (toInsert.Length / 2);
                 if (truncate)
@@ -825,7 +825,7 @@ public static class Core
                 {
                     return inserted.Insert(start, toInsert);
                 }
-            case Placement.Left:
+            case Placement.TopLeft: case Placement.BottomLeft:
                 if (truncate)
                 {
                     return inserted.Remove(0, toInsert.Length).Insert(0, toInsert);
@@ -834,7 +834,7 @@ public static class Core
                 {
                     return inserted.Insert(0, toInsert);
                 }
-            case Placement.Right:
+            case Placement.TopRight: case Placement.BottomRight:
                 if (truncate)
                 {
                     return inserted
@@ -860,7 +860,7 @@ public static class Core
         + banner.Item1
         + banner.Item2.ResizeString(
             Console.WindowWidth - 2 - banner.Item1.Length - banner.Item3.Length,
-            Placement.Center,
+            Placement.TopCenter,
             true
         )
         + banner.Item3
