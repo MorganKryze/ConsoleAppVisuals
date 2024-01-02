@@ -109,6 +109,7 @@ public static class Window
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
         _elements.RemoveAt(id);
+        UpdateIDs();
     }
 
     /// <summary>
@@ -120,6 +121,19 @@ public static class Window
         if (element != null && _elements.Contains(element))
         {
             _elements.Remove(element);
+            UpdateIDs();
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException(nameof(element), "Invalid element. Not found in the window.");
+        }
+    }
+
+    private static void UpdateIDs()
+    {
+        for (int i = 0; i < _elements.Count; i++)
+        {
+            _elements[i].Id = i;
         }
     }
 
