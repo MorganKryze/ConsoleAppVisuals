@@ -42,7 +42,7 @@ public class Title : Element
         string text,
         int margin = 1,
         int? width = null,
-        Placement placement = Placement.Center
+        Placement placement = Placement.TopCenter
     )
     {
         _text = text;

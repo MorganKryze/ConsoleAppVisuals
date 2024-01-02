@@ -283,7 +283,7 @@ public class Matrix<T>
     /// </summary>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void WriteMatrix(
-        Placement placement = Placement.Center,
+        Placement placement = Placement.TopCenter,
         bool negative = false,
         int? line = null
     )

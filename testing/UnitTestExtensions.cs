@@ -29,11 +29,11 @@ public class UnitTestExtensions
     {
         if(value == "Hello World")
         {
-            Assert.AreEqual("testo World", value.InsertString("test", Placement.Left));
+            Assert.AreEqual("testo World", value.InsertString("test", Placement.TopLeft));
         }
         else if (value == "Bonjour Le Monde")
         {
-            Assert.AreEqual("testour Le Monde", value.InsertString("test", Placement.Left));
+            Assert.AreEqual("testour Le Monde", value.InsertString("test", Placement.TopLeft));
         }
     }
 
@@ -44,11 +44,11 @@ public class UnitTestExtensions
     {
         if(value == "Hello World")
         {
-            Assert.AreEqual("Hello Wtest", value.InsertString("test", Placement.Right));
+            Assert.AreEqual("Hello Wtest", value.InsertString("test", Placement.TopRight));
         }
         else if (value == "Bonjour Le Monde")
         {
-            Assert.AreEqual("Bonjour Le Mtest", value.InsertString("test", Placement.Right));
+            Assert.AreEqual("Bonjour Le Mtest", value.InsertString("test", Placement.TopRight));
         }
     }
     
@@ -59,11 +59,11 @@ public class UnitTestExtensions
     {
         if(value == "Hello World")
         {
-            Assert.AreEqual("Heltestorld", value.InsertString("test", Placement.Center));
+            Assert.AreEqual("Heltestorld", value.InsertString("test", Placement.TopCenter));
         }
         else if (value == "Bonjour Le Monde")
         {
-            Assert.AreEqual("Bonjoutest Monde", value.InsertString("test", Placement.Center));
+            Assert.AreEqual("Bonjoutest Monde", value.InsertString("test", Placement.TopCenter));
         }
     }
 }

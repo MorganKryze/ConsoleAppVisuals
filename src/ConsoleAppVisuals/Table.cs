@@ -491,7 +491,7 @@ public class Table<T>
                 array[j] = displayArray[j];
                 Core.WritePositionedString(
                     array[j],
-                    Placement.Center,
+                    Placement.TopCenter,
                     false,
                     startContentHeight + j
                 );
@@ -499,11 +499,11 @@ public class Table<T>
                 {
                     Core.WritePositionedString(
                         j == displayArray.Length - 1
-                            ? array[j].InsertString($"┤ {footerText} ├", Placement.Center, true)[
+                            ? array[j].InsertString($"┤ {footerText} ├", Placement.TopCenter, true)[
                                 2..^2
                             ]
                             : array[j][1..^1],
-                        Placement.Center,
+                        Placement.TopCenter,
                         true,
                         startContentHeight + j
                     );
@@ -587,7 +587,12 @@ public class Table<T>
         for (int j = 0; j < displayArray.Length; j++)
         {
             array[j] = displayArray[j];
-            Core.WritePositionedString(array[j], Placement.Center, false, startContentHeight + j);
+            Core.WritePositionedString(
+                array[j],
+                Placement.TopCenter,
+                false,
+                startContentHeight + j
+            );
         }
         Console.ReadKey(true);
         Core.ClearMultipleLines(line, displayArray.Length + 1);

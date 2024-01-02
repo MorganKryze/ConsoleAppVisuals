@@ -25,7 +25,7 @@ namespace example
             var index = Core.ScrollingMenuSelector(
                 "What will be your next action?",
                 0,
-                Placement.Center,
+                Placement.TopCenter,
                 null,
                 "Change Console color",
                 "Write on the console",
@@ -48,7 +48,7 @@ namespace example
                             var indexColor = Core.ScrollingMenuSelector(
                                 "What color do you want to change?",
                                 0,
-                                Placement.Center,
+                                Placement.TopCenter,
                                 default,
                                 "White",
                                 "Red",
@@ -101,28 +101,28 @@ namespace example
                             );
                             Core.WritePositionedString(
                                 "Bonjour le monde !",
-                                Placement.Left,
+                                Placement.TopLeft,
                                 false,
                                 Core.ContentHeight + 1,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Hola Mundo !",
-                                Placement.Right,
+                                Placement.TopRight,
                                 false,
                                 Core.ContentHeight + 2,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Hallo Welt !",
-                                Placement.Center,
+                                Placement.TopCenter,
                                 false,
                                 Core.ContentHeight + 3,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Ciao mondo !",
-                                Placement.Left,
+                                Placement.TopLeft,
                                 false,
                                 Core.ContentHeight + 4,
                                 true
@@ -175,21 +175,21 @@ namespace example
                                 new() { firstRow, secondRow, thirdRow, fourthRow };
                             Matrix<int?> matrix = new(data);
                             matrix.SetRoundedCorners(false);
-                            matrix.WriteMatrix(Placement.Center);
+                            matrix.WriteMatrix(Placement.TopCenter);
 
                             Console.ReadKey();
                             Core.ClearContent();
 
                             matrix.Remove(new Position(0, 0));
                             matrix.Remove(new Position(3, 5));
-                            matrix.WriteMatrix(Placement.Center);
+                            matrix.WriteMatrix(Placement.TopCenter);
 
                             Console.ReadKey();
                             Core.ClearContent();
 
                             matrix.UpdateElement(new Position(0, 0), 1);
                             matrix.UpdateElement(new Position(3, 5), 6);
-                            matrix.WriteMatrix(Placement.Center);
+                            matrix.WriteMatrix(Placement.TopCenter);
 
                             Console.ReadKey();
                             Core.ClearContent();
@@ -286,7 +286,16 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
-            Window.ListClassesInheritingElement();
+            Window.AddElement(new Title("Title"), true);
+            Window.AddElement(new Header(), true);
+            Window.AddElement(new Footer(), true);
+            Window.AddElement(
+                new FakeLoadingBar("[ Loading ...]", Placement.TopCenter, default, 2000),
+                true
+            );
+            Window.StopExecution();
+            Window.RenderAll();
+            Window.StopExecution();
         }
     }
 }

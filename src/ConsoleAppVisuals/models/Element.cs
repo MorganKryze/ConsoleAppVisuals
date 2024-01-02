@@ -23,6 +23,11 @@ public abstract class Element
     public bool Visibility { get; private set; } = Window.DEFAULT_VISIBILITY;
 
     /// <summary>
+    /// The placement of the element.
+    /// </summary>
+    public virtual Placement Placement { get; set; } = Placement.TopCenter;
+
+    /// <summary>
     /// The line of the element in the console.
     /// </summary>
     /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
