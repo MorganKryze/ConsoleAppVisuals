@@ -1,6 +1,11 @@
+# MacOS
 .DS_Store
+
+# C#
 obj
-.vsocde
-settings.json
 Debug
 testing/bin
+
+# VSCode
+.vsocde
+settings.json
