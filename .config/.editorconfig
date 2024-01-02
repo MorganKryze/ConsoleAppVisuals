@@ -1,5 +1,7 @@
+# 
 # Template for a .editorconfig file for C# projects
 # See https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules
+# 
 [*.{cs,vb}]
 
 # Defining the 'public_symbols' symbol group
