@@ -48,9 +48,10 @@ public class LoadingBar : Element
     /// The natural constructor of the loading bar.
     /// </summary>
     /// <param name="text">The text of the loading bar.</param>
+    /// <param name="progress">The reference of the progress of the loading bar (that means that you should put a reference to a variable that will contain the percentage of progress of your process).</param>
     /// <param name="placement">The placement of the loading bar.</param>
     /// <param name="line">The line of the loading bar.</param>
-    /// <param name="duration">The duration of the loading bar if it is purely aesthetic.</param>
+    /// <param name="additionalDuration">The duration of the loading bar after the process.</param>
     public LoadingBar(
         string text,
         ref float progress,
