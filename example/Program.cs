@@ -200,6 +200,7 @@ namespace example
 
                             var answerPrompt = Core.WritePrompt("Hey! What is your name?", "Theo");
                             string name = answerPrompt.Item2;
+                            Core.WritePositionedString($"You just wrote {name}!");
 
                             Core.ClearContent();
                             goto Menu;
@@ -214,6 +215,7 @@ namespace example
                                 5
                             );
                             float number = answerNumber.Item2;
+                            Core.WritePositionedString($"You just wrote {number}!");
 
                             Core.ClearContent();
                             goto Menu;
@@ -284,6 +286,7 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
+            Window.ListClassesInheritingElement();
         }
     }
 }

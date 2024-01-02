@@ -306,7 +306,6 @@ public static class Core
                 ConsoleKeyInfo keyPressed = Console.ReadKey(true);
                 if (keyPressed.Key == ConsoleKey.Enter || keyPressed.Key == ConsoleKey.Escape)
                 {
-                    i = str.Length;
                     break;
                 }
             }

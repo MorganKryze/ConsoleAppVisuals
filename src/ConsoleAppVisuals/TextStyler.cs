@@ -38,7 +38,7 @@ public class TextStyler
     /// <summary>
     /// A dictionary that stores the characters and their styled equivalent.
     /// </summary>
-    public Dictionary<char, string> dictionary;
+    private readonly Dictionary<char, string> dictionary;
     #endregion
 
     #region Constructor
@@ -94,7 +94,7 @@ public class TextStyler
             symbolsStyled = ReadResourceLines(SYMBOLS_PATH);
         }
         if (config.Chars is null)
-            throw new NullReferenceException("The config.yml file is empty.");
+            throw new InvalidOperationException("The config.yml file is empty.");
 
         var alphabetStyledGrouped = alphabetStyled
             .Select((line, index) => new { line, index })
@@ -216,11 +216,12 @@ public class TextStyler
     {
         var sb = new StringBuilder();
         sb.AppendLine($"Name: {config.Name}");
-        if (config.Chars is null)
-            throw new InvalidOperationException("The config.yml file is empty.");
-        foreach (KeyValuePair<string, int> pair in config.Chars)
+        if (config.Chars != null)
         {
-            sb.AppendLine($"File: {pair.Key}, Height: {pair.Value}");
+            foreach (KeyValuePair<string, int> pair in config.Chars)
+            {
+                sb.AppendLine($"File: {pair.Key}, Height: {pair.Value}");
+            }
         }
         return sb.ToString();
     }
