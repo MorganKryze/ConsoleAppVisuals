@@ -10,8 +10,10 @@ namespace ConsoleAppVisuals;
 public class Title : IElement
 {
     #region Fields
-    private string Text { get; set; }
-    private int Margin { get; set; }
+    private string _text;
+    private int _margin;
+    private readonly int _width;
+    private readonly Placement _placement;
 
     /// <summary>
     /// The id number of the title.
@@ -28,7 +30,7 @@ public class Title : IElement
     /// </summary>
     public int Height
     {
-        get { return StyledText.Length + Margin * 2; }
+        get { return StyledText.Length + _margin * 2; }
     }
 
     /// <summary>
@@ -36,7 +38,7 @@ public class Title : IElement
     /// </summary>
     public int Width
     {
-        get { return Console.WindowWidth; }
+        get { return _width; }
     }
     /// <summary>
     /// The maximum number of this element that can be drawn on the console.
@@ -45,7 +47,7 @@ public class Title : IElement
     #endregion
 
     #region Properties
-    private string[] StyledText => Core.StyleText(Text);
+    private string[] StyledText => Core.StyleText(_text);
     #endregion
 
     #region Constructor
@@ -54,10 +56,14 @@ public class Title : IElement
     /// </summary>
     /// <param name="text">The text of the title.</param>
     /// <param name="margin">The margin of the title.</param>
-    public Title(string text, int margin = 1)
+    /// <param name="width">The width of the title (by default the width of the console).</param>
+    /// <param name="placement">The placement of the title.</param>
+    public Title(string text, int margin = 1, int? width = null, Placement placement = Placement.Center)
     {
-        Text = text;
-        Margin = margin;
+        _text = text;
+        _margin = margin;
+        _width = width ?? Console.WindowWidth;
+        _placement = placement;
         Id = Window.NextId;
         Visibility = Window.DefaultVisibility;
     }
@@ -70,7 +76,7 @@ public class Title : IElement
     /// <param name="text">The new text of the title.</param>
     public void UpdateText(string text)
     {
-        Text = text;
+        _text = text;
     }
 
     /// <summary>
@@ -79,7 +85,7 @@ public class Title : IElement
     /// <param name="margin">The new margin of the title.</param>
     public void UpdateMargin(int margin)
     {
-        Margin = margin;
+        _margin = margin;
     }
     /// <summary>
     /// This method is used to toggle the visibility of the title.
@@ -109,9 +115,9 @@ public class Title : IElement
             Core.WritePositionedStyledText(
                 StyledText,
                 0,
-                Console.WindowWidth,
-                Margin,
-                Placement.Center,
+                _width,
+                _margin,
+                _placement,
                 false
             );
         }

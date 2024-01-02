@@ -10,7 +10,7 @@ namespace ConsoleAppVisuals;
 public static class Window
 {
     #region Fields
-    private static readonly List<IElement> elements = new();
+    private static readonly List<IElement> _elements = new();
 
     /// <summary>
     /// The default visibility of the elements.
@@ -22,7 +22,11 @@ public static class Window
     /// <summary>
     /// Gives the next id number.
     /// </summary>
-    public static int NextId => elements.Count;
+    public static int NextId => _elements.Count;
+    /// <summary>
+    /// Gives the number of elements in the window.
+    /// </summary>
+    public static int NumberOfElements => _elements.Count;
     #endregion
 
     #region Manipulation Methods
@@ -31,13 +35,13 @@ public static class Window
     /// </summary>
     /// <param name="id">The id of the element.</param>
     /// <returns>The element with the given id if it exists, null otherwise.</returns>
-    public static IElement? GetElement(int id)
+    public static T? GetElement<T>(int id) where T : IElement
     {
-        if (id < 0 || id >= elements.Count)
+        if (id < 0 || id >= _elements.Count)
         {
-            return null;
+            throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        return elements[id];
+        return (T)_elements[id];
     }
 
     /// <summary>
@@ -46,7 +50,7 @@ public static class Window
     /// <param name="element">The element to be added.</param>
     public static void AddElement(IElement element)
     {
-        elements.Add(element);
+        _elements.Add(element);
     }
 
     /// <summary>
@@ -57,11 +61,11 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static void InsertElement(IElement element, int id)
     {
-        if (id < 0 || id > elements.Count)
+        if (id < 0 || id > _elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        elements.Insert(id, element);
+        _elements.Insert(id, element);
     }
 
     /// <summary>
@@ -71,11 +75,11 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static void RemoveElement(int id)
     {
-        if (id < 0 || id >= elements.Count)
+        if (id < 0 || id >= _elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        elements.RemoveAt(id);
+        _elements.RemoveAt(id);
     }
 
     /// <summary>
@@ -84,9 +88,9 @@ public static class Window
     /// <param name="element">The element to be removed.</param>
     public static void RemoveElement(IElement element)
     {
-        if (element != null && elements.Contains(element))
+        if (element != null && _elements.Contains(element))
         {
-            elements.Remove(element);
+            _elements.Remove(element);
         }
     }
 
@@ -95,7 +99,7 @@ public static class Window
     /// </summary>
     public static void RemoveAllElements()
     {
-        elements.Clear();
+        _elements.Clear();
     }
     #endregion
 
@@ -115,7 +119,7 @@ public static class Window
     {
         Table<string> table =
             new(new List<string> { "Id", "Type", "Visibility", "Height", "Width" });
-        foreach (var element in elements)
+        foreach (var element in _elements)
         {
             table.AddLine(
                 new List<string>
@@ -138,10 +142,10 @@ public static class Window
     /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
     public static bool AllowVisibilityChange(int id)
     {
-        int numberOfVisibleElements = elements.Count(
-            element => element.GetType() == elements[id].GetType() && element.Visibility
+        int numberOfVisibleElements = _elements.Count(
+            element => element.GetType() == _elements[id].GetType() && element.Visibility
         );
-        return numberOfVisibleElements < elements[id].MaxNumberOfThisElement;
+        return numberOfVisibleElements < _elements[id].MaxNumberOfThisElement;
     }
 
     /// <summary>
@@ -149,7 +153,7 @@ public static class Window
     /// </summary>
     public static void Render()
     {
-        foreach (var element in elements)
+        foreach (var element in _elements)
         {
             element.Render();
         }

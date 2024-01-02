@@ -1,0 +1,19 @@
+# Template for a .editorconfig file for C# projects
+# See https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules
+[*.{cs,vb}]
+
+# Defining the 'public_symbols' symbol group
+dotnet_naming_symbols.public_symbols.applicable_kinds           = property,method,field,event,delegate
+dotnet_naming_symbols.public_symbols.applicable_accessibilities = public
+dotnet_naming_symbols.public_symbols.required_modifiers         = readonly
+
+# Defining the 'first_word_upper_case_style' naming style
+dotnet_naming_style.first_word_upper_case_style.capitalization = first_word_upper
+
+# Defining the 'public_members_must_be_capitalized' naming rule, by setting the
+# symbol group to the 'public symbols' symbol group,
+dotnet_naming_rule.public_members_must_be_capitalized.symbols  = public_symbols
+# setting the naming style to the 'first_word_upper_case_style' naming style,
+dotnet_naming_rule.public_members_must_be_capitalized.style    = first_word_upper_case_style
+# and setting the severity.
+dotnet_naming_rule.public_members_must_be_capitalized.severity = suggestion
