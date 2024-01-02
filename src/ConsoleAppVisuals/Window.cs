@@ -72,9 +72,14 @@ public static class Window
     /// This method adds an element to the window.
     /// </summary>
     /// <param name="element">The element to be added.</param>
-    public static void AddElement(Element element)
+    /// <param name="visibility">If true, will try to toggle the visibility of the element.</param>
+    public static void AddElement(Element element, bool visibility = false)
     {
         _elements.Add(element);
+        if (visibility && AllowVisibilityToggle(element.Id))
+        {
+            element.ToggleVisibility();
+        }
     }
 
     /// <summary>
@@ -165,7 +170,7 @@ public static class Window
     /// </summary>
     /// <param name="id">The id of the element.</param>
     /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
-    public static bool AllowVisibilityChange(int id)
+    public static bool AllowVisibilityToggle(int id)
     {
         int numberOfVisibleElements = _elements.Count(
             element => element.GetType() == _elements[id].GetType() && element.Visibility

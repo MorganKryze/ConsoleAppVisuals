@@ -59,7 +59,7 @@ public abstract class Element
         {
             Visibility = false;
         }
-        else if (Window.AllowVisibilityChange(Id))
+        else if (Window.AllowVisibilityToggle(Id))
         {
             Visibility = true;
         }

@@ -395,12 +395,10 @@ public static class Core
     public static void WriteHeader(bool continuous = true, (string, string, string)? header = null)
     {
         (string, string, string) _banner = header ?? defaultHeader;
-        ApplyNegative(true);
         if (continuous)
             WriteContinuousString(_banner.BannerToString(), HeaderHeight, true);
         else
             WritePositionedString(_banner.BannerToString(), default, true, HeaderHeight);
-        ApplyNegative(default);
     }
 
     /// <summary>
