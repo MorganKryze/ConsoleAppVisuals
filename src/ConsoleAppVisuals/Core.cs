@@ -207,12 +207,24 @@ public static class Core
     /// <summary>
     /// This method clears the window and resets the color panel to the default one.
     /// </summary>
-    public static void ClearWindow()
+    public static void ClearWindow(bool continuous = true, bool resetColorPanel = true)
     {
-        s_colorPanel = s_terminalColorPanel;
-        for (int i = 0; i < Console.WindowHeight; i++)
-            WriteContinuousString("".PadRight(Console.WindowWidth), i, default, 100, 10);
-        Console.Clear();
+        if (resetColorPanel)
+            s_colorPanel = s_initialColorPanel;
+        if (continuous)
+        {
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                WriteContinuousString("".PadRight(Console.WindowWidth), i, false, 100, 10);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                WritePositionedString("".PadRight(Console.WindowWidth), Placement.Center, false, i);
+            }
+        }
         s_colorPanel = (ConsoleColor.White, ConsoleColor.Black);
     }
     #endregion
