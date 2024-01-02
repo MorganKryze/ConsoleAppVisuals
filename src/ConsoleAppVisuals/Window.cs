@@ -156,6 +156,80 @@ public static class Window
     }
 
     /// <summary>
+    /// This method checks if the element can be toggled to visible.
+    /// </summary>
+    /// <param name="id">The id of the element.</param>
+    /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
+    public static bool AllowVisibilityToggle(int id)
+    {
+        int numberOfVisibleElements = _elements.Count(
+            element => element.GetType() == _elements[id].GetType() && element.Visibility
+        );
+        return numberOfVisibleElements < _elements[id].MaxNumberOfThisElement;
+    }
+
+    /// <summary>
+    /// This method attempts to activate the visibility of the element with the given id.
+    /// </summary>
+    /// <param name="id">The id of the element.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
+    public static void ActivateElement(int id)
+    {
+        if (id < 0 || id >= _elements.Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
+        }
+        if (!_elements[id].Visibility)
+        {
+            _elements[id].ToggleVisibility();
+        }
+    }
+
+    /// <summary>
+    /// This method attempts to activate the visibility of all elements.
+    /// </summary>
+    public static void ActivateAllElements()
+    {
+        foreach (var element in _elements)
+        {
+            if (!element.Visibility)
+            {
+                element.ToggleVisibility();
+            }
+        }
+    }
+
+    /// <summary>
+    /// This method to deactivate the visibility of the element with the given id.
+    /// </summary>
+    /// <param name="id">The id of the element.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
+    public static void DeactivateElement(int id)
+    {
+        if (id < 0 || id >= _elements.Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
+        }
+        if (_elements[id].Visibility)
+        {
+            _elements[id].ToggleVisibility();
+        }
+    }
+
+    /// <summary>
+    /// This method deactivate the visibility of all elements.
+    /// </summary>
+    public static void DeactivateAllElements()
+    {
+        foreach (var element in _elements)
+        {
+            if (element.Visibility)
+            {
+                element.ToggleVisibility();
+            }
+        }
+    }
+    /// <summary>
     /// This method displays a list of all elements in the window.
     /// </summary>
     public static void ListElements()
