@@ -16,7 +16,7 @@ public class Header : Element
     /// The line of the header in the console.
     /// </summary>
     /// <remarks>We add 2 because so the header does not overlap with the title.</remarks>
-    public override int Line => Window.GetVisibleElement<Title>()?.Height + 2 ?? default;
+    public override int Line => Window.GetVisibleElement<Title>()?.Height ?? default;
 
     /// <summary>
     /// The height of the header.
@@ -36,7 +36,7 @@ public class Header : Element
     /// <param name="leftText">The text on the left of the header.</param>
     /// <param name="centerText">The text in the center of the header.</param>
     /// <param name="rightText">The text on the right of the header.</param>
-    public Header(string leftText, string centerText, string rightText)
+    public Header(string leftText = "Header Left" , string centerText = " Header Center", string rightText = "Header Right")
     {
         _text.Item1 = leftText;
         _text.Item2 = centerText;
@@ -75,12 +75,9 @@ public class Header : Element
     /// <summary>
     /// This method is used to render the header on the console.
     /// </summary>
-    public override void Render()
+    protected override void RenderActions()
     {
-        if (Visibility)
-        {
-            Core.WritePositionedString(_text.BannerToString(), Placement.Center, true, Line, true);
-        }
+        Core.WritePositionedString(_text.BannerToString(), Placement.Center, true, Line, true);
     }
     #endregion
 }

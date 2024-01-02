@@ -35,7 +35,7 @@ public class Footer : Element
     /// <param name="leftText">The text on the left of the footer.</param>
     /// <param name="centerText">The text in the center of the footer.</param>
     /// <param name="rightText">The text on the right of the footer.</param>
-    public Footer(string leftText, string centerText, string rightText)
+    public Footer(string leftText = " Footer Left", string centerText = " Footer Center", string rightText = "Footer Right")
     {
         _text.Item1 = leftText;
         _text.Item2 = centerText;
@@ -74,12 +74,9 @@ public class Footer : Element
     /// <summary>
     /// This method is used to render the footer on the console.
     /// </summary>
-    public override void Render()
+    protected override void RenderActions()
     {
-        if (Visibility)
-        {
-            Core.WritePositionedString(_text.BannerToString(), Placement.Center, true, Line, false);
-        }
+        Core.WritePositionedString(_text.BannerToString(), Placement.Center, true, Line, false);
     }
     #endregion
 }

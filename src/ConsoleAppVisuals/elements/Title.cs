@@ -74,12 +74,9 @@ public class Title : Element
     /// <summary>
     /// This method is used to draw the title on the console.
     /// </summary>
-    public override void Render()
+    protected override void RenderActions()
     {
-        if (Visibility)
-        {
-            Core.WritePositionedStyledText(StyledText, default, _width, _margin, _placement, false);
-        }
+        Core.WritePositionedStyledText(StyledText, 0, _width, _margin, _placement, false);
     }
     #endregion
 }
