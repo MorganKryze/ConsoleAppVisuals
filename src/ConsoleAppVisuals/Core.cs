@@ -210,7 +210,7 @@ public static class Core
     public static void ClearWindow(bool continuous = true, bool resetColorPanel = true)
     {
         if (resetColorPanel)
-            s_colorPanel = s_initialColorPanel;
+            s_colorPanel = s_terminalColorPanel;
         if (continuous)
         {
             for (int i = 0; i < Console.WindowHeight; i++)
