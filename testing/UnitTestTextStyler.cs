@@ -11,14 +11,14 @@ namespace testing
         [TestMethod]
         public void TestConstructorWithNullFontPath()
         {
-            Assert.IsNotNull(styler.dictionary);
+            Assert.IsNotNull(styler.Dictionary);
             var expected = @" █████╗  
 ██╔══██╗ 
 ███████║ 
 ██╔══██║ 
 ██║  ██║ 
 ╚═╝  ╚═╝ ";
-            Assert.AreEqual(expected, styler.dictionary['a']);
+            Assert.AreEqual(expected, styler.Dictionary['a']);
         }
 
         [TestMethod]
@@ -32,8 +32,8 @@ namespace testing
 ██╔══██║ 
 ██║  ██║ 
 ╚═╝  ╚═╝ ";
-            Assert.AreEqual(expected, custom.dictionary['a']);
-            Assert.IsNotNull(custom.dictionary);
+            Assert.AreEqual(expected, custom.Dictionary['a']);
+            Assert.IsNotNull(custom.Dictionary);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace testing
         public void TestConstructorWithFontPathAndDefault(string path)
         {
             var stylerCustom = new TextStyler(path);
-            Assert.AreEqual(styler.dictionary['a'], stylerCustom.dictionary['a']);
+            Assert.AreEqual(styler.Dictionary['a'], stylerCustom.Dictionary['a']);
         }
 
         [TestMethod]

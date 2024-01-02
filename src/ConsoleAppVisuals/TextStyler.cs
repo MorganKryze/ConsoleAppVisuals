@@ -25,20 +25,16 @@ public class TextStyler
     #endregion
 
     #region Attributes
-    /// <summary>
-    /// The path to the font files.
-    /// </summary>
     private readonly string? fontPath;
-
-    /// <summary>
-    /// The config.yml file deserialized.
-    /// </summary>
     private readonly FontYamlFile config;
-
-    /// <summary>
-    /// A dictionary that stores the characters and their styled equivalent.
-    /// </summary>
     private readonly Dictionary<char, string> dictionary;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// The dictionary that stores the characters and their styled equivalent.
+    /// </summary>
+    public Dictionary<char, string> Dictionary => dictionary;
     #endregion
 
     #region Constructor
