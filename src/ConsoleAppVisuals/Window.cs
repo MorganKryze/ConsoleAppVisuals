@@ -180,27 +180,35 @@ public static class Window
     }
 
     /// <summary>
-    /// This method checks if the element can be toggled to visible.
+    /// This method gives a list of all classes inheriting from the Element class.
     /// </summary>
-    /// <param name="id">The id of the element.</param>
-    /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
-    public static bool AllowVisibilityToggle(int id)
+    /// <returns></returns>
+    public static void ListClassesInheritingElement()
     {
-        int numberOfVisibleElements = _elements.Count(
-            element => element.GetType() == _elements[id].GetType() && element.Visibility
-        );
-        return numberOfVisibleElements < _elements[id].MaxNumberOfThisElement;
-    }
-
-    /// <summary>
-    /// This method draws all the elements of the window on the console.
-    /// </summary>
-    public static void Render()
-    {
-        foreach (var element in _elements)
+        var types = new List<Type>();
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
-            element.Render();
+            // Exclude default C# assemblies
+            if (
+                assembly.FullName != null
+                && !assembly.FullName.StartsWith("mscorlib")
+                && !assembly.FullName.StartsWith("System")
+                && !assembly.FullName.StartsWith("Microsoft")
+            )
+            {
+                types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element))));
+            }
         }
+        Table<string> table = new(new List<string> { "Id", "Type", "Project" });
+        var id = 0;
+        foreach (var type in types)
+        {
+            table.AddLine(
+                new List<string> { $"{id}", type.Name, type.Assembly.GetName().Name ?? "Unknown" }
+            );
+            id += 1;
+        }
+        table.Render();
     }
     #endregion
 }
