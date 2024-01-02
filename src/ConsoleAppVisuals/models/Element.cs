@@ -20,7 +20,7 @@ public abstract class Element
     /// The visibility of the element.
     /// </summary>
     /// <remarks>This property is sealed. The visibility of an element is managed by the <see cref="ToggleVisibility"/> method.</remarks>
-    public bool Visibility { get; private set; } = Window.DefaultVisibility;
+    public bool Visibility { get; private set; } = Window.DEFAULT_VISIBILITY;
 
     /// <summary>
     /// The line of the element in the console.
@@ -74,13 +74,21 @@ public abstract class Element
     /// <summary>
     /// This method is used to draw the element on the console.
     /// </summary>
-    /// <remarks>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</remarks>
-    public virtual void Render()
+    public void Render()
     {
         if (Visibility)
         {
-            Console.WriteLine($"Element {Id} of type {GetType()} is visible.");
+            RenderActions();
         }
+    }
+
+    /// <summary>
+    /// This method is used to define the actions to perform when the element is drawn on the console.
+    /// </summary>
+    /// <remarks>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</remarks>
+    protected virtual void RenderActions()
+    {
+        Console.WriteLine($"Element {Id} of type {GetType()} is visible.");
     }
     #endregion
 }
