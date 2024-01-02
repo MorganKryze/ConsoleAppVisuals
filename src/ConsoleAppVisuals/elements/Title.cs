@@ -7,7 +7,7 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Defines the title of the console window.
 /// </summary>
-public class Title : IElement
+public class Title : Element
 {
     #region Fields
     private string _text;
@@ -16,34 +16,14 @@ public class Title : IElement
     private readonly Placement _placement;
 
     /// <summary>
-    /// The id number of the title.
-    /// </summary>
-    public int Id { get; set; }
-
-    /// <summary>
-    /// The visibility of the title.
-    /// </summary>
-    public bool Visibility { get; private set; }
-
-    /// <summary>
     /// The height of the title.
     /// </summary>
-    public int Height
-    {
-        get { return StyledText.Length + _margin * 2; }
-    }
+    public override int Height => StyledText.Length + _margin * 2;
 
     /// <summary>
     /// The width of the title.
     /// </summary>
-    public int Width
-    {
-        get { return _width; }
-    }
-    /// <summary>
-    /// The maximum number of this element that can be drawn on the console.
-    /// </summary>
-    public int MaxNumberOfThisElement => 1;
+    public override int Width => _width;
     #endregion
 
     #region Properties
@@ -58,14 +38,17 @@ public class Title : IElement
     /// <param name="margin">The margin of the title.</param>
     /// <param name="width">The width of the title (by default the width of the console).</param>
     /// <param name="placement">The placement of the title.</param>
-    public Title(string text, int margin = 1, int? width = null, Placement placement = Placement.Center)
+    public Title(
+        string text,
+        int margin = 1,
+        int? width = null,
+        Placement placement = Placement.Center
+    )
     {
         _text = text;
         _margin = margin;
         _width = width ?? Console.WindowWidth;
         _placement = placement;
-        Id = Window.NextId;
-        Visibility = Window.DefaultVisibility;
     }
     #endregion
 
@@ -87,39 +70,15 @@ public class Title : IElement
     {
         _margin = margin;
     }
-    /// <summary>
-    /// This method is used to toggle the visibility of the title.
-    /// </summary>
-    public void ToggleVisibility()
-    {
-        if (Visibility)
-        {
-            Visibility = false;
-        }
-        else if (Window.AllowVisibilityChange(Id))
-        {
-            Visibility = true;
-        }
-        else 
-        {
-            throw new InvalidOperationException($"Operation not allowed, too many elements of {GetType()} already toggled from the maximum of {MaxNumberOfThisElement}.");
-        }
-    }
+
     /// <summary>
     /// This method is used to draw the title on the console.
     /// </summary>
-    public void Render()
+    public override void Render()
     {
         if (Visibility)
         {
-            Core.WritePositionedStyledText(
-                StyledText,
-                0,
-                _width,
-                _margin,
-                _placement,
-                false
-            );
+            Core.WritePositionedStyledText(StyledText, default, _width, _margin, _placement, false);
         }
     }
     #endregion
