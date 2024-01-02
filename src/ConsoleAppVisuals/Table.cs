@@ -290,13 +290,24 @@ public class Table<T>
                 }
                 stringList.Add(line.ToString());
             }
-            stringList.Insert(
-                0,
-                Corners[0].ToString().PadRight(stringList[0].Length - 1, '─') + Corners[1]
-            );
-            stringList.Add(
-                Corners[2].ToString().PadRight(stringList[0].Length - 1, '─') + Corners[3]
-            );
+            StringBuilder upperBorderBuilder = new(Corners[0].ToString());
+            for (int i = 0; i < rawLines.Count; i++)
+            {
+                upperBorderBuilder.Append(new string('─', localMax[i] + 2));
+                upperBorderBuilder.Append(
+                    (i != rawLines.Count - 1) ? "┬" : Corners[1].ToString()
+                );
+            }
+            stringList.Insert(0, upperBorderBuilder.ToString());
+            StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
+            for (int i = 0; i < rawLines.Count; i++)
+            {
+                lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
+                lowerBorderBuilder.Append(
+                    (i != rawLines.Count - 1) ? "┴" : Corners[3].ToString()
+                );
+            }
+            stringList.Add(lowerBorderBuilder.ToString());
             displayArray = stringList.ToArray();
         }
     }
@@ -313,18 +324,30 @@ public class Table<T>
     #endregion
 
     #region Methods
-    private void AddHeaders(List<string> headers)
+    /// <summary>
+    /// This method adds headers to the table.
+    /// </summary>
+    /// <param name="headers">The headers to add.</param>
+    public void AddHeaders(List<string> headers)
     {
-        BuildTable();
+        rawHeaders = headers;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+        else
+        {
+            rawHeaders = null;
+        }
     }
 
     /// <summary>
     /// Toggles the rounded corners of the table.
     /// </summary>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void SetRoundedCorners(bool value = true)
+    public void SetRoundedCorners(bool rounded = true)
     {
-        roundedCorners = value;
+        roundedCorners = rounded;
         BuildTable();
     }
 
