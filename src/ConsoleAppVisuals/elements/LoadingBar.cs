@@ -109,7 +109,7 @@ public class LoadingBar : Element
         }
 
         Core.WritePositionedString(_text, _placement, false, _line, false);
-        while (_progress <= MAX_PROGRESS)
+        while (_progress < MAX_PROGRESS)
         {
             BuildBar(_text, _progress, _line);
         }
