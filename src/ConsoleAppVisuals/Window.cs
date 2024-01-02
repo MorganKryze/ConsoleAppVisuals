@@ -10,7 +10,7 @@ namespace ConsoleAppVisuals;
 public static class Window
 {
     #region Fields
-    private static readonly List<IElement> _elements = new();
+    private static readonly List<Element> _elements = new();
 
     /// <summary>
     /// The default visibility of the elements.
@@ -23,6 +23,7 @@ public static class Window
     /// Gives the next id number.
     /// </summary>
     public static int NextId => _elements.Count;
+
     /// <summary>
     /// Gives the number of elements in the window.
     /// </summary>
@@ -31,11 +32,23 @@ public static class Window
 
     #region Manipulation Methods
     /// <summary>
+    /// This method returns the element with the given type.
+    /// </summary>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <returns>The element with the given type if it exists, null otherwise.</returns>
+    public static T? GetElement<T>()
+        where T : Element
+    {
+        return _elements.Find(element => element.GetType() == typeof(T)) as T;
+    }
+
+    /// <summary>
     /// This method returns the element with the given id.
     /// </summary>
     /// <param name="id">The id of the element.</param>
     /// <returns>The element with the given id if it exists, null otherwise.</returns>
-    public static T? GetElement<T>(int id) where T : IElement
+    public static T? GetElement<T>(int id)
+        where T : Element
     {
         if (id < 0 || id >= _elements.Count)
         {
@@ -45,10 +58,21 @@ public static class Window
     }
 
     /// <summary>
+    /// This method returns the visible element with the given type.
+    /// </summary>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <returns>The visible element with the given type if it exists, null otherwise.</returns>
+    public static T? GetVisibleElement<T>()
+        where T : Element
+    {
+        return _elements.Find(element => element.GetType() == typeof(T) && element.Visibility) as T;
+    }
+
+    /// <summary>
     /// This method adds an element to the window.
     /// </summary>
     /// <param name="element">The element to be added.</param>
-    public static void AddElement(IElement element)
+    public static void AddElement(Element element)
     {
         _elements.Add(element);
     }
@@ -59,7 +83,7 @@ public static class Window
     /// <param name="element">The element to be inserted.</param>
     /// <param name="id">The id of the element.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
-    public static void InsertElement(IElement element, int id)
+    public static void InsertElement(Element element, int id)
     {
         if (id < 0 || id > _elements.Count)
         {
@@ -86,7 +110,7 @@ public static class Window
     /// This method removes the given element.
     /// </summary>
     /// <param name="element">The element to be removed.</param>
-    public static void RemoveElement(IElement element)
+    public static void RemoveElement(Element element)
     {
         if (element != null && _elements.Contains(element))
         {
@@ -118,7 +142,7 @@ public static class Window
     public static void ListElements()
     {
         Table<string> table =
-            new(new List<string> { "Id", "Type", "Visibility", "Height", "Width" });
+            new(new List<string> { "Id", "Type", "Visibility", "Height", "Width", "Line" });
         foreach (var element in _elements)
         {
             table.AddLine(
@@ -128,7 +152,8 @@ public static class Window
                     element.GetType().Name,
                     element.Visibility.ToString(),
                     element.Height.ToString(),
-                    element.Width.ToString()
+                    element.Width.ToString(),
+                    element.Line.ToString()
                 }
             );
         }
