@@ -286,16 +286,27 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
+            float progress = 0f;
             Window.AddElement(new Title("Title"), true);
             Window.AddElement(new Header(), true);
             Window.AddElement(new Footer(), true);
             Window.AddElement(
-                new FakeLoadingBar("[ Loading ...]", Placement.TopCenter, default, 2000),
+                new LoadingBar("[ Loading ...]", ref progress, Placement.TopCenter, default, 2000),
                 true
             );
-            Window.StopExecution();
+            Thread thread = new (() =>
+            {
+                for (progress = 0f; progress <= 100f; progress++)
+                {
+                    Window.GetElement<LoadingBar>()?.UpdateProgress(progress / 100);
+                    Console.WriteLine(progress);
+                    Thread.Sleep(30);
+                }
+                Window.GetElement<LoadingBar>()?.UpdateProgress(1f);
+            });
+            thread.Start();
             Window.RenderAll();
-            Window.StopExecution();
+            thread.Join();
         }
     }
 }
