@@ -229,10 +229,39 @@ public static class Window
             }
         }
     }
+
+    /// <summary>
+    /// This method draws the element with the given id on the console.
+    /// </summary>
+    /// <param name="id">The id of the element.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
+    public static void RenderOne(int id)
+    {
+        if (id < 0 || id >= _elements.Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
+        }
+        _elements[id].Render();
+    }
+
+    /// <summary>
+    /// This method draws all the elements of the window on the console.
+    /// </summary>
+    public static void RenderAll()
+    {
+        foreach (var element in _elements)
+        {
+            element.Render();
+        }
+    }
+
+    #endregion
+
+    #region Info Methods
     /// <summary>
     /// This method displays a list of all elements in the window.
     /// </summary>
-    public static void ListElements()
+    public static void ListWindowElements()
     {
         Table<string> table =
             new(new List<string> { "Id", "Type", "Visibility", "Height", "Width", "Line" });
