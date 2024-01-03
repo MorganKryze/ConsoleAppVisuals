@@ -10,10 +10,22 @@ namespace ConsoleAppVisuals;
 public class Table<T>
 {
     #region Fields
-    private List<string>? rawHeaders;
-    private List<List<T>>? rawLines;
-    private string[]? displayArray;
-    private bool roundedCorners = true;
+    private List<string>? _rawHeaders;
+    private List<List<T>>? _rawLines;
+    private string[]? _displayArray;
+    private bool _roundedCorners = true;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// This property returns the headers of the table.
+    /// </summary>
+    public List<string>? GetRawHeaders => _rawHeaders;
+
+    /// <summary>
+    /// This property returns the lines of the table.
+    /// </summary>
+    public List<List<T>>? GetRawLines => _rawLines;
     #endregion
 
     #region Constructor
@@ -27,8 +39,8 @@ public class Table<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public Table(List<string>? headers = null, List<List<T>>? lines = null)
     {
-        rawHeaders = headers;
-        rawLines = lines;
+        _rawHeaders = headers;
+        _rawLines = lines;
         if (CompatibilityCheck())
         {
             BuildTable();
@@ -37,11 +49,11 @@ public class Table<T>
 
     private bool CompatibilityCheck()
     {
-        if (rawHeaders is null)
+        if (_rawHeaders is null)
         {
             return CheckRawLines();
         }
-        else if (rawLines is null)
+        else if (_rawLines is null)
         {
             return true;
         }
@@ -53,14 +65,14 @@ public class Table<T>
 
     private bool CheckRawLines()
     {
-        if (rawLines is null || rawLines.Count == 0)
+        if (_rawLines is null || _rawLines.Count == 0)
         {
             return false;
         }
 
-        for (int i = 0; i < rawLines.Count; i++)
+        for (int i = 0; i < _rawLines.Count; i++)
         {
-            if (rawLines[i].Count != rawLines[0].Count)
+            if (_rawLines[i].Count != _rawLines[0].Count)
             {
                 throw new ArgumentException(
                     "The number of columns in the table is not consistent."
@@ -73,16 +85,16 @@ public class Table<T>
 
     private bool CheckRawHeadersAndLines()
     {
-        if (rawLines is null || rawLines.Count == 0)
+        if (_rawLines is null || _rawLines.Count == 0)
         {
             return false;
         }
 
-        if (rawLines.Count > 0)
+        if (_rawLines.Count > 0)
         {
-            for (int i = 0; i < rawLines.Count; i++)
+            for (int i = 0; i < _rawLines.Count; i++)
             {
-                if (rawLines[i].Count != rawHeaders?.Count)
+                if (_rawLines[i].Count != _rawHeaders?.Count)
                 {
                     throw new ArgumentException(
                         "The number of columns in the table is not consistent(Headers or Lines)."
@@ -98,16 +110,16 @@ public class Table<T>
 
     private void BuildTable()
     {
-        if (rawHeaders is null)
+        if (_rawHeaders is null)
         {
-            if (rawLines is not null)
+            if (_rawLines is not null)
             {
                 BuildLines();
             }
         }
         else
         {
-            if (rawLines is null)
+            if (_rawLines is null)
             {
                 BuildHeaders();
             }
@@ -120,34 +132,34 @@ public class Table<T>
 
     private void BuildHeadersAndLines()
     {
-        if (rawHeaders is not null && rawLines is not null)
+        if (_rawHeaders is not null && _rawLines is not null)
         {
             var stringList = new List<string>();
-            var localMax = new int[rawHeaders.Count];
-            for (int i = 0; i < rawHeaders.Count; i++)
+            var localMax = new int[_rawHeaders.Count];
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                if (rawHeaders[i]?.Length > localMax[i])
+                if (_rawHeaders[i]?.Length > localMax[i])
                 {
-                    localMax[i] = rawHeaders[i]?.Length ?? 0;
+                    localMax[i] = _rawHeaders[i]?.Length ?? 0;
                 }
             }
 
-            for (int i = 0; i < rawLines.Count; i++)
+            for (int i = 0; i < _rawLines.Count; i++)
             {
-                for (int j = 0; j < rawLines[i].Count; j++)
+                for (int j = 0; j < _rawLines[i].Count; j++)
                 {
-                    if (rawLines[i][j]?.ToString()?.Length > localMax[j])
+                    if (_rawLines[i][j]?.ToString()?.Length > localMax[j])
                     {
-                        localMax[j] = rawLines[i][j]?.ToString()?.Length ?? 0;
+                        localMax[j] = _rawLines[i][j]?.ToString()?.Length ?? 0;
                     }
                 }
             }
 
             StringBuilder headerBuilder = new("│ ");
-            for (int i = 0; i < rawHeaders.Count; i++)
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                headerBuilder.Append(rawHeaders[i]?.PadRight(localMax[i]) ?? "");
-                if (i != rawHeaders.Count - 1)
+                headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
+                if (i != _rawHeaders.Count - 1)
                 {
                     headerBuilder.Append(" │ ");
                 }
@@ -159,30 +171,30 @@ public class Table<T>
             stringList.Add(headerBuilder.ToString());
 
             StringBuilder upperBorderBuilder = new(Corners[0].ToString());
-            for (int i = 0; i < rawHeaders.Count; i++)
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != rawHeaders.Count - 1) ? "┬" : Corners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┬" : Corners[1].ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
 
             StringBuilder intermediateBorderBuilder = new("├");
-            for (int i = 0; i < rawHeaders.Count; i++)
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 intermediateBorderBuilder.Append(new string('─', localMax[i] + 2));
-                intermediateBorderBuilder.Append((i != rawHeaders.Count - 1) ? "┼" : "┤");
+                intermediateBorderBuilder.Append((i != _rawHeaders.Count - 1) ? "┼" : "┤");
             }
             stringList.Add(intermediateBorderBuilder.ToString());
 
-            for (int i = 0; i < rawLines.Count; i++)
+            for (int i = 0; i < _rawLines.Count; i++)
             {
                 StringBuilder lineBuilder = new("│ ");
-                for (int j = 0; j < rawLines[i].Count; j++)
+                for (int j = 0; j < _rawLines[i].Count; j++)
                 {
-                    lineBuilder.Append(rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
-                    if (j != rawLines[i].Count - 1)
+                    lineBuilder.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
+                    if (j != _rawLines[i].Count - 1)
                     {
                         lineBuilder.Append(" │ ");
                     }
@@ -195,37 +207,37 @@ public class Table<T>
             }
 
             StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
-            for (int i = 0; i < rawHeaders.Count; i++)
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != rawHeaders.Count - 1) ? "┴" : Corners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┴" : Corners[3].ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
 
-            displayArray = stringList.ToArray();
+            _displayArray = stringList.ToArray();
         }
     }
 
     private void BuildHeaders()
     {
-        if (rawHeaders is not null)
+        if (_rawHeaders is not null)
         {
             var stringList = new List<string>();
-            var localMax = new int[rawHeaders.Count];
-            for (int i = 0; i < rawHeaders.Count; i++)
+            var localMax = new int[_rawHeaders.Count];
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                if (rawHeaders[i]?.Length > localMax[i])
+                if (_rawHeaders[i]?.Length > localMax[i])
                 {
-                    localMax[i] = rawHeaders[i]?.Length ?? 0;
+                    localMax[i] = _rawHeaders[i]?.Length ?? 0;
                 }
             }
             StringBuilder headerBuilder = new("│ ");
-            for (int i = 0; i < rawHeaders.Count; i++)
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                headerBuilder.Append(rawHeaders[i]?.PadRight(localMax[i]) ?? "");
-                if (i != rawHeaders.Count - 1)
+                headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
+                if (i != _rawHeaders.Count - 1)
                 {
                     headerBuilder.Append(" │ ");
                 }
@@ -236,50 +248,50 @@ public class Table<T>
             }
             stringList.Add(headerBuilder.ToString());
             StringBuilder upperBorderBuilder = new(Corners[0].ToString());
-            for (int i = 0; i < rawHeaders.Count; i++)
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != rawHeaders.Count - 1) ? "┬" : Corners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┬" : Corners[1].ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
             StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
-            for (int i = 0; i < rawHeaders.Count; i++)
+            for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != rawHeaders.Count - 1) ? "┴" : Corners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┴" : Corners[3].ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
-            displayArray = stringList.ToArray();
+            _displayArray = stringList.ToArray();
         }
     }
 
     private void BuildLines()
     {
-        if (rawLines is not null)
+        if (_rawLines is not null)
         {
             var stringList = new List<string>();
-            var localMax = new int[rawLines[0].Count];
-            for (int i = 0; i < rawLines.Count; i++)
+            var localMax = new int[_rawLines[0].Count];
+            for (int i = 0; i < _rawLines.Count; i++)
             {
-                for (int j = 0; j < rawLines[i].Count; j++)
+                for (int j = 0; j < _rawLines[i].Count; j++)
                 {
-                    if (rawLines[i][j]?.ToString()?.Length > localMax[j])
+                    if (_rawLines[i][j]?.ToString()?.Length > localMax[j])
                     {
-                        localMax[j] = rawLines[i][j]?.ToString()?.Length ?? 0;
+                        localMax[j] = _rawLines[i][j]?.ToString()?.Length ?? 0;
                     }
                 }
             }
-            for (int i = 0; i < rawLines.Count; i++)
+            for (int i = 0; i < _rawLines.Count; i++)
             {
                 StringBuilder line = new("│ ");
-                for (int j = 0; j < rawLines[i].Count; j++)
+                for (int j = 0; j < _rawLines[i].Count; j++)
                 {
-                    line.Append(rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
-                    if (j != rawLines[i].Count - 1)
+                    line.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
+                    if (j != _rawLines[i].Count - 1)
                     {
                         line.Append(" │ ");
                     }
@@ -291,31 +303,31 @@ public class Table<T>
                 stringList.Add(line.ToString());
             }
             StringBuilder upperBorderBuilder = new(Corners[0].ToString());
-            for (int i = 0; i < rawLines.Count; i++)
+            for (int i = 0; i < _rawLines.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-                upperBorderBuilder.Append((i != rawLines.Count - 1) ? "┬" : Corners[1].ToString());
+                upperBorderBuilder.Append((i != _rawLines.Count - 1) ? "┬" : Corners[1].ToString());
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
             StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
-            for (int i = 0; i < rawLines.Count; i++)
+            for (int i = 0; i < _rawLines.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-                lowerBorderBuilder.Append((i != rawLines.Count - 1) ? "┴" : Corners[3].ToString());
+                lowerBorderBuilder.Append((i != _rawLines.Count - 1) ? "┴" : Corners[3].ToString());
             }
             stringList.Add(lowerBorderBuilder.ToString());
-            displayArray = stringList.ToArray();
+            _displayArray = stringList.ToArray();
         }
     }
     #endregion
 
     #region Properties
-    private string Corners => roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+    private string Corners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
 
     /// <summary>
     /// This property returns the number of lines in the table.
     /// </summary>
-    public int Count => rawLines?.Count ?? 0;
+    public int Count => _rawLines?.Count ?? 0;
 
     #endregion
 
@@ -326,14 +338,14 @@ public class Table<T>
     /// <param name="headers">The headers to add.</param>
     public void AddHeaders(List<string> headers)
     {
-        rawHeaders = headers;
+        _rawHeaders = headers;
         if (CompatibilityCheck())
         {
             BuildTable();
         }
         else
         {
-            rawHeaders = null;
+            _rawHeaders = null;
         }
     }
 
@@ -343,7 +355,7 @@ public class Table<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void SetRoundedCorners(bool rounded = true)
     {
-        roundedCorners = rounded;
+        _roundedCorners = rounded;
         BuildTable();
     }
 
@@ -356,11 +368,60 @@ public class Table<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public List<T> GetLine(int index)
     {
-        if (index < 0 || index >= rawLines?.Count)
+        if (index < 0 || index >= _rawLines?.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
         }
-        return rawLines![index];
+        return _rawLines![index];
+    }
+
+    /// <summary>
+    /// This method is used to get all the elements from a column given its index.
+    /// </summary>
+    /// <param name="index">The index of the column.</param>
+    /// <returns>The elements of the column.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    public List<T>? GetColumnData(int index)
+    {
+        if (_rawLines is null)
+        {
+            return null;
+        }
+
+        if (index < 0 || index >= _rawLines[0].Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "Invalid column index.");
+        }
+
+        List<T>? list = new();
+        for (int i = 0; i < _rawLines.Count; i++)
+        {
+            list.Add(_rawLines[i][index]);
+        }
+        return list;
+    }
+
+    /// <summary>
+    /// This method is used to get all the elements from a column given its header.
+    /// </summary>
+    /// <param name="header">The header of the column.</param>
+    /// <returns>The elements of the column.</returns>
+    /// <exception cref="InvalidOperationException">Is thrown when the table is empty.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
+    public List<T>? GetColumnData(string header)
+    {
+        if (_rawLines is null || _rawHeaders is null)
+        {
+            throw new InvalidOperationException(
+                "The table is empty. Either the headers or the lines are null."
+            );
+        }
+        if (!_rawHeaders.Contains(header))
+        {
+            throw new ArgumentOutOfRangeException(nameof(header), "Invalid column header.");
+        }
+
+        return GetColumnData(_rawHeaders.IndexOf(header));
     }
 
     /// <summary>
@@ -371,20 +432,20 @@ public class Table<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void AddLine(List<T> line)
     {
-        if (rawLines?.Count > 0 && line.Count != rawLines[0].Count)
+        if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
         {
             throw new ArgumentException(
                 "The number of columns in the table is not consistent with other lines."
             );
         }
-        if (rawHeaders is not null && line.Count != rawHeaders.Count)
+        if (_rawHeaders is not null && line.Count != _rawHeaders.Count)
         {
             throw new ArgumentException(
                 "The number of columns in the table is not consistent with the headers."
             );
         }
-        rawLines ??= new List<List<T>>();
-        rawLines.Add(line);
+        _rawLines ??= new List<List<T>>();
+        _rawLines.Add(line);
         BuildTable();
     }
 
@@ -396,12 +457,12 @@ public class Table<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void RemoveLine(int index)
     {
-        if (rawLines?.Count > 0 && (index < 0 || index >= rawLines.Count))
+        if (_rawLines?.Count > 0 && (index < 0 || index >= _rawLines.Count))
         {
             throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
         }
 
-        rawLines?.RemoveAt(index);
+        _rawLines?.RemoveAt(index);
         BuildTable();
     }
 
@@ -415,21 +476,21 @@ public class Table<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void UpdateLine(int index, List<T> line)
     {
-        if (rawLines?.Count > 0)
+        if (_rawLines?.Count > 0)
         {
-            if (index < 0 || index >= rawLines.Count)
+            if (index < 0 || index >= _rawLines.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
             }
 
-            if (line.Count != rawHeaders?.Count)
+            if (line.Count != _rawHeaders?.Count)
             {
                 throw new ArgumentException(
                     "The number of columns in the table is not consistent."
                 );
             }
         }
-        rawLines![index] = line;
+        _rawLines![index] = line;
         BuildTable();
     }
 
@@ -438,7 +499,7 @@ public class Table<T>
     /// </summary>
     public void ClearHeaders()
     {
-        rawHeaders = null;
+        _rawHeaders = null;
         BuildTable();
     }
 
@@ -447,7 +508,7 @@ public class Table<T>
     /// </summary>
     public void ClearLines()
     {
-        rawLines = null;
+        _rawLines = null;
         BuildTable();
     }
 
@@ -456,8 +517,8 @@ public class Table<T>
     /// </summary>
     public void Clear()
     {
-        rawHeaders = null;
-        rawLines = null;
+        _rawHeaders = null;
+        _rawLines = null;
         BuildTable();
     }
 
@@ -485,10 +546,10 @@ public class Table<T>
 
         while (true)
         {
-            string[] array = new string[displayArray!.Length];
-            for (int j = 0; j < displayArray.Length; j++)
+            string[] array = new string[_displayArray!.Length];
+            for (int j = 0; j < _displayArray.Length; j++)
             {
-                array[j] = displayArray[j];
+                array[j] = _displayArray[j];
                 Core.WritePositionedString(
                     array[j],
                     Placement.TopCenter,
@@ -498,7 +559,7 @@ public class Table<T>
                 if (j == index)
                 {
                     Core.WritePositionedString(
-                        j == displayArray.Length - 1
+                        j == _displayArray.Length - 1
                             ? array[j].InsertString($"┤ {footerText} ├", Placement.TopCenter, true)[
                                 2..^2
                             ]
@@ -520,13 +581,13 @@ public class Table<T>
                     index = HandleDownArrowKey(index, minIndex, maxIndex);
                     break;
                 case ConsoleKey.Enter:
-                    Core.ClearMultipleLines(line, displayArray.Length + 1);
+                    Core.ClearMultipleLines(line, _displayArray.Length + 1);
                     return (Output.Select, index);
                 case ConsoleKey.Escape:
-                    Core.ClearMultipleLines(line, displayArray.Length + 1);
+                    Core.ClearMultipleLines(line, _displayArray.Length + 1);
                     return (Output.Exit, -1);
                 case ConsoleKey.Backspace:
-                    Core.ClearMultipleLines(line, displayArray.Length + 1);
+                    Core.ClearMultipleLines(line, _displayArray.Length + 1);
                     return (Output.Delete, index);
             }
         }
@@ -536,7 +597,7 @@ public class Table<T>
     {
         if (excludeHeader)
         {
-            return rawHeaders is null ? 1 : 3;
+            return _rawHeaders is null ? 1 : 3;
         }
         else
         {
@@ -546,7 +607,7 @@ public class Table<T>
 
     int GetMaxIndex(bool excludeFooter)
     {
-        return excludeFooter ? displayArray!.Length - 2 : displayArray!.Length - 1;
+        return excludeFooter ? _displayArray!.Length - 2 : _displayArray!.Length - 1;
     }
 
     static int HandleUpArrowKey(int index, int minIndex, int maxIndex)
@@ -583,10 +644,10 @@ public class Table<T>
     {
         line ??= Core.ContentHeight;
         int startContentHeight = line.Value + 1;
-        string[] array = new string[displayArray!.Length];
-        for (int j = 0; j < displayArray.Length; j++)
+        string[] array = new string[_displayArray!.Length];
+        for (int j = 0; j < _displayArray.Length; j++)
         {
-            array[j] = displayArray[j];
+            array[j] = _displayArray[j];
             Core.WritePositionedString(
                 array[j],
                 Placement.TopCenter,
@@ -595,7 +656,7 @@ public class Table<T>
             );
         }
         Console.ReadKey(true);
-        Core.ClearMultipleLines(line, displayArray.Length + 1);
+        Core.ClearMultipleLines(line, _displayArray.Length + 1);
     }
     #endregion
 }
