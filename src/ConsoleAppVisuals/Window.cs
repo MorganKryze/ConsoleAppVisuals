@@ -175,10 +175,20 @@ public static class Window
     /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
     public static bool AllowVisibilityToggle(int id)
     {
-        int numberOfVisibleElements = _elements.Count(
-            element => element.GetType() == _elements[id].GetType() && element.Visibility
-        );
-        return numberOfVisibleElements < _elements[id].MaxNumberOfThisElement;
+        if (_elements[id].IsInteractive)
+        {
+            int numberOfVisibleInteractiveElements = _elements.Count(
+                element => element.IsInteractive && element.Visibility
+            );
+            return numberOfVisibleInteractiveElements == 0;
+        }
+        else
+        {
+            int numberOfVisibleElements = _elements.Count(
+                element => element.GetType() == _elements[id].GetType() && element.Visibility
+            );
+            return numberOfVisibleElements < _elements[id].MaxNumberOfThisElement;
+        }
     }
 
     /// <summary>
@@ -196,11 +206,13 @@ public static class Window
         {
             _elements[id].ToggleVisibility();
         }
+        Refresh();
     }
 
     /// <summary>
     /// This method attempts to activate the visibility of all elements.
     /// </summary>
+    /// <remarks>This method is dangerous for your application. It is recommended to activate the visibility of each element individually.</remarks>
     public static void ActivateAllElements()
     {
         foreach (var element in _elements)
@@ -227,6 +239,54 @@ public static class Window
         {
             _elements[id].ToggleVisibility();
         }
+        Refresh();
+    }
+
+    /// <summary>
+    /// This method deactivate the visibility of the element with the given type.
+    /// </summary>
+    /// <param name="element">The element to be deactivated.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
+    public static void DeactivateElement(Element element)
+    {
+        if (element != null && _elements.Contains(element))
+        {
+            if (element.Visibility)
+            {
+                element.ToggleVisibility();
+            }
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(element),
+                "Invalid element. Not found in the window."
+            );
+        }
+        Refresh();
+    }
+
+    /// <summary>
+    /// This method deactivate the visibility of the first element with the given type.
+    /// </summary>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
+    public static void DeactivateElement<T>()
+        where T : Element
+    {
+        var element = GetElement<T>();
+        if (element != null)
+        {
+            if (element.Visibility)
+            {
+                element.ToggleVisibility();
+            }
+        }
+        else
+        {
+            throw new InvalidOperationException("Invalid element. Not found in the window.");
+        }
+        Refresh();
     }
 
     /// <summary>
@@ -241,6 +301,7 @@ public static class Window
                 element.ToggleVisibility();
             }
         }
+        Refresh();
     }
 
     /// <summary>
@@ -258,14 +319,38 @@ public static class Window
     }
 
     /// <summary>
-    /// This method draws all the elements of the window on the console.
+    /// This method draws the given element on the console.
     /// </summary>
-    public static void RenderAll()
+    /// <param name="element">The element to be drawn.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
+    public static void RenderOne(Element element)
+    {
+        if (element != null && _elements.Contains(element))
+        {
+            element.Render();
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(element),
+                "Invalid element. Not found in the window."
+            );
+        }
+    }
+
+    /// <summary>
+    /// This method draws all the non interactive elements of the window on the console.
+    /// </summary>
+    /// <param name="includeInteractiveElement">If true, will also draw the interactive elements.</param>
+    public static void Refresh(bool includeInteractiveElement = false)
     {
         Clear();
         for (int i = 0; i < _elements.Count; i++)
         {
-            RenderOne(i);
+            if (!_elements[i].IsInteractive || includeInteractiveElement)
+            {
+                RenderOne(i);
+            }
         }
     }
     #endregion
@@ -318,10 +403,21 @@ public static class Window
     /// <summary>
     /// This method displays a list of all elements in the window.
     /// </summary>
-    public static void ListWindowElements()
+    public static List<string>? ListWindowElements()
     {
         Table<string> table =
-            new(new List<string> { "Id", "Type", "Visibility", "Height", "Width", "Line" });
+            new(
+                new List<string>
+                {
+                    "Id",
+                    "Type",
+                    "Visibility",
+                    "Height",
+                    "Width",
+                    "Line",
+                    "IsInteractive"
+                }
+            );
         foreach (var element in _elements)
         {
             table.AddLine(
@@ -332,18 +428,20 @@ public static class Window
                     element.Visibility.ToString(),
                     element.Height.ToString(),
                     element.Width.ToString(),
-                    element.Line.ToString()
+                    element.Line.ToString(),
+                    element.IsInteractive.ToString()
                 }
             );
         }
-        table.Render();
+        table.Render(GetLineAvailable(Placement.TopCenter));
+        return table.GetColumnData("Type");
     }
 
     /// <summary>
     /// This method gives a list of all classes inheriting from the Element class.
     /// </summary>
     /// <returns></returns>
-    public static void ListClassesInheritingElement()
+    public static List<string>? ListClassesInheritingElement()
     {
         var types = new List<Type>();
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -369,6 +467,7 @@ public static class Window
             id += 1;
         }
         table.Render();
+        return table.GetColumnData("Type");
     }
     #endregion
 }
