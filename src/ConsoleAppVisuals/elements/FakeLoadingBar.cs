@@ -59,7 +59,7 @@ public class FakeLoadingBar : Element
     {
         _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
         _placement = placement;
-        _line = line ?? Window.LastTopLineAvailable;
+        _line = line ?? Window.GetLineAvailable(placement);
         _processDuration = processDuration;
         _additionalDuration = additionalDuration;
     }
