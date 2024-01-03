@@ -12,6 +12,7 @@ public static class Core
     #region Attributes
     private static (string[]?, int?) s_title;
     private static TextStyler s_styler = new();
+    private static (char, char) s_Selector = ('▶', '◀');
     private static int s_previousWindowWidth = Console.WindowWidth;
     private static int s_previousWindowHeight = Console.WindowHeight;
     private static (ConsoleColor, ConsoleColor) s_colorPanel = (
@@ -36,14 +37,13 @@ public static class Core
         "Footer Center",
         "Footer Right"
     );
-
-    /// <summary>
-    /// This field contains the selector of the console menus.
-    /// </summary>
-    public static (char, char) s_Selector = ('▶', '◀');
     #endregion
 
     #region Properties
+    /// <summary>
+    /// This property is used to get the selector of the console menus.
+    /// </summary>
+    public static (char, char) GetSelector => s_Selector;
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
@@ -610,6 +610,7 @@ public static class Core
     /// <param name="start">The starting value of the number.</param>
     /// <param name="step">The step of the number.</param>
     /// <param name="line">The line where the menu is printed.</param>
+    /// <param name="roundedCorners">If true, the corners of the menu are rounded.</param>
     /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the number chosen by the user.</returns>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static (Output, float) ScrollingNumberSelector(
@@ -618,50 +619,107 @@ public static class Core
         float max,
         float start = 0,
         float step = 100,
-        int? line = null
+        int? line = null,
+        bool roundedCorners = false
     )
     {
         line ??= ContentHeight;
+        string corners = roundedCorners ? "╭╮╰╯" : "┌┐└┘";
         WriteContinuousString(question, line, default, 1500, 50);
-        float _currentNumber = start;
-        int _lineSelector = (int)line + 2;
+        float currentNumber = start;
+        int lineSelector = (int)line + 4;
         while (true)
         {
             WritePositionedString(
-                $" {s_Selector.Item1} {(float)Math.Round(_currentNumber, 1)} {s_Selector.Item2} ",
+                BuildLine(Direction.Up),
+                Placement.TopCenter,
+                false,
+                lineSelector - 2
+            );
+            WritePositionedString(
+                BuildNumber((float)Math.Round(NextNumber(Direction.Up), 1)),
+                Placement.TopCenter,
+                false,
+                lineSelector - 1
+            );
+            WritePositionedString(
+                $" {s_Selector.Item1} {BuildNumber((float)Math.Round(currentNumber, 1))} {s_Selector.Item2} ",
                 Placement.TopCenter,
                 true,
-                line + 2
+                lineSelector
+            );
+            WritePositionedString(
+                BuildNumber((float)Math.Round(NextNumber(Direction.Down), 1)),
+                Placement.TopCenter,
+                false,
+                lineSelector + 1
+            );
+            WritePositionedString(
+                BuildLine(Direction.Down),
+                Placement.TopCenter,
+                false,
+                lineSelector + 2
             );
 
             switch (Console.ReadKey(true).Key)
             {
                 case ConsoleKey.UpArrow:
                 case ConsoleKey.Z:
-                    if (_currentNumber + step <= max)
-                        _currentNumber += step;
-                    else if (_currentNumber + step > max)
-                        _currentNumber = min;
+                    currentNumber = NextNumber(Direction.Up);
                     break;
                 case ConsoleKey.DownArrow:
                 case ConsoleKey.S:
-                    if (_currentNumber - step >= min)
-                        _currentNumber -= step;
-                    else if (_currentNumber - step < min)
-                        _currentNumber = max;
+                    currentNumber = NextNumber(Direction.Down);
                     break;
                 case ConsoleKey.Enter:
                     ClearMultipleLines(line, 4);
-                    return (Output.Select, _currentNumber);
+                    return (Output.Select, currentNumber);
                 case ConsoleKey.Escape:
                     ClearMultipleLines(line, 4);
-                    return (Output.Exit, _currentNumber);
+                    return (Output.Exit, currentNumber);
                 case ConsoleKey.Backspace:
                     ClearMultipleLines(line, 4);
-                    return (Output.Delete, _currentNumber);
+                    return (Output.Delete, currentNumber);
             }
             Thread.Sleep(1);
-            ClearLine(_lineSelector);
+            ClearMultipleLines(lineSelector - 2, 5);
+        }
+        float NextNumber(Direction direction)
+        {
+            if (direction == Direction.Up)
+            {
+                if (currentNumber + step <= max)
+                    return currentNumber + step;
+                else if (currentNumber + step > max)
+                    return min;
+            }
+            else
+            {
+                if (currentNumber - step >= min)
+                    return currentNumber - step;
+                else if (currentNumber - step < min)
+                    return max;
+            }
+            return currentNumber;
+        }
+        string BuildLine(Direction direction)
+        {
+            StringBuilder line = new ();
+            for (int i = 0; i < max.ToString().Length + 2; i++)
+                line.Append('─');
+            if (direction == Direction.Up)
+                line.Insert(0, corners[0].ToString(), 1).Append(corners[1], 1);
+            else
+                line.Insert(0, corners[2].ToString(), 1).Append(corners[3], 1);
+            return line.ToString();
+        }
+        string BuildNumber(float number)
+        {
+            StringBuilder numberStr = new ();
+            numberStr.Append("│ ");
+            numberStr.Append(number.ToString().ResizeString(max.ToString().Length, Placement.TopCenter));
+            numberStr.Append(" │");
+            return numberStr.ToString();
         }
     }
 
