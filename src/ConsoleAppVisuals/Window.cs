@@ -30,24 +30,6 @@ public static class Window
     /// Gives the number of elements in the window.
     /// </summary>
     public static int NumberOfElements => _elements.Count;
-
-    /// <summary>
-    /// Gives the last line available to draw an element on the console from the top.
-    /// </summary>
-    public static int LastTopLineAvailable =>
-        _elements
-            .Where(e => e.Placement.ToString().StartsWith("Top") && e.Visibility)
-            .Sum(e => e.Height);
-
-    /// <summary>
-    /// Gives the last line available to draw an element on the console from the bottom.
-    /// </summary>
-    public static int LastBottomLineAvailable =>
-        Console.WindowHeight
-        - 1
-        - _elements
-            .Where(e => e.Placement.ToString().StartsWith("Bottom") && e.Visibility)
-            .Sum(e => e.Height);
     #endregion
 
     #region Manipulation Methods
@@ -286,10 +268,53 @@ public static class Window
             RenderOne(i);
         }
     }
-
     #endregion
 
     #region Info Methods
+    /// <summary>
+    /// Gives the last line available to draw an element on the console from a placement.
+    /// </summary>
+    /// <param name="placement">The placement of the element.</param>
+    /// <returns>The last line available to draw an element on the console from a placement.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the placement is invalid.</exception>
+    public static int GetLineAvailable(Placement placement)
+    {
+        return placement switch
+        {
+            Placement.TopCenter
+                => _elements
+                    .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
+                    .Sum(e => e.Height),
+            Placement.TopLeft
+                => _elements
+                    .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
+                    .Sum(e => e.Height),
+            Placement.TopRight
+                => _elements
+                    .Where(e => e.Placement == Placement.TopRight && e.Visibility)
+                    .Sum(e => e.Height),
+            Placement.BottomCenter
+                => Console.WindowHeight
+                    - 1
+                    - _elements
+                        .Where(e => e.Placement == Placement.BottomCenter && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.BottomLeft
+                => Console.WindowHeight
+                    - 1
+                    - _elements
+                        .Where(e => e.Placement == Placement.BottomLeft && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.BottomRight
+                => Console.WindowHeight
+                    - 1
+                    - _elements
+                        .Where(e => e.Placement == Placement.BottomRight && e.Visibility)
+                        .Sum(e => e.Height),
+            _ => throw new ArgumentOutOfRangeException(nameof(placement), "Invalid placement.")
+        };
+    }
+
     /// <summary>
     /// This method displays a list of all elements in the window.
     /// </summary>
