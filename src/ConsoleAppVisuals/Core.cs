@@ -12,7 +12,6 @@ public static class Core
     #region Attributes
     private static (string[]?, int?) s_title;
     private static TextStyler s_styler = new();
-    private static (char, char) s_selector = ('▶', '◀');
     private static int s_previousWindowWidth = Console.WindowWidth;
     private static int s_previousWindowHeight = Console.WindowHeight;
     private static (ConsoleColor, ConsoleColor) s_colorPanel = (
@@ -37,6 +36,11 @@ public static class Core
         "Footer Center",
         "Footer Right"
     );
+
+    /// <summary>
+    /// This field contains the selector of the console menus.
+    /// </summary>
+    public static (char, char) s_Selector = ('▶', '◀');
     #endregion
 
     #region Properties
@@ -83,7 +87,7 @@ public static class Core
     /// </summary>
     /// <param name="onward">The new selector facing forward.</param>
     /// <param name="backward">The new selector facing backward.</param>
-    public static void SetSelector(char onward, char backward) => s_selector = (onward, backward);
+    public static void SetSelector(char onward, char backward) => s_Selector = (onward, backward);
 
     /// <summary>
     /// This method changes the font color of the console.
@@ -222,7 +226,12 @@ public static class Core
         {
             for (int i = 0; i < Console.WindowHeight; i++)
             {
-                WritePositionedString("".PadRight(Console.WindowWidth), Placement.TopCenter, false, i);
+                WritePositionedString(
+                    "".PadRight(Console.WindowWidth),
+                    Placement.TopCenter,
+                    false,
+                    i
+                );
             }
         }
         s_colorPanel = (ConsoleColor.White, ConsoleColor.Black);
@@ -534,18 +543,11 @@ public static class Core
 
         WriteContinuousString(question, line, false, 1500, 50);
         int lineChoice = line.Value + 2;
+        bool delay = true;
         while (true)
         {
-            string[] array = new string[choices.Length];
-            for (int i = 0; i < choices.Length; i++)
-            {
-                array[i] =
-                    (i == defaultIndex)
-                        ? $" {s_selector.Item1} {choices[i]}  "
-                        : $"   {choices[i]}  ";
-                WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
-            }
-
+            DisplayChoices(defaultIndex, placement, choices, lineChoice, delay);
+            delay = false;
             switch (Console.ReadKey(intercept: true).Key)
             {
                 case ConsoleKey.UpArrow:
@@ -574,6 +576,27 @@ public static class Core
             for (int i = 0; i < choices.Length; i++)
             {
                 choices[i] = choices[i].PadRight(totalWidth);
+            }
+        }
+
+        static void DisplayChoices(
+            int defaultIndex,
+            Placement placement,
+            string[] choices,
+            int lineChoice,
+            bool delay = false
+        )
+        {
+            string[] array = new string[choices.Length];
+            for (int i = 0; i < choices.Length; i++)
+            {
+                array[i] =
+                    (i == defaultIndex)
+                        ? $" {s_Selector.Item1} {choices[i]}  "
+                        : $"   {choices[i]}  ";
+                WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
+                if (delay)
+                    Thread.Sleep(30);
             }
         }
     }
@@ -605,7 +628,7 @@ public static class Core
         while (true)
         {
             WritePositionedString(
-                $" {s_selector.Item1} {(float)Math.Round(_currentNumber, 1)} {s_selector.Item2} ",
+                $" {s_Selector.Item1} {(float)Math.Round(_currentNumber, 1)} {s_Selector.Item2} ",
                 Placement.TopCenter,
                 true,
                 line + 2
@@ -770,22 +793,28 @@ public static class Core
         if (truncate && padding < 0)
             switch (position)
             {
-                case Placement.TopLeft: case Placement.BottomLeft:
+                case Placement.TopLeft:
+                case Placement.BottomLeft:
                     return str.Substring(0, size);
-                case Placement.TopCenter: case Placement.BottomCenter:
+                case Placement.TopCenter:
+                case Placement.BottomCenter:
                     return str.Substring((-padding) / 2, size);
-                case Placement.TopRight: case Placement.BottomRight:
+                case Placement.TopRight:
+                case Placement.BottomRight:
                     return str.Substring(-padding, size);
             }
         else
             switch (position)
             {
-                case Placement.TopLeft: case Placement.BottomLeft:
+                case Placement.TopLeft:
+                case Placement.BottomLeft:
                     return str.PadRight(size);
-                case Placement.TopCenter: case Placement.BottomCenter:
+                case Placement.TopCenter:
+                case Placement.BottomCenter:
                     return str.PadLeft(padding / 2 + padding % 2 + str.Length)
                         .PadRight(padding + str.Length);
-                case Placement.TopRight: case Placement.BottomRight:
+                case Placement.TopRight:
+                case Placement.BottomRight:
                     return str.PadLeft(size);
             }
         return str;
@@ -814,7 +843,8 @@ public static class Core
         }
         switch (position)
         {
-            case Placement.TopCenter: case Placement.BottomCenter:
+            case Placement.TopCenter:
+            case Placement.BottomCenter:
                 int center = inserted.Length / 2;
                 int start = center - (toInsert.Length / 2);
                 if (truncate)
@@ -825,7 +855,8 @@ public static class Core
                 {
                     return inserted.Insert(start, toInsert);
                 }
-            case Placement.TopLeft: case Placement.BottomLeft:
+            case Placement.TopLeft:
+            case Placement.BottomLeft:
                 if (truncate)
                 {
                     return inserted.Remove(0, toInsert.Length).Insert(0, toInsert);
@@ -834,7 +865,8 @@ public static class Core
                 {
                     return inserted.Insert(0, toInsert);
                 }
-            case Placement.TopRight: case Placement.BottomRight:
+            case Placement.TopRight:
+            case Placement.BottomRight:
                 if (truncate)
                 {
                     return inserted
