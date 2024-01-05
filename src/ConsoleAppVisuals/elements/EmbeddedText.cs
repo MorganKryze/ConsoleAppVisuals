@@ -57,21 +57,38 @@ public class EmbeddedText : InteractiveElement<string>
     #endregion
 
     #region Methods
+    /// <summary>
+    /// Adds a line to the Embedded text.
+    /// </summary>
+    /// <param name="line">The line to add.</param>
     public void AddLine(string line)
     {
         _text.Add(line);
     }
 
+    /// <summary>
+    /// Inserts a line to the Embedded text.
+    /// </summary>
+    /// <param name="line">The line to insert.</param>
+    /// <param name="index">The index where to insert the line.</param>
     public void InsertLine(string line, int index)
     {
         _text.Insert(index, line);
     }
 
+    /// <summary>
+    /// Removes a line from the Embedded text.
+    /// </summary>
+    /// <param name="line">The line to remove.</param>
     public void RemoveLine(string line)
     {
         _text.Remove(line);
     }
 
+    /// <summary>
+    /// Removes a line from the Embedded text.
+    /// </summary>
+    /// <param name="index">The index of the line to remove.</param>
     public void RemoveLine(int index)
     {
         _text.RemoveAt(index);
@@ -107,7 +124,6 @@ public class EmbeddedText : InteractiveElement<string>
                 case TextAlignment.Center:
                     int totalPadding = maxLength - line.Length;
                     int padLeft = totalPadding / 2;
-                    int padRight = totalPadding - padLeft;
                     lineToDisplay += line.PadLeft(line.Length + padLeft).PadRight(maxLength);
                     break;
                 case TextAlignment.Left:
