@@ -94,8 +94,10 @@ public class FakeLoadingBar : Element
             _additionalDuration,
             Width,
             _placement,
+            default,
             false
         );
+        Window.DeactivateElement(this);
     }
     #endregion
 }

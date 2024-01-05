@@ -100,7 +100,7 @@ public class LoadingBar : Element
                 loadingBar.Append(LOADING_BAR_CHAR);
             }
             Core.WritePositionedString(
-                loadingBar.ToString().ResizeString(text.Length, Placement.TopLeft),
+                loadingBar.ToString().ResizeString(text.Length, TextAlignment.Left),
                 _placement,
                 false,
                 line + 2,

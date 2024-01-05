@@ -13,6 +13,7 @@ public enum Direction
     /// The up direction.
     /// </summary>
     Up,
+
     /// <summary>
     /// The down direction.
     /// </summary>

@@ -10,6 +10,7 @@ namespace ConsoleAppVisuals;
 public class Table<T>
 {
     #region Fields
+    private string? _title;
     private List<string>? _rawHeaders;
     private List<List<T>>? _rawLines;
     private string[]? _displayArray;
@@ -32,13 +33,15 @@ public class Table<T>
     /// <summary>
     /// The <see cref="Table{T}"/> natural constructor.
     /// </summary>
+    /// <param name="title">The title of the table.</param>
     /// <param name="lines">The lines of the table.</param>
     /// <param name="headers">The headers of the table.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public Table(List<string>? headers = null, List<List<T>>? lines = null)
+    public Table(string? title = null, List<string>? headers = null, List<List<T>>? lines = null)
     {
+        _title = title;
         _rawHeaders = headers;
         _rawLines = lines;
         if (CompatibilityCheck())
@@ -217,6 +220,7 @@ public class Table<T>
             stringList.Add(lowerBorderBuilder.ToString());
 
             _displayArray = stringList.ToArray();
+            BuildTitle();
         }
     }
 
@@ -266,6 +270,7 @@ public class Table<T>
             }
             stringList.Add(lowerBorderBuilder.ToString());
             _displayArray = stringList.ToArray();
+            BuildTitle();
         }
     }
 
@@ -317,6 +322,29 @@ public class Table<T>
             }
             stringList.Add(lowerBorderBuilder.ToString());
             _displayArray = stringList.ToArray();
+            BuildTitle();
+        }
+    }
+
+    private void BuildTitle()
+    {
+        if (_title is not null)
+        {
+            var len = _displayArray![0].Length;
+            var title = _title.ResizeString(len - 4);
+            title = $"│ {title} │";
+            var upperBorderBuilder = new StringBuilder(Corners[0].ToString());
+            upperBorderBuilder.Append(new string('─', len - 2));
+            upperBorderBuilder.Append(Corners[1].ToString());
+            var display = _displayArray.ToList();
+            display[0] = display[0]
+                .Remove(0, 1)
+                .Insert(0, "├")
+                .Remove(display[1].Length - 1, 1)
+                .Insert(display[1].Length - 1, "┤");
+            display.Insert(0, title);
+            display.Insert(0, upperBorderBuilder.ToString());
+            _displayArray = display.ToArray();
         }
     }
     #endregion
@@ -347,6 +375,34 @@ public class Table<T>
         {
             _rawHeaders = null;
         }
+    }
+
+    /// <summary>
+    /// This method updates the headers of the table.
+    /// </summary>
+    /// <param name="headers">The headers to update.</param>
+    public void UpdateHeaders(List<string> headers)
+    {
+        AddHeaders(headers);
+    }
+
+    /// <summary>
+    /// This method adds a title to the table.
+    /// </summary>
+    /// <param name="title">The title to add.</param>
+    public void AddTitle(string title)
+    {
+        _title = title;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// This method updates the title of the table.
+    /// </summary>
+    /// <param name="title">The title to update.</param>
+    public void UpdateTitle(string title)
+    {
+        AddTitle(title);
     }
 
     /// <summary>
@@ -597,7 +653,7 @@ public class Table<T>
     {
         if (excludeHeader)
         {
-            return _rawHeaders is null ? 1 : 3;
+            return _rawHeaders is null ? 3 : 5;
         }
         else
         {
@@ -643,7 +699,7 @@ public class Table<T>
     public void Render(int? line = null)
     {
         line ??= Core.ContentHeight;
-        int startContentHeight = line.Value + 1;
+        int startContentHeight = line.Value;
         string[] array = new string[_displayArray!.Length];
         for (int j = 0; j < _displayArray.Length; j++)
         {

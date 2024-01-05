@@ -15,24 +15,39 @@ public enum Placement
     /// The object is placed in the top center of the space.
     /// </summary>
     TopCenter,
+
     /// <summary>
     /// The object is placed in the top left of the space.
     /// </summary>
     TopLeft,
+
     /// <summary>
     /// The object is placed in the top right of the space.
     /// </summary>
     TopRight,
+
+    /// <summary>
+    /// The object is placed in the top center of the space and takes all the width.
+    /// </summary>
+    TopCenterFullWidth,
+
     /// <summary>
     /// The object is placed in the bottom of the space.
     /// </summary>
     BottomCenter,
+
     /// <summary>
     /// The object is placed in the bottom left of the space.
     /// </summary>
     BottomLeft,
+
     /// <summary>
     /// The object is placed in the bottom right of the space.
     /// </summary>
-    BottomRight
+    BottomRight,
+
+    /// <summary>
+    /// The object is placed in the bottom center of the space and takes all the width.
+    /// </summary>
+    BottomCenterFullWidth,
 }

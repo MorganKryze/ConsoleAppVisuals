@@ -292,7 +292,14 @@ public class Matrix<T>
             throw new InvalidOperationException(
                 "The matrix has not been built yet. The matrix cannot be displayed"
             );
-        Core.WriteMultiplePositionedLines(placement, negative, line, displayArray);
+        Core.WriteMultiplePositionedLines(
+            true,
+            placement,
+            TextAlignment.Center,
+            negative,
+            line,
+            displayArray
+        );
     }
     #endregion
 }
