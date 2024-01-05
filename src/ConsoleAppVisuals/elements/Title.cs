@@ -13,7 +13,12 @@ public class Title : Element
     private string _text;
     private int _margin;
     private readonly int _width;
-    private readonly Placement _placement;
+    private readonly TextAlignment _align;
+
+    /// <summary>
+    /// The placement of the title.
+    /// </summary>
+    public override Placement Placement => Placement.TopCenterFullWidth;
 
     /// <summary>
     /// The height of the title.
@@ -37,18 +42,18 @@ public class Title : Element
     /// <param name="text">The text of the title.</param>
     /// <param name="margin">The margin of the title.</param>
     /// <param name="width">The width of the title (by default the width of the console).</param>
-    /// <param name="placement">The placement of the title.</param>
+    /// <param name="align">The alignment of the title.</param>
     public Title(
         string text,
         int margin = 1,
         int? width = null,
-        Placement placement = Placement.TopCenter
+        TextAlignment align = TextAlignment.Center
     )
     {
         _text = text;
         _margin = margin;
         _width = width ?? Console.WindowWidth;
-        _placement = placement;
+        _align = align;
     }
     #endregion
 
@@ -76,7 +81,7 @@ public class Title : Element
     /// </summary>
     protected override void RenderActions()
     {
-        Core.WritePositionedStyledText(StyledText, 0, _width, _margin, _placement, false);
+        Core.WritePositionedStyledText(StyledText, 0, _width, _margin, Placement, _align, false);
     }
     #endregion
 }

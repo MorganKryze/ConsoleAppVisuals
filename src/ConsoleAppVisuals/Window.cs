@@ -9,30 +9,30 @@ namespace ConsoleAppVisuals;
 /// </summary>
 public static class Window
 {
-    #region Fields
-    private static readonly List<Element> _elements = new();
+    #region Fields: s_elements
+    private static readonly List<Element> s_elements = new();
     #endregion
 
-    #region Constants
+    #region Constants: DefaultVisibility
     /// <summary>
     /// The default visibility of the elements.
     /// </summary>
     public const bool DEFAULT_VISIBILITY = false;
     #endregion
 
-    #region Properties
+    #region Properties: NextId, NumberOfElements
     /// <summary>
     /// Gives the next id number.
     /// </summary>
-    public static int NextId => _elements.Count;
+    public static int NextId => s_elements.Count;
 
     /// <summary>
     /// Gives the number of elements in the window.
     /// </summary>
-    public static int NumberOfElements => _elements.Count;
+    public static int NumberOfElements => s_elements.Count;
     #endregion
 
-    #region Manipulation Methods
+    #region Basic Methods: Get, Add, Insert, Remove, RemoveAll
     /// <summary>
     /// This method returns the element with the given type.
     /// </summary>
@@ -41,7 +41,7 @@ public static class Window
     public static T? GetElement<T>()
         where T : Element
     {
-        return _elements.Find(element => element.GetType() == typeof(T)) as T;
+        return s_elements.Find(element => element.GetType() == typeof(T)) as T;
     }
 
     /// <summary>
@@ -52,11 +52,11 @@ public static class Window
     public static T? GetElement<T>(int id)
         where T : Element
     {
-        if (id < 0 || id >= _elements.Count)
+        if (id < 0 || id >= s_elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        return (T)_elements[id];
+        return (T)s_elements[id];
     }
 
     /// <summary>
@@ -67,7 +67,8 @@ public static class Window
     public static T? GetVisibleElement<T>()
         where T : Element
     {
-        return _elements.Find(element => element.GetType() == typeof(T) && element.Visibility) as T;
+        return s_elements.Find(element => element.GetType() == typeof(T) && element.Visibility)
+            as T;
     }
 
     /// <summary>
@@ -77,7 +78,7 @@ public static class Window
     /// <param name="visibility">If true, will try to toggle the visibility of the element.</param>
     public static void AddElement(Element element, bool visibility = false)
     {
-        _elements.Add(element);
+        s_elements.Add(element);
         if (visibility && AllowVisibilityToggle(element.Id))
         {
             element.ToggleVisibility();
@@ -92,11 +93,11 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static void InsertElement(Element element, int id)
     {
-        if (id < 0 || id > _elements.Count)
+        if (id < 0 || id > s_elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        _elements.Insert(id, element);
+        s_elements.Insert(id, element);
     }
 
     /// <summary>
@@ -106,11 +107,11 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static void RemoveElement(int id)
     {
-        if (id < 0 || id >= _elements.Count)
+        if (id < 0 || id >= s_elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        _elements.RemoveAt(id);
+        s_elements.RemoveAt(id);
         UpdateIDs();
     }
 
@@ -120,9 +121,9 @@ public static class Window
     /// <param name="element">The element to be removed.</param>
     public static void RemoveElement(Element element)
     {
-        if (element != null && _elements.Contains(element))
+        if (element != null && s_elements.Contains(element))
         {
-            _elements.Remove(element);
+            s_elements.Remove(element);
             UpdateIDs();
         }
         else
@@ -134,62 +135,17 @@ public static class Window
         }
     }
 
-    private static void UpdateIDs()
-    {
-        for (int i = 0; i < _elements.Count; i++)
-        {
-            _elements[i].Id = i;
-        }
-    }
-
     /// <summary>
     /// This method removes all elements from the window.
     /// </summary>
     public static void RemoveAllElements()
     {
-        _elements.Clear();
+        s_elements.Clear();
     }
     #endregion
 
-    #region Utility Methods
-    /// <summary>
-    /// This method clears the window.
-    /// </summary>
-    public static void Clear()
-    {
-        Core.ClearWindow(false, false);
-    }
+    #region Manipulation Methods: ActivateElement, ActivateAllElements, DeactivateElement, DeactivateAllElements
 
-    /// <summary>
-    /// This method stops the execution of the program until a key is pressed.
-    /// </summary>
-    public static void StopExecution()
-    {
-        Console.ReadKey(true);
-    }
-
-    /// <summary>
-    /// This method checks if the element can be toggled to visible.
-    /// </summary>
-    /// <param name="id">The id of the element.</param>
-    /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
-    public static bool AllowVisibilityToggle(int id)
-    {
-        if (_elements[id].IsInteractive)
-        {
-            int numberOfVisibleInteractiveElements = _elements.Count(
-                element => element.IsInteractive && element.Visibility
-            );
-            return numberOfVisibleInteractiveElements == 0;
-        }
-        else
-        {
-            int numberOfVisibleElements = _elements.Count(
-                element => element.GetType() == _elements[id].GetType() && element.Visibility
-            );
-            return numberOfVisibleElements < _elements[id].MaxNumberOfThisElement;
-        }
-    }
 
     /// <summary>
     /// This method attempts to activate the visibility of the element with the given id.
@@ -198,15 +154,61 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static void ActivateElement(int id)
     {
-        if (id < 0 || id >= _elements.Count)
+        if (id < 0 || id >= s_elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        if (!_elements[id].Visibility)
+        if (!s_elements[id].Visibility)
         {
-            _elements[id].ToggleVisibility();
+            s_elements[id].ToggleVisibility();
         }
         Refresh();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <exception cref="InvalidOperationException"></exception>
+    public static void ActivateElement<T>()
+        where T : Element
+    {
+        var element = GetElement<T>();
+        if (element != null)
+        {
+            if (!element.Visibility)
+            {
+                element.ToggleVisibility();
+            }
+        }
+        else
+        {
+            throw new InvalidOperationException("Invalid element. Not found in the window.");
+        }
+
+        Refresh(element.IsInteractive);
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TResponse"></typeparam>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    public static InteractionEventArgs<TResponse>? GetResponse<T, TResponse>()
+        where T : InteractiveElement<TResponse>
+    {
+        var element = GetVisibleElement<T>();
+        if (element is null)
+        {
+            throw new InvalidOperationException("Invalid element. Not found in the window.");
+        }
+        else
+        {
+            DeactivateElement<T>();
+            return element.GetInteractionResponse;
+        }
     }
 
     /// <summary>
@@ -215,7 +217,7 @@ public static class Window
     /// <remarks>This method is dangerous for your application. It is recommended to activate the visibility of each element individually.</remarks>
     public static void ActivateAllElements()
     {
-        foreach (var element in _elements)
+        foreach (var element in s_elements)
         {
             if (!element.Visibility)
             {
@@ -231,13 +233,13 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static void DeactivateElement(int id)
     {
-        if (id < 0 || id >= _elements.Count)
+        if (id < 0 || id >= s_elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        if (_elements[id].Visibility)
+        if (s_elements[id].Visibility)
         {
-            _elements[id].ToggleVisibility();
+            s_elements[id].ToggleVisibility();
         }
         Refresh();
     }
@@ -249,7 +251,7 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
     public static void DeactivateElement(Element element)
     {
-        if (element != null && _elements.Contains(element))
+        if (element != null && s_elements.Contains(element))
         {
             if (element.Visibility)
             {
@@ -274,7 +276,7 @@ public static class Window
     public static void DeactivateElement<T>()
         where T : Element
     {
-        var element = GetElement<T>();
+        var element = GetVisibleElement<T>();
         if (element != null)
         {
             if (element.Visibility)
@@ -294,7 +296,7 @@ public static class Window
     /// </summary>
     public static void DeactivateAllElements()
     {
-        foreach (var element in _elements)
+        foreach (var element in s_elements)
         {
             if (element.Visibility)
             {
@@ -302,6 +304,150 @@ public static class Window
             }
         }
         Refresh();
+    }
+    #endregion
+
+    #region Utility Methods: AllowVisibilityToggle, GetLineAvailable, Clear, StopExecution, RenderOne, Refresh
+    private static void UpdateIDs()
+    {
+        for (int i = 0; i < s_elements.Count; i++)
+        {
+            s_elements[i].Id = i;
+        }
+    }
+
+    /// <summary>
+    /// This method checks if the element can be toggled to visible.
+    /// </summary>
+    /// <param name="id">The id of the element.</param>
+    /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
+    public static bool AllowVisibilityToggle(int id)
+    {
+        if (s_elements[id].IsInteractive)
+        {
+            int numberOfVisibleInteractiveElements = s_elements.Count(
+                element => element.IsInteractive && element.Visibility
+            );
+            return numberOfVisibleInteractiveElements == 0;
+        }
+        else
+        {
+            int numberOfVisibleElements = s_elements.Count(
+                element => element.GetType() == s_elements[id].GetType() && element.Visibility
+            );
+            return numberOfVisibleElements < s_elements[id].MaxNumberOfThisElement;
+        }
+    }
+
+    /// <summary>
+    /// Gives the last line available to draw an element on the console from a placement.
+    /// </summary>
+    /// <param name="placement">The placement of the element.</param>
+    /// <returns>The last line available to draw an element on the console from a placement.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the placement is invalid.</exception>
+    public static int GetLineAvailable(Placement placement)
+    {
+        return placement switch
+        {
+            Placement.TopCenterFullWidth
+                => s_elements
+                    .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                    .Sum(e => e.Height)
+                    + s_elements
+                        .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
+                        .Sum(e => e.Height)
+                    + s_elements
+                        .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
+                        .Sum(e => e.Height)
+                    + s_elements
+                        .Where(e => e.Placement == Placement.TopRight && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.TopCenter
+                => s_elements
+                    .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                    .Sum(e => e.Height)
+                    + s_elements
+                        .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.TopLeft
+                => s_elements
+                    .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                    .Sum(e => e.Height)
+                    + s_elements
+                        .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
+                        .Sum(e => e.Height),
+
+            Placement.TopRight
+                => s_elements
+                    .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                    .Sum(e => e.Height)
+                    + s_elements
+                        .Where(e => e.Placement == Placement.TopRight && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.BottomCenter
+                => Console.WindowHeight
+                    - 1
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomCenter && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.BottomLeft
+                => Console.WindowHeight
+                    - 1
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomLeft && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.BottomRight
+                => Console.WindowHeight
+                    - 1
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomRight && e.Visibility)
+                        .Sum(e => e.Height),
+            Placement.BottomCenterFullWidth
+                => Console.WindowHeight
+                    - 1
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomCenter && e.Visibility)
+                        .Sum(e => e.Height)
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomLeft && e.Visibility)
+                        .Sum(e => e.Height)
+                    - s_elements
+                        .Where(e => e.Placement == Placement.BottomRight && e.Visibility)
+                        .Sum(e => e.Height),
+            _ => throw new ArgumentOutOfRangeException(nameof(placement), "Invalid placement.")
+        };
+    }
+
+    /// <summary>
+    /// This method clears the window.
+    /// </summary>
+    public static void Clear()
+    {
+        Core.ClearWindow(false, false);
+    }
+
+    /// <summary>
+    /// This method stops the execution of the program until a key is pressed.
+    /// </summary>
+    public static void StopExecution(ConsoleKey key = ConsoleKey.Enter)
+    {
+        // wait until the user presses a key
+        while (Console.ReadKey(intercept: true).Key != key)
+        {
+            Thread.Sleep(10);
+        }
     }
 
     /// <summary>
@@ -311,11 +457,11 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static void RenderOne(int id)
     {
-        if (id < 0 || id >= _elements.Count)
+        if (id < 0 || id >= s_elements.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
         }
-        _elements[id].Render();
+        s_elements[id].Render();
     }
 
     /// <summary>
@@ -325,7 +471,7 @@ public static class Window
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
     public static void RenderOne(Element element)
     {
-        if (element != null && _elements.Contains(element))
+        if (element != null && s_elements.Contains(element))
         {
             element.Render();
         }
@@ -345,9 +491,9 @@ public static class Window
     public static void Refresh(bool includeInteractiveElement = false)
     {
         Clear();
-        for (int i = 0; i < _elements.Count; i++)
+        for (int i = 0; i < s_elements.Count; i++)
         {
-            if (!_elements[i].IsInteractive || includeInteractiveElement)
+            if (!s_elements[i].IsInteractive || includeInteractiveElement)
             {
                 RenderOne(i);
             }
@@ -355,51 +501,7 @@ public static class Window
     }
     #endregion
 
-    #region Info Methods
-    /// <summary>
-    /// Gives the last line available to draw an element on the console from a placement.
-    /// </summary>
-    /// <param name="placement">The placement of the element.</param>
-    /// <returns>The last line available to draw an element on the console from a placement.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the placement is invalid.</exception>
-    public static int GetLineAvailable(Placement placement)
-    {
-        return placement switch
-        {
-            Placement.TopCenter
-                => _elements
-                    .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
-                    .Sum(e => e.Height),
-            Placement.TopLeft
-                => _elements
-                    .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
-                    .Sum(e => e.Height),
-            Placement.TopRight
-                => _elements
-                    .Where(e => e.Placement == Placement.TopRight && e.Visibility)
-                    .Sum(e => e.Height),
-            Placement.BottomCenter
-                => Console.WindowHeight
-                    - 1
-                    - _elements
-                        .Where(e => e.Placement == Placement.BottomCenter && e.Visibility)
-                        .Sum(e => e.Height),
-            Placement.BottomLeft
-                => Console.WindowHeight
-                    - 1
-                    - _elements
-                        .Where(e => e.Placement == Placement.BottomLeft && e.Visibility)
-                        .Sum(e => e.Height),
-            Placement.BottomRight
-                => Console.WindowHeight
-                    - 1
-                    - _elements
-                        .Where(e => e.Placement == Placement.BottomRight && e.Visibility)
-                        .Sum(e => e.Height),
-            _ => throw new ArgumentOutOfRangeException(nameof(placement), "Invalid placement.")
-        };
-    }
-
+    #region Info Methods: ListWindowElements, ListClassesInheritingElement, ListClassesInheritingInteractiveElement
     /// <summary>
     /// This method displays a list of all elements in the window.
     /// </summary>
@@ -407,6 +509,7 @@ public static class Window
     {
         Table<string> table =
             new(
+                "Window Elements",
                 new List<string>
                 {
                     "Id",
@@ -415,10 +518,11 @@ public static class Window
                     "Height",
                     "Width",
                     "Line",
+                    "Placement",
                     "IsInteractive"
                 }
             );
-        foreach (var element in _elements)
+        foreach (var element in s_elements)
         {
             table.AddLine(
                 new List<string>
@@ -429,6 +533,7 @@ public static class Window
                     element.Height.ToString(),
                     element.Width.ToString(),
                     element.Line.ToString(),
+                    element.Placement.ToString(),
                     element.IsInteractive.ToString()
                 }
             );
@@ -457,7 +562,8 @@ public static class Window
                 types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element))));
             }
         }
-        Table<string> table = new(new List<string> { "Id", "Type", "Project" });
+        Table<string> table =
+            new("Classes Inheriting Element", new List<string> { "Id", "Type", "Project" });
         var id = 0;
         foreach (var type in types)
         {
@@ -466,8 +572,62 @@ public static class Window
             );
             id += 1;
         }
-        table.Render();
+        table.Render(GetLineAvailable(Placement.TopCenter));
         return table.GetColumnData("Type");
+    }
+
+    /// <summary>
+    /// This method gives a list of all classes inheriting from the InteractiveElement class.
+    /// </summary>
+    /// <returns>The list of all classes inheriting from the InteractiveElement class.</returns>
+    public static List<string>? ListClassesInheritingInteractiveElement()
+    {
+        var types = new List<Type>();
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            // Exclude default C# assemblies
+            if (
+                assembly.FullName != null
+                && !assembly.FullName.StartsWith("mscorlib")
+                && !assembly.FullName.StartsWith("System")
+                && !assembly.FullName.StartsWith("Microsoft")
+            )
+            {
+                types.AddRange(
+                    assembly
+                        .GetTypes()
+                        .Where(
+                            t =>
+                                t.BaseType != null
+                                && t.BaseType.IsGenericType
+                                && t.BaseType.GetGenericTypeDefinition()
+                                    == typeof(InteractiveElement<>)
+                        )
+                );
+            }
+        }
+        Table<string> table =
+            new("Classes Inheriting Element", new List<string> { "Id", "Type", "Project" });
+        var id = 0;
+        foreach (var type in types)
+        {
+            table.AddLine(
+                new List<string> { $"{id}", type.Name, type.Assembly.GetName().Name ?? "Unknown" }
+            );
+            id += 1;
+        }
+        table.Render(GetLineAvailable(Placement.TopCenter));
+        return table.GetColumnData("Type");
+    }
+
+    /// <summary>
+    /// This method displays a list of all elements in the window, a list of all classes inheriting from the Element class and a list of all classes inheriting from the InteractiveElement class.
+    /// </summary>
+    public static void GetFullInfo()
+    {
+        ListWindowElements();
+        ListClassesInheritingElement();
+        ListClassesInheritingInteractiveElement();
     }
     #endregion
 }

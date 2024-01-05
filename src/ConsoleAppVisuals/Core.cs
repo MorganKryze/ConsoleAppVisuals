@@ -9,6 +9,13 @@ namespace ConsoleAppVisuals;
 /// </summary>
 public static class Core
 {
+    #region Constants
+    /// <summary>
+    /// This constant is used to define the negative anchor to put inside a string to be recognized as negative.
+    /// </summary>
+    public const string NEGATIVE_ANCHOR = "/neg";
+    #endregion
+
     #region Attributes
     private static (string[]?, int?) s_title;
     private static TextStyler s_styler = new();
@@ -44,6 +51,7 @@ public static class Core
     /// This property is used to get the selector of the console menus.
     /// </summary>
     public static (char, char) GetSelector => s_Selector;
+
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
@@ -257,26 +265,61 @@ public static class Core
     )
     {
         ApplyNegative(negative);
+        var negativeRng = str.GetRangeAndRemoveNegativeAnchors();
+        str = negativeRng.Item1;
         line ??= Console.CursorTop;
         if (str.Length < Console.WindowWidth)
             switch (position)
             {
                 case Placement.TopLeft:
+                case Placement.BottomLeft:
                     Console.SetCursorPosition(0, (int)line);
                     break;
                 case Placement.TopCenter:
+                case Placement.TopCenterFullWidth:
+                case Placement.BottomCenter:
+                case Placement.BottomCenterFullWidth:
                     Console.SetCursorPosition((Console.WindowWidth - str.Length) / 2, (int)line);
                     break;
                 case Placement.TopRight:
+                case Placement.BottomRight:
                     Console.SetCursorPosition(Console.WindowWidth - str.Length, (int)line);
                     break;
             }
         else
             Console.SetCursorPosition(0, (int)line);
         if (writeLine)
-            Console.WriteLine(str);
+        {
+            if (negativeRng.Item2 is not null)
+            {
+                Console.Write(str[..negativeRng.Item2.Value.Item1]);
+                ApplyNegative(true);
+                Console.Write(str[negativeRng.Item2.Value.Item2..]);
+                ApplyNegative(default);
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine(str);
+            }
+        }
         else
-            Console.Write(str);
+        {
+            if (negativeRng.Item2 is not null)
+            {
+                Console.Write(negativeRng.Item1[..negativeRng.Item2.Value.Item1]);
+                ApplyNegative(true);
+                Console.Write(
+                    negativeRng.Item1[negativeRng.Item2.Value.Item1..negativeRng.Item2.Value.Item2]
+                );
+                ApplyNegative(default);
+                Console.Write(negativeRng.Item1[negativeRng.Item2.Value.Item2..]);
+            }
+            else
+            {
+                Console.Write(str);
+            }
+        }
         ApplyNegative(default);
     }
 
@@ -291,6 +334,7 @@ public static class Core
     /// <param name="additionalTime">The additional time to wait after the string is written in ms.</param>
     /// <param name="length">The length of the string. If null, the length is the window width.</param>
     /// <param name="position">The position of the string in the console.</param>
+    /// <param name="align">The alignment of the string.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteContinuousString(
@@ -301,6 +345,7 @@ public static class Core
         int additionalTime = 1000,
         int length = -1,
         Placement position = Placement.TopCenter,
+        TextAlignment align = TextAlignment.Center,
         bool writeLine = false
     )
     {
@@ -314,7 +359,7 @@ public static class Core
                 continuous.Append(str[j]);
             string continuousStr = continuous.ToString().PadRight(str.Length);
             WritePositionedString(
-                continuousStr.ResizeString(length, position, default),
+                continuousStr.ResizeString(length, align, default),
                 position,
                 negative,
                 line,
@@ -331,12 +376,7 @@ public static class Core
                 }
             }
         }
-        WritePositionedString(
-            str.ResizeString(length, position, default),
-            position,
-            negative,
-            line
-        );
+        WritePositionedString(str.ResizeString(length, align, default), position, negative, line);
         Thread.Sleep(additionalTime);
     }
 
@@ -348,6 +388,7 @@ public static class Core
     /// <param name="width">The width of the string. If null, the width is the window width.</param>
     /// <param name="margin">The upper and lower margin.</param>
     /// <param name="position">The position of the string in the console.</param>
+    /// <param name="align">The alignment of the string.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WritePositionedStyledText(
@@ -356,6 +397,7 @@ public static class Core
         int? width = null,
         int? margin = null,
         Placement position = Placement.TopCenter,
+        TextAlignment align = TextAlignment.Center,
         bool negative = false
     )
     {
@@ -367,7 +409,7 @@ public static class Core
 
             for (int i = 0; i < margin; i++)
                 WritePositionedString(
-                    "".ResizeString(width ?? Console.WindowWidth, position),
+                    "".ResizeString(width ?? Console.WindowWidth, align),
                     position,
                     negative,
                     (line ?? ContentHeight) + i,
@@ -375,7 +417,7 @@ public static class Core
                 );
             for (int i = 0; i < text.Length; i++)
                 WritePositionedString(
-                    text[i].ResizeString(width ?? Console.WindowWidth, position),
+                    text[i].ResizeString(width ?? Console.WindowWidth, align),
                     position,
                     negative,
                     (line ?? ContentHeight) + margin + i,
@@ -383,7 +425,7 @@ public static class Core
                 );
             for (int i = 0; i < margin; i++)
                 WritePositionedString(
-                    "".ResizeString(width ?? Console.WindowWidth, position),
+                    "".ResizeString(width ?? Console.WindowWidth, align),
                     position,
                     negative,
                     (line ?? ContentHeight) + margin + text.Length + i,
@@ -403,6 +445,7 @@ public static class Core
             Console.WindowWidth,
             s_title.Item2,
             Placement.TopCenter,
+            TextAlignment.Center,
             false
         );
 
@@ -440,33 +483,47 @@ public static class Core
     /// <summary>
     /// This method prints a paragraph in the console.
     /// </summary>
+    /// <param name="equalizeLengths">Whether or not the lines of the paragraph should be equalized to the same length.</param>
     /// <param name="placement">The placement of the paragraph.</param>
+    /// <param name="alignment">The alignment of the paragraph.</param>
     /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteMultiplePositionedLines(
+        bool equalizeLengths = true,
         Placement placement = Placement.TopCenter,
+        TextAlignment alignment = TextAlignment.Center,
         bool negative = false,
         int? line = null,
         params string[] text
     )
     {
         line ??= ContentHeight;
-        ApplyNegative(negative);
-        int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
-        foreach (string str in text)
+        if (equalizeLengths)
         {
-            WritePositionedString(
-                str.ResizeString(maxLength, placement),
-                placement,
-                negative,
-                line++
-            );
-            if (line >= Console.WindowHeight - 1)
-                break;
+            int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
+            foreach (string str in text)
+            {
+                WritePositionedString(
+                    str.ResizeString(maxLength, alignment),
+                    placement,
+                    negative,
+                    line++
+                );
+                if (line >= Console.WindowHeight - 1)
+                    break;
+            }
         }
-        ApplyNegative(default);
+        else
+        {
+            foreach (string str in text)
+            {
+                WritePositionedString(str, placement, negative, line++);
+                if (line >= Console.WindowHeight - 1)
+                    break;
+            }
+        }
     }
 
     /// <summary>
@@ -704,7 +761,7 @@ public static class Core
         }
         string BuildLine(Direction direction)
         {
-            StringBuilder line = new ();
+            StringBuilder line = new();
             for (int i = 0; i < max.ToString().Length + 2; i++)
                 line.Append('─');
             if (direction == Direction.Up)
@@ -715,9 +772,11 @@ public static class Core
         }
         string BuildNumber(float number)
         {
-            StringBuilder numberStr = new ();
+            StringBuilder numberStr = new();
             numberStr.Append("│ ");
-            numberStr.Append(number.ToString().ResizeString(max.ToString().Length, Placement.TopCenter));
+            numberStr.Append(
+                number.ToString().ResizeString(max.ToString().Length, TextAlignment.Center)
+            );
             numberStr.Append(" │");
             return numberStr.ToString();
         }
@@ -733,7 +792,7 @@ public static class Core
     {
         line ??= ContentHeight;
         WritePositionedString(
-            message.ResizeString(Console.WindowWidth, Placement.TopCenter),
+            message.ResizeString(Console.WindowWidth, TextAlignment.Center),
             default,
             default,
             line,
@@ -767,7 +826,7 @@ public static class Core
                 _loadingBar.Append('█');
             }
             WritePositionedString(
-                _loadingBar.ToString().ResizeString(message.Length, Placement.TopLeft),
+                _loadingBar.ToString().ResizeString(message.Length, TextAlignment.Left),
                 Placement.TopCenter,
                 default,
                 line + 2,
@@ -837,42 +896,36 @@ public static class Core
     /// </summary>
     /// <param name="str">The string to build.</param>
     /// <param name="size">The size of the string.</param>
-    /// <param name="position">The placement of the string.</param>
+    /// <param name="align">The alignment of the string.</param>
     /// <param name="truncate">If true, the string is truncated if it is too long.</param>
     /// <returns>The built string.</returns>
     public static string ResizeString(
         this string str,
         int size,
-        Placement position = Placement.TopCenter,
+        TextAlignment align = TextAlignment.Center,
         bool truncate = true
     )
     {
         int padding = size - str.Length;
         if (truncate && padding < 0)
-            switch (position)
+            switch (align)
             {
-                case Placement.TopLeft:
-                case Placement.BottomLeft:
+                case TextAlignment.Left:
                     return str.Substring(0, size);
-                case Placement.TopCenter:
-                case Placement.BottomCenter:
+                case TextAlignment.Center:
                     return str.Substring((-padding) / 2, size);
-                case Placement.TopRight:
-                case Placement.BottomRight:
+                case TextAlignment.Right:
                     return str.Substring(-padding, size);
             }
         else
-            switch (position)
+            switch (align)
             {
-                case Placement.TopLeft:
-                case Placement.BottomLeft:
+                case TextAlignment.Left:
                     return str.PadRight(size);
-                case Placement.TopCenter:
-                case Placement.BottomCenter:
+                case TextAlignment.Center:
                     return str.PadLeft(padding / 2 + padding % 2 + str.Length)
                         .PadRight(padding + str.Length);
-                case Placement.TopRight:
-                case Placement.BottomRight:
+                case TextAlignment.Right:
                     return str.PadLeft(size);
             }
         return str;
@@ -950,10 +1003,27 @@ public static class Core
         + banner.Item1
         + banner.Item2.ResizeString(
             Console.WindowWidth - 2 - banner.Item1.Length - banner.Item3.Length,
-            Placement.TopCenter,
+            TextAlignment.Center,
             true
         )
         + banner.Item3
         + " ";
+
+    /// <summary>
+    /// This method is used to get the range of a negative sequence in a string and remove the negative anchors.
+    /// </summary>
+    /// <param name="str">The string to check.</param>
+    /// <returns>The string without the negative anchors and the range of the negative sequence.</returns>
+    public static (string, (int, int)?) GetRangeAndRemoveNegativeAnchors(this string str)
+    {
+        int negStart = str.IndexOf(NEGATIVE_ANCHOR);
+        int negEnd = str.IndexOf(NEGATIVE_ANCHOR, negStart + 1);
+        if (negStart == -1 || negEnd == -1)
+            return (str, null);
+
+        negEnd = negEnd - NEGATIVE_ANCHOR.Length;
+        string newStr = str.Replace(NEGATIVE_ANCHOR, "");
+        return (newStr, (negStart, negEnd));
+    }
     #endregion
 }

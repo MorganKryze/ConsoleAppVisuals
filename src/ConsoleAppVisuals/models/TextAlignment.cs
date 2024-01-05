@@ -5,28 +5,23 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// Enum for the output of the scrolling menus.
+/// The <see cref="TextAlignment"/> enum defines the alignment of a string in the space.
 /// </summary>
 /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-public enum Output
+public enum TextAlignment
 {
     /// <summary>
-    /// Default value.
+    /// The string is placed in the center of the space.
     /// </summary>
-    None,
+    Center,
 
     /// <summary>
-    /// Chose to validate the input.
+    /// The string is placed on the left of the space.
     /// </summary>
-    Select,
+    Left,
 
     /// <summary>
-    /// Chose to delete an item.
+    /// The string is placed on the right of the space.
     /// </summary>
-    Delete,
-
-    /// <summary>
-    /// Chose to exit the menu.
-    /// </summary>
-    Exit
+    Right
 }

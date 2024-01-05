@@ -98,7 +98,27 @@ public abstract class Element
     /// <remarks>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</remarks>
     protected virtual void RenderActions()
     {
-        Console.WriteLine($"Element {Id} of type {GetType()} is visible.");
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// This method is used to draw the space taken by the element on the console.
+    /// </summary>
+    public void RenderSpace()
+    {
+        if (Visibility)
+        {
+            RenderSpaceActions();
+        }
+    }
+
+    /// <summary>
+    /// This method is used to define the actions to perform when the space taken by the element is drawn on the console.
+    /// </summary>
+    /// <exception cref="NotImplementedException"></exception>
+    protected virtual void RenderSpaceActions()
+    {
+        throw new NotImplementedException();
     }
     #endregion
 }

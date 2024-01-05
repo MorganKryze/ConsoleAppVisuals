@@ -15,12 +15,12 @@ public class Footer : Element
     /// <summary>
     /// The placement of the footer.
     /// </summary>
-    public override Placement Placement { get; set; } = Placement.BottomCenter;
+    public override Placement Placement { get; set; } = Placement.BottomCenterFullWidth;
 
     /// <summary>
     /// The line of the footer in the console.
     /// </summary>
-    public override int Line => Console.WindowHeight - 1;
+    public override int Line => Window.GetLineAvailable(Placement);
 
     /// <summary>
     /// The height of the footer.

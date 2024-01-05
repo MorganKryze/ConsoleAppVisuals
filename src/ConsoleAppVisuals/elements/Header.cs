@@ -14,6 +14,11 @@ public class Header : Element
     private readonly int _margin;
 
     /// <summary>
+    /// The placement of the header.
+    /// </summary>
+    public override Placement Placement => Placement.TopCenterFullWidth;
+
+    /// <summary>
     /// The line of the header in the console.
     /// </summary>
     /// <remarks>We add 2 because so the header does not overlap with the title.</remarks>
