@@ -6,7 +6,6 @@ namespace example
     {
         private static void Main()
         {
-
             Debugging();
 
             Core.SetTitle("Example");
@@ -260,6 +259,21 @@ namespace example
                             );
                             float number = answerNumber.Item2;
                             Core.WritePositionedString($"You just wrote {number}!");
+                            // Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5));
+                            // Window.ActivateElement<IntSelector>();
+                            // var response = Window.GetResponse<IntSelector, int>();
+                            // Window.AddElement(
+                            //     new EmbeddedText(
+                            //         new List<string>()
+                            //         {
+                            //             "You chose to " + response?.State.ToString(),
+                            //             "the number " + (response?.Info) + "!"
+                            //         },
+                            //         $"Next {Core.GetSelector.Item1}",
+                            //         TextAlignment.Center
+                            //     )
+                            // );
+                            // Window.ActivateElement<EmbeddedText>();
 
                             Core.ClearContent();
                             goto Menu;
@@ -361,23 +375,11 @@ namespace example
             Window.AddElement(new Header());
             Window.AddElement(new Footer());
             Window.AddElement(new FakeLoadingBar());
-            Window.Refresh();
 
-            Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5));
-            Window.ActivateElement<IntSelector>();
-            var response = Window.GetResponse<IntSelector, int>();
-            Window.AddElement(
-                new EmbeddedText(
-                    new List<string>()
-                    {
-                        "You chose to " + response?.State.ToString(),
-                        "the number " + (response?.Info ) + "!"
-                    },
-                    $"Next {Core.GetSelector.Item1}",
-                    TextAlignment.Center
-                )
-            );
-            Window.ActivateElement<EmbeddedText>();
+            Window.AddElement(new Banner());
+            Window.Refresh();
+            Window.StopExecution();
+
             Window.GetFullInfo();
             Window.Close();
         }
