@@ -7,23 +7,65 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// A matrix class for the console.
 /// </summary>
-public class MatrixLegacy<T>
+public class Matrix<T> : Element
 {
-    #region Fields: Lines, display array, rounded corners
+    #region Fields: Lines, display array, rounded corners, placement, line
     private readonly List<List<T?>> _lines;
     private string[]? _displayArray;
-    private bool _roundedCorners = true;
+    private bool _roundedCorners;
+    private readonly Placement _placement;
+    private readonly int _line;
+    #endregion
+
+    #region Properties: GetCorners, Count, Placement, Height, Width, Line
+    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+
+    /// <summary>
+    /// Gets the number of lines in the matrix.
+    /// </summary>
+    public int Count => _lines.Count;
+
+    /// <summary>
+    /// Gets the placement of the matrix.
+    /// </summary>
+    public override Placement Placement => _placement;
+
+    /// <summary>
+    /// Gets the height of the matrix.
+    /// </summary>
+    public override int Height => _displayArray?.Length ?? 0;
+
+    /// <summary>
+    /// Gets the width of the matrix.
+    /// </summary>
+    public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
+
+    /// <summary>
+    /// Gets the line of the matrix.
+    /// </summary>
+    public override int Line => _line;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the <see cref="MatrixLegacy{T}"/> class.
+    /// The natural constructor of the <see cref="Matrix{T}"/> class.
     /// </summary>
     /// <param name="rawLines">The matrix to be used.</param>
+    /// <param name="roundedCorners">Whether the matrix should have rounded corners or not.</param>
+    /// <param name="placement">The placement of the matrix.</param>
+    /// <param name="line">The line of the matrix.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public MatrixLegacy(List<List<T?>>? rawLines = null)
+    public Matrix(
+        List<List<T?>>? rawLines = null,
+        bool roundedCorners = true,
+        Placement placement = Placement.TopCenter,
+        int? line = null
+    )
     {
+        _roundedCorners = roundedCorners;
+        _placement = placement;
+        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         if (rawLines is not null)
         {
             _lines = rawLines;
@@ -146,15 +188,6 @@ public class MatrixLegacy<T>
         }
         return footerBuilder.ToString();
     }
-    #endregion
-
-    #region Properties: GetCorners, Count
-    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
-
-    /// <summary>
-    /// Gets the number of lines in the matrix.
-    /// </summary>
-    public int Count => _lines.Count;
     #endregion
 
     #region Methods
@@ -303,10 +336,7 @@ public class MatrixLegacy<T>
     /// Writes the matrix instance to the console.
     /// </summary>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void WriteMatrix(
-        Placement placement = Placement.TopCenter,
-        bool negative = false,
-        int? line = null
+    protected override void RenderElementActions(
     )
     {
         if (_displayArray is null)
@@ -315,9 +345,9 @@ public class MatrixLegacy<T>
             );
         Core.WriteMultiplePositionedLines(
             true,
-            TextAlignment.Center,
-            negative,
-            line,
+            _placement.ToTextAlignment(),
+            false,
+            _line,
             _displayArray
         );
     }

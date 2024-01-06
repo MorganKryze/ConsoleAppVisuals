@@ -215,7 +215,7 @@ namespace example
                             List<int?> fourthRow = new() { null, 2, 3, 4, 5, 6 };
                             List<List<int?>> data =
                                 new() { firstRow, secondRow, thirdRow, fourthRow };
-                            Matrix<int?> matrix = new(data);
+                            MatrixLegacy<int?> matrix = new(data);
                             matrix.SetRoundedCorners(false);
                             matrix.WriteMatrix(Placement.TopCenter);
 
@@ -232,6 +232,11 @@ namespace example
                             matrix.UpdateElement(new Position(0, 0), 1);
                             matrix.UpdateElement(new Position(3, 5), 6);
                             matrix.WriteMatrix(Placement.TopCenter);
+
+                            // Window.AddElement(matrix);
+
+                            // Window.Refresh();
+                            // Window.StopExecution();
 
                             Console.ReadKey();
                             Core.ClearContent();
@@ -336,6 +341,22 @@ namespace example
                             // thread.Join();
                             // Window.DeactivateElement<LoadingBar>();
                             break;
+                        case 9:
+                            Window.GetElement<Title>()?.RenderElementSpace();
+                            Window.GetElement<Header>()?.RenderElementSpace();
+                            Window.GetElement<Footer>()?.RenderElementSpace();
+                            Window.AddElement(
+                                new EmbeddedText(
+                                    new List<string>()
+                                    {
+                                        "You have selected to quit the app. Press [Enter] to continue..."
+                                    },
+                                    $"Next {Core.GetSelector.Item1}",
+                                    TextAlignment.Left
+                                )
+                            );
+                            Window.StopExecution();
+                            break;
                         default:
                             Core.ClearContent();
                             Core.UpdateScreen();
@@ -383,42 +404,8 @@ namespace example
 
         public static void Debugging()
         {
-            // Debug code placeholder
-            Window.AddElement(new Title("Debugging"));
-            Window.AddElement(new Header());
-            Window.AddElement(new Footer());
-            // Window.AddElement(new FakeLoadingBar());
-            Window.AddElement(
-                new ScrollingMenu(
-                    "What will be your next action?",
-                    0,
-                    Placement.TopCenter,
-                    null,
-                    "Change Console color",
-                    "Write on the console",
-                    "Display paragraph",
-                    "Display a styled text",
-                    "Display a matrix",
-                    "Answer some prompt",
-                    "Select a number",
-                    "Display table",
-                    "Display a loading bar",
-                    "Quit the app"
-                )
-            );
-            Window.GetElement<Title>()?.RenderElementSpace();
-            Window.GetElement<Header>()?.RenderElementSpace();
-            Window.GetElement<Footer>()?.RenderElementSpace();
-            Window.ActivateElement<ScrollingMenu>();
-            Window.GetElement<ScrollingMenu>()?.RenderElementSpace();
-
-            Window.StopExecution();
-
-            Window.Refresh(true);
-
-            Window.StopExecution();
-
-            // Window.GetFullInfo();
+            
+            Window.GetFullInfo();
             Window.Close();
         }
     }

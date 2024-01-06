@@ -24,6 +24,7 @@ public class Title : Element
     #endregion
 
     #region Properties
+    private string[] StyledText => Core.StyleText(_text);
     /// <summary>
     /// The placement of the title.
     /// </summary>
@@ -38,7 +39,6 @@ public class Title : Element
     /// The width of the title.
     /// </summary>
     public override int Width => _width;
-    private string[] StyledText => Core.StyleText(_text);
     #endregion
 
     #region Constructor
