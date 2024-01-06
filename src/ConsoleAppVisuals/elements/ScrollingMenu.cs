@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// Defines the loading bar of the console window.
+/// Defines the scrolling menu the console window.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -74,7 +74,7 @@ public class ScrollingMenu : InteractiveElement<int>
         _question = question;
         _defaultIndex = defaultIndex;
         _placement = placement;
-        _line = line ?? Window.GetLineAvailable(_placement);
+        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(_placement);
         _choices = choices;
     }
     #endregion

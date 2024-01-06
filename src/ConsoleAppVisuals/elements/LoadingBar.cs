@@ -77,7 +77,7 @@ public class LoadingBar : Element
         _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
         _progress = progress;
         _placement = placement;
-        _line = line ?? Window.GetLineAvailable(placement);
+        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         _additionalDuration = additionalDuration;
     }
     #endregion
