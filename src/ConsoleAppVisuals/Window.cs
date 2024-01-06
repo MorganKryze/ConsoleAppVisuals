@@ -633,7 +633,6 @@ public static class Window
     /// <summary>
     /// This method draws all the non interactive elements of the window on the console.
     /// </summary>
-    /// <param name="includeInteractiveElement">If true, will also draw the interactive elements.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -641,15 +640,12 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void Refresh(bool includeInteractiveElement = false)
+    public static void Refresh()
     {
         Clear();
-        for (int i = 0; i < s_elements.Count; i++)
+        foreach (var element in s_elements)
         {
-            if (!s_elements[i].IsInteractive || includeInteractiveElement)
-            {
-                RenderOneElement(i);
-            }
+            element.RenderElement();
         }
     }
 
@@ -746,7 +742,7 @@ public static class Window
             }
         }
         Table<string> table =
-            new("Classes Inheriting Element", new List<string> { "Id", "Type", "Project" });
+            new("Element Classes", new List<string> { "Id", "Type", "Project" });
         var id = 0;
         foreach (var type in types)
         {
@@ -793,7 +789,7 @@ public static class Window
             }
         }
         Table<string> table =
-            new("Classes Inheriting Element", new List<string> { "Id", "Type", "Project" });
+            new("Interactive Element Classes", new List<string> { "Id", "Type", "Project" });
         var id = 0;
         foreach (var type in types)
         {

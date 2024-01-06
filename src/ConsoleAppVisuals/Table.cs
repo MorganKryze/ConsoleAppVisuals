@@ -315,14 +315,18 @@ public class Table<T>
             for (int i = 0; i < _rawLines.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-                upperBorderBuilder.Append((i != _rawLines.Count - 1) ? "┬" : GetCorners[1].ToString());
+                upperBorderBuilder.Append(
+                    (i != _rawLines.Count - 1) ? "┬" : GetCorners[1].ToString()
+                );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
             StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
             for (int i = 0; i < _rawLines.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-                lowerBorderBuilder.Append((i != _rawLines.Count - 1) ? "┴" : GetCorners[3].ToString());
+                lowerBorderBuilder.Append(
+                    (i != _rawLines.Count - 1) ? "┴" : GetCorners[3].ToString()
+                );
             }
             stringList.Add(lowerBorderBuilder.ToString());
             _displayArray = stringList.ToArray();
@@ -470,11 +474,13 @@ public class Table<T>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
     public List<T>? GetColumnData(string header)
     {
-        if (_rawLines is null || _rawHeaders is null)
+        if (_rawHeaders is null)
         {
-            throw new InvalidOperationException(
-                "The table is empty. Either the headers or the lines are null."
-            );
+            throw new InvalidOperationException("The headers are null.");
+        }
+        else if (_rawLines is null)
+        {
+            return null;
         }
         if (!_rawHeaders.Contains(header))
         {
@@ -614,7 +620,7 @@ public class Table<T>
                 array[j] = _displayArray[j];
                 Core.WritePositionedString(
                     array[j],
-                    Placement.TopCenter,
+                    TextAlignment.Center,
                     false,
                     startContentHeight + j
                 );
@@ -626,7 +632,7 @@ public class Table<T>
                                 2..^2
                             ]
                             : array[j][1..^1],
-                        Placement.TopCenter,
+                        TextAlignment.Center,
                         true,
                         startContentHeight + j
                     );
@@ -712,7 +718,7 @@ public class Table<T>
             array[j] = _displayArray[j];
             Core.WritePositionedString(
                 array[j],
-                Placement.TopCenter,
+                TextAlignment.Center,
                 false,
                 startContentHeight + j
             );

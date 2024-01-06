@@ -10,7 +10,7 @@ namespace testing
         [TestMethod]
         public void TestNoLines()
         {
-            Matrix<string> matrix = new Matrix<string>();
+            MatrixLegacy<string> matrix = new MatrixLegacy<string>();
             Assert.AreEqual(0, matrix.Count);
         }
 
@@ -19,21 +19,21 @@ namespace testing
         {
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                Matrix<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5" } });
+                MatrixLegacy<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5" } });
             });
         }
 
         [TestMethod]
         public void TestGetElement()
         {
-            Matrix<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
+            MatrixLegacy<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
             Assert.AreEqual("1", matrix.GetElement(new Position(0, 0)));
         }
 
         [TestMethod]
         public void TestGetWrongElement()
         {
-            Matrix<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
+            MatrixLegacy<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
                 matrix.GetElement(new Position(2, 0));
@@ -43,7 +43,7 @@ namespace testing
         [TestMethod]
         public void TestUpdateElement()
         {
-            Matrix<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
+            MatrixLegacy<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
             matrix.UpdateElement(new Position(0, 0), "7");
             Assert.AreEqual("7", matrix.GetElement(new Position(0, 0)));
         }
@@ -51,7 +51,7 @@ namespace testing
         [TestMethod]
         public void TestUpdateWrongElement()
         {
-            Matrix<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
+            MatrixLegacy<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
                 matrix.UpdateElement(new Position(2, 0), "7");
@@ -61,7 +61,7 @@ namespace testing
         [TestMethod]
         public void TestUpdateElementWrongIndex()
         {
-            Matrix<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
+            MatrixLegacy<string> matrix = new (new List<List<string?>>() { new () { "1", "2", "3" }, new () { "4", "5", "6" } });
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {       
                 matrix.UpdateElement(new Position(0, 3), "7");
