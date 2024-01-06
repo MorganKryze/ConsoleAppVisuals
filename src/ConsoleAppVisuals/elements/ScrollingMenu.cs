@@ -55,7 +55,7 @@ public class ScrollingMenu : InteractiveElement<int>
         _question = question;
         _defaultIndex = defaultIndex;
         _placement = placement;
-        _line = line ?? Window.GetLineAvailable(placement);
+        _line = line ?? Window.GetLineAvailable(_placement);
         _choices = choices;
     }
 
@@ -66,8 +66,8 @@ public class ScrollingMenu : InteractiveElement<int>
     {
         EndOfInteractionEvent += SetInteractionResponse;
         EqualizeChoicesLength(_choices);
-        Core.WriteContinuousString(_question, _line, false, 1500, 50);
-        int lineChoice = _line + 2;
+        Core.WriteContinuousString(_question, Line, false, 1500, 50);
+        int lineChoice = Line + 2;
         bool delay = true;
         while (true)
         {
@@ -100,7 +100,7 @@ public class ScrollingMenu : InteractiveElement<int>
         }
         void ExitFunction()
         {
-            Core.ClearMultipleLines(_line, _choices.Length + 2);
+            Core.ClearMultipleLines(Line, _choices.Length + 2);
             EndOfInteractionEvent -= SetInteractionResponse;
         }
 

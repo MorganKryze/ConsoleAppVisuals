@@ -9,7 +9,7 @@ namespace ConsoleAppVisuals;
 /// </summary>
 public class Table<T>
 {
-    #region Fields
+    #region Fields: title, headers, lines, display array, rounded corners
     private string? _title;
     private List<string>? _rawHeaders;
     private List<List<T>>? _rawLines;
@@ -17,7 +17,7 @@ public class Table<T>
     private bool _roundedCorners = true;
     #endregion
 
-    #region Properties
+    #region Properties: get headers, get lines
     /// <summary>
     /// This property returns the headers of the table.
     /// </summary>
@@ -49,7 +49,9 @@ public class Table<T>
             BuildTable();
         }
     }
+    #endregion
 
+    #region Check Methods
     private bool CompatibilityCheck()
     {
         if (_rawHeaders is null)
@@ -110,7 +112,9 @@ public class Table<T>
 
         return false;
     }
+    #endregion
 
+    #region Build Methods
     private void BuildTable()
     {
         if (_rawHeaders is null)
@@ -173,12 +177,12 @@ public class Table<T>
             }
             stringList.Add(headerBuilder.ToString());
 
-            StringBuilder upperBorderBuilder = new(Corners[0].ToString());
+            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : Corners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┬" : GetCorners[1].ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
@@ -209,12 +213,12 @@ public class Table<T>
                 stringList.Add(lineBuilder.ToString());
             }
 
-            StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : Corners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┴" : GetCorners[3].ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -251,21 +255,21 @@ public class Table<T>
                 }
             }
             stringList.Add(headerBuilder.ToString());
-            StringBuilder upperBorderBuilder = new(Corners[0].ToString());
+            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : Corners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┬" : GetCorners[1].ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : Corners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┴" : GetCorners[3].ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -307,18 +311,18 @@ public class Table<T>
                 }
                 stringList.Add(line.ToString());
             }
-            StringBuilder upperBorderBuilder = new(Corners[0].ToString());
+            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
             for (int i = 0; i < _rawLines.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-                upperBorderBuilder.Append((i != _rawLines.Count - 1) ? "┬" : Corners[1].ToString());
+                upperBorderBuilder.Append((i != _rawLines.Count - 1) ? "┬" : GetCorners[1].ToString());
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(Corners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
             for (int i = 0; i < _rawLines.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-                lowerBorderBuilder.Append((i != _rawLines.Count - 1) ? "┴" : Corners[3].ToString());
+                lowerBorderBuilder.Append((i != _rawLines.Count - 1) ? "┴" : GetCorners[3].ToString());
             }
             stringList.Add(lowerBorderBuilder.ToString());
             _displayArray = stringList.ToArray();
@@ -333,9 +337,9 @@ public class Table<T>
             var len = _displayArray![0].Length;
             var title = _title.ResizeString(len - 4);
             title = $"│ {title} │";
-            var upperBorderBuilder = new StringBuilder(Corners[0].ToString());
+            var upperBorderBuilder = new StringBuilder(GetCorners[0].ToString());
             upperBorderBuilder.Append(new string('─', len - 2));
-            upperBorderBuilder.Append(Corners[1].ToString());
+            upperBorderBuilder.Append(GetCorners[1].ToString());
             var display = _displayArray.ToList();
             display[0] = display[0]
                 .Remove(0, 1)
@@ -349,8 +353,8 @@ public class Table<T>
     }
     #endregion
 
-    #region Properties
-    private string Corners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+    #region Properties: get corners, count
+    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
 
     /// <summary>
     /// This property returns the number of lines in the table.
@@ -359,7 +363,7 @@ public class Table<T>
 
     #endregion
 
-    #region Methods
+    #region Methods: Get, Add, Update, Remove, Clear
     /// <summary>
     /// This method adds headers to the table.
     /// </summary>
@@ -577,7 +581,9 @@ public class Table<T>
         _rawLines = null;
         BuildTable();
     }
+    #endregion
 
+    #region Display Methods
     /// <summary>
     /// This method displays the table and allows the user to select, delete a line or to escape.
     /// </summary>

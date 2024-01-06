@@ -9,7 +9,7 @@ namespace ConsoleAppVisuals;
 /// </summary>
 public class TextStyler
 {
-    #region Constants
+    #region Constants: Paths, supported characters
     private const string DEFAULT_FONT_PATH = "ConsoleAppVisuals.fonts.ANSI_Shadow";
     private const string DEFAULT_CONFIG_PATH = ".config.yml";
     private const string DEFAULT_ALPHABET_PATH = ".data.alphabet.txt";
@@ -24,13 +24,13 @@ public class TextStyler
     private const string SUPPORTED_SYMBOLS = "?!:.,;/-_()[]%$^*@ ";
     #endregion
 
-    #region Attributes
+    #region Attributes: Font path, config, dictionary
     private readonly string? fontPath;
     private readonly FontYamlFile config;
     private readonly Dictionary<char, string> dictionary;
     #endregion
 
-    #region Properties
+    #region Properties: Dictionary
     /// <summary>
     /// The dictionary that stores the characters and their styled equivalent.
     /// </summary>
@@ -42,7 +42,7 @@ public class TextStyler
     /// The constructor of the TextStyler class.
     /// </summary>
     /// <param name="fontPath">The path to the font files.</param>
-    /// <exception cref="NullReferenceException">Thrown when the config.yml file is empty.</exception>
+    /// <exception cref="EmptyFileException">Thrown when the config.yml file is empty.</exception>
     public TextStyler(string? fontPath = null)
     {
         this.fontPath = fontPath;
@@ -55,7 +55,7 @@ public class TextStyler
             using var stream = assembly.GetManifestResourceStream(
                 DEFAULT_FONT_PATH + DEFAULT_CONFIG_PATH
             );
-            using var reader = new StreamReader(stream ?? throw new InvalidOperationException());
+            using var reader = new StreamReader(stream ?? throw new EmptyFileException());
             yamlContent = reader.ReadToEnd();
         }
         else
@@ -90,7 +90,7 @@ public class TextStyler
             symbolsStyled = ReadResourceLines(SYMBOLS_PATH);
         }
         if (config.Chars is null)
-            throw new InvalidOperationException("The config.yml file is empty.");
+            throw new EmptyFileException("The config.yml file is empty.");
 
         var alphabetStyledGrouped = alphabetStyled
             .Select((line, index) => new { line, index })
@@ -122,7 +122,7 @@ public class TextStyler
         {
             var assembly = Assembly.GetExecutingAssembly();
             using var stream = assembly.GetManifestResourceStream(DEFAULT_FONT_PATH + path);
-            using var reader = new StreamReader(stream ?? throw new InvalidOperationException());
+            using var reader = new StreamReader(stream ?? throw new EmptyFileException());
             return reader
                 .ReadToEnd()
                 .Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None)
@@ -133,7 +133,7 @@ public class TextStyler
     }
     #endregion
 
-    #region Methods
+    #region Methods: Style text
     /// <summary>
     /// Styles the given text with the font files.
     /// </summary>
@@ -207,7 +207,7 @@ public class TextStyler
     /// Get the info of the actual style (from the config.yml file).
     /// </summary>
     /// <returns>A string compiling these pieces of information.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the config.yml file is empty.</exception>
+    /// <exception cref="EmptyFileException">Thrown when the config.yml file is empty.</exception>
     public override string ToString()
     {
         var sb = new StringBuilder();
