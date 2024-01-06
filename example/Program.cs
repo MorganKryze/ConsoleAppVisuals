@@ -6,8 +6,6 @@ namespace example
     {
         private static void Main()
         {
-            Console.Clear();
-            Console.CursorVisible = false;
 
             Debugging();
 
@@ -19,6 +17,12 @@ namespace example
             Core.LoadingBar("[ Some example loading... ]");
             Core.UpdateScreen();
             Core.ClearContent();
+
+            // Window.AddElement(new Title("Debugging"), true);
+            // Window.AddElement(new Header(), true);
+            // Window.AddElement(new Footer(), true);
+            // Window.AddElement(new FakeLoadingBar("[ Loading ...]"), true);
+            // Window.Refresh();
 
             Menu:
 
@@ -35,9 +39,46 @@ namespace example
                 "Answer some prompt",
                 "Select a number",
                 "Display table",
+                "Display a loading bar",
                 "Quit the app"
             );
             Core.ClearContent();
+
+            // Window.AddElement(
+            //     new ScrollingMenu(
+            //         "What will be your next action?",
+            //         0,
+            //         Placement.TopCenter,
+            //         null,
+            //         "Change Console color",
+            //         "Write on the console",
+            //         "Display paragraph",
+            //         "Display a styled text",
+            //         "Display a matrix",
+            //         "Answer some prompt",
+            //         "Select a number",
+            //         "Display table",
+            //         "Display a loading bar",
+            //         "Quit the app"
+            //     )
+            // );
+            // Window.Refresh();
+            // Window.ActivateElement<ScrollingMenu>();
+            // var response = Window.GetResponse<ScrollingMenu, int>();
+
+            // Window.AddElement(
+            //     new EmbeddedText(
+            //         new List<string>()
+            //         {
+            //             "You            chose to " + response?.State.ToString(),
+            //             "the number " + (response?.Info + 1) + "!"
+            //         },
+            //         $"Next {Core.GetSelector.Item1}",
+            //         TextAlignment.Center
+            //     )
+            // );
+            // Window.ActivateElement<EmbeddedText>();
+
             switch (index.Item1)
             {
                 case Output.Select:
@@ -246,7 +287,26 @@ namespace example
 
                             Core.ClearContent();
                             goto Menu;
-
+                        case 8:
+                            // float progress = 0f;
+                            // Window.AddElement(
+                            //     new LoadingBar("[ Loading ...]", ref progress, Placement.TopCenter, default, 2000),
+                            //     true
+                            // );
+                            // Thread thread = new (() =>
+                            // {
+                            //     for (progress = 0f; progress <= 100f; progress++)
+                            //     {
+                            //         Window.GetElement<LoadingBar>()?.UpdateProgress(progress / 100);
+                            //         Thread.Sleep(30);
+                            //     }
+                            //     Window.GetElement<LoadingBar>()?.UpdateProgress(1f);
+                            // });
+                            // thread.Start();
+                            // Window.Refresh();
+                            // thread.Join();
+                            // Window.DeactivateElement<LoadingBar>();
+                            break;
                         default:
                             Core.ClearContent();
                             Core.UpdateScreen();
@@ -300,46 +360,9 @@ namespace example
             Window.AddElement(new Title("Debugging"), true);
             Window.AddElement(new Header(), true);
             Window.AddElement(new Footer(), true);
-
-            // float progress = 0f;
-            // Window.AddElement(
-            //     new LoadingBar("[ Loading ...]", ref progress, Placement.TopCenter, default, 2000),
-            //     true
-            // );
-            // Thread thread = new (() =>
-            // {
-            //     for (progress = 0f; progress <= 100f; progress++)
-            //     {
-            //         Window.GetElement<LoadingBar>()?.UpdateProgress(progress / 100);
-            //         Thread.Sleep(30);
-            //     }
-            //     Window.GetElement<LoadingBar>()?.UpdateProgress(1f);
-            // });
-            // thread.Start();
-            // Window.Refresh();
-            // thread.Join();
-            // Window.DeactivateElement<LoadingBar>();
-
-            Window.AddElement(new FakeLoadingBar("[ Loading ...]"), true);
+            Window.AddElement(new FakeLoadingBar(), true);
             Window.Refresh();
-            Console.WriteLine(Window.GetLineAvailable(Placement.TopCenter));
-            //Window.ListWindowElements();
-            Window.AddElement(
-                new ScrollingMenu(
-                    "Choose the best number:",
-                    0,
-                    Placement.TopCenter,
-                    null,
-                    "1",
-                    "2",
-                    "3"
-                )
-            );
-            Window.Refresh();
-            Window.ActivateElement<ScrollingMenu>();
-            var response = Window.GetResponse<ScrollingMenu, int>();
-            Window.AddElement(new EmbeddedText(new List<string>() { "You            chose to " + response?.State.ToString(),  "the number " + (response?.Info + 1)  + "!" }, $"Next {Core.GetSelector.Item1}", TextAlignment.Center));
-            Window.ActivateElement<EmbeddedText>();
+            
             Window.GetFullInfo();
             Window.Close();
         }
