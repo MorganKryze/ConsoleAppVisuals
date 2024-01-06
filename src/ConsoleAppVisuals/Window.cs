@@ -519,7 +519,6 @@ public static class Window
                         .Sum(e => e.Height),
             Placement.BottomCenter
                 => Console.WindowHeight
-                    - 1
                     - s_elements
                         .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
                         .Sum(e => e.Height)
@@ -528,7 +527,6 @@ public static class Window
                         .Sum(e => e.Height),
             Placement.BottomLeft
                 => Console.WindowHeight
-                    - 1
                     - s_elements
                         .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
                         .Sum(e => e.Height)
@@ -537,7 +535,6 @@ public static class Window
                         .Sum(e => e.Height),
             Placement.BottomRight
                 => Console.WindowHeight
-                    - 1
                     - s_elements
                         .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
                         .Sum(e => e.Height)
@@ -546,7 +543,7 @@ public static class Window
                         .Sum(e => e.Height),
             Placement.BottomCenterFullWidth
                 => Console.WindowHeight
-                    - 1
+                    
                     - s_elements
                         .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
                         .Sum(e => e.Height)
