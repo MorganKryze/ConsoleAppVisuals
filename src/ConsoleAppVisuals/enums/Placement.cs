@@ -8,7 +8,13 @@ namespace ConsoleAppVisuals;
 /// The <see cref="Placement"/> enum defines the placement of a string in some space.
 /// It could be another string or a console line.
 /// </summary>
-/// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public enum Placement
 {
     /// <summary>

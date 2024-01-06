@@ -7,6 +7,13 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Defines the title of the console window.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class Title : Element
 {
     #region Fields
@@ -14,7 +21,9 @@ public class Title : Element
     private int _margin;
     private readonly int _width;
     private readonly TextAlignment _align;
+    #endregion
 
+    #region Properties
     /// <summary>
     /// The placement of the title.
     /// </summary>
@@ -29,9 +38,6 @@ public class Title : Element
     /// The width of the title.
     /// </summary>
     public override int Width => _width;
-    #endregion
-
-    #region Properties
     private string[] StyledText => Core.StyleText(_text);
     #endregion
 
@@ -43,6 +49,13 @@ public class Title : Element
     /// <param name="margin">The margin of the title.</param>
     /// <param name="width">The width of the title (by default the width of the console).</param>
     /// <param name="align">The alignment of the title.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public Title(
         string text,
         int margin = 1,
@@ -62,6 +75,13 @@ public class Title : Element
     /// This method updates the text of the title.
     /// </summary>
     /// <param name="text">The new text of the title.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateText(string text)
     {
         _text = text;
@@ -71,6 +91,13 @@ public class Title : Element
     /// This method updates the margin of the title.
     /// </summary>
     /// <param name="margin">The new margin of the title.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateMargin(int margin)
     {
         _margin = margin;

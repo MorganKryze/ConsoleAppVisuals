@@ -43,6 +43,13 @@ public class TextStyler
     /// </summary>
     /// <param name="fontPath">The path to the font files.</param>
     /// <exception cref="EmptyFileException">Thrown when the config.yml file is empty.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public TextStyler(string? fontPath = null)
     {
         this.fontPath = fontPath;
@@ -139,6 +146,13 @@ public class TextStyler
     /// </summary>
     /// <param name="text">The text to style.</param>
     /// <returns>The styled text.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public string StyleTextToString(string text)
     {
         text = text.ToLower();
@@ -173,6 +187,13 @@ public class TextStyler
     /// </summary>
     /// <param name="text">The text to style.</param>
     /// <returns>The styled text as a string array.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public string[] StyleTextToStringArray(string text)
     {
         text = text.ToLower();
@@ -208,6 +229,13 @@ public class TextStyler
     /// </summary>
     /// <returns>A string compiling these pieces of information.</returns>
     /// <exception cref="EmptyFileException">Thrown when the config.yml file is empty.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public override string ToString()
     {
         var sb = new StringBuilder();
