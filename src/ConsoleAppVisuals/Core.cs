@@ -117,6 +117,10 @@ public static class Core
     /// <param name="str">The title input.</param>
     /// <param name="margin">The upper and lower margin of the title.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void SetTitle(string str, int margin = 1) =>
         s_title = (s_styler.StyleTextToStringArray(str), margin);
 
@@ -141,6 +145,10 @@ public static class Core
     /// <param name="center">The default header center input.</param>
     /// <param name="right">The default header right input.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void SetDefaultHeader(string left, string center, string right) =>
         defaultHeader = (left, center, right);
 
@@ -151,6 +159,10 @@ public static class Core
     /// <param name="center">The default footer center input.</param>
     /// <param name="right">The default footer right input.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void SetDefaultFooter(string left, string center, string right) =>
         defaultFooter = (left, center, right);
 
@@ -170,6 +182,10 @@ public static class Core
     /// This method is used to update the screen display if it has encountered a change.
     /// </summary>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void UpdateScreen()
     {
         if (IsScreenUpdated)
@@ -438,6 +454,10 @@ public static class Core
     /// This method prints the title in the console.
     /// </summary>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void WriteTitle() =>
         WritePositionedStyledText(
             s_title.Item1,
@@ -455,6 +475,10 @@ public static class Core
     /// <param name="continuous">If true, the header is not continuously printed.</param>
     /// <param name="header">The header to print.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void WriteHeader(bool continuous = true, (string, string, string)? header = null)
     {
         (string, string, string) _banner = header ?? defaultHeader;
@@ -470,6 +494,10 @@ public static class Core
     /// <param name="continuous">If true, the footer is not continuously printed.</param>
     /// <param name="footer">The footer to print.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void WriteFooter(bool continuous = true, (string, string, string)? footer = null)
     {
         (string, string, string) _banner = footer ?? defaultFooter;
@@ -585,6 +613,10 @@ public static class Core
     /// <param name="line">The line where the menu is printed.</param>
     /// <param name="choices">The choices of the menu.</param>
     /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the index of the choice of the user.</returns>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static (Output, int) ScrollingMenuSelector(
         string question,
         int defaultIndex = 0,
@@ -788,6 +820,10 @@ public static class Core
     /// <param name="message">The message to print.</param>
     /// <param name="line">The line where the message will be printed.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void LoadingBar(string message = "[ Loading... ]", int? line = null)
     {
         line ??= ContentHeight;
@@ -812,6 +848,10 @@ public static class Core
     /// <param name="message">The message to print.</param>
     /// <param name="processPercentage">The percentage of the process.</param>
     /// <param name="line">The line where the message will be printed.</param>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void ProcessLoadingBar(
         string message,
         ref float processPercentage,
@@ -852,6 +892,10 @@ public static class Core
     /// <param name="continuous">If true, the title is not continuously printed.</param>
     /// <param name="header">The header of the screen.</param>
     /// <param name="footer">The footer of the screen.</param>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void WriteFullScreen(
         string? title = null,
         bool continuous = false,
@@ -880,6 +924,10 @@ public static class Core
     /// </summary>
     /// <param name="message">The message to print on the exit of the program.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void ExitProgram(string message = "[ Exiting the program... ]")
     {
         ClearContent();

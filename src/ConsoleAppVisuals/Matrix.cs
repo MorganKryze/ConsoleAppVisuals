@@ -9,10 +9,10 @@ namespace ConsoleAppVisuals;
 /// </summary>
 public class Matrix<T>
 {
-    #region Fields
-    private readonly List<List<T?>> lines;
-    private string[]? displayArray;
-    private bool roundedCorners = true;
+    #region Fields: Lines, display array, rounded corners
+    private readonly List<List<T?>> _lines;
+    private string[]? _displayArray;
+    private bool _roundedCorners = true;
     #endregion
 
     #region Constructor
@@ -26,7 +26,7 @@ public class Matrix<T>
     {
         if (rawLines is not null)
         {
-            lines = rawLines;
+            _lines = rawLines;
             if (CompatibilityCheck())
             {
                 BuildMatrix();
@@ -34,20 +34,20 @@ public class Matrix<T>
         }
         else
         {
-            lines = new List<List<T?>>();
+            _lines = new List<List<T?>>();
         }
     }
 
     private bool CompatibilityCheck()
     {
-        if (lines.Count == 0)
+        if (_lines.Count == 0)
         {
             throw new ArgumentException("The matrix is empty.");
         }
-        int firstRowLength = lines[0].Count;
-        for (int i = 1; i < lines.Count; i++)
+        int firstRowLength = _lines[0].Count;
+        for (int i = 1; i < _lines.Count; i++)
         {
-            if (lines[i].Count != firstRowLength)
+            if (_lines[i].Count != firstRowLength)
             {
                 throw new ArgumentException("The matrix is not compatible.");
             }
@@ -55,40 +55,43 @@ public class Matrix<T>
         return true;
     }
 
+    #endregion
+
+    #region Build Methods
     private void BuildMatrix()
     {
         var stringList = new List<string>();
-        var localMax = new int[lines[0].Count];
+        var localMax = new int[_lines[0].Count];
 
         CalculateLocalMax(localMax);
         string border = CreateBorder(localMax);
         stringList.Add(border);
 
         var separator = CreateSeparator(localMax);
-        for (int i = 0; i < lines.Count; i++)
+        for (int i = 0; i < _lines.Count; i++)
         {
             StringBuilder lineBuilder = new StringBuilder("│ ");
             BuildLine(lineBuilder, localMax, i);
             stringList.Add(lineBuilder.ToString());
-            if (i != lines.Count - 1)
+            if (i != _lines.Count - 1)
                 stringList.Add(separator);
         }
 
         border = CreateFooter(localMax);
         stringList.Add(border);
 
-        displayArray = stringList.ToArray();
+        _displayArray = stringList.ToArray();
     }
 
     private void CalculateLocalMax(int[] localMax)
     {
-        for (int i = 0; i < lines.Count; i++)
+        for (int i = 0; i < _lines.Count; i++)
         {
-            for (int j = 0; j < lines[i].Count; j++)
+            for (int j = 0; j < _lines[i].Count; j++)
             {
-                if (lines[i][j]?.ToString()?.Length > localMax[j])
+                if (_lines[i][j]?.ToString()?.Length > localMax[j])
                 {
-                    localMax[j] = lines[i][j]?.ToString()?.Length ?? 0;
+                    localMax[j] = _lines[i][j]?.ToString()?.Length ?? 0;
                 }
             }
         }
@@ -96,12 +99,12 @@ public class Matrix<T>
 
     private string CreateBorder(int[] localMax)
     {
-        string border = Corners[0].ToString();
+        string border = GetCorners[0].ToString();
         StringBuilder headerBuilder = new StringBuilder(border);
-        for (int i = 0; i < lines[0].Count; i++)
+        for (int i = 0; i < _lines[0].Count; i++)
         {
             headerBuilder.Append(new string('─', localMax[i] + 2));
-            headerBuilder.Append((i != lines[0].Count - 1) ? "┬" : Corners[1].ToString());
+            headerBuilder.Append((i != _lines[0].Count - 1) ? "┬" : GetCorners[1].ToString());
         }
         return headerBuilder.ToString();
     }
@@ -110,22 +113,22 @@ public class Matrix<T>
     {
         var separator = "├";
         StringBuilder separatorBuilder = new StringBuilder(separator);
-        for (int i = 0; i < lines[0].Count; i++)
+        for (int i = 0; i < _lines[0].Count; i++)
         {
             separatorBuilder.Append(new string('─', localMax[i] + 2));
-            separatorBuilder.Append((i != lines[0].Count - 1) ? "┼" : "┤");
+            separatorBuilder.Append((i != _lines[0].Count - 1) ? "┼" : "┤");
         }
         return separatorBuilder.ToString();
     }
 
     private void BuildLine(StringBuilder lineBuilder, int[] localMax, int i)
     {
-        for (int j = 0; j < lines[i].Count; j++)
+        for (int j = 0; j < _lines[i].Count; j++)
         {
             lineBuilder.Append(
-                lines[i][j]?.ToString()?.PadRight(localMax[j]) ?? " ".PadRight(localMax[j])
+                _lines[i][j]?.ToString()?.PadRight(localMax[j]) ?? " ".PadRight(localMax[j])
             );
-            if (j != lines[i].Count - 1)
+            if (j != _lines[i].Count - 1)
                 lineBuilder.Append(" │ ");
             else
                 lineBuilder.Append(" │");
@@ -134,24 +137,24 @@ public class Matrix<T>
 
     private string CreateFooter(int[] localMax)
     {
-        string border = Corners[2].ToString();
+        string border = GetCorners[2].ToString();
         StringBuilder footerBuilder = new StringBuilder(border);
-        for (int i = 0; i < lines[0].Count; i++)
+        for (int i = 0; i < _lines[0].Count; i++)
         {
             footerBuilder.Append(new string('─', localMax[i] + 2));
-            footerBuilder.Append((i != lines[0].Count - 1) ? "┴" : Corners[3].ToString());
+            footerBuilder.Append((i != _lines[0].Count - 1) ? "┴" : GetCorners[3].ToString());
         }
         return footerBuilder.ToString();
     }
     #endregion
 
-    #region Properties
-    private string Corners => roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+    #region Properties: GetCorners, Count
+    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
 
     /// <summary>
     /// Gets the number of lines in the matrix.
     /// </summary>
-    public int Count => lines.Count;
+    public int Count => _lines.Count;
     #endregion
 
     #region Methods
@@ -163,11 +166,11 @@ public class Matrix<T>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     public T? GetElement(Position position)
     {
-        if (position.X >= lines.Count || position.Y >= lines[position.X].Count)
+        if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
         {
             throw new ArgumentOutOfRangeException(nameof(position), "Position is out of range.");
         }
-        return lines[position.X][position.Y];
+        return _lines[position.X][position.Y];
     }
 
     /// <summary>
@@ -176,7 +179,7 @@ public class Matrix<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void SetRoundedCorners(bool value = true)
     {
-        roundedCorners = value;
+        _roundedCorners = value;
         BuildMatrix();
     }
 
@@ -188,21 +191,15 @@ public class Matrix<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void AddLine(List<T?> line)
     {
-        if (lines.Count == 0)
-        {
-            lines.Add(line);
-        }
-        else if (line.Count != lines[0].Count)
+        if (line.Count != _lines[0].Count)
         {
             throw new ArgumentException(
                 "Line has a different number of elements than the existing lines."
             );
         }
-        else
-        {
-            lines.Add(line);
-            BuildMatrix();
-        }
+
+        _lines.Add(line);
+        BuildMatrix();
     }
 
     /// <summary>
@@ -213,11 +210,11 @@ public class Matrix<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void RemoveLine(int index)
     {
-        if (index < 0 || index >= lines.Count)
+        if (index < 0 || index >= _lines.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
         }
-        lines.RemoveAt(index);
+        _lines.RemoveAt(index);
         BuildMatrix();
     }
 
@@ -231,17 +228,17 @@ public class Matrix<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void UpdateLine(int index, List<T?> line)
     {
-        if (index < 0 || index >= lines.Count)
+        if (index < 0 || index >= _lines.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
         }
-        else if (line.Count != lines[0].Count)
+        else if (line.Count != _lines[0].Count)
         {
             throw new ArgumentException(
                 "Line has a different number of elements than the existing lines."
             );
         }
-        lines[index] = line;
+        _lines[index] = line;
         BuildMatrix();
     }
 
@@ -253,11 +250,11 @@ public class Matrix<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void Remove(Position position)
     {
-        if (position.X >= lines.Count || position.Y >= lines[position.X].Count)
+        if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
         {
             throw new ArgumentOutOfRangeException(nameof(position), "Position is out of range.");
         }
-        lines[position.X][position.Y] = default(T);
+        _lines[position.X][position.Y] = default(T);
         BuildMatrix();
     }
 
@@ -270,11 +267,11 @@ public class Matrix<T>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public void UpdateElement(Position position, T newElement)
     {
-        if (position.X >= lines.Count || position.Y >= lines[position.X].Count)
+        if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
         {
             throw new ArgumentOutOfRangeException(nameof(position), "Position is out of range.");
         }
-        lines[position.X][position.Y] = newElement;
+        _lines[position.X][position.Y] = newElement;
         BuildMatrix();
     }
 
@@ -288,7 +285,7 @@ public class Matrix<T>
         int? line = null
     )
     {
-        if (displayArray is null)
+        if (_displayArray is null)
             throw new InvalidOperationException(
                 "The matrix has not been built yet. The matrix cannot be displayed"
             );
@@ -298,7 +295,7 @@ public class Matrix<T>
             TextAlignment.Center,
             negative,
             line,
-            displayArray
+            _displayArray
         );
     }
     #endregion

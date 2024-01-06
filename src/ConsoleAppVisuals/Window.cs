@@ -15,14 +15,14 @@ public static class Window
 
     #region Constants: DefaultVisibility
     /// <summary>
-    /// The default visibility of the elements.
+    /// The default visibility of the elements when they are added to the window.
     /// </summary>
     public const bool DEFAULT_VISIBILITY = false;
     #endregion
 
     #region Properties: NextId, NumberOfElements
     /// <summary>
-    /// Gives the next id number.
+    /// Gives the next id number each time a new element is added to the window.
     /// </summary>
     public static int NextId => s_elements.Count;
 
@@ -34,10 +34,11 @@ public static class Window
 
     #region Basic Methods: Get, Add, Insert, Remove, RemoveAll
     /// <summary>
-    /// This method returns the element with the given type.
+    /// This method returns an element with the given type.
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <returns>The element with the given type if it exists, null otherwise.</returns>
+    /// <remarks>This method will return the first element with the given type.</remarks>
     public static T? GetElement<T>()
         where T : Element
     {
@@ -49,6 +50,7 @@ public static class Window
     /// </summary>
     /// <param name="id">The id of the element.</param>
     /// <returns>The element with the given id if it exists, null otherwise.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     public static T? GetElement<T>(int id)
         where T : Element
     {
@@ -60,10 +62,11 @@ public static class Window
     }
 
     /// <summary>
-    /// This method returns the visible element with the given type.
+    /// This method returns the first visible element with the given type.
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <returns>The visible element with the given type if it exists, null otherwise.</returns>
+    /// <remarks>This method will return the first visible element with the given type.</remarks>
     public static T? GetVisibleElement<T>()
         where T : Element
     {
@@ -121,18 +124,30 @@ public static class Window
     /// <param name="element">The element to be removed.</param>
     public static void RemoveElement(Element element)
     {
-        if (element != null && s_elements.Contains(element))
-        {
-            s_elements.Remove(element);
-            UpdateIDs();
-        }
-        else
+        if (element is null || s_elements.Contains(element))
         {
             throw new ArgumentOutOfRangeException(
                 nameof(element),
                 "Invalid element. Not found in the window."
             );
         }
+        s_elements.Remove(element);
+        UpdateIDs();
+    }
+
+    /// <summary>
+    /// This method removes the first element with the given type.
+    /// </summary>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <exception cref="InvalidOperationException">Thrown when the element is invalid.</exception>
+    public static void RemoveElement<T>()
+        where T : Element
+    {
+        var element =
+            GetElement<T>()
+            ?? throw new InvalidOperationException("Invalid element. Not found in the window.");
+        s_elements.Remove(element);
+        UpdateIDs();
     }
 
     /// <summary>
@@ -145,8 +160,6 @@ public static class Window
     #endregion
 
     #region Manipulation Methods: ActivateElement, ActivateAllElements, DeactivateElement, DeactivateAllElements
-
-
     /// <summary>
     /// This method attempts to activate the visibility of the element with the given id.
     /// </summary>
@@ -162,59 +175,50 @@ public static class Window
         {
             s_elements[id].ToggleVisibility();
         }
-        Refresh();
+        Refresh(s_elements[id].IsInteractive);
     }
 
     /// <summary>
-    ///
+    /// This method attempts to activate the visibility of the first element of the given type.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <exception cref="InvalidOperationException"></exception>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void ActivateElement<T>()
         where T : Element
     {
-        var element = GetElement<T>();
-        if (element != null)
+        var element =
+            GetElement<T>()
+            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
+        if (!element.Visibility)
         {
-            if (!element.Visibility)
-            {
-                element.ToggleVisibility();
-            }
+            element.ToggleVisibility();
         }
-        else
-        {
-            throw new InvalidOperationException("Invalid element. Not found in the window.");
-        }
-
         Refresh(element.IsInteractive);
     }
 
     /// <summary>
-    ///
+    /// After activating the visibility of an interactive element, this method will return the response for the user.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="TResponse"></typeparam>
-    /// <returns></returns>
-    /// <exception cref="InvalidOperationException"></exception>
+    /// <typeparam name="T">The type of interactive element.</typeparam>
+    /// <typeparam name="TResponse">The type of the response (int, string, float...).</typeparam>
+    /// <returns>The response of the user.</returns>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static InteractionEventArgs<TResponse>? GetResponse<T, TResponse>()
         where T : InteractiveElement<TResponse>
     {
-        var element = GetVisibleElement<T>();
-        if (element is null)
-        {
-            throw new InvalidOperationException("Invalid element. Not found in the window.");
-        }
-        else
-        {
-            DeactivateElement<T>();
-            return element.GetInteractionResponse;
-        }
+        var element =
+            GetVisibleElement<T>()
+            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
+        DeactivateElement<T>();
+        return element.GetInteractionResponse;
     }
 
     /// <summary>
     /// This method attempts to activate the visibility of all elements.
     /// </summary>
-    /// <remarks>This method is dangerous for your application. It is recommended to activate the visibility of each element individually.</remarks>
+    /// <remarks><c>[ DANGEROUS ]</c> It is recommended to activate the visibility of each element individually.</remarks>
     public static void ActivateAllElements()
     {
         foreach (var element in s_elements)
@@ -248,23 +252,19 @@ public static class Window
     /// This method deactivate the visibility of the element with the given type.
     /// </summary>
     /// <param name="element">The element to be deactivated.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     public static void DeactivateElement(Element element)
     {
-        if (element != null && s_elements.Contains(element))
+        if (element is null || !s_elements.Contains(element))
         {
-            if (element.Visibility)
-            {
-                element.ToggleVisibility();
-            }
+            throw new ElementNotFoundException("Invalid element. Not found in the window.");
         }
-        else
+
+        if (element.Visibility)
         {
-            throw new ArgumentOutOfRangeException(
-                nameof(element),
-                "Invalid element. Not found in the window."
-            );
+            element.ToggleVisibility();
         }
+
         Refresh();
     }
 
@@ -272,21 +272,16 @@ public static class Window
     /// This method deactivate the visibility of the first element with the given type.
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     public static void DeactivateElement<T>()
         where T : Element
     {
-        var element = GetVisibleElement<T>();
-        if (element != null)
+        var element =
+            GetVisibleElement<T>()
+            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
+        if (element.Visibility)
         {
-            if (element.Visibility)
-            {
-                element.ToggleVisibility();
-            }
-        }
-        else
-        {
-            throw new InvalidOperationException("Invalid element. Not found in the window.");
+            element.ToggleVisibility();
         }
         Refresh();
     }
@@ -454,12 +449,12 @@ public static class Window
     /// This method draws the element with the given id on the console.
     /// </summary>
     /// <param name="id">The id of the element.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
+    /// <exception cref="ElementNotFoundException">Thrown when the id is out of range.</exception>
     public static void RenderOne(int id)
     {
         if (id < 0 || id >= s_elements.Count)
         {
-            throw new ArgumentOutOfRangeException(nameof(id), "Invalid element ID.");
+            throw new ElementNotFoundException("Invalid element ID.");
         }
         s_elements[id].Render();
     }
@@ -468,20 +463,15 @@ public static class Window
     /// This method draws the given element on the console.
     /// </summary>
     /// <param name="element">The element to be drawn.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the element is invalid.</exception>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     public static void RenderOne(Element element)
     {
-        if (element != null && s_elements.Contains(element))
+        if (element == null || !s_elements.Contains(element))
         {
-            element.Render();
+            throw new ElementNotFoundException("Invalid element. Not found in the window.");
         }
-        else
-        {
-            throw new ArgumentOutOfRangeException(
-                nameof(element),
-                "Invalid element. Not found in the window."
-            );
-        }
+
+        element.Render();
     }
 
     /// <summary>
@@ -498,6 +488,16 @@ public static class Window
                 RenderOne(i);
             }
         }
+    }
+
+    /// <summary>
+    /// This method closes the window and exit the program.
+    /// </summary>
+    public static void Close()
+    {
+        Core.ClearWindow();
+        Console.CursorVisible = true;
+        Environment.Exit(0);
     }
     #endregion
 
@@ -551,7 +551,6 @@ public static class Window
         var types = new List<Type>();
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
-            // Exclude default C# assemblies
             if (
                 assembly.FullName != null
                 && !assembly.FullName.StartsWith("mscorlib")
@@ -567,6 +566,10 @@ public static class Window
         var id = 0;
         foreach (var type in types)
         {
+            if (type.IsAbstract)
+            {
+                continue;
+            }
             table.AddLine(
                 new List<string> { $"{id}", type.Name, type.Assembly.GetName().Name ?? "Unknown" }
             );
@@ -585,7 +588,6 @@ public static class Window
         var types = new List<Type>();
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
-            // Exclude default C# assemblies
             if (
                 assembly.FullName != null
                 && !assembly.FullName.StartsWith("mscorlib")
