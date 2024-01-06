@@ -15,6 +15,7 @@ namespace testing
                 Table<string> table =
                     new(
                         null,
+                        null,
                         new List<List<string>>()
                         {
                             new List<string>() { "1", "2", "3" },
@@ -31,6 +32,7 @@ namespace testing
             {
                 Table<string> table =
                     new(
+                        null,
                         new List<string>() { "header1", "header2", "header3" },
                         new List<List<string>>()
                         {
@@ -46,6 +48,7 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                     {
@@ -61,6 +64,7 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                     {
@@ -79,6 +83,8 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
+
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                 );
@@ -91,6 +97,8 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
+
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                 );
@@ -106,6 +114,8 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
+
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                     {
@@ -122,6 +132,8 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
+
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                     {
@@ -140,6 +152,8 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
+
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                     {
@@ -156,6 +170,8 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
+
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                     {
@@ -174,6 +190,8 @@ namespace testing
         {
             Table<string> table =
                 new(
+                    null,
+
                     new List<string>() { "header1", "header2", "header3" },
                     new List<List<string>>()
                     {
