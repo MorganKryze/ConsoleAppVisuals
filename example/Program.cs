@@ -357,14 +357,14 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
-            Window.AddElement(new Title("Debugging"), true);
-            Window.AddElement(new Header(), true);
-            Window.AddElement(new Footer(), true);
-            Window.AddElement(new FakeLoadingBar(), true);
+            Window.AddElement(new Title("Debugging"));
+            Window.AddElement(new Header());
+            Window.AddElement(new Footer());
+            Window.AddElement(new FakeLoadingBar());
             Window.Refresh();
 
-            Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5), true);
-            Window.Refresh(true);
+            Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5));
+            Window.ActivateElement<IntSelector>();
             var response = Window.GetResponse<IntSelector, int>();
             Window.AddElement(
                 new EmbeddedText(
