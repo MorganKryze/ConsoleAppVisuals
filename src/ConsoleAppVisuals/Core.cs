@@ -563,6 +563,10 @@ public static class Core
     /// <param name="continuous">If true, the message is not continuously printed.</param>
     /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Select : pressed enter) and the string written by the user.</returns>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static (Output, string) WritePrompt(
         string message,
         string? defaultValue = null,
@@ -702,6 +706,10 @@ public static class Core
     /// <param name="roundedCorners">If true, the corners of the menu are rounded.</param>
     /// <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the number chosen by the user.</returns>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static (Output, float) ScrollingNumberSelector(
         string question,
         float min,
