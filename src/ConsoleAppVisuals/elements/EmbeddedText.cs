@@ -5,8 +5,15 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// Defines the basic properties of an embeded text.
+/// Defines the basic properties of an embedded text.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class EmbeddedText : InteractiveElement<string>
 {
     #region Fields
@@ -16,7 +23,6 @@ public class EmbeddedText : InteractiveElement<string>
     private readonly Placement _placement;
     private readonly int _line;
     private List<string>? _textToDisplay;
-
     #endregion
 
     #region Properties
@@ -40,6 +46,13 @@ public class EmbeddedText : InteractiveElement<string>
     /// <param name="align">The alignment of the Embedded text.</param>
     /// <param name="placement">The placement of the Embedded text element.</param>
     /// <param name="line">The line of the Embedded text.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public EmbeddedText(
         List<string> text,
         string? button = null,
@@ -61,6 +74,13 @@ public class EmbeddedText : InteractiveElement<string>
     /// Adds a line to the Embedded text.
     /// </summary>
     /// <param name="line">The line to add.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void AddLine(string line)
     {
         _text.Add(line);
@@ -71,6 +91,13 @@ public class EmbeddedText : InteractiveElement<string>
     /// </summary>
     /// <param name="line">The line to insert.</param>
     /// <param name="index">The index where to insert the line.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void InsertLine(string line, int index)
     {
         _text.Insert(index, line);
@@ -80,6 +107,13 @@ public class EmbeddedText : InteractiveElement<string>
     /// Removes a line from the Embedded text.
     /// </summary>
     /// <param name="line">The line to remove.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void RemoveLine(string line)
     {
         _text.Remove(line);
@@ -89,6 +123,13 @@ public class EmbeddedText : InteractiveElement<string>
     /// Removes a line from the Embedded text.
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void RemoveLine(int index)
     {
         _text.RemoveAt(index);
@@ -136,11 +177,8 @@ public class EmbeddedText : InteractiveElement<string>
             lineToDisplay += " │";
             _textToDisplay.Add(lineToDisplay);
         }
-        //add the first line of the box
         _textToDisplay.Insert(0, "┌" + new string('─', maxLength + 2) + "┐");
-        // add empty space
         _textToDisplay.Add("│ " + new string(' ', maxLength) + " │");
-        //add the button
         _textToDisplay.Add(
             "│ "
                 + "".PadRight(maxLength - _button.Length - 2)
@@ -151,9 +189,7 @@ public class EmbeddedText : InteractiveElement<string>
                 + Core.NEGATIVE_ANCHOR
                 + " │"
         );
-        //add the last line of the box
         _textToDisplay.Add("└" + new string('─', maxLength + 2) + "┘");
     }
-
     #endregion
 }

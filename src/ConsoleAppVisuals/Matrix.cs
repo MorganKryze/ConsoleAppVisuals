@@ -207,7 +207,13 @@ public class Matrix<T>
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void RemoveLine(int index)
     {
         if (index < 0 || index >= _lines.Count)
@@ -225,7 +231,13 @@ public class Matrix<T>
     /// <param name="line">The new line.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateLine(int index, List<T?> line)
     {
         if (index < 0 || index >= _lines.Count)
@@ -247,7 +259,13 @@ public class Matrix<T>
     /// </summary>
     /// <param name="position">The position of the element to remove.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void Remove(Position position)
     {
         if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
@@ -264,7 +282,13 @@ public class Matrix<T>
     /// <param name="position">The position of the element to update.</param>
     /// <param name="newElement">The new element.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateElement(Position position, T newElement)
     {
         if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)

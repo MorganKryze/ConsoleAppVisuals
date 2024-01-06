@@ -7,14 +7,24 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Defines the loading bar of the console window.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class ScrollingMenu : InteractiveElement<int>
 {
+    #region Fields
     private readonly string _question;
     private readonly string[] _choices;
     private int _defaultIndex;
     private readonly Placement _placement;
     private readonly int _line;
+    #endregion
 
+    #region Properties
     /// <summary>
     /// The placement of the menu on the console.
     /// </summary>
@@ -35,7 +45,9 @@ public class ScrollingMenu : InteractiveElement<int>
     /// </summary>
     public override int Width =>
         Math.Max(_question.Length, _choices.Max((string s) => s.Length) + 4);
+    #endregion
 
+    #region Constructor
     /// <summary>
     /// The constructor of the ScrollingMenu class.
     /// </summary>
@@ -44,6 +56,13 @@ public class ScrollingMenu : InteractiveElement<int>
     /// <param name="placement">The placement of the menu on the console.</param>
     /// <param name="line">The line where the menu will be displayed.</param>
     /// <param name="choices">The different choices of the menu.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public ScrollingMenu(
         string question,
         int defaultIndex = 0,
@@ -58,7 +77,9 @@ public class ScrollingMenu : InteractiveElement<int>
         _line = line ?? Window.GetLineAvailable(_placement);
         _choices = choices;
     }
+    #endregion
 
+    #region Methods
     /// <summary>
     /// This method is used to draw the menu on the console.
     /// </summary>
@@ -133,4 +154,5 @@ public class ScrollingMenu : InteractiveElement<int>
             }
         }
     }
+    #endregion
 }

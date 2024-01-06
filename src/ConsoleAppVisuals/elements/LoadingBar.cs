@@ -7,6 +7,13 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Defines the loading bar of the console window.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class LoadingBar : Element
 {
     #region Fields
@@ -52,6 +59,13 @@ public class LoadingBar : Element
     /// <param name="placement">The placement of the loading bar.</param>
     /// <param name="line">The line of the loading bar.</param>
     /// <param name="additionalDuration">The duration of the loading bar after the process.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public LoadingBar(
         string text,
         ref float progress,
@@ -73,6 +87,13 @@ public class LoadingBar : Element
     /// This method is used to update the text of the loading bar.
     /// </summary>
     /// <param name="text">The new text of the loading bar.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateText(string text)
     {
         _text = text;
@@ -82,6 +103,13 @@ public class LoadingBar : Element
     /// This method is used to update the progress of the loading bar.
     /// </summary>
     /// <param name="progress">The new progress of the loading bar.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateProgress(float progress)
     {
         _progress = progress;

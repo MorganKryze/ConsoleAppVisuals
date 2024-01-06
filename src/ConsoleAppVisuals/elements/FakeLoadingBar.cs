@@ -7,6 +7,13 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Defines the loading bar of the console window.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class FakeLoadingBar : Element
 {
     #region Fields
@@ -49,6 +56,13 @@ public class FakeLoadingBar : Element
     /// <param name="line">The line of the loading bar.</param>
     /// <param name="processDuration">The duration of the loading bar.</param>
     /// <param name="additionalDuration">The additional duration of the loading bar at the end.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public FakeLoadingBar(
         string text = "[ Loading ...]",
         Placement placement = Placement.TopCenter,
@@ -70,6 +84,13 @@ public class FakeLoadingBar : Element
     /// This method is used to update the text of the loading bar.
     /// </summary>
     /// <param name="text">The new text of the loading bar.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateText(string text)
     {
         _text = text;

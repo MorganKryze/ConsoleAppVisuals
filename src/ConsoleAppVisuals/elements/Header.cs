@@ -7,12 +7,21 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Defines the header of the console window.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class Header : Element
 {
     #region Fields
     private (string, string, string) _text;
     private readonly int _margin;
+    #endregion
 
+    #region Properties
     /// <summary>
     /// The placement of the header.
     /// </summary>
@@ -43,6 +52,13 @@ public class Header : Element
     /// <param name="centerText">The text in the center of the header.</param>
     /// <param name="rightText">The text on the right of the header.</param>
     /// <param name="margin">The margin of the header.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public Header(
         string leftText = "Header Left",
         string centerText = "Header Center",
@@ -62,6 +78,13 @@ public class Header : Element
     /// This method is used to update the text on the left of the header.
     /// </summary>
     /// <param name="leftText">The new text on the left of the header.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateLeftText(string leftText)
     {
         _text.Item1 = leftText;
@@ -71,6 +94,13 @@ public class Header : Element
     /// This method is used to update the text in the center of the header.
     /// </summary>
     /// <param name="centerText">The new text in the center of the header.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateCenterText(string centerText)
     {
         _text.Item2 = centerText;
@@ -80,6 +110,13 @@ public class Header : Element
     /// This method is used to update the text on the right of the header.
     /// </summary>
     /// <param name="rightText">The new text on the right of the header.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateRightText(string rightText)
     {
         _text.Item3 = rightText;

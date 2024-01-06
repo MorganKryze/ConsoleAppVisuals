@@ -7,7 +7,13 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// A class that stores the position into X and Y parameters of a position.
 /// </summary>
-/// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public struct Position : IEquatable<Position>
 {
     #region Attributes
@@ -28,6 +34,13 @@ public struct Position : IEquatable<Position>
     /// </summary>
     /// <param name="x">The x coordinate of the position.</param>
     /// <param name="y">The y coordinate of the position.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public Position(int x, int y)
     {
         X = x;
@@ -38,6 +51,13 @@ public struct Position : IEquatable<Position>
     /// Initializes a new instance of the <see cref="Position"/> class with another instance of the <see cref="Position"/> class.
     /// </summary>
     /// <param name="pos">The position to copy.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public Position(Position pos)
     {
         X = pos.X;
@@ -50,6 +70,13 @@ public struct Position : IEquatable<Position>
     /// This method is used to convert the position to a string.
     /// </summary>
     /// <returns>The position as a string.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public override readonly string ToString() => $"Line : {X} ; Column : {Y}";
 
     /// <summary>
@@ -57,6 +84,13 @@ public struct Position : IEquatable<Position>
     /// </summary>
     /// <param name="obj">The position to compare to.</param>
     /// <returns>True if the positions are equal, false otherwise.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public override readonly bool Equals(object? obj) =>
         obj is Position position && X == position.X && Y == position.Y;
 
@@ -64,6 +98,13 @@ public struct Position : IEquatable<Position>
     /// Implementation of the IEquatable interface.
     /// </summary>
     /// <returns>An integer representing the hash code of the position.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public override readonly int GetHashCode() => HashCode.Combine(X, Y);
 
     /// <summary>

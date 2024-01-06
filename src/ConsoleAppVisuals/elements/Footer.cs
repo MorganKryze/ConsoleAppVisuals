@@ -7,11 +7,20 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// Defines the footer of the console window.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class Footer : Element
 {
     #region Fields
     private (string, string, string) _text;
+    #endregion
 
+    #region Properties
     /// <summary>
     /// The placement of the footer.
     /// </summary>
@@ -40,6 +49,13 @@ public class Footer : Element
     /// <param name="leftText">The text on the left of the footer.</param>
     /// <param name="centerText">The text in the center of the footer.</param>
     /// <param name="rightText">The text on the right of the footer.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public Footer(
         string leftText = " Footer Left",
         string centerText = " Footer Center",
@@ -57,6 +73,13 @@ public class Footer : Element
     /// This method is used to update the text on the left of the footer.
     /// </summary>
     /// <param name="leftText">The new text on the left of the footer.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateLeftText(string leftText)
     {
         _text.Item1 = leftText;
@@ -66,6 +89,13 @@ public class Footer : Element
     /// This method is used to update the text in the center of the footer.
     /// </summary>
     /// <param name="centerText">The new text in the center of the footer.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateCenterText(string centerText)
     {
         _text.Item2 = centerText;
@@ -75,6 +105,13 @@ public class Footer : Element
     /// This method is used to update the text on the right of the footer.
     /// </summary>
     /// <param name="rightText">The new text on the right of the footer.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateRightText(string rightText)
     {
         _text.Item3 = rightText;
