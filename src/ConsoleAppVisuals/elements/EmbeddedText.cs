@@ -65,7 +65,7 @@ public class EmbeddedText : InteractiveElement<string>
         _button = button ?? "Press [Enter] to continue";
         _align = align;
         _placement = placement;
-        _line = line ?? Window.GetLineAvailable(placement);
+        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
     }
     #endregion
 

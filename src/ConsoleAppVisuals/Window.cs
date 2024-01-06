@@ -565,6 +565,35 @@ public static class Window
     }
 
     /// <summary>
+    /// This method checks if the line is valid.
+    /// </summary>
+    /// <param name="line">The line to be checked.</param>
+    /// <returns>The line if it is valid.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the line is out of range.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static int? CheckLine(int? line)
+    {
+        if (line is null)
+        {
+            return line;
+        }
+        if (line < 0 || line >= Console.WindowHeight)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(line),
+                $"Invalid line. The line must be between 0 and {Console.WindowHeight - 1}."
+            );
+        }
+        return line;
+    }
+
+    /// <summary>
     /// This method clears the window.
     /// </summary>
     /// <remarks>
