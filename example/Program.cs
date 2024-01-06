@@ -362,7 +362,22 @@ namespace example
             Window.AddElement(new Footer(), true);
             Window.AddElement(new FakeLoadingBar(), true);
             Window.Refresh();
-            
+
+            Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5), true);
+            Window.Refresh(true);
+            var response = Window.GetResponse<IntSelector, int>();
+            Window.AddElement(
+                new EmbeddedText(
+                    new List<string>()
+                    {
+                        "You chose to " + response?.State.ToString(),
+                        "the number " + (response?.Info ) + "!"
+                    },
+                    $"Next {Core.GetSelector.Item1}",
+                    TextAlignment.Center
+                )
+            );
+            Window.ActivateElement<EmbeddedText>();
             Window.GetFullInfo();
             Window.Close();
         }

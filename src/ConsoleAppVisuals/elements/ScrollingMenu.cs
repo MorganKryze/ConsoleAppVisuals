@@ -85,7 +85,6 @@ public class ScrollingMenu : InteractiveElement<int>
     /// </summary>
     protected override void RenderActions()
     {
-        EndOfInteractionEvent += SetInteractionResponse;
         EqualizeChoicesLength(_choices);
         Core.WriteContinuousString(_question, Line, false, 1500, 50);
         int lineChoice = Line + 2;
@@ -106,23 +105,18 @@ public class ScrollingMenu : InteractiveElement<int>
                     _defaultIndex = (_defaultIndex == _choices.Length - 1) ? 0 : _defaultIndex + 1;
                     break;
                 case ConsoleKey.Enter:
-                    TriggerEvent(this, new InteractionEventArgs<int>(Output.Select, _defaultIndex));
-                    ExitFunction();
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Select, _defaultIndex));
+                    Core.ClearMultipleLines(Line, _choices.Length + 2);
                     return;
                 case ConsoleKey.Escape:
-                    TriggerEvent(this, new InteractionEventArgs<int>(Output.Exit, _defaultIndex));
-                    ExitFunction();
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Exit, _defaultIndex));
+                    Core.ClearMultipleLines(Line, _choices.Length + 2);
                     return;
                 case ConsoleKey.Backspace:
-                    TriggerEvent(this, new InteractionEventArgs<int>(Output.Delete, _defaultIndex));
-                    ExitFunction();
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Delete, _defaultIndex));
+                    Core.ClearMultipleLines(Line, _choices.Length + 2);
                     return;
             }
-        }
-        void ExitFunction()
-        {
-            Core.ClearMultipleLines(Line, _choices.Length + 2);
-            EndOfInteractionEvent -= SetInteractionResponse;
         }
 
         static void EqualizeChoicesLength(string[] choices)
