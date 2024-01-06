@@ -35,6 +35,16 @@ public class EmbeddedText : InteractiveElement<string>
     /// The Line of the Embedded text.
     /// </summary>
     public override int Line => _line;
+
+    /// <summary>
+    /// The height of the Embedded text.
+    /// </summary>
+    public override int Height => _textToDisplay!.Count + 4;
+
+    /// <summary>
+    /// The width of the Embedded text.
+    /// </summary>
+    public override int Width => _textToDisplay!.Max((string s) => s.Length) + 4;
     #endregion
 
     #region Constructor

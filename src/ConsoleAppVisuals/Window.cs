@@ -115,7 +115,6 @@ public static class Window
     /// This method adds an element to the window.
     /// </summary>
     /// <param name="element">The element to be added.</param>
-    /// <param name="visibility">If true, will try to toggle the visibility of the element.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -123,10 +122,10 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void AddElement(Element element, bool visibility = false)
+    public static void AddElement(Element element)
     {
         s_elements.Add(element);
-        if (visibility && AllowVisibilityToggle(element.Id))
+        if (!element.IsInteractive && AllowVisibilityToggle(element.Id))
         {
             element.ToggleVisibility();
         }
