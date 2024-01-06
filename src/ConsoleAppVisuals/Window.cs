@@ -260,7 +260,6 @@ public static class Window
         {
             s_elements[id].ToggleVisibility();
         }
-        Refresh(s_elements[id].IsInteractive);
     }
 
     /// <summary>
@@ -285,7 +284,6 @@ public static class Window
         {
             element.ToggleVisibility();
         }
-        Refresh(element.IsInteractive);
     }
 
     /// <summary>
@@ -517,44 +515,10 @@ public static class Window
                     + s_elements
                         .Where(e => e.Placement == Placement.TopRight && e.Visibility)
                         .Sum(e => e.Height),
-            Placement.BottomCenter
-                => Console.WindowHeight
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
-                        .Sum(e => e.Height)
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomCenter && e.Visibility)
-                        .Sum(e => e.Height),
-            Placement.BottomLeft
-                => Console.WindowHeight
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
-                        .Sum(e => e.Height)
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomLeft && e.Visibility)
-                        .Sum(e => e.Height),
-            Placement.BottomRight
-                => Console.WindowHeight
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
-                        .Sum(e => e.Height)
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomRight && e.Visibility)
-                        .Sum(e => e.Height),
             Placement.BottomCenterFullWidth
                 => Console.WindowHeight
-                    
                     - s_elements
                         .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
-                        .Sum(e => e.Height)
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomCenter && e.Visibility)
-                        .Sum(e => e.Height)
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomLeft && e.Visibility)
-                        .Sum(e => e.Height)
-                    - s_elements
-                        .Where(e => e.Placement == Placement.BottomRight && e.Visibility)
                         .Sum(e => e.Height),
             _ => throw new ArgumentOutOfRangeException(nameof(placement), "Invalid placement.")
         };
@@ -635,13 +599,13 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RenderOne(int id)
+    public static void RenderOneElement(int id)
     {
         if (id < 0 || id >= s_elements.Count)
         {
             throw new ElementNotFoundException("Invalid element ID.");
         }
-        s_elements[id].Render();
+        s_elements[id].RenderElement();
     }
 
     /// <summary>
@@ -656,14 +620,14 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RenderOne(Element element)
+    public static void RenderOneElement(Element element)
     {
         if (element == null || !s_elements.Contains(element))
         {
             throw new ElementNotFoundException("Invalid element. Not found in the window.");
         }
 
-        element.Render();
+        element.RenderElement();
     }
 
     /// <summary>
@@ -684,7 +648,7 @@ public static class Window
         {
             if (!s_elements[i].IsInteractive || includeInteractiveElement)
             {
-                RenderOne(i);
+                RenderOneElement(i);
             }
         }
     }

@@ -106,9 +106,9 @@ public class Title : Element
     /// <summary>
     /// This method is used to draw the title on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
-        Core.WritePositionedStyledText(StyledText, 0, _width, _margin, Placement, _align, false);
+        Core.WritePositionedStyledText(StyledText, 0, _width, _margin, _align, false);
     }
     #endregion
 }

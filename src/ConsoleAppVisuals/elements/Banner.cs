@@ -148,18 +148,18 @@ public class Banner : Element
     /// <summary>
     /// This method is used to render the banner on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
         for (int i = 0; i < _upperMargin; i++)
         {
-            Core.WritePositionedString(string.Empty, Placement.TopCenter, true, Line + i, false);
+            Core.WritePositionedString(string.Empty, TextAlignment.Center, true, Line + i, false);
         }
-        Core.WritePositionedString(_text.BannerToString(), Placement, true, Line, false);
+        Core.WritePositionedString(_text.BannerToString(), TextAlignment.Center, true, Line, false);
         for (int i = 0; i < _lowerMargin; i++)
         {
             Core.WritePositionedString(
                 string.Empty,
-                Placement.TopCenter,
+                TextAlignment.Center,
                 true,
                 Line + Height - 1 - i,
                 false

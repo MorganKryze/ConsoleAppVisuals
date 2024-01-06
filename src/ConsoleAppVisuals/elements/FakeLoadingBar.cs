@@ -99,9 +99,9 @@ public class FakeLoadingBar : Element
     /// <summary>
     /// This method is used to draw the loading bar on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
-        Core.WritePositionedString(_text, _placement, false, _line, false);
+        Core.WritePositionedString(_text, _placement.ToTextAlignment(), false, _line, false);
         StringBuilder loadingBar = new();
         for (int j = 0; j < _text.Length; j++)
         {
@@ -114,7 +114,6 @@ public class FakeLoadingBar : Element
             _processDuration,
             _additionalDuration,
             Width,
-            _placement,
             default,
             false
         );

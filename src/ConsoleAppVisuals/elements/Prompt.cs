@@ -79,9 +79,9 @@ public class Prompt : InteractiveElement<string>
     /// <summary>
     /// This method is used to render the prompt element on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
-        Core.WriteContinuousString(_question, _line, false, 1500, 50, -1, _placement);
+        Core.WriteContinuousString(_question, _line, false, 1500, 50, -1, _placement.ToTextAlignment());
         var field = new StringBuilder(_defaultValue);
         ConsoleKeyInfo key;
         Console.CursorVisible = true;
