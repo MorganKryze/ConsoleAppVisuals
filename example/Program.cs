@@ -97,6 +97,7 @@ namespace example
                                 1000,
                                 default,
                                 default,
+                                default,
                                 true
                             );
                             Core.WritePositionedString(
@@ -136,6 +137,8 @@ namespace example
                             Core.UpdateScreen();
 
                             Core.WriteMultiplePositionedLines(
+                                true,
+                                default,
                                 default,
                                 default,
                                 default,
@@ -210,7 +213,7 @@ namespace example
                             var answerNumber = Core.ScrollingNumberSelector(
                                 "Select a number",
                                 10,
-                                50,
+                                5000,
                                 25,
                                 5
                             );
@@ -229,7 +232,11 @@ namespace example
                             List<string> student4 =
                                 new() { "04", "Charles", "Computer Science", "100" };
                             Table<string> students =
-                                new(headers, new() { student1, student2, student3, student4 });
+                                new(
+                                    "Students grades",
+                                    headers,
+                                    new() { student1, student2, student3, student4 }
+                                );
                             students.SetRoundedCorners(false);
                             students.ScrollingTableSelector(true, false, "Add student");
 
@@ -254,6 +261,8 @@ namespace example
                     Core.UpdateScreen();
 
                     Core.WriteMultiplePositionedLines(
+                        true,
+                        default,
                         default,
                         true,
                         default,
@@ -269,6 +278,8 @@ namespace example
                     Core.UpdateScreen();
 
                     Core.WriteMultiplePositionedLines(
+                        true,
+                        default,
                         default,
                         true,
                         default,
@@ -286,6 +297,51 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
+            Window.AddElement(new Title("Debugging"), true);
+            Window.AddElement(new Header(), true);
+            Window.AddElement(new Footer(), true);
+
+            // float progress = 0f;
+            // Window.AddElement(
+            //     new LoadingBar("[ Loading ...]", ref progress, Placement.TopCenter, default, 2000),
+            //     true
+            // );
+            // Thread thread = new (() =>
+            // {
+            //     for (progress = 0f; progress <= 100f; progress++)
+            //     {
+            //         Window.GetElement<LoadingBar>()?.UpdateProgress(progress / 100);
+            //         Thread.Sleep(30);
+            //     }
+            //     Window.GetElement<LoadingBar>()?.UpdateProgress(1f);
+            // });
+            // thread.Start();
+            // Window.Refresh();
+            // thread.Join();
+            // Window.DeactivateElement<LoadingBar>();
+
+            Window.AddElement(new FakeLoadingBar("[ Loading ...]"), true);
+            Window.Refresh();
+            Console.WriteLine(Window.GetLineAvailable(Placement.TopCenter));
+            //Window.ListWindowElements();
+            Window.AddElement(
+                new ScrollingMenu(
+                    "Choose the best number:",
+                    0,
+                    Placement.TopCenter,
+                    null,
+                    "1",
+                    "2",
+                    "3"
+                )
+            );
+            Window.Refresh();
+            Window.ActivateElement<ScrollingMenu>();
+            var response = Window.GetResponse<ScrollingMenu, int>();
+            Window.AddElement(new EmbeddedText(new List<string>() { "You            chose to " + response?.State.ToString(),  "the number " + (response?.Info + 1)  + "!" }, $"Next {Core.GetSelector.Item1}", TextAlignment.Center));
+            Window.ActivateElement<EmbeddedText>();
+            Window.GetFullInfo();
+            Window.Close();
         }
     }
 }
