@@ -8,14 +8,25 @@ namespace ConsoleAppVisuals;
 /// The major class of the library. The window is used to collect the elements of the console and draw them.
 /// </summary>
 /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public static class Window
 {
+    #region Setup
+    /// <summary>
+    /// This method sets up the window without the need to call it.
+    /// </summary>
+    static Window()
+    {
+        Console.Clear();
+        Console.CursorVisible = false;
+    }
+    #endregion
+
     #region Fields: s_elements
     private static readonly List<Element> s_elements = new();
     #endregion
