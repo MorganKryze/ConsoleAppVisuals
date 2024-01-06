@@ -245,6 +245,22 @@ namespace example
                             string name = answerPrompt.Item2;
                             Core.WritePositionedString($"You just wrote {name}!");
 
+                            // Window.AddElement(new Prompt("What is your name?", "Theo"));
+                            // Window.ActivateElement<Prompt>();
+                            // var response = Window.GetResponse<Prompt, string>();
+                            // Window.AddElement(
+                            //     new EmbeddedText(
+                            //         new List<string>()
+                            //         {
+                            //             "You chose to " + response?.State.ToString(),
+                            //             "the number " + (response?.Info) + "!"
+                            //         },
+                            //         $"Next {Core.GetSelector.Item1}",
+                            //         TextAlignment.Center
+                            //     )
+                            // );
+                            // Window.ActivateElement<EmbeddedText>();
+                            
                             Core.ClearContent();
                             goto Menu;
                         case 6:
@@ -376,8 +392,8 @@ namespace example
             Window.AddElement(new Footer());
             Window.AddElement(new FakeLoadingBar());
 
-            Window.AddElement(new Banner());
             Window.Refresh();
+
             Window.StopExecution();
 
             Window.GetFullInfo();
