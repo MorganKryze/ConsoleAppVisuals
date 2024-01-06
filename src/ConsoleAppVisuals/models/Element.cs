@@ -102,7 +102,9 @@ public abstract class Element
     {
         if (Visibility)
         {
+            RenderOptionsBeforeHand();
             RenderActions();
+            RenderOptionsAfterHand();
         }
     }
 
@@ -114,6 +116,16 @@ public abstract class Element
     {
         throw new NotImplementedException();
     }
+
+    /// <summary>
+    /// This method is used to set options before drawing the element on the console.
+    /// </summary>
+    protected virtual void RenderOptionsBeforeHand() { }
+
+    /// <summary>
+    /// This method is used to set options after drawing the element on the console.
+    /// </summary>
+    protected virtual void RenderOptionsAfterHand() { }
 
     /// <summary>
     /// This method is used to draw the space taken by the element on the console.

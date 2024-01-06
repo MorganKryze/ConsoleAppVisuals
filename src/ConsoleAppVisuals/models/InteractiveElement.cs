@@ -53,9 +53,25 @@ public abstract class InteractiveElement<TResponse> : Element
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The response of the user.</param>
-    protected void TriggerEvent(object? sender, InteractionEventArgs<TResponse> e)
+    protected void SendResponse(object? sender, InteractionEventArgs<TResponse> e)
     {
         EndOfInteractionEvent?.Invoke(sender, e);
+    }
+
+    /// <summary>
+    /// This method is used to set options before drawing the element on the console.
+    /// </summary>
+    protected override void RenderOptionsBeforeHand()
+    {
+        EndOfInteractionEvent += SetInteractionResponse;
+    }
+
+    /// <summary>
+    /// This method is used to set options after drawing the element on the console.
+    /// </summary>
+    protected override void RenderOptionsAfterHand()
+    {
+        EndOfInteractionEvent -= SetInteractionResponse;
     }
     #endregion
 }
