@@ -118,7 +118,7 @@ public class LoadingBar : Element
     /// <summary>
     /// This method is used to draw the loading bar on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
         void BuildBar(string text, float progress, int line)
         {
@@ -129,14 +129,14 @@ public class LoadingBar : Element
             }
             Core.WritePositionedString(
                 loadingBar.ToString().ResizeString(text.Length, TextAlignment.Left),
-                _placement,
+                _placement.ToTextAlignment(),
                 false,
                 line + 2,
                 false
             );
         }
 
-        Core.WritePositionedString(_text, _placement, false, _line, false);
+        Core.WritePositionedString(_text, _placement.ToTextAlignment(), false, _line, false);
         while (_progress < MAX_PROGRESS)
         {
             BuildBar(_text, _progress, _line);

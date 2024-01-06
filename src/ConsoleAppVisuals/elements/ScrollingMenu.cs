@@ -83,7 +83,7 @@ public class ScrollingMenu : InteractiveElement<int>
     /// <summary>
     /// This method is used to draw the menu on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
         EqualizeChoicesLength(_choices);
         Core.WriteContinuousString(_question, Line, false, 1500, 50);
@@ -142,7 +142,7 @@ public class ScrollingMenu : InteractiveElement<int>
                     (i == defaultIndex)
                         ? $" {Core.GetSelector.Item1} {choices[i]}  "
                         : $"   {choices[i]}  ";
-                Core.WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
+                Core.WritePositionedString(array[i], placement.ToTextAlignment(), i == defaultIndex, lineChoice + i);
                 if (delay)
                     Thread.Sleep(30);
             }

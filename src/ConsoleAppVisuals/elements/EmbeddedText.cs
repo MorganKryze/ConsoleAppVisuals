@@ -148,17 +148,10 @@ public class EmbeddedText : InteractiveElement<string>
     /// <summary>
     /// Renders the Embedded text.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
         BuildText();
-        Core.WriteMultiplePositionedLines(
-            false,
-            _placement,
-            _align,
-            false,
-            _line,
-            _textToDisplay!.ToArray()
-        );
+        Core.WriteMultiplePositionedLines(false, _align, false, _line, _textToDisplay!.ToArray());
         Window.StopExecution();
         Window.DeactivateElement<EmbeddedText>();
     }

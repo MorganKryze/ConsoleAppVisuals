@@ -134,7 +134,7 @@ public class IntSelector : InteractiveElement<int>
     /// <summary>
     /// This method is used to draw the selector on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
         Core.WriteContinuousString(_question, _line, default, 1500, 50);
         int currentNumber = _startValue;
@@ -176,31 +176,31 @@ public class IntSelector : InteractiveElement<int>
     {
         Core.WritePositionedString(
             BuildLine(Direction.Up),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector - 2
         );
         Core.WritePositionedString(
             BuildNumber(NextNumber(Direction.Up, currentNumber)),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector - 1
         );
         Core.WritePositionedString(
             $" {Core.GetSelector.Item1} {BuildNumber(currentNumber)} {Core.GetSelector.Item2} ",
-            Placement.TopCenter,
+            TextAlignment.Center,
             true,
             lineSelector
         );
         Core.WritePositionedString(
             BuildNumber(NextNumber(Direction.Down, currentNumber)),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector + 1
         );
         Core.WritePositionedString(
             BuildLine(Direction.Down),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector + 2
         );

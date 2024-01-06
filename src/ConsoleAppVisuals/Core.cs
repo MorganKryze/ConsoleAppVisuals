@@ -44,6 +44,7 @@ public static class Core
         "Footer Center",
         "Footer Right"
     );
+    private static Random s_rnd = new();
     #endregion
 
     #region Properties
@@ -167,6 +168,33 @@ public static class Core
         defaultFooter = (left, center, right);
 
     /// <summary>
+    /// This methods is used to get a random color from a selection.
+    /// </summary>
+    /// <returns>A random color.</returns>
+    public static ConsoleColor GetRandomColor()
+    {
+        var colors = new List<ConsoleColor>
+        {
+            ConsoleColor.Red,
+            ConsoleColor.Green,
+            ConsoleColor.Blue,
+            ConsoleColor.Yellow,
+            ConsoleColor.Magenta,
+            ConsoleColor.Cyan
+        };
+        return colors[s_rnd.Next(colors.Count)];
+    }
+
+    /// <summary>
+    /// This method is used to restore the default colors of the console.
+    /// </summary>
+    public static void RestoreColor()
+    {
+        Console.ForegroundColor = s_initialColorPanel.Item1;
+        Console.BackgroundColor = s_initialColorPanel.Item2;
+    }
+
+    /// <summary>
     /// This method changes the font and background colors of the console in order to apply
     /// a negative to highlight the text or not.
     /// </summary>
@@ -205,7 +233,7 @@ public static class Core
     {
         line ??= Console.CursorTop;
         ApplyNegative(default);
-        WritePositionedString("".PadRight(Console.WindowWidth), Placement.TopLeft, default, line);
+        WritePositionedString("".PadRight(Console.WindowWidth), TextAlignment.Left, default, line);
     }
 
     /// <summary>
@@ -252,7 +280,7 @@ public static class Core
             {
                 WritePositionedString(
                     "".PadRight(Console.WindowWidth),
-                    Placement.TopCenter,
+                    TextAlignment.Center,
                     false,
                     i
                 );
@@ -267,14 +295,14 @@ public static class Core
     /// This method is used to write a string positioned in the console.
     /// </summary>
     /// <param name="str">The string to write.</param>
-    /// <param name="position">The position of the string in the console.</param>
+    /// <param name="align">The position of the string in the console.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <param name="line">The line where the string is written in the console. If null, will be written where the cursor is.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WritePositionedString(
         string str,
-        Placement position = Placement.TopCenter,
+        TextAlignment align = TextAlignment.Center,
         bool negative = false,
         int? line = null,
         bool writeLine = false
@@ -285,20 +313,15 @@ public static class Core
         str = negativeRng.Item1;
         line ??= Console.CursorTop;
         if (str.Length < Console.WindowWidth)
-            switch (position)
+            switch (align)
             {
-                case Placement.TopLeft:
-                case Placement.BottomLeft:
+                case TextAlignment.Left:
                     Console.SetCursorPosition(0, (int)line);
                     break;
-                case Placement.TopCenter:
-                case Placement.TopCenterFullWidth:
-                case Placement.BottomCenter:
-                case Placement.BottomCenterFullWidth:
+                case TextAlignment.Center:
                     Console.SetCursorPosition((Console.WindowWidth - str.Length) / 2, (int)line);
                     break;
-                case Placement.TopRight:
-                case Placement.BottomRight:
+                case TextAlignment.Right:
                     Console.SetCursorPosition(Console.WindowWidth - str.Length, (int)line);
                     break;
             }
@@ -349,7 +372,6 @@ public static class Core
     /// <param name="printTime">The total time to write the string in ms.</param>
     /// <param name="additionalTime">The additional time to wait after the string is written in ms.</param>
     /// <param name="length">The length of the string. If null, the length is the window width.</param>
-    /// <param name="position">The position of the string in the console.</param>
     /// <param name="align">The alignment of the string.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
@@ -360,7 +382,6 @@ public static class Core
         int printTime = 2000,
         int additionalTime = 1000,
         int length = -1,
-        Placement position = Placement.TopCenter,
         TextAlignment align = TextAlignment.Center,
         bool writeLine = false
     )
@@ -376,7 +397,7 @@ public static class Core
             string continuousStr = continuous.ToString().PadRight(str.Length);
             WritePositionedString(
                 continuousStr.ResizeString(length, align, default),
-                position,
+                align,
                 negative,
                 line,
                 writeLine
@@ -392,7 +413,7 @@ public static class Core
                 }
             }
         }
-        WritePositionedString(str.ResizeString(length, align, default), position, negative, line);
+        WritePositionedString(str.ResizeString(length, align, default), align, negative, line);
         Thread.Sleep(additionalTime);
     }
 
@@ -403,7 +424,6 @@ public static class Core
     /// <param name="line">The line where the string is written in the console. If null, will be written from the ContentHeight.</param>
     /// <param name="width">The width of the string. If null, the width is the window width.</param>
     /// <param name="margin">The upper and lower margin.</param>
-    /// <param name="position">The position of the string in the console.</param>
     /// <param name="align">The alignment of the string.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
@@ -412,7 +432,6 @@ public static class Core
         int? line = null,
         int? width = null,
         int? margin = null,
-        Placement position = Placement.TopCenter,
         TextAlignment align = TextAlignment.Center,
         bool negative = false
     )
@@ -426,7 +445,7 @@ public static class Core
             for (int i = 0; i < margin; i++)
                 WritePositionedString(
                     "".ResizeString(width ?? Console.WindowWidth, align),
-                    position,
+                    align,
                     negative,
                     (line ?? ContentHeight) + i,
                     true
@@ -434,7 +453,7 @@ public static class Core
             for (int i = 0; i < text.Length; i++)
                 WritePositionedString(
                     text[i].ResizeString(width ?? Console.WindowWidth, align),
-                    position,
+                    align,
                     negative,
                     (line ?? ContentHeight) + margin + i,
                     true
@@ -442,7 +461,7 @@ public static class Core
             for (int i = 0; i < margin; i++)
                 WritePositionedString(
                     "".ResizeString(width ?? Console.WindowWidth, align),
-                    position,
+                    align,
                     negative,
                     (line ?? ContentHeight) + margin + text.Length + i,
                     true
@@ -464,7 +483,6 @@ public static class Core
             0,
             Console.WindowWidth,
             s_title.Item2,
-            Placement.TopCenter,
             TextAlignment.Center,
             false
         );
@@ -512,16 +530,14 @@ public static class Core
     /// This method prints a paragraph in the console.
     /// </summary>
     /// <param name="equalizeLengths">Whether or not the lines of the paragraph should be equalized to the same length.</param>
-    /// <param name="placement">The placement of the paragraph.</param>
-    /// <param name="alignment">The alignment of the paragraph.</param>
+    /// <param name="align">The alignment of the paragraph.</param>
     /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public static void WriteMultiplePositionedLines(
         bool equalizeLengths = true,
-        Placement placement = Placement.TopCenter,
-        TextAlignment alignment = TextAlignment.Center,
+        TextAlignment align = TextAlignment.Center,
         bool negative = false,
         int? line = null,
         params string[] text
@@ -533,12 +549,7 @@ public static class Core
             int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
             foreach (string str in text)
             {
-                WritePositionedString(
-                    str.ResizeString(maxLength, alignment),
-                    placement,
-                    negative,
-                    line++
-                );
+                WritePositionedString(str.ResizeString(maxLength, align), align, negative, line++);
                 if (line >= Console.WindowHeight - 1)
                     break;
             }
@@ -547,7 +558,7 @@ public static class Core
         {
             foreach (string str in text)
             {
-                WritePositionedString(str, placement, negative, line++);
+                WritePositionedString(str, align, negative, line++);
                 if (line >= Console.WindowHeight - 1)
                     break;
             }
@@ -581,7 +592,7 @@ public static class Core
         else
             WritePositionedString(
                 message,
-                Placement.TopCenter,
+                TextAlignment.Center,
                 negative: false,
                 line,
                 writeLine: true
@@ -639,7 +650,7 @@ public static class Core
         bool delay = true;
         while (true)
         {
-            DisplayChoices(defaultIndex, placement, choices, lineChoice, delay);
+            DisplayChoices(defaultIndex, choices, lineChoice, delay);
             delay = false;
             switch (Console.ReadKey(intercept: true).Key)
             {
@@ -674,7 +685,6 @@ public static class Core
 
         static void DisplayChoices(
             int defaultIndex,
-            Placement placement,
             string[] choices,
             int lineChoice,
             bool delay = false
@@ -687,7 +697,12 @@ public static class Core
                     (i == defaultIndex)
                         ? $" {s_Selector.Item1} {choices[i]}  "
                         : $"   {choices[i]}  ";
-                WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
+                WritePositionedString(
+                    array[i],
+                    TextAlignment.Center,
+                    i == defaultIndex,
+                    lineChoice + i
+                );
                 if (delay)
                     Thread.Sleep(30);
             }
@@ -729,31 +744,31 @@ public static class Core
         {
             WritePositionedString(
                 BuildLine(Direction.Up),
-                Placement.TopCenter,
+                TextAlignment.Center,
                 false,
                 lineSelector - 2
             );
             WritePositionedString(
                 BuildNumber((float)Math.Round(NextNumber(Direction.Up), 1)),
-                Placement.TopCenter,
+                TextAlignment.Center,
                 false,
                 lineSelector - 1
             );
             WritePositionedString(
                 $" {s_Selector.Item1} {BuildNumber((float)Math.Round(currentNumber, 1))} {s_Selector.Item2} ",
-                Placement.TopCenter,
+                TextAlignment.Center,
                 true,
                 lineSelector
             );
             WritePositionedString(
                 BuildNumber((float)Math.Round(NextNumber(Direction.Down), 1)),
-                Placement.TopCenter,
+                TextAlignment.Center,
                 false,
                 lineSelector + 1
             );
             WritePositionedString(
                 BuildLine(Direction.Down),
-                Placement.TopCenter,
+                TextAlignment.Center,
                 false,
                 lineSelector + 2
             );
@@ -875,7 +890,7 @@ public static class Core
             }
             WritePositionedString(
                 _loadingBar.ToString().ResizeString(message.Length, TextAlignment.Left),
-                Placement.TopCenter,
+                TextAlignment.Center,
                 default,
                 line + 2,
                 default
@@ -883,7 +898,7 @@ public static class Core
         }
 
         line ??= ContentHeight;
-        WritePositionedString(message, Placement.TopCenter, default, line, true);
+        WritePositionedString(message, TextAlignment.Center, default, line, true);
         while (processPercentage <= 1f)
         {
             BuildBar(message, processPercentage, line);
@@ -1011,7 +1026,8 @@ public static class Core
         switch (position)
         {
             case Placement.TopCenter:
-            case Placement.BottomCenter:
+            case Placement.BottomCenterFullWidth:
+            case Placement.TopCenterFullWidth:
                 int center = inserted.Length / 2;
                 int start = center - (toInsert.Length / 2);
                 if (truncate)
@@ -1023,7 +1039,6 @@ public static class Core
                     return inserted.Insert(start, toInsert);
                 }
             case Placement.TopLeft:
-            case Placement.BottomLeft:
                 if (truncate)
                 {
                     return inserted.Remove(0, toInsert.Length).Insert(0, toInsert);
@@ -1033,7 +1048,6 @@ public static class Core
                     return inserted.Insert(0, toInsert);
                 }
             case Placement.TopRight:
-            case Placement.BottomRight:
                 if (truncate)
                 {
                     return inserted
@@ -1080,6 +1094,42 @@ public static class Core
         negEnd = negEnd - NEGATIVE_ANCHOR.Length;
         string newStr = str.Replace(NEGATIVE_ANCHOR, "");
         return (newStr, (negStart, negEnd));
+    }
+
+    /// <summary>
+    /// This method is used to convert a Placement into a TextAlignment.
+    /// </summary>
+    /// <param name="placement">The placement to convert.</param>
+    /// <returns>The converted placement.</returns>
+    /// <exception cref="ArgumentException">Thrown when the placement is not valid.</exception>
+    public static TextAlignment ToTextAlignment(this Placement placement)
+    {
+        return placement switch
+        {
+            Placement.TopCenter => TextAlignment.Center,
+            Placement.TopLeft => TextAlignment.Left,
+            Placement.TopRight => TextAlignment.Right,
+            Placement.BottomCenterFullWidth => TextAlignment.Center,
+            Placement.TopCenterFullWidth => TextAlignment.Center,
+            _ => throw new ArgumentException("The placement is not valid"),
+        };
+    }
+
+    /// <summary>
+    /// This method is used to convert a TextAlignment into a Placement.
+    /// </summary>
+    /// <param name="align">The alignment to convert.</param>
+    /// <returns>The converted alignment.</returns>
+    /// <exception cref="ArgumentException">Thrown when the alignment is not valid.</exception>
+    public static Placement ToPlacement(this TextAlignment align)
+    {
+        return align switch
+        {
+            TextAlignment.Center => Placement.TopCenter,
+            TextAlignment.Left => Placement.TopLeft,
+            TextAlignment.Right => Placement.TopRight,
+            _ => throw new ArgumentException("The alignment is not valid"),
+        };
     }
     #endregion
 }

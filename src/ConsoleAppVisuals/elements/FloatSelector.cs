@@ -134,7 +134,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <summary>
     /// This method is used to draw the selector on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
         Core.WriteContinuousString(_question, _line, default, 1500, 50);
         float currentNumber = _startValue;
@@ -176,31 +176,31 @@ public class FloatSelector : InteractiveElement<float>
     {
         Core.WritePositionedString(
             BuildLine(Direction.Up),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector - 2
         );
         Core.WritePositionedString(
             BuildNumber((float)Math.Round(NextNumber(Direction.Up, currentNumber), 1)),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector - 1
         );
         Core.WritePositionedString(
             $" {Core.GetSelector.Item1} {BuildNumber((float)Math.Round(currentNumber, 1))} {Core.GetSelector.Item2} ",
-            Placement.TopCenter,
+            TextAlignment.Center,
             true,
             lineSelector
         );
         Core.WritePositionedString(
             BuildNumber((float)Math.Round(NextNumber(Direction.Down, currentNumber), 1)),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector + 1
         );
         Core.WritePositionedString(
             BuildLine(Direction.Down),
-            Placement.TopCenter,
+            TextAlignment.Center,
             false,
             lineSelector + 2
         );

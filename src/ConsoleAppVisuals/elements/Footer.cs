@@ -120,9 +120,9 @@ public class Footer : Element
     /// <summary>
     /// This method is used to render the footer on the console.
     /// </summary>
-    protected override void RenderActions()
+    protected override void RenderElementActions()
     {
-        Core.WritePositionedString(_text.BannerToString(), Placement.TopCenter, true, Line, false);
+        Core.WritePositionedString(_text.BannerToString(), TextAlignment.Center, true, Line, false);
     }
     #endregion
 }

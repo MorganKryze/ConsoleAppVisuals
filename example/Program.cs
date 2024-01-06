@@ -137,33 +137,32 @@ namespace example
                                 1000,
                                 default,
                                 default,
-                                default,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Bonjour le monde !",
-                                Placement.TopLeft,
+                                TextAlignment.Left,
                                 false,
                                 Core.ContentHeight + 1,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Hola Mundo !",
-                                Placement.TopRight,
+                                TextAlignment.Right,
                                 false,
                                 Core.ContentHeight + 2,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Hallo Welt !",
-                                Placement.TopCenter,
+                                TextAlignment.Center,
                                 false,
                                 Core.ContentHeight + 3,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Ciao mondo !",
-                                Placement.TopLeft,
+                                TextAlignment.Left,
                                 false,
                                 Core.ContentHeight + 4,
                                 true
@@ -260,7 +259,7 @@ namespace example
                             //     )
                             // );
                             // Window.ActivateElement<EmbeddedText>();
-                            
+
                             Core.ClearContent();
                             goto Menu;
                         case 6:
@@ -353,7 +352,6 @@ namespace example
                     Core.WriteMultiplePositionedLines(
                         true,
                         default,
-                        default,
                         true,
                         default,
                         "You have selected to quit the app. Press [Enter] to continue..."
@@ -369,7 +367,6 @@ namespace example
 
                     Core.WriteMultiplePositionedLines(
                         true,
-                        default,
                         default,
                         true,
                         default,
@@ -390,13 +387,38 @@ namespace example
             Window.AddElement(new Title("Debugging"));
             Window.AddElement(new Header());
             Window.AddElement(new Footer());
-            Window.AddElement(new FakeLoadingBar());
-
-            Window.Refresh();
+            // Window.AddElement(new FakeLoadingBar());
+            Window.AddElement(
+                new ScrollingMenu(
+                    "What will be your next action?",
+                    0,
+                    Placement.TopCenter,
+                    null,
+                    "Change Console color",
+                    "Write on the console",
+                    "Display paragraph",
+                    "Display a styled text",
+                    "Display a matrix",
+                    "Answer some prompt",
+                    "Select a number",
+                    "Display table",
+                    "Display a loading bar",
+                    "Quit the app"
+                )
+            );
+            Window.GetElement<Title>()?.RenderElementSpace();
+            Window.GetElement<Header>()?.RenderElementSpace();
+            Window.GetElement<Footer>()?.RenderElementSpace();
+            Window.ActivateElement<ScrollingMenu>();
+            Window.GetElement<ScrollingMenu>()?.RenderElementSpace();
 
             Window.StopExecution();
 
-            Window.GetFullInfo();
+            Window.Refresh(true);
+
+            Window.StopExecution();
+
+            // Window.GetFullInfo();
             Window.Close();
         }
     }
