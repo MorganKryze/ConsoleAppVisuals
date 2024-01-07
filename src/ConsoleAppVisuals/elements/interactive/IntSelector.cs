@@ -154,21 +154,15 @@ public class IntSelector : InteractiveElement<int>
                     currentNumber = NextNumber(Direction.Down, currentNumber);
                     break;
                 case ConsoleKey.Enter:
-                    Core.ClearMultipleLines(_line, 4);
-                    SendResponse(
-                        this,
-                        new InteractionEventArgs<int>(Output.Select, currentNumber)
-                    );
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Select, currentNumber));
                     return;
                 case ConsoleKey.Escape:
-                    Core.ClearMultipleLines(_line, 4);
                     SendResponse(this, new InteractionEventArgs<int>(Output.Exit, currentNumber));
                     return;
                 default:
                     break;
             }
             Thread.Sleep(1);
-            Core.ClearMultipleLines(lineSelector - 2, 5);
         }
     }
 

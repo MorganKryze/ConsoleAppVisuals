@@ -44,7 +44,7 @@ public static class Core
         "Footer Center",
         "Footer Right"
     );
-    private static Random s_rnd = new();
+    private static readonly Random s_rnd = new();
     #endregion
 
     #region Properties
@@ -103,14 +103,22 @@ public static class Core
     /// </summary>
     /// <param name="color">The new font color.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public static void ChangeForeground(ConsoleColor color) => s_colorPanel.Item1 = color;
+    public static void SetForegroundColor(ConsoleColor color)
+    {
+        s_colorPanel.Item1 = color;
+        Console.ForegroundColor = color;
+    }
 
     /// <summary>
     /// This method changes the background color of the console.
     /// </summary>
     /// <param name="color">The new background color.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public static void ChangeBackground(ConsoleColor color) => s_colorPanel.Item2 = color;
+    public static void SetBackgroundColor(ConsoleColor color)
+    {
+        s_colorPanel.Item2 = color;
+        Console.BackgroundColor = color;
+    }
 
     /// <summary>
     /// This method is used to set the title of the console.
@@ -188,10 +196,11 @@ public static class Core
     /// <summary>
     /// This method is used to restore the default colors of the console.
     /// </summary>
-    public static void RestoreColor()
+    public static void RestoreColorPanel()
     {
         Console.ForegroundColor = s_initialColorPanel.Item1;
         Console.BackgroundColor = s_initialColorPanel.Item2;
+        s_colorPanel = s_initialColorPanel;
     }
 
     /// <summary>
@@ -286,7 +295,6 @@ public static class Core
                 );
             }
         }
-        s_colorPanel = (ConsoleColor.White, ConsoleColor.Black);
     }
     #endregion
 

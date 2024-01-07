@@ -267,6 +267,7 @@ public static class Window
     /// This method attempts to activate the visibility of the element with the given id.
     /// </summary>
     /// <param name="id">The id of the element.</param>
+    /// <param name="render">If true, the element will be rendered.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -275,7 +276,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void ActivateElement(int id)
+    public static void ActivateElement(int id, bool render = true)
     {
         if (id < 0 || id >= s_elements.Count)
         {
@@ -285,11 +286,16 @@ public static class Window
         {
             s_elements[id].ToggleVisibility();
         }
+        if (render)
+        {
+            s_elements[id].RenderElement();
+        }
     }
 
     /// <summary>
     /// This method attempts to activate the visibility of the first element of the given type.
     /// </summary>
+    /// <param name="render">If true, the element will be rendered.</param>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     /// <remarks>
@@ -299,7 +305,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void ActivateElement<T>()
+    public static void ActivateElement<T>(bool render = true)
         where T : Element
     {
         var element =
@@ -309,11 +315,16 @@ public static class Window
         {
             element.ToggleVisibility();
         }
+        if (render)
+        {
+            element.RenderElement();
+        }
     }
 
     /// <summary>
     /// After activating the visibility of an interactive element, this method will return the response for the user.
     /// </summary>
+    /// <param name="clear">If true, the element will be cleared.</param>
     /// <typeparam name="T">The type of interactive element.</typeparam>
     /// <typeparam name="TResponse">The type of the response (int, string, float...).</typeparam>
     /// <returns>The response of the user.</returns>
@@ -325,13 +336,13 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static InteractionEventArgs<TResponse>? GetResponse<T, TResponse>()
+    public static InteractionEventArgs<TResponse>? GetResponse<T, TResponse>(bool clear = true)
         where T : InteractiveElement<TResponse>
     {
         var element =
             GetVisibleElement<T>()
             ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
-        DeactivateElement<T>();
+        DeactivateElement<T>(clear);
         return element.GetInteractionResponse;
     }
 
@@ -360,6 +371,7 @@ public static class Window
     /// This method to deactivate the visibility of the element with the given id.
     /// </summary>
     /// <param name="id">The id of the element.</param>
+    /// <param name="clear">If true, the element will be cleared.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -368,7 +380,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void DeactivateElement(int id)
+    public static void DeactivateElement(int id, bool clear = true)
     {
         if (id < 0 || id >= s_elements.Count)
         {
@@ -377,6 +389,10 @@ public static class Window
         if (s_elements[id].Visibility)
         {
             s_elements[id].ToggleVisibility();
+            if (clear)
+            {
+                s_elements[id].Clear();
+            }
         }
         Refresh();
     }
@@ -385,6 +401,7 @@ public static class Window
     /// This method deactivate the visibility of the element with the given type.
     /// </summary>
     /// <param name="element">The element to be deactivated.</param>
+    /// <param name="clear">If true, the element will be cleared.</param>
     /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -393,7 +410,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void DeactivateElement(Element element)
+    public static void DeactivateElement(Element element, bool clear = true)
     {
         if (element is null || !s_elements.Contains(element))
         {
@@ -403,14 +420,17 @@ public static class Window
         if (element.Visibility)
         {
             element.ToggleVisibility();
+            if (clear)
+            {
+                element.Clear();
+            }
         }
-
-        Refresh();
     }
 
     /// <summary>
     /// This method deactivate the visibility of the first element with the given type.
     /// </summary>
+    /// <param name="clear">If true, the element will be cleared.</param>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     /// <remarks>
@@ -420,7 +440,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void DeactivateElement<T>()
+    public static void DeactivateElement<T>(bool clear = true)
         where T : Element
     {
         var element =
@@ -429,8 +449,11 @@ public static class Window
         if (element.Visibility)
         {
             element.ToggleVisibility();
+            if (clear)
+            {
+                element.Clear();
+            }
         }
-        Refresh();
     }
 
     /// <summary>
@@ -651,7 +674,7 @@ public static class Window
         {
             throw new ElementNotFoundException("Invalid element. Not found in the window.");
         }
-
+        
         element.RenderElement();
     }
 
@@ -673,6 +696,18 @@ public static class Window
             element.RenderElement();
         }
     }
+
+    /// <summary>
+    /// This method is called to refresh the window when the size of the console is changed.
+    /// </summary>
+    public static void OnResize()
+    {
+        if (Core.IsScreenUpdated)
+        {
+            Refresh();
+        }
+    }
+
 
     /// <summary>
     /// This method draws all the space of the elements of the window on the console.

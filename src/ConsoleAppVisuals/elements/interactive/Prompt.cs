@@ -81,16 +81,25 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     protected override void RenderElementActions()
     {
-        Core.WriteContinuousString(_question, _line, false, 1500, 50, -1, _placement.ToTextAlignment());
+        Core.WriteContinuousString(
+            _question,
+            _line,
+            false,
+            1500,
+            50,
+            -1,
+            _placement.ToTextAlignment()
+        );
         var field = new StringBuilder(_defaultValue);
         ConsoleKeyInfo key;
-        Console.CursorVisible = true;
         do
         {
-            Core.ClearLine(_line + 2);
+            Console.CursorVisible = false;
+            Core.WritePositionedString(GetRenderSpace()[0], TextAlignment.Center, false, _line + 2);
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write("{0," + (Console.WindowWidth / 2 - _question.Length / 2 + 2) + "}", "> ");
             Console.Write($"{field}");
+            Console.CursorVisible = true;
             key = Console.ReadKey();
             if (key.Key == ConsoleKey.Backspace && field.Length > 0)
                 field.Remove(field.Length - 1, 1);

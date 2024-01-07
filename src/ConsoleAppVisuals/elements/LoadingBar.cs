@@ -144,6 +144,7 @@ public class LoadingBar : Element
         BuildBar(_text, MAX_PROGRESS, _line);
         Thread.Sleep(_additionalDuration);
         _progress = MIN_PROGRESS;
+        Window.DeactivateElement(this);
     }
     #endregion
 }
