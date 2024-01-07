@@ -1,0 +1,1089 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class TableView&lt;T&gt;
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TableView&lt;T&gt;
+ ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.TableView`1">
+
+
+
+  <h1 id="ConsoleAppVisuals_TableView_1" data-uid="ConsoleAppVisuals.TableView`1" class="text-break">
+    Class TableView&lt;T&gt;
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The <a class="xref" href="ConsoleAppVisuals.Table-1.html">Table&lt;T&gt;</a> class that contains the methods to create a table and display it.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TableView&lt;T&gt; : Element</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Element.html">Element</a></div>
+      <div><span class="xref">TableView&lt;T&gt;</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_ToggleVisibility">Element.ToggleVisibility()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_RenderElement">Element.RenderElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_RenderOptionsBeforeHand">Element.RenderOptionsBeforeHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_RenderOptionsAfterHand">Element.RenderOptionsAfterHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_RenderElementSpace">Element.RenderElementSpace()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_GetRenderSpace">Element.GetRenderSpace()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_Clear">Element.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_Id">Element.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_Visibility">Element.Visibility</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_TextAlignment">Element.TextAlignment</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_IsInteractive">Element.IsInteractive</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Element.html#ConsoleAppVisuals_Element_ElementSource">Element.ElementSource</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ConsoleAppVisuals_TableView_1__ctor_" data-uid="ConsoleAppVisuals.TableView`1.#ctor*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1__ctor_System_String_System_Collections_Generic_List_System_String__System_Collections_Generic_List_System_Collections_Generic_List__0___ConsoleAppVisuals_Placement_System_Nullable_System_Int32__" data-uid="ConsoleAppVisuals.TableView`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
+  TableView(string?, List&lt;string&gt;?, List&lt;List&lt;T&gt;&gt;?, Placement, int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="ConsoleAppVisuals.Table-1.html">Table&lt;T&gt;</a> natural constructor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TableView(string? title = null, List&lt;string&gt;? headers = null, List&lt;List&lt;T&gt;&gt;? lines = null, Placement placement = Placement.TopCenter, int? line = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>title</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The title of the table.</p>
+</dd>
+    <dt><code>headers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The headers of the table.</p>
+</dd>
+    <dt><code>lines</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;&gt;</dt>
+    <dd><p>The lines of the table.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the table.</p>
+</dd>
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The line to display the table on.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_TableView_1__ctor_System_String_System_Collections_Generic_List_System_String__System_Collections_Generic_List_System_Collections_Generic_List__0___ConsoleAppVisuals_Placement_System_Nullable_System_Int32___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Refer to the example project to understand how to implement it available at <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs</a></p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Is thrown when the number of columns in the table is not consistent with itself or with the headers.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullreferenceexception">NullReferenceException</a></dt>
+    <dd><p>Is thrown when no body lines were provided.</p>
+</dd>
+  </dl>
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_TableView_1_Count_" data-uid="ConsoleAppVisuals.TableView`1.Count*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_Count" data-uid="ConsoleAppVisuals.TableView`1.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the number of lines in the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_GetRawHeaders_" data-uid="ConsoleAppVisuals.TableView`1.GetRawHeaders*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_GetRawHeaders" data-uid="ConsoleAppVisuals.TableView`1.GetRawHeaders">
+  GetRawHeaders
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the headers of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt;? GetRawHeaders { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_GetRawLines_" data-uid="ConsoleAppVisuals.TableView`1.GetRawLines*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_GetRawLines" data-uid="ConsoleAppVisuals.TableView`1.GetRawLines">
+  GetRawLines
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the lines of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;List&lt;T&gt;&gt;? GetRawLines { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_Height_" data-uid="ConsoleAppVisuals.TableView`1.Height*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_Height" data-uid="ConsoleAppVisuals.TableView`1.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the height of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_Line_" data-uid="ConsoleAppVisuals.TableView`1.Line*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_Line" data-uid="ConsoleAppVisuals.TableView`1.Line">
+  Line
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the line to display the table on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Line { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_MaxNumberOfThisElement_" data-uid="ConsoleAppVisuals.TableView`1.MaxNumberOfThisElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_MaxNumberOfThisElement" data-uid="ConsoleAppVisuals.TableView`1.MaxNumberOfThisElement">
+  MaxNumberOfThisElement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the maximum number of this element that can be displayed on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int MaxNumberOfThisElement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_Placement_" data-uid="ConsoleAppVisuals.TableView`1.Placement*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_Placement" data-uid="ConsoleAppVisuals.TableView`1.Placement">
+  Placement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the title of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Placement Placement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Placement.html">Placement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_Width_" data-uid="ConsoleAppVisuals.TableView`1.Width*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_Width" data-uid="ConsoleAppVisuals.TableView`1.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the width of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_TableView_1_AddHeaders_" data-uid="ConsoleAppVisuals.TableView`1.AddHeaders*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_AddHeaders_System_Collections_Generic_List_System_String__" data-uid="ConsoleAppVisuals.TableView`1.AddHeaders(System.Collections.Generic.List{System.String})">
+  AddHeaders(List&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method adds headers to the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddHeaders(List&lt;string&gt; headers)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>headers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The headers to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_AddLine_" data-uid="ConsoleAppVisuals.TableView`1.AddLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_AddLine_System_Collections_Generic_List__0__" data-uid="ConsoleAppVisuals.TableView`1.AddLine(System.Collections.Generic.List{`0})">
+  AddLine(List&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method adds a line to the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddLine(List&lt;T&gt; line)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>The line to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_TableView_1_AddLine_System_Collections_Generic_List__0___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Refer to the example project to understand how to implement it available at <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs</a></p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Is thrown when the number of columns in the table is not consistent with itself or with the headers.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_AddTitle_" data-uid="ConsoleAppVisuals.TableView`1.AddTitle*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_AddTitle_System_String_" data-uid="ConsoleAppVisuals.TableView`1.AddTitle(System.String)">
+  AddTitle(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method adds a title to the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddTitle(string title)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>title</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The title to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_ClearHeaders_" data-uid="ConsoleAppVisuals.TableView`1.ClearHeaders*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_ClearHeaders" data-uid="ConsoleAppVisuals.TableView`1.ClearHeaders">
+  ClearHeaders()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method clears the headers of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearHeaders()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_ClearLines_" data-uid="ConsoleAppVisuals.TableView`1.ClearLines*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_ClearLines" data-uid="ConsoleAppVisuals.TableView`1.ClearLines">
+  ClearLines()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method clears the lines of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearLines()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_GetColumnData_" data-uid="ConsoleAppVisuals.TableView`1.GetColumnData*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_GetColumnData_System_Int32_" data-uid="ConsoleAppVisuals.TableView`1.GetColumnData(System.Int32)">
+  GetColumnData(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method is used to get all the elements from a column given its index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt;? GetColumnData(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the column.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>The elements of the column.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Is thrown when the index is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_GetColumnData_" data-uid="ConsoleAppVisuals.TableView`1.GetColumnData*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_GetColumnData_System_String_" data-uid="ConsoleAppVisuals.TableView`1.GetColumnData(System.String)">
+  GetColumnData(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method is used to get all the elements from a column given its header.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt;? GetColumnData(string header)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>header</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The header of the column.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>The elements of the column.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Is thrown when the table is empty.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Is thrown when the header is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_GetLine_" data-uid="ConsoleAppVisuals.TableView`1.GetLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_GetLine_System_Int32_" data-uid="ConsoleAppVisuals.TableView`1.GetLine(System.Int32)">
+  GetLine(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This property returns the specified line in the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; GetLine(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the line to return.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>The line at the specified index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_TableView_1_GetLine_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Refer to the example project to understand how to implement it available at <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs</a></p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Is thrown when the index is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_RemoveLine_" data-uid="ConsoleAppVisuals.TableView`1.RemoveLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_RemoveLine_System_Int32_" data-uid="ConsoleAppVisuals.TableView`1.RemoveLine(System.Int32)">
+  RemoveLine(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method removes a line from the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveLine(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the line to remove.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_TableView_1_RemoveLine_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Refer to the example project to understand how to implement it available at <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs</a></p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Is thrown when the index is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_RenderElementActions_" data-uid="ConsoleAppVisuals.TableView`1.RenderElementActions*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_RenderElementActions" data-uid="ConsoleAppVisuals.TableView`1.RenderElementActions">
+  RenderElementActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method displays the table without interaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void RenderElementActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_Reset_" data-uid="ConsoleAppVisuals.TableView`1.Reset*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_Reset" data-uid="ConsoleAppVisuals.TableView`1.Reset">
+  Reset()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method clears the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Reset()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_SetRoundedCorners_" data-uid="ConsoleAppVisuals.TableView`1.SetRoundedCorners*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_SetRoundedCorners_System_Boolean_" data-uid="ConsoleAppVisuals.TableView`1.SetRoundedCorners(System.Boolean)">
+  SetRoundedCorners(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Toggles the rounded corners of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetRoundedCorners(bool rounded = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rounded</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_TableView_1_SetRoundedCorners_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Refer to the example project to understand how to implement it available at <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs</a></p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_UpdateHeaders_" data-uid="ConsoleAppVisuals.TableView`1.UpdateHeaders*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_UpdateHeaders_System_Collections_Generic_List_System_String__" data-uid="ConsoleAppVisuals.TableView`1.UpdateHeaders(System.Collections.Generic.List{System.String})">
+  UpdateHeaders(List&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates the headers of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateHeaders(List&lt;string&gt; headers)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>headers</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The headers to update.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_UpdateLine_" data-uid="ConsoleAppVisuals.TableView`1.UpdateLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_UpdateLine_System_Int32_System_Collections_Generic_List__0__" data-uid="ConsoleAppVisuals.TableView`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
+  UpdateLine(int, List&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates a line in the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateLine(int index, List&lt;T&gt; line)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the line to update.</p>
+</dd>
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dd><p>The new line.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_TableView_1_UpdateLine_System_Int32_System_Collections_Generic_List__0___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Refer to the example project to understand how to implement it available at <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs</a></p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Is thrown when the index is out of range.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Is thrown when the number of columns in the table is not consistent with itself or with the headers.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_TableView_1_UpdateTitle_" data-uid="ConsoleAppVisuals.TableView`1.UpdateTitle*"></a>
+
+  <h3 id="ConsoleAppVisuals_TableView_1_UpdateTitle_System_String_" data-uid="ConsoleAppVisuals.TableView`1.UpdateTitle(System.String)">
+  UpdateTitle(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates the title of the table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateTitle(string title)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>title</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The title to update.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/TableView.cs" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

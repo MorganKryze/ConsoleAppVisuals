@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Generating a documentation for a C# project </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Generating a documentation for a C# project ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/docs/documentation/docs.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="generating-a-documentation-for-a-c-project">Generating a documentation for a C# project</h1>
+
+<h2 id="the-tool">The tool</h2>
+<p>The tool used to generate the documentation is <a href="https://dotnet.github.io/docfx/">DocFX</a>.</p>
+<p>To install it, or update it,open any terminal and run the following command:</p>
+<pre><code class="lang-bash">dotnet tool update -g docfx
+</code></pre>
+<h2 id="the-structure">The structure</h2>
+<p>Here is the folder structure of the project before generating the documentation:</p>
+<pre><code class="lang-bash">ConsoleAppVisuals  &lt;-- root
+├───.github
+│   └───workflows
+├───ConsoleAppVisuals
+│   └───bin
+│       ├───Debug
+│       └───Release   
+└───example
+</code></pre>
+<p>Open a terminal to the root of the project, and run the following command:</p>
+<pre><code class="lang-bash">docfx init -q
+</code></pre>
+<p>Now you should have a new folder called &quot;docfx_project&quot; in the root of your project. Your folder structure should look like this (files are specified with the dots):</p>
+<pre><code class="lang-bash">ConsoleAppVisuals  &lt;-- root
+├───.github
+│   └───workflows
+├───ConsoleAppVisuals
+│   └───bin
+│       ├───Debug
+│       └───Release
+├───docfx_project
+│   ├───api
+│   ├───apidoc
+│   ├───articles
+│   ├───images
+│   ├───src
+│   ├..─.gitignore
+│   ├..─docfx.json
+│   ├..─index.md
+│   └..─toc.yml
+└───example
+</code></pre>
+<p>Open the file &quot;docfx.json&quot; and modify the following lines:</p>
+<pre><code class="lang-json">&quot;metadata&quot;: [
+    {
+      &quot;src&quot;: [
+        {
+          &quot;files&quot;: [
+            &quot;bin/**/*.dll&quot;
+          ]
+        }
+      ],
+      &quot;dest&quot;: &quot;api&quot;,
+      &quot;outputFormat&quot;: &quot;mref&quot;,
+      &quot;includePrivateMembers&quot;: false,
+      &quot;disableGitFeatures&quot;: false,
+      &quot;disableDefaultFilter&quot;: false,
+      &quot;noRestore&quot;: false,
+      &quot;namespaceLayout&quot;: &quot;flattened&quot;,
+      &quot;memberLayout&quot;: &quot;samePage&quot;,
+      &quot;EnumSortOrder&quot;: &quot;alphabetic&quot;,
+      &quot;allowCompilationErrors&quot;: false
+    }
+  ],
+</code></pre>
+<p>To look like this:</p>
+<pre><code class="lang-json">&quot;metadata&quot;: [{
+    &quot;src&quot;: [{
+      &quot;files&quot;: [&quot;bin/**/*.dll&quot;],
+      &quot;src&quot;: &quot;../TheNameOfYourProjectFolder&quot;
+    }],
+    &quot;dest&quot;: &quot;api&quot;,
+    &quot;properties&quot;: {
+      &quot;TargetFramework&quot;: &quot;net7.0&quot;
+    }
+  }],
+</code></pre>
+<h3 id="optional">Optional</h3>
+<p>If you want to generate the documentation for the Release version only:</p>
+<pre><code class="lang-json">&quot;metadata&quot;: [{
+    &quot;src&quot;: [{
+      &quot;files&quot;: [&quot;**/bin/Release/**.dll&quot;],
+      &quot;src&quot;: &quot;../StillTheNameOfYourProjectFolder&quot;
+    }],
+    &quot;dest&quot;: &quot;api&quot;,
+    &quot;properties&quot;: {
+      &quot;TargetFramework&quot;: &quot;net7.0&quot;
+    }
+  }],
+</code></pre>
+<p>Now when you want to build your project and update your xml file, type:</p>
+<pre><code class="lang-bash">dotnet build -c Release
+</code></pre>
+<h2 id="preview-your-doc">Preview your doc</h2>
+<p>Now, back on your terminal from the root, run the following command:</p>
+<pre><code class="lang-bash">docfx docfx_project/docfx.json --serve
+</code></pre>
+<p>You should see something like this:</p>
+<pre><code class="lang-bash">...
+Serving &quot;.../ConsoleAppVisuals/docfx_project/_site&quot; on http://localhost:8080. Press Ctrl+C to shut down.
+</code></pre>
+<p>Your documentation is now available on <a href="http://localhost:8080">http://localhost:8080</a> if you want to see the preview.</p>
+<h2 id="customize-your-doc">Customize your doc</h2>
+<p>To ensure that the documentation is generated correctly (your /// comments are taken in account), check if this line is present in your &quot;**.csproj&quot; file, inside the &quot;PropertyGroup&quot; tag:</p>
+<pre><code class="lang-xml">&lt;GenerateDocumentationFile&gt;true&lt;/GenerateDocumentationFile&gt;
+</code></pre>
+<p>Now your documentation is ready to be generated in the section &quot;Api Documentation&quot; in the generated site.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>For more customization, you may want update the &quot;index.md&quot; file in the &quot;docfx_project&quot; folder, and create wonderful articles in the &quot;articles&quot; folder to explain how to use your library. And <strong>DO NOT</strong> forget to update the &quot;toc.yml&quot; file to add your articles in the table of contents (else they will not be displayed).</p>
+</div>
+<h2 id="deploy-the-doc">Deploy the doc</h2>
+<p>Finally, you can host your static site on GitHub Pages by adding a workflow in the &quot;.github/workflows&quot; folder like this one:</p>
+<pre><code class="lang-yml">name: Deploy docs
+on:
+  push:
+    branches:
+    - main
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dotnet Setup
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.x
+
+    - run: dotnet tool update -g docfx
+    - run: docfx docfx_project/docfx.json
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/_site
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>I you renamed your &quot;docfx_project&quot; folder, you will have to update the line :
+run: docfx docfx_project/docfx.json -&gt; run: docfx TheNameOfYourDocFxProjectFolder/docfx.json</p>
+</div>
+<p>Push on your branch, and create a pull request to merge it with the main branch if it is not already on the main.</p>
+<p>Now, on every push on the main branch, the documentation will be generated and deployed on GitHub Pages.</p>
+<h3 id="notes">Notes</h3>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>If you get on 404 page after building, you may not have enabled GitHub Pages in the settings of your repository. Do so and select the &quot;gh-pages&quot; branch as the source (and the &quot;/root&quot; folder for precision).</p>
+</div>
+<p>I recommend that you copy/paste the url into the home page of your repository on GitHub.com in order to display the documentation to your users.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://dotnet.github.io/docfx/index.html">DocFX doc</a></li>
+<li><a href="https://tehgm.net/blog/docfx-github-actions/">Useful but not official doc</a></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/docs/documentation/docs.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
