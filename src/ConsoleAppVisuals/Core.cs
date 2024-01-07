@@ -34,6 +34,7 @@ public static class Core
         Console.ForegroundColor,
         Console.BackgroundColor
     );
+    private static (ConsoleColor, ConsoleColor) s_savedColorPanel;
     private static (string, string, string) defaultHeader = (
         "Header Left",
         "Header Center",
@@ -119,6 +120,16 @@ public static class Core
         s_colorPanel.Item2 = color;
         Console.BackgroundColor = color;
     }
+
+    /// <summary>
+    /// This method is used to save the current color panel.
+    /// </summary>
+    public static void SaveColorPanel() => s_savedColorPanel = s_colorPanel;
+
+    /// <summary>
+    /// This method is used to load the saved color panel.
+    /// </summary>
+    public static void LoadSavedColorPanel() => s_colorPanel = s_savedColorPanel;
 
     /// <summary>
     /// This method is used to set the title of the console.

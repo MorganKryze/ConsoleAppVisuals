@@ -853,7 +853,7 @@ public static class Window
     }
 
     /// <summary>
-    /// This method gives a list of all classes inheriting from the Element class and adds a table to the window.
+    /// This method gives a list of all classes inheriting from the Element (and so InteractiveElement as well) class and adds a table to the window.
     /// </summary>
     /// <param name="placement">The placement of the element.</param>
     /// <returns>The list of all classes inheriting from the Element class.</returns>
@@ -920,7 +920,7 @@ public static class Window
                 && !assembly.FullName.StartsWith("Microsoft")
             )
             {
-                types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element))));
+                types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element)) && t != typeof(InteractiveElement<>)));
             }
         }
         TableView<string> table =

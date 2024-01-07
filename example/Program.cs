@@ -8,7 +8,7 @@ namespace example
         {
             Debugging();
 
-            Window.AddElement(new Title("Debugging"));
+            Window.AddElement(new Title("Example project"));
             Window.AddElement(new Header());
             Window.AddElement(new Footer());
             Window.AddElement(new FakeLoadingBar("[ Loading ...]"));

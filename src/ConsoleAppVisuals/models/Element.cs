@@ -152,6 +152,7 @@ public abstract class Element
     {
         if (Visibility)
         {
+            Core.SaveColorPanel();
             Core.SetForegroundColor(Core.GetRandomColor());
             Core.WriteMultiplePositionedLines(
                 false,
@@ -160,7 +161,7 @@ public abstract class Element
                 Line,
                 GetRenderSpace()
             );
-            Core.RestoreColorPanel();
+            Core.LoadSavedColorPanel();
         }
     }
 
