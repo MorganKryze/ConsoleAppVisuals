@@ -67,6 +67,12 @@ public abstract class Element
     /// </summary>
     /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
     public virtual int MaxNumberOfThisElement { get; } = 1;
+
+    /// <summary>
+    /// The source of the element. This property is used to determine whether the element is a user element or a library element for internal use.
+    /// </summary>
+    /// <remarks><c>[ DANGEROUS ]</c> Please do not change this property unless you know what you are doing.</remarks>
+    public Source ElementSource { get; set; } = Source.User;
     #endregion
 
     #region Methods
@@ -147,7 +153,13 @@ public abstract class Element
         if (Visibility)
         {
             Core.ChangeForeground(Core.GetRandomColor());
-            Core.WriteMultiplePositionedLines(false, TextAlignment, true, Line, GetRenderSpace());
+            Core.WriteMultiplePositionedLines(
+                false,
+                Placement.ToTextAlignment(),
+                true,
+                Line,
+                GetRenderSpace()
+            );
             Core.RestoreColor();
         }
     }
