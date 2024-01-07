@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ConsoleAppVisuals\ConsoleAppVisuals.csproj" />
+    <ProjectReference Include="..\src\ConsoleAppVisuals\ConsoleAppVisuals.csproj" /> <!-- On your own project this line will be slightly different after doing 'dotnet add package ConsoleAppVisuals' on your terminal -->
   </ItemGroup>
 
   <PropertyGroup>

@@ -54,12 +54,6 @@ public class TableSelector<T> : InteractiveElement<int>
     /// This property returns the width of the table.
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
-
-    /// <summary>
-    /// This property returns the maximum number of this element that can be displayed on the console.
-    /// </summary>
-    public override int MaxNumberOfThisElement { get; } = 9;
-
     #endregion
 
     #region Constructor
@@ -686,17 +680,24 @@ public class TableSelector<T> : InteractiveElement<int>
                     index = HandleDownArrowKey(index, minIndex, maxIndex);
                     break;
                 case ConsoleKey.Enter:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Select, ReturnIndex(index)));
+                    SendResponse(
+                        this,
+                        new InteractionEventArgs<int>(Output.Select, ReturnIndex(index))
+                    );
                     return;
                 case ConsoleKey.Escape:
                     SendResponse(this, new InteractionEventArgs<int>(Output.Exit, 0));
                     return;
                 case ConsoleKey.Backspace:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Delete, ReturnIndex(index)));
+                    SendResponse(
+                        this,
+                        new InteractionEventArgs<int>(Output.Delete, ReturnIndex(index))
+                    );
                     return;
             }
         }
     }
+
     int ReturnIndex(int index)
     {
         return index - GetMinIndex(_excludeHeader);

@@ -31,6 +31,8 @@ namespace example
                     "Interact with table",
                     "Display loading bar",
                     "Display elements space",
+                    "Custom window element",
+                    "Custom interactive element",
                     "Display dashboard",
                     "Quit the app"
                 )
@@ -412,7 +414,43 @@ namespace example
                             Window.RemoveElement<EmbeddedText>();
                             goto Menu;
 
-                        case 11: // These following functions are for debugging purposes, they should not be used in a production state of a software
+                        case 11:
+                            Window.OnResize();
+
+                            Window.AddElement(
+                                new DisplayDemo( // Custom element, see the DisplayDemo class for more information
+                                    new List<string>()
+                                    {
+                                        "This element has been created in this project",
+                                        "Its interest is for demonstration only",
+                                        "The model in on the DisplayDemo.cs file"
+                                    },
+                                    TextAlignment.Center
+                                )
+                            );
+                            Window.ActivateElement<DisplayDemo>();
+
+                            Window.RemoveElement<DisplayDemo>();
+                            Window.OnResize();
+                            goto Menu;
+
+                        case 12:
+                            Window.OnResize();
+
+                            Window.AddElement(
+                                new InteractDemo(
+                                    "This element is also custom for demo purposes, you may type something:"
+                                )
+                            );
+                            Window.ActivateElement<InteractDemo>();
+
+                            Window.DeactivateElement<InteractDemo>();
+
+                            Window.RemoveElement<InteractDemo>();
+                            Window.OnResize();
+                            goto Menu;
+
+                        case 13: // These following functions are for debugging purposes, they should not be used in a production state of a software
                             Window.AddDashboard(); // Add the three TableView elements to the window
 
                             Window.Refresh(); // This will display the elements
