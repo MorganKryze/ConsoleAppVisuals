@@ -22,6 +22,10 @@ public class MatrixLegacy<T>
     /// <param name="rawLines">The matrix to be used.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This class is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public MatrixLegacy(List<List<T?>>? rawLines = null)
     {
         if (rawLines is not null)

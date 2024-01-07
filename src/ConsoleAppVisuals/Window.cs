@@ -604,6 +604,7 @@ public static class Window
     /// <summary>
     /// This method clears the window.
     /// </summary>
+    /// <param name="continuous">If true, the window will be cleared continuously.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -611,9 +612,27 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void Clear()
+    public static void Clear(bool continuous = false)
     {
-        Core.ClearWindow(false, false);
+        if (continuous)
+        {
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                Core.WriteContinuousString("".PadRight(Console.WindowWidth), i, false, 100, 10);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                Core.WritePositionedString(
+                    "".PadRight(Console.WindowWidth),
+                    TextAlignment.Center,
+                    false,
+                    i
+                );
+            }
+        }
     }
 
     /// <summary>
@@ -704,6 +723,7 @@ public static class Window
     {
         if (Core.IsScreenUpdated)
         {
+            Core.SetConsoleDimensions();
             Refresh();
         }
     }
@@ -739,7 +759,7 @@ public static class Window
     /// </remarks>
     public static void Close()
     {
-        Core.ClearWindow();
+        Clear(true);
         Console.CursorVisible = true;
         Environment.Exit(0);
     }

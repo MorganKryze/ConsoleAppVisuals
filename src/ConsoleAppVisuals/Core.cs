@@ -17,6 +17,11 @@ public static class Core
     #endregion
 
     #region Attributes
+    
+    [Obsolete(
+        "This field is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     private static (string[]?, int?) s_title;
     private static TextStyler s_styler = new();
     private static (char, char) s_Selector = ('▶', '◀');
@@ -35,11 +40,21 @@ public static class Core
         Console.BackgroundColor
     );
     private static (ConsoleColor, ConsoleColor) s_savedColorPanel;
+    
+    [Obsolete(
+        "This field is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     private static (string, string, string) defaultHeader = (
         "Header Left",
         "Header Center",
         "Header Right"
     );
+
+    [Obsolete(
+        "This field is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     private static (string, string, string) defaultFooter = (
         "Footer Left",
         "Footer Center",
@@ -57,21 +72,41 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
+    
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static int? TitleHeight => s_title.Item1?.Length + 2 * s_title.Item2;
 
     /// <summary>
     /// This property is used to get the height of the header.
     /// </summary>
+    
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static int HeaderHeight => TitleHeight ?? 0;
 
     /// <summary>
     /// This property is used to get the height of the footer.
     /// </summary>
+    
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static int FooterHeight => Console.WindowHeight - 1;
 
     /// <summary>
     /// This property is used to get the start line of the content.
     /// </summary>
+    
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static int ContentHeight => HeaderHeight + 2;
 
     /// <summary>
@@ -97,13 +132,26 @@ public static class Core
     /// </summary>
     /// <param name="onward">The new selector facing forward.</param>
     /// <param name="backward">The new selector facing backward.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void SetSelector(char onward, char backward) => s_Selector = (onward, backward);
 
     /// <summary>
     /// This method changes the font color of the console.
     /// </summary>
     /// <param name="color">The new font color.</param>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void SetForegroundColor(ConsoleColor color)
     {
         s_colorPanel.Item1 = color;
@@ -114,7 +162,13 @@ public static class Core
     /// This method changes the background color of the console.
     /// </summary>
     /// <param name="color">The new background color.</param>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void SetBackgroundColor(ConsoleColor color)
     {
         s_colorPanel.Item2 = color;
@@ -124,12 +178,42 @@ public static class Core
     /// <summary>
     /// This method is used to save the current color panel.
     /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void SaveColorPanel() => s_savedColorPanel = s_colorPanel;
 
     /// <summary>
     /// This method is used to load the saved color panel.
     /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void LoadSavedColorPanel() => s_colorPanel = s_savedColorPanel;
+
+    /// <summary>
+    /// This method is used to set the dimensions of the console to the Core variables associated. This does not change the actual dimensions of the console.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void SetConsoleDimensions()
+    {
+        s_previousWindowWidth = Console.WindowWidth;
+        s_previousWindowHeight = Console.WindowHeight;
+    }
 
     /// <summary>
     /// This method is used to set the title of the console.
@@ -148,6 +232,13 @@ public static class Core
     /// This method is used to set a new styler for the application.
     /// </summary>
     /// <param name="path">The path of the new styler files.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void SetStyler(string path) => s_styler = new TextStyler(path);
 
     /// <summary>
@@ -155,7 +246,13 @@ public static class Core
     /// </summary>
     /// <param name="str">The string to style.</param>
     /// <returns>The styled string.</returns>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static string[] StyleText(string str) => s_styler.StyleTextToStringArray(str);
 
     /// <summary>
@@ -190,6 +287,13 @@ public static class Core
     /// This methods is used to get a random color from a selection.
     /// </summary>
     /// <returns>A random color.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static ConsoleColor GetRandomColor()
     {
         var colors = new List<ConsoleColor>
@@ -207,6 +311,13 @@ public static class Core
     /// <summary>
     /// This method is used to restore the default colors of the console.
     /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void RestoreColorPanel()
     {
         Console.ForegroundColor = s_initialColorPanel.Item1;
@@ -219,7 +330,13 @@ public static class Core
     /// a negative to highlight the text or not.
     /// </summary>
     /// <param name="negative">If true, the text is highlighted.</param>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void ApplyNegative(bool negative = false)
     {
         Console.ForegroundColor = negative ? s_colorPanel.Item2 : s_colorPanel.Item1;
@@ -249,6 +366,10 @@ public static class Core
     /// This method is used to Clear a specified line in the console.
     /// </summary>
     /// <param name="line">The line to clear.If null, will be cleared where the cursor is.</param>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void ClearLine(int? line)
     {
         line ??= Console.CursorTop;
@@ -262,6 +383,10 @@ public static class Core
     /// <param name="line">The index of the first line to clear.</param>
     /// <param name="length">The number of lines to clear.</param>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void ClearMultipleLines(int? line, int? length)
     {
         line ??= Console.CursorTop;
@@ -274,6 +399,10 @@ public static class Core
     /// This method clears the console EXCEPT the header and above, and the footer and below
     /// </summary>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void ClearContent()
     {
         for (int i = ContentHeight - 1; i < FooterHeight; i++)
@@ -283,6 +412,10 @@ public static class Core
     /// <summary>
     /// This method clears the window and resets the color panel to the default one.
     /// </summary>
+    [Obsolete(
+        "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public static void ClearWindow(bool continuous = true, bool resetColorPanel = true)
     {
         if (resetColorPanel)
@@ -318,7 +451,13 @@ public static class Core
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <param name="line">The line where the string is written in the console. If null, will be written where the cursor is.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void WritePositionedString(
         string str,
         TextAlignment align = TextAlignment.Center,
@@ -393,7 +532,13 @@ public static class Core
     /// <param name="length">The length of the string. If null, the length is the window width.</param>
     /// <param name="align">The alignment of the string.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void WriteContinuousString(
         string str,
         int? line,
@@ -445,7 +590,13 @@ public static class Core
     /// <param name="margin">The upper and lower margin.</param>
     /// <param name="align">The alignment of the string.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static void WritePositionedStyledText(
         string[]? text = null,
         int? line = null,
@@ -485,6 +636,51 @@ public static class Core
                     (line ?? ContentHeight) + margin + text.Length + i,
                     true
                 );
+        }
+    }
+
+    /// <summary>
+    /// This method prints a paragraph in the console.
+    /// </summary>
+    /// <param name="equalizeLengths">Whether or not the lines of the paragraph should be equalized to the same length.</param>
+    /// <param name="align">The alignment of the paragraph.</param>
+    /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
+    /// <param name="line">The height of the paragraph.</param>
+    /// <param name="text">The lines of the paragraph.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void WriteMultiplePositionedLines(
+        bool equalizeLengths = true,
+        TextAlignment align = TextAlignment.Center,
+        bool negative = false,
+        int? line = null,
+        params string[] text
+    )
+    {
+        line ??= ContentHeight;
+        if (equalizeLengths)
+        {
+            int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
+            foreach (string str in text)
+            {
+                WritePositionedString(str.ResizeString(maxLength, align), align, negative, line++);
+                if (line >= Console.WindowHeight - 1)
+                    break;
+            }
+        }
+        else
+        {
+            foreach (string str in text)
+            {
+                WritePositionedString(str, align, negative, line++);
+                if (line >= Console.WindowHeight - 1)
+                    break;
+            }
         }
     }
 
@@ -543,45 +739,6 @@ public static class Core
             WriteContinuousString(_banner.BannerToString(), FooterHeight, true);
         else
             WritePositionedString(_banner.BannerToString(), default, true, FooterHeight);
-    }
-
-    /// <summary>
-    /// This method prints a paragraph in the console.
-    /// </summary>
-    /// <param name="equalizeLengths">Whether or not the lines of the paragraph should be equalized to the same length.</param>
-    /// <param name="align">The alignment of the paragraph.</param>
-    /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
-    /// <param name="line">The height of the paragraph.</param>
-    /// <param name="text">The lines of the paragraph.</param>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public static void WriteMultiplePositionedLines(
-        bool equalizeLengths = true,
-        TextAlignment align = TextAlignment.Center,
-        bool negative = false,
-        int? line = null,
-        params string[] text
-    )
-    {
-        line ??= ContentHeight;
-        if (equalizeLengths)
-        {
-            int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
-            foreach (string str in text)
-            {
-                WritePositionedString(str.ResizeString(maxLength, align), align, negative, line++);
-                if (line >= Console.WindowHeight - 1)
-                    break;
-            }
-        }
-        else
-        {
-            foreach (string str in text)
-            {
-                WritePositionedString(str, align, negative, line++);
-                if (line >= Console.WindowHeight - 1)
-                    break;
-            }
-        }
     }
 
     /// <summary>
