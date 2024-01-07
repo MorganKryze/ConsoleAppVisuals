@@ -16,12 +16,16 @@ namespace ConsoleAppVisuals;
 /// </remarks>
 public abstract class InteractiveElement<TResponse> : Element
 {
-    #region Fields
-
+    #region Properties
     /// <summary>
     /// Whether the element is interactive or not.
     /// </summary>
-    public override bool IsInteractive { get; } = true;
+    public sealed override bool IsInteractive { get; } = true;
+
+    /// <summary>
+    /// The maximum number of this element that can be drawn on the console. As an interactive element, the value is 1.
+    /// </summary>
+    public sealed override int MaxNumberOfThisElement { get; } = 1;
 
     /// <summary>
     ///
@@ -37,7 +41,9 @@ public abstract class InteractiveElement<TResponse> : Element
     /// Returns the response of the user.
     /// </summary>
     public InteractionEventArgs<TResponse>? GetInteractionResponse => _interactionResponse;
+    #endregion
 
+    #region Methods
     /// <summary>
     /// Sets the response of the user in the attribute field.
     /// </summary>
@@ -61,7 +67,7 @@ public abstract class InteractiveElement<TResponse> : Element
     /// <summary>
     /// This method is used to set options before drawing the element on the console.
     /// </summary>
-    protected override void RenderOptionsBeforeHand()
+    protected sealed override void RenderOptionsBeforeHand()
     {
         EndOfInteractionEvent += SetInteractionResponse;
     }
@@ -69,7 +75,7 @@ public abstract class InteractiveElement<TResponse> : Element
     /// <summary>
     /// This method is used to set options after drawing the element on the console.
     /// </summary>
-    protected override void RenderOptionsAfterHand()
+    protected sealed override void RenderOptionsAfterHand()
     {
         EndOfInteractionEvent -= SetInteractionResponse;
     }

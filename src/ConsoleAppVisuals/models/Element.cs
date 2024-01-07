@@ -16,7 +16,7 @@ namespace ConsoleAppVisuals;
 /// </remarks>
 public abstract class Element
 {
-    #region Fields
+    #region Properties
     /// <summary>
     /// The id number of the element.
     /// </summary>
@@ -125,7 +125,7 @@ public abstract class Element
     /// <remarks>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</remarks>
     protected virtual void RenderElementActions()
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException("Consider overriding this method in the derived class.");
     }
 
     /// <summary>
