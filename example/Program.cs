@@ -418,17 +418,19 @@ namespace example
             Window.AddElement(new Header());
             Window.AddElement(new Footer());
             Window.AddDashboard();
-            foreach (var item in Window.s_elements)
-            {
-                Console.WriteLine(item.GetType());
-            }
-            Window.StopExecution();
 
             Window.RenderAllElementsSpace();
+            Window.StopExecution();
+
             Window.Refresh();
             Window.StopExecution();
+
+            Window.Clear();
             Window.RemoveDashboard();
             Window.AddListWindowElements();
+            Window.RenderAllElementsSpace();
+            Window.StopExecution();
+
             Window.Refresh();
             Window.StopExecution();
 
