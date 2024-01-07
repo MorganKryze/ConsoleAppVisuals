@@ -6,15 +6,15 @@ namespace example
     {
         private static void Main()
         {
-            Debugging();
+            Debugging(); // Empty, do not mind, just for debugging purposes
 
-            Window.AddElement(new Title("Example project"));
+            Window.AddElement(new Title("Example project")); // Define the default elements to display
             Window.AddElement(new Header());
             Window.AddElement(new Footer());
             Window.AddElement(new FakeLoadingBar("[ Loading ...]"));
-            Window.Refresh();
+            Window.Refresh(); // Refresh the window to display the elements above, they have only been added to the window
 
-            Window.AddElement(
+            Window.AddElement( // Add the scrolling menu to the window
                 new ScrollingMenu(
                     "What will be your next action?",
                     0,
@@ -38,16 +38,16 @@ namespace example
 
             Menu:
 
-            Window.ActivateElement<ScrollingMenu>();
-            var response = Window.GetResponse<ScrollingMenu, int>();
+            Window.ActivateElement<ScrollingMenu>(); // Only this line will make the menu appear on the console
+            var response = Window.GetResponse<ScrollingMenu, int>(); // Get the response from the user. It is very important to Get the response for an Interactive element, or to Deactivate it (done by default by the GetResponse method)
 
-            switch (response?.State)
+            switch (response?.State) // Check the response state (escape, enter or backspace) see the Output enum for more details
             {
                 case Output.Select:
-                    switch (response.Info)
+                    switch (response.Info) // Check the response info (the index of the selected item). Here the Info for a ScrollingMenu is an int
                     {
                         case 0:
-                            Window.OnResize();
+                            Window.OnResize(); // Refresh the window if the console has been resized
 
                             Window.AddElement(
                                 new ScrollingMenu(
@@ -64,7 +64,7 @@ namespace example
                                     "Cyan"
                                 )
                             );
-                            Window.ActivateElement(5);
+                            Window.ActivateElement(5); // Activate the element at the index 5 (the ScrollingMenu)
                             var responseColor = Window.GetResponse<ScrollingMenu, int>();
                             switch (responseColor?.Info)
                             {
@@ -97,7 +97,7 @@ namespace example
                             Window.OnResize();
                             goto Menu;
 
-                        case 1:
+                        case 1: // These following functions are at the core of the library, they should not be used directly
                             Window.OnResize();
 
                             Core.WriteContinuousString(
@@ -147,7 +147,7 @@ namespace example
                         case 2:
                             Window.OnResize();
 
-                            Window.AddElement(
+                            Window.AddElement( // When you add an element, the info of the constructor are not displayed by default consider looking to the documentation to know what they are or use your IDE to see them
                                 new EmbeddedText(
                                     new List<string>()
                                     {
@@ -159,11 +159,13 @@ namespace example
                                     "Press [Enter] to continue..."
                                 )
                             );
-                            Window.ActivateElement<EmbeddedText>();
-                            Window.RemoveElement<EmbeddedText>();
+                            Window.ActivateElement<EmbeddedText>(); // Activate the element to display it on the console
+
+                            Window.RemoveElement<EmbeddedText>(); // Removing the elements from the window after their use is not mandatory but it is recommended to keep the list clean
+                            Window.OnResize();
                             goto Menu;
 
-                        case 3:
+                        case 3: // These following functions are at the core of the library, they should not be used directly
                             Window.OnResize();
 
                             Core.WritePositionedStyledText(
@@ -187,7 +189,7 @@ namespace example
                         case 4:
                             Window.OnResize();
 
-                            List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
+                            List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 }; // We first create the data to display
                             List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
                             List<int?> thirdRow = new() { 7, 8, null, 3, 4, 5 };
                             List<int?> fourthRow = new() { null, 2, 3, 4, 5, 6 };
@@ -195,13 +197,13 @@ namespace example
                                 new() { firstRow, secondRow, thirdRow, fourthRow };
                             Matrix<int?> matrix = new(data);
                             matrix.SetRoundedCorners(false);
-                            Window.AddElement(matrix);
+                            Window.AddElement(matrix); // Then we add the element to the window, you may update the matrix after adding it, the modification will be taken in account
 
-                            Window.ActivateElement<Matrix<int?>>();
+                            Window.ActivateElement<Matrix<int?>>(); // As this is only a display element and not interactive, we have to stop the execution to see it
                             Window.StopExecution();
                             Window.DeactivateElement<Matrix<int?>>();
 
-                            matrix.Remove(new Position(0, 0));
+                            matrix.Remove(new Position(0, 0)); // You can indeed update the matrix after adding it
                             matrix.Remove(new Position(3, 5));
                             Window.ActivateElement<Matrix<int?>>();
                             Window.StopExecution();
@@ -221,10 +223,10 @@ namespace example
                         case 5:
                             Window.OnResize();
 
-                            Window.AddElement(new Prompt("What is your name?", "Theo"));
+                            Window.AddElement(new Prompt("What is your name?", "Theo")); // For more information about the Prompt element, see the documentation
 
                             Window.ActivateElement<Prompt>();
-                            var responsePrompt = Window.GetResponse<Prompt, string>();
+                            var responsePrompt = Window.GetResponse<Prompt, string>(); // We saw Interactive elements before, here we get the response from the user as a string, an error will if you do not associate Prompt with a string
                             Window.AddElement(
                                 new EmbeddedText(
                                     new List<string>()
@@ -243,7 +245,7 @@ namespace example
                         case 6:
                             Window.OnResize();
 
-                            Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5));
+                            Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5)); // A FloatSelector is also available depending on your needs
 
                             Window.ActivateElement<IntSelector>();
                             var responseNumber = Window.GetResponse<IntSelector, int>();
@@ -269,7 +271,7 @@ namespace example
                             Window.OnResize();
 
                             List<string> studentsHeaders =
-                                new() { "id", "name", "major", "grades" };
+                                new() { "id", "name", "major", "grades" }; // We first create the data to display, pay attention to the order of the data and their length (the length of the headers and the data must be the same)
                             List<string> student1 = new() { "01", "Theo", "Technology", "97" };
                             List<string> student2 = new() { "02", "Paul", "Mathematics", "86" };
                             List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
@@ -284,11 +286,11 @@ namespace example
                             students.SetRoundedCorners(false);
                             Window.AddElement(students);
 
-                            Window.ActivateElement<TableView<string>>();
+                            Window.ActivateElement<TableView<string>>(); // As this is only a display element and not interactive, we have to stop the execution to see it
                             Window.StopExecution();
                             Window.DeactivateElement<TableView<string>>();
 
-                            students.UpdateLine(0, new() { "01", "Theo", "Biology", "100" });
+                            students.UpdateLine(0, new() { "01", "Theo", "Biology", "100" }); // Similarly to the matrix, you can update the table after adding it
                             students.RemoveLine(3);
                             Window.ActivateElement<TableView<string>>();
                             Window.StopExecution();
@@ -331,8 +333,8 @@ namespace example
                             players.SetRoundedCorners(false);
                             Window.AddElement(players);
 
-                            Window.ActivateElement<TableSelector<string>>();
-                            var responseTable = Window.GetResponse<TableSelector<string>, int>();
+                            Window.ActivateElement<TableSelector<string>>(); // Contrary to the matrix and the table, the TableSelector is interactive, so we do not have to stop the execution to see it
+                            var responseTable = Window.GetResponse<TableSelector<string>, int>(); // Here a little subtlety, the type is TableSelector<string> and is associated with an int response, string refers to the type of the data displayed in the table
                             Window.AddElement(
                                 new EmbeddedText(
                                     new List<string>()
@@ -356,17 +358,17 @@ namespace example
                         case 9:
                             Window.OnResize();
 
-                            float progress = 0f;
+                            float progress = 0f; // Contrary to the FakeLoadingBar, the LoadingBar is corresponds to a real loading defined by a variable, here progress
                             Window.AddElement(
                                 new LoadingBar(
                                     "[ Loading ...]",
-                                    ref progress,
+                                    ref progress, // The variable must be passed by reference so the updates on the variable are taken in account
                                     Placement.TopCenter,
                                     default,
                                     2000
                                 )
                             );
-                            Thread thread =
+                            Thread thread = // We create a thread to simulate a process that will update the progress variable while we display the loading bar in the main thread
                                 new(() =>
                                 {
                                     for (progress = 0f; progress <= 100f; progress++)
@@ -376,22 +378,19 @@ namespace example
                                             ?.UpdateProgress(progress / 100);
                                         Thread.Sleep(30);
                                     }
-                                    Window.GetElement<LoadingBar>()?.UpdateProgress(1f);
+                                    Window.GetElement<LoadingBar>()?.UpdateProgress(1f); // Here is an example of how to access method from an object in the window
                                 });
 
                             thread.Start();
-                            Window.ActivateElement<LoadingBar>();
-                            thread.Join();
+                            Window.ActivateElement<LoadingBar>(); // Start the loading bar
+                            thread.Join(); // Wait for the thread to finish
 
                             Window.RemoveElement<LoadingBar>();
                             goto Menu;
 
-                        case 10:
+                        case 10: // These following functions are for debugging purposes, they should not be used in a production state of a software
                             Window.OnResize();
 
-                            Window.GetElement<Title>()?.RenderElementSpace();
-                            Window.GetElement<Header>()?.RenderElementSpace();
-                            Window.GetElement<Footer>()?.RenderElementSpace();
                             Window.AddElement(
                                 new EmbeddedText(
                                     new List<string>()
@@ -403,30 +402,32 @@ namespace example
                                 )
                             );
                             Window.ActivateElement<EmbeddedText>(false);
-                            Window.RenderAllElementsSpace();
+
+                            Window.RenderAllElementsSpace(); // This method will display all the spaces taken by the element in teh window
                             Window.StopExecution();
-                            Window.Refresh();
+
+                            Window.Refresh(); // Refresh the window to display the elements above
 
                             Window.OnResize();
                             Window.RemoveElement<EmbeddedText>();
                             goto Menu;
 
-                        case 11:
-                            Window.AddDashboard();
+                        case 11: // These following functions are for debugging purposes, they should not be used in a production state of a software
+                            Window.AddDashboard(); // Add the three TableView elements to the window
 
-                            Window.Refresh();
+                            Window.Refresh(); // This will display the elements
                             Window.StopExecution();
 
                             Window.Clear();
-                            Window.RemoveDashboard();
+                            Window.RemoveDashboard(); // This will remove the three items
 
-                            Window.AddListWindowElements();
+                            Window.AddListWindowElements(); // Add one of the three items
                             Window.Refresh();
                             Window.StopExecution();
-                            Window.GetElement<TableView<string>>()?.Clear();
+                            Window.GetElement<TableView<string>>()?.Clear(); // This will clear the space taken by the item
 
                             Window.OnResize();
-                            Window.RemoveLibraryElement<TableView<string>>();
+                            Window.RemoveLibraryElement<TableView<string>>(); // This will manually remove the item from the window
                             goto Menu;
 
                         default:
@@ -451,7 +452,7 @@ namespace example
                     Window.ActivateElement<EmbeddedText>();
 
                     Window.RemoveElement<EmbeddedText>();
-                    Window.Close();
+                    Window.Close(); // Close the window and exits the app
                     break;
 
                 case Output.Delete:
