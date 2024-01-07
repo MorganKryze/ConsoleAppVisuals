@@ -44,7 +44,7 @@ public class ScrollingMenu : InteractiveElement<int>
     /// The width of the menu.
     /// </summary>
     public override int Width =>
-        Math.Max(_question.Length, _choices.Max((string s) => s.Length) + 4);
+        Math.Max(_question.Length + 1, _choices.Max((string s) => s.Length) + 4);
     #endregion
 
     #region Constructor
@@ -106,15 +106,12 @@ public class ScrollingMenu : InteractiveElement<int>
                     break;
                 case ConsoleKey.Enter:
                     SendResponse(this, new InteractionEventArgs<int>(Output.Select, _defaultIndex));
-                    Core.ClearMultipleLines(Line, _choices.Length + 2);
                     return;
                 case ConsoleKey.Escape:
                     SendResponse(this, new InteractionEventArgs<int>(Output.Exit, _defaultIndex));
-                    Core.ClearMultipleLines(Line, _choices.Length + 2);
                     return;
                 case ConsoleKey.Backspace:
                     SendResponse(this, new InteractionEventArgs<int>(Output.Delete, _defaultIndex));
-                    Core.ClearMultipleLines(Line, _choices.Length + 2);
                     return;
             }
         }

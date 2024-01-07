@@ -154,21 +154,18 @@ public class FloatSelector : InteractiveElement<float>
                     currentNumber = NextNumber(Direction.Down, currentNumber);
                     break;
                 case ConsoleKey.Enter:
-                    Core.ClearMultipleLines(_line, 4);
                     SendResponse(
                         this,
                         new InteractionEventArgs<float>(Output.Select, currentNumber)
                     );
                     return;
                 case ConsoleKey.Escape:
-                    Core.ClearMultipleLines(_line, 4);
                     SendResponse(this, new InteractionEventArgs<float>(Output.Exit, currentNumber));
                     return;
                 default:
                     break;
             }
             Thread.Sleep(1);
-            Core.ClearMultipleLines(lineSelector - 2, 5);
         }
     }
 

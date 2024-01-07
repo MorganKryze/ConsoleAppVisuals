@@ -8,134 +8,103 @@ namespace example
         {
             Debugging();
 
-            Core.SetTitle("Example");
-            Core.WriteTitle();
-            Core.WriteHeader(false);
-            Core.WriteFooter(false);
-            Core.ClearContent();
-            Core.LoadingBar("[ Some example loading... ]");
-            Core.UpdateScreen();
-            Core.ClearContent();
+            Window.AddElement(new Title("Debugging"));
+            Window.AddElement(new Header());
+            Window.AddElement(new Footer());
+            Window.AddElement(new FakeLoadingBar("[ Loading ...]"));
+            Window.Refresh();
 
-            // Window.AddElement(new Title("Debugging"), true);
-            // Window.AddElement(new Header(), true);
-            // Window.AddElement(new Footer(), true);
-            // Window.AddElement(new FakeLoadingBar("[ Loading ...]"), true);
-            // Window.Refresh();
+            Window.AddElement(
+                new ScrollingMenu(
+                    "What will be your next action?",
+                    0,
+                    Placement.TopCenter,
+                    null,
+                    "Change Console color",
+                    "Write on the console",
+                    "Display paragraph",
+                    "Display a styled text",
+                    "Display a matrix",
+                    "Answer some prompt",
+                    "Select a number",
+                    "Display table",
+                    "Display a loading bar",
+                    "Display elements space",
+                    "Display a dashboard",
+                    "Quit the app"
+                )
+            );
 
             Menu:
 
-            var index = Core.ScrollingMenuSelector(
-                "What will be your next action?",
-                0,
-                Placement.TopCenter,
-                null,
-                "Change Console color",
-                "Write on the console",
-                "Display paragraph",
-                "Display a styled text",
-                "Display a matrix",
-                "Answer some prompt",
-                "Select a number",
-                "Display table",
-                "Display a loading bar",
-                "Display a dashboard",
-                "Quit the app"
-            );
-            Core.ClearContent();
+            Window.ActivateElement<ScrollingMenu>();
+            var response = Window.GetResponse<ScrollingMenu, int>();
 
-            // Window.AddElement(
-            //     new ScrollingMenu(
-            //         "What will be your next action?",
-            //         0,
-            //         Placement.TopCenter,
-            //         null,
-            //         "Change Console color",
-            //         "Write on the console",
-            //         "Display paragraph",
-            //         "Display a styled text",
-            //         "Display a matrix",
-            //         "Answer some prompt",
-            //         "Select a number",
-            //         "Display table",
-            //         "Display a loading bar",
-            //         "Quit the app"
-            //     )
-            // );
-            // Window.Refresh();
-            // Window.ActivateElement<ScrollingMenu>();
-            // var response = Window.GetResponse<ScrollingMenu, int>();
-
-            // Window.AddElement(
-            //     new EmbeddedText(
-            //         new List<string>()
-            //         {
-            //             "You            chose to " + response?.State.ToString(),
-            //             "the number " + (response?.Info + 1) + "!"
-            //         },
-            //         $"Next {Core.GetSelector.Item1}",
-            //         TextAlignment.Center
-            //     )
-            // );
-            // Window.ActivateElement<EmbeddedText>();
-
-            switch (index.Item1)
+            switch (response?.State)
             {
                 case Output.Select:
-                    switch (index.Item2)
+                    switch (response.Info)
                     {
                         case 0:
-                            Core.UpdateScreen();
-                            var indexColor = Core.ScrollingMenuSelector(
-                                "What color do you want to change?",
-                                0,
-                                Placement.TopCenter,
-                                default,
-                                "White",
-                                "Red",
-                                "Green",
-                                "Blue",
-                                "Yellow",
-                                "Magenta",
-                                "Cyan"
+                            Window.OnResize();
+
+                            Window.AddElement(
+                                new ScrollingMenu(
+                                    "What color do you want to change?",
+                                    0,
+                                    Placement.TopCenter,
+                                    null,
+                                    "White",
+                                    "Red",
+                                    "Green",
+                                    "Blue",
+                                    "Yellow",
+                                    "Magenta",
+                                    "Cyan"
+                                )
                             );
-                            switch (indexColor.Item2)
+                            Window.ActivateElement(5);
+                            var responseColor = Window.GetResponse<ScrollingMenu, int>();
+                            switch (responseColor?.Info)
                             {
                                 case 0:
-                                    Core.ChangeForeground(ConsoleColor.White);
+                                    Core.SetForegroundColor(ConsoleColor.White);
                                     break;
                                 case 1:
-                                    Core.ChangeForeground(ConsoleColor.Red);
+                                    Core.SetForegroundColor(ConsoleColor.Red);
                                     break;
                                 case 2:
-                                    Core.ChangeForeground(ConsoleColor.Green);
+                                    Core.SetForegroundColor(ConsoleColor.Green);
                                     break;
                                 case 3:
-                                    Core.ChangeForeground(ConsoleColor.Blue);
+                                    Core.SetForegroundColor(ConsoleColor.Blue);
                                     break;
                                 case 4:
-                                    Core.ChangeForeground(ConsoleColor.Yellow);
+                                    Core.SetForegroundColor(ConsoleColor.Yellow);
                                     break;
                                 case 5:
-                                    Core.ChangeForeground(ConsoleColor.Magenta);
+                                    Core.SetForegroundColor(ConsoleColor.Magenta);
                                     break;
                                 case 6:
-                                    Core.ChangeForeground(ConsoleColor.Cyan);
+                                    Core.SetForegroundColor(ConsoleColor.Cyan);
                                     break;
                                 default:
                                     break;
                             }
-                            Core.ClearContent();
+
+                            Window.RemoveElement(5);
+                            Window.OnResize();
                             goto Menu;
 
                         case 1:
-                            Core.UpdateScreen();
+                            Window.OnResize();
+
                             Core.WriteContinuousString(
                                 "Have a look on the console to see all the text!",
-                                Core.ContentHeight,
+                                Window.GetLineAvailable(Placement.TopCenter),
                                 true,
                                 1500,
-                                1000,
+                                100,
                                 default,
                                 default,
                                 true
@@ -144,71 +113,78 @@ namespace example
                                 "Bonjour le monde !",
                                 TextAlignment.Left,
                                 false,
-                                Core.ContentHeight + 1,
+                                Window.GetLineAvailable(Placement.TopLeft) + 1,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Hola Mundo !",
                                 TextAlignment.Right,
                                 false,
-                                Core.ContentHeight + 2,
+                                Window.GetLineAvailable(Placement.TopRight) + 2,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Hallo Welt !",
                                 TextAlignment.Center,
                                 false,
-                                Core.ContentHeight + 3,
+                                Window.GetLineAvailable(Placement.TopCenter) + 3,
                                 true
                             );
                             Core.WritePositionedString(
                                 "Ciao mondo !",
                                 TextAlignment.Left,
                                 false,
-                                Core.ContentHeight + 4,
+                                Window.GetLineAvailable(Placement.TopLeft) + 4,
                                 true
                             );
+                            Window.StopExecution();
 
-                            Console.ReadKey();
-                            Core.ClearContent();
+                            Window.Refresh();
+                            Window.OnResize();
                             goto Menu;
 
                         case 2:
-                            Core.UpdateScreen();
+                            Window.OnResize();
 
-                            Core.WriteMultiplePositionedLines(
-                                true,
-                                default,
-                                default,
-                                default,
-                                default,
-                                "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,",
-                                "lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),",
-                                " and component-oriented programming disciplines.",
-                                "",
-                                "Press [Enter] to continue..."
+                            Window.AddElement(
+                                new EmbeddedText(
+                                    new List<string>()
+                                    {
+                                        "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,",
+                                        "lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),",
+                                        "and component-oriented programming disciplines.",
+                                        ""
+                                    },
+                                    "Press [Enter] to continue..."
+                                )
                             );
-
-                            Console.ReadKey();
-                            Core.ClearContent();
+                            Window.ActivateElement<EmbeddedText>();
+                            Window.RemoveElement<EmbeddedText>();
                             goto Menu;
 
                         case 3:
-                            Core.UpdateScreen();
+                            Window.OnResize();
 
-                            Core.WritePositionedStyledText(Core.StyleText("Hello World!"));
+                            Core.WritePositionedStyledText(
+                                Core.StyleText("Hello World!"),
+                                Window.GetLineAvailable(Placement.TopCenter)
+                            );
+                            Window.StopExecution();
 
-                            Console.ReadKey();
-                            Core.ClearContent();
+                            Window.Refresh();
 
-                            Core.WritePositionedStyledText(Core.StyleText("Welcome Aboard!"));
+                            Core.WritePositionedStyledText(
+                                Core.StyleText("Welcome Aboard!"),
+                                Window.GetLineAvailable(Placement.TopCenter)
+                            );
+                            Window.StopExecution();
 
-                            Console.ReadKey();
-                            Core.ClearContent();
+                            Window.Refresh();
+                            Window.OnResize();
                             goto Menu;
 
                         case 4:
-                            Core.UpdateScreen();
+                            Window.OnResize();
 
                             List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
                             List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
@@ -216,90 +192,83 @@ namespace example
                             List<int?> fourthRow = new() { null, 2, 3, 4, 5, 6 };
                             List<List<int?>> data =
                                 new() { firstRow, secondRow, thirdRow, fourthRow };
-                            MatrixLegacy<int?> matrix = new(data);
+                            Matrix<int?> matrix = new(data);
                             matrix.SetRoundedCorners(false);
-                            matrix.WriteMatrix(Placement.TopCenter);
+                            Window.AddElement(matrix);
 
-                            Console.ReadKey();
-                            Core.ClearContent();
+                            Window.ActivateElement<Matrix<int?>>();
+                            Window.StopExecution();
+                            Window.DeactivateElement<Matrix<int?>>();
 
                             matrix.Remove(new Position(0, 0));
                             matrix.Remove(new Position(3, 5));
-                            matrix.WriteMatrix(Placement.TopCenter);
+                            Window.ActivateElement<Matrix<int?>>();
+                            Window.StopExecution();
+                            Window.DeactivateElement<Matrix<int?>>();
 
                             Console.ReadKey();
-                            Core.ClearContent();
+                            Window.Refresh();
 
                             matrix.UpdateElement(new Position(0, 0), 1);
                             matrix.UpdateElement(new Position(3, 5), 6);
-                            matrix.WriteMatrix(Placement.TopCenter);
+                            Window.ActivateElement<Matrix<int?>>();
+                            Window.StopExecution();
+                            Window.DeactivateElement<Matrix<int?>>();
 
-                            // Window.AddElement(matrix);
-
-                            // Window.Refresh();
-                            // Window.StopExecution();
-
-                            Console.ReadKey();
-                            Core.ClearContent();
+                            Window.RemoveElement<Matrix<int?>>();
+                            Window.Refresh();
+                            Window.OnResize();
                             goto Menu;
 
                         case 5:
-                            Core.UpdateScreen();
+                            Window.OnResize();
 
-                            var answerPrompt = Core.WritePrompt("Hey! What is your name?", "Theo");
-                            string name = answerPrompt.Item2;
-                            Core.WritePositionedString($"You just wrote {name}!");
+                            Window.AddElement(new Prompt("What is your name?", "Theo"));
 
-                            // Window.AddElement(new Prompt("What is your name?", "Theo"));
-                            // Window.ActivateElement<Prompt>();
-                            // var response = Window.GetResponse<Prompt, string>();
-                            // Window.AddElement(
-                            //     new EmbeddedText(
-                            //         new List<string>()
-                            //         {
-                            //             "You chose to " + response?.State.ToString(),
-                            //             "the number " + (response?.Info) + "!"
-                            //         },
-                            //         $"Next {Core.GetSelector.Item1}",
-                            //         TextAlignment.Center
-                            //     )
-                            // );
-                            // Window.ActivateElement<EmbeddedText>();
+                            Window.ActivateElement<Prompt>();
+                            var responsePrompt = Window.GetResponse<Prompt, string>();
+                            Window.AddElement(
+                                new EmbeddedText(
+                                    new List<string>()
+                                    {
+                                        "You just wrote " + responsePrompt?.Info + "!"
+                                    },
+                                    $"Next {Core.GetSelector.Item1}",
+                                    TextAlignment.Center
+                                )
+                            );
+                            Window.ActivateElement<EmbeddedText>();
 
-                            Core.ClearContent();
+                            Window.RemoveElement<Prompt>();
+                            Window.RemoveElement<EmbeddedText>();
                             goto Menu;
                         case 6:
-                            Core.UpdateScreen();
+                            Window.OnResize();
 
-                            var answerNumber = Core.ScrollingNumberSelector(
-                                "Select a number",
-                                10,
-                                5000,
-                                25,
-                                5
+                            Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5));
+
+                            Window.ActivateElement<IntSelector>();
+                            var responseNumber = Window.GetResponse<IntSelector, int>();
+                            Window.AddElement(
+                                new EmbeddedText(
+                                    new List<string>()
+                                    {
+                                        "You chose to " + responseNumber?.State.ToString(),
+                                        "the number " + (responseNumber?.Info) + "!"
+                                    },
+                                    $"Next {Core.GetSelector.Item1}",
+                                    TextAlignment.Center
+                                )
                             );
-                            float number = answerNumber.Item2;
-                            Core.WritePositionedString($"You just wrote {number}!");
-                            // Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5));
-                            // Window.ActivateElement<IntSelector>();
-                            // var response = Window.GetResponse<IntSelector, int>();
-                            // Window.AddElement(
-                            //     new EmbeddedText(
-                            //         new List<string>()
-                            //         {
-                            //             "You chose to " + response?.State.ToString(),
-                            //             "the number " + (response?.Info) + "!"
-                            //         },
-                            //         $"Next {Core.GetSelector.Item1}",
-                            //         TextAlignment.Center
-                            //     )
-                            // );
-                            // Window.ActivateElement<EmbeddedText>();
+                            Window.ActivateElement<EmbeddedText>();
 
-                            Core.ClearContent();
+                            Window.OnResize();
+                            Window.RemoveElement<IntSelector>();
+                            Window.RemoveElement<EmbeddedText>();
                             goto Menu;
+
                         case 7:
-                            Core.UpdateScreen();
+                            Window.OnResize();
 
                             List<string> headers = new() { "id", "name", "major", "grades" };
                             List<string> student1 = new() { "01", "Theo", "Technology", "97" };
@@ -307,42 +276,65 @@ namespace example
                             List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
                             List<string> student4 =
                                 new() { "04", "Charles", "Computer Science", "100" };
-                            Table<string> students =
+                            TableView<string> students =
                                 new(
                                     "Students grades",
                                     headers,
                                     new() { student1, student2, student3, student4 }
                                 );
                             students.SetRoundedCorners(false);
-                            students.ScrollingTableSelector(true, false, "Add student");
+                            Window.AddElement(students);
+
+                            Window.ActivateElement<TableView<string>>();
+                            Window.StopExecution();
+                            Window.DeactivateElement<TableView<string>>();
 
                             students.UpdateLine(0, new() { "01", "Theo", "Biology", "100" });
                             students.RemoveLine(3);
-                            students.ScrollingTableSelector(true, true);
+                            Window.ActivateElement<TableView<string>>();
+                            Window.StopExecution();
+                            Window.DeactivateElement<TableView<string>>();
 
-                            Core.ClearContent();
+                            Window.OnResize();
+                            Window.RemoveElement<TableView<string>>();
                             goto Menu;
+
                         case 8:
-                            // float progress = 0f;
-                            // Window.AddElement(
-                            //     new LoadingBar("[ Loading ...]", ref progress, Placement.TopCenter, default, 2000),
-                            //     true
-                            // );
-                            // Thread thread = new (() =>
-                            // {
-                            //     for (progress = 0f; progress <= 100f; progress++)
-                            //     {
-                            //         Window.GetElement<LoadingBar>()?.UpdateProgress(progress / 100);
-                            //         Thread.Sleep(30);
-                            //     }
-                            //     Window.GetElement<LoadingBar>()?.UpdateProgress(1f);
-                            // });
-                            // thread.Start();
-                            // Window.Refresh();
-                            // thread.Join();
-                            // Window.DeactivateElement<LoadingBar>();
-                            break;
+                            Window.OnResize();
+
+                            float progress = 0f;
+                            Window.AddElement(
+                                new LoadingBar(
+                                    "[ Loading ...]",
+                                    ref progress,
+                                    Placement.TopCenter,
+                                    default,
+                                    2000
+                                )
+                            );
+                            Thread thread =
+                                new(() =>
+                                {
+                                    for (progress = 0f; progress <= 100f; progress++)
+                                    {
+                                        Window
+                                            .GetElement<LoadingBar>()
+                                            ?.UpdateProgress(progress / 100);
+                                        Thread.Sleep(30);
+                                    }
+                                    Window.GetElement<LoadingBar>()?.UpdateProgress(1f);
+                                });
+
+                            thread.Start();
+                            Window.ActivateElement<LoadingBar>();
+                            thread.Join();
+
+                            Window.RemoveElement<LoadingBar>();
+                            goto Menu;
+
                         case 9:
+                            Window.OnResize();
+
                             Window.GetElement<Title>()?.RenderElementSpace();
                             Window.GetElement<Header>()?.RenderElementSpace();
                             Window.GetElement<Footer>()?.RenderElementSpace();
@@ -356,56 +348,75 @@ namespace example
                                     TextAlignment.Left
                                 )
                             );
-                            Window.StopExecution();
-                            break;
-                        case 10:
-                            Window.AddDashboard();
+                            Window.ActivateElement<EmbeddedText>(false);
                             Window.RenderAllElementsSpace();
                             Window.StopExecution();
                             Window.Refresh();
-                            Window.StopExecution();
-                            Window.RemoveDashboard();
-                            Console.WriteLine(Window.CountElements);
-                            break;
-                        default:
-                            Core.ClearContent();
-                            Core.UpdateScreen();
 
-                            Core.ExitProgram();
+                            Window.OnResize();
+                            Window.RemoveElement<EmbeddedText>();
+                            goto Menu;
+
+                        case 10:
+                            Window.AddDashboard();
+
+                            Window.Refresh();
+                            Window.StopExecution();
+
+                            Window.Clear();
+                            Window.RemoveDashboard();
+
+                            Window.AddListWindowElements();
+                            Window.Refresh();
+                            Window.StopExecution();
+                            Window.GetElement<TableView<string>>()?.Clear();
+
+                            Window.OnResize();
+                            Window.RemoveLibraryElement<TableView<string>>();
+                            goto Menu;
+
+                        default:
+                            Window.Close();
                             break;
                     }
                     break;
 
                 case Output.Exit:
-                    Core.ClearContent();
-                    Core.UpdateScreen();
+                    Window.OnResize();
 
-                    Core.WriteMultiplePositionedLines(
-                        true,
-                        default,
-                        true,
-                        default,
-                        "You have selected to quit the app. Press [Enter] to continue..."
+                    Window.AddElement(
+                        new EmbeddedText(
+                            new List<string>()
+                            {
+                                "You have selected to quit the app. Press [Enter] to continue..."
+                            },
+                            $"Next {Core.GetSelector.Item1}",
+                            TextAlignment.Left
+                        )
                     );
+                    Window.ActivateElement<EmbeddedText>();
 
-                    Console.ReadKey();
-                    Core.ExitProgram();
+                    Window.RemoveElement<EmbeddedText>();
+                    Window.Close();
                     break;
 
                 case Output.Delete:
-                    Core.ClearContent();
-                    Core.UpdateScreen();
+                    Window.OnResize();
 
-                    Core.WriteMultiplePositionedLines(
-                        true,
-                        default,
-                        true,
-                        default,
-                        "You have selected the backspace tile. Press [Enter] to continue..."
+                    Window.AddElement(
+                        new EmbeddedText(
+                            new List<string>()
+                            {
+                                "You have selected the backspace tile. Press [Enter] to continue..."
+                            },
+                            $"Next {Core.GetSelector.Item1}",
+                            TextAlignment.Left
+                        )
                     );
+                    Window.ActivateElement<EmbeddedText>();
 
-                    Console.ReadKey();
-                    break;
+                    Window.RemoveElement<EmbeddedText>();
+                    goto Menu;
 
                 default:
                     break;
@@ -414,27 +425,7 @@ namespace example
 
         public static void Debugging()
         {
-            Window.AddElement(new Title("Debugging"));
-            Window.AddElement(new Header());
-            Window.AddElement(new Footer());
-            Window.AddDashboard();
-
-            Window.RenderAllElementsSpace();
-            Window.StopExecution();
-
-            Window.Refresh();
-            Window.StopExecution();
-
-            Window.Clear();
-            Window.RemoveDashboard();
-            Window.AddListWindowElements();
-            Window.RenderAllElementsSpace();
-            Window.StopExecution();
-
-            Window.Refresh();
-            Window.StopExecution();
-
-            Window.Close();
+            // Debug code placeholder
         }
     }
 }

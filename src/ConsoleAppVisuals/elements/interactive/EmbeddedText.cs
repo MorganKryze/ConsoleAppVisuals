@@ -76,6 +76,7 @@ public class EmbeddedText : InteractiveElement<string>
         _align = align;
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
+        BuildText();
     }
     #endregion
 
@@ -151,7 +152,13 @@ public class EmbeddedText : InteractiveElement<string>
     protected override void RenderElementActions()
     {
         BuildText();
-        Core.WriteMultiplePositionedLines(false, _align, false, _line, _textToDisplay!.ToArray());
+        Core.WriteMultiplePositionedLines(
+            false,
+            _placement.ToTextAlignment(),
+            false,
+            _line,
+            _textToDisplay!.ToArray()
+        );
         Window.StopExecution();
         Window.DeactivateElement<EmbeddedText>();
     }

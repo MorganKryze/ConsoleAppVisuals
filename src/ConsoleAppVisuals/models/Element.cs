@@ -152,7 +152,7 @@ public abstract class Element
     {
         if (Visibility)
         {
-            Core.ChangeForeground(Core.GetRandomColor());
+            Core.SetForegroundColor(Core.GetRandomColor());
             Core.WriteMultiplePositionedLines(
                 false,
                 Placement.ToTextAlignment(),
@@ -160,7 +160,7 @@ public abstract class Element
                 Line,
                 GetRenderSpace()
             );
-            Core.RestoreColor();
+            Core.RestoreColorPanel();
         }
     }
 
