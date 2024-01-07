@@ -28,7 +28,7 @@ public static class Window
     #endregion
 
     #region Fields: s_elements
-    public static readonly List<Element> s_elements = new();
+    private static readonly List<Element> s_elements = new();
     #endregion
 
     #region Constants: DefaultVisibility
