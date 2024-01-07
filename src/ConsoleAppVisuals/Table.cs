@@ -39,6 +39,10 @@ public class Table<T>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    [Obsolete(
+        "This class is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+        false
+    )]
     public Table(string? title = null, List<string>? headers = null, List<List<T>>? lines = null)
     {
         _title = title;
