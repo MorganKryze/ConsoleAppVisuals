@@ -39,6 +39,7 @@ namespace example
                 "Select a number",
                 "Display table",
                 "Display a loading bar",
+                "Display a dashboard",
                 "Quit the app"
             );
             Core.ClearContent();
@@ -357,6 +358,15 @@ namespace example
                             );
                             Window.StopExecution();
                             break;
+                        case 10:
+                            Window.AddDashboard();
+                            Window.RenderAllElementsSpace();
+                            Window.StopExecution();
+                            Window.Refresh();
+                            Window.StopExecution();
+                            Window.RemoveDashboard();
+                            Console.WriteLine(Window.CountElements);
+                            break;
                         default:
                             Core.ClearContent();
                             Core.UpdateScreen();
@@ -404,8 +414,24 @@ namespace example
 
         public static void Debugging()
         {
-            
-            Window.GetFullInfo();
+            Window.AddElement(new Title("Debugging"));
+            Window.AddElement(new Header());
+            Window.AddElement(new Footer());
+            Window.AddDashboard();
+            foreach (var item in Window.s_elements)
+            {
+                Console.WriteLine(item.GetType());
+            }
+            Window.StopExecution();
+
+            Window.RenderAllElementsSpace();
+            Window.Refresh();
+            Window.StopExecution();
+            Window.RemoveDashboard();
+            Window.AddListWindowElements();
+            Window.Refresh();
+            Window.StopExecution();
+
             Window.Close();
         }
     }

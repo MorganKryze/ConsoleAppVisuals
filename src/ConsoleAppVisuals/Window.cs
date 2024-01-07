@@ -28,7 +28,7 @@ public static class Window
     #endregion
 
     #region Fields: s_elements
-    private static readonly List<Element> s_elements = new();
+    public static readonly List<Element> s_elements = new();
     #endregion
 
     #region Constants: DefaultVisibility
@@ -47,7 +47,7 @@ public static class Window
     /// <summary>
     /// Gives the number of elements in the window.
     /// </summary>
-    public static int NumberOfElements => s_elements.Count;
+    public static int CountElements => s_elements.Count;
     #endregion
 
     #region Basic Methods: Get, Add, Insert, Remove, RemoveAll
@@ -203,7 +203,7 @@ public static class Window
     /// This method removes the first element with the given type.
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
-    /// <exception cref="InvalidOperationException">Thrown when the element is invalid.</exception>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -216,9 +216,34 @@ public static class Window
     {
         var element =
             GetElement<T>()
-            ?? throw new InvalidOperationException("Invalid element. Not found in the window.");
+            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
         s_elements.Remove(element);
         UpdateIDs();
+    }
+
+    /// <summary>
+    /// This method removes the first element with the given type created by the library itself.
+    /// </summary>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void RemoveLibraryElement<T>()
+        where T : Element
+    {
+        var element =
+            GetElement<T>()
+            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
+        if (element.ElementSource == Source.Library)
+        {
+            s_elements.Remove(element);
+            UpdateIDs();
+        }
     }
 
     /// <summary>
@@ -650,6 +675,24 @@ public static class Window
     }
 
     /// <summary>
+    /// This method draws all the space of the elements of the window on the console.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void RenderAllElementsSpace()
+    {
+        foreach (var element in s_elements)
+        {
+            element.RenderElementSpace();
+        }
+    }
+
+    /// <summary>
     /// This method closes the window and exit the program.
     /// </summary>
     /// <remarks>
@@ -669,8 +712,9 @@ public static class Window
 
     #region Info Methods: ListWindowElements, ListClassesInheritingElement, ListClassesInheritingInteractiveElement
     /// <summary>
-    /// This method displays a list of all elements in the window.
+    /// This method displays a list of all elements in the window and adds a table to the window.
     /// </summary>
+    /// <param name="placement">The placement of the element.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -678,9 +722,9 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static List<string>? ListWindowElements()
+    public static void AddListWindowElements(Placement placement = Placement.TopCenter)
     {
-        Table<string> table =
+        TableView<string> table =
             new(
                 "Window Elements",
                 new List<string>
@@ -692,9 +736,16 @@ public static class Window
                     "Width",
                     "Line",
                     "Placement",
-                    "IsInteractive"
-                }
-            );
+                    "IsInteractive",
+                    "Source"
+                },
+                null,
+                placement
+            )
+            {
+                ElementSource = Source.Library
+            };
+        AddElement(table);
         foreach (var element in s_elements)
         {
             table.AddLine(
@@ -707,17 +758,69 @@ public static class Window
                     element.Width.ToString(),
                     element.Line.ToString(),
                     element.Placement.ToString(),
-                    element.IsInteractive.ToString()
+                    element.IsInteractive.ToString(),
+                    element.ElementSource.ToString()
                 }
             );
         }
-        table.Render(GetLineAvailable(Placement.TopCenter));
+    }
+
+    /// <summary>
+    /// This method is used to get a list of all the types of the elements in the window.
+    /// </summary>
+    /// <returns>A list of all the types of the elements in the window.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static List<string>? GetListWindowElements()
+    {
+        TableView<string> table =
+            new(
+                "Window Elements",
+                new List<string>
+                {
+                    "Id",
+                    "Type",
+                    "Visibility",
+                    "Height",
+                    "Width",
+                    "Line",
+                    "Placement",
+                    "IsInteractive",
+                    "Source"
+                }
+            )
+            {
+                ElementSource = Source.Library
+            };
+        foreach (var element in s_elements)
+        {
+            table.AddLine(
+                new List<string>
+                {
+                    element.Id.ToString(),
+                    element.GetType().Name,
+                    element.Visibility.ToString(),
+                    element.Height.ToString(),
+                    element.Width.ToString(),
+                    element.Line.ToString(),
+                    element.Placement.ToString(),
+                    element.IsInteractive.ToString(),
+                    element.ElementSource.ToString()
+                }
+            );
+        }
         return table.GetColumnData("Type");
     }
 
     /// <summary>
-    /// This method gives a list of all classes inheriting from the Element class.
+    /// This method gives a list of all classes inheriting from the Element class and adds a table to the window.
     /// </summary>
+    /// <param name="placement">The placement of the element.</param>
     /// <returns>The list of all classes inheriting from the Element class.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -726,7 +829,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static List<string>? ListClassesInheritingElement()
+    public static void AddListClassesInheritingElement(Placement placement = Placement.TopCenter)
     {
         var types = new List<Type>();
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -741,7 +844,51 @@ public static class Window
                 types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element))));
             }
         }
-        Table<string> table =
+        TableView<string> table =
+            new("Element Classes", new List<string> { "Id", "Type", "Project" }, null, placement);
+        var id = 0;
+        foreach (var type in types)
+        {
+            if (type.IsAbstract)
+            {
+                continue;
+            }
+            table.AddLine(
+                new List<string> { $"{id}", type.Name, type.Assembly.GetName().Name ?? "Unknown" }
+            );
+            id += 1;
+        }
+        table.ElementSource = Source.Library;
+        AddElement(table);
+    }
+
+    /// <summary>
+    /// This method is used to get a list of all the types of the classes inheriting from the Element class.
+    /// </summary>
+    /// <returns>A list of all the types of the classes inheriting from the Element class.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static List<string>? GetListClassesInheritingElement()
+    {
+        var types = new List<Type>();
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            if (
+                assembly.FullName != null
+                && !assembly.FullName.StartsWith("mscorlib")
+                && !assembly.FullName.StartsWith("System")
+                && !assembly.FullName.StartsWith("Microsoft")
+            )
+            {
+                types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element))));
+            }
+        }
+        TableView<string> table =
             new("Element Classes", new List<string> { "Id", "Type", "Project" });
         var id = 0;
         foreach (var type in types)
@@ -755,15 +902,17 @@ public static class Window
             );
             id += 1;
         }
-        table.Render(GetLineAvailable(Placement.TopCenter));
         return table.GetColumnData("Type");
     }
 
     /// <summary>
-    /// This method gives a list of all classes inheriting from the InteractiveElement class.
+    /// This method gives a list of all classes inheriting from the InteractiveElement class and adds a table to the window.
     /// </summary>
+    /// <param name="placement">The placement of the element.</param>
     /// <returns>The list of all classes inheriting from the InteractiveElement class.</returns>
-    public static List<string>? ListClassesInheritingInteractiveElement()
+    public static void AddListClassesInheritingInteractiveElement(
+        Placement placement = Placement.TopCenter
+    )
     {
         var types = new List<Type>();
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -788,7 +937,62 @@ public static class Window
                 );
             }
         }
-        Table<string> table =
+        TableView<string> table =
+            new(
+                "Interactive Element Classes",
+                new List<string> { "Id", "Type", "Project" },
+                null,
+                placement
+            );
+        var id = 0;
+        foreach (var type in types)
+        {
+            table.AddLine(
+                new List<string> { $"{id}", type.Name, type.Assembly.GetName().Name ?? "Unknown" }
+            );
+            id += 1;
+        }
+        table.ElementSource = Source.Library;
+        AddElement(table);
+    }
+
+    /// <summary>
+    /// This method is used to get a list of all the types of the classes inheriting from the InteractiveElement class.
+    /// </summary>
+    /// <returns>A list of all the types of the classes inheriting from the InteractiveElement class.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static List<string>? GetListClassesInheritingInteractiveElement()
+    {
+        var types = new List<Type>();
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            if (
+                assembly.FullName != null
+                && !assembly.FullName.StartsWith("mscorlib")
+                && !assembly.FullName.StartsWith("System")
+                && !assembly.FullName.StartsWith("Microsoft")
+            )
+            {
+                types.AddRange(
+                    assembly
+                        .GetTypes()
+                        .Where(
+                            t =>
+                                t.BaseType != null
+                                && t.BaseType.IsGenericType
+                                && t.BaseType.GetGenericTypeDefinition()
+                                    == typeof(InteractiveElement<>)
+                        )
+                );
+            }
+        }
+        TableView<string> table =
             new("Interactive Element Classes", new List<string> { "Id", "Type", "Project" });
         var id = 0;
         foreach (var type in types)
@@ -798,7 +1002,6 @@ public static class Window
             );
             id += 1;
         }
-        table.Render(GetLineAvailable(Placement.TopCenter));
         return table.GetColumnData("Type");
     }
 
@@ -812,11 +1015,28 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void GetFullInfo()
+    public static void AddDashboard()
     {
-        ListWindowElements();
-        ListClassesInheritingElement();
-        ListClassesInheritingInteractiveElement();
+        AddListClassesInheritingElement(Placement.TopLeft);
+        AddListClassesInheritingInteractiveElement(Placement.TopRight);
+        AddListWindowElements(Placement.TopCenter);
+    }
+
+    /// <summary>
+    /// This method removes the dashboard TableView from the window.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void RemoveDashboard()
+    {
+        RemoveLibraryElement<TableView<string>>();
+        RemoveLibraryElement<TableView<string>>();
+        RemoveLibraryElement<TableView<string>>();
     }
     #endregion
 }
