@@ -23,14 +23,15 @@ namespace example
                     "Change Console color",
                     "Write on the console",
                     "Display paragraph",
-                    "Display a styled text",
-                    "Display a matrix",
+                    "Display styled text",
+                    "Display matrix",
                     "Answer some prompt",
-                    "Select a number",
+                    "Select number",
                     "Display table",
-                    "Display a loading bar",
+                    "Interact with table",
+                    "Display loading bar",
                     "Display elements space",
-                    "Display a dashboard",
+                    "Display dashboard",
                     "Quit the app"
                 )
             );
@@ -206,9 +207,6 @@ namespace example
                             Window.StopExecution();
                             Window.DeactivateElement<Matrix<int?>>();
 
-                            Console.ReadKey();
-                            Window.Refresh();
-
                             matrix.UpdateElement(new Position(0, 0), 1);
                             matrix.UpdateElement(new Position(3, 5), 6);
                             Window.ActivateElement<Matrix<int?>>();
@@ -270,7 +268,8 @@ namespace example
                         case 7:
                             Window.OnResize();
 
-                            List<string> headers = new() { "id", "name", "major", "grades" };
+                            List<string> studentsHeaders =
+                                new() { "id", "name", "major", "grades" };
                             List<string> student1 = new() { "01", "Theo", "Technology", "97" };
                             List<string> student2 = new() { "02", "Paul", "Mathematics", "86" };
                             List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
@@ -279,7 +278,7 @@ namespace example
                             TableView<string> students =
                                 new(
                                     "Students grades",
-                                    headers,
+                                    studentsHeaders,
                                     new() { student1, student2, student3, student4 }
                                 );
                             students.SetRoundedCorners(false);
@@ -300,6 +299,61 @@ namespace example
                             goto Menu;
 
                         case 8:
+                            Window.OnResize();
+
+                            List<string> playersHeaders =
+                                new() { "id", "first name", "last name", "nationality", "slams" };
+                            List<string> player1 =
+                                new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+                            List<string> player2 =
+                                new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+                            List<string> player3 =
+                                new() { "03", "Roger", "Federer", "Switzerland", "21" };
+                            List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
+                            List<string> player5 = new() { "05", "Andy", "Murray", "England", "3" };
+                            List<string> player6 =
+                                new() { "06", "Daniil", "Medvedev", "Russia", "1" };
+                            List<string> player7 =
+                                new() { "07", "Stan", "Wawrinka", "Switzerland", "2" };
+                            List<List<string>> playersData =
+                                new()
+                                {
+                                    player1,
+                                    player2,
+                                    player3,
+                                    player4,
+                                    player5,
+                                    player6,
+                                    player7
+                                };
+                            TableSelector<string> players =
+                                new("Great tennis players", playersHeaders, playersData);
+                            players.SetRoundedCorners(false);
+                            Window.AddElement(players);
+
+                            Window.ActivateElement<TableSelector<string>>();
+                            var responseTable = Window.GetResponse<TableSelector<string>, int>();
+                            Window.AddElement(
+                                new EmbeddedText(
+                                    new List<string>()
+                                    {
+                                        "You chose to " + responseTable?.State.ToString(),
+                                        "the player "
+                                            + playersData[responseTable?.Info ?? 0][2]
+                                            + "!"
+                                    },
+                                    $"Next {Core.GetSelector.Item1}",
+                                    TextAlignment.Center
+                                )
+                            );
+                            Window.ActivateElement<EmbeddedText>();
+
+                            Window.OnResize();
+                            Window.RemoveElement<TableSelector<string>>();
+                            Window.RemoveElement<EmbeddedText>();
+                            goto Menu;
+
+                        case 9:
                             Window.OnResize();
 
                             float progress = 0f;
@@ -332,7 +386,7 @@ namespace example
                             Window.RemoveElement<LoadingBar>();
                             goto Menu;
 
-                        case 9:
+                        case 10:
                             Window.OnResize();
 
                             Window.GetElement<Title>()?.RenderElementSpace();
@@ -357,7 +411,7 @@ namespace example
                             Window.RemoveElement<EmbeddedText>();
                             goto Menu;
 
-                        case 10:
+                        case 11:
                             Window.AddDashboard();
 
                             Window.Refresh();
