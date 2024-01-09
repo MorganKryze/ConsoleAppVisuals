@@ -34,13 +34,17 @@ jobs:
         run: dotnet tool restore
       - name: Ensure Coverlet Install
         run: dotnet tool install --global coverlet.console
+      - name: Install ReportGenerator
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
       - name: Generate test results using coverlet
         run: coverlet testing/bin/Release/net7.0/testing.dll --target "dotnet" --targetargs "test -c Release --no-build" --format opencover
+      - name: Convert coverage report to lcov format
+        run: reportgenerator "-reports:./coverage.opencover.xml" "-targetdir:coverage" "-reporttypes:lcov"
       - name: Coveralls upload
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage.opencover.xml
+          path-to-lcov: ./coverage/lcov.info
 
   publish-docs:
     needs: build-and-test
