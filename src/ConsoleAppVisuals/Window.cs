@@ -427,7 +427,7 @@ public static class Window
     /// </remarks>
     public static void DeactivateElement(Element element, bool clear = true)
     {
-        if (element is null || !s_elements.Contains(element))
+        if (!s_elements.Contains(element))
         {
             throw new ElementNotFoundException("Invalid element. Not found in the window.");
         }

@@ -17,7 +17,6 @@ public class UnitTestWindow
 
         // Act
         Window.AddElement(new Prompt("Hello World!"));
-        Window.AddElement(new FakeLoadingBar());
 
         // Assert
         Assert.AreNotEqual(Window.CountElements, defaultValue);
@@ -140,14 +139,14 @@ public class UnitTestWindow
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
-        var loadingBar = new FakeLoadingBar();
+        var title = new Title("Title");
         Window.AddElement(prompt);
 
         // Act
-        Window.InsertElement(loadingBar, 0);
+        Window.InsertElement(title, 0);
 
         // Assert
-        Assert.AreEqual(loadingBar, Window.GetElement<FakeLoadingBar>(0));
+        Assert.AreEqual(title, Window.GetElement<Title>(0));
         Assert.AreEqual(prompt, Window.GetElement<Prompt>(1));
 
         // Cleanup
@@ -159,15 +158,15 @@ public class UnitTestWindow
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
-        var loadingBar = new FakeLoadingBar();
+        var title = new Title("Title");
         Window.AddElement(prompt);
 
         // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(
-            () => Window.InsertElement(loadingBar, -1)
+            () => Window.InsertElement(title, -1)
         );
         Assert.ThrowsException<ArgumentOutOfRangeException>(
-            () => Window.InsertElement(loadingBar, 2)
+            () => Window.InsertElement(title, 2)
         );
 
         // Cleanup
@@ -373,32 +372,7 @@ public class UnitTestWindow
 
     #region DeactivateElement
     [TestMethod]
-    public void DeactivateElement_WithValidId_ShouldDeactivateElement()
-    {
-        // Arrange
-        var element = new Prompt("Hello World!");
-        Window.AddElement(element);
-        int id = element.Id;
-
-        // Act
-        Window.DeactivateElement(id);
-
-        // Assert
-        Assert.IsFalse(element.Visibility);
-    }
-
-    [TestMethod]
-    public void DeactivateElement_WithInvalidId_ShouldThrowArgumentOutOfRangeException()
-    {
-        // Arrange
-        int id = -1;
-
-        // Act and Assert
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.DeactivateElement(id));
-    }
-
-    [TestMethod]
-    public void DeactivateElement_WithValidId_ShouldReturnTrue()
+    public void DeactivateElement_WithValidId()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -412,5 +386,43 @@ public class UnitTestWindow
         // Assert
         Assert.IsFalse(element.Visibility);
     }
+
+    [TestMethod]
+    public void DeactivateElement_WithInvalidId()
+    {
+        // Arrange
+        int id = -1;
+
+        // Act and Assert
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.DeactivateElement(id));
+    }
+
+    [TestMethod]
+    public void DeactivateElement_NotFound()
+    {
+        // Arrange
+        var element = new Prompt("Hello World!");
+
+        // Assert
+        Assert.ThrowsException<ElementNotFoundException>(
+            () => Window.DeactivateElement(element, false)
+        );
+    }
+
+    [TestMethod]
+    public void DeactivateElement()
+    {
+        // Arrange
+        var element = new Prompt("Hello World!");
+
+        //Act
+        Window.AddElement(element);
+        Window.ActivateElement(element.Id, false);
+        Window.DeactivateElement(element, false);
+
+        // Assert
+        Assert.IsFalse(element.Visibility);
+    }
+
     #endregion
 }
