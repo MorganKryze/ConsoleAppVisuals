@@ -657,11 +657,9 @@ public class TableSelector<T> : InteractiveElement<int>
                 {
                     Core.WritePositionedString(
                         j == _displayArray.Length - 1
-                            ? array[j].InsertString(
-                                $"┤ {_footerText} ├",
-                                Placement.TopCenter,
-                                true
-                            )[2..^2]
+                            ? array[j].InsertString($"┤ {_footerText} ├", Placement.TopCenter)[
+                                2..^2
+                            ]
                             : array[j][1..^1],
                         TextAlignment.Center,
                         true,

@@ -4,11 +4,12 @@
 */
 namespace testing;
 
+[TestClass]
 public class UnitTestCore
 {
     #region SetSelector
     [TestMethod]
-    public void Test_SetSelectorCharactersForMenu()
+    public void Test_SetSelectorNewChar()
     {
         // Arrange
         Core.SetSelector('>', '<');
@@ -73,30 +74,48 @@ public class UnitTestCore
     }
     #endregion
 
+    #region LoadTerminalColorPanel
+    [TestMethod]
+    public void Test_LoadTerminalColorPanel()
+    {
+        // Arrange
+        var initialColorPanel = Core.GetColorPanel;
+
+        // Act
+        Core.LoadTerminalColorPanel();
+
+        // Assert
+        Assert.AreNotEqual(initialColorPanel, Core.GetColorPanel);
+    }
+    #endregion
+
+    #region GetInitialColorPanel
+    [TestMethod]
+    public void Test_GetInitialColorPanel()
+    {
+        Assert.AreEqual((ConsoleColor.White, ConsoleColor.Black), Core.GetInitialColorPanel);
+    }
+
+    #endregion
+
     #region ApplyNegative
     // The class can apply negative colors to the console.
     [TestMethod]
     public void Test_ApplyNegative()
     {
         // Arrange
-        ConsoleColor initialForegroundColor = Console.ForegroundColor;
-        ConsoleColor initialBackgroundColor = Console.BackgroundColor;
-        ConsoleColor expectedForegroundColor = initialBackgroundColor;
-        ConsoleColor expectedBackgroundColor = initialForegroundColor;
+        Core.SetForegroundColor(ConsoleColor.Red);
+        Core.SetBackgroundColor(ConsoleColor.Blue);
 
         // Act
         Core.ApplyNegative(true);
-        ConsoleColor actualForegroundColor = Console.ForegroundColor;
-        ConsoleColor actualBackgroundColor = Console.BackgroundColor;
 
         // Assert
-        Assert.AreEqual(expectedForegroundColor, actualForegroundColor);
-        Assert.AreEqual(expectedBackgroundColor, actualBackgroundColor);
+        Assert.AreEqual(ConsoleColor.Blue, Console.ForegroundColor);
+        Assert.AreEqual(ConsoleColor.Red, Console.BackgroundColor);
 
         // Cleanup
         Core.ApplyNegative(false);
-        Console.ForegroundColor = initialForegroundColor;
-        Console.BackgroundColor = initialBackgroundColor;
     }
     #endregion
 }

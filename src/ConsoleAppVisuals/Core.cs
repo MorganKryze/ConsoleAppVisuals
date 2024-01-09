@@ -2,8 +2,6 @@
     MIT License 2023 MorganKryze
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-
-using System.Diagnostics.CodeAnalysis;
 namespace ConsoleAppVisuals;
 
 /// <summary>
@@ -18,7 +16,7 @@ public static class Core
     public const string NEGATIVE_ANCHOR = "/neg";
     #endregion
 
-    #region Attributes
+    #region Fields
 
     [Obsolete(
         "This field is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
@@ -26,7 +24,7 @@ public static class Core
     )]
     private static (string[]?, int?) s_title;
     private static TextStyler s_styler = new();
-    private static (char, char) s_Selector = ('▶', '◀');
+    private static (char, char) s_selector = ('▶', '◀');
 
     [Visual]
     private static int s_previousWindowWidth = Console.WindowWidth;
@@ -75,7 +73,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the selector of the console menus.
     /// </summary>
-    public static (char, char) GetSelector => s_Selector;
+    public static (char, char) GetSelector => s_selector;
 
     /// <summary>
     /// This property is used to get the height of the title.
@@ -124,6 +122,12 @@ public static class Core
     public static (ConsoleColor, ConsoleColor) GetColorPanel => s_colorPanel;
 
     /// <summary>
+    /// This property is used to get the initial colors of the console.
+    /// </summary>
+    /// <returns>A tuple containing the initial font color and the initial background color.</returns>
+    public static (ConsoleColor, ConsoleColor) GetInitialColorPanel => s_initialColorPanel;
+
+    /// <summary>
     /// This property is used to check if the screen has been updated.
     /// </summary>
     /// <returns>True if the screen has been updated, false otherwise.</returns>
@@ -150,7 +154,7 @@ public static class Core
     /// </remarks>
     public static void SetSelector(char onward, char backward)
     {
-        s_Selector = (onward, backward);
+        s_selector = (onward, backward);
     }
 
     /// <summary>
@@ -884,7 +888,7 @@ public static class Core
                     return (Output.Delete, defaultIndex);
             }
         }
-
+        [ExcludeFromCodeCoverage]
         static void EqualizeChoicesLength(string[] choices)
         {
             int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
@@ -893,7 +897,7 @@ public static class Core
                 choices[i] = choices[i].PadRight(totalWidth);
             }
         }
-
+        [ExcludeFromCodeCoverage]
         static void DisplayChoices(
             int defaultIndex,
             string[] choices,
@@ -906,7 +910,7 @@ public static class Core
             {
                 array[i] =
                     (i == defaultIndex)
-                        ? $" {s_Selector.Item1} {choices[i]}  "
+                        ? $" {s_selector.Item1} {choices[i]}  "
                         : $"   {choices[i]}  ";
                 WritePositionedString(
                     array[i],
@@ -966,7 +970,7 @@ public static class Core
                 lineSelector - 1
             );
             WritePositionedString(
-                $" {s_Selector.Item1} {BuildNumber((float)Math.Round(currentNumber, 1))} {s_Selector.Item2} ",
+                $" {s_selector.Item1} {BuildNumber((float)Math.Round(currentNumber, 1))} {s_selector.Item2} ",
                 TextAlignment.Center,
                 true,
                 lineSelector
@@ -1007,6 +1011,7 @@ public static class Core
             Thread.Sleep(1);
             ClearMultipleLines(lineSelector - 2, 5);
         }
+        [ExcludeFromCodeCoverage]
         float NextNumber(Direction direction)
         {
             if (direction == Direction.Up)
@@ -1025,6 +1030,7 @@ public static class Core
             }
             return currentNumber;
         }
+        [ExcludeFromCodeCoverage]
         string BuildLine(Direction direction)
         {
             StringBuilder line = new();
@@ -1036,6 +1042,7 @@ public static class Core
                 line.Insert(0, corners[2].ToString(), 1).Append(corners[3], 1);
             return line.ToString();
         }
+        [ExcludeFromCodeCoverage]
         string BuildNumber(float number)
         {
             StringBuilder numberStr = new();
@@ -1092,6 +1099,7 @@ public static class Core
         int? line = null
     )
     {
+        [ExcludeFromCodeCoverage]
         static void BuildBar(string message, float processPercentage, int? line)
         {
             StringBuilder _loadingBar = new();
@@ -1206,7 +1214,7 @@ public static class Core
                 case TextAlignment.Right:
                     return str.Substring(-padding, size);
             }
-        else
+        else if (padding > 0)
             switch (align)
             {
                 case TextAlignment.Left:
@@ -1226,7 +1234,6 @@ public static class Core
     /// <param name="inserted">The string that receives the other.</param>
     /// <param name="toInsert">The string to insert.</param>
     /// <param name="position">The placement of the string to insert.</param>
-    /// <param name="truncate">Whether or not the string is truncate.</param>
     /// <returns>The final string after computing.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -1238,8 +1245,7 @@ public static class Core
     public static string InsertString(
         this string inserted,
         string toInsert,
-        Placement position = Placement.TopCenter,
-        bool truncate = true
+        Placement position = Placement.TopCenter
     )
     {
         if (inserted.Length < toInsert.Length)
@@ -1255,34 +1261,13 @@ public static class Core
             case Placement.TopCenterFullWidth:
                 int center = inserted.Length / 2;
                 int start = center - (toInsert.Length / 2);
-                if (truncate)
-                {
-                    return inserted.Remove(start, toInsert.Length).Insert(start, toInsert);
-                }
-                else
-                {
-                    return inserted.Insert(start, toInsert);
-                }
+                return inserted.Remove(start, toInsert.Length).Insert(start, toInsert);
             case Placement.TopLeft:
-                if (truncate)
-                {
-                    return inserted.Remove(0, toInsert.Length).Insert(0, toInsert);
-                }
-                else
-                {
-                    return inserted.Insert(0, toInsert);
-                }
+                return inserted.Remove(0, toInsert.Length).Insert(0, toInsert);
             case Placement.TopRight:
-                if (truncate)
-                {
-                    return inserted
-                        .Remove(inserted.Length - toInsert.Length, toInsert.Length)
-                        .Insert(inserted.Length - toInsert.Length, toInsert);
-                }
-                else
-                {
-                    return inserted.Insert(inserted.Length - toInsert.Length, toInsert);
-                }
+                return inserted
+                    .Remove(inserted.Length - toInsert.Length, toInsert.Length)
+                    .Insert(inserted.Length - toInsert.Length, toInsert);
             default:
                 throw new ArgumentException("The placement is not valid");
         }
