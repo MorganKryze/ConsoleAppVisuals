@@ -14,7 +14,8 @@ namespace testing
         public void TestConstructorWithNullFontPath()
         {
             Assert.IsNotNull(styler.Dictionary);
-            var expected = @" █████╗  
+            var expected =
+                @" █████╗  
 ██╔══██╗ 
 ███████║ 
 ██╔══██║ 
@@ -28,7 +29,8 @@ namespace testing
         public void TestConstructorWithFontPath(string path)
         {
             var custom = new TextStyler(path);
-            var expected = @" █████╗  
+            var expected =
+                @" █████╗  
 ██╔══██╗ 
 ███████║ 
 ██╔══██║ 
@@ -45,12 +47,12 @@ namespace testing
             var stylerCustom = new TextStyler(path);
             Assert.AreEqual(styler.Dictionary['a'], stylerCustom.Dictionary['a']);
         }
+
         [TestMethod]
         [ExpectedException(typeof(EmptyFileException))]
         [DataRow("../../../resources/fonts/Throw_Error/")]
         public void Test_ConfigFileEmpty(string path)
         {
-            
             TextStyler emptyStyler = new(path); // Here should the error be thrown
             emptyStyler.StyleTextToString("Hello World!");
         }
@@ -112,6 +114,43 @@ namespace testing
             Assert.IsTrue(styler.Equals(styler));
             Assert.IsFalse(styler.Equals(null));
             Assert.IsFalse(styler.Equals(new TextStyler()));
+        }
+
+        [TestMethod]
+        public void Test_SetStyler()
+        {
+            // Arrange
+            Core.SetStyler("../../../resources/fonts/ANSI_Shadow/");
+
+            // Act
+            var result1 = styler.StyleTextToStringArray("a");
+            var result2 = Core.StyleText("a");
+
+            // Assert
+            Assert.AreEqual(result1[0], result2[0]);
+        }
+
+        [TestMethod]
+        public void GetRandomColor_ReturnsValidColor()
+        {
+            // Arrange
+            var color = Core.GetRandomColor();
+
+            // Assert
+            Assert.IsTrue(Enum.IsDefined(typeof(ConsoleColor), color));
+        }
+
+        [TestMethod]
+        public void Test_RestoreColorPanel()
+        {
+            // Arrange
+            var color = Core.GetColorPanel;
+
+            // Act
+            Core.RestoreColorPanel();
+
+            // Assert
+            Assert.AreNotEqual(color, Core.GetColorPanel);
         }
         #endregion
     }

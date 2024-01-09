@@ -636,7 +636,7 @@ public class Table<T>
                 {
                     Core.WritePositionedString(
                         j == _displayArray.Length - 1
-                            ? array[j].InsertString($"┤ {footerText} ├", Placement.TopCenter, true)[
+                            ? array[j].InsertString($"┤ {footerText} ├", Placement.TopCenter)[
                                 2..^2
                             ]
                             : array[j][1..^1],

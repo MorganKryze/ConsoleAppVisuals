@@ -2,6 +2,8 @@
     MIT License 2023 MorganKryze
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
+using System.Xml.Serialization;
+
 namespace testing;
 
 [TestClass]
@@ -26,6 +28,38 @@ public class UnitTestExtensions
         {
             Assert.AreEqual("              !", value.ResizeString(15, TextAlignment.Right, true));
         }
+    }
+
+    [TestMethod]
+    public void Test_ResizeString_Truncate_LeftAlignment()
+    {
+        string str = "Hello, world!";
+        string result = str.ResizeString(5, TextAlignment.Left, true);
+        Assert.AreEqual("Hello", result);
+    }
+
+    [TestMethod]
+    public void Test_ResizeString_Truncate_CenterAlignment()
+    {
+        string str = "Hello, world!";
+        string result = str.ResizeString(5, TextAlignment.Center, true);
+        Assert.AreEqual("o, wo", result);
+    }
+
+    [TestMethod]
+    public void Test_ResizeString_Truncate_RightAlignment()
+    {
+        string str = "Hello, world!";
+        string result = str.ResizeString(5, TextAlignment.Right, true);
+        Assert.AreEqual("orld!", result);
+    }
+
+    [TestMethod]
+    public void Test_ResizeString_NoTruncate()
+    {
+        string str = "Hello, world!";
+        string result = str.ResizeString(13, TextAlignment.Left, false);
+        Assert.AreEqual(str, result);
     }
     #endregion
 
@@ -74,12 +108,30 @@ public class UnitTestExtensions
             Assert.AreEqual("Bonjoutest Monde", value.InsertString("test", Placement.TopCenter));
         }
     }
+
+    [TestMethod]
+    [DataRow((Placement)999)]
+    [ExpectedException(typeof(ArgumentException))]
+    public void Test_InsertString_InvalidPlacement(Placement value)
+    {
+        "Hello World".InsertString("test", value);
+    }
+
+    [TestMethod]
+    [DataRow("Hello")]
+    [DataRow("World")]
+    [ExpectedException(typeof(ArgumentException))]
+    public void Test_InsertString_ThrowsException(string value)
+    {
+        value.InsertString("teststring");
+    }
     #endregion
 
     #region GetRangeAndRemoveNegativeAnchors
     [TestMethod]
     [DataRow("This is a /neg test /neg string")]
     [DataRow("This is another /neg test /neg string but with str/ange anch/ors")]
+    [DataRow("This is another test string but with no anchors")]
     public void Test_GetRangeAndRemoveNegativeAnchors(string value)
     {
         if (value == "This is a /neg test /neg string")
@@ -93,6 +145,13 @@ public class UnitTestExtensions
         {
             Assert.AreEqual(
                 "This is another  test  string but with str/ange anch/ors",
+                value.GetRangeAndRemoveNegativeAnchors().Item1
+            );
+        }
+        else if (value == "This is another test string but with no anchors")
+        {
+            Assert.AreEqual(
+                "This is another test string but with no anchors",
                 value.GetRangeAndRemoveNegativeAnchors().Item1
             );
         }
