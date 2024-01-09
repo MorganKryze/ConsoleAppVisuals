@@ -109,6 +109,7 @@ public abstract class Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public void RenderElement()
     {
         if (Visibility)
@@ -123,6 +124,7 @@ public abstract class Element
     /// This method is used to define the actions to perform when the element is drawn on the console.
     /// </summary>
     /// <remarks>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</remarks>
+    [Visual]
     protected virtual void RenderElementActions()
     {
         throw new NotImplementedException("Consider overriding this method in the derived class.");
@@ -131,12 +133,14 @@ public abstract class Element
     /// <summary>
     /// This method is used to set options before drawing the element on the console.
     /// </summary>
+    [Visual]
     protected virtual void RenderOptionsBeforeHand() { }
 
     /// <summary>
     /// This method is used to set options after drawing the element on the console.
     /// </summary>
-    protected virtual void RenderOptionsAfterHand() { }
+   [Visual]
+   protected virtual void RenderOptionsAfterHand() { }
 
     /// <summary>
     /// This method is used to draw the space taken by the element on the console.
@@ -148,6 +152,7 @@ public abstract class Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual()]
     public void RenderElementSpace()
     {
         if (Visibility)
@@ -183,6 +188,7 @@ public abstract class Element
     /// <summary>
     /// This method is used to clear the space taken by the element on the console.
     /// </summary>
+    [Visual]
     public void Clear()
     {
         Core.WriteMultiplePositionedLines(false, TextAlignment, false, Line, GetRenderSpace());

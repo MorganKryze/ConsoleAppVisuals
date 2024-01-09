@@ -2,6 +2,8 @@
     MIT License 2023 MorganKryze
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
+
+using System.Diagnostics.CodeAnalysis;
 namespace ConsoleAppVisuals;
 
 /// <summary>
@@ -25,7 +27,11 @@ public static class Core
     private static (string[]?, int?) s_title;
     private static TextStyler s_styler = new();
     private static (char, char) s_Selector = ('▶', '◀');
+
+    [Visual]
     private static int s_previousWindowWidth = Console.WindowWidth;
+
+    [Visual]
     private static int s_previousWindowHeight = Console.WindowHeight;
     private static (ConsoleColor, ConsoleColor) s_colorPanel = (
         ConsoleColor.White,
@@ -35,6 +41,8 @@ public static class Core
         s_colorPanel.Item1,
         s_colorPanel.Item2
     );
+
+    [Visual]
     private static (ConsoleColor, ConsoleColor) s_terminalColorPanel = (
         Console.ForegroundColor,
         Console.BackgroundColor
@@ -120,6 +128,7 @@ public static class Core
     /// </summary>
     /// <returns>True if the screen has been updated, false otherwise.</returns>
     /// <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
+    [Visual]
     public static bool IsScreenUpdated =>
         Console.WindowWidth != s_previousWindowWidth
         || Console.WindowHeight != s_previousWindowHeight
@@ -203,6 +212,18 @@ public static class Core
     public static void LoadSavedColorPanel() => s_colorPanel = s_savedColorPanel;
 
     /// <summary>
+    /// This method is used to load the terminal color panel.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void LoadTerminalColorPanel() => s_colorPanel = s_terminalColorPanel;
+
+    /// <summary>
     /// This method is used to set the dimensions of the console to the Core variables associated. This does not change the actual dimensions of the console.
     /// </summary>
     /// <remarks>
@@ -212,6 +233,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void SetConsoleDimensions()
     {
         s_previousWindowWidth = Console.WindowWidth;
@@ -464,6 +486,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void WritePositionedString(
         string str,
         TextAlignment align = TextAlignment.Center,
@@ -545,6 +568,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void WriteContinuousString(
         string str,
         int? line,
@@ -603,6 +627,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void WritePositionedStyledText(
         string[]? text = null,
         int? line = null,
@@ -663,7 +688,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    [Visual("test")]
+    [Visual]
     public static void WriteMultiplePositionedLines(
         bool equalizeLengths = true,
         TextAlignment align = TextAlignment.Center,
@@ -1275,6 +1300,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static string BannerToString(this (string, string, string) banner) =>
         " "
         + banner.Item1
@@ -1305,7 +1331,7 @@ public static class Core
         if (negStart == -1 || negEnd == -1)
             return (str, null);
 
-        negEnd = negEnd - NEGATIVE_ANCHOR.Length;
+        negEnd -= NEGATIVE_ANCHOR.Length;
         string newStr = str.Replace(NEGATIVE_ANCHOR, "");
         return (newStr, (negStart, negEnd));
     }

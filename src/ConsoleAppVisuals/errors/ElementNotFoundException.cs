@@ -58,11 +58,7 @@ public class ElementNotFoundException : Exception, ISerializable
         {
             throw new ArgumentNullException(nameof(info));
         }
-
-        // Call the base class implementation to add the Message, InnerException, StackTrace, etc.
         base.GetObjectData(info, context);
-
-        // Add any custom data here.
     }
 
     private string GetDebuggerDisplay()

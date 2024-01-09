@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// Exception thrown when no data is found in a file.
+/// Exception thrown when a character is not supported by the TextStyler class.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -16,18 +16,18 @@ namespace ConsoleAppVisuals;
 /// </remarks>
 [Serializable]
 [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
-public class EmptyFileException : Exception, ISerializable
+public class NotSupportedCharException : Exception, ISerializable
 {
     /// <summary>
     /// Default constructor.
     /// </summary>
-    public EmptyFileException() { }
+    public NotSupportedCharException() { }
 
     /// <summary>
     /// Constructor with message.
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
-    public EmptyFileException(string message)
+    public NotSupportedCharException(string message)
         : base(message) { }
 
     /// <summary>
@@ -35,7 +35,7 @@ public class EmptyFileException : Exception, ISerializable
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
     /// <param name="inner">Inner exception.</param>
-    public EmptyFileException(string message, Exception inner)
+    public NotSupportedCharException(string message, Exception inner)
         : base(message, inner) { }
 
     /// <summary>
@@ -43,7 +43,7 @@ public class EmptyFileException : Exception, ISerializable
     /// </summary>
     /// <param name="info">Serialization info.</param>
     /// <param name="context">Streaming context.</param>
-    protected EmptyFileException(SerializationInfo info, StreamingContext context)
+    protected NotSupportedCharException(SerializationInfo info, StreamingContext context)
         : base(info, context) { }
 
     /// <summary>

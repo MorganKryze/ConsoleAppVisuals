@@ -759,6 +759,7 @@ public static class Window
     /// </remarks>
     public static void Close()
     {
+        Core.LoadTerminalColorPanel();
         Clear(true);
         Console.CursorVisible = true;
         Environment.Exit(0);

@@ -7,6 +7,10 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// A matrix class for the console.
 /// </summary>
+[Obsolete(
+    "This class is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+    false
+)]
 public class MatrixLegacy<T>
 {
     #region Fields: Lines, display array, rounded corners

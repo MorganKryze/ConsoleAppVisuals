@@ -9,20 +9,16 @@ namespace ConsoleAppVisuals;
 /// </summary>
 /// <remarks> [ WARNING ] This element cannot be tested. </remarks>
 [AttributeUsage(
-    AttributeTargets.Class
-        | AttributeTargets.Struct
-        | AttributeTargets.Enum
-        | AttributeTargets.Constructor
-        | AttributeTargets.Method
-        | AttributeTargets.Property
-        | AttributeTargets.Field
-        | AttributeTargets.Event
-        | AttributeTargets.Interface
-        | AttributeTargets.Delegate,
+    AttributeTargets.All,
     Inherited = false
 )]
 public sealed class VisualAttribute : Attribute
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="VisualAttribute"/> class.
+    /// </summary>
+    public VisualAttribute() { }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="VisualAttribute"/> class with a specified workaround message.
     /// </summary>

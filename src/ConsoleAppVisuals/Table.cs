@@ -7,6 +7,10 @@ namespace ConsoleAppVisuals;
 /// <summary>
 /// The <see cref="Table{T}"/> class that contains the methods to create a table and display it.
 /// </summary>
+[Obsolete(
+    "This class is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
+    false
+)]
 public class Table<T>
 {
     #region Fields: title, headers, lines, display array, rounded corners
