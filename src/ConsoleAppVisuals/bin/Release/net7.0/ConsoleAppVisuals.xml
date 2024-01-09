@@ -10,6 +10,11 @@
             </summary>
             <remarks> [ WARNING ] This element cannot be tested. </remarks>
         </member>
+        <member name="M:ConsoleAppVisuals.VisualAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConsoleAppVisuals.VisualAttribute"/> class.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.VisualAttribute.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:ConsoleAppVisuals.VisualAttribute"/> class with a specified workaround message.
@@ -149,6 +154,18 @@
         <member name="M:ConsoleAppVisuals.Core.LoadSavedColorPanel">
             <summary>
             This method is used to load the saved color panel.
+            </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Core.LoadTerminalColorPanel">
+            <summary>
+            This method is used to load the terminal color panel.
             </summary>
             <remarks>
             For more information, refer to the following resources:
@@ -2043,6 +2060,51 @@
             <param name="context">Streaming context.</param>
         </member>
         <member name="M:ConsoleAppVisuals.EmptyFileException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Get object data for serialization.
+            </summary>
+            <param name="info">Serialization info.</param>
+            <param name="context">Streaming context.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:ConsoleAppVisuals.NotSupportedCharException">
+            <summary>
+            Exception thrown when a character is not supported by the TextStyler class.
+            </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.NotSupportedCharException.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.NotSupportedCharException.#ctor(System.String)">
+            <summary>
+            Constructor with message.
+            </summary>
+            <param name="message">Message to be displayed.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.NotSupportedCharException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor with message and inner exception.
+            </summary>
+            <param name="message">Message to be displayed.</param>
+            <param name="inner">Inner exception.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.NotSupportedCharException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization constructor.
+            </summary>
+            <param name="info">Serialization info.</param>
+            <param name="context">Streaming context.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.NotSupportedCharException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
             Get object data for serialization.
             </summary>

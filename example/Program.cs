@@ -462,8 +462,9 @@ namespace example
                             Window.AddListWindowElements(); // Add one of the three items
                             Window.Refresh();
                             Window.StopExecution();
-                            Window.GetElement<TableView<string>>()?.Clear(); // This will clear the space taken by the item
+                            Window.DeactivateElement<TableView<string>>(); // This will deactivate the table
 
+                            Window.Refresh();
                             Window.OnResize();
                             Window.RemoveLibraryElement<TableView<string>>(); // This will manually remove the item from the window
                             goto Menu;

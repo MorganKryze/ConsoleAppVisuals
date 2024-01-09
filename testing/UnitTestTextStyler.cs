@@ -8,6 +8,8 @@ namespace testing
     public class UnitTestTextStyler
     {
         private readonly TextStyler styler = new();
+
+        #region Constructor
         [TestMethod]
         public void TestConstructorWithNullFontPath()
         {
@@ -43,6 +45,15 @@ namespace testing
             var stylerCustom = new TextStyler(path);
             Assert.AreEqual(styler.Dictionary['a'], stylerCustom.Dictionary['a']);
         }
+        [TestMethod]
+        [ExpectedException(typeof(EmptyFileException))]
+        [DataRow("../../../resources/fonts/Throw_Error/")]
+        public void Test_ConfigFileEmpty(string path)
+        {
+            
+            TextStyler emptyStyler = new(path); // Here should the error be thrown
+            emptyStyler.StyleTextToString("Hello World!");
+        }
 
         [TestMethod]
         [ExpectedException(typeof(DirectoryNotFoundException))]
@@ -51,7 +62,9 @@ namespace testing
         {
             new TextStyler(path);
         }
+        #endregion
 
+        #region StyleTextToString
         [TestMethod]
         [DataRow("Hello World")]
         public void TestStyleTextToString(string value)
@@ -61,6 +74,15 @@ namespace testing
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NotSupportedCharException))]
+        public void Test_UnsupportedCharString()
+        {
+            styler.StyleTextToString("Hello World! +=è$%&/()=?^*[]{}@#|");
+        }
+        #endregion
+
+        #region StyleTextToStringArray
+        [TestMethod]
         [DataRow("Hello World")]
         public void TestStyleTextToStringArray(string value)
         {
@@ -69,10 +91,28 @@ namespace testing
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NotSupportedCharException))]
+        public void Test_UnsupportedCharArray()
+        {
+            styler.StyleTextToStringArray("Hello World! +=è$%&/()=?^*[]{}@#|");
+        }
+        #endregion
+
+        #region General
+        [TestMethod]
         public void TestToString()
         {
             string result = styler.ToString();
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void TestEquals()
+        {
+            Assert.IsTrue(styler.Equals(styler));
+            Assert.IsFalse(styler.Equals(null));
+            Assert.IsFalse(styler.Equals(new TextStyler()));
+        }
+        #endregion
     }
 }

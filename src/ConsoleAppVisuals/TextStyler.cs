@@ -164,9 +164,7 @@ public class TextStyler
                     dictionary[c].Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 );
             else
-                lines.Add(
-                    dictionary[' '].Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                );
+                throw new NotSupportedCharException($"The character '{c}' is not supported.");
         }
 
         var sb = new StringBuilder();
@@ -205,9 +203,7 @@ public class TextStyler
                     dictionary[c].Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 );
             else
-                lines.Add(
-                    dictionary[' '].Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                );
+                throw new NotSupportedCharException($"The character '{c}' is not supported.");
         }
 
         var result = new List<string>();
