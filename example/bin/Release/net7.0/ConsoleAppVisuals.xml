@@ -2818,6 +2818,11 @@
             Gives the number of elements in the window.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.Window.Elements">
+            <summary>
+            Gives the list of elements in the window.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.Window.GetElement``1">
             <summary>
             This method returns the first element of the given type.
@@ -2908,6 +2913,8 @@
             This method removes the given element.
             </summary>
             <param name="element">The element to be removed.</param>
+            <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
+            <returns>True if the element is successfully removed, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -2922,6 +2929,7 @@
             </summary>
             <typeparam name="T">The type of the element.</typeparam>
             <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
+            <returns>True if the element is successfully removed, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -2936,6 +2944,8 @@
             </summary>
             <typeparam name="T">The type of the element.</typeparam>
             <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown when the element is not created by the library.</exception>
+            <returns>True if the element is successfully removed, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">

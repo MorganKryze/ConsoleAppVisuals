@@ -20,6 +20,7 @@ public static class Window
     /// <summary>
     /// This method sets up the window without the need to call it.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     static Window()
     {
         Console.Clear();
@@ -48,6 +49,11 @@ public static class Window
     /// Gives the number of elements in the window.
     /// </summary>
     public static int CountElements => s_elements.Count;
+
+    /// <summary>
+    /// Gives the list of elements in the window.
+    /// </summary>
+    public static List<Element> Elements => s_elements;
     #endregion
 
     #region Basic Methods: Get, Add, Insert, Remove, RemoveAll
@@ -179,6 +185,8 @@ public static class Window
     /// This method removes the given element.
     /// </summary>
     /// <param name="element">The element to be removed.</param>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <returns>True if the element is successfully removed, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -186,17 +194,15 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RemoveElement(Element element)
+    public static bool RemoveElement(Element element)
     {
-        if (element is null || s_elements.Contains(element))
+        if (!s_elements.Contains(element))
         {
-            throw new ArgumentOutOfRangeException(
-                nameof(element),
-                "Invalid element. Not found in the window."
-            );
+            throw new ElementNotFoundException("Invalid element. Not found in the window.");
         }
-        s_elements.Remove(element);
+        var state = s_elements.Remove(element);
         UpdateIDs();
+        return state;
     }
 
     /// <summary>
@@ -204,6 +210,7 @@ public static class Window
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <returns>True if the element is successfully removed, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -211,14 +218,15 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RemoveElement<T>()
+    public static bool RemoveElement<T>()
         where T : Element
     {
         var element =
             GetElement<T>()
             ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
-        s_elements.Remove(element);
+        var state = s_elements.Remove(element);
         UpdateIDs();
+        return state;
     }
 
     /// <summary>
@@ -226,6 +234,8 @@ public static class Window
     /// </summary>
     /// <typeparam name="T">The type of the element.</typeparam>
     /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when the element is not created by the library.</exception>
+    /// <returns>True if the element is successfully removed, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -233,7 +243,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RemoveLibraryElement<T>()
+    public static bool RemoveLibraryElement<T>()
         where T : Element
     {
         var element =
@@ -241,9 +251,11 @@ public static class Window
             ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
         if (element.ElementSource == Source.Library)
         {
-            s_elements.Remove(element);
+            var state = s_elements.Remove(element);
             UpdateIDs();
+            return state;
         }
+        throw new InvalidOperationException("Invalid element. Not created by the library.");
     }
 
     /// <summary>
@@ -276,6 +288,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void ActivateElement(int id, bool render = true)
     {
         if (id < 0 || id >= s_elements.Count)
@@ -305,6 +318,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void ActivateElement<T>(bool render = true)
         where T : Element
     {
@@ -336,6 +350,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static InteractionEventArgs<TResponse>? GetResponse<T, TResponse>(bool clear = true)
         where T : InteractiveElement<TResponse>
     {
@@ -693,7 +708,7 @@ public static class Window
         {
             throw new ElementNotFoundException("Invalid element. Not found in the window.");
         }
-        
+
         element.RenderElement();
     }
 
@@ -727,7 +742,6 @@ public static class Window
             Refresh();
         }
     }
-
 
     /// <summary>
     /// This method draws all the space of the elements of the window on the console.
@@ -941,7 +955,14 @@ public static class Window
                 && !assembly.FullName.StartsWith("Microsoft")
             )
             {
-                types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element)) && t != typeof(InteractiveElement<>)));
+                types.AddRange(
+                    assembly
+                        .GetTypes()
+                        .Where(
+                            t =>
+                                t.IsSubclassOf(typeof(Element)) && t != typeof(InteractiveElement<>)
+                        )
+                );
             }
         }
         TableView<string> table =
