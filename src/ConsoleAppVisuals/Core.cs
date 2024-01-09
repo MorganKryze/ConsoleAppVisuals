@@ -17,7 +17,7 @@ public static class Core
     #endregion
 
     #region Attributes
-    
+
     [Obsolete(
         "This field is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
         false
@@ -40,7 +40,7 @@ public static class Core
         Console.BackgroundColor
     );
     private static (ConsoleColor, ConsoleColor) s_savedColorPanel;
-    
+
     [Obsolete(
         "This field is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
         false
@@ -72,7 +72,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the title.
     /// </summary>
-    
+
     [Obsolete(
         "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
         false
@@ -82,7 +82,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the header.
     /// </summary>
-    
+
     [Obsolete(
         "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
         false
@@ -92,7 +92,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the height of the footer.
     /// </summary>
-    
+
     [Obsolete(
         "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
         false
@@ -102,7 +102,7 @@ public static class Core
     /// <summary>
     /// This property is used to get the start line of the content.
     /// </summary>
-    
+
     [Obsolete(
         "This method is deprecated, please use the Window class elements instead. will be removed on v3.1.0",
         false
@@ -139,7 +139,10 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void SetSelector(char onward, char backward) => s_Selector = (onward, backward);
+    public static void SetSelector(char onward, char backward)
+    {
+        s_Selector = (onward, backward);
+    }
 
     /// <summary>
     /// This method changes the font color of the console.
@@ -239,7 +242,10 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void SetStyler(string path) => s_styler = new TextStyler(path);
+    public static void SetStyler(string path)
+    {
+        s_styler = new TextStyler(path);
+    }
 
     /// <summary>
     /// This method is used to style a string.
@@ -606,18 +612,18 @@ public static class Core
         bool negative = false
     )
     {
-        line ??= ContentHeight;
+        line ??= Console.CursorTop;
         margin ??= 0;
         if (text is not null)
         {
-            Console.SetCursorPosition(0, line ?? ContentHeight);
+            Console.SetCursorPosition(0, line ?? Window.GetLineAvailable(align.ToPlacement()));
 
             for (int i = 0; i < margin; i++)
                 WritePositionedString(
                     "".ResizeString(width ?? Console.WindowWidth, align),
                     align,
                     negative,
-                    (line ?? ContentHeight) + i,
+                    (line ?? Window.GetLineAvailable(align.ToPlacement())) + i,
                     true
                 );
             for (int i = 0; i < text.Length; i++)
@@ -625,7 +631,7 @@ public static class Core
                     text[i].ResizeString(width ?? Console.WindowWidth, align),
                     align,
                     negative,
-                    (line ?? ContentHeight) + margin + i,
+                    (line ?? Window.GetLineAvailable(align.ToPlacement())) + margin + i,
                     true
                 );
             for (int i = 0; i < margin; i++)
@@ -633,7 +639,10 @@ public static class Core
                     "".ResizeString(width ?? Console.WindowWidth, align),
                     align,
                     negative,
-                    (line ?? ContentHeight) + margin + text.Length + i,
+                    (line ?? Window.GetLineAvailable(align.ToPlacement()))
+                        + margin
+                        + text.Length
+                        + i,
                     true
                 );
         }
@@ -654,6 +663,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual("test")]
     public static void WriteMultiplePositionedLines(
         bool equalizeLengths = true,
         TextAlignment align = TextAlignment.Center,
@@ -662,7 +672,7 @@ public static class Core
         params string[] text
     )
     {
-        line ??= ContentHeight;
+        line ??= Console.CursorTop;
         if (equalizeLengths)
         {
             int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
@@ -1146,6 +1156,13 @@ public static class Core
     /// <param name="align">The alignment of the string.</param>
     /// <param name="truncate">If true, the string is truncated if it is too long.</param>
     /// <returns>The built string.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static string ResizeString(
         this string str,
         int size,
@@ -1186,6 +1203,13 @@ public static class Core
     /// <param name="position">The placement of the string to insert.</param>
     /// <param name="truncate">Whether or not the string is truncate.</param>
     /// <returns>The final string after computing.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static string InsertString(
         this string inserted,
         string toInsert,
@@ -1244,6 +1268,13 @@ public static class Core
     /// </summary>
     /// <param name="banner">The banner tuple.</param>
     /// <returns>Converts the banner to a string.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static string BannerToString(this (string, string, string) banner) =>
         " "
         + banner.Item1
@@ -1260,6 +1291,13 @@ public static class Core
     /// </summary>
     /// <param name="str">The string to check.</param>
     /// <returns>The string without the negative anchors and the range of the negative sequence.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static (string, (int, int)?) GetRangeAndRemoveNegativeAnchors(this string str)
     {
         int negStart = str.IndexOf(NEGATIVE_ANCHOR);
@@ -1278,6 +1316,13 @@ public static class Core
     /// <param name="placement">The placement to convert.</param>
     /// <returns>The converted placement.</returns>
     /// <exception cref="ArgumentException">Thrown when the placement is not valid.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static TextAlignment ToTextAlignment(this Placement placement)
     {
         return placement switch
@@ -1297,6 +1342,13 @@ public static class Core
     /// <param name="align">The alignment to convert.</param>
     /// <returns>The converted alignment.</returns>
     /// <exception cref="ArgumentException">Thrown when the alignment is not valid.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public static Placement ToPlacement(this TextAlignment align)
     {
         return align switch
