@@ -5,9 +5,6 @@ env:
 
 on:
   push:
-    branches:
-    - main
-    - dev
     
 jobs:
   build-and-test:
@@ -33,7 +30,15 @@ jobs:
       run: dotnet build -c Release
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
-
+    - name: Adding dotnet tools
+      run: dotnet tool restore
+    - name: Generate test results using coverlet
+      run: coverlet testing/bin/Release/net7.0/testing.dll --target "dotnet" --targetargs "test -c Release --no-build" --format opencover
+    - name: Coveralls upload
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: ./coverage.opencover.xml
 
   publish-docs:
     needs: build-and-test
