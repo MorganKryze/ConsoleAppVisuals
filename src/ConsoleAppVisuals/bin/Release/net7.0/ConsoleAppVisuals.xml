@@ -1699,13 +1699,14 @@
             This property returns the maximum number of this element that can be displayed on the console.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.TableView`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
             The <see cref="T:ConsoleAppVisuals.Table`1"/> natural constructor.
             </summary>
             <param name="title">The title of the table.</param>
-            <param name="lines">The lines of the table.</param>
             <param name="headers">The headers of the table.</param>
+            <param name="lines">The lines of the table.</param>
+            <param name="roundedCorners">The rounded corners of the table.</param>
             <param name="placement">The placement of the table.</param>
             <param name="line">The line to display the table on.</param>
             <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
@@ -1715,6 +1716,29 @@
         <member name="P:ConsoleAppVisuals.TableView`1.Count">
             <summary>
             This property returns the number of lines in the table.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.TableView`1.SetRoundedCorners(System.Boolean)">
+            <summary>
+            Toggles the rounded corners of the table.
+            </summary>
+            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.TableView`1.AddTitle(System.String)">
+            <summary>
+            This method adds a title to the table.
+            </summary>
+            <param name="title">The title to add.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.TableView`1.UpdateTitle(System.String)">
+            <summary>
+            This method updates the title of the table.
+            </summary>
+            <param name="title">The title to update.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.TableView`1.ClearTitle">
+            <summary>
+            This method clears the title of the table.
             </summary>
         </member>
         <member name="M:ConsoleAppVisuals.TableView`1.AddHeaders(System.Collections.Generic.List{System.String})">
@@ -1729,23 +1753,41 @@
             </summary>
             <param name="headers">The headers to update.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.AddTitle(System.String)">
+        <member name="M:ConsoleAppVisuals.TableView`1.ClearHeaders">
             <summary>
-            This method adds a title to the table.
+            This method clears the headers of the table.
             </summary>
-            <param name="title">The title to add.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.UpdateTitle(System.String)">
+        <member name="M:ConsoleAppVisuals.TableView`1.AddLine(System.Collections.Generic.List{`0})">
             <summary>
-            This method updates the title of the table.
+            This method adds a line to the table.
             </summary>
-            <param name="title">The title to update.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.SetRoundedCorners(System.Boolean)">
-            <summary>
-            Toggles the rounded corners of the table.
-            </summary>
+            <param name="line">The line to add.</param>
+            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
             <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.TableView`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
+            <summary>
+            This method updates a line in the table.
+            </summary>
+            <param name="index">The index of the line to update.</param>
+            <param name="line">The new line.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.TableView`1.RemoveLine(System.Int32)">
+            <summary>
+            This method removes a line from the table.
+            </summary>
+            <param name="index">The index of the line to remove.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.TableView`1.ClearLines">
+            <summary>
+            This method clears the lines of the table.
+            </summary>
         </member>
         <member name="M:ConsoleAppVisuals.TableView`1.GetLine(System.Int32)">
             <summary>
@@ -1772,42 +1814,6 @@
             <returns>The elements of the column.</returns>
             <exception cref="T:System.InvalidOperationException">Is thrown when the table is empty.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
-        </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.AddLine(System.Collections.Generic.List{`0})">
-            <summary>
-            This method adds a line to the table.
-            </summary>
-            <param name="line">The line to add.</param>
-            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.RemoveLine(System.Int32)">
-            <summary>
-            This method removes a line from the table.
-            </summary>
-            <param name="index">The index of the line to remove.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
-            <summary>
-            This method updates a line in the table.
-            </summary>
-            <param name="index">The index of the line to update.</param>
-            <param name="line">The new line.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.ClearHeaders">
-            <summary>
-            This method clears the headers of the table.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.TableView`1.ClearLines">
-            <summary>
-            This method clears the lines of the table.
-            </summary>
         </member>
         <member name="M:ConsoleAppVisuals.TableView`1.Reset">
             <summary>

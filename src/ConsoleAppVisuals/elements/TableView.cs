@@ -14,10 +14,9 @@ public class TableView<T> : Element
     private List<string>? _rawHeaders;
     private List<List<T>>? _rawLines;
     private string[]? _displayArray;
-    private bool _roundedCorners = true;
+    private bool _roundedCorners;
     private readonly int _line;
     private readonly Placement _placement;
-
     #endregion
 
     #region Properties: get headers, get lines
@@ -63,8 +62,9 @@ public class TableView<T> : Element
     /// The <see cref="Table{T}"/> natural constructor.
     /// </summary>
     /// <param name="title">The title of the table.</param>
-    /// <param name="lines">The lines of the table.</param>
     /// <param name="headers">The headers of the table.</param>
+    /// <param name="lines">The lines of the table.</param>
+    /// <param name="roundedCorners">The rounded corners of the table.</param>
     /// <param name="placement">The placement of the table.</param>
     /// <param name="line">The line to display the table on.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
@@ -74,6 +74,7 @@ public class TableView<T> : Element
         string? title = null,
         List<string>? headers = null,
         List<List<T>>? lines = null,
+        bool roundedCorners = true,
         Placement placement = Placement.TopCenter,
         int? line = null
     )
@@ -81,6 +82,7 @@ public class TableView<T> : Element
         _title = title;
         _rawHeaders = headers;
         _rawLines = lines;
+        _roundedCorners = roundedCorners;
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         if (CompatibilityCheck())
@@ -123,7 +125,6 @@ public class TableView<T> : Element
                 );
             }
         }
-
         return true;
     }
 
@@ -145,11 +146,8 @@ public class TableView<T> : Element
                     );
                 }
             }
-
-            return true;
         }
-
-        return false;
+        return true;
     }
     #endregion
 
@@ -396,7 +394,7 @@ public class TableView<T> : Element
     }
     #endregion
 
-    #region Properties: get corners, count
+    #region Properties: GetCorners, Count
     private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
 
     /// <summary>
@@ -408,29 +406,13 @@ public class TableView<T> : Element
 
     #region Methods: Get, Add, Update, Remove, Clear
     /// <summary>
-    /// This method adds headers to the table.
+    /// Toggles the rounded corners of the table.
     /// </summary>
-    /// <param name="headers">The headers to add.</param>
-    public void AddHeaders(List<string> headers)
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    public void SetRoundedCorners(bool rounded = true)
     {
-        _rawHeaders = headers;
-        if (CompatibilityCheck())
-        {
-            BuildTable();
-        }
-        else
-        {
-            _rawHeaders = null;
-        }
-    }
-
-    /// <summary>
-    /// This method updates the headers of the table.
-    /// </summary>
-    /// <param name="headers">The headers to update.</param>
-    public void UpdateHeaders(List<string> headers)
-    {
-        AddHeaders(headers);
+        _roundedCorners = rounded;
+        BuildTable();
     }
 
     /// <summary>
@@ -453,12 +435,121 @@ public class TableView<T> : Element
     }
 
     /// <summary>
-    /// Toggles the rounded corners of the table.
+    /// This method clears the title of the table.
     /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void SetRoundedCorners(bool rounded = true)
+    public void ClearTitle()
     {
-        _roundedCorners = rounded;
+        _title = null;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// This method adds headers to the table.
+    /// </summary>
+    /// <param name="headers">The headers to add.</param>
+    public void AddHeaders(List<string> headers)
+    {
+        _rawHeaders = headers;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+    }
+
+    /// <summary>
+    /// This method updates the headers of the table.
+    /// </summary>
+    /// <param name="headers">The headers to update.</param>
+    public void UpdateHeaders(List<string> headers)
+    {
+        AddHeaders(headers);
+    }
+
+    /// <summary>
+    /// This method clears the headers of the table.
+    /// </summary>
+    public void ClearHeaders()
+    {
+        _rawHeaders = null;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// This method adds a line to the table.
+    /// </summary>
+    /// <param name="line">The line to add.</param>
+    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    public void AddLine(List<T> line)
+    {
+        if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
+        {
+            throw new ArgumentException(
+                "The number of columns in the table is not consistent with other lines."
+            );
+        }
+        if (_rawHeaders is not null && line.Count != _rawHeaders.Count)
+        {
+            throw new ArgumentException(
+                "The number of columns in the table is not consistent with the headers."
+            );
+        }
+        _rawLines ??= new List<List<T>>();
+        _rawLines.Add(line);
+        BuildTable();
+    }
+
+    /// <summary>
+    /// This method updates a line in the table.
+    /// </summary>
+    /// <param name="index">The index of the line to update.</param>
+    /// <param name="line">The new line.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    public void UpdateLine(int index, List<T> line)
+    {
+        if (_rawLines?.Count > 0)
+        {
+            if (index < 0 || index >= _rawLines.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
+            }
+
+            if (line.Count != _rawHeaders?.Count)
+            {
+                throw new ArgumentException(
+                    "The number of columns in the table is not consistent."
+                );
+            }
+        }
+        _rawLines![index] = line;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// This method removes a line from the table.
+    /// </summary>
+    /// <param name="index">The index of the line to remove.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    public void RemoveLine(int index)
+    {
+        if (_rawLines?.Count > 0 && (index < 0 || index >= _rawLines.Count))
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
+        }
+
+        _rawLines?.RemoveAt(index);
+        BuildTable();
+    }
+
+    /// <summary>
+    /// This method clears the lines of the table.
+    /// </summary>
+    public void ClearLines()
+    {
+        _rawLines = null;
         BuildTable();
     }
 
@@ -530,94 +621,6 @@ public class TableView<T> : Element
     }
 
     /// <summary>
-    /// This method adds a line to the table.
-    /// </summary>
-    /// <param name="line">The line to add.</param>
-    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void AddLine(List<T> line)
-    {
-        if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
-        {
-            throw new ArgumentException(
-                "The number of columns in the table is not consistent with other lines."
-            );
-        }
-        if (_rawHeaders is not null && line.Count != _rawHeaders.Count)
-        {
-            throw new ArgumentException(
-                "The number of columns in the table is not consistent with the headers."
-            );
-        }
-        _rawLines ??= new List<List<T>>();
-        _rawLines.Add(line);
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method removes a line from the table.
-    /// </summary>
-    /// <param name="index">The index of the line to remove.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void RemoveLine(int index)
-    {
-        if (_rawLines?.Count > 0 && (index < 0 || index >= _rawLines.Count))
-        {
-            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
-        }
-
-        _rawLines?.RemoveAt(index);
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method updates a line in the table.
-    /// </summary>
-    /// <param name="index">The index of the line to update.</param>
-    /// <param name="line">The new line.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void UpdateLine(int index, List<T> line)
-    {
-        if (_rawLines?.Count > 0)
-        {
-            if (index < 0 || index >= _rawLines.Count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
-            }
-
-            if (line.Count != _rawHeaders?.Count)
-            {
-                throw new ArgumentException(
-                    "The number of columns in the table is not consistent."
-                );
-            }
-        }
-        _rawLines![index] = line;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method clears the headers of the table.
-    /// </summary>
-    public void ClearHeaders()
-    {
-        _rawHeaders = null;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method clears the lines of the table.
-    /// </summary>
-    public void ClearLines()
-    {
-        _rawLines = null;
-        BuildTable();
-    }
-
-    /// <summary>
     /// This method clears the table.
     /// </summary>
     public void Reset()
@@ -639,12 +642,7 @@ public class TableView<T> : Element
         for (int j = 0; j < _displayArray.Length; j++)
         {
             array[j] = _displayArray[j];
-            Core.WritePositionedString(
-                array[j],
-                _placement.ToTextAlignment(),
-                false,
-                _line + j
-            );
+            Core.WritePositionedString(array[j], _placement.ToTextAlignment(), false, _line + j);
         }
     }
     #endregion

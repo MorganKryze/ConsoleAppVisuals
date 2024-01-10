@@ -826,6 +826,7 @@ public static class Window
                     "Source"
                 },
                 null,
+                true,
                 placement
             )
             {
@@ -931,7 +932,13 @@ public static class Window
             }
         }
         TableView<string> table =
-            new("Element Classes", new List<string> { "Id", "Type", "Project" }, null, placement);
+            new(
+                "Element Classes",
+                new List<string> { "Id", "Type", "Project" },
+                null,
+                true,
+                placement
+            );
         var id = 0;
         foreach (var type in types)
         {
@@ -1035,6 +1042,7 @@ public static class Window
                 "Interactive Element Classes",
                 new List<string> { "Id", "Type", "Project" },
                 null,
+                true,
                 placement
             );
         var id = 0;
