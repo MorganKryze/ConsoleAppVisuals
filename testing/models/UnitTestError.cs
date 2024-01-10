@@ -5,7 +5,7 @@
 namespace testing;
 
 [TestClass]
-public class UnitTestErrors
+public class UnitTestError
 {
     #region ElementNotFoundException
     [TestMethod]
