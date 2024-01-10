@@ -540,11 +540,11 @@ public class UnitTestWindow
     public void Test_GetLineAvailable()
     {
         // Arrange
-        var table1 = new TableView<string>("Title", null, null, Placement.TopLeft);
+        var table1 = new TableView<string>("Title", null, null, false, Placement.TopLeft);
         Window.AddElement(table1);
-        var table2 = new TableView<string>("Title", null, null, Placement.TopRight);
+        var table2 = new TableView<string>("Title", null, null, false, Placement.TopRight);
         Window.AddElement(table2);
-        var table3 = new TableView<string>("Title", null, null, Placement.TopCenter);
+        var table3 = new TableView<string>("Title", null, null, false, Placement.TopCenter);
         Window.AddElement(table3);
 
         // Act
