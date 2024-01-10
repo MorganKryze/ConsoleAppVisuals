@@ -1,5 +1,5 @@
 /*
-    MIT License 2023 MorganKryze
+    GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
 namespace ConsoleAppVisuals;
@@ -52,7 +52,7 @@ public class NotSupportedCharException : Exception, ISerializable
     /// <param name="info">Serialization info.</param>
     /// <param name="context">Streaming context.</param>
     /// <exception cref="ArgumentNullException"></exception>
-    public override void GetObjectData(SerializationInfo info, StreamingContext context)
+    public override void GetObjectData(SerializationInfo? info, StreamingContext context)
     {
         if (info == null)
         {
