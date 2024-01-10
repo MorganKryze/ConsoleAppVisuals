@@ -1484,6 +1484,11 @@
             A matrix class for the console.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.Matrix`1.RoundedCorners">
+            <summary>
+            Gets the rounded corners boolean value of the matrix.
+            </summary>
+        </member>
         <member name="P:ConsoleAppVisuals.Matrix`1.Count">
             <summary>
             Gets the number of lines in the matrix.
@@ -1520,34 +1525,57 @@
             <exception cref="T:System.ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
             <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Matrix`1.GetElement(ConsoleAppVisuals.Position)">
+        <member name="M:ConsoleAppVisuals.Matrix`1.SetRoundedCorners(System.Boolean)">
+            <summary>
+            Toggles the rounded corners of the table.
+            </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.GetItem(ConsoleAppVisuals.Position)">
             <summary>
             Gets the element at the specified position.
             </summary>
             <param name="position">The position of the element.</param>
             <returns>The element at the specified position.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
-        </member>
-        <member name="M:ConsoleAppVisuals.Matrix`1.SetRoundedCorners(System.Boolean)">
-            <summary>
-            Toggles the rounded corners of the table.
-            </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Matrix`1.AddLine(System.Collections.Generic.List{`0})">
             <summary>
             Adds a line to the matrix.
             </summary>
             <param name="line">The line to add.</param>
+            <returns>True if the line has been added successfully, false otherwise.</returns>
             <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Matrix`1.RemoveLine(System.Int32)">
+        <member name="M:ConsoleAppVisuals.Matrix`1.InsertLine(System.Int32,System.Collections.Generic.List{`0})">
             <summary>
-            Removes a line from the matrix.
+            Inserts a line at the specified index.
             </summary>
-            <param name="index">The index of the line to remove.</param>
+            <param name="index">The index of the line to insert.</param>
+            <param name="line">The line to insert.</param>
+            <returns>True if the line has been inserted successfully, false otherwise.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -1562,6 +1590,7 @@
             </summary>
             <param name="index">The index of the line to update.</param>
             <param name="line">The new line.</param>
+            <returns>True if the line has been updated successfully, false otherwise.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
             <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
             <remarks>
@@ -1572,11 +1601,13 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Matrix`1.Remove(ConsoleAppVisuals.Position)">
+        <member name="M:ConsoleAppVisuals.Matrix`1.UpdateItem(ConsoleAppVisuals.Position,`0)">
             <summary>
-            Removes an element from the matrix.
+            Updates an element in the matrix.
             </summary>
-            <param name="position">The position of the element to remove.</param>
+            <param name="position">The position of the element to update.</param>
+            <param name="item">The new element.</param>
+            <returns>True if the element has been updated successfully, false otherwise.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
             <remarks>
             For more information, refer to the following resources:
@@ -1586,12 +1617,27 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Matrix`1.UpdateElement(ConsoleAppVisuals.Position,`0)">
+        <member name="M:ConsoleAppVisuals.Matrix`1.RemoveLine(System.Int32)">
             <summary>
-            Updates an element in the matrix.
+            Removes a line from the matrix.
             </summary>
-            <param name="position">The position of the element to update.</param>
-            <param name="newElement">The new element.</param>
+            <param name="index">The index of the line to remove.</param>
+            <returns>True if the line has been removed successfully, false otherwise.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Matrix`1.RemoveItem(ConsoleAppVisuals.Position)">
+            <summary>
+            Removes an element from the matrix.
+            </summary>
+            <param name="position">The position of the element to remove.</param>
+            <returns>True if the element has been removed successfully, false otherwise.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
             <remarks>
             For more information, refer to the following resources:
@@ -1605,7 +1651,13 @@
             <summary>
             Writes the matrix instance to the console.
             </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="T:ConsoleAppVisuals.TableView`1">
             <summary>
@@ -3124,6 +3176,7 @@
             This method clears the window.
             </summary>
             <param name="continuous">If true, the window will be cleared continuously.</param>
+            <returns>True if the window is successfully cleared, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">

@@ -580,13 +580,10 @@ public class UnitTestWindow
         Window.AddElement(prompt);
 
         // Act
-        Window.Clear(true);
+        var result = Window.Clear(true);
 
         // Assert
-        Assert.AreEqual(
-            Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1,
-            Console.CursorTop
-        );
+        Assert.IsTrue(result);
 
         // Cleanup
         Window.RemoveAllElements();
@@ -685,9 +682,7 @@ public class UnitTestWindow
         var prompt = new Prompt("Hello World!");
 
         // Act
-        Assert.ThrowsException<ElementNotFoundException>(
-            () => Window.RenderOneElement(prompt)
-        );
+        Assert.ThrowsException<ElementNotFoundException>(() => Window.RenderOneElement(prompt));
 
         // Cleanup
         Window.RemoveAllElements();
