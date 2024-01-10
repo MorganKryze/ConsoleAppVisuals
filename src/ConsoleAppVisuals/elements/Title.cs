@@ -24,7 +24,10 @@ public class Title : Element
     #endregion
 
     #region Properties
-    private string[] StyledText => Core.StyleText(_text);
+    /// <summary>
+    /// 
+    /// </summary>
+    public string[] StyledText => Core.StyleText(_text);
     /// <summary>
     /// The placement of the title.
     /// </summary>
