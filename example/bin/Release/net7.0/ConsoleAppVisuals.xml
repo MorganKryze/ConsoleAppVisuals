@@ -3150,6 +3150,7 @@
             </summary>
             <param name="id">The id of the element.</param>
             <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the id is out of range.</exception>
+            <returns>True if the element is successfully drawn, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">

@@ -495,6 +495,7 @@ public static class Window
     #endregion
 
     #region Utility Methods: AllowVisibilityToggle, GetLineAvailable, Clear, StopExecution, RenderOne, Refresh
+    [ExcludeFromCodeCoverage]
     private static void UpdateIDs()
     {
         for (int i = 0; i < s_elements.Count; i++)
@@ -660,6 +661,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void StopExecution(ConsoleKey key = ConsoleKey.Enter)
     {
         // wait until the user presses a key
@@ -674,6 +676,7 @@ public static class Window
     /// </summary>
     /// <param name="id">The id of the element.</param>
     /// <exception cref="ElementNotFoundException">Thrown when the id is out of range.</exception>
+    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -681,13 +684,14 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RenderOneElement(int id)
+    public static bool RenderOneElement(int id)
     {
         if (id < 0 || id >= s_elements.Count)
         {
             throw new ElementNotFoundException("Invalid element ID.");
         }
         s_elements[id].RenderElement();
+        return true;
     }
 
     /// <summary>

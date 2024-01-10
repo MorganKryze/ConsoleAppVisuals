@@ -162,12 +162,8 @@ public class UnitTestWindow
         Window.AddElement(prompt);
 
         // Act
-        Assert.ThrowsException<ArgumentOutOfRangeException>(
-            () => Window.InsertElement(title, -1)
-        );
-        Assert.ThrowsException<ArgumentOutOfRangeException>(
-            () => Window.InsertElement(title, 2)
-        );
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.InsertElement(title, -1));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.InsertElement(title, 2));
 
         // Cleanup
         Window.RemoveAllElements();
@@ -357,7 +353,7 @@ public class UnitTestWindow
 
     #region AddElement
     [TestMethod]
-    public void AddElement_AddsElementToWindowElementsList()
+    public void Test_AddElement_AddsElementToWindowElementsList()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -372,7 +368,7 @@ public class UnitTestWindow
 
     #region DeactivateElement
     [TestMethod]
-    public void DeactivateElement_WithValidId()
+    public void Test_DeactivateElement_WithValidId()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -385,10 +381,13 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsFalse(element.Visibility);
+
+        // Cleanup
+        Window.RemoveAllElements();
     }
 
     [TestMethod]
-    public void DeactivateElement_WithInvalidId()
+    public void Test_DeactivateElement_WithInvalidId()
     {
         // Arrange
         int id = -1;
@@ -410,7 +409,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void DeactivateElement()
+    public void Test_DeactivateElement()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -422,7 +421,207 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsFalse(element.Visibility);
+
+        // Cleanup
+        Window.RemoveAllElements();
     }
 
+    [TestMethod]
+    public void Test_DeactivateElement_Clear()
+    {
+        // Arrange
+        var element = new Prompt("Hello World!");
+
+        //Act
+        Window.AddElement(element);
+        Window.ActivateElement(element.Id, false);
+        Window.DeactivateElement(element, true);
+
+        // Assert
+        Assert.IsFalse(element.Visibility);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_DeactivateElement_NotFound_ElementType()
+    {
+        // Assert
+        Assert.ThrowsException<ElementNotFoundException>(
+            () => Window.DeactivateElement<Prompt>(false)
+        );
+    }
+
+    [TestMethod]
+    public void Test_DeactivateElement_ElementType()
+    {
+        // Arrange
+        var element = new Prompt("Hello World!");
+
+        //Act
+        Window.AddElement(element);
+        Window.ActivateElement(element.Id, false);
+        Window.DeactivateElement<Prompt>(false);
+
+        // Assert
+        Assert.IsFalse(element.Visibility);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_DeactivateElement_ElementTypeClear()
+    {
+        // Arrange
+        var element = new Prompt("Hello World!");
+
+        //Act
+        Window.AddElement(element);
+        Window.ActivateElement(element.Id, false);
+        Window.DeactivateElement<Prompt>(true);
+
+        // Assert
+        Assert.IsFalse(element.Visibility);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_DeactivateAllElements()
+    {
+        // Arrange
+        var prompt = new Prompt("Hello World!");
+        Window.AddElement(prompt);
+
+        // Act
+        Window.ActivateAllElements();
+        Window.DeactivateAllElements();
+
+        // Assert
+        Assert.IsFalse(prompt.Visibility);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
+    #region General
+    [TestMethod]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.TopLeft)]
+    [DataRow(Placement.TopRight)]
+    [DataRow(Placement.TopCenterFullWidth)]
+    [DataRow(Placement.BottomCenterFullWidth)]
+    public void Test_GetLineAvailable(Placement placement)
+    {
+        // Arrange
+        var title = new Title("Title");
+        Window.AddElement(title);
+        var prompt = new Prompt("Hello World!");
+        Window.AddElement(prompt);
+
+        // Act
+        var line = Window.GetLineAvailable(placement);
+
+        // Assert
+        if (placement == Placement.BottomCenterFullWidth)
+            Assert.AreEqual(Console.WindowHeight, line);
+        else
+            Assert.AreEqual(8, line);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_GetLineAvailable_ibbfeizlfbizhe()
+    {
+        // Arrange
+        var table1 = new TableView<string>("Title", null, null, Placement.TopLeft);
+        Window.AddElement(table1);
+        var table2 = new TableView<string>("Title", null, null, Placement.TopRight);
+        Window.AddElement(table2);
+        var table3 = new TableView<string>("Title", null, null, Placement.TopCenter);
+        Window.AddElement(table3);
+
+        // Act
+        Window.ActivateAllElements();
+        var line = Window.GetLineAvailable(Placement.TopCenterFullWidth);
+
+        // Assert
+        Assert.AreEqual(0, line);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    [DataRow(null)]
+    [DataRow(2)]
+    [DataRow(-1)]
+    public void Test_CheckLine(int? line)
+    {
+        if (line == null)
+            Assert.IsNull(Window.CheckLine(line));
+        else if (line < 0)
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.CheckLine(line));
+        else
+            Assert.AreEqual(line, Window.CheckLine(line));
+    }
+
+    [TestMethod]
+    public void Test_Clear_True()
+    {
+        // Arrange
+        var prompt = new Prompt("Hello World!");
+        Window.AddElement(prompt);
+
+        // Act
+        Window.Clear(true);
+
+        // Assert
+        Assert.AreEqual(Console.WindowHeight - 1, Console.CursorTop);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
+    #region RenderElements
+    [TestMethod]
+    public void Test_RenderOneElement()
+    {
+        // Arrange
+        var title = new Title("Hello World!");
+        Window.AddElement(title);
+
+        // Act
+        var result = Window.RenderOneElement(title.Id);
+
+        // Assert
+        Assert.IsTrue(result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_RenderElement_InvalidId()
+    {
+        // Arrange
+        var title = new Title("Hello World!");
+        Window.AddElement(title);
+
+        // Act
+        Assert.ThrowsException<ElementNotFoundException>(
+            () => Window.RenderOneElement(title.Id + 1)
+        );
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
     #endregion
 }
