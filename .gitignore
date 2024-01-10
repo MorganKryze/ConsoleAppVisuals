@@ -11,5 +11,5 @@ testing/bin
 settings.json
 
 # Coverage
-coverage
-coverage.opencover
+coverage/*
+coverage.opencover.xml
