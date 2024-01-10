@@ -139,8 +139,8 @@ public abstract class Element
     /// <summary>
     /// This method is used to set options after drawing the element on the console.
     /// </summary>
-   [Visual]
-   protected virtual void RenderOptionsAfterHand() { }
+    [Visual]
+    protected virtual void RenderOptionsAfterHand() { }
 
     /// <summary>
     /// This method is used to draw the space taken by the element on the console.
