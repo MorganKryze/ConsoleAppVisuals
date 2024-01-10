@@ -1831,6 +1831,11 @@
             </list>
             </remarks>
         </member>
+        <member name="P:ConsoleAppVisuals.Title.StyledText">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:ConsoleAppVisuals.Title.Placement">
             <summary>
             The placement of the title.
