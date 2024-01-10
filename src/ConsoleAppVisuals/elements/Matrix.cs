@@ -21,6 +21,11 @@ public class Matrix<T> : Element
     private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
 
     /// <summary>
+    /// Gets the rounded corners boolean value of the matrix.
+    /// </summary>
+    public bool RoundedCorners => _roundedCorners;
+
+    /// <summary>
     /// Gets the number of lines in the matrix.
     /// </summary>
     public int Count => _lines.Count;
@@ -192,12 +197,38 @@ public class Matrix<T> : Element
 
     #region Methods
     /// <summary>
+    /// Toggles the rounded corners of the table.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void SetRoundedCorners(bool value = true)
+    {
+        _roundedCorners = value;
+        if (CompatibilityCheck())
+        {
+            BuildMatrix();
+        }
+    }
+
+    /// <summary>
     /// Gets the element at the specified position.
     /// </summary>
     /// <param name="position">The position of the element.</param>
     /// <returns>The element at the specified position.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
-    public T? GetElement(Position position)
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public T? GetItem(Position position)
     {
         if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
         {
@@ -207,39 +238,11 @@ public class Matrix<T> : Element
     }
 
     /// <summary>
-    /// Toggles the rounded corners of the table.
-    /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void SetRoundedCorners(bool value = true)
-    {
-        _roundedCorners = value;
-        BuildMatrix();
-    }
-
-    /// <summary>
     /// Adds a line to the matrix.
     /// </summary>
     /// <param name="line">The line to add.</param>
+    /// <returns>True if the line has been added successfully, false otherwise.</returns>
     /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    public void AddLine(List<T?> line)
-    {
-        if (line.Count != _lines[0].Count)
-        {
-            throw new ArgumentException(
-                "Line has a different number of elements than the existing lines."
-            );
-        }
-
-        _lines.Add(line);
-        BuildMatrix();
-    }
-
-    /// <summary>
-    /// Removes a line from the matrix.
-    /// </summary>
-    /// <param name="index">The index of the line to remove.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -247,14 +250,56 @@ public class Matrix<T> : Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void RemoveLine(int index)
+    public bool AddLine(List<T?> line)
+    {
+        if (_lines.Count == 0)
+        {
+            _lines.Add(line);
+        }
+        else if (line.Count != _lines[0].Count)
+        {
+            throw new ArgumentException(
+                "Line has a different number of elements than the existing lines."
+            );
+        }
+        else
+        {
+            _lines.Add(line);
+        }
+        BuildMatrix();
+        return true;
+    }
+
+    /// <summary>
+    /// Inserts a line at the specified index.
+    /// </summary>
+    /// <param name="index">The index of the line to insert.</param>
+    /// <param name="line">The line to insert.</param>
+    /// <returns>True if the line has been inserted successfully, false otherwise.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public bool InsertLine(int index, List<T?> line)
     {
         if (index < 0 || index >= _lines.Count)
         {
             throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
         }
-        _lines.RemoveAt(index);
+        else if (line.Count != _lines[0].Count)
+        {
+            throw new ArgumentException(
+                "Line has a different number of elements than the existing lines."
+            );
+        }
+        _lines.Insert(index, line);
         BuildMatrix();
+        return true;
     }
 
     /// <summary>
@@ -262,6 +307,7 @@ public class Matrix<T> : Element
     /// </summary>
     /// <param name="index">The index of the line to update.</param>
     /// <param name="line">The new line.</param>
+    /// <returns>True if the line has been updated successfully, false otherwise.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
     /// <remarks>
@@ -271,7 +317,7 @@ public class Matrix<T> : Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateLine(int index, List<T?> line)
+    public bool UpdateLine(int index, List<T?> line)
     {
         if (index < 0 || index >= _lines.Count)
         {
@@ -285,12 +331,15 @@ public class Matrix<T> : Element
         }
         _lines[index] = line;
         BuildMatrix();
+        return true;
     }
 
     /// <summary>
-    /// Removes an element from the matrix.
+    /// Updates an element in the matrix.
     /// </summary>
-    /// <param name="position">The position of the element to remove.</param>
+    /// <param name="position">The position of the element to update.</param>
+    /// <param name="item">The new element.</param>
+    /// <returns>True if the element has been updated successfully, false otherwise.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -299,7 +348,55 @@ public class Matrix<T> : Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void Remove(Position position)
+    public bool UpdateItem(Position position, T item)
+    {
+        if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(position), "Position is out of range.");
+        }
+        _lines[position.X][position.Y] = item;
+        BuildMatrix();
+        return true;
+    }
+
+    /// <summary>
+    /// Removes a line from the matrix.
+    /// </summary>
+    /// <param name="index">The index of the line to remove.</param>
+    /// <returns>True if the line has been removed successfully, false otherwise.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public bool RemoveLine(int index)
+    {
+        if (index < 0 || index >= _lines.Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "Index is out of range.");
+        }
+        _lines.RemoveAt(index);
+        BuildMatrix();
+        return true;
+    }
+
+    /// <summary>
+    /// Removes an element from the matrix.
+    /// </summary>
+    /// <param name="position">The position of the element to remove.</param>
+    /// <returns>True if the element has been removed successfully, false otherwise.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public bool RemoveItem(Position position)
     {
         if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
         {
@@ -307,14 +404,14 @@ public class Matrix<T> : Element
         }
         _lines[position.X][position.Y] = default(T);
         BuildMatrix();
+        return true;
     }
+    #endregion
 
+    #region Render Methods
     /// <summary>
-    /// Updates an element in the matrix.
+    /// Writes the matrix instance to the console.
     /// </summary>
-    /// <param name="position">The position of the element to update.</param>
-    /// <param name="newElement">The new element.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -322,24 +419,9 @@ public class Matrix<T> : Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateElement(Position position, T newElement)
+    protected override void RenderElementActions()
     {
-        if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
-        {
-            throw new ArgumentOutOfRangeException(nameof(position), "Position is out of range.");
-        }
-        _lines[position.X][position.Y] = newElement;
-        BuildMatrix();
-    }
-
-    /// <summary>
-    /// Writes the matrix instance to the console.
-    /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-    protected override void RenderElementActions(
-    )
-    {
-        if (_displayArray is null)
+        if (_displayArray is null || _displayArray.Length == 0)
             throw new InvalidOperationException(
                 "The matrix has not been built yet. The matrix cannot be displayed"
             );

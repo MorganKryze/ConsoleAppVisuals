@@ -623,6 +623,7 @@ public static class Window
     /// This method clears the window.
     /// </summary>
     /// <param name="continuous">If true, the window will be cleared continuously.</param>
+    /// <returns>True if the window is successfully cleared, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -630,7 +631,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void Clear(bool continuous = false)
+    public static bool Clear(bool continuous = false)
     {
         if (continuous)
         {
@@ -651,6 +652,7 @@ public static class Window
                 );
             }
         }
+        return true;
     }
 
     /// <summary>
