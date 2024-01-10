@@ -9,3 +9,7 @@ testing/bin
 # VSCode
 .vsocde
 settings.json
+
+# Coverage
+coverage
+coverage.opencover
