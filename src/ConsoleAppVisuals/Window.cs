@@ -701,6 +701,7 @@ public static class Window
     /// </summary>
     /// <param name="element">The element to be drawn.</param>
     /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -708,7 +709,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RenderOneElement(Element element)
+    public static bool RenderOneElement(Element element)
     {
         if (element == null || !s_elements.Contains(element))
         {
@@ -716,6 +717,7 @@ public static class Window
         }
 
         element.RenderElement();
+        return true;
     }
 
     /// <summary>
@@ -740,18 +742,22 @@ public static class Window
     /// <summary>
     /// This method is called to refresh the window when the size of the console is changed.
     /// </summary>
-    public static void OnResize()
+    /// <returns>True if the window is refreshed, false otherwise.</returns>
+    public static bool OnResize()
     {
         if (Core.IsScreenUpdated)
         {
             Core.SetConsoleDimensions();
             Refresh();
+            return true;
         }
+        return false;
     }
 
     /// <summary>
     /// This method draws all the space of the elements of the window on the console.
     /// </summary>
+    /// <returns>True if the space of the elements is successfully drawn, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -759,12 +765,13 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RenderAllElementsSpace()
+    public static bool RenderAllElementsSpace()
     {
         foreach (var element in s_elements)
         {
             element.RenderElementSpace();
         }
+        return true;
     }
 
     /// <summary>
@@ -777,6 +784,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [ExcludeFromCodeCoverage]
     public static void Close()
     {
         Core.LoadTerminalColorPanel();
