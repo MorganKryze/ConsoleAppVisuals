@@ -537,7 +537,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetLineAvailable_ibbfeizlfbizhe()
+    public void Test_GetLineAvailable()
     {
         // Arrange
         var table1 = new TableView<string>("Title", null, null, Placement.TopLeft);
@@ -591,6 +591,38 @@ public class UnitTestWindow
         // Cleanup
         Window.RemoveAllElements();
     }
+
+    [TestMethod]
+    public void Test_OnResize()
+    {
+        // Arrange
+        Core.SetBackgroundColor(ConsoleColor.Blue);
+
+        // Act
+        var result = Window.OnResize();
+
+        // Assert
+        Assert.IsTrue(result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_OnResize_False()
+    {
+        // Arrange
+        Core.RestoreColorPanel();
+
+        // Act
+        var result = Window.OnResize();
+
+        // Assert
+        Assert.IsFalse(result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
     #endregion
 
     #region RenderElements
@@ -622,6 +654,140 @@ public class UnitTestWindow
         Assert.ThrowsException<ElementNotFoundException>(
             () => Window.RenderOneElement(title.Id + 1)
         );
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_RenderOneElement_ByElement()
+    {
+        // Arrange
+        var title = new Title("Hello World!");
+        Window.AddElement(title);
+
+        // Act
+        var result = Window.RenderOneElement(title);
+
+        // Assert
+        Assert.IsTrue(result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_RenderElement_InvalidElement()
+    {
+        // Arrange
+        var title = new Title("Hello World!");
+        Window.AddElement(title);
+        var prompt = new Prompt("Hello World!");
+
+        // Act
+        Assert.ThrowsException<ElementNotFoundException>(
+            () => Window.RenderOneElement(prompt)
+        );
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_RenderAllElements()
+    {
+        // Arrange
+        var title = new Title("Hello World!");
+        Window.AddElement(title);
+
+        // Act
+        var result = Window.RenderAllElementsSpace();
+
+        // Assert
+        Assert.IsTrue(result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
+    #region InfoMethods
+    [TestMethod]
+    public void Test_GetListWindowElements()
+    {
+        // Arrange
+        Window.AddListWindowElements();
+
+        // Act
+        var elements = Window.GetListWindowElements();
+
+        // Assert
+        Assert.AreEqual(1, elements?.Count);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_GetListClassesInheritingElement()
+    {
+        // Arrange
+        Window.AddListClassesInheritingElement();
+
+        // Act
+        var elements = Window.GetListClassesInheritingElement();
+
+        // Assert
+        Assert.IsTrue(elements?.Count > 0);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_GetListClassesInheritingInteractiveElement()
+    {
+        // Arrange
+        Window.AddListClassesInheritingInteractiveElement();
+
+        // Act
+        var elements = Window.GetListClassesInheritingInteractiveElement();
+
+        // Assert
+        Assert.IsTrue(elements?.Count > 0);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_AddDashboard()
+    {
+        // Arrange
+        Window.AddDashboard();
+
+        // Act
+        var result = Window.CountElements;
+
+        // Assert
+        Assert.AreEqual(3, result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void Test_RemoveDashboard()
+    {
+        // Arrange
+        Window.AddDashboard();
+
+        // Act
+        Window.RemoveDashboard();
+        var result = Window.CountElements;
+
+        // Assert
+        Assert.AreEqual(0, result);
 
         // Cleanup
         Window.RemoveAllElements();

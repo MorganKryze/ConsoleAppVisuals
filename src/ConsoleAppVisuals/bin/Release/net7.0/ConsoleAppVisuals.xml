@@ -3165,6 +3165,7 @@
             </summary>
             <param name="element">The element to be drawn.</param>
             <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
+            <returns>True if the element is successfully drawn, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -3189,11 +3190,13 @@
             <summary>
             This method is called to refresh the window when the size of the console is changed.
             </summary>
+            <returns>True if the window is refreshed, false otherwise.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Window.RenderAllElementsSpace">
             <summary>
             This method draws all the space of the elements of the window on the console.
             </summary>
+            <returns>True if the space of the elements is successfully drawn, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
