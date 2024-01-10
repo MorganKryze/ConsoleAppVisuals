@@ -603,15 +603,17 @@ public static class Window
     /// </remarks>
     public static int? CheckLine(int? line)
     {
+        int minLine = 0;
+        int maxLine = Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1;
         if (line is null)
         {
             return line;
         }
-        if (line < 0 || line >= Console.WindowHeight)
+        if (line < minLine || line > maxLine)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(line),
-                $"Invalid line. The line must be between 0 and {Console.WindowHeight - 1}."
+                $"Invalid line. The line must be between 0 and {maxLine}."
             );
         }
         return line;
