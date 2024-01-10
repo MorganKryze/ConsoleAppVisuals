@@ -205,14 +205,14 @@ namespace example
                             Window.StopExecution();
                             Window.DeactivateElement<Matrix<int?>>();
 
-                            matrix.Remove(new Position(0, 0)); // You can indeed update the matrix after adding it
-                            matrix.Remove(new Position(3, 5));
+                            matrix.RemoveItem(new Position(0, 0)); // You can indeed update the matrix after adding it
+                            matrix.RemoveItem(new Position(3, 5));
                             Window.ActivateElement<Matrix<int?>>();
                             Window.StopExecution();
                             Window.DeactivateElement<Matrix<int?>>();
 
-                            matrix.UpdateElement(new Position(0, 0), 1);
-                            matrix.UpdateElement(new Position(3, 5), 6);
+                            matrix.UpdateItem(new Position(0, 0), 1);
+                            matrix.UpdateItem(new Position(3, 5), 6);
                             Window.ActivateElement<Matrix<int?>>();
                             Window.StopExecution();
                             Window.DeactivateElement<Matrix<int?>>();
