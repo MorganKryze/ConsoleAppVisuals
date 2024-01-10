@@ -2,9 +2,9 @@
 <CoverageSession>
   <Summary numSequencePoints="1928" visitedSequencePoints="583" numBranchPoints="1032" visitedBranchPoints="287" sequenceCoverage="30.23" branchCoverage="27.81" maxCyclomaticComplexity="1202" minCyclomaticComplexity="1202" visitedClasses="13" numClasses="27" visitedMethods="94" numMethods="318" />
   <Modules>
-    <Module hash="4C6996CE-CFCC-40E2-BDE6-B426DE141FA5">
+    <Module hash="B2C2FD0B-45D5-4EA5-BA2A-FA270653DBD2">
       <ModulePath>ConsoleAppVisuals.dll</ModulePath>
-      <ModuleTime>2024-01-10T12:28:35</ModuleTime>
+      <ModuleTime>2024-01-10T12:32:07</ModuleTime>
       <ModuleName>ConsoleAppVisuals</ModuleName>
       <Files>
         <File uid="1" fullPath="/Users/yannvidamment/Documents/__FILES__/DEV/GIT-PROJECTS/Project-ConsoleAppVisuals/test-windowtests/src/ConsoleAppVisuals/attributes/VisualAttribute.cs" />

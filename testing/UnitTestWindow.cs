@@ -560,7 +560,7 @@ public class UnitTestWindow
 
     [TestMethod]
     [DataRow(null)]
-    [DataRow(2)]
+    [DataRow(0)]
     [DataRow(-1)]
     public void Test_CheckLine(int? line)
     {
@@ -583,7 +583,10 @@ public class UnitTestWindow
         Window.Clear(true);
 
         // Assert
-        Assert.AreEqual(Console.WindowHeight - 1, Console.CursorTop);
+        Assert.AreEqual(
+            Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1,
+            Console.CursorTop
+        );
 
         // Cleanup
         Window.RemoveAllElements();
