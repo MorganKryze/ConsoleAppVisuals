@@ -117,6 +117,7 @@ public abstract class Element
             RenderOptionsBeforeHand();
             RenderElementActions();
             RenderOptionsAfterHand();
+            
         }
     }
 
