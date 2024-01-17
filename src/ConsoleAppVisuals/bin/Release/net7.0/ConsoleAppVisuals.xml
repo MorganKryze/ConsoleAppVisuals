@@ -854,6 +854,16 @@
             The width of the header.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.Header.Text">
+            <summary>
+            The getter and setter of the text of the header.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Header.Margin">
+            <summary>
+            The getter and setter of the margin of the header.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.Header.#ctor(System.String,System.String,System.String,System.Int32)">
             <summary>
             The natural constructor of the header.
