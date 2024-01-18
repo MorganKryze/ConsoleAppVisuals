@@ -7,6 +7,88 @@ namespace ConsoleAppVisuals;
 public class UnitTestHeader
 {
     [TestMethod]
+    public void Test_Placement(){
+        
+        //Arrange
+        var header = new Header();
+
+        //Act
+        var placement = header.Placement;
+        
+        //Assert
+        Assert.AreEqual(Placement.TopCenterFullWidth,placement);
+    }
+
+
+    [TestMethod]
+    public void Test_Line(){
+        
+        //Arrange 
+        var header = new Header();
+
+        //Act 
+        var line = header.Line;
+
+        //Assert
+        Assert.AreEqual(line, Window.GetVisibleElement<Title>()?.Height ?? default);
+    }
+
+    [TestMethod]
+    public void Test_Height(){
+        
+        //Arrange
+        var header = new Header();
+
+        //Act
+        var height = header.Height;
+
+        //Assert
+        Assert.AreEqual(height, 1 + header.Margin);
+    }
+
+    [TestMethod]
+    public void Test_Width(){
+        
+        //Arrange
+        var header = new Header();
+
+        //Act
+        var width = header.Width;
+
+        //Assert
+        Assert.AreEqual(width, Console.WindowWidth);
+    }
+
+    [TestMethod]
+    public void Test_Text(){
+        
+        //Arrange
+        var header = new Header();
+
+        //Act
+        var text = header.Text;
+
+        //Assert
+        Assert.AreEqual(text, ("Header Left", "Header Center", "Header Right"));
+    }
+
+    [TestMethod]
+    public void Test_Margin(){
+        
+        //Arrange
+        var header = new Header();
+
+        //Act
+        var margin = header.Margin;
+
+        //Assert
+        Assert.AreEqual(margin, 1);
+    }
+
+
+
+
+    [TestMethod]
     [DataRow("left", "center", "right", 1)]
     public void Test_Constructor(string leftText, string centerText, string rightText, int margin) 
     {
