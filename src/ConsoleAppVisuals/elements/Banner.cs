@@ -18,34 +18,47 @@ public class Banner : Element
 {
     #region Fields
     private (string, string, string) _text;
-    private readonly int _upperMargin;
-    private readonly int _lowerMargin;
-    private readonly Placement _placement;
-    private readonly int _line;
+    private  int _upperMargin;
+    private  int _lowerMargin;
+    private  Placement _placement;
+    private  int _line;
     #endregion
 
     #region Properties
     /// <summary>
     /// The placement of the banner.
     /// </summary>
-    public override Placement Placement => _placement;
+    public override Placement Placement => Placement1;
 
     /// <summary>
     /// The line of the banner in the console.
     /// </summary>
     /// <remarks>We add 2 because so the banner does not overlap with the title.</remarks>
-    public override int Line => _line;
+    public override int Line => Line1;
 
     /// <summary>
     /// The height of the banner.
     /// </summary>
-    public override int Height => _upperMargin + 1 + _lowerMargin;
+    public override int Height => UpperMargin + 1 + LowerMargin;
 
     /// <summary>
     /// The width of the banner.
     /// </summary>
     public override int Width => Console.WindowWidth;
+
+    
+
     #endregion
+
+    #region Getters and Setters 
+    public (string, string, string) Text { get => _text; set => _text = value; }
+    public int UpperMargin { get => _upperMargin; set => _upperMargin = value;}
+    public int LowerMargin { get => _lowerMargin; set => _lowerMargin = value; }
+    public Placement Placement1 { get => _placement; set => _placement = value; }
+    public int Line1 { get => _line; set => _line = value; }
+
+    #endregion
+
 
     #region Constructor
     /// <summary>
@@ -78,10 +91,10 @@ public class Banner : Element
         _text.Item1 = leftText;
         _text.Item2 = centerText;
         _text.Item3 = rightText;
-        _upperMargin = upperMargin;
-        _lowerMargin = lowerMargin;
-        _placement = CheckPlacement(placement);
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(_placement);
+        UpperMargin = upperMargin;
+        LowerMargin = lowerMargin;
+        Placement1 = CheckPlacement(placement);
+        Line1 = Window.CheckLine(line) ?? Window.GetLineAvailable(Placement1);
     }
 
     private static Placement CheckPlacement(Placement placement)
@@ -150,12 +163,12 @@ public class Banner : Element
     /// </summary>
     protected override void RenderElementActions()
     {
-        for (int i = 0; i < _upperMargin; i++)
+        for (int i = 0; i < UpperMargin; i++)
         {
             Core.WritePositionedString(string.Empty, TextAlignment.Center, true, Line + i, false);
         }
-        Core.WritePositionedString(_text.BannerToString(), TextAlignment.Center, true, Line, false);
-        for (int i = 0; i < _lowerMargin; i++)
+        Core.WritePositionedString(Text.BannerToString(), TextAlignment.Center, true, Line, false);
+        for (int i = 0; i < LowerMargin; i++)
         {
             Core.WritePositionedString(
                 string.Empty,
