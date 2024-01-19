@@ -2,6 +2,8 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
+using System.Runtime.CompilerServices;
+
 namespace ConsoleAppVisuals;
 
 /// <summary>
@@ -51,10 +53,25 @@ public class Banner : Element
     #endregion
 
     #region Getters and Setters 
+    /// <summary>
+    /// Getter and setter of the text of the banner.
+    /// </summary>
     public (string, string, string) Text { get => _text; set => _text = value; }
+    /// <summary>
+    /// Getter and setter of the upper margin of the banner.
+    /// </summary>
     public int UpperMargin { get => _upperMargin; set => _upperMargin = value;}
+    /// <summary>
+    /// Getter and setter of the lower margin of the banner.
+    /// </summary>
     public int LowerMargin { get => _lowerMargin; set => _lowerMargin = value; }
+    /// <summary>
+    /// Getter and setter of the placement of the banner.
+    /// </summary>
     public Placement Placement1 { get => _placement; set => _placement = value; }
+    /// <summary>
+    /// Getter and setter of the line of the banner in the console.
+    /// </summary>
     public int Line1 { get => _line; set => _line = value; }
 
     #endregion
@@ -99,7 +116,7 @@ public class Banner : Element
 
     private static Placement CheckPlacement(Placement placement)
     {
-        if (placement is not Placement.TopCenterFullWidth or Placement.BottomCenterFullWidth)
+        if (placement is not (Placement.BottomCenterFullWidth  or Placement.TopCenterFullWidth))
         {
             throw new ArgumentException(
                 "The placement of the banner must be TopCenterFullWidth or BottomCenterFullWidth."
@@ -161,6 +178,7 @@ public class Banner : Element
     /// <summary>
     /// This method is used to render the banner on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         for (int i = 0; i < UpperMargin; i++)
