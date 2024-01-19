@@ -603,6 +603,31 @@
             The width of the banner.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.Banner.Text">
+            <summary>
+            Getter and setter of the text of the banner.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Banner.UpperMargin">
+            <summary>
+            Getter and setter of the upper margin of the banner.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Banner.LowerMargin">
+            <summary>
+            Getter and setter of the lower margin of the banner.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Banner.Placement1">
+            <summary>
+            Getter and setter of the placement of the banner.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Banner.Line1">
+            <summary>
+            Getter and setter of the line of the banner in the console.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.Banner.#ctor(System.String,System.String,System.String,System.Int32,System.Int32,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
             The natural constructor of the banner.

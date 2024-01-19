@@ -101,7 +101,7 @@ public class UnitTestBanner{
         var text = banner.Text;
 
         //Assert
-        Assert.AreEqual(text, ("Header Left", "Header Center", "Header Right"));
+        Assert.AreEqual(text, ("Banner Left", "Banner Center", "Banner Right"));
     }
 
     [TestMethod]
