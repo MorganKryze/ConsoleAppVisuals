@@ -73,7 +73,6 @@ public class FakeLoadingBar : Element
     /// Getter of the line of the loading bar.
     /// </summary>
     public int Line1 {get => _line;}
-
     #endregion
 
     #region Constructor
