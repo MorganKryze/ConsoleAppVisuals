@@ -30,9 +30,8 @@ public class UnitTestBanner{
     [DataRow("left", "center", "right", 1, 1,Placement.TopRight)]
     public void Test_BannerConstructorWrongPlacement(string leftText, string centerText, string rightText, int upperMargin, int lowerMargin, Placement placement){
 
-        //Arrange
         //Act
-        var banner = new Banner(leftText, centerText, rightText, upperMargin, lowerMargin,placement);
+        new Banner(leftText, centerText, rightText, upperMargin, lowerMargin,placement);
     }
 
     [TestMethod]
