@@ -47,6 +47,35 @@ public class FakeLoadingBar : Element
     public override int Width => _text.Length;
     #endregion
 
+    #region Getters and Setters
+    
+    /// <summary>
+    /// Getter and setter of the text of the loading bar.
+    /// </summary>
+    public string Text { get => _text; set => _text = value; }
+
+    /// <summary>
+    /// Getter of the placement of the loading bar.
+    /// </summary>
+    public override Placement Placement {get => _placement;}
+
+    /// <summary>
+    /// Getter of the duration of the loading bar.
+    /// </summary>
+    public int processDuration {get => _processDuration;}
+
+    /// <summary>
+    /// Getter of the additional duration of the loading bar at the end.
+    /// </summary>
+    public int AdditionalDuration {get => _additionalDuration;}
+
+    /// <summary>
+    /// Getter of the line of the loading bar.
+    /// </summary>
+    public int Line1 {get => _line;}
+
+    #endregion
+
     #region Constructor
     /// <summary>
     /// The natural constructor of the loading bar.
@@ -99,6 +128,8 @@ public class FakeLoadingBar : Element
     /// <summary>
     /// This method is used to draw the loading bar on the console.
     /// </summary>
+    
+    [Visual]
     protected override void RenderElementActions()
     {
         Core.WritePositionedString(_text, _placement.ToTextAlignment(), false, _line, false);
