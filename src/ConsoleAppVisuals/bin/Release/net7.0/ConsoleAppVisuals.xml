@@ -720,6 +720,31 @@
             The width of the loading bar.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.FakeLoadingBar.Text">
+            <summary>
+            Getter and setter of the text of the loading bar.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FakeLoadingBar.Placement">
+            <summary>
+            Getter of the placement of the loading bar.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FakeLoadingBar.processDuration">
+            <summary>
+            Getter of the duration of the loading bar.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FakeLoadingBar.AdditionalDuration">
+            <summary>
+            Getter of the additional duration of the loading bar at the end.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FakeLoadingBar.Line1">
+            <summary>
+            Getter of the line of the loading bar.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.FakeLoadingBar.#ctor(System.String,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.Int32,System.Int32)">
             <summary>
             The natural constructor of the loading bar.

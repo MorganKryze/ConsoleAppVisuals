@@ -108,6 +108,32 @@ public class UnitTestFakeLoadingBar{
         Assert.AreEqual(1000,additionalDuration);
     }
 
+    [TestMethod]
+    public void Test_Height(){
+        
+        //Arrange
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
+
+        //Act
+        var height = fakeLoadingBar.Height;
+
+        //Assert
+        Assert.AreEqual(3,height);
+    }
+
+    [TestMethod]
+    public void Test_Width(){
+        
+        //Arrange
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
+
+        //Act
+        var width = fakeLoadingBar.Width;
+
+        //Assert
+        Assert.AreEqual(4,width);
+    }
+
 
 
 }
