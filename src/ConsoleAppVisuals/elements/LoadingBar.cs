@@ -50,6 +50,24 @@ public class LoadingBar : Element
     public override int Width => _text.Length;
     #endregion
 
+    #region Getters & Setters
+
+    /// <summary>
+    /// Getters and setters of the text of the loading bar.
+    /// </summary>
+    public string Text { get => _text; set => _text = value; }
+
+    /// <summary>
+    /// Getters and setters of the progress of the loading bar.
+    /// </summary>
+    public float Progress { get => _progress; set => _progress = value; }
+
+    #endregion
+
+
+
+
+
     #region Constructor
     /// <summary>
     /// The natural constructor of the loading bar.
@@ -74,7 +92,12 @@ public class LoadingBar : Element
         int additionalDuration = 1000
     )
     {
-        _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
+        if(Console.WindowWidth -1 <0){
+            _text = text[..Math.Min(text.Length, 0)];
+        }
+        else{
+            _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
+        }
         _progress = progress;
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
@@ -118,6 +141,7 @@ public class LoadingBar : Element
     /// <summary>
     /// This method is used to draw the loading bar on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         void BuildBar(string text, float progress, int line)
