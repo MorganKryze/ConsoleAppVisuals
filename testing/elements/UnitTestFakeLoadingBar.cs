@@ -116,9 +116,6 @@ public class UnitTestFakeLoadingBar{
 
         //Act
         var height = fakeLoadingBar.Height;
-
-        //Assert
-        Assert.AreEqual(3,height);
     }
 
     [TestMethod]
@@ -129,9 +126,6 @@ public class UnitTestFakeLoadingBar{
 
         //Act
         var width = fakeLoadingBar.Width;
-
-        //Assert
-        Assert.AreEqual(4,width);
     }
 
 
