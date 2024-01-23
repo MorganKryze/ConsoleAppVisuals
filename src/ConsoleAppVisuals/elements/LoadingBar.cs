@@ -99,9 +99,11 @@ public class LoadingBar : Element
     )
     {
         if(Console.WindowWidth -1 < 0){
-            Console.WindowWidth++;
+            _text = text[..Math.Min(text.Length, 0)];
         }
+        else{
             _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
+        }
         _progress = progress;
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
