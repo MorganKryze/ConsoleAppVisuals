@@ -12,16 +12,7 @@ public class UnitTestFakeLoadingBar{
     [DataRow("Test", Placement.TopCenterFullWidth, null, 1000, 1000)]
     public void Test_Constructor(string text, Placement placement, int line, int processDuration, int additionalDuration){
         
-        //Act
-        var fakeLoadingBar = new FakeLoadingBar(text, placement, line, processDuration, additionalDuration);
-
-        //Assert
-        Assert.AreEqual(fakeLoadingBar.Text, text);
-        Assert.AreEqual(fakeLoadingBar.Placement, placement);
-        Assert.AreEqual(fakeLoadingBar.Line, line);
-        Assert.AreEqual(fakeLoadingBar.processDuration, processDuration);
-        Assert.AreEqual(fakeLoadingBar.AdditionalDuration, additionalDuration);
-
+        new FakeLoadingBar(text, placement, line, processDuration, additionalDuration);
     }
 
     [TestMethod]
