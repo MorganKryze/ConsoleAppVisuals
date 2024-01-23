@@ -38,16 +38,19 @@ public class UnitTestLoadingBar{
     }
 
     [TestMethod]
-    public void Test_Width(){
+    [DataRow("test")]
+    [DataRow("hello world")]
+    [DataRow("")]
+    public void Test_Width(string text){
         //Arrange 
         float valuee = 0.3f;
-        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 0);
+        var loadingBar = new LoadingBar(text, ref valuee, Placement.TopCenter, 0);
 
         //Act
         var width = loadingBar.Width;
 
         //Assert
-        Assert.AreEqual(4, width);
+        Assert.AreEqual(text.Length, width);
     }
 
 
@@ -128,7 +131,7 @@ public class UnitTestLoadingBar{
         Assert.AreEqual(progress, loadingBar.Progress);
     }
 
-    
+
 
 
 }
