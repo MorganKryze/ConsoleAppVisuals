@@ -8,7 +8,7 @@ namespace ConsoleAppVisuals;
 public class UnitTestFakeLoadingBar{
 
     [TestMethod]
-    [DataRow("Test", Placement.TopCenterFullWidth, 1, 1000, 1000)]
+    [DataRow("Test", Placement.TopCenterFullWidth, 0, 1000, 1000)]
     [DataRow("Test", Placement.TopCenterFullWidth, null, 1000, 1000)]
     public void Test_Constructor(string text, Placement placement, int line, int processDuration, int additionalDuration){
         
@@ -32,7 +32,7 @@ public class UnitTestFakeLoadingBar{
     public void Test_UpdateText(string text){
             
             //Arrange
-            var fakeLoadingBar = new FakeLoadingBar(text, Placement.TopCenterFullWidth, 1, 1000, 1000);
+            var fakeLoadingBar = new FakeLoadingBar(text, Placement.TopCenterFullWidth, 0, 1000, 1000);
     
             //Act
             fakeLoadingBar.UpdateText(text);
@@ -47,7 +47,7 @@ public class UnitTestFakeLoadingBar{
     public void TestText(string text){
         
         //Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
 
         //Act
         fakeLoadingBar.Text = text;
@@ -60,7 +60,7 @@ public class UnitTestFakeLoadingBar{
     public void Test_Placement(){
         
         //Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
 
         //Act
         var placement = fakeLoadingBar.Placement;
@@ -73,20 +73,20 @@ public class UnitTestFakeLoadingBar{
     public void Test_Line(){
         
         //Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
 
         //Act
         var line = fakeLoadingBar.Line;
 
         //Assert
-        Assert.AreEqual(1,line);
+        Assert.AreEqual(0,line);
     }   
 
     [TestMethod]
     public void Test_processDuration(){
         
         //Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
 
         //Act
         var processDuration = fakeLoadingBar.processDuration;
@@ -99,7 +99,7 @@ public class UnitTestFakeLoadingBar{
     public void Test_AdditionalDuration(){
         
         //Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
 
         //Act
         var additionalDuration = fakeLoadingBar.AdditionalDuration;
