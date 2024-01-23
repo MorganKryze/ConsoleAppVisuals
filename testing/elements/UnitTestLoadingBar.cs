@@ -58,7 +58,6 @@ public class UnitTestLoadingBar{
     [TestMethod]
     [DataRow("test")]
     [DataRow("")]
-    
     public void Test_Text(string text){
         //Arrange
         float valuee = 0.3f;
@@ -75,6 +74,18 @@ public class UnitTestLoadingBar{
         //Arrange
         float valuee = 0.3f;
         new LoadingBar(null, ref valuee, Placement.TopCenter, 0);
+    }
+
+    [TestMethod]
+    [DataRow(0.5f)]
+    [DataRow(0.3f)]
+    public void Test_Progress(float progress){
+        //Arrange
+        var loadingBar = new LoadingBar("test", ref progress, Placement.TopCenter, 0);
+        //Act
+        var newProgress = loadingBar.Progress;
+        //Assert
+        Assert.AreEqual(newProgress, loadingBar.Progress);
     }
 
     
@@ -102,17 +113,18 @@ public class UnitTestLoadingBar{
     }
 
     [TestMethod]
-
-    public void Test_UpdateText(){
+    [DataRow("test")]
+    [DataRow("hello world")]
+    [DataRow("")]
+    public void Test_UpdateText(string text){
         //Arrange
         float valuee = 0.3f;
-        string text = "test";
         Placement placement = Placement.TopCenter;
-        var loadingBar = new LoadingBar(text, ref valuee, placement, 0);
+        var loadingBar = new LoadingBar("test", ref valuee, placement, 0);
         //Act
-        loadingBar.UpdateText("test2");
+        loadingBar.UpdateText(text);
         //Assert
-        Assert.AreEqual("test2", loadingBar.Text);
+        Assert.AreEqual(text, loadingBar.Text);
     }
 
     [TestMethod]
