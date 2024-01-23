@@ -62,6 +62,12 @@ public class LoadingBar : Element
     /// </summary>
     public float Progress { get => _progress; set => _progress = value; }
 
+    public Placement Placement{ get => _placement;}
+
+
+    public int AdditionalDuration{ get => _additionalDuration;}
+
+
     #endregion
 
 
