@@ -33,6 +33,7 @@ public class FakeLoadingBar : Element
     /// The line of the loading bar in the console.
     /// </summary>
     /// <remarks>We add 2 because so the loading bar does not overlap with the title.</remarks>
+    [Visual]
     public override int Line => _line;
 
     /// <summary>
@@ -62,17 +63,13 @@ public class FakeLoadingBar : Element
     /// <summary>
     /// Getter of the duration of the loading bar.
     /// </summary>
-    public int processDuration {get => _processDuration;}
+    public int ProcessDuration {get => _processDuration;}
 
     /// <summary>
     /// Getter of the additional duration of the loading bar at the end.
     /// </summary>
     public int AdditionalDuration {get => _additionalDuration;}
 
-    /// <summary>
-    /// Getter of the line of the loading bar.
-    /// </summary>
-    public int Line1 {get => _line;}
     #endregion
 
     #region Constructor
