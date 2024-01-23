@@ -50,7 +50,7 @@ public class UnitTestLoadingBar{
         var width = loadingBar.Width;
 
         //Assert
-        Assert.AreEqual(text.Length, width);
+        Assert.AreEqual(loadingBar.Text.Length, width);
     }
 
 
@@ -74,7 +74,7 @@ public class UnitTestLoadingBar{
     public void Test_TextNull(){
         //Arrange
         float valuee = 0.3f;
-        var loadingBar = new LoadingBar(null, ref valuee, Placement.TopCenter, 0);
+        new LoadingBar(null, ref valuee, Placement.TopCenter, 0);
     }
 
     
