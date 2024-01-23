@@ -98,12 +98,10 @@ public class LoadingBar : Element
         int additionalDuration = 1000
     )
     {
-        if(Console.WindowWidth -1 <0){
-            _text = text[..Math.Min(text.Length, 0)];
+        if(Console.WindowWidth -1 < 0){
+            Console.WindowWidth++;
         }
-        else{
             _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
-        }
         _progress = progress;
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
@@ -151,6 +149,7 @@ public class LoadingBar : Element
     [Visual]
     protected override void RenderElementActions()
     {
+        [Visual]
         void BuildBar(string text, float progress, int line)
         {
             StringBuilder loadingBar = new();
