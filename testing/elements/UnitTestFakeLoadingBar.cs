@@ -44,7 +44,7 @@ public class UnitTestFakeLoadingBar{
     [TestMethod]
     [DataRow("hello world")]
     [DataRow("")]
-    public void TestText(string text){
+    public void Test_Text(string text){
         
         //Arrange
         var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
@@ -83,13 +83,13 @@ public class UnitTestFakeLoadingBar{
     }   
 
     [TestMethod]
-    public void Test_processDuration(){
+    public void Test_ProcessDuration(){
         
         //Arrange
         var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 0, 1000, 1000);
 
         //Act
-        var processDuration = fakeLoadingBar.processDuration;
+        var processDuration = fakeLoadingBar.ProcessDuration;
 
         //Assert
         Assert.AreEqual(1000,processDuration);

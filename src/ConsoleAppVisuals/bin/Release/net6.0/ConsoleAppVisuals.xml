@@ -740,11 +740,6 @@
             Getter of the additional duration of the loading bar at the end.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.FakeLoadingBar.Line1">
-            <summary>
-            Getter of the line of the loading bar.
-            </summary>
-        </member>
         <member name="M:ConsoleAppVisuals.FakeLoadingBar.#ctor(System.String,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.Int32,System.Int32)">
             <summary>
             The natural constructor of the loading bar.
