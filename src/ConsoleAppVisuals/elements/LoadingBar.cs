@@ -141,6 +141,7 @@ public class LoadingBar : Element
     /// <summary>
     /// This method is used to draw the loading bar on the console.
     /// </summary>
+    /// 
     [Visual]
     protected override void RenderElementActions()
     {

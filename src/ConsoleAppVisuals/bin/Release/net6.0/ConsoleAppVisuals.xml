@@ -730,7 +730,7 @@
             Getter of the placement of the loading bar.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.FakeLoadingBar.processDuration">
+        <member name="P:ConsoleAppVisuals.FakeLoadingBar.ProcessDuration">
             <summary>
             Getter of the duration of the loading bar.
             </summary>
@@ -1486,6 +1486,16 @@
             The width of the loading bar.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.LoadingBar.Text">
+            <summary>
+            Getters and setters of the text of the loading bar.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.LoadingBar.Progress">
+            <summary>
+            Getters and setters of the progress of the loading bar.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.LoadingBar.#ctor(System.String,System.Single@,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.Int32)">
             <summary>
             The natural constructor of the loading bar.
@@ -1533,6 +1543,7 @@
             <summary>
             This method is used to draw the loading bar on the console.
             </summary>
+            
         </member>
         <member name="T:ConsoleAppVisuals.Matrix`1">
             <summary>
