@@ -88,7 +88,30 @@ public class UnitTestLoadingBar{
         Assert.AreEqual(newProgress, loadingBar.Progress);
     }
 
-    
+    [TestMethod]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.BottomCenterFullWidth)]
+    public void Test_Placement(Placement placement){
+        //Arrange
+        float valuee = 0.3f;
+        var loadingBar = new LoadingBar("test", ref valuee, placement, 0);
+        //Act
+        var newPlacement = loadingBar.Placement;
+        //Assert
+        Assert.AreEqual(newPlacement, loadingBar.Placement);
+    }
+
+
+    [TestMethod]
+    public void Test_AdditionalDuration(){
+        //Arrange
+        float valuee = 0.3f;
+        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 0, 1000);
+        //Act
+        var newAdditionalDuration = loadingBar.AdditionalDuration;
+        //Assert
+        Assert.AreEqual(newAdditionalDuration, loadingBar.AdditionalDuration);
+    }
 
     [TestMethod]
     [DataRow("test", 0.3f, Placement.TopCenter, 0)]
@@ -112,6 +135,8 @@ public class UnitTestLoadingBar{
         new LoadingBar(text, ref valuee, placement, line);
     }
 
+
+
     [TestMethod]
     [DataRow("test")]
     [DataRow("hello world")]
@@ -126,6 +151,8 @@ public class UnitTestLoadingBar{
         //Assert
         Assert.AreEqual(text, loadingBar.Text);
     }
+
+
 
     [TestMethod]
     [DataRow(0.5f)]
