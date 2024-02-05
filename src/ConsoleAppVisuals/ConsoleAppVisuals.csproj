@@ -44,6 +44,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="yamldotnet" Version="13.7.1" />
+    <PackageReference Include="yamldotnet" Version="15.1.1" />
   </ItemGroup>
 </Project>
