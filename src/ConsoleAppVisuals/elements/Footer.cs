@@ -42,6 +42,14 @@ public class Footer : Element
     public override int Width => Console.WindowWidth;
     #endregion
 
+    #region Getters and Setters
+
+    public (string,string,string) Text{get => _text; set => _text = value;}
+    
+    #endregion
+
+
+
     #region Constructor
     /// <summary>
     /// The natural constructor of the footer.
@@ -120,6 +128,7 @@ public class Footer : Element
     /// <summary>
     /// This method is used to render the footer on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         Core.WritePositionedString(_text.BannerToString(), TextAlignment.Center, true, Line, false);
