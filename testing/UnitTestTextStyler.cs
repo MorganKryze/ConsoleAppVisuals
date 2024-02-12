@@ -152,6 +152,21 @@ namespace testing
             // Assert
             Assert.AreNotEqual(color, Core.GetColorPanel);
         }
+
+        [TestMethod]
+        public void Constructor_ThrowsFileNotFoundException_WhenStreamIsNull()
+        {
+            // Arrange
+            var mockAssembly = new Mock<Assembly>();
+            string resourceName = "nonexistentResource";
+            mockAssembly
+                .Setup(a => a.GetManifestResourceStream(It.IsAny<string>()))
+                .Returns(default(Stream));
+
+            // Act & Assert
+            Assert.ThrowsException<FileNotFoundException>(() => new TextStyler(resourceName, mockAssembly.Object));
+        }
+
         #endregion
     }
 }
