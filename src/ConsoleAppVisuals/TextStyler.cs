@@ -42,6 +42,7 @@ public class TextStyler
     /// The constructor of the TextStyler class.
     /// </summary>
     /// <param name="fontPath">The path to the font files.</param>
+    /// <param name="assembly">The assembly in which to take the files. Do not use it by default.</param>
     /// <exception cref="EmptyFileException">Thrown when the config.yml file is empty.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -50,7 +51,7 @@ public class TextStyler
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public TextStyler(string? fontPath = null)
+    public TextStyler(string? fontPath = null, Assembly? assembly = null)
     {
         this.fontPath = fontPath;
         dictionary = new Dictionary<char, string>();
@@ -58,11 +59,11 @@ public class TextStyler
         string yamlContent;
         if (fontPath is null)
         {
-            var assembly = Assembly.GetExecutingAssembly();
+            assembly ??= Assembly.GetExecutingAssembly();
             using var stream = assembly.GetManifestResourceStream(
                 DEFAULT_FONT_PATH + DEFAULT_CONFIG_PATH
             );
-            using var reader = new StreamReader(stream ?? throw new EmptyFileException());
+            using var reader = new StreamReader(stream ?? throw new FileNotFoundException());
             yamlContent = reader.ReadToEnd();
         }
         else

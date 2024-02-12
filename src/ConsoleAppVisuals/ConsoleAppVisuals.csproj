@@ -44,6 +44,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="yamldotnet" Version="13.7.1" />
   </ItemGroup>
 </Project>
