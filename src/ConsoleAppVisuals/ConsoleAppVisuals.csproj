@@ -45,6 +45,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Moq" Version="4.20.70" />
-    <PackageReference Include="yamldotnet" Version="13.7.1" />
+    <PackageReference Include="yamldotnet" Version="15.1.1" />
   </ItemGroup>
 </Project>
