@@ -43,16 +43,25 @@ public class Header : Element
     /// </summary>
     public override int Width => Console.WindowWidth;
     #endregion
+
     #region Getters and Setters
     /// <summary>
     /// The getter and setter of the text of the header.
     /// </summary>
-    public (string, string, string) Text { get => _text; set => _text = value; }
+    public (string, string, string) Text
+    {
+        get => _text;
+        set => _text = value;
+    }
 
     /// <summary>
     /// The getter and setter of the margin of the header.
     /// </summary>
-    public int Margin { get => _margin; set => _margin = value; }
+    public int Margin
+    {
+        get => _margin;
+        set => _margin = value;
+    }
     #endregion
 
     #region Constructor
@@ -77,7 +86,6 @@ public class Header : Element
         int margin = 1
     )
     {
-        
         _text.Item1 = leftText;
         _text.Item2 = centerText;
         _text.Item3 = rightText;
@@ -133,7 +141,6 @@ public class Header : Element
     {
         _text.Item3 = rightText;
     }
-
 
     /// <summary>
     /// This method is used to render the header on the console.
