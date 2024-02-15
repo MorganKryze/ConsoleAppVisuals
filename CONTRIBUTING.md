@@ -12,6 +12,16 @@ Please note we have a code of conduct, please follow it in all your interactions
 3. Increase the version numbers in any examples files and the README.md to the new version that this Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
 
+## Testing Conventions
+
+For testing, we use the following conventions:
+
+- Tests should be written in the `testing` directory.
+- Tests filenames should follow the `ClassToTest.Tests.cs` pattern.
+- Tests are wirtten using the `MSTests` framework.
+- Tests methods names should be descriptive and follow the `ElementToTest_BehaviorExpected` pattern.
+- Tests content should follow the `Arrange`, `Act`, `Assert` pattern.
+
 ## Attribution
 
 This CONTRIBUTING.md is adapted from the [PurpleBooth gist](https://gist.github.com/PurpleBooth/b24679402957c63ec426), available at <https://gist.github.com/PurpleBooth/b24679402957c63ec426>.
