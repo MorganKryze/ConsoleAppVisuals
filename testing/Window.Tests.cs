@@ -10,7 +10,7 @@ public class UnitTestWindow
     #region Properties
 
     [TestMethod]
-    public void AddElement()
+    public void AddElement_WindowHasElement()
     {
         // Arrange
         var defaultValue = Window.Elements.Count;
@@ -26,7 +26,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_NextId()
+    public void NextId_IteratesBy1StartsFrom0()
     {
         // Assert default value
         var defaultValue = Window.NextId;
@@ -45,7 +45,7 @@ public class UnitTestWindow
 
     #region GetElement
     [TestMethod]
-    public void Test_GetElement()
+    public void GetElement()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -62,7 +62,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetElement_InvalidId()
+    public void GetElement_InvalidId()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -79,7 +79,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetElement_NotFound()
+    public void GetElement_NotFound()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -96,7 +96,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetVisibleElement()
+    public void GetVisibleElement()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -114,7 +114,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetVisibleElement_NotFound()
+    public void GetVisibleElement_NotFound()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -135,7 +135,7 @@ public class UnitTestWindow
     #region InsertElement
 
     [TestMethod]
-    public void Test_InsertElement()
+    public void InsertElement()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -154,7 +154,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_InsertElement_InvalidIndex()
+    public void InsertElement_InvalidIndex()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -172,7 +172,7 @@ public class UnitTestWindow
 
     #region RemoveElement
     [TestMethod]
-    public void Test_RemoveElement()
+    public void RemoveElement()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -189,7 +189,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveElement_InvalidId()
+    public void RemoveElement_InvalidId()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -206,7 +206,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveElement_ElementType()
+    public void RemoveElement_ElementType()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -224,7 +224,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveElement_ElementType_NotFound()
+    public void RemoveElement_ElementType_NotFound()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -240,7 +240,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveElement_NotFound()
+    public void RemoveElement_NotFound()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -254,7 +254,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveElement_HappyPath()
+    public void RemoveElement_HappyPath()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -271,7 +271,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveLibraryElement()
+    public void RemoveLibraryElement()
     {
         // Arrange
         Window.AddListWindowElements();
@@ -287,7 +287,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveLibraryElement_NotFound()
+    public void RemoveLibraryElement_NotFound()
     {
         // Arrange
         Window.AddListWindowElements();
@@ -302,7 +302,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveLibraryElement_NotFromLibrary()
+    public void RemoveLibraryElement_NotFromLibrary()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -318,7 +318,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveAllElements()
+    public void RemoveAllElements()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -334,7 +334,7 @@ public class UnitTestWindow
 
     #region ActivateAllElements
     [TestMethod]
-    public void Test_ActivateAllElements()
+    public void ActivateAllElements()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -353,7 +353,7 @@ public class UnitTestWindow
 
     #region AddElement
     [TestMethod]
-    public void Test_AddElement_AddsElementToWindowElementsList()
+    public void AddElement_AddsElementToWindowElementsList()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -368,7 +368,7 @@ public class UnitTestWindow
 
     #region DeactivateElement
     [TestMethod]
-    public void Test_DeactivateElement_WithValidId()
+    public void DeactivateElement_WithValidId()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -387,7 +387,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_DeactivateElement_WithInvalidId()
+    public void DeactivateElement_WithInvalidId()
     {
         // Arrange
         int id = -1;
@@ -409,7 +409,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_DeactivateElement()
+    public void DeactivateElement()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -427,7 +427,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_DeactivateElement_Clear()
+    public void DeactivateElement_Clear()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -445,7 +445,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_DeactivateElement_NotFound_ElementType()
+    public void DeactivateElement_NotFound_ElementType()
     {
         // Assert
         Assert.ThrowsException<ElementNotFoundException>(
@@ -454,7 +454,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_DeactivateElement_ElementType()
+    public void DeactivateElement_ElementType()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -472,7 +472,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_DeactivateElement_ElementTypeClear()
+    public void DeactivateElement_ElementTypeClear()
     {
         // Arrange
         var element = new Prompt("Hello World!");
@@ -490,7 +490,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_DeactivateAllElements()
+    public void DeactivateAllElements()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -515,7 +515,7 @@ public class UnitTestWindow
     [DataRow(Placement.TopRight)]
     [DataRow(Placement.TopCenterFullWidth)]
     [DataRow(Placement.BottomCenterFullWidth)]
-    public void Test_GetLineAvailable(Placement placement)
+    public void GetLineAvailable(Placement placement)
     {
         // Arrange
         var title = new Title("Title");
@@ -537,7 +537,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetLineAvailable()
+    public void GetLineAvailable()
     {
         // Arrange
         var table1 = new TableView<string>("Title", null, null, false, Placement.TopLeft);
@@ -562,7 +562,7 @@ public class UnitTestWindow
     [DataRow(null)]
     [DataRow(0)]
     [DataRow(-1)]
-    public void Test_CheckLine(int? line)
+    public void CheckLine(int? line)
     {
         if (line == null)
             Assert.IsNull(Window.CheckLine(line));
@@ -573,7 +573,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_Clear_True()
+    public void Clear_True()
     {
         // Arrange
         var prompt = new Prompt("Hello World!");
@@ -590,7 +590,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_OnResize()
+    public void OnResize()
     {
         // Arrange
         Core.SetBackgroundColor(ConsoleColor.Blue);
@@ -606,7 +606,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_OnResize_False()
+    public void OnResize_False()
     {
         // Arrange
         Core.RestoreColorPanel();
@@ -624,7 +624,7 @@ public class UnitTestWindow
 
     #region RenderElements
     [TestMethod]
-    public void Test_RenderOneElement()
+    public void RenderOneElement()
     {
         // Arrange
         var title = new Title("Hello World!");
@@ -641,7 +641,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RenderElement_InvalidId()
+    public void RenderElement_InvalidId()
     {
         // Arrange
         var title = new Title("Hello World!");
@@ -657,7 +657,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RenderOneElement_ByElement()
+    public void RenderOneElement_ByElement()
     {
         // Arrange
         var title = new Title("Hello World!");
@@ -674,7 +674,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RenderElement_InvalidElement()
+    public void RenderElement_InvalidElement()
     {
         // Arrange
         var title = new Title("Hello World!");
@@ -689,7 +689,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RenderAllElements()
+    public void RenderAllElements()
     {
         // Arrange
         var title = new Title("Hello World!");
@@ -708,7 +708,7 @@ public class UnitTestWindow
 
     #region InfoMethods
     [TestMethod]
-    public void Test_GetListWindowElements()
+    public void GetListWindowElements()
     {
         // Arrange
         Window.AddListWindowElements();
@@ -724,7 +724,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetListClassesInheritingElement()
+    public void GetListClassesInheritingElement()
     {
         // Arrange
         Window.AddListClassesInheritingElement();
@@ -740,7 +740,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_GetListClassesInheritingInteractiveElement()
+    public void GetListClassesInheritingInteractiveElement()
     {
         // Arrange
         Window.AddListClassesInheritingInteractiveElement();
@@ -756,7 +756,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_AddDashboard()
+    public void AddDashboard()
     {
         // Arrange
         Window.AddDashboard();
@@ -772,7 +772,7 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void Test_RemoveDashboard()
+    public void RemoveDashboard()
     {
         // Arrange
         Window.AddDashboard();
