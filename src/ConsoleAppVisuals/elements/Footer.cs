@@ -43,7 +43,9 @@ public class Footer : Element
     #endregion
 
     #region Getters and Setters
-
+    /// <summary>
+    /// The text of the footer.
+    /// </summary>
     public (string,string,string) Text{get => _text; set => _text = value;}
     
     #endregion

@@ -73,7 +73,7 @@ public class UnitTestLoadingBar{
     public void Test_TextNull(){
         //Arrange
         float valuee = 0.3f;
-        new LoadingBar(null, ref valuee, Placement.TopCenter, 0);
+        _ = new LoadingBar(null, ref valuee, Placement.TopCenter, 0);
     }
 
     [TestMethod]
