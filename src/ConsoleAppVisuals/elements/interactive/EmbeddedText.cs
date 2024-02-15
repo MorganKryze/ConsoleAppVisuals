@@ -47,6 +47,10 @@ public class EmbeddedText : InteractiveElement<string>
     public override int Width => _textToDisplay!.Max((string s) => s.Length) - 8;
     #endregion
 
+    #region Getters and setters
+    
+    #endregion
+
     #region Constructor
     /// <summary>
     /// The natural constructor of the Embedded text.
@@ -149,6 +153,7 @@ public class EmbeddedText : InteractiveElement<string>
     /// <summary>
     /// Renders the Embedded text.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         BuildText();
