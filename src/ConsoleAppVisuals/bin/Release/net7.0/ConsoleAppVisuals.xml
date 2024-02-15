@@ -797,6 +797,11 @@
             The width of the footer.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.Footer.Text">
+            <summary>
+            The text of the footer.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.Footer.#ctor(System.String,System.String,System.String)">
             <summary>
             The natural constructor of the footer.
