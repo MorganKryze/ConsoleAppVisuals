@@ -20,23 +20,23 @@ public class Banner : Element
 {
     #region Fields
     private (string, string, string) _text;
-    private  int _upperMargin;
-    private  int _lowerMargin;
-    private  Placement _placement;
-    private  int _line;
+    private int _upperMargin;
+    private int _lowerMargin;
+    private Placement _placement;
+    private int _line;
     #endregion
 
     #region Properties
     /// <summary>
     /// The placement of the banner.
     /// </summary>
-    public override Placement Placement => Placement1;
+    public override Placement Placement => _placement;
 
     /// <summary>
     /// The line of the banner in the console.
     /// </summary>
     /// <remarks>We add 2 because so the banner does not overlap with the title.</remarks>
-    public override int Line => Line1;
+    public override int Line => _line;
 
     /// <summary>
     /// The height of the banner.
@@ -47,33 +47,35 @@ public class Banner : Element
     /// The width of the banner.
     /// </summary>
     public override int Width => Console.WindowWidth;
-
-    
-
     #endregion
 
-    #region Getters and Setters 
+    #region Getters and Setters
     /// <summary>
     /// Getter and setter of the text of the banner.
     /// </summary>
-    public (string, string, string) Text { get => _text; set => _text = value; }
+    public (string, string, string) Text
+    {
+        get => _text;
+        set => _text = value;
+    }
+
     /// <summary>
     /// Getter and setter of the upper margin of the banner.
     /// </summary>
-    public int UpperMargin { get => _upperMargin; set => _upperMargin = value;}
+    public int UpperMargin
+    {
+        get => _upperMargin;
+        set => _upperMargin = value;
+    }
+
     /// <summary>
     /// Getter and setter of the lower margin of the banner.
     /// </summary>
-    public int LowerMargin { get => _lowerMargin; set => _lowerMargin = value; }
-    /// <summary>
-    /// Getter and setter of the placement of the banner.
-    /// </summary>
-    public Placement Placement1 { get => _placement; set => _placement = value; }
-    /// <summary>
-    /// Getter and setter of the line of the banner in the console.
-    /// </summary>
-    public int Line1 { get => _line; set => _line = value; }
-
+    public int LowerMargin
+    {
+        get => _lowerMargin;
+        set => _lowerMargin = value;
+    }
     #endregion
 
 
@@ -110,13 +112,13 @@ public class Banner : Element
         _text.Item3 = rightText;
         UpperMargin = upperMargin;
         LowerMargin = lowerMargin;
-        Placement1 = CheckPlacement(placement);
-        Line1 = Window.CheckLine(line) ?? Window.GetLineAvailable(Placement1);
+        _placement = CheckPlacement(placement);
+        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(_placement);
     }
 
     private static Placement CheckPlacement(Placement placement)
     {
-        if (placement is not (Placement.BottomCenterFullWidth  or Placement.TopCenterFullWidth))
+        if (placement is not (Placement.BottomCenterFullWidth or Placement.TopCenterFullWidth))
         {
             throw new ArgumentException(
                 "The placement of the banner must be TopCenterFullWidth or BottomCenterFullWidth."
