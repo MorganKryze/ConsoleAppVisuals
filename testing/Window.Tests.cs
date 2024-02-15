@@ -10,7 +10,7 @@ public class UnitTestWindow
     #region Properties
 
     [TestMethod]
-    public void Test_Elements()
+    public void AddElement()
     {
         // Arrange
         var defaultValue = Window.Elements.Count;
