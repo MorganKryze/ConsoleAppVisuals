@@ -7,11 +7,11 @@ namespace testing;
 [TestClass]
 public class UnitTestTableView
 {
-    #region Constructor
-
+    #region ConstructorTests
     [TestMethod]
-    public void Test_HappyPath()
+    public void Constructor_CreatesTableViewWithHeadersAndBody()
     {
+        // Arrange
         var table = new TableView<string>(
             "title",
             new List<string>() { "header1", "header2", "header3" },
@@ -21,12 +21,18 @@ public class UnitTestTableView
                 new() { "4", "5", "6" }
             }
         );
+
+        // Act
+        // No additional action needed
+
+        // Assert
         Assert.AreEqual(2, table.Count);
     }
 
     [TestMethod]
-    public void Test_HappyPath_WithoutHeaders()
+    public void Constructor_CreatesTableViewWithoutHeaders()
     {
+        // Arrange
         var table = new TableView<string>(
             null,
             null,
@@ -36,14 +42,21 @@ public class UnitTestTableView
                 new() { "4", "5", "6" }
             }
         );
+
+        // Act
+        // No additional action needed
+
+        // Assert
         Assert.AreEqual(2, table.Count);
     }
 
     [TestMethod]
-    public void Test_WrongHeaderWrongBody()
+    public void Constructor_ThrowsExceptionOnInconsistentHeadersAndBody()
     {
+        // Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
+            // Act
             _ = new TableView<string>(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -57,10 +70,12 @@ public class UnitTestTableView
     }
 
     [TestMethod]
-    public void Test_NullHeaderWrongBody()
+    public void Constructor_ThrowsExceptionOnNullHeadersAndInconsistentBody()
     {
+        // Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
+            // Act
             _ = new TableView<string>(
                 null,
                 null,
@@ -74,18 +89,25 @@ public class UnitTestTableView
     }
 
     [TestMethod]
-    public void Test_NullHeaderNullBody()
+    public void Constructor_CreatesTableViewWithNullParameters()
     {
+        // Arrange
         var table = new TableView<string>(null, null, null);
+
+        // Act
+        // No additional action needed
+
+        // Assert
         Assert.IsNull(table.GetRawLines);
         Assert.IsNull(table.GetRawHeaders);
     }
     #endregion
 
-    #region GetLine
+    #region GetLineTests
     [TestMethod]
-    public void TestGetLine()
+    public void GetLine_ReturnsCorrectLine()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -96,12 +118,18 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
-        Assert.AreEqual("1", table.GetLine(0)[0]);
+
+        // Act
+        var line = table.GetLine(0);
+
+        // Assert
+        Assert.AreEqual("1", line[0]);
     }
 
     [TestMethod]
-    public void TestGetWrongLine()
+    public void GetLine_ThrowsExceptionOnWrongIndex()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -112,30 +140,38 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Assert
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
         {
+            // Act
             table.GetLine(2);
         });
     }
     #endregion
 
-    #region Properties with null entry
+    #region PropertiesWithNullEntryTests
     [TestMethod]
-    public void TestGetRawHeaders()
+    public void PropertiesWithNullEntry_ReturnsZeroCountHeightAndWidth()
     {
+        // Arrange
         TableView<string> table = new(null, null, null);
 
+        // Act
+        // No additional action needed
+
+        // Assert
         Assert.AreEqual(0, table.Count);
         Assert.AreEqual(0, table.Height);
         Assert.AreEqual(0, table.Width);
     }
-
     #endregion
 
-    #region Title
+    #region TitleTests
     [TestMethod]
-    public void Test_AddTitle()
+    public void AddTitle_AddsTitleCorrectly()
     {
+        // Arrange
         TableView<string> table1 =
             new(
                 null,
@@ -148,20 +184,27 @@ public class UnitTestTableView
                 new List<string>() { "header1", "header2", "header3" },
                 new List<List<string>>()
             );
+
+        // Act
         table1.AddTitle("title");
+
+        // Assert
         Assert.AreNotEqual(table1.Height, table2.Height);
 
+        // Act
         table1.ClearTitle();
         table1.UpdateTitle("title");
 
+        // Assert
         Assert.AreNotEqual(table1.Height, table2.Height);
     }
     #endregion
 
-    #region Headers
+    #region HeadersTests
     [TestMethod]
-    public void Test_AddHeaders()
+    public void AddHeaders_AddsHeadersCorrectly()
     {
+        // Arrange
         TableView<string> table1 =
             new(
                 null,
@@ -182,18 +225,25 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
         table1.AddHeaders(new List<string>() { "header1", "header2", "header3" });
+
+        // Assert
         Assert.AreNotEqual(table1.Height, table2.Height);
 
+        // Act
         table1.ClearHeaders();
         table1.UpdateHeaders(new List<string>() { "header1", "header2", "header3" });
 
+        // Assert
         Assert.AreNotEqual(table1.Height, table2.Height);
     }
 
     [TestMethod]
-    public void Test_AddHeaders_NotConsistent()
+    public void AddHeaders_ThrowsExceptionOnInconsistentHeaders()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -204,30 +254,39 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
+            // Act
             table.AddHeaders(new List<string>() { "header1", "header2" });
         });
     }
     #endregion
 
-    #region Line
+    #region LineTests
     [TestMethod]
-    public void TestAddLineOnEmptyBody()
+    public void AddLine_AddsLineOnEmptyBody()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
                 new List<List<string>>()
             );
+
+        // Act
         table.AddLine(new List<string>() { "1", "2", "3" });
+
+        // Assert
         Assert.AreEqual(1, table.Count);
     }
 
     [TestMethod]
-    public void Test_AddWrongLine()
+    public void AddLine_ThrowsExceptionOnWrongLine()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -235,26 +294,34 @@ public class UnitTestTableView
                 new List<List<string>>()
             );
         table.AddLine(new List<string>() { "1", "2", "3" });
+
+        // Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
+            // Act
             table.AddLine(new List<string>() { "1", "2" });
         });
     }
 
     [TestMethod]
-    public void Test_AddWrongLineWithHeaders()
+    public void AddLine_ThrowsExceptionOnWrongLineWithHeaders()
     {
+        // Arrange
         TableView<string> table =
             new(null, new List<string>() { "header1", "header2", "header3" }, null);
+
+        // Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
+            // Act
             table.AddLine(new List<string>() { "1", "2" });
         });
     }
 
     [TestMethod]
-    public void TestRemoveLine()
+    public void RemoveLine_RemovesLineCorrectly()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -265,13 +332,18 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
         table.RemoveLine(0);
+
+        // Assert
         Assert.AreEqual(1, table.Count);
     }
 
     [TestMethod]
-    public void TestRemoveWrongLine()
+    public void RemoveLine_ThrowsExceptionOnWrongIndex()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -282,15 +354,19 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Assert
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
         {
+            // Act
             table.RemoveLine(2);
         });
     }
 
     [TestMethod]
-    public void TestUpdateLine()
+    public void UpdateLine_UpdatesLineCorrectly()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -301,13 +377,18 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
         table.UpdateLine(0, new List<string>() { "7", "8", "9" });
+
+        // Assert
         Assert.AreEqual("7", table.GetLine(0)[0]);
     }
 
     [TestMethod]
-    public void TestUpdateWrongLine()
+    public void UpdateLine_ThrowsExceptionOnWrongIndex()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -318,15 +399,19 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Assert
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
         {
+            // Act
             table.UpdateLine(2, new List<string>() { "7", "8", "9" });
         });
     }
 
     [TestMethod]
-    public void TestUpdateLineWrongIndex()
+    public void UpdateLine_ThrowsExceptionOnWrongLineIndex()
     {
+        // Arrange
         TableView<string> table =
             new(
                 null,
@@ -337,17 +422,20 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
+            // Act
             table.UpdateLine(0, new List<string>() { "7", "8" });
         });
     }
     #endregion
 
-    #region General
 
+    #region GeneralTests
     [TestMethod]
-    public void Test_RoundedCorners()
+    public void RoundedCorners_SetsRoundedCornersCorrectly()
     {
         // Arrange
         TableView<string> table1 =
@@ -379,7 +467,7 @@ public class UnitTestTableView
     }
 
     [TestMethod]
-    public void Test_ClearEverything()
+    public void ClearEverything_ClearsAllElements()
     {
         // Arrange
         TableView<string> table1 =
@@ -416,7 +504,7 @@ public class UnitTestTableView
     }
 
     [TestMethod]
-    public void Test_Clear()
+    public void Clear_ResetsTable()
     {
         // Arrange
         TableView<string> table =
@@ -437,7 +525,7 @@ public class UnitTestTableView
     }
 
     [TestMethod]
-    public void Test_Render()
+    public void Render_AddsTableToWindowAndActivates()
     {
         // Arrange
         TableView<string> table =
@@ -463,21 +551,25 @@ public class UnitTestTableView
     }
     #endregion
 
-    #region GetColumnData
-    private readonly TableView<int> _tableView = new(
-        null,
-        new List<string> { "Column1", "Column2", "Column3" },
-        new List<List<int>>
-        {
-            new List<int> { 1, 2, 3 },
-            new List<int> { 4, 5, 6 }
-        }
-    );
+    #region GetColumnDataTests
+    private readonly TableView<int> _tableView =
+        new(
+            null,
+            new List<string> { "Column1", "Column2", "Column3" },
+            new List<List<int>>
+            {
+                new List<int> { 1, 2, 3 },
+                new List<int> { 4, 5, 6 }
+            }
+        );
 
     [TestMethod]
     public void GetColumnData_WithValidIndex_ReturnsCorrectData()
     {
+        // Act
         var result = _tableView.GetColumnData(1);
+
+        // Assert
         CollectionAssert.AreEqual(new List<int> { 2, 5 }, result);
     }
 
@@ -485,6 +577,7 @@ public class UnitTestTableView
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void GetColumnData_WithInvalidIndex_ThrowsArgumentOutOfRangeException()
     {
+        // Act
         _tableView.GetColumnData(-1);
         _tableView.GetColumnData(3);
     }
@@ -492,7 +585,10 @@ public class UnitTestTableView
     [TestMethod]
     public void GetColumnData_WithValidHeader_ReturnsCorrectData()
     {
+        // Act
         var result = _tableView.GetColumnData("Column2");
+
+        // Assert
         CollectionAssert.AreEqual(new List<int> { 2, 5 }, result);
     }
 
@@ -500,6 +596,7 @@ public class UnitTestTableView
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void GetColumnData_WithInvalidHeader_ThrowsArgumentOutOfRangeException()
     {
+        // Act
         _tableView.GetColumnData("InvalidHeader");
     }
 
@@ -507,14 +604,20 @@ public class UnitTestTableView
     [ExpectedException(typeof(InvalidOperationException))]
     public void GetColumnData_WithNullHeaders_ThrowsInvalidOperationException()
     {
+        // Arrange
         _tableView.ClearHeaders();
+
+        // Act
         _tableView.GetColumnData("Column1");
     }
 
     [TestMethod]
     public void GetColumnData_WithNullLines_ReturnsNull()
     {
+        // Arrange
         _tableView.ClearLines();
+
+        // Act & Assert
         Assert.IsNull(_tableView.GetColumnData(0));
         Assert.IsNull(_tableView.GetColumnData("Column1"));
     }

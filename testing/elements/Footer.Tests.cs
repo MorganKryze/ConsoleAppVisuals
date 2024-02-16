@@ -2,18 +2,16 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-
-using System.Runtime.CompilerServices;
-using Microsoft.VisualBasic;
-
 namespace ConsoleAppVisuals;
+
 [TestClass]
 public class UnitTestFooter
 {
+    #region Text
     [TestMethod]
     [DataRow(" ", " ", " ")]
     [DataRow("l ", "m ", "r ")]
-    public void Test_Text(string left, string mid, string right)
+    public void Text(string left, string mid, string right)
     {
         //Arrange
         var text = (left, mid, right);
@@ -23,28 +21,31 @@ public class UnitTestFooter
         //Assert
         Assert.AreEqual(text, footer.Text);
     }
+    #endregion
 
-
+    #region Placement
     [TestMethod]
     [DataRow(Placement.BottomCenterFullWidth)]
     [DataRow(Placement.TopLeft)]
-    public void Test_Placement(Placement placement)
+    public void Placement_Getter(Placement placement)
     {
         //Arrange
         Footer footer = new Footer();
         //Act
         footer.Placement = placement;
-        //Assert 
+        //Assert
         Assert.AreEqual(placement, footer.Placement);
     }
+    #endregion
 
+    #region PlacementFalse
     [TestMethod]
     [ExpectedException(typeof(AssertFailedException))]
     [DataRow(Placement.TopLeft)]
     [DataRow(Placement.TopCenter)]
     [DataRow(Placement.TopRight)]
-
-    public void Test_PlacementFalse(Placement placement){
+    public void PlacementFalse(Placement placement)
+    {
         //Arrange
         Footer footer = new Footer();
         //Act
@@ -52,64 +53,78 @@ public class UnitTestFooter
         //Assert
         Assert.AreEqual(Placement.BottomCenterFullWidth, footer.Placement);
     }
+    #endregion
 
+    #region Line
     [TestMethod]
-
-    public void Test_Line(){
+    public void Line_Getter()
+    {
         //Arrange
         Footer footer = new Footer();
 
-        //Assert 
+        //Assert
         Assert.AreEqual(footer.Line, Window.GetLineAvailable(footer.Placement));
     }
+    #endregion
 
-
+    #region Height
     [TestMethod]
-
-    public void Test_Height(){
+    public void Height_Getter()
+    {
         //Arrange
         Footer footer = new Footer();
 
-        //Assert 
+        //Assert
         Assert.AreEqual(footer.Height, 1);
     }
+    #endregion
 
+    #region Width
     [TestMethod]
-    
-    public void Test_Width(){
+    public void Width_Getter()
+    {
         //Arrange
         Footer footer = new Footer();
 
-        //Assert 
+        //Assert
         Assert.AreEqual(footer.Width, Console.WindowWidth);
-    }   
+    }
+    #endregion
 
+    #region Constructor
     [TestMethod]
     [DataRow(" ", " ", " ")]
     [DataRow("l ", "m ", "r ")]
-    public void Test_constructor(string left, string mid, string right){
+    public void Constructor(string left, string mid, string right)
+    {
         //Arrange
         //Act
         Footer footer = new Footer(left, mid, right);
         //Assert
         Assert.AreEqual((left, mid, right), footer.Text);
     }
+    #endregion
 
+    #region ConstructorPlacement
     [TestMethod]
     [DataRow(" ", " ", " ")]
     [DataRow("l ", "m ", "r ")]
-    public void Test_constructorPlacement(string left, string mid, string right){
+    public void ConstructorPlacement(string left, string mid, string right)
+    {
         //Arrange
         //Act
         Footer footer = new Footer(left, mid, right);
         //Assert
         Assert.AreEqual(Placement.BottomCenterFullWidth, footer.Placement);
     }
+    #endregion
 
+    #region UpdateLeftText
     [TestMethod]
     [DataRow(" ")]
     [DataRow("hello world")]
-    public void Test_UppdateLeftText(string left){
+    public void UpdateLeftText(string left)
+    {
         //Arrange
         Footer footer = new Footer("hello", " ", " ");
         //Act
@@ -117,12 +132,14 @@ public class UnitTestFooter
         //Assert
         Assert.AreEqual(left, footer.Text.Item1);
     }
+    #endregion
 
-
+    #region UpdateCenterText
     [TestMethod]
     [DataRow(" ")]
     [DataRow("hello world")]
-    public void Test_UpdateCenterText(string mid){
+    public void UpdateCenterText(string mid)
+    {
         //Arrange
         Footer footer = new Footer(" ", " all", " ");
         //Act
@@ -130,11 +147,14 @@ public class UnitTestFooter
         //Assert
         Assert.AreEqual(mid, footer.Text.Item2);
     }
+    #endregion
 
+    #region UpdateRightText
     [TestMethod]
     [DataRow(" ")]
     [DataRow("hello world")]
-    public void Test_UpdateRightText(string right){
+    public void UpdateRightText(string right)
+    {
         //Arrange
         Footer footer = new Footer(" ", " ", "world");
         //Act
@@ -142,10 +162,5 @@ public class UnitTestFooter
         //Assert
         Assert.AreEqual(right, footer.Text.Item3);
     }
-
-
-    
-
-
-
+    #endregion
 }

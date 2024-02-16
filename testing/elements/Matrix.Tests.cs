@@ -7,18 +7,30 @@ namespace testing;
 [TestClass]
 public class UnitTestMatrix
 {
+    #region NoLines_MatrixIsEmpty
     [TestMethod]
-    public void TestNoLines()
+    public void MatrixIsEmpty()
     {
+        // Arrange
         Matrix<string> matrix = new();
+
+        // Act
+
+        // Assert
         Assert.AreEqual(0, matrix.Count);
     }
+    #endregion
 
+    #region WrongLinesLengths_ThrowsArgumentException
     [TestMethod]
-    public void TestWrongLinesLengths()
+    public void WrongLinesLengths_ArgumentException()
     {
+        // Arrange
+
+        // Act
         Assert.ThrowsException<ArgumentException>(() =>
         {
+            // Act
             _ = new Matrix<string>(
                 new List<List<string?>>()
                 {
@@ -27,11 +39,16 @@ public class UnitTestMatrix
                 }
             );
         });
-    }
 
+        // Assert
+    }
+    #endregion
+
+    #region GetElement_ReturnsCorrectElement
     [TestMethod]
-    public void TestGetElement()
+    public void GetElement_CorrectElement()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -40,12 +57,19 @@ public class UnitTestMatrix
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
+
+        // Assert
         Assert.AreEqual("1", matrix.GetItem(new Position(0, 0)));
     }
+    #endregion
 
+    #region GetWrongElement_ThrowsArgumentOutOfRangeException
     [TestMethod]
-    public void TestGetWrongElement()
+    public void GetWrongElement_ArgumentOutOfRangeException()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -54,15 +78,23 @@ public class UnitTestMatrix
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
         {
+            // Act
             matrix.GetItem(new Position(2, 0));
         });
-    }
 
+        // Assert
+    }
+    #endregion
+
+    #region UpdateElement_UpdatesCorrectElement
     [TestMethod]
-    public void TestUpdateElement()
+    public void UpdateElement_CorrectElement()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -71,13 +103,20 @@ public class UnitTestMatrix
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
         matrix.UpdateItem(new Position(0, 0), "7");
+
+        // Assert
         Assert.AreEqual("7", matrix.GetItem(new Position(0, 0)));
     }
+    #endregion
 
+    #region UpdateWrongElement_ThrowsArgumentOutOfRangeException
     [TestMethod]
-    public void TestUpdateWrongElement()
+    public void UpdateWrongElement_ArgumentOutOfRangeException()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -86,15 +125,23 @@ public class UnitTestMatrix
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
         {
+            // Act
             matrix.UpdateItem(new Position(2, 0), "7");
         });
-    }
 
+        // Assert
+    }
+    #endregion
+
+    #region UpdateElementWrongIndex_ThrowsArgumentOutOfRangeException
     [TestMethod]
-    public void TestUpdateElementWrongIndex()
+    public void UpdateElementWrongIndex_ArgumentOutOfRangeException()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -103,15 +150,23 @@ public class UnitTestMatrix
                     new() { "4", "5", "6" }
                 }
             );
+
+        // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
         {
+            // Act
             matrix.UpdateItem(new Position(0, 3), "7");
         });
-    }
 
+        // Assert
+    }
+    #endregion
+
+    #region Placement_SetPlacement_ReturnsPlacement
     [TestMethod]
-    public void Test_Placement()
+    public void Placement_SetPlacement_ReturnsPlacement()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -123,12 +178,18 @@ public class UnitTestMatrix
                 Placement.TopRight
             );
 
+        // Act
+
+        // Assert
         Assert.AreEqual(Placement.TopRight, matrix.Placement);
     }
+    #endregion
 
+    #region Dimensions_ReturnsCorrectDimensions
     [TestMethod]
-    public void Test_Dimensions()
+    public void Dimensions_ReturnsCorrectDimensions()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -140,22 +201,34 @@ public class UnitTestMatrix
                 Placement.TopRight
             );
 
+        // Act
+
+        // Assert
         Assert.AreEqual(5, matrix.Height);
         Assert.AreEqual(13, matrix.Width);
     }
+    #endregion
 
+    #region Dimension_NullMatrix_ReturnsZeroDimensions
     [TestMethod]
-    public void Test_Dimension_Null()
+    public void Dimension_NullMatrix_ReturnsZeroDimensions()
     {
+        // Arrange
         Matrix<string> matrix = new(null);
 
+        // Act
+
+        // Assert
         Assert.AreEqual(0, matrix.Height);
         Assert.AreEqual(0, matrix.Width);
     }
+    #endregion
 
+    #region Line_ReturnsZero
     [TestMethod]
-    public void Test_Line()
+    public void Line_ReturnsZero()
     {
+        // Arrange
         Matrix<string> matrix =
             new(
                 new List<List<string?>>()
@@ -167,18 +240,34 @@ public class UnitTestMatrix
                 Placement.TopRight
             );
 
+        // Act
+
+        // Assert
         Assert.AreEqual(0, matrix.Line);
     }
+    #endregion
 
+    #region LinesEmpty_ThrowsArgumentException
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void Test_LinesEmpty()
+    public void LinesEmpty_ArgumentException()
     {
-        _ = new Matrix<string>(new List<List<string?>>());
-    }
+        // Arrange
 
+        // Act
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            // Act
+            _ = new Matrix<string>(new List<List<string?>>());
+        });
+
+        // Assert
+    }
+    #endregion
+
+
+    #region AddLine_AddsLineCorrectly
     [TestMethod]
-    public void Test_AddLine()
+    public void AddLine_AddsLineCorrectly()
     {
         // Arrange
         Matrix<string> matrix =
@@ -197,9 +286,11 @@ public class UnitTestMatrix
         // Assert
         Assert.AreEqual(3, matrix.Count);
     }
+    #endregion
 
+    #region RoundedCorners_SetRoundedCorners_ReturnsTrue
     [TestMethod]
-    public void Test_RoundedCorners_Set()
+    public void RoundedCorners_SetRoundedCorners_ReturnsTrue()
     {
         // Arrange
         Matrix<string> matrix =
@@ -218,9 +309,11 @@ public class UnitTestMatrix
         // Assert
         Assert.IsTrue(matrix.RoundedCorners);
     }
+    #endregion
 
+    #region AddLine_MatrixNull
     [TestMethod]
-    public void Test_AddLine_MatrixNull()
+    public void AddLine_MatrixNull()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -231,9 +324,11 @@ public class UnitTestMatrix
         // Assert
         Assert.AreEqual(1, matrix.Count);
     }
+    #endregion
 
+    #region AddLine_WrongLength
     [TestMethod]
-    public void Test_AddLine_WrongLength()
+    public void AddLine_WrongLength()
     {
         // Arrange
         Matrix<string> matrix =
@@ -252,9 +347,11 @@ public class UnitTestMatrix
             matrix.AddLine(new List<string?>() { "1", "2" });
         });
     }
+    #endregion
 
+    #region InsertLine
     [TestMethod]
-    public void Test_InsertLine()
+    public void InsertLine()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -266,9 +363,11 @@ public class UnitTestMatrix
         // Assert
         Assert.IsTrue(matrix.InsertLine(1, new List<string?>() { "7", "8", "9" }));
     }
+    #endregion
 
+    #region InsertLine_OutOfRange
     [TestMethod]
-    public void Test_InsertLine_OutOfRange()
+    public void InsertLine_OutOfRange()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -283,9 +382,11 @@ public class UnitTestMatrix
             matrix.InsertLine(3, new List<string?>() { "7", "8", "9" });
         });
     }
+    #endregion
 
+    #region InsertLine_NotEnoughElements
     [TestMethod]
-    public void Test_InsertLine_NotEnoughElements()
+    public void InsertLine_NotEnoughElements()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -299,9 +400,11 @@ public class UnitTestMatrix
             matrix.InsertLine(0, new List<string?>() { "7", "8" });
         });
     }
+    #endregion
 
+    #region UpdateLine
     [TestMethod]
-    public void Test_UpdateLine()
+    public void UpdateLine()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -314,9 +417,11 @@ public class UnitTestMatrix
         // Assert
         Assert.AreEqual("7", matrix.GetItem(new Position(0, 0)));
     }
+    #endregion
 
+    #region UpdateLine_OutOfRange
     [TestMethod]
-    public void Test_UpdateLine_OutOfRange()
+    public void UpdateLine_OutOfRange()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -331,9 +436,11 @@ public class UnitTestMatrix
             matrix.UpdateLine(2, new List<string?>() { "7", "8", "9" });
         });
     }
+    #endregion
 
+    #region UpdateLine_NotEnoughElements
     [TestMethod]
-    public void Test_UpdateLine_NotEnoughElements()
+    public void UpdateLine_NotEnoughElements()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -348,9 +455,11 @@ public class UnitTestMatrix
             matrix.UpdateLine(0, new List<string?>() { "7", "8" });
         });
     }
+    #endregion
 
+    #region RemoveLine
     [TestMethod]
-    public void Test_RemoveLine()
+    public void RemoveLine()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -363,9 +472,11 @@ public class UnitTestMatrix
         // Assert
         Assert.AreEqual(1, matrix.Count);
     }
+    #endregion
 
+    #region RemoveLine_OutOfRange
     [TestMethod]
-    public void Test_RemoveLine_OutOfRange()
+    public void RemoveLine_OutOfRange()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -380,9 +491,11 @@ public class UnitTestMatrix
             matrix.RemoveLine(2);
         });
     }
+    #endregion
 
+    #region Remove
     [TestMethod]
-    public void Test_Remove()
+    public void Remove()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -395,9 +508,11 @@ public class UnitTestMatrix
         // Assert
         Assert.AreEqual(null, matrix.GetItem(new Position(0, 0)));
     }
+    #endregion
 
+    #region Remove_OutOfRange
     [TestMethod]
-    public void Test_Remove_OutOfRange()
+    public void Remove_OutOfRange()
     {
         // Arrange
         Matrix<string> matrix = new();
@@ -412,9 +527,11 @@ public class UnitTestMatrix
             matrix.RemoveItem(new Position(2, 0));
         });
     }
+    #endregion
 
+    #region RenderElement
     [TestMethod]
-    public void Test_RenderElement()
+    public void RenderElement()
     {
         // Arrange
         Matrix<string> matrix =
@@ -437,16 +554,19 @@ public class UnitTestMatrix
         // Cleanup
         Window.RemoveElement<Matrix<string>>();
     }
+    #endregion
 
+    #region RenderElement_Null
     [TestMethod]
-    public void Test_RenderElement_Null()
+    public void RenderElement_Null()
     {
         // Arrange
         Matrix<string> matrix = new(null);
 
-        // Assert
+        // Act
         Window.AddElement(matrix);
 
+        // Assert
         Assert.ThrowsException<InvalidOperationException>(() =>
         {
             Window.ActivateElement<Matrix<string>>();
@@ -455,4 +575,5 @@ public class UnitTestMatrix
         // Cleanup
         Window.RemoveElement<Matrix<string>>();
     }
+    #endregion
 }
