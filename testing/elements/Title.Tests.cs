@@ -7,8 +7,9 @@ namespace testing;
 [TestClass]
 public class UnitTestTitle
 {
+    #region UpdateTextTests
     [TestMethod]
-    public void Test_UpdateText()
+    public void UpdateText_UpdatesTextCorrectly()
     {
         // Arrange
         Title title1 = new("Hello World!", 2);
@@ -20,9 +21,11 @@ public class UnitTestTitle
         // Assert
         Assert.AreEqual(title1.StyledText[0], title2.StyledText[0]);
     }
+    #endregion
 
+    #region UpdateMarginTests
     [TestMethod]
-    public void Test_UpdateMargin()
+    public void UpdateMargin_UpdatesMarginCorrectly()
     {
         // Arrange
         Title title1 = new("Hello World!", 2);
@@ -34,4 +37,5 @@ public class UnitTestTitle
         // Assert
         Assert.AreNotEqual(title1.Height, title2.Height);
     }
+    #endregion
 }

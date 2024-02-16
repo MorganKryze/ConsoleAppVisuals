@@ -7,10 +7,11 @@ namespace ConsoleAppVisuals;
 [TestClass]
 public class UnitTestBanner
 {
+    #region BannerConstructor
     [TestMethod]
     [DataRow("left", "center", "right", 1, 1)]
     [DataRow("left", "center", "right", 1, 1)]
-    public void Test_BannerConstructor(
+    public void BannerConstructor(
         string leftText,
         string centerText,
         string rightText,
@@ -20,7 +21,6 @@ public class UnitTestBanner
     {
         //Arrange
         //Act
-
         var banner = new Banner(
             leftText,
             centerText,
@@ -31,17 +31,18 @@ public class UnitTestBanner
         );
 
         //Assert
-
         Assert.AreEqual(banner.Text, (leftText, centerText, rightText));
         Assert.AreEqual(banner.UpperMargin, upperMargin);
         Assert.AreEqual(banner.LowerMargin, lowerMargin);
     }
+    #endregion
 
+    #region BannerConstructorWrongPlacement
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     [DataRow("left", "center", "right", 1, 1, Placement.TopLeft)]
     [DataRow("left", "center", "right", 1, 1, Placement.TopRight)]
-    public void Test_BannerConstructorWrongPlacement(
+    public void BannerConstructorWrongPlacement(
         string leftText,
         string centerText,
         string rightText,
@@ -53,11 +54,13 @@ public class UnitTestBanner
         //Act
         new Banner(leftText, centerText, rightText, upperMargin, lowerMargin, placement);
     }
+    #endregion
 
+    #region CheckPlacement
     [TestMethod]
     [DataRow(Placement.TopCenterFullWidth)]
     [DataRow(Placement.BottomCenterFullWidth)]
-    public void Test_checkPlacement(Placement placement)
+    public void CheckPlacement(Placement placement)
     {
         //Arrange
         //Act
@@ -66,11 +69,13 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(banner.Placement, placement);
     }
+    #endregion
 
+    #region UpdateLeftText
     [TestMethod]
     [DataRow("hello world")]
     [DataRow(null)]
-    public void Test_UpdateLeftText(string leftText)
+    public void UpdateLeftText(string leftText)
     {
         //Arrange
         var banner = new Banner("left", "center", "right", 1, 1, Placement.TopCenterFullWidth);
@@ -80,11 +85,13 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(banner.Text.Item1, leftText);
     }
+    #endregion
 
+    #region UpdateCenterText
     [TestMethod]
     [DataRow("hello world")]
     [DataRow(null)]
-    public void Test_UpdateCenterText(string leftText)
+    public void UpdateCenterText(string leftText)
     {
         //Arrange
         var banner = new Banner("left", "center", "right", 1, 1, Placement.TopCenterFullWidth);
@@ -94,11 +101,13 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(banner.Text.Item2, leftText);
     }
+    #endregion
 
+    #region UpdateLRightText
     [TestMethod]
     [DataRow("hello world")]
     [DataRow(null)]
-    public void Test_UpdateLRightText(string leftText)
+    public void UpdateRightText(string leftText)
     {
         //Arrange
         var banner = new Banner("left", "center", "right", 1, 1, Placement.TopCenterFullWidth);
@@ -108,9 +117,11 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(banner.Text.Item3, leftText);
     }
+    #endregion
 
+    #region Text
     [TestMethod]
-    public void Test_Text()
+    public void Text()
     {
         //Arrange
         var banner = new Banner();
@@ -121,9 +132,11 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(text, ("Banner Left", "Banner Center", "Banner Right"));
     }
+    #endregion
 
+    #region UpperMargin
     [TestMethod]
-    public void Test_UpperMargin()
+    public void UpperMargin()
     {
         //Arrange
         var banner = new Banner();
@@ -134,9 +147,11 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(margin, banner.UpperMargin);
     }
+    #endregion
 
+    #region LowerMargin
     [TestMethod]
-    public void Test_LowerMargin()
+    public void LowerMargin()
     {
         //Arrange
         var banner = new Banner();
@@ -147,9 +162,11 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(margin, banner.LowerMargin);
     }
+    #endregion
 
+    #region Placement
     [TestMethod]
-    public void Test_Placement()
+    public void Placement_Getter()
     {
         //Arrange
         var banner = new Banner();
@@ -160,9 +177,11 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(placement, banner.Placement);
     }
+    #endregion
 
+    #region Line
     [TestMethod]
-    public void Test_Line()
+    public void Line()
     {
         //Arrange
         var banner = new Banner();
@@ -173,4 +192,5 @@ public class UnitTestBanner
         //Assert
         Assert.AreEqual(line, banner.Line);
     }
+    #endregion
 }
