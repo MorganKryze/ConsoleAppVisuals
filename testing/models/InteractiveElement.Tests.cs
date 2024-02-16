@@ -8,61 +8,66 @@ namespace testing;
 public class UnitTestInteractiveElement
 {
     [TestMethod]
-        public void TestIsInteractiveProperty()
-        {
-            var element = new TestInteractiveElement();
-            Assert.IsTrue(element.IsInteractive);
-        }
+    public void IsInteractiveProperty_ReturnsTrue()
+    {
+        // Arrange
+        var element = new TestInteractiveElement();
 
-        [TestMethod]
-        public void TestMaxNumberOfThisElementProperty()
-        {
-            var element = new TestInteractiveElement();
-            Assert.AreEqual(1, element.MaxNumberOfThisElement);
-        }
+        // Act & Assert
+        Assert.IsTrue(element.IsInteractive);
+    }
 
-        [TestMethod]
-        public void TestGetInteractionResponse_Info()
-        {
-            // Arrange
-            var element = new TestInteractiveElement();
-            Window.AddElement(element);
+    [TestMethod]
+    public void MaxNumberOfThisElementProperty_ReturnsOne()
+    {
+        // Arrange
+        var element = new TestInteractiveElement();
 
-            // Act
-            Window.ActivateElement<TestInteractiveElement>();
-            var response = element.GetInteractionResponse;
+        // Act & Assert
+        Assert.AreEqual(1, element.MaxNumberOfThisElement);
+    }
 
-            // Assert
-            Assert.AreEqual("Test info", response?.Info);
+    [TestMethod]
+    public void GetInteractionResponse_ReturnsInfoResponse()
+    {
+        // Arrange
+        var element = new TestInteractiveElement();
+        Window.AddElement(element);
 
-            // Cleanup
-            Window.RemoveAllElements();
-        }
+        // Act
+        Window.ActivateElement<TestInteractiveElement>();
+        var response = element.GetInteractionResponse;
 
-        [TestMethod]
-        public void TestGetInteractionResponse_State()
-        {
-            // Arrange
-            var element = new TestInteractiveElement();
-            Window.AddElement(element);
+        // Assert
+        Assert.AreEqual("Test info", response?.Info);
 
-            // Act
-            Window.ActivateElement<TestInteractiveElement>();
-            var response = element.GetInteractionResponse;
+        // Cleanup
+        Window.RemoveAllElements();
+    }
 
-            // Assert
-            Assert.AreEqual(Output.Select, response?.State);
+    [TestMethod]
+    public void GetInteractionResponse_ReturnsSelectState()
+    {
+        // Arrange
+        var element = new TestInteractiveElement();
+        Window.AddElement(element);
 
-            // Cleanup
-            Window.RemoveAllElements();
-        }
+        // Act
+        Window.ActivateElement<TestInteractiveElement>();
+        var response = element.GetInteractionResponse;
+
+        // Assert
+        Assert.AreEqual(Output.Select, response?.State);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
 }
 
 public class TestInteractiveElement : InteractiveElement<string>
 {
-    public TestInteractiveElement() : base()
-    {
-    }
+    public TestInteractiveElement()
+        : base() { }
 
     protected override void RenderElementActions()
     {
