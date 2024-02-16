@@ -7,27 +7,50 @@ namespace testing;
 [TestClass]
 public class UnitTestInteractionEventArgs
 {
+    #region ConstructorTests
+
     [TestMethod]
-    public void TestConstructor()
+    public void Constructor_StateAndInfo_SetCorrectly()
     {
+        // Arrange
         var state = Output.Exit;
         var info = "Test info";
+
+        // Act
         var args = new InteractionEventArgs<string>(state, info);
+
+        // Assert
         Assert.AreEqual(state, args.State);
         Assert.AreEqual(info, args.Info);
     }
 
+    #endregion
+
+    #region StatePropertyTests
+
     [TestMethod]
-    public void TestStateProperty()
+    public void StateProperty_ReturnsCorrectState()
     {
+        // Arrange
         var args = new InteractionEventArgs<string>(Output.Delete, "Test info");
+
+        // Act & Assert
         Assert.AreEqual(Output.Delete, args.State);
     }
 
+    #endregion
+
+    #region InfoPropertyTests
+
     [TestMethod]
-    public void TestInfoProperty()
+    public void InfoProperty_ReturnsCorrectInfo()
     {
+        // Arrange
         var args = new InteractionEventArgs<string>(Output.Delete, "Test info");
+
+        // Act & Assert
         Assert.AreEqual("Test info", args.Info);
     }
+
+    #endregion
 }
