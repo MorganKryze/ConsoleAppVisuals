@@ -9,7 +9,7 @@ public class UnitTestCore
 {
     #region SetSelector
     [TestMethod]
-    public void Test_SetSelectorNewChar()
+    public void SetSelector_NewChar()
     {
         // Arrange
         Core.SetSelector('>', '<');
@@ -25,7 +25,7 @@ public class UnitTestCore
 
     #region SetForegroundColor
     [TestMethod]
-    public void Test_SetForegroundColorForConsole()
+    public void SetForegroundColor_ForConsole()
     {
         // Arrange
         ConsoleColor color = ConsoleColor.Red;
@@ -41,7 +41,7 @@ public class UnitTestCore
 
     #region SetBackgroundColor
     [TestMethod]
-    public void Test_SetBackgroundColorForConsole()
+    public void SetBackgroundColor_ForConsole()
     {
         // Arrange
         ConsoleColor color = ConsoleColor.Blue;
@@ -58,7 +58,7 @@ public class UnitTestCore
     #region SaveColorPanel & LoadSavedColorPanel
     // The class can save the current color panel as a tuple.
     [TestMethod]
-    public void Test_SaveColorPanel()
+    public void SaveColorPanel()
     {
         // Arrange
         var initialColorPanel = Core.GetColorPanel;
@@ -76,7 +76,7 @@ public class UnitTestCore
 
     #region LoadTerminalColorPanel
     [TestMethod]
-    public void Test_LoadTerminalColorPanel()
+    public void LoadTerminalColorPanel()
     {
         // Arrange
         var initialColorPanel = Core.GetColorPanel;
@@ -91,8 +91,9 @@ public class UnitTestCore
 
     #region GetInitialColorPanel
     [TestMethod]
-    public void Test_GetInitialColorPanel()
+    public void GetInitialColorPanel()
     {
+        // Assert
         Assert.AreEqual((ConsoleColor.White, ConsoleColor.Black), Core.GetInitialColorPanel);
     }
 
@@ -101,7 +102,7 @@ public class UnitTestCore
     #region ApplyNegative
     // The class can apply negative colors to the console.
     [TestMethod]
-    public void Test_ApplyNegative()
+    public void ApplyNegative()
     {
         // Arrange
         Core.SetForegroundColor(ConsoleColor.Red);

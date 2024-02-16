@@ -11,8 +11,9 @@ namespace testing
 
         #region Constructor
         [TestMethod]
-        public void TestConstructorWithNullFontPath()
+        public void Constructor_NullFontPath_NotNullDictionary()
         {
+            // Assert
             Assert.IsNotNull(styler.Dictionary);
             var expected =
                 @" █████╗  
@@ -26,9 +27,12 @@ namespace testing
 
         [TestMethod]
         [DataRow("../../../resources/fonts/ANSI_Shadow/")]
-        public void TestConstructorWithFontPath(string path)
+        public void Constructor_WithFontPath_ValidDictionary(string path)
         {
+            // Act
             var custom = new TextStyler(path);
+
+            // Assert
             var expected =
                 @" █████╗  
 ██╔══██╗ 
@@ -42,26 +46,31 @@ namespace testing
 
         [TestMethod]
         [DataRow("../../../resources/fonts/ANSI_Shadow/")]
-        public void TestConstructorWithFontPathAndDefault(string path)
+        public void Constructor_WithFontPathAndDefault_ValidDictionary(string path)
         {
+            // Arrange
             var stylerCustom = new TextStyler(path);
+
+            // Assert
             Assert.AreEqual(styler.Dictionary['a'], stylerCustom.Dictionary['a']);
         }
 
         [TestMethod]
         [ExpectedException(typeof(EmptyFileException))]
         [DataRow("../../../resources/fonts/Throw_Error/")]
-        public void Test_ConfigFileEmpty(string path)
+        public void Constructor_EmptyFileExceptionThrown(string path)
         {
-            TextStyler emptyStyler = new(path); // Here should the error be thrown
+            // Act
+            TextStyler emptyStyler = new(path); // Exception should be thrown here
             emptyStyler.StyleTextToString("Hello World!");
         }
 
         [TestMethod]
         [ExpectedException(typeof(DirectoryNotFoundException))]
         [DataRow("invalid/path")]
-        public void TestConstructorWithInvalidFontPath(string path)
+        public void Constructor_InvalidFontPath_ExceptionThrown(string path)
         {
+            // Act
             new TextStyler(path);
         }
         #endregion
@@ -69,16 +78,20 @@ namespace testing
         #region StyleTextToString
         [TestMethod]
         [DataRow("Hello World")]
-        public void TestStyleTextToString(string value)
+        public void StyleTextToString_NotNull(string value)
         {
+            // Act
             string styledText = styler.StyleTextToString(value);
+
+            // Assert
             Assert.IsNotNull(styledText);
         }
 
         [TestMethod]
         [ExpectedException(typeof(NotSupportedCharException))]
-        public void Test_UnsupportedCharString()
+        public void StyleTextToString_UnsupportedCharExceptionThrown()
         {
+            // Assert
             styler.StyleTextToString("Hello World! +=è$%&/()=?^*[]{}@#|");
         }
         #endregion
@@ -86,38 +99,46 @@ namespace testing
         #region StyleTextToStringArray
         [TestMethod]
         [DataRow("Hello World")]
-        public void TestStyleTextToStringArray(string value)
+        public void StyleTextToStringArray_NotNull(string value)
         {
+            // Act
             string[] styledText = styler.StyleTextToStringArray(value);
+
+            // Assert
             Assert.IsNotNull(styledText);
         }
 
         [TestMethod]
         [ExpectedException(typeof(NotSupportedCharException))]
-        public void Test_UnsupportedCharArray()
+        public void StyleTextToStringArray_UnsupportedCharExceptionThrown()
         {
+            // Assert
             styler.StyleTextToStringArray("Hello World! +=è$%&/()=?^*[]{}@#|");
         }
         #endregion
 
         #region General
         [TestMethod]
-        public void TestToString()
+        public void ToString_NotNull()
         {
+            // Act
             string result = styler.ToString();
+
+            // Assert
             Assert.IsNotNull(result);
         }
 
         [TestMethod]
-        public void TestEquals()
+        public void Equals_ValidComparisons()
         {
+            // Assert
             Assert.IsTrue(styler.Equals(styler));
             Assert.IsFalse(styler.Equals(null));
             Assert.IsFalse(styler.Equals(new TextStyler()));
         }
 
         [TestMethod]
-        public void Test_SetStyler()
+        public void SetStyler_FontPathSet_StyleTextCorrect()
         {
             // Arrange
             Core.SetStyler("../../../resources/fonts/ANSI_Shadow/");
@@ -131,9 +152,9 @@ namespace testing
         }
 
         [TestMethod]
-        public void GetRandomColor_ReturnsValidColor()
+        public void GetRandomColor_ValidColorReturned()
         {
-            // Arrange
+            // Arrange & Act
             var color = Core.GetRandomColor();
 
             // Assert
@@ -141,7 +162,7 @@ namespace testing
         }
 
         [TestMethod]
-        public void Test_RestoreColorPanel()
+        public void RestoreColorPanel_ColorPanelRestored()
         {
             // Arrange
             var color = Core.GetColorPanel;
@@ -154,7 +175,7 @@ namespace testing
         }
 
         [TestMethod]
-        public void Constructor_ThrowsFileNotFoundException_WhenStreamIsNull()
+        public void Constructor_FileNotFoundExceptionThrown_WhenStreamIsNull()
         {
             // Arrange
             var mockAssembly = new Mock<Assembly>();
@@ -164,9 +185,10 @@ namespace testing
                 .Returns(default(Stream));
 
             // Act & Assert
-            Assert.ThrowsException<FileNotFoundException>(() => new TextStyler(resourceName, mockAssembly.Object));
+            Assert.ThrowsException<FileNotFoundException>(
+                () => new TextStyler(resourceName, mockAssembly.Object)
+            );
         }
-
         #endregion
     }
 }
