@@ -26,16 +26,6 @@ public class TableSelector<T> : InteractiveElement<int>
 
     #region Properties: get headers, get lines
     /// <summary>
-    /// This property returns the headers of the table.
-    /// </summary>
-    public List<string>? GetRawHeaders => _rawHeaders;
-
-    /// <summary>
-    /// This property returns the lines of the table.
-    /// </summary>
-    public List<List<T>>? GetRawLines => _rawLines;
-
-    /// <summary>
     /// This property returns the title of the table.
     /// </summary>
     public override Placement Placement => _placement;
@@ -54,6 +44,54 @@ public class TableSelector<T> : InteractiveElement<int>
     /// This property returns the width of the table.
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
+    #endregion
+
+    #region Properties: get corners, count
+    /// <summary>
+    /// This property returns the title of the table.
+    /// </summary>
+    public string Title => _title ?? "";
+
+    /// <summary>
+    /// This property returns if the header is excluded.
+    /// </summary>
+    public bool ExcludeHeader => _excludeHeader;
+
+    /// <summary>
+    /// This property returns if the footer is excluded.
+    /// </summary>
+    public bool ExcludeFooter => _excludeFooter;
+
+    /// <summary>
+    /// This property returns the text of the footer.
+    /// </summary>
+    public string FooterText => _footerText ?? "";
+
+    /// <summary>
+    /// This property returns if the corners are rounded.
+    /// </summary>
+    public bool RoundedCorners => _roundedCorners;
+
+    /// <summary>
+    /// This property returns the corners of the table.
+    /// </summary>
+    public string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+
+    /// <summary>
+    /// This property returns the headers of the table.
+    /// </summary>
+    public List<string>? GetRawHeaders => _rawHeaders;
+
+    /// <summary>
+    /// This property returns the lines of the table.
+    /// </summary>
+    public List<List<T>>? GetRawLines => _rawLines;
+
+    /// <summary>
+    /// This property returns the number of lines in the table.
+    /// </summary>
+    public int Count => _rawLines?.Count ?? 0;
+
     #endregion
 
     #region Constructor
@@ -401,16 +439,6 @@ public class TableSelector<T> : InteractiveElement<int>
             _displayArray = display.ToArray();
         }
     }
-    #endregion
-
-    #region Properties: get corners, count
-    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
-
-    /// <summary>
-    /// This property returns the number of lines in the table.
-    /// </summary>
-    public int Count => _rawLines?.Count ?? 0;
-
     #endregion
 
     #region Methods: Get, Add, Update, Remove, Clear
