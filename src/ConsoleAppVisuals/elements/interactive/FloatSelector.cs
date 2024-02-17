@@ -134,6 +134,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <summary>
     /// This method is used to draw the selector on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         Core.WriteContinuousString(_question, _line, default, 1500, 50);
