@@ -882,7 +882,6 @@
             <summary>
             The line of the header in the console.
             </summary>
-            <remarks>We add 2 because so the header does not overlap with the title.</remarks>
         </member>
         <member name="P:ConsoleAppVisuals.Header.Height">
             <summary>
@@ -896,7 +895,7 @@
         </member>
         <member name="P:ConsoleAppVisuals.Header.Text">
             <summary>
-            The getter and setter of the text of the header.
+            The getter of the text of the header.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Header.Margin">
@@ -959,6 +958,19 @@
             </list>
             </remarks>
         </member>
+        <member name="M:ConsoleAppVisuals.Header.UpdateMargin(System.Int32)">
+            <summary>
+            This method is used to update the margin of the header.
+            </summary>
+            <param name="margin">The new margin of the header.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
         <member name="M:ConsoleAppVisuals.Header.RenderElementActions">
             <summary>
             This method is used to render the header on the console.
@@ -994,6 +1006,21 @@
         <member name="P:ConsoleAppVisuals.EmbeddedText.Width">
             <summary>
             The width of the Embedded text.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.EmbeddedText.Text">
+            <summary>
+            The text of the Embedded text.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.EmbeddedText.ButtonText">
+            <summary>
+            The text of the button.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.EmbeddedText.TextToDisplay">
+            <summary>
+            The text to display.
             </summary>
         </member>
         <member name="M:ConsoleAppVisuals.EmbeddedText.#ctor(System.Collections.Generic.List{System.String},System.String,ConsoleAppVisuals.TextAlignment,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">

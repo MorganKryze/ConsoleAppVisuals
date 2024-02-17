@@ -35,6 +35,25 @@ public class UnitTestHeader
         // Assert
         Assert.AreEqual(line, Window.GetVisibleElement<Title>()?.Height ?? default);
     }
+    [TestMethod]
+    public void Line_GetLine_TitleMakesHeaderMove()
+    {
+        // Arrange
+        var header = new Header();
+        var title = new Title("Example Title");
+
+        // Act
+        Window.AddElement(title);
+        Window.AddElement(header);
+        Window.Refresh();
+        var line = header.Line;
+
+        // Assert
+        Assert.AreEqual(line, title.Height);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
     #endregion
 
     #region Height
@@ -94,6 +113,19 @@ public class UnitTestHeader
 
         // Assert
         Assert.AreEqual(margin, 1);
+    }
+
+    [TestMethod]
+    public void Margin_SetMargin_MarginUpdated()
+    {
+        // Arrange
+        var header = new Header();
+
+        // Act
+        header.UpdateMargin(2);
+
+        // Assert
+        Assert.AreEqual(header.Margin, 2);
     }
     #endregion
 

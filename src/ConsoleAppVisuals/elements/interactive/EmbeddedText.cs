@@ -48,7 +48,20 @@ public class EmbeddedText : InteractiveElement<string>
     #endregion
 
     #region Getters and setters
-    
+    /// <summary>
+    /// The text of the Embedded text.
+    /// </summary>
+    public List<string> Text => _text;
+
+    /// <summary>
+    /// The text of the button.
+    /// </summary>
+    public string ButtonText => _button;
+
+    /// <summary>
+    /// The text to display.
+    /// </summary>
+    public List<string>? TextToDisplay => _textToDisplay;
     #endregion
 
     #region Constructor
@@ -80,11 +93,27 @@ public class EmbeddedText : InteractiveElement<string>
         _align = align;
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
-        BuildText();
+        if (CheckIntegrity())
+            BuildText();
     }
     #endregion
 
     #region Methods
+
+    private bool CheckIntegrity()
+    {
+        if (_text.Count == 0)
+        {
+            return false;
+        }
+
+        if (_text.Max((string s) => s.Length) < _button.Length)
+        {
+            return false;
+        }
+        return true;
+    }
+
     /// <summary>
     /// Adds a line to the Embedded text.
     /// </summary>
@@ -131,6 +160,10 @@ public class EmbeddedText : InteractiveElement<string>
     /// </remarks>
     public void RemoveLine(string line)
     {
+        if (!_text.Contains(line))
+        {
+            throw new ArgumentException("The line is not in the text.");
+        }
         _text.Remove(line);
     }
 
@@ -147,6 +180,10 @@ public class EmbeddedText : InteractiveElement<string>
     /// </remarks>
     public void RemoveLine(int index)
     {
+        if (index < 0 || index >= _text.Count)
+        {
+            throw new ArgumentOutOfRangeException("The index is out of range.");
+        }
         _text.RemoveAt(index);
     }
 
@@ -170,6 +207,12 @@ public class EmbeddedText : InteractiveElement<string>
 
     private void BuildText()
     {
+        if (!CheckIntegrity())
+        {
+            throw new FormatException(
+                "Check that the text is not empty and that the button is not longer than the text."
+            );
+        }
         var maxLength = _text.Max((string s) => s.Length);
         _textToDisplay = new List<string>();
         foreach (var line in _text)
