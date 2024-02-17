@@ -9,7 +9,7 @@
       ]
     },
     "docfx": {
-      "version": "2.75.1",
+      "version": "2.75.2",
       "commands": [
         "docfx"
       ]
@@ -21,7 +21,7 @@
       ]
     },
     "dotnet-reportgenerator-globaltool": {
-      "version": "5.2.0",
+      "version": "5.2.1",
       "commands": [
         "reportgenerator"
       ]
