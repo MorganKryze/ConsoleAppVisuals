@@ -1358,6 +1358,21 @@
             The width of the menu.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.ScrollingMenu.Question">
+            <summary>
+            The question to ask the user.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ScrollingMenu.Choices">
+            <summary>
+            The different choices of the menu.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ScrollingMenu.DefaultIndex">
+            <summary>
+            The index of the default choice(initially 0).
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.ScrollingMenu.#ctor(System.String,System.Int32,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.String[])">
             <summary>
             The constructor of the ScrollingMenu class.
