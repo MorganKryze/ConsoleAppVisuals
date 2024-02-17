@@ -8,7 +8,7 @@ namespace ConsoleAppVisuals;
 public class UnitTestLoadingBar
 {
     [TestMethod]
-    public void Test_Line()
+    public void Line_Getter()
     {
         //Arrange
         float valuee = 0.3f;
@@ -22,7 +22,21 @@ public class UnitTestLoadingBar
     }
 
     [TestMethod]
-    public void Test_Height()
+    public void Line_NoLineInput()
+    {
+        //Arrange
+        float valuee = 0.3f;
+        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter);
+
+        //Act
+        var line = loadingBar.Line;
+
+        //Assert
+        Assert.AreEqual(0, line);
+    }
+
+    [TestMethod]
+    public void Height_Getter()
     {
         //Arrange
         float valuee = 0.3f;
@@ -39,7 +53,7 @@ public class UnitTestLoadingBar
     [DataRow("test")]
     [DataRow("hello world")]
     [DataRow("")]
-    public void Test_Width(string text)
+    public void Width_Getter(string text)
     {
         //Arrange
         float valuee = 0.3f;
@@ -55,7 +69,7 @@ public class UnitTestLoadingBar
     [TestMethod]
     [DataRow("test")]
     [DataRow("")]
-    public void Test_Text(string text)
+    public void Text_Getter(string text)
     {
         //Arrange
         float valuee = 0.3f;
@@ -69,7 +83,7 @@ public class UnitTestLoadingBar
     [TestMethod]
     [DataRow(0.5f)]
     [DataRow(0.3f)]
-    public void Test_Progress(float progress)
+    public void Progress_Getter(float progress)
     {
         //Arrange
         var loadingBar = new LoadingBar("test", ref progress, Placement.TopCenter, 0);
@@ -82,7 +96,7 @@ public class UnitTestLoadingBar
     [TestMethod]
     [DataRow(Placement.TopCenter)]
     [DataRow(Placement.BottomCenterFullWidth)]
-    public void Test_Placement(Placement placement)
+    public void Placement_Getter(Placement placement)
     {
         //Arrange
         float valuee = 0.3f;
@@ -94,7 +108,7 @@ public class UnitTestLoadingBar
     }
 
     [TestMethod]
-    public void Test_AdditionalDuration()
+    public void AdditionalDuration_Getter()
     {
         //Arrange
         float valuee = 0.3f;
@@ -132,7 +146,7 @@ public class UnitTestLoadingBar
     [DataRow("test")]
     [DataRow("hello world")]
     [DataRow("")]
-    public void Test_UpdateText(string text)
+    public void UpdateText_DifferentValues(string text)
     {
         //Arrange
         float valuee = 0.3f;
@@ -148,7 +162,7 @@ public class UnitTestLoadingBar
     [DataRow(0.5f)]
     [DataRow(0.3f)]
     [DataRow(null)]
-    public void Test_UpdateProgress(float progress)
+    public void UpdateProgress_SimulateProcess(float progress)
     {
         //Arrange
         float p = 0.3f;

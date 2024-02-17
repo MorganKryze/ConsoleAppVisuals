@@ -48,6 +48,11 @@ public class LoadingBar : Element
     /// The width of the loading bar.
     /// </summary>
     public override int Width => _text.Length;
+
+    /// <summary>
+    /// The placement of the loading bar.
+    /// </summary>
+    public override Placement Placement => _placement;
     #endregion
 
     #region Getters & Setters
@@ -55,24 +60,18 @@ public class LoadingBar : Element
     /// <summary>
     /// Getters and setters of the text of the loading bar.
     /// </summary>
-    public string Text { get => _text; set => _text = value; }
+    public string Text => _text;
 
     /// <summary>
     /// Getters and setters of the progress of the loading bar.
     /// </summary>
-    public float Progress { get => _progress; set => _progress = value; }
+    public float Progress => _progress;
 
-    public Placement Placement{ get => _placement;}
-
-
-    public int AdditionalDuration{ get => _additionalDuration;}
-
-
+    /// <summary>
+    /// Getters of the additional duration of the loading bar at the end.
+    /// </summary>
+    public int AdditionalDuration => _additionalDuration;
     #endregion
-
-
-
-
 
     #region Constructor
     /// <summary>
@@ -98,12 +97,7 @@ public class LoadingBar : Element
         int additionalDuration = 1000
     )
     {
-        if(Console.WindowWidth -1 < 0){
-            _text = text[..Math.Min(text.Length, 0)];
-        }
-        else{
-            _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
-        }
+        _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
         _progress = progress;
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
@@ -147,7 +141,7 @@ public class LoadingBar : Element
     /// <summary>
     /// This method is used to draw the loading bar on the console.
     /// </summary>
-    /// 
+    ///
     [Visual]
     protected override void RenderElementActions()
     {

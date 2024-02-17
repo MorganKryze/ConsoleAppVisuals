@@ -96,12 +96,7 @@ public class FakeLoadingBar : Element
         int additionalDuration = 1000
     )
     {
-        if(Console.WindowWidth-1 >= 0){
-            _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
-        }
-        else{
-            _text = text[..Math.Min(text.Length, 0)];
-        }
+        _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
         _placement = placement;
         _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         _processDuration = processDuration;
