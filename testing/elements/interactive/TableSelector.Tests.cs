@@ -685,4 +685,32 @@ public class UnitTestTableSelector
         Assert.AreEqual(3, tableSelector.Count);
     }
     #endregion
+
+    #region Build Methods
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void BuildHeadersAndLines_HeadersNotNullLinesNotNull()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        var array = tableSelector.DisplayArray;
+
+        // Assert
+        Assert.IsNotNull(array);
+    }
+
+    
+    #endregion
 }
