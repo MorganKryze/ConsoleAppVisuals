@@ -725,11 +725,13 @@ public class TableSelector<T> : InteractiveElement<int>
         }
     }
 
+    [Visual]
     int ReturnIndex(int index)
     {
         return index - GetMinIndex(_excludeHeader);
     }
 
+    [Visual]
     int GetMinIndex(bool excludeHeader)
     {
         if (excludeHeader)
@@ -742,11 +744,13 @@ public class TableSelector<T> : InteractiveElement<int>
         }
     }
 
+    [Visual]
     int GetMaxIndex(bool excludeFooter)
     {
         return excludeFooter ? _displayArray!.Length - 2 : _displayArray!.Length - 1;
     }
 
+    [Visual]
     static int HandleUpArrowKey(int index, int minIndex, int maxIndex)
     {
         if (index == minIndex)
@@ -760,6 +764,7 @@ public class TableSelector<T> : InteractiveElement<int>
         return index;
     }
 
+    [Visual]
     static int HandleDownArrowKey(int index, int minIndex, int maxIndex)
     {
         if (index == maxIndex)
