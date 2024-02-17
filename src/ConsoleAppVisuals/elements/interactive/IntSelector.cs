@@ -53,6 +53,39 @@ public class IntSelector : InteractiveElement<int>
         );
     #endregion
 
+    #region Getters
+
+    /// <summary>
+    /// The question to ask the user.
+    /// </summary>
+    public string Question => _question;
+
+    /// <summary>
+    /// The minimum value of the selector.
+    /// </summary>
+    public int Min => _minimumValue;
+
+    /// <summary>
+    /// The maximum value of the selector.
+    /// </summary>
+    public int Max => _maximumValue;
+
+    /// <summary>
+    /// The start value of the selector.
+    /// </summary>
+    public int Start => _startValue;
+
+    /// <summary>
+    /// The step of the selector.
+    /// </summary>
+    public int Step => _step;
+
+    /// <summary>
+    /// Whether the corners of the selector are rounded.
+    /// </summary>
+    public bool RoundedCorners => _roundedCorners;
+    #endregion
+
     #region Constructor
     /// <summary>
     /// The constructor of the intSelector class.
@@ -84,8 +117,9 @@ public class IntSelector : InteractiveElement<int>
     )
     {
         _question = question;
-        _minimumValue = CheckMin(min, max);
-        _maximumValue = CheckMax(min, max);
+        CheckMinNotHigherThanMax(min, max);
+        _minimumValue = min;
+        _maximumValue = max;
         _startValue = CheckStart(start, _minimumValue, _maximumValue);
         _step = CheckStep(step, _minimumValue, _maximumValue);
         _placement = placement;
@@ -93,20 +127,12 @@ public class IntSelector : InteractiveElement<int>
         _roundedCorners = roundedCorners;
     }
 
-    private static int CheckMin(int min, int max)
+    private static void CheckMinNotHigherThanMax(int min, int max)
     {
         if (min > max)
             throw new ArgumentException(
                 "The minimum value cannot be greater than the maximum value."
             );
-        return min;
-    }
-
-    private static int CheckMax(int min, int max)
-    {
-        if (max < min)
-            throw new ArgumentException("The maximum value cannot be less than the minimum value.");
-        return max;
     }
 
     private static int CheckStart(int start, int min, int max)
@@ -126,6 +152,8 @@ public class IntSelector : InteractiveElement<int>
             throw new ArgumentException(
                 "The step cannot be greater than the difference between the minimum and maximum values."
             );
+        if (step < 1)
+            throw new ArgumentException("The step cannot be less than 1.");
         return step;
     }
     #endregion
@@ -202,6 +230,7 @@ public class IntSelector : InteractiveElement<int>
         );
     }
 
+    [Visual]
     int NextNumber(Direction direction, int currentNumber)
     {
         if (direction == Direction.Up)
@@ -221,6 +250,7 @@ public class IntSelector : InteractiveElement<int>
         return currentNumber;
     }
 
+    [Visual]
     string BuildLine(Direction direction)
     {
         string corners = _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
