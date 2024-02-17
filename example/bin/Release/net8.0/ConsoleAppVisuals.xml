@@ -1401,16 +1401,6 @@
              </summary>
             
         </member>
-        <member name="P:ConsoleAppVisuals.TableSelector`1.GetRawHeaders">
-            <summary>
-            This property returns the headers of the table.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.TableSelector`1.GetRawLines">
-            <summary>
-            This property returns the lines of the table.
-            </summary>
-        </member>
         <member name="P:ConsoleAppVisuals.TableSelector`1.Placement">
             <summary>
             This property returns the title of the table.
@@ -1431,6 +1421,51 @@
             This property returns the width of the table.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.Title">
+            <summary>
+            This property returns the title of the table.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.ExcludeHeader">
+            <summary>
+            This property returns if the header is excluded.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.ExcludeFooter">
+            <summary>
+            This property returns if the footer is excluded.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.FooterText">
+            <summary>
+            This property returns the text of the footer.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.RoundedCorners">
+            <summary>
+            This property returns if the corners are rounded.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.GetCorners">
+            <summary>
+            This property returns the corners of the table.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.GetRawHeaders">
+            <summary>
+            This property returns the headers of the table.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.GetRawLines">
+            <summary>
+            This property returns the lines of the table.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.Count">
+            <summary>
+            This property returns the number of lines in the table.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,System.Boolean,System.String,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
             The <see cref="T:ConsoleAppVisuals.TableSelector`1"/> natural constructor.
@@ -1446,11 +1481,6 @@
             <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
             <exception cref="T:System.NullReferenceException">Is thrown when no body lines were provided.</exception>
             <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="P:ConsoleAppVisuals.TableSelector`1.Count">
-            <summary>
-            This property returns the number of lines in the table.
-            </summary>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.AddHeaders(System.Collections.Generic.List{System.String})">
             <summary>
