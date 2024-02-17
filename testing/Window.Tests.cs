@@ -125,7 +125,7 @@ public class UnitTestWindow
     public void GetVisibleElement_ElementNotFound()
     {
         // Arrange
-        var prompt = new Prompt("Hello World!");
+        var prompt = new Prompt("Hello World!", default, Placement.TopCenter, 0);
         Window.AddElement(prompt);
 
         // Act
