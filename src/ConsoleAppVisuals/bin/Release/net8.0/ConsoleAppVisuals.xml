@@ -1466,6 +1466,11 @@
             This property returns the number of lines in the table.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.TableSelector`1.DisplayArray">
+            <summary>
+            This property returns the display array of the table.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,System.Boolean,System.String,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
             The <see cref="T:ConsoleAppVisuals.TableSelector`1"/> natural constructor.

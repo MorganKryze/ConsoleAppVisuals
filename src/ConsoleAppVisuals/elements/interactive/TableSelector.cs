@@ -92,6 +92,11 @@ public class TableSelector<T> : InteractiveElement<int>
     /// </summary>
     public int Count => _rawLines?.Count ?? 0;
 
+    /// <summary>
+    /// This property returns the display array of the table.
+    /// </summary>
+    public string[]? DisplayArray => _displayArray;
+
     #endregion
 
     #region Constructor
@@ -179,22 +184,17 @@ public class TableSelector<T> : InteractiveElement<int>
             return false;
         }
 
-        if (_rawLines.Count > 0)
+        for (int i = 0; i < _rawLines.Count; i++)
         {
-            for (int i = 0; i < _rawLines.Count; i++)
+            if (_rawLines[i].Count != _rawHeaders?.Count)
             {
-                if (_rawLines[i].Count != _rawHeaders?.Count)
-                {
-                    throw new ArgumentException(
-                        "The number of columns in the table is not consistent(Headers or Lines)."
-                    );
-                }
+                throw new ArgumentException(
+                    "The number of columns in the table is not consistent(Headers or Lines)."
+                );
             }
-
-            return true;
         }
 
-        return false;
+        return true;
     }
     #endregion
 
