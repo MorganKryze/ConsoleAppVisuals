@@ -32,7 +32,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             placement,
-            1
+            0
         );
 
         // Act
@@ -173,7 +173,7 @@ public class UnitTestEmbeddedText
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var embeddedText = new EmbeddedText(textToDisplay, "Button", align, Placement.TopCenter, 1);
+        var embeddedText = new EmbeddedText(textToDisplay, "Button", align, Placement.TopCenter, 0);
 
         // Assert
         Assert.IsNotNull(embeddedText.TextToDisplay);
@@ -315,8 +315,18 @@ public class UnitTestEmbeddedText
     public void RemoveLine_RemovesLine()
     {
         // Arrange
-        var textToDisplay = new List<string>() { "Test for the placement", "123was tested", "3456 TEst" };
-        var textToDisplayUnchanged = new List<string>() { "Test for the placement", "123was tested", "3456 TEst" };
+        var textToDisplay = new List<string>()
+        {
+            "Test for the placement",
+            "123was tested",
+            "3456 TEst"
+        };
+        var textToDisplayUnchanged = new List<string>()
+        {
+            "Test for the placement",
+            "123was tested",
+            "3456 TEst"
+        };
 
         var embeddedText = new EmbeddedText(
             textToDisplay,
@@ -328,7 +338,6 @@ public class UnitTestEmbeddedText
 
         // Act
         embeddedText.RemoveLine(0);
-
 
         // Assert
         Assert.AreEqual(textToDisplayUnchanged.Count - 1, embeddedText.Text!.Count);
@@ -368,7 +377,6 @@ public class UnitTestEmbeddedText
 
         // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => embeddedText.RemoveLine(3));
-       
     }
 
     [TestMethod]
@@ -377,7 +385,11 @@ public class UnitTestEmbeddedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var textToDisplayUnchanged = new List<string>() { "Test for the placement", "123was tested" };
+        var textToDisplayUnchanged = new List<string>()
+        {
+            "Test for the placement",
+            "123was tested"
+        };
         var embeddedText = new EmbeddedText(
             textToDisplay,
             "Button",
@@ -408,7 +420,9 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        Assert.ThrowsException<ArgumentException>(() => embeddedText.RemoveLine("Test for the placement2"));
+        Assert.ThrowsException<ArgumentException>(
+            () => embeddedText.RemoveLine("Test for the placement2")
+        );
     }
     #endregion
 }
