@@ -7,6 +7,15 @@ namespace ConsoleAppVisuals;
 [TestClass]
 public class UnitTestFakeLoadingBar
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     #region Constructor
     [TestMethod]
     [DataRow("Test", Placement.TopCenterFullWidth, 0, 1000, 1000)]
@@ -32,6 +41,26 @@ public class UnitTestFakeLoadingBar
 
         // Assert
         Assert.IsNotNull(loadingBar);
+    }
+
+    [TestMethod]
+    public void Constructor_GetLineAvailable()
+    {
+        // Arrange
+        var line = 0;
+        var loadingBar = new FakeLoadingBar(
+            "Test",
+            Placement.TopCenterFullWidth,
+            default,
+            1000,
+            1000
+        );
+
+        // Act
+        var lineAvailable = loadingBar.Line;
+
+        // Assert
+        Assert.AreEqual(line, lineAvailable);
     }
 
     [TestMethod]

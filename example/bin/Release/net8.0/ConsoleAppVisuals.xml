@@ -1508,6 +1508,11 @@
             The width of the loading bar.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.LoadingBar.Placement">
+            <summary>
+            The placement of the loading bar.
+            </summary>
+        </member>
         <member name="P:ConsoleAppVisuals.LoadingBar.Text">
             <summary>
             Getters and setters of the text of the loading bar.
@@ -1516,6 +1521,11 @@
         <member name="P:ConsoleAppVisuals.LoadingBar.Progress">
             <summary>
             Getters and setters of the progress of the loading bar.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.LoadingBar.AdditionalDuration">
+            <summary>
+            Getters of the additional duration of the loading bar at the end.
             </summary>
         </member>
         <member name="M:ConsoleAppVisuals.LoadingBar.#ctor(System.String,System.Single@,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.Int32)">
@@ -1562,9 +1572,9 @@
             </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.LoadingBar.RenderElementActions">
-            <summary>
-            This method is used to draw the loading bar on the console.
-            </summary>
+             <summary>
+             This method is used to draw the loading bar on the console.
+             </summary>
             
         </member>
         <member name="T:ConsoleAppVisuals.Matrix`1">
