@@ -1130,6 +1130,36 @@
             The width of the selector.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.FloatSelector.Question">
+            <summary>
+            The question to ask the user.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FloatSelector.Min">
+            <summary>
+            The minimum value of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FloatSelector.Max">
+            <summary>
+            The maximum value of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FloatSelector.Start">
+            <summary>
+            The start value of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FloatSelector.Step">
+            <summary>
+            The step of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.FloatSelector.RoundedCorners">
+            <summary>
+            Whether the corners of the selector are rounded.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.FloatSelector.#ctor(System.String,System.Single,System.Single,System.Single,System.Single,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.Boolean)">
             <summary>
             The constructor of the FloatSelector class.
