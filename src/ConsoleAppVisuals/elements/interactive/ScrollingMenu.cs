@@ -47,6 +47,25 @@ public class ScrollingMenu : InteractiveElement<int>
         Math.Max(_question.Length + 1, _choices.Max((string s) => s.Length) + 4);
     #endregion
 
+    #region Getters
+
+    /// <summary>
+    /// The question to ask the user.
+    /// </summary>
+    public string Question => _question;
+
+    /// <summary>
+    /// The different choices of the menu.
+    /// </summary>
+    public string[] Choices => _choices;
+
+    /// <summary>
+    /// The index of the default choice(initially 0).
+    /// </summary>
+    public int DefaultIndex => _defaultIndex;
+
+    #endregion
+
     #region Constructor
     /// <summary>
     /// The constructor of the ScrollingMenu class.
@@ -116,7 +135,7 @@ public class ScrollingMenu : InteractiveElement<int>
                     return;
             }
         }
-
+        [Visual]
         static void EqualizeChoicesLength(string[] choices)
         {
             int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
@@ -125,6 +144,7 @@ public class ScrollingMenu : InteractiveElement<int>
                 choices[i] = choices[i].PadRight(totalWidth);
             }
         }
+        [Visual]
         static void DisplayChoices(
             int defaultIndex,
             Placement placement,
@@ -140,7 +160,12 @@ public class ScrollingMenu : InteractiveElement<int>
                     (i == defaultIndex)
                         ? $" {Core.GetSelector.Item1} {choices[i]}  "
                         : $"   {choices[i]}  ";
-                Core.WritePositionedString(array[i], placement.ToTextAlignment(), i == defaultIndex, lineChoice + i);
+                Core.WritePositionedString(
+                    array[i],
+                    placement.ToTextAlignment(),
+                    i == defaultIndex,
+                    lineChoice + i
+                );
                 if (delay)
                     Thread.Sleep(30);
             }
