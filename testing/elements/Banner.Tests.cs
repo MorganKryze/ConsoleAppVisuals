@@ -111,6 +111,7 @@ public class UnitTestBanner
     {
         //Arrange
         var banner = new Banner("left", "center", "right", 1, 1, Placement.TopCenterFullWidth);
+        
         //Act
         banner.UpdateRightText(leftText);
 

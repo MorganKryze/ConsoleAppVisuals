@@ -30,8 +30,7 @@ public class Header : Element
     /// <summary>
     /// The line of the header in the console.
     /// </summary>
-    /// <remarks>We add 2 because so the header does not overlap with the title.</remarks>
-    public override int Line => Window.GetVisibleElement<Title>()?.Height ?? default;
+    public override int Line => Window.GetVisibleElement<Title>()?.Height ?? 0;
 
     /// <summary>
     /// The height of the header.
@@ -46,22 +45,14 @@ public class Header : Element
 
     #region Getters and Setters
     /// <summary>
-    /// The getter and setter of the text of the header.
+    /// The getter of the text of the header.
     /// </summary>
-    public (string, string, string) Text
-    {
-        get => _text;
-        set => _text = value;
-    }
+    public (string, string, string) Text => _text;
 
     /// <summary>
     /// The getter and setter of the margin of the header.
     /// </summary>
-    public int Margin
-    {
-        get => _margin;
-        set => _margin = value;
-    }
+    public int Margin => _margin;
     #endregion
 
     #region Constructor
@@ -140,6 +131,22 @@ public class Header : Element
     public void UpdateRightText(string rightText)
     {
         _text.Item3 = rightText;
+    }
+
+    /// <summary>
+    /// This method is used to update the margin of the header.
+    /// </summary>
+    /// <param name="margin">The new margin of the header.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateMargin(int margin)
+    {
+        _margin = margin;
     }
 
     /// <summary>
