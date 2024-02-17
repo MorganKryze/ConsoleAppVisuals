@@ -583,4 +583,106 @@ public class UnitTestTableSelector
         Assert.AreEqual(0, actualCount);
     }
     #endregion
+
+    #region Check Methods
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void CompatibilityCheck_HeadersNotNullLinesNull()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            default
+        );
+
+        // Assert
+        Assert.IsNull(tableSelector.GetRawLines);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void CheckRawLines_HeadersNullLinesNotNull_NumberNonConsistent()
+    {
+        // Arrange
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer" };
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            var tableSelector = new TableSelector<string>(
+                "Great tennis players",
+                default,
+                new List<List<string>> { player1, player2, player3 }
+            );
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void CheckRawLines_HeadersNullLinesNotNull_NumberConsistent()
+    {
+        
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            null,
+            null,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Assert
+        Assert.AreEqual(3, tableSelector.Count);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void CheckRawHeadersAndLines_HeadersNotNullLinesNotNull_NumberNonConsistent()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer" };
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            var tableSelector = new TableSelector<string>(
+                "Great tennis players",
+                playersHeaders,
+                new List<List<string>> { player1, player2, player3 }
+            );
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void CheckRawHeadersAndLines_HeadersNotNullLinesNotNull_NumberConsistent()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Assert
+        Assert.AreEqual(3, tableSelector.Count);
+    }
+    #endregion
 }
