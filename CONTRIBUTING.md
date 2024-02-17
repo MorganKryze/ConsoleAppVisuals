@@ -1,18 +1,38 @@
 # Contributing
 
-When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change.
+Thank you for your interest in contributing to ConsoleAppVisuals! We welcome contributions from everyone. By participating in this project, you agree to abide by the code of conduct outlined in the [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) file.
 
-Please note we have a code of conduct, please follow it in all your interactions with the project.
+## How Can I Contribute?
 
-## Pull Request Process
+### Reporting Bugs
 
-1. Ensure any install or build dependencies are removed before the end of the layer when doing a build.
-2. Update the README.md with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
-3. Increase the version numbers in any examples files and the README.md to the new version that this Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
-4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
+If you encounter a bug while using [Project Name], please ensure that the bug hasn't already been reported by checking the Issues section of our repository. If it hasn't been reported yet, please open a new issue and provide as much detail as possible, including:
 
-## Testing Conventions
+A clear and descriptive title
+Steps to reproduce the bug
+Expected behavior
+Any error messages or screenshots if applicable
+
+### Suggesting Enhancements
+
+If you have ideas for enhancements or new features, we'd love to hear them! You can submit your suggestions by opening a new issue in the [Issues section](https://github.com/MorganKryze/ConsoleAppVisuals/issues) of our repository. Please provide a clear description of the enhancement and why you think it would be beneficial.
+
+### Contributing Code
+
+We welcome contributions in the form of code changes! If you'd like to contribute code, please follow these steps:
+
+- Fork the repository and create a new branch for your feature or bug fix.
+- Make your changes and ensure that they adhere to our coding standards.
+- Write tests for your code if applicable.
+- Submit a pull request to the main branch of our repository.
+
+Before submitting your pull request, please ensure that you have:
+
+- Included a clear and descriptive title for your pull request.
+- Provided a detailed description of the changes made.
+- Mentioned any related issues or pull requests.
+
+### Testing Conventions
 
 For testing, we use the following conventions:
 
@@ -25,6 +45,14 @@ For testing, we use the following conventions:
 - Tests should have the `TestCategoty("ClassToTest")` attribute.
 - Tests content should follow the `Arrange`, `Act`, `Assert` pattern.
 
-## Attribution
+### Reviewing Pull Requests
 
-This CONTRIBUTING.md is adapted from the [PurpleBooth gist](https://gist.github.com/PurpleBooth/b24679402957c63ec426), available at <https://gist.github.com/PurpleBooth/b24679402957c63ec426>.
+All pull requests will be reviewed by members of the project maintainers team. Please be patient while we review your contribution. We may provide feedback or request changes before merging your pull request.
+
+## Code of Conduct
+
+Please note that this project is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). We expect all contributors to adhere to this code when participating in our community.
+
+## Get in Touch
+
+If you have any questions or need further assistance, feel free to reach out to us via [email](mailto:morgan@kodelab.fr) or join our [community chat](https://github.com/MorganKryze/ConsoleAppVisuals/discussions).
