@@ -7,6 +7,15 @@ namespace ConsoleAppVisuals;
 [TestClass]
 public class UnitTestFooter
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     #region Text
     [TestMethod]
     [DataRow(" ", " ", " ")]

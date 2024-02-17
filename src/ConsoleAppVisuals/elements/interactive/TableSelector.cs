@@ -640,6 +640,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <summary>
     /// This method displays the table without interaction.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         int minIndex = GetMinIndex(_excludeHeader);

@@ -134,6 +134,7 @@ public class IntSelector : InteractiveElement<int>
     /// <summary>
     /// This method is used to draw the selector on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         Core.WriteContinuousString(_question, _line, default, 1500, 50);
@@ -166,6 +167,7 @@ public class IntSelector : InteractiveElement<int>
         }
     }
 
+    [Visual]
     void DisplayChoices(int lineSelector, int currentNumber)
     {
         Core.WritePositionedString(

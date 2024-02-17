@@ -7,6 +7,15 @@ namespace testing;
 [TestClass]
 public class UnitTestMatrix
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     #region NoLines_MatrixIsEmpty
     [TestMethod]
     public void MatrixIsEmpty()

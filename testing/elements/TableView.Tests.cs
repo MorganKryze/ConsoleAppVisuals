@@ -7,6 +7,15 @@ namespace testing;
 [TestClass]
 public class UnitTestTableView
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     #region ConstructorTests
     [TestMethod]
     public void Constructor_CreatesTableViewWithHeadersAndBody()

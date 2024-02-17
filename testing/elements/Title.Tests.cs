@@ -7,6 +7,15 @@ namespace testing;
 [TestClass]
 public class UnitTestTitle
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     #region UpdateTextTests
     [TestMethod]
     public void UpdateText_UpdatesTextCorrectly()
