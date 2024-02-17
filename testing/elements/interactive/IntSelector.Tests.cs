@@ -17,8 +17,23 @@ public class UnitTestIntSelector
     #endregion
 
     #region Placement
-    
-    
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.TopLeft)]
+    [DataRow(Placement.TopRight)]
+    public void Placement_Getter(Placement placement)
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, placement, 0);
+
+        // Act
+        var actualPlacement = intSelector.Placement;
+
+        // Assert
+        Assert.AreEqual(placement, actualPlacement);
+    }
+
     #endregion
 
     #region Line
@@ -40,5 +55,4 @@ public class UnitTestIntSelector
     #region Build
 
     #endregion
-    
 }
