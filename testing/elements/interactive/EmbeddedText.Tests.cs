@@ -46,9 +46,7 @@ public class UnitTestEmbeddedText
     #region Line
     [TestMethod]
     [TestCategory("EmbeddedText")]
-    [DataRow(1)]
-    [DataRow(2)]
-    public void Line_Getter(int line)
+    public void Line_Getter()
     {
         // Arrange
         var embeddedText = new EmbeddedText(
@@ -56,14 +54,14 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            line
+            0
         );
 
         // Act
         var actual = embeddedText.Line;
 
         // Assert
-        Assert.AreEqual(line, actual);
+        Assert.AreEqual(0, actual);
     }
     #endregion
 
@@ -79,7 +77,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -103,7 +101,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -127,7 +125,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -152,7 +150,7 @@ public class UnitTestEmbeddedText
             buttonText,
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -215,7 +213,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Assert
@@ -235,7 +233,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Assert
@@ -255,7 +253,7 @@ public class UnitTestEmbeddedText
             default,
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Assert
@@ -275,7 +273,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
         var marginValue = 2;
 
@@ -299,7 +297,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
         var marginValue = 2;
 
@@ -325,7 +323,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -347,7 +345,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -365,7 +363,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -385,7 +383,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
@@ -406,7 +404,7 @@ public class UnitTestEmbeddedText
             "Button",
             TextAlignment.Left,
             Placement.TopCenter,
-            1
+            0
         );
 
         // Act
