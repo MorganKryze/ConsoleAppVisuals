@@ -7,6 +7,15 @@ namespace ConsoleAppVisuals;
 [TestClass]
 public class UnitTestHeader
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     #region Placement
     [TestMethod]
     public void Placement_GetPlacement_PlacementReturned()
@@ -35,6 +44,7 @@ public class UnitTestHeader
         // Assert
         Assert.AreEqual(line, Window.GetVisibleElement<Title>()?.Height ?? default);
     }
+
     [TestMethod]
     public void Line_GetLine_TitleMakesHeaderMove()
     {

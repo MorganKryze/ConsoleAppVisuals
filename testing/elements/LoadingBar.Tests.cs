@@ -7,6 +7,15 @@ namespace ConsoleAppVisuals;
 [TestClass]
 public class UnitTestLoadingBar
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     [TestMethod]
     public void Line_Getter()
     {

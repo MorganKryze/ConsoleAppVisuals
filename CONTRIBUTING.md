@@ -18,8 +18,11 @@ For testing, we use the following conventions:
 
 - Tests should be written in the `testing` directory.
 - Tests filenames should follow the `ClassToTest.Tests.cs` pattern.
+- Classes should have a `TestCleanup` function.
 - Tests are wirtten using the `MSTests` framework.
 - Tests methods names should be descriptive and follow the `ElementToTest_BehaviorExpected` pattern.
+- Tests should have the `TestMethod` attribute.
+- Tests should have the `TestCategoty("ClassToTest")` attribute.
 - Tests content should follow the `Arrange`, `Act`, `Assert` pattern.
 
 ## Attribution

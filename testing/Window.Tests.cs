@@ -7,6 +7,15 @@ namespace testing;
 [TestClass]
 public class UnitTestWindow
 {
+    #region Cleanup
+    [TestCleanup]
+    public void Cleanup()
+    {
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+    #endregion
+
     #region Properties
     [TestMethod]
     public void AddElement_WindowHasElement()

@@ -83,6 +83,7 @@ public class ScrollingMenu : InteractiveElement<int>
     /// <summary>
     /// This method is used to draw the menu on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         EqualizeChoicesLength(_choices);

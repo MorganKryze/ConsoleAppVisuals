@@ -79,6 +79,7 @@ public class Prompt : InteractiveElement<string>
     /// <summary>
     /// This method is used to render the prompt element on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         Core.WriteContinuousString(
