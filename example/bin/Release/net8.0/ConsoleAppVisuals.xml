@@ -1187,6 +1187,36 @@
             The width of the selector.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.IntSelector.Question">
+            <summary>
+            The question to ask the user.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.IntSelector.Min">
+            <summary>
+            The minimum value of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.IntSelector.Max">
+            <summary>
+            The maximum value of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.IntSelector.Start">
+            <summary>
+            The start value of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.IntSelector.Step">
+            <summary>
+            The step of the selector.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.IntSelector.RoundedCorners">
+            <summary>
+            Whether the corners of the selector are rounded.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.IntSelector.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.Boolean)">
             <summary>
             The constructor of the intSelector class.
