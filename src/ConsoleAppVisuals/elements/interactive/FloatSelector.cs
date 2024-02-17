@@ -53,6 +53,39 @@ public class FloatSelector : InteractiveElement<float>
         );
     #endregion
 
+    #region Getters
+
+    /// <summary>
+    /// The question to ask the user.
+    /// </summary>
+    public string Question => _question;
+
+    /// <summary>
+    /// The minimum value of the selector.
+    /// </summary>
+    public float Min => _minimumValue;
+
+    /// <summary>
+    /// The maximum value of the selector.
+    /// </summary>
+    public float Max => _maximumValue;
+
+    /// <summary>
+    /// The start value of the selector.
+    /// </summary>
+    public float Start => _startValue;
+
+    /// <summary>
+    /// The step of the selector.
+    /// </summary>
+    public float Step => _step;
+
+    /// <summary>
+    /// Whether the corners of the selector are rounded.
+    /// </summary>
+    public bool RoundedCorners => _roundedCorners;
+    #endregion
+
     #region Constructor
     /// <summary>
     /// The constructor of the FloatSelector class.
@@ -84,8 +117,9 @@ public class FloatSelector : InteractiveElement<float>
     )
     {
         _question = question;
-        _minimumValue = CheckMin(min, max);
-        _maximumValue = CheckMax(min, max);
+        CheckMinNotHigherThanMax(min, max);
+        _minimumValue = min;
+        _maximumValue = max;
         _startValue = CheckStart(start, _minimumValue, _maximumValue);
         _step = CheckStep(step, _minimumValue, _maximumValue);
         _placement = placement;
@@ -93,20 +127,12 @@ public class FloatSelector : InteractiveElement<float>
         _roundedCorners = roundedCorners;
     }
 
-    private static float CheckMin(float min, float max)
+    private static void CheckMinNotHigherThanMax(float min, float max)
     {
         if (min > max)
             throw new ArgumentException(
                 "The minimum value cannot be greater than the maximum value."
             );
-        return min;
-    }
-
-    private static float CheckMax(float min, float max)
-    {
-        if (max < min)
-            throw new ArgumentException("The maximum value cannot be less than the minimum value.");
-        return max;
     }
 
     private static float CheckStart(float start, float min, float max)
@@ -126,6 +152,8 @@ public class FloatSelector : InteractiveElement<float>
             throw new ArgumentException(
                 "The step cannot be greater than the difference between the minimum and maximum values."
             );
+        if (step <= 0f)
+            throw new ArgumentException("The step cannot be less than 0.");
         return step;
     }
     #endregion
@@ -169,7 +197,7 @@ public class FloatSelector : InteractiveElement<float>
             Thread.Sleep(1);
         }
     }
-
+    [Visual]
     void DisplayChoices(int lineSelector, float currentNumber)
     {
         Core.WritePositionedString(
@@ -204,6 +232,7 @@ public class FloatSelector : InteractiveElement<float>
         );
     }
 
+    [Visual]
     float NextNumber(Direction direction, float currentNumber)
     {
         if (direction == Direction.Up)
@@ -223,6 +252,7 @@ public class FloatSelector : InteractiveElement<float>
         return currentNumber;
     }
 
+    [Visual]
     string BuildLine(Direction direction)
     {
         string corners = _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
