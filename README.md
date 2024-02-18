@@ -6,6 +6,8 @@
 
 ![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation.gif)
 
+<img src="https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation.gif" alt="Alt text">
+
 ## Install
 
 Install the library using the .NET CLI:
