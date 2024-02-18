@@ -66,26 +66,6 @@
             This property is used to get the selector of the console menus.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Core.TitleHeight">
-            <summary>
-            This property is used to get the height of the title.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Core.HeaderHeight">
-            <summary>
-            This property is used to get the height of the header.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Core.FooterHeight">
-            <summary>
-            This property is used to get the height of the footer.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Core.ContentHeight">
-            <summary>
-            This property is used to get the start line of the content.
-            </summary>
-        </member>
         <member name="P:ConsoleAppVisuals.Core.GetColorPanel">
             <summary>
             This property is used to get the colors of the console.
@@ -193,14 +173,6 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Core.SetTitle(System.String,System.Int32)">
-            <summary>
-            This method is used to set the title of the console.
-            </summary>
-            <param name="str">The title input.</param>
-            <param name="margin">The upper and lower margin of the title.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
         <member name="M:ConsoleAppVisuals.Core.SetStyler(System.String)">
             <summary>
             This method is used to set a new styler for the application.
@@ -227,24 +199,6 @@
             <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
             </list>
             </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.SetDefaultHeader(System.String,System.String,System.String)">
-            <summary>
-            This method is used to set the default header.
-            </summary>
-            <param name="left">The default header left input.</param>
-            <param name="center">The default header center input.</param>
-            <param name="right">The default header right input.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.SetDefaultFooter(System.String,System.String,System.String)">
-            <summary>
-            This method is used to set the default footer.
-            </summary>
-            <param name="left">The default footer left input.</param>
-            <param name="center">The default footer center input.</param>
-            <param name="right">The default footer right input.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Core.GetRandomColor">
             <summary>
@@ -284,37 +238,6 @@
             <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
             </list>
             </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.UpdateScreen">
-            <summary>
-            This method is used to update the screen display if it has encountered a change.
-            </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ClearLine(System.Nullable{System.Int32})">
-            <summary>
-            This method is used to Clear a specified line in the console.
-            </summary>
-            <param name="line">The line to clear.If null, will be cleared where the cursor is.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ClearMultipleLines(System.Nullable{System.Int32},System.Nullable{System.Int32})">
-            <summary>
-            This method clears a specified part of the console.
-            </summary>
-            <param name="line">The index of the first line to clear.</param>
-            <param name="length">The number of lines to clear.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ClearContent">
-            <summary>
-            This method clears the console EXCEPT the header and above, and the footer and below
-            </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ClearWindow(System.Boolean,System.Boolean)">
-            <summary>
-            This method clears the window and resets the color panel to the default one.
-            </summary>
         </member>
         <member name="M:ConsoleAppVisuals.Core.WritePositionedString(System.String,ConsoleAppVisuals.TextAlignment,System.Boolean,System.Nullable{System.Int32},System.Boolean)">
             <summary>
@@ -388,96 +311,6 @@
             <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
             </list>
             </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteTitle">
-            <summary>
-            This method prints the title in the console.
-            </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteHeader(System.Boolean,System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
-            <summary>
-            This method prints a header in the console.
-            </summary>
-            <param name="continuous">If true, the header is not continuously printed.</param>
-            <param name="header">The header to print.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteFooter(System.Boolean,System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
-            <summary>
-            This method prints a footer in the console.
-            </summary>
-            <param name="continuous">If true, the footer is not continuously printed.</param>
-            <param name="footer">The footer to print.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.WritePrompt(System.String,System.String,System.Nullable{System.Int32},System.Boolean)">
-            <summary>
-            This method prints a message in the console and gets a string written by the user.
-            </summary>
-            <param name="message">The message to print.</param>
-            <param name="defaultValue">The default value of the string.</param>
-            <param name="line">The line where the message will be printed.</param>
-            <param name="continuous">If true, the message is not continuously printed.</param>
-            <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Select : pressed enter) and the string written by the user.</returns>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ScrollingMenuSelector(System.String,System.Int32,ConsoleAppVisuals.Placement,System.Nullable{System.Int32},System.String[])">
-            <summary>
-            This method prints a menu in the console and gets the choice of the user.
-            </summary>
-            <param name="question">The question to print.</param>
-            <param name="defaultIndex">The default index of the menu.</param>
-            <param name="placement">The placement of the menu.</param>
-            <param name="line">The line where the menu is printed.</param>
-            <param name="choices">The choices of the menu.</param>
-            <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the index of the choice of the user.</returns>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ScrollingNumberSelector(System.String,System.Single,System.Single,System.Single,System.Single,System.Nullable{System.Int32},System.Boolean)">
-            <summary>
-            This method prints a menu in the console and gets the choice of the user.
-            </summary>
-            <param name="question">The question to print.</param>
-            <param name="min">The minimum value of the number.</param>
-            <param name="max">The maximum value of the number.</param>
-            <param name="start">The starting value of the number.</param>
-            <param name="step">The step of the number.</param>
-            <param name="line">The line where the menu is printed.</param>
-            <param name="roundedCorners">If true, the corners of the menu are rounded.</param>
-            <returns>A tuple containing the status of the prompt (Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter) and the number chosen by the user.</returns>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.LoadingBar(System.String,System.Nullable{System.Int32})">
-            <summary>
-            This method prints a loading screen in the console.
-            </summary>
-            <param name="message">The message to print.</param>
-            <param name="line">The line where the message will be printed.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ProcessLoadingBar(System.String,System.Single@,System.Nullable{System.Int32})">
-            <summary>
-            This method prints a loading bar in the console linked with a process percentage so that the loading bar is updated.
-            </summary>
-            <param name="message">The message to print.</param>
-            <param name="processPercentage">The percentage of the process.</param>
-            <param name="line">The line where the message will be printed.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.WriteFullScreen(System.String,System.Boolean,System.Nullable{System.ValueTuple{System.String,System.String,System.String}},System.Nullable{System.ValueTuple{System.String,System.String,System.String}})">
-            <summary>
-            This method prints a full screen in the console with a title, a header and a footer.
-            </summary>
-            <param name="title">The title of the screen.</param>
-            <param name="continuous">If true, the title is not continuously printed.</param>
-            <param name="header">The header of the screen.</param>
-            <param name="footer">The footer of the screen.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Core.ExitProgram(System.String)">
-            <summary>
-            This method exits the program.
-            </summary>
-            <param name="message">The message to print on the exit of the program.</param>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Core.ResizeString(System.String,System.Int32,ConsoleAppVisuals.TextAlignment,System.Boolean)">
             <summary>
@@ -1594,8 +1427,7 @@
             </summary>
             <param name="header">The header of the column.</param>
             <returns>The elements of the column.</returns>
-            <exception cref="T:System.InvalidOperationException">Is thrown when the table is empty.</exception>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
+            <exception cref="T:System.ArgumentException">Is thrown when the header is invalid.</exception>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -1969,7 +1801,7 @@
         </member>
         <member name="T:ConsoleAppVisuals.TableView`1">
             <summary>
-            The <see cref="T:ConsoleAppVisuals.Table`1"/> class that contains the methods to create a table and display it.
+            The <see cref="!:Table&lt;T&gt;"/> class that contains the methods to create a table and display it.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.TableView`1.GetRawHeaders">
@@ -2009,7 +1841,7 @@
         </member>
         <member name="M:ConsoleAppVisuals.TableView`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
-            The <see cref="T:ConsoleAppVisuals.Table`1"/> natural constructor.
+            The <see cref="!:Table&lt;T&gt;"/> natural constructor.
             </summary>
             <param name="title">The title of the table.</param>
             <param name="headers">The headers of the table.</param>
@@ -2488,111 +2320,6 @@
             <param name="context">Streaming context.</param>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
-        <member name="T:ConsoleAppVisuals.MatrixLegacy`1">
-            <summary>
-            A matrix class for the console.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{`0}})">
-            <summary>
-            The natural constructor of the <see cref="T:ConsoleAppVisuals.MatrixLegacy`1"/> class.
-            </summary>
-            <param name="rawLines">The matrix to be used.</param>
-            <exception cref="T:System.ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="P:ConsoleAppVisuals.MatrixLegacy`1.Count">
-            <summary>
-            Gets the number of lines in the matrix.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.GetElement(ConsoleAppVisuals.Position)">
-            <summary>
-            Gets the element at the specified position.
-            </summary>
-            <param name="position">The position of the element.</param>
-            <returns>The element at the specified position.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.SetRoundedCorners(System.Boolean)">
-            <summary>
-            Toggles the rounded corners of the table.
-            </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.AddLine(System.Collections.Generic.List{`0})">
-            <summary>
-            Adds a line to the matrix.
-            </summary>
-            <param name="line">The line to add.</param>
-            <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.RemoveLine(System.Int32)">
-            <summary>
-            Removes a line from the matrix.
-            </summary>
-            <param name="index">The index of the line to remove.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
-            <summary>
-            Updates a line in the matrix.
-            </summary>
-            <param name="index">The index of the line to update.</param>
-            <param name="line">The new line.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
-            <exception cref="T:System.ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.Remove(ConsoleAppVisuals.Position)">
-            <summary>
-            Removes an element from the matrix.
-            </summary>
-            <param name="position">The position of the element to remove.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.UpdateElement(ConsoleAppVisuals.Position,`0)">
-            <summary>
-            Updates an element in the matrix.
-            </summary>
-            <param name="position">The position of the element to update.</param>
-            <param name="newElement">The new element.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.MatrixLegacy`1.WriteMatrix(ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32})">
-            <summary>
-            Writes the matrix instance to the console.
-            </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
         <member name="T:ConsoleAppVisuals.Element">
             <summary>
             Defines the basic properties of an console element.
@@ -2945,151 +2672,6 @@
             <param name="left">The first position to compare.</param>
             <param name="right">The second position to compare.</param>
             <returns>True if the positions are not equal, false otherwise.</returns>
-        </member>
-        <member name="T:ConsoleAppVisuals.Table`1">
-            <summary>
-            The <see cref="T:ConsoleAppVisuals.Table`1"/> class that contains the methods to create a table and display it.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Table`1.GetRawHeaders">
-            <summary>
-            This property returns the headers of the table.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Table`1.GetRawLines">
-            <summary>
-            This property returns the lines of the table.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}})">
-            <summary>
-            The <see cref="T:ConsoleAppVisuals.Table`1"/> natural constructor.
-            </summary>
-            <param name="title">The title of the table.</param>
-            <param name="lines">The lines of the table.</param>
-            <param name="headers">The headers of the table.</param>
-            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-            <exception cref="T:System.NullReferenceException">Is thrown when no body lines were provided.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="P:ConsoleAppVisuals.Table`1.Count">
-            <summary>
-            This property returns the number of lines in the table.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.AddHeaders(System.Collections.Generic.List{System.String})">
-            <summary>
-            This method adds headers to the table.
-            </summary>
-            <param name="headers">The headers to add.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.UpdateHeaders(System.Collections.Generic.List{System.String})">
-            <summary>
-            This method updates the headers of the table.
-            </summary>
-            <param name="headers">The headers to update.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.AddTitle(System.String)">
-            <summary>
-            This method adds a title to the table.
-            </summary>
-            <param name="title">The title to add.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.UpdateTitle(System.String)">
-            <summary>
-            This method updates the title of the table.
-            </summary>
-            <param name="title">The title to update.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.SetRoundedCorners(System.Boolean)">
-            <summary>
-            Toggles the rounded corners of the table.
-            </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.GetLine(System.Int32)">
-            <summary>
-            This property returns the specified line in the table.
-            </summary>
-            <param name="index">The index of the line to return.</param>
-            <returns>The line at the specified index.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.GetColumnData(System.Int32)">
-            <summary>
-            This method is used to get all the elements from a column given its index.
-            </summary>
-            <param name="index">The index of the column.</param>
-            <returns>The elements of the column.</returns>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.GetColumnData(System.String)">
-            <summary>
-            This method is used to get all the elements from a column given its header.
-            </summary>
-            <param name="header">The header of the column.</param>
-            <returns>The elements of the column.</returns>
-            <exception cref="T:System.InvalidOperationException">Is thrown when the table is empty.</exception>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.AddLine(System.Collections.Generic.List{`0})">
-            <summary>
-            This method adds a line to the table.
-            </summary>
-            <param name="line">The line to add.</param>
-            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.RemoveLine(System.Int32)">
-            <summary>
-            This method removes a line from the table.
-            </summary>
-            <param name="index">The index of the line to remove.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
-            <summary>
-            This method updates a line in the table.
-            </summary>
-            <param name="index">The index of the line to update.</param>
-            <param name="line">The new line.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-            <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.ClearHeaders">
-            <summary>
-            This method clears the headers of the table.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.ClearLines">
-            <summary>
-            This method clears the lines of the table.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.Clear">
-            <summary>
-            This method clears the table.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.ScrollingTableSelector(System.Boolean,System.Boolean,System.String,System.Nullable{System.Int32})">
-            <summary>
-            This method displays the table and allows the user to select, delete a line or to escape.
-            </summary>
-            <param name="excludeHeader">If true, the header will not be selectable.</param>
-            <param name="excludeFooter">If true, the footer will not be selectable.</param>
-            <param name="footerText">The text to display in the footer when selected.</param>
-            <param name="line">The start line to display the table on.</param>
-            <returns>A tuple containing the status of the selection (Output.Exit : pressed escape, Output.Select : pressed enter) and the index of the selection.</returns>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Table`1.Render(System.Nullable{System.Int32})">
-            <summary>
-            This method displays the table without interaction.
-            </summary>
-            <param name="line">The start line to display the table on.</param>
         </member>
         <member name="T:ConsoleAppVisuals.TextStyler">
             <summary>

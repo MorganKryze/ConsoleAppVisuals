@@ -627,7 +627,6 @@ public class UnitTestTableSelector
     [TestCategory("TableSelector")]
     public void CheckRawLines_HeadersNullLinesNotNull_NumberConsistent()
     {
-        
         List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
@@ -710,7 +709,636 @@ public class UnitTestTableSelector
         // Assert
         Assert.IsNotNull(array);
     }
+    #endregion
 
-    
+    #region Manipulation Methods
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void AddHeaders_HeadersUpdated()
+    {
+        // Arrange
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            default,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        tableSelector.AddHeaders(playersHeaders);
+        var actualHeaders = tableSelector.GetRawHeaders;
+
+        // Assert
+        Assert.AreEqual(5, actualHeaders?.Count);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void AddHeaders_HeadersNotUpdated()
+    {
+        // Arrange
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            default,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act & Assert
+        List<string> playersHeaders = new() { "id", "first name", "last name", "national" };
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            tableSelector.AddHeaders(playersHeaders);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateHeaders_HeadersUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        List<string> playersHeaders2 =
+            new() { "id", "last name", "first name", "nationality", "slams" };
+        tableSelector.UpdateHeaders(playersHeaders2);
+        var actualHeaders = tableSelector.GetRawHeaders;
+
+        // Assert
+        Assert.AreEqual("last name", actualHeaders?[1]);
+        Assert.AreEqual("first name", actualHeaders?[2]);
+        Assert.AreEqual("nationality", actualHeaders?[3]);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void AddTitle_TitleUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.AddTitle("Great tennis players");
+        var actualTitle = tableSelector.Title;
+
+        // Assert
+        Assert.AreEqual("Great tennis players", actualTitle);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateTitle_TitleUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.UpdateTitle("Great tennis players updated");
+        var actualTitle = tableSelector.Title;
+
+        // Assert
+        Assert.AreEqual("Great tennis players updated", actualTitle);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void GetLine_CorrectIndex()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        var line = tableSelector.GetLine(1);
+
+        // Assert
+        Assert.AreEqual(player2, line);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    [DataRow(-1)]
+    [DataRow(8)]
+    [DataRow(50)]
+    public void GetLine_WrongIndex(int index)
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+        {
+            var line = tableSelector.GetLine(index);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void GetColumnData_CorrectIndex()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+        List<List<string>> playersData = new() { player1, player2, player3 };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+
+        // Act
+        var columnData = tableSelector.GetColumnData(2);
+
+        // Assert
+        Assert.AreEqual("Djokovic", columnData?[0]);
+        Assert.AreEqual("Alkaraz", columnData?[1]);
+        Assert.AreEqual("Federer", columnData?[2]);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    [DataRow(-1)]
+    [DataRow(5)]
+    [DataRow(50)]
+    public void GetColumnData_WrongIndex(int index)
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+        List<List<string>> playersData = new() { player1, player2, player3 };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+        {
+            var columnData = tableSelector.GetColumnData(index);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void GetColumnData_NullLines()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, default);
+
+        // Act & Assert
+        Assert.IsNull(tableSelector.GetColumnData(2));
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void GetColumnData_RawHeadersNull()
+    {
+        // Arrange
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+        List<List<string>> playersData = new() { player1, player2, player3 };
+
+        var tableSelector = new TableSelector<string>(default, default, playersData);
+
+        // Act & Assert
+        Assert.IsNull(tableSelector.GetColumnData("first name"));
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void GetColumnData_RawLinesNull()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, default);
+
+        // Act & Assert
+        Assert.IsNull(tableSelector.GetColumnData("first name"));
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void GetColumnData_DoesNotContain()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+        List<List<string>> playersData = new() { player1, player2, player3 };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            var columnData = tableSelector.GetColumnData("age");
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void GetColumnData_CorrectHeader()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+        List<List<string>> playersData = new() { player1, player2, player3 };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+
+        // Act
+        var columnData = tableSelector.GetColumnData("last name");
+
+        // Assert
+        Assert.AreEqual("Djokovic", columnData?[0]);
+        Assert.AreEqual("Alkaraz", columnData?[1]);
+        Assert.AreEqual("Federer", columnData?[2]);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void AddLine_LineAdded()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act
+        List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
+        tableSelector.AddLine(player4);
+        var actualLines = tableSelector.GetRawLines;
+
+        // Assert
+        Assert.AreEqual(1, actualLines?.Count);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void AddLine_LineNotAdded()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act & Assert
+        List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain" };
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            tableSelector.AddLine(player4);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void AddLines_ColumnsNotConsistentWithLines()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+        List<List<string>> playersData = new() { player1, player2, player3 };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+
+        // Act & Assert
+        List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain" };
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            tableSelector.AddLine(player4);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void RemoveLine_LineRemoved()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player4 }
+        );
+
+        // Act
+        tableSelector.RemoveLine(0);
+        var actualLines = tableSelector.GetRawLines;
+
+        // Assert
+        Assert.AreEqual(0, actualLines?.Count);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void RemoveLine_LineNotRemoved()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+        {
+            tableSelector.RemoveLine(0);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    [DataRow(-1)]
+    [DataRow(5)]
+    public void RemoveLine_WrongIndex(int index)
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+        List<List<string>> playersData = new() { player1, player2, player3 };
+
+        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+        {
+            tableSelector.RemoveLine(index);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateLine_LineUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player4 }
+        );
+
+        // Act
+        List<string> player5 = new() { "05", "Stefanos", "Tsitsipas", "Greece", "0" };
+        tableSelector.UpdateLine(0, player5);
+        var actualLines = tableSelector.GetRawLines;
+
+        // Assert
+        Assert.AreEqual("05", actualLines?[0][0]);
+        Assert.AreEqual("Stefanos", actualLines?[0][1]);
+        Assert.AreEqual("Tsitsipas", actualLines?[0][2]);
+        Assert.AreEqual("Greece", actualLines?[0][3]);
+        Assert.AreEqual("0", actualLines?[0][4]);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateLine_LineNotUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act & Assert
+        List<string> player5 = new() { "05", "Stefanos", "Tsitsipas", "Greece", "0" };
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+        {
+            tableSelector.UpdateLine(0, player5);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    [DataRow(-1)]
+    [DataRow(5)]
+    public void UpdateLine_WrongIndex(int index)
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player4 }
+        );
+
+        // Act & Assert
+        List<string> player5 = new() { "05", "Stefanos", "Tsitsipas", "Greece", "0" };
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
+        {
+            tableSelector.UpdateLine(index, player5);
+        });
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateLine_ColumnsNotConsistentWithLines()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player4 }
+        );
+
+        // Act & Assert
+        List<string> player5 = new() { "05", "Stefanos", "Tsitsipas", "Greece" };
+        Assert.ThrowsException<ArgumentException>(() =>
+        {
+            tableSelector.UpdateLine(0, player5);
+        });
+    }
+
+    #endregion
+
+    #region Reset Methods
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void ClearHeaders_HeadersErased()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            default,
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.ClearHeaders();
+        var actualHeaders = tableSelector.GetRawHeaders;
+
+        // Assert
+        Assert.IsNull(actualHeaders);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void ClearLines_LinesErased()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.ClearLines();
+        var actualLines = tableSelector.GetRawLines;
+
+        // Assert
+        Assert.IsNull(actualLines);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void Reset_ElementsErased()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.Reset();
+        var actualTitle = tableSelector.Title;
+        var actualHeaders = tableSelector.GetRawHeaders;
+        var actualLines = tableSelector.GetRawLines;
+
+        // Assert
+        Assert.AreEqual(string.Empty, actualTitle);
+        Assert.AreEqual(0, actualHeaders?.Count);
+        Assert.AreEqual(0, actualLines?.Count);
+        Assert.IsNull(tableSelector.DisplayArray);
+    }
     #endregion
 }
