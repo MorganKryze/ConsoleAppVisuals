@@ -461,6 +461,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// </remarks>
     public void AddHeaders(List<string> headers)
     {
+        var lastStateOfHeaders = _rawHeaders;
         _rawHeaders = headers;
         if (CompatibilityCheck())
         {
@@ -468,7 +469,7 @@ public class TableSelector<T> : InteractiveElement<int>
         }
         else
         {
-            _rawHeaders = null;
+            _rawHeaders = lastStateOfHeaders;
         }
     }
 
@@ -598,8 +599,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// </summary>
     /// <param name="header">The header of the column.</param>
     /// <returns>The elements of the column.</returns>
-    /// <exception cref="InvalidOperationException">Is thrown when the table is empty.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
+    /// <exception cref="ArgumentException">Is thrown when the header is invalid.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -611,7 +611,7 @@ public class TableSelector<T> : InteractiveElement<int>
     {
         if (_rawHeaders is null)
         {
-            throw new InvalidOperationException("The headers are null.");
+            return null;
         }
         else if (_rawLines is null)
         {
@@ -619,7 +619,7 @@ public class TableSelector<T> : InteractiveElement<int>
         }
         if (!_rawHeaders.Contains(header))
         {
-            throw new ArgumentOutOfRangeException(nameof(header), "Invalid column header.");
+            throw new ArgumentException(nameof(header), "Invalid column header.");
         }
 
         return GetColumnData(_rawHeaders.IndexOf(header));
