@@ -6,7 +6,7 @@
 
 1200
 
-![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation_1200.gif)
+![title](docs/images/presentation.gif)
 
 1000
 
