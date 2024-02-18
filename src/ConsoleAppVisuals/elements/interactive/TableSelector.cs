@@ -113,7 +113,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <param name="line">The line to display the table on.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public TableSelector(
         string? title = null,
         List<string>? headers = null,
@@ -446,6 +452,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// This method adds headers to the table.
     /// </summary>
     /// <param name="headers">The headers to add.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void AddHeaders(List<string> headers)
     {
         _rawHeaders = headers;
@@ -463,6 +476,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// This method updates the headers of the table.
     /// </summary>
     /// <param name="headers">The headers to update.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateHeaders(List<string> headers)
     {
         AddHeaders(headers);
@@ -472,6 +492,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// This method adds a title to the table.
     /// </summary>
     /// <param name="title">The title to add.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void AddTitle(string title)
     {
         _title = title;
@@ -482,6 +509,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// This method updates the title of the table.
     /// </summary>
     /// <param name="title">The title to update.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateTitle(string title)
     {
         AddTitle(title);
@@ -490,7 +524,14 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <summary>
     /// Toggles the rounded corners of the table.
     /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <param name="rounded">Whether to round the corners or not.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void SetRoundedCorners(bool rounded = true)
     {
         _roundedCorners = rounded;
@@ -503,7 +544,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <param name="index">The index of the line to return.</param>
     /// <returns>The line at the specified index.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public List<T> GetLine(int index)
     {
         if (index < 0 || index >= _rawLines?.Count)
@@ -519,6 +566,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <param name="index">The index of the column.</param>
     /// <returns>The elements of the column.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public List<T>? GetColumnData(int index)
     {
         if (_rawLines is null)
@@ -546,6 +600,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <returns>The elements of the column.</returns>
     /// <exception cref="InvalidOperationException">Is thrown when the table is empty.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public List<T>? GetColumnData(string header)
     {
         if (_rawHeaders is null)
@@ -569,7 +630,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// </summary>
     /// <param name="line">The line to add.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void AddLine(List<T> line)
     {
         if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
@@ -594,7 +661,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void RemoveLine(int index)
     {
         if (_rawLines?.Count > 0 && (index < 0 || index >= _rawLines.Count))
@@ -613,7 +686,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <param name="line">The new line.</param>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void UpdateLine(int index, List<T> line)
     {
         if (_rawLines?.Count > 0)
@@ -637,6 +716,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <summary>
     /// This method clears the headers of the table.
     /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void ClearHeaders()
     {
         _rawHeaders = null;
@@ -646,6 +732,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <summary>
     /// This method clears the lines of the table.
     /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void ClearLines()
     {
         _rawLines = null;
@@ -655,6 +748,13 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <summary>
     /// This method clears the table.
     /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void Reset()
     {
         _title = null;

@@ -1485,37 +1485,78 @@
             <param name="line">The line to display the table on.</param>
             <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
             <exception cref="T:System.NullReferenceException">Is thrown when no body lines were provided.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.AddHeaders(System.Collections.Generic.List{System.String})">
             <summary>
             This method adds headers to the table.
             </summary>
             <param name="headers">The headers to add.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.UpdateHeaders(System.Collections.Generic.List{System.String})">
             <summary>
             This method updates the headers of the table.
             </summary>
             <param name="headers">The headers to update.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.AddTitle(System.String)">
             <summary>
             This method adds a title to the table.
             </summary>
             <param name="title">The title to add.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.UpdateTitle(System.String)">
             <summary>
             This method updates the title of the table.
             </summary>
             <param name="title">The title to update.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.SetRoundedCorners(System.Boolean)">
             <summary>
             Toggles the rounded corners of the table.
             </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <param name="rounded">Whether to round the corners or not.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.GetLine(System.Int32)">
             <summary>
@@ -1524,7 +1565,13 @@
             <param name="index">The index of the line to return.</param>
             <returns>The line at the specified index.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.GetColumnData(System.Int32)">
             <summary>
@@ -1533,6 +1580,13 @@
             <param name="index">The index of the column.</param>
             <returns>The elements of the column.</returns>
             <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.GetColumnData(System.String)">
             <summary>
@@ -1542,6 +1596,13 @@
             <returns>The elements of the column.</returns>
             <exception cref="T:System.InvalidOperationException">Is thrown when the table is empty.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.AddLine(System.Collections.Generic.List{`0})">
             <summary>
@@ -1549,7 +1610,13 @@
             </summary>
             <param name="line">The line to add.</param>
             <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.RemoveLine(System.Int32)">
             <summary>
@@ -1557,7 +1624,13 @@
             </summary>
             <param name="index">The index of the line to remove.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.UpdateLine(System.Int32,System.Collections.Generic.List{`0})">
             <summary>
@@ -1567,22 +1640,49 @@
             <param name="line">The new line.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
             <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.ClearHeaders">
             <summary>
             This method clears the headers of the table.
             </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.ClearLines">
             <summary>
             This method clears the lines of the table.
             </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.Reset">
             <summary>
             This method clears the table.
             </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.TableSelector`1.RenderElementActions">
             <summary>
@@ -3563,9 +3663,9 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.AddDashboard">
+        <member name="M:ConsoleAppVisuals.Window.AddClassesDashboard">
             <summary>
-            This method displays a list of all elements in the window, a list of all classes inheriting from the Element class and a list of all classes inheriting from the InteractiveElement class.
+            This method displays a list of all classes inheriting from the Element class and a list of all classes inheriting from the InteractiveElement class.
             </summary>
             <remarks>
             For more information, refer to the following resources:
@@ -3575,7 +3675,31 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.RemoveDashboard">
+        <member name="M:ConsoleAppVisuals.Window.RemoveClassesDashboard">
+            <summary>
+            This method removes the dashboard TableView from the window.
+            </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Window.AddWindowElementsDashboard">
+            <summary>
+            This method displays a list of all elements in the window.
+            </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Window.RemoveWindowElementsDashboard">
             <summary>
             This method removes the dashboard TableView from the window.
             </summary>

@@ -764,29 +764,62 @@ public class UnitTestWindow
     }
 
     [TestMethod]
-    public void AddDashboard_DashboardAdded()
+    public void AddClassesDashboard_DashboardAdded()
     {
         // Arrange
-        Window.AddDashboard();
+        Window.AddClassesDashboard();
 
         // Act
         var result = Window.CountElements;
 
         // Assert
-        Assert.AreEqual(3, result);
+        Assert.AreEqual(2, result);
 
         // Cleanup
         Window.RemoveAllElements();
     }
 
     [TestMethod]
-    public void RemoveDashboard_DashboardRemoved()
+    public void RemoveClassesDashboard_DashboardRemoved()
     {
         // Arrange
-        Window.AddDashboard();
+        Window.AddClassesDashboard();
 
         // Act
-        Window.RemoveDashboard();
+        Window.RemoveClassesDashboard();
+        var result = Window.CountElements;
+
+        // Assert
+        Assert.AreEqual(0, result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void AddWindowElementsDashboard_DashboardAdded()
+    {
+        // Arrange
+        Window.AddWindowElementsDashboard();
+
+        // Act
+        var result = Window.CountElements;
+
+        // Assert
+        Assert.AreEqual(1, result);
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
+
+    [TestMethod]
+    public void RemoveWindowElementsDashboard_DashboardRemoved()
+    {
+        // Arrange
+        Window.AddWindowElementsDashboard();
+
+        // Act
+        Window.RemoveWindowElementsDashboard();
         var result = Window.CountElements;
 
         // Assert

@@ -1107,7 +1107,7 @@ public static class Window
     }
 
     /// <summary>
-    /// This method displays a list of all elements in the window, a list of all classes inheriting from the Element class and a list of all classes inheriting from the InteractiveElement class.
+    /// This method displays a list of all classes inheriting from the Element class and a list of all classes inheriting from the InteractiveElement class.
     /// </summary>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -1116,10 +1116,40 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void AddDashboard()
+    public static void AddClassesDashboard()
     {
         AddListClassesInheritingElement(Placement.TopLeft);
         AddListClassesInheritingInteractiveElement(Placement.TopRight);
+    }
+
+    /// <summary>
+    /// This method removes the dashboard TableView from the window.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void RemoveClassesDashboard()
+    {
+        RemoveLibraryElement<TableView<string>>();
+        RemoveLibraryElement<TableView<string>>();
+    }
+
+    /// <summary>
+    /// This method displays a list of all elements in the window.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void AddWindowElementsDashboard()
+    {
         AddListWindowElements(Placement.TopCenter);
     }
 
@@ -1133,10 +1163,8 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void RemoveDashboard()
+    public static void RemoveWindowElementsDashboard()
     {
-        RemoveLibraryElement<TableView<string>>();
-        RemoveLibraryElement<TableView<string>>();
         RemoveLibraryElement<TableView<string>>();
     }
     #endregion
