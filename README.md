@@ -140,7 +140,8 @@ Feel free to check out the following resources to help you get started:
 
 The library is still in development and we are working on the following features:
 
-- [ ] Add a new visual: the `TableSelector`
+- [x] Add a new visual: the `TableSelector`
+- [ ] Add colorization to `TableSelector` (highligth data according to a condition)
 - [ ] Add example of a custom font in the example project
 - [ ] Add more default fonts
 - [ ] Add a new visual: the `Chart`
