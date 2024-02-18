@@ -67,8 +67,8 @@ public class Footer : Element
     /// </list>
     /// </remarks>
     public Footer(
-        string leftText = " Footer Left",
-        string centerText = " Footer Center",
+        string leftText = "Footer Left",
+        string centerText = "Footer Center",
         string rightText = "Footer Right"
     )
     {
