@@ -22,7 +22,7 @@ Install-Package ConsoleAppVisuals
 
 ## First steps into the library
 
-> [!CAUTION]
+> [!WARNING]
 > If you have been using the library before v3, please note that the library has been completely rewritten. The old version is not compatible with the new one. Please take the time to explore our documentation to update your code.
 
 ### Principle
