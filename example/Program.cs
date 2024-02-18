@@ -397,7 +397,7 @@ namespace example
                                 new EmbeddedText(
                                     new List<string>()
                                     {
-                                        "You have selected to quit the app. Press [Enter] to continue..."
+                                        "The colors represented the space taken by the elements. Press [Enter] to continue..."
                                     },
                                     $"Next {Core.GetSelector.Item1}",
                                     TextAlignment.Left
@@ -451,15 +451,23 @@ namespace example
                             goto Menu;
 
                         case 13: // These following functions are for debugging purposes, they should not be used in a production state of a software
-                            Window.AddDashboard(); // Add the three TableView elements to the window
+                            Window.AddWindowElementsDashboard(); // See all the elements in the window
 
                             Window.Refresh(); // This will display the elements
                             Window.StopExecution();
 
                             Window.Clear();
-                            Window.RemoveDashboard(); // This will remove the three items
+                            Window.RemoveWindowElementsDashboard(); // This will remove the items from the window
+                            
+                            Window.AddClassesDashboard(); // Add the two TableView elements to the window
 
-                            Window.AddListWindowElements(); // Add one of the three items
+                            Window.Refresh(); 
+                            Window.StopExecution();
+
+                            Window.Clear();
+                            Window.RemoveClassesDashboard(); // This will remove the two items
+
+                            Window.AddListClassesInheritingElement(); // Add manually one of the items previously removed
                             Window.Refresh();
                             Window.StopExecution();
                             Window.DeactivateElement<TableView<string>>(); // This will deactivate the table
