@@ -4,9 +4,17 @@
 
 [![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![License: GNU GPL](https://img.shields.io/badge/License-GNU_GPL-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE)
 
-![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation.gif)
+1200
 
-<img src="https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation.gif" alt="Alt text">
+![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation_1200.gif)
+
+1000
+
+![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation_1000.gif)
+
+8000
+
+![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation_800.gif)
 
 ## Install
 
