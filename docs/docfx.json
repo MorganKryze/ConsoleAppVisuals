@@ -1,26 +1,35 @@
 {
-  "metadata": [{
-    "src": [{
-      "files": ["**/bin/Release/net8.0/ConsoleAppVisuals.dll"],
-      "src": "../src/ConsoleAppVisuals/"
-    }],
-    "dest": "references",
-    "properties": {
-      "TargetFramework": "net8.0"
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": ["**/bin/Release/net8.0/ConsoleAppVisuals.dll"],
+          "src": "../src/ConsoleAppVisuals/"
+        }
+      ],
+      "dest": "references",
+      "properties": {
+        "TargetFramework": "net8.0"
+      }
     }
-  }],
+  ],
   "build": {
     "content": [
+      {
+        "files": ["introduction/**"]
+      },
+      {
+        "files": ["elements/**"]
+      },
       {
         "files": ["references/**.yml", "references/index.md"]
       },
       {
-        "files": [
-          "documentation/**.md",
-          "documentation/**/toc.yml",
-          "toc.yml",
-          "*.md"
-        ]
+        "files": ["articles/**"]
+      },
+      {
+        "files": ["**/*.{md,yml}"],
+        "exclude": ["_site/**"]
       }
     ],
     "resource": [
@@ -29,11 +38,14 @@
       }
     ],
     "output": "_site",
-    "globalMetadataFiles": [],
-    "fileMetadataFiles": [],
     "template": ["default", "modern"],
-    "postProcessors": [],
     "keepFileLink": false,
-    "disableGitFeatures": false
+    "disableGitFeatures": false,
+    "globalMetadata": {
+      "_appName": "ConsoleAppVisuals",
+      "_appTitle": "ConsoleAppVisuals",
+      "_enableSearch": true,
+      "pdf": true
+    }
   }
 }

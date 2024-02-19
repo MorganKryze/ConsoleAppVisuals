@@ -8,20 +8,21 @@
 
 This is the documentation for the `ConsoleAppVisuals` library. This is a simple and easy-to-use library that allows you to create visual elements in the console. Here are all the resources available:
 
-1. [Getting started](getting-started.md): find the installation process, the first steps into the library and the description of the `Core` and `Window` classes.
-2. [Visual elements](visual-elements.md): find the detailed features of the visual elements available and recommendations.
-3. [References](references.md): find all methods, properties and classes with their description and all arguments available.
-4. [Example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs): find a complete example project to see how to use the library in a real project.
-5. [Articles](articles.md): find some additional articles about how to create and publish a library or create your documentation.
+1. [Introduction](/introduction): find the installation process, the first steps into the library and the description of the `Core` and `Window` classes.
+2. [Elements](/elements): find the detailed features of the visual elements available and recommendations.
+3. [References](/references): find all methods, properties and classes with their description and all arguments available.
+4. [Articles](/articles): find some additional articles about how to create and publish a library or create your documentation.
 
-### Supported .NET versions
+Finally, an commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) to see how to use the library in a real project. If you have any questions, feel free to ask them in the [discussions](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) section.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 8.x     | :white_check_mark: |
-| 7.x     | :white_check_mark: |
-| 6.x     | :white_check_mark: |
-| < 6.x   | :x:                |
+## Supported .NET versions
+
+| Version  | Supported          |
+| -------- | ------------------ |
+| net8.x   | :white_check_mark: |
+| net7.x   | :white_check_mark: |
+| net6.x   | :white_check_mark: |
+| < net6.x | :x:                |
 
 ## Security Policy
 

@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// The <see cref="Table{T}"/> class that contains the methods to create a table and display it.
+/// The <see cref="TableView{T}"/> class that contains the methods to create a table and display it.
 /// </summary>
 public class TableView<T> : Element
 {
@@ -59,7 +59,7 @@ public class TableView<T> : Element
 
     #region Constructor
     /// <summary>
-    /// The <see cref="Table{T}"/> natural constructor.
+    /// The <see cref="TableView{T}"/> natural constructor.
     /// </summary>
     /// <param name="title">The title of the table.</param>
     /// <param name="headers">The headers of the table.</param>
@@ -74,7 +74,7 @@ public class TableView<T> : Element
         string? title = null,
         List<string>? headers = null,
         List<List<T>>? lines = null,
-        bool roundedCorners = true,
+        bool roundedCorners = false,
         Placement placement = Placement.TopCenter,
         int? line = null
     )

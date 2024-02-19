@@ -6,6 +6,13 @@
 
 ![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation.gif)
 
+## Documentation
+
+Feel free to check out the following resources to help you get started:
+
+- Take a quick look at our [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) to understand how to implement the library in your own project
+- A [complete documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
+
 ## Install
 
 Install the library using the .NET CLI:
@@ -129,31 +136,24 @@ You may now remove the element from the list if you want to:
 Window.RemoveElement<Prompt>();
 ```
 
-## Documentation
-
-Feel free to check out the following resources to help you get started:
-
-- Take a quick look at our [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) to understand how to implement the library in your own project
-- A [complete documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
-
 ## Roadmap
 
 The library is still in development and we are working on the following features:
 
 - [x] Add a new visual: the `TableSelector`
-- [ ] Add colorization to `TableSelector` (highligth data according to a condition)
+- [ ] Add colorization to `TableSelector` (highlight data according to a condition)
 - [ ] Add example of a custom font in the example project
 - [ ] Add more default fonts
 - [ ] Add a new visual: the `Chart`
 
-### Supported dotnet versions
+## Supported .NET versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 8.x     | :white_check_mark: |
-| 7.x     | :white_check_mark: |
-| 6.x     | :white_check_mark: |
-| < 6.x   | :x:                |
+| Version  | Supported          |
+| -------- | ------------------ |
+| net8.x   | :white_check_mark: |
+| net7.x   | :white_check_mark: |
+| net6.x   | :white_check_mark: |
+| < net6.x | :x:                |
 
 ## Security Policy
 
