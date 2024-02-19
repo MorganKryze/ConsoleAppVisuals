@@ -8,10 +8,10 @@
 
 This is the documentation for the `ConsoleAppVisuals` library. This is a simple and easy-to-use library that allows you to create visual elements in the console. Here are all the resources available:
 
-1. [Introduction](/introduction): find the installation process, the first steps into the library and the description of the `Core` and `Window` classes.
-2. [Elements](/elements): find the detailed features of the visual elements available and recommendations.
-3. [References](/references): find all methods, properties and classes with their description and all arguments available.
-4. [Articles](/articles): find some additional articles about how to create and publish a library or create your documentation.
+1. [Introduction](/introduction/index.html): find the installation process, the first steps into the library and the description of the `Core` and `Window` classes.
+2. [Elements](/elements/index.html): find the detailed features of the visual elements available and recommendations.
+3. [References](/references/index.html): find all methods, properties and classes with their description and all arguments available.
+4. [Articles](/articles/index.html): find some additional articles about how to create and publish a library or create your documentation.
 
 Finally, an commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) to see how to use the library in a real project. If you have any questions, feel free to ask them in the [discussions](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) section.
 
