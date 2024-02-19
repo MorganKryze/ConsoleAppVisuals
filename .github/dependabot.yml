@@ -3,4 +3,6 @@ updates:
   - package-ecosystem: nuget
     directory: / 
     schedule:
-      interval: daily
+      interval: weekly
+    open-pull-requests-limit: 5
+    target-branch: dev
