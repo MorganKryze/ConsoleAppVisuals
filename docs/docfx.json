@@ -1,18 +1,18 @@
 {
   "metadata": [{
     "src": [{
-      "files": ["**/bin/Release/net7.0/ConsoleAppVisuals.dll"],
+      "files": ["**/bin/Release/net8.0/ConsoleAppVisuals.dll"],
       "src": "../src/ConsoleAppVisuals/"
     }],
-    "dest": "api",
+    "dest": "references",
     "properties": {
-      "TargetFramework": "net7.0"
+      "TargetFramework": "net8.0"
     }
   }],
   "build": {
     "content": [
       {
-        "files": ["api/**.yml", "api/index.md"]
+        "files": ["references/**.yml", "references/index.md"]
       },
       {
         "files": [
