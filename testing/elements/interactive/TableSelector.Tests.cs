@@ -322,7 +322,7 @@ public class UnitTestTableSelector
         var actualRoundedCorners = tableSelector.RoundedCorners;
 
         // Assert
-        Assert.AreEqual(true, actualRoundedCorners);
+        Assert.AreEqual(false, actualRoundedCorners);
     }
 
     [TestMethod]
@@ -343,7 +343,7 @@ public class UnitTestTableSelector
         var actualRoundedCorners = tableSelector.RoundedCorners;
 
         // Assert
-        Assert.AreEqual(true, actualRoundedCorners);
+        Assert.AreEqual(false, actualRoundedCorners);
     }
 
     [TestMethod]
@@ -366,7 +366,7 @@ public class UnitTestTableSelector
         var actualRoundedCorners = tableSelector.RoundedCorners;
 
         // Assert
-        Assert.AreEqual(true, actualRoundedCorners);
+        Assert.AreEqual(false, actualRoundedCorners);
     }
 
     [TestMethod]
@@ -390,7 +390,7 @@ public class UnitTestTableSelector
         var actualCorners = tableSelector.GetCorners;
 
         // Assert
-        Assert.AreEqual("╭╮╰╯", actualCorners);
+        Assert.AreEqual("┌┐└┘", actualCorners);
     }
 
     [TestMethod]

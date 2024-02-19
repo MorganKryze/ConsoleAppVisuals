@@ -1137,6 +1137,7 @@
             <summary>
             The width of the prompt element.
             </summary>
+            <remarks>We add a margin of 2 to be sur to take in account odd question lengths.</remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Prompt.#ctor(System.String,System.String,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
@@ -1801,7 +1802,7 @@
         </member>
         <member name="T:ConsoleAppVisuals.TableView`1">
             <summary>
-            The <see cref="!:Table&lt;T&gt;"/> class that contains the methods to create a table and display it.
+            The <see cref="T:ConsoleAppVisuals.TableView`1"/> class that contains the methods to create a table and display it.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.TableView`1.GetRawHeaders">
@@ -1841,7 +1842,7 @@
         </member>
         <member name="M:ConsoleAppVisuals.TableView`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
-            The <see cref="!:Table&lt;T&gt;"/> natural constructor.
+            The <see cref="T:ConsoleAppVisuals.TableView`1"/> natural constructor.
             </summary>
             <param name="title">The title of the table.</param>
             <param name="headers">The headers of the table.</param>

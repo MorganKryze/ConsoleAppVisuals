@@ -43,7 +43,8 @@ public class Prompt : InteractiveElement<string>
     /// <summary>
     /// The width of the prompt element.
     /// </summary>
-    public override int Width => _question.Length;
+    /// <remarks>We add a margin of 2 to be sur to take in account odd question lengths.</remarks>
+    public override int Width => _question.Length + 2;
     #endregion
 
     #region Constructor

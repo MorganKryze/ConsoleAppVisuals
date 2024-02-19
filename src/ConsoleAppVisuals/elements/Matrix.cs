@@ -63,7 +63,7 @@ public class Matrix<T> : Element
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
     public Matrix(
         List<List<T?>>? rawLines = null,
-        bool roundedCorners = true,
+        bool roundedCorners = false,
         Placement placement = Placement.TopCenter,
         int? line = null
     )

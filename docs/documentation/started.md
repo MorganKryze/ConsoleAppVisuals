@@ -11,11 +11,6 @@ You will find the following topics about the library:
 - [Specific methods](specific.md)
 - [create a custom font](font.md)
 
-And those topics about the library development:
-
-- [publish your own library](publish.md)
-- [build the docs](docs.md)
-
 And finally, you will find the precise documentation in "References".
 
 > [!NOTE]
