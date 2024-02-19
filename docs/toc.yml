@@ -2,5 +2,5 @@
   href: documentation/
   homepage: documentation/started.md
 - name: References
-  href: api/
-  homepage: api/index.md
+  href: references/
+  homepage: references/index.md
