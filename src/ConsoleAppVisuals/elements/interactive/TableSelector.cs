@@ -18,7 +18,7 @@ public class TableSelector<T> : InteractiveElement<int>
     private readonly bool _excludeFooter;
     private readonly string? _footerText;
     private string[]? _displayArray;
-    private bool _roundedCorners = true;
+    private bool _roundedCorners = false;
     private readonly int _line;
     private readonly Placement _placement;
 
