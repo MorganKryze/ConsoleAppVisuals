@@ -1,57 +1,89 @@
 # Getting started
 
+## Introduction
+
+This section describes all complete references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.
+
 ## Structure
 
-The library is composed of 4 main classes:
+Here is the file structure of the library:
 
 ```bash
 ConsoleAppVisuals
-├───models
-│   ├───Position.cs
+├───elements
+│   ├───interactive
+│   │   ├───EmbeddedText.cs
+│   │   ├───FloatSelector.cs
+│   │   ├───IntSelector.cs
+│   │   ├───Prompt.cs
+│   │   ├───ScrollingMenu.cs
+│   │   └───TableSelector.cs
+│   ├───FakeLoadingBar.cs
+│   ├───LoadingBar.cs
+│   ├───Matrix.cs
+│   ├───TableView.cs
+│   ├───Banner.cs
+│   ├───Header.cs
+│   ├───Footer.cs
+│   └───Title.cs
+├───attributes
+│   └───VisualAttribute.cs
+├───enums
+│   ├───Direction.cs
+│   ├───Output.cs
 │   ├───Placement.cs
+│   ├───Source.cs
+│   └───TextAlignment.cs
+├───errors
+│   ├───EmptyFileException.cs
+│   ├───ElementNotFoundException.cs
+│   └───NotSupportedCharException.cs
+├───models
+│   ├───Element.cs
+│   ├───InteractiveElement.cs
+│   ├───InteractionEventArgs.cs
+│   ├───Position.cs
 │   └───FontYamlFile.cs
 ├───Core.cs
-├───Extensions.cs
-├───Matrix.cs
-├───Table.cs
+├───Window.cs
 ├───TextStyler.cs
 └───Usings.cs
 ```
 
-### Usings.cs
+## Small descriptions
+
+### `Usings.cs`
 
 This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library.
 
-### Core.cs
+### `Core.cs`
 
-This class is the core of the library. It contains the methods to display the different visuals and variables.
+This class is the core of the library interaction with the console. It contains the methods to interact with the console on a low level basis.
 
-### Extensions.cs
+### `Window.cs`
 
-This class contains different extensions methods for strings and tuples.
+This class is used to manage visual elements. You may use it to add, remove, update and display elements on the console.
 
-With Position.cs and Placement.cs, it belongs to the tools classes.
+### `TextStyler.cs`
 
-### TextStyler.cs
+This class is used to style text according to a specified font. It contains the methods to apply a specific style to a text. Often used for the title.
 
-This class is used to style the text. It contains the methods to apply a specific style to a text. Often used for the title. It may be useful to create your own style.
+### `elements`
 
-### Table.cs
+This folder contains all the visual elements of the library. You may find the static elements as well as the interactive elements. They share common characteristics and methods defined in the `models/Element.cs` and the `models/InteractiveElement.cs` class.
 
-This class is used to create a table. It may be useful to display data in a table on the screen.
+### `attributes`
 
-### Matrix.cs
+This folder contains the `VisualAttribute` class. this attribute basically indicate to ignore the element when calculating coverage since untestable.
 
-This class is used to create a matrix. It may be useful to display data in a matrix on the screen.
+### `enums`
 
-### Position.cs
+This folder contains all the enums used in the library. They are used to define the behaviors, position, response of the elements in the console.
 
-This class is used to define any position defined by an X and Y coordinate. It may be used in cases like matrix selectors for example.
+### `errors`
 
-### Placement.cs
+This folder contains all the custom exceptions of the library. They are used to handle specific errors that may occur during the execution of the library.
 
-This class is used to define the placement of a text in the console. It may be useful to indicate where to place a text in a console, or to define the position of a text in a larger string.
+### `models`
 
-### FontYamlFile.cs
-
-This class is used to define a font from a yaml file. It may be useful to create your own font.
+This folder contains all the models of the library to format interactions.
