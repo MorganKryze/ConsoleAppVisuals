@@ -16,21 +16,6 @@
   "build": {
     "content": [
       {
-        "files": ["introduction/**"]
-      },
-      {
-        "files": ["elements/**"]
-      },
-      {
-        "files": ["references/**.yml", "references/index.md"]
-      },
-      {
-        "files": ["articles/**"]
-      },
-      {
-        "files": ["legacy/**"]
-      },
-      {
         "files": ["**/*.{md,yml}"],
         "exclude": ["_site/**"]
       }
