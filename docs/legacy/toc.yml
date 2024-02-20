@@ -1,0 +1,9 @@
+items:
+  - name: Getting Started
+    href: index.md
+  - name: Homescreens methods
+    href: homescreen.md
+  - name: Write on the console
+    href: write.md
+  - name: Specific methods
+    href: specific.md

@@ -1,17 +1,19 @@
 # Getting started
 
+> [!CAUTION]
+> This part of the documentation exists for legacy purposes. All 3.x.x versions and above are not compatible with the instructions on this section.
+
 ## Outline
 
 Welcome to the docs, here you will find all the information you need to use this library.
 
 You will find the following topics about the library:
 
-- [Homescreen visuals](homescreen.md)
-- [Write on the console](write.md)
-- [Specific methods](specific.md)
-- [create a custom font](font.md)
+- [Homescreen visuals](/ConsoleAppVisuals/legacy/homescreen.html)
+- [Write on the console](/ConsoleAppVisuals/legacy/write.html)
+- [Specific methods](/ConsoleAppVisuals/legacy/specific.html)
 
-And finally, you will find the precise documentation in "References".
+And finally, you will find the precise documentation in "References" section.
 
 > [!NOTE]
 > Feel free to contribute to the project by forking it and making a pull request or open an issue if you encounter a bug.
