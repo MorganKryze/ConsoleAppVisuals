@@ -1,18 +1,25 @@
-# Generating a documentation for a C# project
+# Create C# project documentation using docfx
 
-## The tool
+## Introduction
 
-The tool used to generate the documentation is [DocFX](https://dotnet.github.io/docfx/).
+This article will guide you through the process of creating a documentation for your C# project using the tool [DocFX](https://dotnet.github.io/docfx/). Documentation is key to help user understand how to use the tools you create. It is also a good way to show the quality of your work.
 
-To install it, or update it,open any terminal and run the following command:
+## Prerequisites
+
+- Having looked at the project from the [Introduction section](/introduction/index.html)
+- [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later
+
+## Install DocFX
+
+To install docfx, or update it, open any terminal and run the following command:
 
 ```bash
 dotnet tool update -g docfx
 ```
 
-## The structure
+## Setting up the workspace
 
-Here is the folder structure of the project before generating the documentation:
+As we are taking back the Introduction project to set the example, here is the folder structure before generating the documentation:
 
 ```bash
 ConsoleAppVisuals  <-- root
@@ -28,7 +35,7 @@ ConsoleAppVisuals  <-- root
 Open a terminal to the root of the project, and run the following command:
 
 ```bash
-docfx init -q
+docfx init -y
 ```
 
 Now you should have a new folder called "docfx_project" in the root of your project. Your folder structure should look like this (files are specified with the dots):
@@ -147,6 +154,10 @@ Now your documentation is ready to be generated in the section "Api Documentatio
 
 > [!NOTE]
 > For more customization, you may want update the "index.md" file in the "docfx_project" folder, and create wonderful articles in the "articles" folder to explain how to use your library. And **DO NOT** forget to update the "toc.yml" file to add your articles in the table of contents (else they will not be displayed).
+
+add pages and markdown files in the "articles" folder and update the "toc.yml" file to add your articles in the table of contents (else they will not be displayed).
+
+See support : <https://dotnet.github.io/docfx/docs/markdown.html?tabs=linux,dotnet>
 
 ## Deploy the doc
 
