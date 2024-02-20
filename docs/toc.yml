@@ -11,3 +11,6 @@ items:
   - name: Articles
     href: articles/
     homepage: articles/index.md
+  - name: Legacy
+    href: legacy/
+    homepage: legacy/index.md

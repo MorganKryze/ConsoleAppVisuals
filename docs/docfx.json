@@ -28,6 +28,9 @@
         "files": ["articles/**"]
       },
       {
+        "files": ["legacy/**"]
+      },
+      {
         "files": ["**/*.{md,yml}"],
         "exclude": ["_site/**"]
       }
