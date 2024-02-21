@@ -21,7 +21,9 @@ Install the library using the .NET CLI:
 dotnet add package ConsoleAppVisuals
 ```
 
-Or for Visual Studio users, you can install the library using the [NuGet Package Manager](https://learn.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio):
+Install the library for Visual Studio users, go through [this tutorial](https://www.youtube.com/watch?v=IprbRazS3b8).
+
+Or Enter the following command in the Package Manager Console in Visual Studio:
 
 ```bash
 Install-Package ConsoleAppVisuals
