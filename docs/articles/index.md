@@ -1,4 +1,4 @@
-# ConsoleAppVisuals Articles
+# Presentation
 
 On this section, you will find articles related to the ConsoleAppVisuals project.
 
