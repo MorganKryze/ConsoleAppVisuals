@@ -1,15 +1,16 @@
-- name: Introduction
-  href: introduction/
-  homepage: introduction/index.md
-- name: Elements
-  href: elements/
-  homepage: elements/index.md
-- name: References
-  href: references/
-  homepage: references/index.md
-- name: Articles
-  href: articles/
-  homepage: articles/index.md
-- name: Legacy
-  href: legacy/
-  homepage: legacy/index.md
+items:
+  - name: Introduction
+    href: introduction/
+    homepage: introduction/index.md
+  - name: Elements
+    href: elements/
+    homepage: elements/index.md
+  - name: References
+    href: references/
+    homepage: references/index.md
+  - name: Articles
+    href: articles/
+    homepage: articles/index.md
+  - name: Legacy
+    href: legacy/
+    homepage: legacy/index.md
