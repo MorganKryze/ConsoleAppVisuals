@@ -4,7 +4,6 @@
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -15,21 +14,28 @@
     <Description>User-friendly .NET visuals library designed for console apps</Description>
     <Summary>ConsoleAppVisuals is a library mainly made to get fast results in the console using
       menus, displays, animations. Highly customizable, feel free to make it yours!</Summary>
-    <PackageLicenceExpression>MIT</PackageLicenceExpression>
+    <PackageLicenceExpression>GPL</PackageLicenceExpression>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageTags>Visuals, ConsoleApp</PackageTags>
+    <PackageTags>Visuals, ConsoleApp, Tables, Colors</PackageTags>
     <PackageProjectUrl>https://morgankryze.github.io/ConsoleAppVisuals/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MorganKryze/ConsoleAppVisuals</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="" />
-    <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
-    <None Include="img/icon.png" Pack="true" PackagePath="" />
+    <None Include="assets/README.md" Pack="true" PackagePath="" />
+    <None Include="assets/LICENSE" Pack="true" PackagePath="" />
+    <None Include="assets/icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
