@@ -168,6 +168,10 @@ Consider reading our [security policy](SECURITY.md) to know more about how we ha
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](CONTRIBUTING.md) file.
 
+We are always open for feedback and discussions. If you are using our library and want to share your use case, or if you have any suggestions for improvement, please feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [open a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on our GitHub repository. Your input helps us understand possible use cases and make necessary improvements.
+
+Do not hesitate to star and share the project if you like it!
+
 ## License
 
 Distributed under the GNU GPL v3.0 License. See [`LICENSE`](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE) for more information.
