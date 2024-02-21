@@ -2821,11 +2821,11 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.AddElement(ConsoleAppVisuals.Element)">
+        <member name="M:ConsoleAppVisuals.Window.AddElement(ConsoleAppVisuals.Element[])">
             <summary>
-            This method adds an element to the window.
+            This method adds elements to the window.
             </summary>
-            <param name="element">The element to be added.</param>
+            <param name="elements">The elements to be added.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
