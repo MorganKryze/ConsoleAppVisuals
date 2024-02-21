@@ -100,8 +100,8 @@ If you are using Visual Studio open a C# project, then install the ConsoleAppVis
 
 Now that you have installed the ConsoleAppVisuals library, you can start using it in your console application. Here are two use cases to get you started:
 
-- [Create a simple console application](/first_app.html)
-- [Create an advanced console application](/advanced_app.html)
+- [Create a simple console application](/ConsoleAppVisuals/introduction/first_app.html)
+- [Create an advanced console application](/ConsoleAppVisuals/introduction/advanced_app.html)
 
 We are always open for feedback and discussions. If you are using our library and want to share your use case, or if you have any suggestions for improvement, please feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [open a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on our GitHub repository. Your input helps us understand possible use cases and make necessary improvements.
 
