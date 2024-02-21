@@ -1,4 +1,4 @@
-# Publish a package
+# Publish your library
 
 ## Introduction
 
