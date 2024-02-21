@@ -3,7 +3,7 @@ using ConsoleAppVisuals;
 namespace example
 {
     // This object is a slight modification of the EmbeddedText object for the demo (here not interactive).
-    public class DisplayDemo : Element
+    public class StaticDemo : Element
     {
         #region Fields 
         private readonly List<string> _text; // Your attributes should be private.
@@ -15,22 +15,22 @@ namespace example
 
         #region Properties
         /// <summary>
-        /// The position of the DisplayDemo element in the console. <see cref="ConsoleAppVisuals.Placement"/> for more information.
+        /// The position of the StaticDemo element in the console. <see cref="ConsoleAppVisuals.Placement"/> for more information.
         /// </summary>
         public override Placement Placement => _placement;
 
         /// <summary>
-        /// The Line of the DisplayDemo element.
+        /// The Line of the StaticDemo element.
         /// </summary>
         public override int Line => _line;
 
         /// <summary>
-        /// The height of the DisplayDemo element.
+        /// The height of the StaticDemo element.
         /// </summary>
         public override int Height => _textToDisplay!.Count; // Find the maximum of the height or width of the element to avoid conflict with other elements.
 
         /// <summary>
-        /// The width of the DisplayDemo element.
+        /// The width of the StaticDemo element.
         /// </summary>
         public override int Width => _textToDisplay!.Max((string s) => s.Length);
 
@@ -39,13 +39,13 @@ namespace example
 
         #region Constructor
         /// <summary>
-        /// The natural constructor of the DisplayDemo element.
+        /// The natural constructor of the StaticDemo element.
         /// </summary>
         /// <param name="text">The text to display.</param>
-        /// <param name="align">The alignment of the DisplayDemo element.</param>
-        /// <param name="placement">The placement of the DisplayDemo element.</param>
-        /// <param name="line">The line of the DisplayDemo element.</param>
-        public DisplayDemo(
+        /// <param name="align">The alignment of the StaticDemo element.</param>
+        /// <param name="placement">The placement of the StaticDemo element.</param>
+        /// <param name="line">The line of the StaticDemo element.</param>
+        public StaticDemo(
             List<string> text,
             TextAlignment align = TextAlignment.Left,
             Placement placement = Placement.TopCenter,
@@ -62,7 +62,7 @@ namespace example
 
         #region Methods
         /// <summary>
-        /// Adds a line to the DisplayDemo element.
+        /// Adds a line to the StaticDemo element.
         /// </summary>
         /// <param name="line">The line to add.</param>
         public void AddLine(string line) // Feel free to add your own methods to manipulate your element after adding it to the window.
@@ -71,7 +71,7 @@ namespace example
         }
 
         /// <summary>
-        /// Inserts a line to the DisplayDemo element.
+        /// Inserts a line to the StaticDemo element.
         /// </summary>
         /// <param name="line">The line to insert.</param>
         /// <param name="index">The index where to insert the line.</param>
@@ -81,7 +81,7 @@ namespace example
         }
 
         /// <summary>
-        /// Removes a line from the DisplayDemo element.
+        /// Removes a line from the StaticDemo element.
         /// </summary>
         /// <param name="line">The line to remove.</param>
         public void RemoveLine(string line)
@@ -90,7 +90,7 @@ namespace example
         }
 
         /// <summary>
-        /// Removes a line from the DisplayDemo element.
+        /// Removes a line from the StaticDemo element.
         /// </summary>
         /// <param name="index">The index of the line to remove.</param>
         public void RemoveLine(int index)
@@ -99,7 +99,7 @@ namespace example
         }
 
         /// <summary>
-        /// Renders the DisplayDemo element.
+        /// Renders the StaticDemo element.
         /// </summary>
         protected override void RenderElementActions() // This method is mandatory to render correctly your element. If not, an error will be thrown.
         {
@@ -112,7 +112,7 @@ namespace example
                 _textToDisplay!.ToArray()
             );
             Window.StopExecution();
-            Window.DeactivateElement<DisplayDemo>();
+            Window.DeactivateElement<StaticDemo>();
         }
 
         private void BuildText()
