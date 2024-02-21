@@ -1,11 +1,11 @@
 items:
   - name: Getting Started
     href: index.md
-  - name: Create your documentation
+  - name: Create your project documentation
     href: create_docs.md
-  - name: Publish your own library
+  - name: Publish your library
     href: publish_library.md
-  - name: Create your own font
+  - name: Create your font
     href: create_font.md
   - name: Create your own visual element
     href: create_element.md
