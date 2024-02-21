@@ -212,7 +212,7 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release /p:Version=${VERSION}
       - name: Pack
-        run: dotnet pack <your_path_from_your_project_file> --configuration Release /p:Version=${VERSION} --no-build --output .
+        run: dotnet pack <your_path_from_your_project_file> --configuration Release /p:ContinuousIntegrationBuild=true /p:Version=${VERSION} --no-build --output .
       - name: Push to GitHub Packages
         run: dotnet nuget push <name_of_your_app>.${VERSION}.nupkg --source https://nuget.pkg.github.com/<nuget_username>/index.json --api-key ${GITHUB_TOKEN}
         env:
