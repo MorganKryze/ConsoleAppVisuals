@@ -37,7 +37,7 @@ jobs:
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
       - name: Generate test results using coverlet
-        run: coverlet testing/bin/Release/net8.0/testing.dll --target dotnet --targetargs "test -c Release --no-build" --exclude-by-attribute 'Visual' --format opencover
+        run: coverlet testing/bin/Release/net8.0/testing.dll --target "dotnet" --targetargs "test -c Release --no-build" --format opencover --exclude-by-attribute 'Visual' --exclude-by-attribute 'Obsolete'
       - name: Convert coverage report to lcov format
         run: reportgenerator "-reports:./coverage.opencover.xml" "-targetdir:coverage" "-reporttypes:lcov"
       - name: Coveralls upload
