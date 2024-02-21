@@ -74,7 +74,7 @@ namespace MyApp
 
 Now let's look at the `Element` class. This class is the base class for all visual elements. It contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.
 
-[!code-sharp[](assets/code/Element.cs?highlight=35,40,45,51,57,63,69,129,138,144,179)]
+[!code-sharp[](../assets/code/Element.cs?highlight=35,40,45,51,57,63,69,129,138,144,179)]
 
 ## Interactive element
 
