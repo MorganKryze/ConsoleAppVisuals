@@ -25,12 +25,13 @@ dotnet tool update -g docfx
 
 ## Setting up the workspace
 
-As we are taking back the `Introduction project` to set the example, here is the folder structure before generating the documentation:
+As we are taking back the `Introduction project` to set the example, here is the file structure before generating the documentation:
 
 ```bash
 Example_project  <-- root
 └───MyApp
     ├───bin
+    ├───MyApp.csproj
     └───Program.cs
 ```
 
@@ -54,6 +55,7 @@ Example_project  <-- root
 │   └───toc.yml
 └───MyApp
     ├───bin
+    ├───MyApp.csproj
     └───Program.cs
 ```
 
@@ -400,7 +402,7 @@ Now, on every push on the main branch, the documentation will be generated and d
 
 ## Sources
 
-- [DocFX doc](https://dotnet.github.io/docfx/index.html)
-- [Useful but not official doc](https://tehgm.net/blog/docfx-github-actions/)
+- [DocFX documentation](https://dotnet.github.io/docfx/index.html)
+- [Useful but not official documentation](https://tehgm.net/blog/docfx-github-actions/)
 - [C# documentation comments](https://docs.microsoft.com/dotnet/csharp/programming-guide/xmldoc/xml-documentation-comments)
 - [DocFX markdown support](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html)
