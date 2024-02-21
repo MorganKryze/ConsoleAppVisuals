@@ -418,19 +418,19 @@ namespace example
                             Window.OnResize();
 
                             Window.AddElement(
-                                new DisplayDemo( // Custom element, see the DisplayDemo class for more information
+                                new StaticDemo( // Custom element, see the StaticDemo class for more information
                                     new List<string>()
                                     {
                                         "This element has been created in this project",
                                         "Its interest is for demonstration only",
-                                        "The model in on the DisplayDemo.cs file"
+                                        "The model in on the StaticDemo.cs file"
                                     },
                                     TextAlignment.Center
                                 )
                             );
-                            Window.ActivateElement<DisplayDemo>();
+                            Window.ActivateElement<StaticDemo>();
 
-                            Window.RemoveElement<DisplayDemo>();
+                            Window.RemoveElement<StaticDemo>();
                             Window.OnResize();
                             goto Menu;
 
