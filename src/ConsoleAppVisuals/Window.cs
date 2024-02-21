@@ -118,9 +118,9 @@ public static class Window
     }
 
     /// <summary>
-    /// This method adds an element to the window.
+    /// This method adds elements to the window.
     /// </summary>
-    /// <param name="element">The element to be added.</param>
+    /// <param name="elements">The elements to be added.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -128,12 +128,15 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void AddElement(Element element)
+    public static void AddElement(params Element[] elements)
     {
-        s_elements.Add(element);
-        if (!element.IsInteractive && AllowVisibilityToggle(element.Id))
+        foreach (var element in elements)
         {
-            element.ToggleVisibility();
+            s_elements.Add(element);
+            if (!element.IsInteractive && AllowVisibilityToggle(element.Id))
+            {
+                element.ToggleVisibility();
+            }
         }
     }
 
@@ -513,15 +516,15 @@ public static class Window
     {
         if (s_elements[id].IsInteractive)
         {
-            int numberOfVisibleInteractiveElements = s_elements.Count(
-                element => element.IsInteractive && element.Visibility
+            int numberOfVisibleInteractiveElements = s_elements.Count(element =>
+                element.IsInteractive && element.Visibility
             );
             return numberOfVisibleInteractiveElements == 0;
         }
         else
         {
-            int numberOfVisibleElements = s_elements.Count(
-                element => element.GetType() == s_elements[id].GetType() && element.Visibility
+            int numberOfVisibleElements = s_elements.Count(element =>
+                element.GetType() == s_elements[id].GetType() && element.Visibility
             );
             return numberOfVisibleElements < s_elements[id].MaxNumberOfThisElement;
         }
@@ -981,9 +984,8 @@ public static class Window
                 types.AddRange(
                     assembly
                         .GetTypes()
-                        .Where(
-                            t =>
-                                t.IsSubclassOf(typeof(Element)) && t != typeof(InteractiveElement<>)
+                        .Where(t =>
+                            t.IsSubclassOf(typeof(Element)) && t != typeof(InteractiveElement<>)
                         )
                 );
             }
@@ -1027,12 +1029,10 @@ public static class Window
                 types.AddRange(
                     assembly
                         .GetTypes()
-                        .Where(
-                            t =>
-                                t.BaseType != null
-                                && t.BaseType.IsGenericType
-                                && t.BaseType.GetGenericTypeDefinition()
-                                    == typeof(InteractiveElement<>)
+                        .Where(t =>
+                            t.BaseType != null
+                            && t.BaseType.IsGenericType
+                            && t.BaseType.GetGenericTypeDefinition() == typeof(InteractiveElement<>)
                         )
                 );
             }
@@ -1083,12 +1083,10 @@ public static class Window
                 types.AddRange(
                     assembly
                         .GetTypes()
-                        .Where(
-                            t =>
-                                t.BaseType != null
-                                && t.BaseType.IsGenericType
-                                && t.BaseType.GetGenericTypeDefinition()
-                                    == typeof(InteractiveElement<>)
+                        .Where(t =>
+                            t.BaseType != null
+                            && t.BaseType.IsGenericType
+                            && t.BaseType.GetGenericTypeDefinition() == typeof(InteractiveElement<>)
                         )
                 );
             }
