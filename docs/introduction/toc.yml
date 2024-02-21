@@ -1,7 +1,6 @@
-items:
-  - name: Getting Started
-    href: index.md
-  - name: First application using the library
-    href: first_application.md
-  - name: Advanced usage
-    href: advanced_usage.md
+- name: Getting Started
+  href: index.md
+
+- name: First application using the library
+- href: first_app.md
+- href: advanced_app.md
