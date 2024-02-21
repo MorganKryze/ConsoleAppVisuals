@@ -10,7 +10,7 @@ To install the ConsoleAppVisuals library, you can use the NuGet package manager 
 
 If you are using Visual Studio, you can install the ConsoleAppVisuals library by following these steps in the video:
 
-[!Video https://www.youtube.com/embed/IprbRazS3b8]
+> [!Video https://www.youtube.com/embed/IprbRazS3b8]
 
 That's it! You have installed the ConsoleAppVisuals library.
 
