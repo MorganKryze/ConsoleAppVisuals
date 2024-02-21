@@ -11,4 +11,4 @@ On the menu, find:
 
 ## Questions & Improvement requests
 
-Do not hesitate to open an issue if you have any questions or improvement requests. We will be happy to help you.
+Do not hesitate to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) if you have any questions or improvement requests. We will be happy to help you.
