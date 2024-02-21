@@ -33,7 +33,7 @@ jobs:
       - name: Adding dotnet tools
         run: dotnet tool restore
       - name: Ensure Coverlet Install
-        run: dotnet tool install --global coverlet.console
+        run: dotnet tool install --global coverlet.console --version 6.0.0.0
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
       - name: Generate test results using coverlet
