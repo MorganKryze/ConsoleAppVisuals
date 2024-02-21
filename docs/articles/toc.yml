@@ -7,3 +7,5 @@ items:
     href: publish_library.md
   - name: Create your own font
     href: create_font.md
+  - name: Create your own visual element
+    href: create_element.md
