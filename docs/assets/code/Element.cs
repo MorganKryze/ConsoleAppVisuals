@@ -153,7 +153,7 @@ public abstract class Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    [Visual()]
+    [Visual]
     public void RenderElementSpace()
     {
         if (Visibility)

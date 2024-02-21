@@ -161,7 +161,7 @@ Two new methods are available and cannot be modified:
 
 To understand how is defined the interaction response, I highlighted the two attributes that are used to define the response:
 
-[!code-csharp[](../assets/code/InteractiveElementArgs.cs?highlight=23,28)]
+[!code-csharp[](../assets/code/InteractionEventArgs.cs?highlight=23,28)]
 
 Where `State` depends on the values of the [`Output` enum](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/enums/Output.cs) and `Info` depends on the `T` type of the `InteractiveElement` you created.
 
