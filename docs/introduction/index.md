@@ -1,3 +1,5 @@
 # Getting Started
 
-This is the introduction to the project. It should contain a brief description of the project and its purpose. It should also contain a brief description of the documentation and its purpose.
+This section is mad for you to understand how to install, setup and use the ConsoleAppVisuals library. We will guide you into the creation of your first project and how to use the library to add visual elements to your console application.
+
+## Installation
