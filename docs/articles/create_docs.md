@@ -261,6 +261,17 @@ items:
         href: how_to_publish.md
 ```
 
+Or use another style and display the category name, and the pages without being collapsible:
+
+```yml
+items:
+  - name: Getting Started
+    href: index.md
+  - name: Other pages
+    href: how_to_use.md
+    href: how_to_publish.md
+```
+
 ### Markdown features support
 
 DocFX supports a lot of markdown features. All of them are listed in the [official documentation](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html).
