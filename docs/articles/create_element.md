@@ -1,4 +1,4 @@
-# Create your own font
+# Create custom visual elements
 
 Work in progress...
 
