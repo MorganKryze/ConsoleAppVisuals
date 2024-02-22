@@ -41,6 +41,10 @@ If you are using Visual Studio, launch the app and follow these steps in the vid
 
 > [!Video https://www.youtube.com/embed/1TqKF3ZJodk]
 
+Then, install the `ConsoleAppVisuals` package by following these steps in the video:
+
+> [!Video https://www.youtube.com/embed/IprbRazS3b8]
+
 ---
 
 ## First steps
