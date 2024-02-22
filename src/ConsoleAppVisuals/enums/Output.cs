@@ -24,15 +24,15 @@ public enum Output
     /// <summary>
     /// Chose to validate the input.
     /// </summary>
-    Select,
+    Selected,
 
     /// <summary>
     /// Chose to delete an item.
     /// </summary>
-    Delete,
+    Deleted,
 
     /// <summary>
     /// Chose to exit the menu.
     /// </summary>
-    Exit
+    Escaped
 }

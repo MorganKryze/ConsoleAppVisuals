@@ -43,10 +43,10 @@ namespace example
             Window.ActivateElement<ScrollingMenu>(); // Only this line will make the menu appear on the console
             var response = Window.GetResponse<ScrollingMenu, int>(); // Get the response from the user. It is very important to Get the response for an Interactive element, or to Deactivate it (done by default by the GetResponse method)
 
-            switch (response?.State) // Check the response state (escape, enter or backspace) see the Output enum for more details
+            switch (response?.Status) // Check the response state (escape, enter or backspace) see the Output enum for more details
             {
-                case Output.Select:
-                    switch (response.Info) // Check the response info (the index of the selected item). Here the Info for a ScrollingMenu is an int
+                case Output.Selected:
+                    switch (response.Value) // Check the response info (the index of the selected item). Here the Info for a ScrollingMenu is an int
                     {
                         case 0:
                             Window.OnResize(); // Refresh the window if the console has been resized
@@ -68,7 +68,7 @@ namespace example
                             );
                             Window.ActivateElement(5); // Activate the element at the index 5 (the ScrollingMenu)
                             var responseColor = Window.GetResponse<ScrollingMenu, int>();
-                            switch (responseColor?.Info)
+                            switch (responseColor?.Value)
                             {
                                 case 0:
                                     Core.SetForegroundColor(ConsoleColor.White);
@@ -150,7 +150,7 @@ namespace example
                             Window.OnResize();
 
                             Window.AddElement( // When you add an element, the info of the constructor are not displayed by default consider looking to the documentation to know what they are or use your IDE to see them
-                                new EmbeddedText(
+                                new EmbedText(
                                     new List<string>()
                                     {
                                         "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,",
@@ -161,9 +161,9 @@ namespace example
                                     "Press [Enter] to continue..."
                                 )
                             );
-                            Window.ActivateElement<EmbeddedText>(); // Activate the element to display it on the console
+                            Window.ActivateElement<EmbedText>(); // Activate the element to display it on the console
 
-                            Window.RemoveElement<EmbeddedText>(); // Removing the elements from the window after their use is not mandatory but it is recommended to keep the list clean
+                            Window.RemoveElement<EmbedText>(); // Removing the elements from the window after their use is not mandatory but it is recommended to keep the list clean
                             Window.OnResize();
                             goto Menu;
 
@@ -230,19 +230,19 @@ namespace example
                             Window.ActivateElement<Prompt>();
                             var responsePrompt = Window.GetResponse<Prompt, string>(); // We saw Interactive elements before, here we get the response from the user as a string, an error will if you do not associate Prompt with a string
                             Window.AddElement(
-                                new EmbeddedText(
+                                new EmbedText(
                                     new List<string>()
                                     {
-                                        "You just wrote " + responsePrompt?.Info + "!"
+                                        "You just wrote " + responsePrompt?.Value + "!"
                                     },
                                     $"Next {Core.GetSelector.Item1}",
                                     TextAlignment.Center
                                 )
                             );
-                            Window.ActivateElement<EmbeddedText>();
+                            Window.ActivateElement<EmbedText>();
 
                             Window.RemoveElement<Prompt>();
-                            Window.RemoveElement<EmbeddedText>();
+                            Window.RemoveElement<EmbedText>();
                             goto Menu;
                         case 6:
                             Window.OnResize();
@@ -252,21 +252,21 @@ namespace example
                             Window.ActivateElement<IntSelector>();
                             var responseNumber = Window.GetResponse<IntSelector, int>();
                             Window.AddElement(
-                                new EmbeddedText(
+                                new EmbedText(
                                     new List<string>()
                                     {
-                                        "You chose to " + responseNumber?.State.ToString(),
-                                        "the number " + (responseNumber?.Info) + "!"
+                                        "You chose to " + responseNumber?.Status.ToString(),
+                                        "the number " + (responseNumber?.Value) + "!"
                                     },
                                     $"Next {Core.GetSelector.Item1}",
                                     TextAlignment.Center
                                 )
                             );
-                            Window.ActivateElement<EmbeddedText>();
+                            Window.ActivateElement<EmbedText>();
 
                             Window.OnResize();
                             Window.RemoveElement<IntSelector>();
-                            Window.RemoveElement<EmbeddedText>();
+                            Window.RemoveElement<EmbedText>();
                             goto Menu;
 
                         case 7:
@@ -338,23 +338,23 @@ namespace example
                             Window.ActivateElement<TableSelector<string>>(); // Contrary to the matrix and the table, the TableSelector is interactive, so we do not have to stop the execution to see it
                             var responseTable = Window.GetResponse<TableSelector<string>, int>(); // Here a little subtlety, the type is TableSelector<string> and is associated with an int response, string refers to the type of the data displayed in the table
                             Window.AddElement(
-                                new EmbeddedText(
+                                new EmbedText(
                                     new List<string>()
                                     {
-                                        "You chose to " + responseTable?.State.ToString(),
+                                        "You chose to " + responseTable?.Status.ToString(),
                                         "the player "
-                                            + playersData[responseTable?.Info ?? 0][2]
+                                            + playersData[responseTable?.Value ?? 0][2]
                                             + "!"
                                     },
                                     $"Next {Core.GetSelector.Item1}",
                                     TextAlignment.Center
                                 )
                             );
-                            Window.ActivateElement<EmbeddedText>();
+                            Window.ActivateElement<EmbedText>();
 
                             Window.OnResize();
                             Window.RemoveElement<TableSelector<string>>();
-                            Window.RemoveElement<EmbeddedText>();
+                            Window.RemoveElement<EmbedText>();
                             goto Menu;
 
                         case 9:
@@ -394,7 +394,7 @@ namespace example
                             Window.OnResize();
 
                             Window.AddElement(
-                                new EmbeddedText(
+                                new EmbedText(
                                     new List<string>()
                                     {
                                         "The colors represented the space taken by the elements. Press [Enter] to continue..."
@@ -403,7 +403,7 @@ namespace example
                                     TextAlignment.Left
                                 )
                             );
-                            Window.ActivateElement<EmbeddedText>(false);
+                            Window.ActivateElement<EmbedText>(false);
 
                             Window.RenderAllElementsSpace(); // This method will display all the spaces taken by the element in teh window
                             Window.StopExecution();
@@ -411,7 +411,7 @@ namespace example
                             Window.Refresh(); // Refresh the window to display the elements above
 
                             Window.OnResize();
-                            Window.RemoveElement<EmbeddedText>();
+                            Window.RemoveElement<EmbedText>();
                             goto Menu;
 
                         case 11:
@@ -458,10 +458,10 @@ namespace example
 
                             Window.Clear();
                             Window.RemoveWindowElementsDashboard(); // This will remove the items from the window
-                            
+
                             Window.AddClassesDashboard(); // Add the two TableView elements to the window
 
-                            Window.Refresh(); 
+                            Window.Refresh();
                             Window.StopExecution();
 
                             Window.Clear();
@@ -483,11 +483,11 @@ namespace example
                     }
                     break;
 
-                case Output.Exit:
+                case Output.Escaped:
                     Window.OnResize();
 
                     Window.AddElement(
-                        new EmbeddedText(
+                        new EmbedText(
                             new List<string>()
                             {
                                 "You have selected to quit the app. Press [Enter] to continue..."
@@ -496,17 +496,17 @@ namespace example
                             TextAlignment.Left
                         )
                     );
-                    Window.ActivateElement<EmbeddedText>();
+                    Window.ActivateElement<EmbedText>();
 
-                    Window.RemoveElement<EmbeddedText>();
+                    Window.RemoveElement<EmbedText>();
                     Window.Close(); // Close the window and exits the app
                     break;
 
-                case Output.Delete:
+                case Output.Deleted:
                     Window.OnResize();
 
                     Window.AddElement(
-                        new EmbeddedText(
+                        new EmbedText(
                             new List<string>()
                             {
                                 "You have selected the backspace tile. Press [Enter] to continue..."
@@ -515,9 +515,9 @@ namespace example
                             TextAlignment.Left
                         )
                     );
-                    Window.ActivateElement<EmbeddedText>();
+                    Window.ActivateElement<EmbedText>();
 
-                    Window.RemoveElement<EmbeddedText>();
+                    Window.RemoveElement<EmbedText>();
                     goto Menu;
 
                 default:
@@ -528,6 +528,39 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
+            Title title = new Title("My first app");
+            Window.AddElement(title);
+
+            Header header = new Header();
+            Window.AddElement(header);
+
+            Footer footer = new Footer();
+            Window.AddElement(footer);
+
+            FakeLoadingBar loadingBar = new FakeLoadingBar();
+            Window.AddElement(loadingBar);
+
+            Window.Refresh();
+
+            Prompt prompt = new Prompt("What's your name?");
+            Window.AddElement(prompt);
+
+            Window.ActivateElement(prompt);
+
+            var response = Window.GetResponse<Prompt, string>();
+            EmbedText text = new EmbedText(
+                new List<string>()
+                {
+                    "You just wrote " + response?.Value + "!",
+                    "And you " + response?.Status + "!"
+                },
+                $"Next {Core.GetSelector.Item1}",
+                TextAlignment.Center
+            );
+            Window.AddElement(text);
+            Window.ActivateElement(text);
+
+            Window.Close();
         }
     }
 }
