@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// Defines the basic properties of an embedded text.
+/// Defines the basic properties of an Embed text.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class EmbeddedText : InteractiveElement<string>
+public class EmbedText : InteractiveElement<string>
 {
     #region Fields
     private readonly List<string> _text;
@@ -27,29 +27,29 @@ public class EmbeddedText : InteractiveElement<string>
 
     #region Properties
     /// <summary>
-    /// The position of the Embedded text.
+    /// The position of the Embed text.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The Line of the Embedded text.
+    /// The Line of the Embed text.
     /// </summary>
     public override int Line => _line;
 
     /// <summary>
-    /// The height of the Embedded text.
+    /// The height of the Embed text.
     /// </summary>
     public override int Height => _textToDisplay!.Count;
 
     /// <summary>
-    /// The width of the Embedded text.
+    /// The width of the Embed text.
     /// </summary>
     public override int Width => _textToDisplay!.Max((string s) => s.Length) - 8;
     #endregion
 
     #region Getters and setters
     /// <summary>
-    /// The text of the Embedded text.
+    /// The text of the Embed text.
     /// </summary>
     public List<string> Text => _text;
 
@@ -66,13 +66,13 @@ public class EmbeddedText : InteractiveElement<string>
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the Embedded text.
+    /// The natural constructor of the Embed text.
     /// </summary>
     /// <param name="text">The text to display.</param>
     /// <param name="button">The text of the button.</param>
-    /// <param name="align">The alignment of the Embedded text.</param>
-    /// <param name="placement">The placement of the Embedded text element.</param>
-    /// <param name="line">The line of the Embedded text.</param>
+    /// <param name="align">The alignment of the Embed text.</param>
+    /// <param name="placement">The placement of the Embed text element.</param>
+    /// <param name="line">The line of the Embed text.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -80,7 +80,7 @@ public class EmbeddedText : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public EmbeddedText(
+    public EmbedText(
         List<string> text,
         string? button = null,
         TextAlignment align = TextAlignment.Left,
@@ -115,7 +115,7 @@ public class EmbeddedText : InteractiveElement<string>
     }
 
     /// <summary>
-    /// Adds a line to the Embedded text.
+    /// Adds a line to the Embed text.
     /// </summary>
     /// <param name="line">The line to add.</param>
     /// <remarks>
@@ -131,7 +131,7 @@ public class EmbeddedText : InteractiveElement<string>
     }
 
     /// <summary>
-    /// Inserts a line to the Embedded text.
+    /// Inserts a line to the Embed text.
     /// </summary>
     /// <param name="line">The line to insert.</param>
     /// <param name="index">The index where to insert the line.</param>
@@ -148,7 +148,7 @@ public class EmbeddedText : InteractiveElement<string>
     }
 
     /// <summary>
-    /// Removes a line from the Embedded text.
+    /// Removes a line from the Embed text.
     /// </summary>
     /// <param name="line">The line to remove.</param>
     /// <remarks>
@@ -168,7 +168,7 @@ public class EmbeddedText : InteractiveElement<string>
     }
 
     /// <summary>
-    /// Removes a line from the Embedded text.
+    /// Removes a line from the Embed text.
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
     /// <remarks>
@@ -188,7 +188,7 @@ public class EmbeddedText : InteractiveElement<string>
     }
 
     /// <summary>
-    /// Renders the Embedded text.
+    /// Renders the Embed text.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
@@ -202,7 +202,7 @@ public class EmbeddedText : InteractiveElement<string>
             _textToDisplay!.ToArray()
         );
         Window.StopExecution();
-        Window.DeactivateElement<EmbeddedText>();
+        Window.DeactivateElement<EmbedText>();
     }
 
     private void BuildText()

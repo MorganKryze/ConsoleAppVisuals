@@ -125,13 +125,13 @@ public class ScrollingMenu : InteractiveElement<int>
                     _defaultIndex = (_defaultIndex == _choices.Length - 1) ? 0 : _defaultIndex + 1;
                     break;
                 case ConsoleKey.Enter:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Select, _defaultIndex));
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Selected, _defaultIndex));
                     return;
                 case ConsoleKey.Escape:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Exit, _defaultIndex));
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Escaped, _defaultIndex));
                     return;
                 case ConsoleKey.Backspace:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Delete, _defaultIndex));
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Deleted, _defaultIndex));
                     return;
             }
         }

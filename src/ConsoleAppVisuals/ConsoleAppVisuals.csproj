@@ -16,7 +16,7 @@
       menus, displays, animations. Highly customizable, feel free to make it yours!</Summary>
     <PackageLicenceExpression>GPL</PackageLicenceExpression>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageTags>Visuals, ConsoleApp, Tables, Colors</PackageTags>
+    <PackageTags>visuals, console, tables, colors, shell</PackageTags>
     <PackageProjectUrl>https://morgankryze.github.io/ConsoleAppVisuals/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MorganKryze/ConsoleAppVisuals</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

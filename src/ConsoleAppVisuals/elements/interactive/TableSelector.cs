@@ -809,16 +809,16 @@ public class TableSelector<T> : InteractiveElement<int>
                 case ConsoleKey.Enter:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<int>(Output.Select, ReturnIndex(index))
+                        new InteractionEventArgs<int>(Output.Selected, ReturnIndex(index))
                     );
                     return;
                 case ConsoleKey.Escape:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Exit, 0));
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Escaped, 0));
                     return;
                 case ConsoleKey.Backspace:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<int>(Output.Delete, ReturnIndex(index))
+                        new InteractionEventArgs<int>(Output.Deleted, ReturnIndex(index))
                     );
                     return;
             }

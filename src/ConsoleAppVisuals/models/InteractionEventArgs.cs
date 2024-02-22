@@ -17,24 +17,24 @@ namespace ConsoleAppVisuals;
 public class InteractionEventArgs<T> : EventArgs
 {
     /// <summary>
-    /// The state of the exit from the menu.
+    /// The status after exiting the interactive element.
     /// </summary>
-    /// <value>Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter</value>
-    public Output State { get; set; }
+    /// <value>Output.Escaped : pressed escape, Output.Deleted : pressed backspace, Output.Selected : pressed enter, Output.None : default value</value>
+    public Output Status { get; set; }
 
     /// <summary>
-    /// The index of the choice of the user among the different choices.
+    /// The value of the response after exiting the interactive element.
     /// </summary>
-    public T Info { get; set; }
+    public T Value { get; set; }
 
     /// <summary>
-    /// This constructor initializes the ScrollingMenuEventArgs class.
+    /// This constructor initializes the InteractionEventArgs class.
     /// </summary>
-    /// <param name="state">The state of the exit from the menu.</param>
-    /// <param name="info">The index of the choice of the user among the different choices.</param>
-    public InteractionEventArgs(Output state, T info)
+    /// <param name="status">The status of the exit from the menu.</param>
+    /// <param name="value">The value of the response after exiting the interactive element.</param>
+    public InteractionEventArgs(Output status, T value)
     {
-        State = state;
-        Info = info;
+        Status = status;
+        Value = value;
     }
 }
