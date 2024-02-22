@@ -528,39 +528,6 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
-            Title title = new Title("My first app");
-            Window.AddElement(title);
-
-            Header header = new Header();
-            Window.AddElement(header);
-
-            Footer footer = new Footer();
-            Window.AddElement(footer);
-
-            FakeLoadingBar loadingBar = new FakeLoadingBar();
-            Window.AddElement(loadingBar);
-
-            Window.Refresh();
-
-            Prompt prompt = new Prompt("What's your name?");
-            Window.AddElement(prompt);
-
-            Window.ActivateElement(prompt);
-
-            var response = Window.GetResponse<Prompt, string>();
-            EmbedText text = new EmbedText(
-                new List<string>()
-                {
-                    "You just wrote " + response?.Value + "!",
-                    "And you " + response?.Status + "!"
-                },
-                $"Next {Core.GetSelector.Item1}",
-                TextAlignment.Center
-            );
-            Window.AddElement(text);
-            Window.ActivateElement(text);
-
-            Window.Close();
         }
     }
 }
