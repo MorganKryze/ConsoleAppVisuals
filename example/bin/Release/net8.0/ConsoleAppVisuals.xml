@@ -2483,23 +2483,23 @@
             </list>
             </remarks>
         </member>
-        <member name="P:ConsoleAppVisuals.InteractionEventArgs`1.State">
+        <member name="P:ConsoleAppVisuals.InteractionEventArgs`1.Status">
             <summary>
-            The state of the exit from the menu.
+            The status after exiting the interactive element.
             </summary>
-            <value>Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter</value>
+            <value>Output.Escaped : pressed escape, Output.Deleted : pressed backspace, Output.Selected : pressed enter, Output.None : default value</value>
         </member>
-        <member name="P:ConsoleAppVisuals.InteractionEventArgs`1.Info">
+        <member name="P:ConsoleAppVisuals.InteractionEventArgs`1.Value">
             <summary>
-            The index of the choice of the user among the different choices.
+            The value of the response after exiting the interactive element.
             </summary>
         </member>
         <member name="M:ConsoleAppVisuals.InteractionEventArgs`1.#ctor(ConsoleAppVisuals.Output,`0)">
             <summary>
-            This constructor initializes the ScrollingMenuEventArgs class.
+            This constructor initializes the InteractionEventArgs class.
             </summary>
-            <param name="state">The state of the exit from the menu.</param>
-            <param name="info">The index of the choice of the user among the different choices.</param>
+            <param name="status">The status of the exit from the menu.</param>
+            <param name="value">The value of the response after exiting the interactive element.</param>
         </member>
         <member name="T:ConsoleAppVisuals.InteractiveElement`1">
             <summary>
