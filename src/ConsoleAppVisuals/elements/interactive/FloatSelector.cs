@@ -185,11 +185,11 @@ public class FloatSelector : InteractiveElement<float>
                 case ConsoleKey.Enter:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<float>(Output.Select, currentNumber)
+                        new InteractionEventArgs<float>(Output.Selected, currentNumber)
                     );
                     return;
                 case ConsoleKey.Escape:
-                    SendResponse(this, new InteractionEventArgs<float>(Output.Exit, currentNumber));
+                    SendResponse(this, new InteractionEventArgs<float>(Output.Escaped, currentNumber));
                     return;
                 default:
                     break;

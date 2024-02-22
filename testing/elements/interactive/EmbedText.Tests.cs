@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals;
 
 [TestClass]
-public class UnitTestEmbeddedText
+public class UnitTestEmbedText
 {
     #region Cleanup
     [TestCleanup]
@@ -18,14 +18,14 @@ public class UnitTestEmbeddedText
 
     #region Placement
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     [DataRow(Placement.TopCenter)]
     [DataRow(Placement.TopLeft)]
     [DataRow(Placement.TopRight)]
     public void Placement_Getter(Placement placement)
     {
         // Arrange
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             new List<string>() { "Test for the placement", "123was tested" },
             "Button",
             TextAlignment.Left,
@@ -34,7 +34,7 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        var actual = embeddedText.Placement;
+        var actual = EmbedText.Placement;
 
         // Assert
         Assert.AreEqual(placement, actual);
@@ -43,11 +43,11 @@ public class UnitTestEmbeddedText
 
     #region Line
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Line_Getter()
     {
         // Arrange
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             new List<string>() { "Test for the placement", "123was tested" },
             "Button",
             TextAlignment.Left,
@@ -56,7 +56,7 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        var actual = embeddedText.Line;
+        var actual = EmbedText.Line;
 
         // Assert
         Assert.AreEqual(0, actual);
@@ -65,12 +65,12 @@ public class UnitTestEmbeddedText
 
     #region Height
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Height_Getter()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -79,8 +79,8 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        var actual = embeddedText.Height;
-        var finalTextToDisplay = embeddedText.TextToDisplay;
+        var actual = EmbedText.Height;
+        var finalTextToDisplay = EmbedText.TextToDisplay;
 
         // Assert
         Assert.AreEqual(finalTextToDisplay!.Count, actual);
@@ -89,12 +89,12 @@ public class UnitTestEmbeddedText
 
     #region Width
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Width_Getter()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -103,8 +103,8 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        var actual = embeddedText.Width;
-        var finalTextToDisplay = embeddedText.TextToDisplay;
+        var actual = EmbedText.Width;
+        var finalTextToDisplay = EmbedText.TextToDisplay;
 
         // Assert
         Assert.AreEqual(finalTextToDisplay!.Max((string s) => s.Length) - 8, actual);
@@ -113,12 +113,12 @@ public class UnitTestEmbeddedText
 
     #region Text
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Text_Getter()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -127,7 +127,7 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        var actual = embeddedText.Text;
+        var actual = EmbedText.Text;
 
         // Assert
         Assert.AreEqual(textToDisplay, actual);
@@ -136,14 +136,14 @@ public class UnitTestEmbeddedText
 
     #region ButtonText
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     [DataRow("Button")]
     [DataRow("Button2")]
     public void ButtonText_Getter(string buttonText)
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             buttonText,
             TextAlignment.Left,
@@ -152,7 +152,7 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        var actual = embeddedText.ButtonText;
+        var actual = EmbedText.ButtonText;
 
         // Assert
         Assert.AreEqual(buttonText, actual);
@@ -161,7 +161,7 @@ public class UnitTestEmbeddedText
 
     #region TextToDisplay
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     [DataRow(TextAlignment.Left)]
     [DataRow(TextAlignment.Center)]
     [DataRow(TextAlignment.Right)]
@@ -171,23 +171,23 @@ public class UnitTestEmbeddedText
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var embeddedText = new EmbeddedText(textToDisplay, "Button", align, Placement.TopCenter, 0);
+        var EmbedText = new EmbedText(textToDisplay, "Button", align, Placement.TopCenter, 0);
 
         // Assert
-        Assert.IsNotNull(embeddedText.TextToDisplay);
+        Assert.IsNotNull(EmbedText.TextToDisplay);
     }
     #endregion
 
     #region Constructor
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Constructor_NoLineinputBuilds()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -195,18 +195,18 @@ public class UnitTestEmbeddedText
         );
 
         // Assert
-        Assert.IsNotNull(embeddedText);
+        Assert.IsNotNull(EmbedText);
     }
 
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Constructor_LineinputBuilds()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -215,18 +215,18 @@ public class UnitTestEmbeddedText
         );
 
         // Assert
-        Assert.IsNotNull(embeddedText);
+        Assert.IsNotNull(EmbedText);
     }
 
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Constructor_EmptyTextToDisplayBuilds()
     {
         // Arrange
         var textToDisplay = new List<string>();
 
         // Act
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -235,18 +235,18 @@ public class UnitTestEmbeddedText
         );
 
         // Assert
-        Assert.IsNotNull(embeddedText);
+        Assert.IsNotNull(EmbedText);
     }
 
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void Constructor_EmptyButtonTextBuilds()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             default,
             TextAlignment.Left,
@@ -255,18 +255,18 @@ public class UnitTestEmbeddedText
         );
 
         // Assert
-        Assert.IsNotNull(embeddedText);
+        Assert.IsNotNull(EmbedText);
     }
     #endregion
 
     #region AddLine
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void AddLine_AddsLine()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -276,21 +276,21 @@ public class UnitTestEmbeddedText
         var marginValue = 2;
 
         // Act
-        embeddedText.AddLine("New line");
+        EmbedText.AddLine("New line");
 
         // Assert
-        Assert.AreEqual(textToDisplay.Count + marginValue + 1, embeddedText.TextToDisplay!.Count);
+        Assert.AreEqual(textToDisplay.Count + marginValue + 1, EmbedText.TextToDisplay!.Count);
     }
     #endregion
 
     #region InsertLine
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void InsertLine_InsertsLine()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -300,16 +300,16 @@ public class UnitTestEmbeddedText
         var marginValue = 2;
 
         // Act
-        embeddedText.InsertLine("New line", 1);
+        EmbedText.InsertLine("New line", 1);
 
         // Assert
-        Assert.AreEqual(textToDisplay.Count + marginValue + 1, embeddedText.TextToDisplay!.Count);
+        Assert.AreEqual(textToDisplay.Count + marginValue + 1, EmbedText.TextToDisplay!.Count);
     }
     #endregion
 
     #region RemoveLine
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void RemoveLine_RemovesLine()
     {
         // Arrange
@@ -326,7 +326,7 @@ public class UnitTestEmbeddedText
             "3456 TEst"
         };
 
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -335,19 +335,19 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        embeddedText.RemoveLine(0);
+        EmbedText.RemoveLine(0);
 
         // Assert
-        Assert.AreEqual(textToDisplayUnchanged.Count - 1, embeddedText.Text!.Count);
+        Assert.AreEqual(textToDisplayUnchanged.Count - 1, EmbedText.Text!.Count);
     }
 
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void RemoveLine_RemovesLineWithNegativeIndex()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -356,16 +356,16 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => embeddedText.RemoveLine(-1));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => EmbedText.RemoveLine(-1));
     }
 
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void RemoveLine_RemovesLineWithIndexGreaterThanCount()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -374,11 +374,11 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => embeddedText.RemoveLine(3));
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => EmbedText.RemoveLine(3));
     }
 
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void RemoveLine_RemovesLineWithString()
     {
         // Arrange
@@ -388,7 +388,7 @@ public class UnitTestEmbeddedText
             "Test for the placement",
             "123was tested"
         };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -397,19 +397,19 @@ public class UnitTestEmbeddedText
         );
 
         // Act
-        embeddedText.RemoveLine("Test for the placement");
+        EmbedText.RemoveLine("Test for the placement");
 
         // Assert
-        Assert.AreEqual(textToDisplayUnchanged.Count - 1, embeddedText.Text!.Count);
+        Assert.AreEqual(textToDisplayUnchanged.Count - 1, EmbedText.Text!.Count);
     }
 
     [TestMethod]
-    [TestCategory("EmbeddedText")]
+    [TestCategory("EmbedText")]
     public void RemoveLine_RemovesLineWithStringNotFound()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var embeddedText = new EmbeddedText(
+        var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
             TextAlignment.Left,
@@ -419,7 +419,7 @@ public class UnitTestEmbeddedText
 
         // Act
         Assert.ThrowsException<ArgumentException>(
-            () => embeddedText.RemoveLine("Test for the placement2")
+            () => EmbedText.RemoveLine("Test for the placement2")
         );
     }
     #endregion

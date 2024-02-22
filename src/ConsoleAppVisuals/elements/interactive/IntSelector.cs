@@ -183,10 +183,10 @@ public class IntSelector : InteractiveElement<int>
                     currentNumber = NextNumber(Direction.Down, currentNumber);
                     break;
                 case ConsoleKey.Enter:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Select, currentNumber));
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Selected, currentNumber));
                     return;
                 case ConsoleKey.Escape:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Exit, currentNumber));
+                    SendResponse(this, new InteractionEventArgs<int>(Output.Escaped, currentNumber));
                     return;
                 default:
                     break;

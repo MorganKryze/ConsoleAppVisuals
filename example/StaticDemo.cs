@@ -2,7 +2,7 @@ using ConsoleAppVisuals;
 
 namespace example
 {
-    // This object is a slight modification of the EmbeddedText object for the demo (here not interactive).
+    // This object is a slight modification of the EmbedText object for the demo (here not interactive).
     public class StaticDemo : Element
     {
         #region Fields 

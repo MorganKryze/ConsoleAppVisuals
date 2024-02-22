@@ -112,7 +112,7 @@ public class Prompt : InteractiveElement<string>
         SendResponse(
             this,
             new InteractionEventArgs<string>(
-                key.Key == ConsoleKey.Enter ? Output.Select : Output.Exit,
+                key.Key == ConsoleKey.Enter ? Output.Selected : Output.Escaped,
                 field.ToString()
             )
         );

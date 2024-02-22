@@ -309,6 +309,29 @@ public static class Window
     }
 
     /// <summary>
+    /// This method attempts to activate the visibility of the given element.
+    /// </summary>
+    /// <param name="element">The element to be activated.</param>
+    /// <param name="render">If true, the element will be rendered.</param>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    [Visual]
+    public static void ActivateElement(Element element, bool render = true)
+    {
+        if (!s_elements.Contains(element))
+        {
+            throw new ElementNotFoundException("Invalid element. Not found in the window.");
+        }
+        if (!element.Visibility)
+        {
+            element.ToggleVisibility();
+        }
+        if (render)
+        {
+            element.RenderElement();
+        }
+    }
+
+    /// <summary>
     /// This method attempts to activate the visibility of the first element of the given type.
     /// </summary>
     /// <param name="render">If true, the element will be rendered.</param>

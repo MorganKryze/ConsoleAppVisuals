@@ -39,7 +39,7 @@ public class UnitTestInteractiveElement
         var response = element.GetInteractionResponse;
 
         // Assert
-        Assert.AreEqual("Test info", response?.Info);
+        Assert.AreEqual("Test info", response?.Value);
 
         // Cleanup
         Window.RemoveAllElements();
@@ -57,7 +57,7 @@ public class UnitTestInteractiveElement
         var response = element.GetInteractionResponse;
 
         // Assert
-        Assert.AreEqual(Output.Select, response?.State);
+        Assert.AreEqual(Output.Selected, response?.Status);
 
         // Cleanup
         Window.RemoveAllElements();
@@ -71,6 +71,6 @@ public class TestInteractiveElement : InteractiveElement<string>
 
     protected override void RenderElementActions()
     {
-        SendResponse(this, new InteractionEventArgs<string>(Output.Select, "Test info"));
+        SendResponse(this, new InteractionEventArgs<string>(Output.Selected, "Test info"));
     }
 }

@@ -809,9 +809,9 @@
             This method is used to render the header on the console.
             </summary>
         </member>
-        <member name="T:ConsoleAppVisuals.EmbeddedText">
+        <member name="T:ConsoleAppVisuals.EmbedText">
             <summary>
-            Defines the basic properties of an embedded text.
+            Defines the basic properties of an Embed text.
             </summary>
             <remarks>
             For more information, refer to the following resources:
@@ -821,50 +821,50 @@
             </list>
             </remarks>
         </member>
-        <member name="P:ConsoleAppVisuals.EmbeddedText.Placement">
+        <member name="P:ConsoleAppVisuals.EmbedText.Placement">
             <summary>
-            The position of the Embedded text.
+            The position of the Embed text.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.EmbeddedText.Line">
+        <member name="P:ConsoleAppVisuals.EmbedText.Line">
             <summary>
-            The Line of the Embedded text.
+            The Line of the Embed text.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.EmbeddedText.Height">
+        <member name="P:ConsoleAppVisuals.EmbedText.Height">
             <summary>
-            The height of the Embedded text.
+            The height of the Embed text.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.EmbeddedText.Width">
+        <member name="P:ConsoleAppVisuals.EmbedText.Width">
             <summary>
-            The width of the Embedded text.
+            The width of the Embed text.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.EmbeddedText.Text">
+        <member name="P:ConsoleAppVisuals.EmbedText.Text">
             <summary>
-            The text of the Embedded text.
+            The text of the Embed text.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.EmbeddedText.ButtonText">
+        <member name="P:ConsoleAppVisuals.EmbedText.ButtonText">
             <summary>
             The text of the button.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.EmbeddedText.TextToDisplay">
+        <member name="P:ConsoleAppVisuals.EmbedText.TextToDisplay">
             <summary>
             The text to display.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.EmbeddedText.#ctor(System.Collections.Generic.List{System.String},System.String,ConsoleAppVisuals.TextAlignment,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.EmbedText.#ctor(System.Collections.Generic.List{System.String},System.String,ConsoleAppVisuals.TextAlignment,ConsoleAppVisuals.Placement,System.Nullable{System.Int32})">
             <summary>
-            The natural constructor of the Embedded text.
+            The natural constructor of the Embed text.
             </summary>
             <param name="text">The text to display.</param>
             <param name="button">The text of the button.</param>
-            <param name="align">The alignment of the Embedded text.</param>
-            <param name="placement">The placement of the Embedded text element.</param>
-            <param name="line">The line of the Embedded text.</param>
+            <param name="align">The alignment of the Embed text.</param>
+            <param name="placement">The placement of the Embed text element.</param>
+            <param name="line">The line of the Embed text.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -873,9 +873,9 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.EmbeddedText.AddLine(System.String)">
+        <member name="M:ConsoleAppVisuals.EmbedText.AddLine(System.String)">
             <summary>
-            Adds a line to the Embedded text.
+            Adds a line to the Embed text.
             </summary>
             <param name="line">The line to add.</param>
             <remarks>
@@ -886,9 +886,9 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.EmbeddedText.InsertLine(System.String,System.Int32)">
+        <member name="M:ConsoleAppVisuals.EmbedText.InsertLine(System.String,System.Int32)">
             <summary>
-            Inserts a line to the Embedded text.
+            Inserts a line to the Embed text.
             </summary>
             <param name="line">The line to insert.</param>
             <param name="index">The index where to insert the line.</param>
@@ -900,9 +900,9 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.EmbeddedText.RemoveLine(System.String)">
+        <member name="M:ConsoleAppVisuals.EmbedText.RemoveLine(System.String)">
             <summary>
-            Removes a line from the Embedded text.
+            Removes a line from the Embed text.
             </summary>
             <param name="line">The line to remove.</param>
             <remarks>
@@ -913,9 +913,9 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.EmbeddedText.RemoveLine(System.Int32)">
+        <member name="M:ConsoleAppVisuals.EmbedText.RemoveLine(System.Int32)">
             <summary>
-            Removes a line from the Embedded text.
+            Removes a line from the Embed text.
             </summary>
             <param name="index">The index of the line to remove.</param>
             <remarks>
@@ -926,9 +926,9 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.EmbeddedText.RenderElementActions">
+        <member name="M:ConsoleAppVisuals.EmbedText.RenderElementActions">
             <summary>
-            Renders the Embedded text.
+            Renders the Embed text.
             </summary>
         </member>
         <member name="T:ConsoleAppVisuals.FloatSelector">
@@ -2084,17 +2084,17 @@
             Default value.
             </summary>
         </member>
-        <member name="F:ConsoleAppVisuals.Output.Select">
+        <member name="F:ConsoleAppVisuals.Output.Selected">
             <summary>
             Chose to validate the input.
             </summary>
         </member>
-        <member name="F:ConsoleAppVisuals.Output.Delete">
+        <member name="F:ConsoleAppVisuals.Output.Deleted">
             <summary>
             Chose to delete an item.
             </summary>
         </member>
-        <member name="F:ConsoleAppVisuals.Output.Exit">
+        <member name="F:ConsoleAppVisuals.Output.Escaped">
             <summary>
             Chose to exit the menu.
             </summary>
@@ -2935,6 +2935,14 @@
             <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
             </list>
             </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Window.ActivateElement(ConsoleAppVisuals.Element,System.Boolean)">
+            <summary>
+            This method attempts to activate the visibility of the given element.
+            </summary>
+            <param name="element">The element to be activated.</param>
+            <param name="render">If true, the element will be rendered.</param>
+            <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
         </member>
         <member name="M:ConsoleAppVisuals.Window.ActivateElement``1(System.Boolean)">
             <summary>
