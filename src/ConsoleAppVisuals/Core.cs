@@ -41,11 +41,6 @@ public static class Core
     );
     private static (ConsoleColor, ConsoleColor) s_savedColorPanel;
 
-    private static (string, string, string) defaultFooter = (
-        "Footer Left",
-        "Footer Center",
-        "Footer Right"
-    );
     private static readonly Random s_rnd = new();
     #endregion
 
