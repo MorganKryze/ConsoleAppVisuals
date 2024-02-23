@@ -194,4 +194,36 @@ public class UnitTestBanner
         Assert.AreEqual(line, banner.Line);
     }
     #endregion
+
+    #region Height
+    [TestMethod]
+    public void Height()
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        var height = banner.Height;
+
+        //Assert
+        Assert.AreEqual(height, banner.Height);
+    }
+
+    #endregion
+
+    #region Width
+
+    [TestMethod]
+    public void Width()
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        var width = banner.Width;
+
+        //Assert
+        Assert.AreEqual(width, banner.Width);
+    }
+    #endregion
 }

@@ -809,6 +809,198 @@
             This method is used to render the header on the console.
             </summary>
         </member>
+        <member name="T:ConsoleAppVisuals.ElementList">
+            <summary>
+            This class is used to display a ElementList of all the elements in the window.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.RoundedCorners">
+            <summary>
+            This property wether the corners of the ElementList are rounded.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.GetHeaders">
+            <summary>
+            This property returns the headers of the ElementList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.GetLines">
+            <summary>
+            This property returns the lines of the ElementList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.Placement">
+            <summary>
+            This property returns the title of the ElementList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.Line">
+            <summary>
+            This property returns the line to display the ElementList on.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.Height">
+            <summary>
+            This property returns the height of the ElementList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.Width">
+            <summary>
+            This property returns the width of the ElementList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementList.Count">
+            <summary>
+            This property returns the number of lines in the ElementList.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.ElementList.#ctor(ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            This constructor creates a new instance of the WindowElementsElementList class.
+            </summary>
+            <param name="placement">The placement of the ElementList.</param>
+            <param name="roundedCorners">If true, the corners of the ElementList will be rounded.</param>
+            <param name="line">The line to display the ElementList on.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.ElementList.SetRoundedCorners(System.Boolean)">
+            <summary>
+            Toggles the rounded corners of the element.
+            </summary>
+            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.ElementList.RenderElementActions">
+            <summary>
+            This method displays the ElementList.
+            </summary>
+        </member>
+        <member name="T:ConsoleAppVisuals.ElementsDashboard">
+            <summary>
+            This class is used to display a dashboard of all the elements in the window.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.RoundedCorners">
+            <summary>
+            This property wether the corners of the dashboard are rounded.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.GetHeaders">
+            <summary>
+            This property returns the headers of the dashboard.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.GetLines">
+            <summary>
+            This property returns the lines of the dashboard.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.Placement">
+            <summary>
+            This property returns the title of the dashboard.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.Line">
+            <summary>
+            This property returns the line to display the dashboard on.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.Height">
+            <summary>
+            This property returns the height of the dashboard.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.Width">
+            <summary>
+            This property returns the width of the dashboard.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.ElementsDashboard.Count">
+            <summary>
+            This property returns the number of lines in the dashboard.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.ElementsDashboard.#ctor(ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            This constructor creates a new instance of the WindowElementsDashboard class.
+            </summary>
+            <param name="placement">The placement of the dashboard.</param>
+            <param name="roundedCorners">If true, the corners of the dashboard will be rounded.</param>
+            <param name="line">The line to display the dashboard on.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.ElementsDashboard.SetRoundedCorners(System.Boolean)">
+            <summary>
+            Toggles the rounded corners of the element.
+            </summary>
+            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.ElementsDashboard.RenderElementActions">
+            <summary>
+            This method displays the dashboard.
+            </summary>
+        </member>
+        <member name="T:ConsoleAppVisuals.InteractiveList">
+            <summary>
+            This class is used to display a InteractiveList of all the elements in the window.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.RoundedCorners">
+            <summary>
+            This property wether the corners of the InteractiveList are rounded.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.GetHeaders">
+            <summary>
+            This property returns the headers of the InteractiveList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.GetLines">
+            <summary>
+            This property returns the lines of the InteractiveList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.Placement">
+            <summary>
+            This property returns the title of the InteractiveList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.Line">
+            <summary>
+            This property returns the line to display the InteractiveList on.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.Height">
+            <summary>
+            This property returns the height of the InteractiveList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.Width">
+            <summary>
+            This property returns the width of the InteractiveList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.InteractiveList.Count">
+            <summary>
+            This property returns the number of lines in the InteractiveList.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.InteractiveList.#ctor(ConsoleAppVisuals.Placement,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            This constructor creates a new instance of the WindowElementsInteractiveList class.
+            </summary>
+            <param name="placement">The placement of the InteractiveList.</param>
+            <param name="roundedCorners">If true, the corners of the InteractiveList will be rounded.</param>
+            <param name="line">The line to display the InteractiveList on.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.InteractiveList.SetRoundedCorners(System.Boolean)">
+            <summary>
+            Toggles the rounded corners of the element.
+            </summary>
+            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.InteractiveList.RenderElementActions">
+            <summary>
+            This method displays the InteractiveList.
+            </summary>
+        </member>
         <member name="T:ConsoleAppVisuals.EmbedText">
             <summary>
             Defines the basic properties of an Embed text.
@@ -2773,7 +2965,7 @@
             Gives the number of elements in the window.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Window.Elements">
+        <member name="P:ConsoleAppVisuals.Window.GetElements">
             <summary>
             Gives the list of elements in the window.
             </summary>
@@ -3138,7 +3330,7 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.Refresh">
+        <member name="M:ConsoleAppVisuals.Window.Render">
             <summary>
             This method draws all the non interactive elements of the window on the console.
             </summary>

@@ -169,30 +169,29 @@ Once your customization is done, you may use your element in your application ju
 
 ## Visualize all elements available
 
-Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in functions to display all the elements available in the library (available in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)). Here is an example of how to do it:
+Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library (available in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)). Here is an example of how to do it:
 
 ```csharp
-// Add the two TableView elements to the window
-Window.AddClassesDashboard();
+ElementsList list = new();
+Window.AddElement(list);
 
-Window.Refresh();
+
+Window.Render();
 Window.StopExecution();
 
 Window.Clear();
-// This will remove the two items
-Window.RemoveClassesDashboard();
+Window.RemoveElement(list);
 ```
 
-But you may also want to get a list of all the elements available in the library. To do so, you can use the following code:
+Or target only interactive elements:
 
 ```csharp
-List<string>? list = Window.GetListClassesInheritingElement();
-```
+InteractiveList list = new();
+Window.AddElement(list);
 
-That way you will be able to collect all the names of the elements that inherit from the `Element` class.
+Window.Render();
+Window.StopExecution();
 
-To get a list of the names of the elements that inherit from the `InteractiveElement` class only, you can use the following code:
-
-```csharp
-List<string>? list = Window.GetListClassesInheritingInteractiveElement();
+Window.Clear();
+Window.RemoveElement(list);
 ```

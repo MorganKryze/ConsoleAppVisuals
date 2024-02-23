@@ -53,11 +53,7 @@ public class Banner : Element
     /// <summary>
     /// Getter and setter of the text of the banner.
     /// </summary>
-    public (string, string, string) Text
-    {
-        get => _text;
-        set => _text = value;
-    }
+    public (string, string, string) Text => _text;
 
     /// <summary>
     /// Getter and setter of the upper margin of the banner.
