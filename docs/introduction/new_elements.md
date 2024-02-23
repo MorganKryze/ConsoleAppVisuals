@@ -1,11 +1,11 @@
-# Advanced App
+# New elements
 
-This tutorial will show you how to create a more complex console application using the `ConsoleAppVisuals` package. You will learn:
+In this section, you will learn:
 
 - How to remove elements
 - Discover the inspector elements
 - Discover data visualization with `TableView`, `TableSelector` and `Matrix` elements
-- Discover menu and user flow using `ScrollingMenu` element
+- Discover `ScrollingMenu` element
 
 ## Setup
 
@@ -209,7 +209,7 @@ Window.ActivateElement<EmbedText>();
 
 ## The `Matrix` element
 
-The `Matrix` element is used to display data in a matrix format. 
+The `Matrix` element is used to display data in a matrix format.
 
 ```csharp
 List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 }; // We first create the data to display
@@ -227,9 +227,38 @@ Window.AddElement(matrix);
 Window.ActivateElement<Matrix<int?>>();
 ```
 
-...
+## The `ScrollingMenu` element
 
-Work in progress...
+The `ScrollingMenu` element is an historic element of the library. Some features about it changed but the principle remains the same. It is used to display a list of items and allow the user to select one or several items.
 
-> [!NOTE]
-> This subject is briefly tackled in the docs but if this part really thrills you, feel free to notify me by [opening an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [contact me by email](mailto:morgan@kodelab.fr).
+Here is a minimal example of how to use it:
+
+```csharp
+var options = new string[] { "Option 0", "Option 1", "Option 2" };
+var menu = new ScrollingMenu(
+    "Please choose an option among those below.",
+    0,
+    Placement.TopCenter,
+    null,
+    options
+);
+Window.AddElement(menu);
+Window.ActivateElement(menu);
+var response = Window.GetResponse<ScrollingMenu, int>();
+var embedResponse = new EmbedText(
+    new List<string>()
+    {
+        $"The user: {response?.Status}",
+        $"Index: {response?.Value}",
+        $"Which corresponds to: {options[response?.Value ?? 0]}"
+    },
+    $"Next {Core.GetSelector.Item1}",
+    TextAlignment.Left
+);
+Window.AddElement(embedResponse);
+Window.ActivateElement(embedResponse);
+```
+
+# === ADD PHOTOS ===
+
+We will develop in the next section how to create a complex app using menu management.
