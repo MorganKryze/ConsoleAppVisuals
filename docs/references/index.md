@@ -18,6 +18,10 @@ ConsoleAppVisuals
 │   │   ├───Prompt.cs
 │   │   ├───ScrollingMenu.cs
 │   │   └───TableSelector.cs
+│   ├───inspectors
+│   │   ├───ElementList.cs
+│   │   ├───InteractiveList.cs
+│   │   └───ElementsDashboard.cs
 │   ├───FakeLoadingBar.cs
 │   ├───LoadingBar.cs
 │   ├───Matrix.cs

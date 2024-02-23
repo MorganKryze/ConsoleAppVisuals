@@ -7,6 +7,9 @@ This tutorial will show you how to create a simple console application using the
 - How to get the response from the user
 - How to exit the application
 
+> [!TIP]
+> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs). It is a good way to understand how to use the library.
+
 ## Setup
 
 First, let's create a dummy project to work with. Please choose your method according to your preference:
