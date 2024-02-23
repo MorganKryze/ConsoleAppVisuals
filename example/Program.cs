@@ -528,21 +528,6 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
-            List<string> studentsHeaders = new() { "id", "name", "major", "grades" }; // We first create the data to display, pay attention to the order of the data and their length (the length of the headers and the data must be the same)
-            List<string> student1 = new() { "01", "Theo", "Technology", "97" };
-            List<string> student2 = new() { "02", "Paul", "Mathematics", "86" };
-            List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
-            List<string> student4 = new() { "04", "Charles", "Computer Science", "100" };
-            TableView<string> students =
-                new(
-                    "Students grades",
-                    studentsHeaders,
-                    new() { student1, student2, student3, student4 }
-                );
-            Window.AddElement(students);
-
-            Window.Render();
-            Window.StopExecution();
         }
     }
 }
