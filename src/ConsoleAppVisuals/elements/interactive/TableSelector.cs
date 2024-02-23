@@ -467,10 +467,6 @@ public class TableSelector<T> : InteractiveElement<int>
         {
             BuildTable();
         }
-        else
-        {
-            _rawHeaders = lastStateOfHeaders;
-        }
     }
 
     /// <summary>

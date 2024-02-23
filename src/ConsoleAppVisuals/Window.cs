@@ -53,7 +53,7 @@ public static class Window
     /// <summary>
     /// Gives the list of elements in the window.
     /// </summary>
-    public static List<Element> Elements => s_elements;
+    public static List<Element> GetElements => s_elements;
     #endregion
 
     #region Basic Methods: Get, Add, Insert, Remove, RemoveAll
@@ -435,7 +435,7 @@ public static class Window
                 s_elements[id].Clear();
             }
         }
-        Refresh();
+        Render();
     }
 
     /// <summary>
@@ -516,7 +516,7 @@ public static class Window
                 element.ToggleVisibility();
             }
         }
-        Refresh();
+        Render();
     }
     #endregion
 
@@ -758,7 +758,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static void Refresh()
+    public static void Render()
     {
         Clear();
         foreach (var element in s_elements)
@@ -776,7 +776,7 @@ public static class Window
         if (Core.IsScreenUpdated)
         {
             Core.SetConsoleDimensions();
-            Refresh();
+            Render();
             return true;
         }
         return false;

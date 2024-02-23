@@ -69,7 +69,7 @@ Window.AddElement(exampleTitle);
 Finally, you can display the `Window`:
 
 ```csharp
-Window.Refresh();
+Window.Render();
 ```
 
 Now at each refresh, the `Title` element will appear on screen. To disable it, you may choose one of these options:
@@ -107,7 +107,7 @@ Finally, you can display the `Window`, remember that interactive element are dis
 
 ```csharp
 // Add this line if you have static elements to display
-Window.Refresh();
+Window.Render();
 
 Window.ActivateElement<Prompt>();
 ```
