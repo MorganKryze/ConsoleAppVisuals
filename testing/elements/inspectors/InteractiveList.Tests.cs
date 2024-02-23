@@ -34,13 +34,13 @@ public class UnitTestInteractiveList
     public void Constructor_WithLine()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true, 1);
+        var list = new InteractiveList(Placement.TopLeft, true, 0);
 
         // Act
         // No additional action needed
 
         // Assert
-        Assert.AreEqual(1, list.Line);
+        Assert.AreEqual(0, list.Line);
     }
     #endregion
 
@@ -105,13 +105,13 @@ public class UnitTestInteractiveList
     public void Line_ReturnsLine()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true, 1);
+        var list = new InteractiveList(Placement.TopLeft, true, 0);
 
         // Act
         var line = list.Line;
 
         // Assert
-        Assert.AreEqual(1, line);
+        Assert.AreEqual(0, line);
     }
 
     [TestMethod]
