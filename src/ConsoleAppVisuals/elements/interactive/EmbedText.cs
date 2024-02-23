@@ -202,7 +202,7 @@ public class EmbedText : InteractiveElement<string>
             _textToDisplay!.ToArray()
         );
         Window.StopExecution();
-        Window.DeactivateElement<EmbedText>();
+        Window.DeactivateElement(this);
     }
 
     private void BuildText()
