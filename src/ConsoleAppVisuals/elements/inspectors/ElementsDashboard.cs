@@ -87,8 +87,7 @@ public class ElementsDashboard : Element
             "Width",
             "Line",
             "Placement",
-            "IsInteractive",
-            "Source"
+            "IsInteractive"
         };
         _lines = UpdateLines();
         _placement = placement;
@@ -125,8 +124,7 @@ public class ElementsDashboard : Element
                     element.Width.ToString(),
                     element.Line.ToString(),
                     element.Placement.ToString(),
-                    element.IsInteractive.ToString(),
-                    element.ElementSource.ToString()
+                    element.IsInteractive.ToString()
                 }
             );
         }

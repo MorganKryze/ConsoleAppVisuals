@@ -451,30 +451,30 @@ namespace example
                             goto Menu;
 
                         case 13: // These following functions are for debugging purposes, they should not be used in a production state of a software
-                            Window.AddWindowElementsDashboard(); // See all the elements in the window
-
-                            Window.Render(); // This will display the elements
-                            Window.StopExecution();
-
-                            Window.Clear();
-                            Window.RemoveWindowElementsDashboard(); // This will remove the items from the window
-
-                            Window.AddClassesDashboard(); // Add the two TableView elements to the window
+                            Window.AddElement(new ElementsDashboard()); // See all the elements in the window
 
                             Window.Render();
                             Window.StopExecution();
 
                             Window.Clear();
-                            Window.RemoveClassesDashboard(); // This will remove the two items
+                            Window.RemoveElement<ElementsDashboard>(); // This will remove the items from the window
 
-                            Window.AddListClassesInheritingElement(); // Add manually one of the items previously removed
+                            Window.AddElement(new ElementList());
+
                             Window.Render();
                             Window.StopExecution();
-                            Window.DeactivateElement<TableView<string>>(); // This will deactivate the table
+
+                            Window.Clear();
+                            Window.RemoveElement<ElementList>();
+
+                            Window.AddElement(new InteractiveList());
 
                             Window.Render();
+
+                            Window.StopExecution();
+                            Window.DeactivateElement<InteractiveList>();
+
                             Window.OnResize();
-                            Window.RemoveLibraryElement<TableView<string>>(); // This will manually remove the item from the window
                             goto Menu;
 
                         default:

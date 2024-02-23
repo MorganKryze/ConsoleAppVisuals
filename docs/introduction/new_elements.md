@@ -59,7 +59,7 @@ To disable element rendering, you have two options:
 Deactivating an element can be useful for it to be used later. To do so, let's create a `Title` element and deactivate it. Nothing will be rendered on the screen.
 
 ```csharp
-Title title = new Title("This is a title");
+Title title = new Title("New elements");
 Window.AddElement(title);
 
 Window.DeactivateElement(title);
@@ -70,7 +70,7 @@ Window.Render();
 Let's see how to perceive the effect of deactivating an element. Update your code to the following:
 
 ```csharp
-Title title = new Title("This is a title");
+Title title = new Title("New elements");
 Window.AddElement(title);
 
 ElementsDashboard dashboard = new ElementsDashboard();
@@ -94,7 +94,7 @@ As you noticed, the title is not rendered on the screen because its Visibility p
 Removing an element is useful when you don't want to use it anymore. To do so, let's create a `Title` element and remove it. Nothing will be rendered on the screen.
 
 ```csharp
-Title title = new Title("This is a title");
+Title title = new Title("New elements");
 Window.AddElement(title);
 
 Window.RemoveElement(title);
@@ -105,7 +105,7 @@ Window.Render();
 Let's see how to perceive the effect of removing an element. Update your code to the following:
 
 ```csharp
-Title title = new Title("This is a title");
+Title title = new Title("New elements");
 Window.AddElement(title);
 
 ElementsDashboard dashboard = new ElementsDashboard();
@@ -119,6 +119,8 @@ Window.RemoveElement(title);
 Window.Render();
 Window.StopExecution();
 ```
+
+# === ADD PHOTOS ===
 
 ## The `TableView` element
 
@@ -180,7 +182,7 @@ TableSelector<string> players =
     new("Great tennis players", playersHeaders, playersData);
 
 Window.AddElement(players);
-// Contrary to the TableView, the TableSelector is interactive, so we do not have to stop the execution to see it
+// Contrary to the TableView, the TableSelector is interactive, so we do not have to stop the execution to see it, but to activate it
 Window.ActivateElement<TableSelector<string>>();
 ```
 

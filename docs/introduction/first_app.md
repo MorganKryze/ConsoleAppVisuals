@@ -147,7 +147,7 @@ Window.Render();
 
 # TODO : Add image result
 
-As you may have noticed, we have the same output as earlier. No prompt was printed. That's because we need to activate manually the `Prompt` element:
+As you may have noticed, we have the same output as earlier. No prompt was printed. That's because we need to activate manually the `Prompt` element. Interactive elements are not activated by default. To do so, we can use the following line of code:
 
 ```csharp
 Window.ActivateElement(prompt);
