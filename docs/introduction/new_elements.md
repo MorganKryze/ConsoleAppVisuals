@@ -7,6 +7,9 @@ In this section, you will learn:
 - Discover data visualization with `TableView`, `TableSelector` and `Matrix` elements
 - Discover `ScrollingMenu` element
 
+> [!TIP]
+> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs). It is a good way to understand how to use the library.
+
 ## Setup
 
 We will be using the same project from the previous tutorial. If you haven't done it yet, please follow the steps from the [First app](ConsoleAppVisuals/introduction/first_app.html) tutorial.
