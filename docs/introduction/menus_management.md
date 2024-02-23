@@ -104,6 +104,8 @@ switch (response?.Status)
 Window.Close();
 ```
 
+# === ADD PHOTOS ===
+
 We filter the output to use the output only for the selected item:
 
 ```csharp
@@ -125,9 +127,9 @@ switch (response?.Status)
         break;
     case Output.Escaped:
     case Output.Deleted:
+        Window.Close();
         break;
 }
-Window.Close();
 ```
 
 ## Manage menu value
@@ -165,9 +167,9 @@ switch (response?.Status)
         break;
     case Output.Escaped:
     case Output.Deleted:
+        Window.Close();
         break;
 }
-Window.Close();
 ```
 
 That way, you may act differently depending on the selected item and create useful menu without too much effort.
@@ -176,7 +178,11 @@ That way, you may act differently depending on the selected item and create usef
 
 For a simple navigation, you may use a decentralized way to manage your navigation, making each menu redirect to the other part of your project. We will use a controversial but useful tool: the `goto` statement. [Learn more](https://learn.microsoft.com/dotnet/csharp/language-reference/statements/jump-statements#the-goto-statement)
 
+We start by creating the menus and the elements:
+
 ```csharp
+Window.Render();
+
 var options = new string[] { "Play", "Settings", "Quit" };
 var menu = new ScrollingMenu(
     "Please choose an option among those below.",
@@ -195,6 +201,22 @@ EmbedText play = new(
 Window.AddElement(play);
 Window.DeactivateElement(play);
 
+EmbedText language = new(
+    new List<string>() { "Changing language..." },
+    "Next",
+    TextAlignment.Left
+);
+Window.AddElement(language);
+Window.DeactivateElement(language);
+
+EmbedText sound = new(
+    new List<string>() { "Changing volume..." },
+    "Next",
+    TextAlignment.Left
+);
+Window.AddElement(sound);
+Window.DeactivateElement(sound);
+
 var settingsOptions = new string[] { "Language", "Sound", "Back" };
 var settingsMenu = new ScrollingMenu(
     "Please choose an option among those below.",
@@ -204,7 +226,11 @@ var settingsMenu = new ScrollingMenu(
     settingsOptions
 );
 Window.AddElement(settingsMenu);
+```
 
+Then we add the navigation:
+
+```csharp
 MainMenu:
 
 Window.ActivateElement(menu);
@@ -233,7 +259,6 @@ switch (response?.Status)
 Play:
 
 Window.ActivateElement(play);
-Window.StopExecution();
 Window.DeactivateElement(play);
 goto MainMenu;
 
@@ -248,10 +273,12 @@ switch (settingsResponse?.Status)
         switch (settingsResponse.Value)
         {
             case 0:
-                // Language() function
+                Window.ActivateElement(language);
+                Window.DeactivateElement(language);
                 break;
             case 1:
-                // Sound() function
+                Window.ActivateElement(sound);
+                Window.DeactivateElement(sound);
                 break;
             case 2:
                 goto MainMenu;
@@ -261,7 +288,7 @@ switch (settingsResponse?.Status)
     case Output.Deleted:
         goto MainMenu;
 }
-goto MainMenu;
+goto SettingsMenu;
 ```
 
 # == ADD PHOTOS ==
