@@ -36,7 +36,6 @@ ConsoleAppVisuals
 │   ├───Direction.cs
 │   ├───Output.cs
 │   ├───Placement.cs
-│   ├───Source.cs
 │   └───TextAlignment.cs
 ├───errors
 │   ├───EmptyFileException.cs

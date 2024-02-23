@@ -2329,28 +2329,6 @@
             The object is placed in the bottom center of the space and takes all the width.
             </summary>
         </member>
-        <member name="T:ConsoleAppVisuals.Source">
-            <summary>
-            The <see cref="T:ConsoleAppVisuals.Source"/> enum defines the source of elements.
-            </summary>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="F:ConsoleAppVisuals.Source.User">
-            <summary>
-            The user source.
-            </summary>
-        </member>
-        <member name="F:ConsoleAppVisuals.Source.Library">
-            <summary>
-            The library source.
-            </summary>
-        </member>
         <member name="T:ConsoleAppVisuals.TextAlignment">
             <summary>
             The <see cref="T:ConsoleAppVisuals.TextAlignment"/> enum defines the alignment of a string in the space.
@@ -2575,12 +2553,6 @@
             The maximum number of this element that can be drawn on the console.
             </summary>
             <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-        </member>
-        <member name="P:ConsoleAppVisuals.Element.ElementSource">
-            <summary>
-            The source of the element. This property is used to determine whether the element is a user element or a library element for internal use.
-            </summary>
-            <remarks><c>[ DANGEROUS ]</c> Please do not change this property unless you know what you are doing.</remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Element.ToggleVisibility">
             <summary>
@@ -3055,11 +3027,11 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.RemoveElement(ConsoleAppVisuals.Element)">
+        <member name="M:ConsoleAppVisuals.Window.RemoveElement(ConsoleAppVisuals.Element[])">
             <summary>
             This method removes the given element.
             </summary>
-            <param name="element">The element to be removed.</param>
+            <param name="elements">The elements to be removed.</param>
             <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
             <returns>True if the element is successfully removed, false otherwise.</returns>
             <remarks>
@@ -3076,22 +3048,6 @@
             </summary>
             <typeparam name="T">The type of the element.</typeparam>
             <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
-            <returns>True if the element is successfully removed, false otherwise.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.RemoveLibraryElement``1">
-            <summary>
-            This method removes the first element with the given type created by the library itself.
-            </summary>
-            <typeparam name="T">The type of the element.</typeparam>
-            <exception cref="T:ConsoleAppVisuals.ElementNotFoundException">Thrown when the element is invalid.</exception>
-            <exception cref="T:System.InvalidOperationException">Thrown when the element is not created by the library.</exception>
             <returns>True if the element is successfully removed, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:
@@ -3364,127 +3320,6 @@
         <member name="M:ConsoleAppVisuals.Window.Close">
             <summary>
             This method closes the window and exit the program.
-            </summary>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.AddListWindowElements(ConsoleAppVisuals.Placement)">
-            <summary>
-            This method displays a list of all elements in the window and adds a table to the window.
-            </summary>
-            <param name="placement">The placement of the element.</param>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.GetListWindowElements">
-            <summary>
-            This method is used to get a list of all the types of the elements in the window.
-            </summary>
-            <returns>A list of all the types of the elements in the window.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.AddListClassesInheritingElement(ConsoleAppVisuals.Placement)">
-            <summary>
-            This method gives a list of all classes inheriting from the Element (and so InteractiveElement as well) class and adds a table to the window.
-            </summary>
-            <param name="placement">The placement of the element.</param>
-            <returns>The list of all classes inheriting from the Element class.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.GetListClassesInheritingElement">
-            <summary>
-            This method is used to get a list of all the types of the classes inheriting from the Element class.
-            </summary>
-            <returns>A list of all the types of the classes inheriting from the Element class.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.AddListClassesInheritingInteractiveElement(ConsoleAppVisuals.Placement)">
-            <summary>
-            This method gives a list of all classes inheriting from the InteractiveElement class and adds a table to the window.
-            </summary>
-            <param name="placement">The placement of the element.</param>
-            <returns>The list of all classes inheriting from the InteractiveElement class.</returns>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.GetListClassesInheritingInteractiveElement">
-            <summary>
-            This method is used to get a list of all the types of the classes inheriting from the InteractiveElement class.
-            </summary>
-            <returns>A list of all the types of the classes inheriting from the InteractiveElement class.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.AddClassesDashboard">
-            <summary>
-            This method displays a list of all classes inheriting from the Element class and a list of all classes inheriting from the InteractiveElement class.
-            </summary>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.RemoveClassesDashboard">
-            <summary>
-            This method removes the dashboard TableView from the window.
-            </summary>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.AddWindowElementsDashboard">
-            <summary>
-            This method displays a list of all elements in the window.
-            </summary>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.RemoveWindowElementsDashboard">
-            <summary>
-            This method removes the dashboard TableView from the window.
             </summary>
             <remarks>
             For more information, refer to the following resources:
