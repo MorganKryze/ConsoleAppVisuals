@@ -12,7 +12,7 @@ namespace example
             Window.AddElement(new Header());
             Window.AddElement(new Footer());
             Window.AddElement(new FakeLoadingBar("[ Loading ...]"));
-            Window.Refresh(); // Refresh the window to display the elements above, they have only been added to the window
+            Window.Render(); // Render the window to display the elements above, they have only been added to the window
 
             Window.AddElement( // Add the scrolling menu to the window
                 new ScrollingMenu(
@@ -49,7 +49,7 @@ namespace example
                     switch (response.Value) // Check the response info (the index of the selected item). Here the Info for a ScrollingMenu is an int
                     {
                         case 0:
-                            Window.OnResize(); // Refresh the window if the console has been resized
+                            Window.OnResize(); // Render the window if the console has been resized
 
                             Window.AddElement(
                                 new ScrollingMenu(
@@ -142,7 +142,7 @@ namespace example
                             );
                             Window.StopExecution();
 
-                            Window.Refresh();
+                            Window.Render();
                             Window.OnResize();
                             goto Menu;
 
@@ -176,7 +176,7 @@ namespace example
                             );
                             Window.StopExecution();
 
-                            Window.Refresh();
+                            Window.Render();
 
                             Core.WritePositionedStyledText(
                                 Core.StyleText("Welcome Aboard!"),
@@ -184,7 +184,7 @@ namespace example
                             );
                             Window.StopExecution();
 
-                            Window.Refresh();
+                            Window.Render();
                             Window.OnResize();
                             goto Menu;
 
@@ -218,7 +218,7 @@ namespace example
                             Window.DeactivateElement<Matrix<int?>>();
 
                             Window.RemoveElement<Matrix<int?>>();
-                            Window.Refresh();
+                            Window.Render();
                             Window.OnResize();
                             goto Menu;
 
@@ -408,7 +408,7 @@ namespace example
                             Window.RenderAllElementsSpace(); // This method will display all the spaces taken by the element in teh window
                             Window.StopExecution();
 
-                            Window.Refresh(); // Refresh the window to display the elements above
+                            Window.Render(); // Render the window to display the elements above
 
                             Window.OnResize();
                             Window.RemoveElement<EmbedText>();
@@ -453,7 +453,7 @@ namespace example
                         case 13: // These following functions are for debugging purposes, they should not be used in a production state of a software
                             Window.AddWindowElementsDashboard(); // See all the elements in the window
 
-                            Window.Refresh(); // This will display the elements
+                            Window.Render(); // This will display the elements
                             Window.StopExecution();
 
                             Window.Clear();
@@ -461,18 +461,18 @@ namespace example
 
                             Window.AddClassesDashboard(); // Add the two TableView elements to the window
 
-                            Window.Refresh();
+                            Window.Render();
                             Window.StopExecution();
 
                             Window.Clear();
                             Window.RemoveClassesDashboard(); // This will remove the two items
 
                             Window.AddListClassesInheritingElement(); // Add manually one of the items previously removed
-                            Window.Refresh();
+                            Window.Render();
                             Window.StopExecution();
                             Window.DeactivateElement<TableView<string>>(); // This will deactivate the table
 
-                            Window.Refresh();
+                            Window.Render();
                             Window.OnResize();
                             Window.RemoveLibraryElement<TableView<string>>(); // This will manually remove the item from the window
                             goto Menu;
@@ -528,6 +528,21 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
+            List<string> studentsHeaders = new() { "id", "name", "major", "grades" }; // We first create the data to display, pay attention to the order of the data and their length (the length of the headers and the data must be the same)
+            List<string> student1 = new() { "01", "Theo", "Technology", "97" };
+            List<string> student2 = new() { "02", "Paul", "Mathematics", "86" };
+            List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
+            List<string> student4 = new() { "04", "Charles", "Computer Science", "100" };
+            TableView<string> students =
+                new(
+                    "Students grades",
+                    studentsHeaders,
+                    new() { student1, student2, student3, student4 }
+                );
+            Window.AddElement(students);
+
+            Window.Render();
+            Window.StopExecution();
         }
     }
 }

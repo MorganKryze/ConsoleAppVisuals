@@ -55,7 +55,7 @@ public class UnitTestHeader
         // Act
         Window.AddElement(title);
         Window.AddElement(header);
-        Window.Refresh();
+        Window.Render();
         var line = header.Line;
 
         // Assert

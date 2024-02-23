@@ -2,8 +2,8 @@
 
 This tutorial will show you how to create a simple console application using the `ConsoleAppVisuals` package. You will learn:
 
-- How to add and remove elements
-- Discover: `Title`, `Header` and `Footer`, `Loading Bar`, `Prompt`, `EmbedText` elements
+- How to add elements
+- Discover: `Title`, `Header` and `Footer`, `FakeLoadingBar`, `Prompt`, `EmbedText` elements
 - How to get the response from the user
 - How to exit the application
 
@@ -128,7 +128,7 @@ Window.AddElement(loadingBar);
 Instead of rendering each element separately, we can render all of them at once:
 
 ```csharp
-Window.Refresh();
+Window.Render();
 ```
 
 # TODO : Add image result
@@ -139,7 +139,7 @@ Now let's add a `Prompt` element:
 Prompt prompt = new Prompt("What's your name?");
 Window.AddElement(prompt);
 
-Window.Refresh();
+Window.Render();
 ```
 
 # TODO : Add image result
@@ -216,7 +216,7 @@ Window.AddElement(footer);
 FakeLoadingBar loadingBar = new FakeLoadingBar();
 Window.AddElement(loadingBar);
 
-Window.Refresh();
+Window.Render();
 
 Prompt prompt = new Prompt("What's your name?");
 Window.AddElement(prompt);

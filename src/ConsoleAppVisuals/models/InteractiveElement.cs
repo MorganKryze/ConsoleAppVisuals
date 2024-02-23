@@ -59,6 +59,7 @@ public abstract class InteractiveElement<TResponse> : Element
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The response of the user.</param>
+    [Visual]
     protected void SendResponse(object? sender, InteractionEventArgs<TResponse> e)
     {
         EndOfInteractionEvent?.Invoke(sender, e);
