@@ -11,7 +11,7 @@ namespace ConsoleAppVisuals.Elements;
 /// For more information, refer to the following resources:
 /// <list type="bullet">
 /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
 public class Prompt : InteractiveElement<string>
@@ -59,7 +59,7 @@ public class Prompt : InteractiveElement<string>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public Prompt(

@@ -21,7 +21,7 @@ public class UnitTestWindow
     public void AddElement_WindowHasElement()
     {
         // Arrange
-        var defaultValue = Window.GetElements.Count;
+        var defaultValue = Window.Elements.Count;
 
         // Act
         Window.AddElement(new Prompt("Hello World!"));
@@ -323,7 +323,7 @@ public class UnitTestWindow
         Window.AddElement(element);
 
         // Assert
-        Assert.IsTrue(Window.GetElements.Contains(element));
+        Assert.IsTrue(Window.Elements.Contains(element));
     }
     #endregion
 

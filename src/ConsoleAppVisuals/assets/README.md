@@ -10,7 +10,7 @@
 
 Feel free to check out the following resources to help you get started:
 
-- Take a quick look at our [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) to understand how to implement the library in your own project
+- Take a quick look at our [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to understand how to implement the library in your own project
 - A [complete documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
 
 ## Install

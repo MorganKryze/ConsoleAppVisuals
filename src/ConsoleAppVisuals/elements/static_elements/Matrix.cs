@@ -60,7 +60,7 @@ public class Matrix<T> : Element
     /// <param name="placement">The placement of the matrix.</param>
     /// <param name="line">The line of the matrix.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public Matrix(
         List<List<T?>>? rawLines = null,
         bool roundedCorners = false,
@@ -203,7 +203,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public void SetRoundedCorners(bool value = true)
@@ -225,7 +225,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public T? GetItem(Position position)
@@ -247,7 +247,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public bool AddLine(List<T?> line)
@@ -282,7 +282,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public bool InsertLine(int index, List<T?> line)
@@ -314,7 +314,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public bool UpdateLine(int index, List<T?> line)
@@ -345,7 +345,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public bool UpdateItem(Position position, T item)
@@ -369,7 +369,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public bool RemoveLine(int index)
@@ -393,7 +393,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public bool RemoveItem(Position position)
@@ -416,7 +416,7 @@ public class Matrix<T> : Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     protected override void RenderElementActions()

@@ -13,7 +13,7 @@ This is the documentation for the `ConsoleAppVisuals` library. This is a simple 
 3. [Articles](/ConsoleAppVisuals/articles/index.html): find some additional articles about how to create and publish a library or create your documentation.
 4. [Legacy](/ConsoleAppVisuals/legacy/index.html): find the old documentation of the library for the versions 2.x.x and below.
 
-Finally, an commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) to see how to use the library in a real project. If you have any questions, feel free to ask them in the [discussions](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) section.
+Finally, an commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to see how to use the library in a real project. If you have any questions, feel free to ask them in the [discussions](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) section.
 
 ## Supported .NET versions
 
