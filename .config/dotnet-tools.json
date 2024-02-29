@@ -3,13 +3,13 @@
   "isRoot": true,
   "tools": {
     "csharpier": {
-      "version": "0.27.2",
+      "version": "0.27.3",
       "commands": [
         "dotnet-csharpier"
       ]
     },
     "docfx": {
-      "version": "2.75.2",
+      "version": "2.75.3",
       "commands": [
         "docfx"
       ]
