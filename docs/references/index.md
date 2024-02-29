@@ -18,18 +18,19 @@ ConsoleAppVisuals
 │   │   ├───Prompt.cs
 │   │   ├───ScrollingMenu.cs
 │   │   └───TableSelector.cs
-│   ├───inspectors
-│   │   ├───ElementList.cs
-│   │   ├───InteractiveList.cs
-│   │   └───ElementsDashboard.cs
-│   ├───FakeLoadingBar.cs
-│   ├───LoadingBar.cs
-│   ├───Matrix.cs
-│   ├───TableView.cs
-│   ├───Banner.cs
-│   ├───Header.cs
-│   ├───Footer.cs
-│   └───Title.cs
+│   └───static
+│       ├───inspectors
+│       │   ├───ElementList.cs
+│       │   ├───InteractiveList.cs
+│       │   └───ElementsDashboard.cs
+│       ├───FakeLoadingBar.cs
+│       ├───LoadingBar.cs
+│       ├───Matrix.cs
+│       ├───TableView.cs
+│       ├───Banner.cs
+│       ├───Header.cs
+│       ├───Footer.cs
+│       └───Title.cs
 ├───attributes
 │   └───VisualAttribute.cs
 ├───enums
@@ -46,10 +47,10 @@ ConsoleAppVisuals
 │   ├───InteractiveElement.cs
 │   ├───InteractionEventArgs.cs
 │   ├───Position.cs
+│   ├───TextStyler.cs
 │   └───FontYamlFile.cs
 ├───Core.cs
 ├───Window.cs
-├───TextStyler.cs
 └───Usings.cs
 ```
 

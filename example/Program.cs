@@ -1,4 +1,5 @@
 ﻿using ConsoleAppVisuals;
+using ConsoleAppVisuals.Elements;
 using ConsoleAppVisuals.Enums;
 using ConsoleAppVisuals.Models;
 
