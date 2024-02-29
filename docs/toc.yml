@@ -2,9 +2,6 @@ items:
   - name: Introduction
     href: introduction/
     homepage: introduction/index.md
-  - name: Elements
-    href: elements/
-    homepage: elements/index.md
   - name: References
     href: references/
     homepage: references/index.md
