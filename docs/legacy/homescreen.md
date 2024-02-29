@@ -11,7 +11,7 @@ Core.WriteTitle();
 Console.ReadKey(); //[optional]: just to keep the console clean
 ```
 
-![title](../assets/images/png/legacy/title.png)
+![title](../assets/img/png/legacy/title.png)
 *Demo with an Example*
 
 ## Display a banner
@@ -27,7 +27,7 @@ Core.WriteHeader();
 Console.ReadKey(); //[optional]: just to keep the console clean
 ```
 
-![banner](../assets/images/png/legacy/banner.png)
+![banner](../assets/img/png/legacy/banner.png)
 *Demo with default arguments for the header*
 
 To customize the banner, you can change the arguments or change the default header and footer with the `SetDefaultHeader` or `SetDefaultFooter` methods.
@@ -40,7 +40,7 @@ Core.WriteFooter(true, ("Left", "Top", "Right"));
 Console.ReadKey();
 ```
 
-![banner2](../assets/images/png/legacy/banner_customize.png)
+![banner2](../assets/img/png/legacy/banner_customize.png)
 *Demo with custom arguments for the header*
 
 ## Easy display

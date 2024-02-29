@@ -30,7 +30,7 @@ Core.ScrollingNumberSelector("Please choose a number", 10, 50, 25, 5);
 Console.ReadKey();
 ```
 
-![number](../assets/images/png/legacy/number.png)
+![number](../assets/img/png/legacy/number.png)
 *Demo with number selector*
 
 > [!NOTE]
@@ -48,7 +48,7 @@ Core.WritePrompt("Is your name John Doe ?", "John Doe");
 Console.ReadKey();
 ```
 
-![prompt](../assets/images/png/legacy/prompt.png)
+![prompt](../assets/img/png/legacy/prompt.png)
 *Demo with prompt*
 
 ## Table selector
@@ -70,7 +70,7 @@ The `ScrollingTableSelector` is a special block that allows you to display the t
 students.ScrollingTableSelector(true, false, "Add student");
 ```
 
-![table](../assets/images/png/legacy/table.png)
+![table](../assets/img/png/legacy/table.png)
 *Demo with table selector*
 
 > [!NOTE]
@@ -113,7 +113,7 @@ matrix.WriteMatrix(Placement.Center);
 Console.ReadKey();
 ```
 
-![matrix](../assets/images/png/legacy/matrix.png)
+![matrix](../assets/img/png/legacy/matrix.png)
 
 > [!NOTE]
 > Once you created the matrix, you can add, remove or update the lines using the methods provided by the `Matrix` class (`AddLine`, `RemoveLine`, `UpdateLine`) but also the elements using the `RemoveElement` and `UpdateElement` methods.
@@ -149,7 +149,7 @@ Core.LoadingBar();
 Console.ReadKey();
 ```
 
-![loading](../assets/images/png/legacy/loading.png)
+![loading](../assets/img/png/legacy/loading.png)
 *Demo with loading bar*
 
 ## Lawful loading bar
@@ -172,7 +172,7 @@ t_Loading.Join(); // Wait for the Thread to finish
 Console.ReadKey();
 ```
 
-![lawful](../assets/images/png/legacy/lawful_loading.png)
+![lawful](../assets/img/png/legacy/lawful_loading.png)
 *Demo with lawful loading bar*
 
 ## Exit

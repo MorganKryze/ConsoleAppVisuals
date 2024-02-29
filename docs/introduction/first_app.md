@@ -108,7 +108,7 @@ And finally, we can render the `Title` from the `Window`:
 Window.RenderOneElement(title);
 ```
 
-# TODO : Add image result
+![Title](../assets/img/jpg/first_app/title.jpg)
 
 ## Minimal app
 
@@ -134,7 +134,7 @@ Instead of rendering each element separately, we can render all of them at once:
 Window.Render();
 ```
 
-# TODO : Add image result
+![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
 Now let's add a `Prompt` element:
 
@@ -145,7 +145,7 @@ Window.AddElement(prompt);
 Window.Render();
 ```
 
-# TODO : Add image result
+![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
 As you may have noticed, we have the same output as earlier. No prompt was printed. That's because we need to activate manually the `Prompt` element. Interactive elements are not activated by default. To do so, we can use the following line of code:
 
@@ -153,7 +153,7 @@ As you may have noticed, we have the same output as earlier. No prompt was print
 Window.ActivateElement(prompt);
 ```
 
-# TODO : Add image result
+![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
 Now that we have well displayed the prompt, we can get the user's response by adding the following line of code after the `Window.ActivateElement(prompt)` line:
 
@@ -190,7 +190,7 @@ Window.AddElement(text);
 Window.ActivateElement(text);
 ```
 
-# TODO : Add image result
+![Embed](../assets/vid/gif/first_app/embed.gif)
 
 Finally, let's exit smoothly the application:
 
@@ -198,7 +198,7 @@ Finally, let's exit smoothly the application:
 Window.Close();
 ```
 
-# TODO : Add image result
+![Prompt](../assets/vid/gif/first_app/close.gif)
 
 ## Recap
 

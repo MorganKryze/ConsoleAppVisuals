@@ -14,7 +14,7 @@ Core.WritePositionedString("On the right", Placement.Right, default, 11, default
 Console.ReadKey();
 ```
 
-![position](../assets/images/png/legacy/position.png)
+![position](../assets/img/png/legacy/position.png)
 *Demo with placed strings*
 
 ## Including continuous printing
@@ -44,7 +44,7 @@ Core.WriteParagraph(default, default, "C# is a general-purpose, multi-paradigm p
 Console.ReadKey();
 ```
 
-![paragraph](../assets/images/png/legacy/paragraph.png)
+![paragraph](../assets/img/png/legacy/paragraph.png)
 *Demo with paragraph*
 
 ## Include Styled Text
@@ -59,7 +59,7 @@ Core.WritePositionedStyledText(Core.StyleText("Hello World!"));
 Console.ReadKey();
 ```
 
-![style](../assets/images/png/legacy/style.png)
+![style](../assets/img/png/legacy/style.png)
 
 ## Including color
 
@@ -78,7 +78,7 @@ Core.ApplyNegative(false);
 Console.ReadKey();
 ```
 
-![color](../assets/images/png/legacy/color.png)
+![color](../assets/img/png/legacy/color.png)
 *Demo with color*
 
 > [!NOTE]
