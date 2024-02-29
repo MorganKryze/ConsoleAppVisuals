@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals;
+namespace ConsoleAppVisuals.Elements;
 
 /// <summary>
 /// The <see cref="TableSelector{T}"/> class that contains the methods to create a table and display it.

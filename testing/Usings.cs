@@ -1,5 +1,10 @@
 global using System.Reflection;
 global using System.Runtime.Serialization;
 global using ConsoleAppVisuals;
+global using ConsoleAppVisuals.Attributes;
+global using ConsoleAppVisuals.Elements;
+global using ConsoleAppVisuals.Enums;
+global using ConsoleAppVisuals.Errors;
+global using ConsoleAppVisuals.Models;
 global using Microsoft.VisualStudio.TestTools.UnitTesting;
 global using Moq;

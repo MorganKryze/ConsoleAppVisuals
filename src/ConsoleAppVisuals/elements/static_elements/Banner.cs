@@ -2,9 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-using System.Runtime.CompilerServices;
-
-namespace ConsoleAppVisuals;
+namespace ConsoleAppVisuals.Elements;
 
 /// <summary>
 /// Defines the banner of the console window.
