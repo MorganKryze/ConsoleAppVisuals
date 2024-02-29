@@ -102,7 +102,7 @@ public class ElementsDashboard : Element
     /// <summary>
     /// Toggles the rounded corners of the element.
     /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public void SetRoundedCorners(bool rounded = true)
     {
         _roundedCorners = rounded;
@@ -112,7 +112,7 @@ public class ElementsDashboard : Element
     private List<List<string>> UpdateLines()
     {
         var elements = new List<List<string>>();
-        foreach (var element in Window.GetElements)
+        foreach (var element in Window.Elements)
         {
             elements.Add(
                 new List<string>

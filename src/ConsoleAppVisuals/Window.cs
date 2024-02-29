@@ -5,22 +5,22 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// The major class of the library. The window is used to collect the elements of the console and draw them.
+/// The Window class manages the elements that are to be displayed on the console.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
 /// <list type="bullet">
 /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
 public static class Window
 {
     #region Setup
     /// <summary>
-    /// This method sets up the window without the need to call it.
+    /// This method sets up the console as soon as the Program starts.
     /// </summary>
-    [ExcludeFromCodeCoverage]
+    [Visual]
     static Window()
     {
         Console.Clear();
@@ -39,7 +39,7 @@ public static class Window
     public const bool DEFAULT_VISIBILITY = false;
     #endregion
 
-    #region Properties: NextId, NumberOfElements
+    #region Properties: NextId, NumberOfElements, Elements
     /// <summary>
     /// Gives the next id number each time a new element is added to the window.
     /// </summary>
@@ -53,10 +53,10 @@ public static class Window
     /// <summary>
     /// Gives the list of elements in the window.
     /// </summary>
-    public static List<Element> GetElements => s_elements;
+    public static List<Element> Elements => s_elements;
     #endregion
 
-    #region Basic Methods: Get, Add, Insert, Remove, RemoveAll
+    #region Managing Methods: Get, Add, Insert, Remove, RemoveAll
     /// <summary>
     /// This method returns the first element of the given type.
     /// </summary>
@@ -66,7 +66,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static T? GetElement<T>()
@@ -76,7 +76,7 @@ public static class Window
     }
 
     /// <summary>
-    /// This method returns the element with the given id.
+    /// This method returns the first element of the given type and id.
     /// </summary>
     /// <param name="id">The id of the element.</param>
     /// <returns>The element with the given id if it exists, null otherwise.</returns>
@@ -85,7 +85,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static T? GetElement<T>(int id)
@@ -107,7 +107,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static T? GetVisibleElement<T>()
@@ -125,7 +125,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void AddElement(params Element[] elements)
@@ -150,7 +150,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void InsertElement(Element element, int id)
@@ -163,6 +163,30 @@ public static class Window
     }
 
     /// <summary>
+    /// This method removes the first element with the given type.
+    /// </summary>
+    /// <typeparam name="T">The type of the element.</typeparam>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <returns>True if the element is successfully removed, false otherwise.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static bool RemoveElement<T>()
+        where T : Element
+    {
+        var element =
+            GetElement<T>()
+            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
+        var state = s_elements.Remove(element);
+        UpdateIDs();
+        return state;
+    }
+
+    /// <summary>
     /// This method removes the element with the given id.
     /// </summary>
     /// <param name="id">The id of the element.</param>
@@ -171,7 +195,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void RemoveElement(int id)
@@ -194,7 +218,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static bool RemoveElement(params Element[] elements)
@@ -215,37 +239,13 @@ public static class Window
     }
 
     /// <summary>
-    /// This method removes the first element with the given type.
-    /// </summary>
-    /// <typeparam name="T">The type of the element.</typeparam>
-    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
-    /// <returns>True if the element is successfully removed, false otherwise.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static bool RemoveElement<T>()
-        where T : Element
-    {
-        var element =
-            GetElement<T>()
-            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
-        var state = s_elements.Remove(element);
-        UpdateIDs();
-        return state;
-    }
-
-    /// <summary>
     /// This method removes all elements from the window.
     /// </summary>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void RemoveAllElements()
@@ -254,7 +254,7 @@ public static class Window
     }
     #endregion
 
-    #region Manipulation Methods: ActivateElement, ActivateAllElements, DeactivateElement, DeactivateAllElements
+    #region Visibility Methods: ActivateElement, ActivateAllElements, DeactivateElement, DeactivateAllElements
     /// <summary>
     /// This method attempts to activate the visibility of the element with the given id.
     /// </summary>
@@ -265,7 +265,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     [Visual]
@@ -318,7 +318,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     [Visual]
@@ -350,7 +350,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     [Visual]
@@ -371,7 +371,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void ActivateAllElements()
@@ -395,7 +395,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void DeactivateElement(int id, bool clear = true)
@@ -425,7 +425,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void DeactivateElement(Element element, bool clear = true)
@@ -455,7 +455,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void DeactivateElement<T>(bool clear = true)
@@ -481,7 +481,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static void DeactivateAllElements()
@@ -531,7 +531,7 @@ public static class Window
     }
 
     /// <summary>
-    /// Gives the last line available to draw an element on the console from a placement.
+    /// This method gets the last line available to draw an element on the console from a placement.
     /// </summary>
     /// <param name="placement">The placement of the element.</param>
     /// <returns>The last line available to draw an element on the console from a placement.</returns>
@@ -540,7 +540,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static int GetLineAvailable(Placement placement)
@@ -592,7 +592,7 @@ public static class Window
     }
 
     /// <summary>
-    /// This method checks if the line is valid.
+    /// This method checks if the line is valid under the console constraints.
     /// </summary>
     /// <param name="line">The line to be checked.</param>
     /// <returns>The line if it is valid.</returns>
@@ -601,7 +601,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static int? CheckLine(int? line)
@@ -623,7 +623,132 @@ public static class Window
     }
 
     /// <summary>
-    /// This method clears the window.
+    /// This method stops the execution of the program until a key is pressed.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    [Visual]
+    public static void StopExecution(ConsoleKey key = ConsoleKey.Enter)
+    {
+        // wait until the user presses a key
+        while (Console.ReadKey(intercept: true).Key != key)
+        {
+            Thread.Sleep(10);
+        }
+    }
+
+    /// <summary>
+    /// This method draws the element with the given id on the console.
+    /// </summary>
+    /// <param name="id">The id of the element.</param>
+    /// <exception cref="ElementNotFoundException">Thrown when the id is out of range.</exception>
+    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static bool RenderOneElement(int id)
+    {
+        if (id < 0 || id >= s_elements.Count)
+        {
+            throw new ElementNotFoundException("Invalid element ID.");
+        }
+        s_elements[id].RenderElement();
+        return true;
+    }
+
+    /// <summary>
+    /// This method draws the given element on the console.
+    /// </summary>
+    /// <param name="element">The element to be drawn.</param>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
+    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static bool RenderOneElement(Element element)
+    {
+        if (element == null || !s_elements.Contains(element))
+        {
+            throw new ElementNotFoundException("Invalid element. Not found in the window.");
+        }
+
+        element.RenderElement();
+        return true;
+    }
+
+    /// <summary>
+    /// This method draws all the non interactive elements of the window on the console.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void Render()
+    {
+        Clear();
+        if (Core.IsScreenUpdated)
+        {
+            Core.SetConsoleDimensions();
+        }
+        foreach (var element in s_elements)
+        {
+            element.RenderElement();
+        }
+    }
+
+    /// <summary>
+    /// This method is called to refresh the window when the size of the console is changed.
+    /// </summary>
+    /// <returns>True if the window is refreshed, false otherwise.</returns>
+    public static bool OnResize()
+    {
+        if (Core.IsScreenUpdated)
+        {
+            Core.SetConsoleDimensions();
+            Render();
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// This method draws all the space of the visible elements of the window on the console.
+    /// </summary>
+    /// <returns>True if the space of the elements is successfully drawn, false otherwise.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static bool RenderAllElementsSpace()
+    {
+        foreach (var element in s_elements)
+        {
+            element.RenderElementSpace();
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// This method clears the console.
     /// </summary>
     /// <param name="continuous">If true, the window will be cleared continuously.</param>
     /// <returns>True if the window is successfully cleared, false otherwise.</returns>
@@ -631,7 +756,7 @@ public static class Window
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     public static bool Clear(bool continuous = false)
@@ -659,134 +784,13 @@ public static class Window
     }
 
     /// <summary>
-    /// This method stops the execution of the program until a key is pressed.
+    /// This method clears the window and exit the program.
     /// </summary>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    [Visual]
-    public static void StopExecution(ConsoleKey key = ConsoleKey.Enter)
-    {
-        // wait until the user presses a key
-        while (Console.ReadKey(intercept: true).Key != key)
-        {
-            Thread.Sleep(10);
-        }
-    }
-
-    /// <summary>
-    /// This method draws the element with the given id on the console.
-    /// </summary>
-    /// <param name="id">The id of the element.</param>
-    /// <exception cref="ElementNotFoundException">Thrown when the id is out of range.</exception>
-    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static bool RenderOneElement(int id)
-    {
-        if (id < 0 || id >= s_elements.Count)
-        {
-            throw new ElementNotFoundException("Invalid element ID.");
-        }
-        s_elements[id].RenderElement();
-        return true;
-    }
-
-    /// <summary>
-    /// This method draws the given element on the console.
-    /// </summary>
-    /// <param name="element">The element to be drawn.</param>
-    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
-    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static bool RenderOneElement(Element element)
-    {
-        if (element == null || !s_elements.Contains(element))
-        {
-            throw new ElementNotFoundException("Invalid element. Not found in the window.");
-        }
-
-        element.RenderElement();
-        return true;
-    }
-
-    /// <summary>
-    /// This method draws all the non interactive elements of the window on the console.
-    /// </summary>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static void Render()
-    {
-        Clear();
-        foreach (var element in s_elements)
-        {
-            element.RenderElement();
-        }
-    }
-
-    /// <summary>
-    /// This method is called to refresh the window when the size of the console is changed.
-    /// </summary>
-    /// <returns>True if the window is refreshed, false otherwise.</returns>
-    public static bool OnResize()
-    {
-        if (Core.IsScreenUpdated)
-        {
-            Core.SetConsoleDimensions();
-            Render();
-            return true;
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// This method draws all the space of the elements of the window on the console.
-    /// </summary>
-    /// <returns>True if the space of the elements is successfully drawn, false otherwise.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static bool RenderAllElementsSpace()
-    {
-        foreach (var element in s_elements)
-        {
-            element.RenderElementSpace();
-        }
-        return true;
-    }
-
-    /// <summary>
-    /// This method closes the window and exit the program.
-    /// </summary>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     [ExcludeFromCodeCoverage]
