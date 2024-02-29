@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals;
+namespace ConsoleAppVisuals.Models;
 
 /// <summary>
 /// The <see cref="FontYamlFile"/> class defines the structure of a yaml file used to store the height of each character of a font.

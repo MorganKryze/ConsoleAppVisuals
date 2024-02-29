@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals;
+namespace ConsoleAppVisuals.Attributes;
 
 /// <summary>
 /// The <see cref="VisualAttribute"/> class is used to mark a class, struct, enum, constructor, method, property, field, event, interface, or delegate as a visual and so interact with the console.

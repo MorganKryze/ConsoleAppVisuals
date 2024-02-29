@@ -1,4 +1,6 @@
 ﻿using ConsoleAppVisuals;
+using ConsoleAppVisuals.Enums;
+using ConsoleAppVisuals.Models;
 
 namespace example
 {
