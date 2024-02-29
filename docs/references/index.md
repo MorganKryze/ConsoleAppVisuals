@@ -1,12 +1,67 @@
 # Getting started
 
-## Introduction
+This section describes all references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.
 
-This section describes all complete references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.
+> [!CAUTION]
+> Adding `using ConsoleAppVisuals;` at the beginning of your C# file is necessary but not sufficient to use the full potential of the library. Refer to the descriptions below to discover which namespaces to add to your project and the Introduction section to see how they are used.
+
+## Namespace descriptions
+
+### `ConsoleAppVisuals`
+
+```csharp
+using ConsoleAppVisuals;
+```
+
+This is the main namespace of the library. It contains the `Core` and `Window` classes. The `Core` class is the core of the library interaction with the console. It contains the methods to interact with the console on a low level basis. The `Window` class is used to manage visual elements. You may use it to add, remove, update and display elements on the console.
+
+### `Elements`
+
+```csharp
+using ConsoleAppVisuals.Elements;
+```
+
+This namespace contains all the visual elements of the library. You may find the static elements as well as the interactive elements. They share common characteristics and methods defined in the `models/Element.cs` and the `models/InteractiveElement.cs` class.
+
+### `Enums`
+
+```csharp
+using ConsoleAppVisuals.Enums;
+```
+
+This namespace contains all the enumerations used in the library. They are used to define the behaviors, position, response of the elements in the console.
+
+### `Models`
+
+```csharp
+using ConsoleAppVisuals.Models;
+```
+
+This namespace contains all the models of the library. They are used to define the characteristics of the elements and the interactions. You may find the `Element`, `InteractiveElement` classes for example.
+
+### `Attributes`
+
+```csharp
+using ConsoleAppVisuals.Attributes;
+```
+
+This namespace contains the `VisualAttribute` class. This attribute is used to ignore the element when calculating coverage since untestable.
+
+### `Errors`
+
+```csharp
+using ConsoleAppVisuals.Errors;
+```
+
+This namespace contains all the custom exceptions of the library. They are used to handle specific errors that may occur during the execution of the library.
+
+### Bonus: `Usings.cs`
+
+This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library. I recommend you to do the same in your projects. [See file](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Usings.cs)
 
 ## Structure
 
-Here is the file structure of the library:
+Here is the detailed file structure of the library:
 
 ```bash
 ConsoleAppVisuals
@@ -53,41 +108,3 @@ ConsoleAppVisuals
 ├───Window.cs
 └───Usings.cs
 ```
-
-## Small descriptions
-
-### `Usings.cs`
-
-This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library.
-
-### `Core.cs`
-
-This class is the core of the library interaction with the console. It contains the methods to interact with the console on a low level basis.
-
-### `Window.cs`
-
-This class is used to manage visual elements. You may use it to add, remove, update and display elements on the console.
-
-### `TextStyler.cs`
-
-This class is used to style text according to a specified font. It contains the methods to apply a specific style to a text. Often used for the title.
-
-### `elements`
-
-This folder contains all the visual elements of the library. You may find the static elements as well as the interactive elements. They share common characteristics and methods defined in the `models/Element.cs` and the `models/InteractiveElement.cs` class.
-
-### `attributes`
-
-This folder contains the `VisualAttribute` class. this attribute basically indicate to ignore the element when calculating coverage since untestable.
-
-### `enums`
-
-This folder contains all the enums used in the library. They are used to define the behaviors, position, response of the elements in the console.
-
-### `errors`
-
-This folder contains all the custom exceptions of the library. They are used to handle specific errors that may occur during the execution of the library.
-
-### `models`
-
-This folder contains all the models of the library to format interactions.
