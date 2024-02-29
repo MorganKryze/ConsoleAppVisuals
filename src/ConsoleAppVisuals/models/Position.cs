@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals;
+namespace ConsoleAppVisuals.Models;
 
 /// <summary>
 /// A class that stores the position into X and Y parameters of a position.
