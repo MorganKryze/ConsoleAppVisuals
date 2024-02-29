@@ -81,6 +81,7 @@ Now, let's add the `ConsoleAppVisuals` package to our project:
 ```csharp
 using System;
 using ConsoleAppVisuals;
+using ConsoleAppVisuals.Elements;
 
 namespace MyApp
 {
@@ -182,8 +183,7 @@ EmbeddedText text = new EmbeddedText(
                 "You just wrote " + response?.Value + "!",
                 "And you " + response?.Status + "!"
             },
-            $"Next {Core.GetSelector.Item1}",
-            TextAlignment.Center
+            $"Next {Core.GetSelector.Item1}"
         );
 
 Window.AddElement(text);
@@ -233,8 +233,7 @@ EmbedText text = new EmbedText(
         "You just wrote " + response?.Value + "!",
         "And you " + response?.Status + "!"
     },
-    $"Next {Core.GetSelector.Item1}",
-    TextAlignment.Center
+    $"Next {Core.GetSelector.Item1}"
 );
 Window.AddElement(text);
 Window.ActivateElement(text);

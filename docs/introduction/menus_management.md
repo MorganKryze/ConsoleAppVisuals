@@ -24,6 +24,8 @@ And your cleaned `Program.cs` file should look like this:
 ```csharp
 using System;
 using ConsoleAppVisuals;
+using ConsoleAppVisuals.Elements;
+using ConsoleAppVisuals.Enums;
 
 namespace MyApp
 {
@@ -36,6 +38,9 @@ namespace MyApp
     }
 }
 ```
+
+> ![Note]
+> We added `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enums.
 
 ## Manage menu status
 

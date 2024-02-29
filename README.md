@@ -51,6 +51,7 @@ After installing the library, do not forget to add the following statement at th
 
 ```csharp
 using ConsoleAppVisuals;
+using ConsoleAppVisuals.Elements;
 ```
 
 #### Work with static elements
