@@ -12,7 +12,7 @@ In this section, you will learn:
 
 ## Setup
 
-We will be using the same project from the previous tutorial. If you haven't done it yet, please follow the steps from the [First app](ConsoleAppVisuals/introduction/first_app.html) tutorial.
+We will be using the same project from the previous tutorial. If you haven't done it yet, please follow the steps from the First app tutorial.
 
 Your file structure is like this:
 
@@ -85,7 +85,7 @@ Window.Render();
 Window.StopExecution();
 ```
 
-# === ADD PHOTOS ===
+![DashBoard](../assets/vid/gif/new_elements/dash_deactivate.gif)
 
 As you noticed, the title is not rendered on the screen because its Visibility property has been set to false.
 
@@ -120,7 +120,7 @@ Window.Render();
 Window.StopExecution();
 ```
 
-# === ADD PHOTOS ===
+![DashBoard](../assets/vid/gif/new_elements/dash_remove.gif)
 
 ## The `TableView` element
 
@@ -149,7 +149,7 @@ Window.Render();
 Window.StopExecution();
 ```
 
-# === ADD PHOTOS ===
+![TableView](../assets/img/jpg/new_elements/table_view.jpg)
 
 ## The `TableSelector` element
 
@@ -186,7 +186,7 @@ Window.AddElement(players);
 Window.ActivateElement<TableSelector<string>>();
 ```
 
-# === ADD PHOTOS ===
+![TableSelector](../assets/vid/gif/new_elements/table_selector.gif)
 
 Now let's collect the user interaction response:
 
@@ -210,7 +210,7 @@ Window.AddElement(
 Window.ActivateElement<EmbedText>();
 ```
 
-# === ADD PHOTOS ===
+![DashBoard](../assets/vid/gif/new_elements/embed.gif)
 
 ## The `Matrix` element
 
@@ -231,6 +231,8 @@ Window.AddElement(matrix);
 
 Window.ActivateElement<Matrix<int?>>();
 ```
+
+![Matrix](../assets/img/jpg/new_elements/matrix.jpg)
 
 ## The `ScrollingMenu` element
 
@@ -264,6 +266,6 @@ Window.AddElement(embedResponse);
 Window.ActivateElement(embedResponse);
 ```
 
-# === ADD PHOTOS ===
+![ScrollingMenu](../assets/vid/gif/new_elements/scrolling_menu.gif)
 
 We will develop in the next section how to create a complex app using menu management.

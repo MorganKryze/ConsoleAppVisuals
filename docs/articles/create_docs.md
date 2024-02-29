@@ -83,7 +83,7 @@ Here should be the default content of `docfx.json`:
     ],
     "resource": [
       {
-        "files": ["images/**"]
+        "files": ["img/**"]
       }
     ],
     "output": "_site",

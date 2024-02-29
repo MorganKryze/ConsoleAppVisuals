@@ -29,8 +29,8 @@
       "_appName": "ConsoleAppVisuals",
       "_appTitle": "ConsoleAppVisuals",
       "_appFooter": "Copyright (C) 2024  MorganKryze (Yann Vidamment)",
-      "_appLogoPath": "assets/images/svg/book.svg",
-      "_appFaviconPath": "assets/images/svg/book.svg",
+      "_appLogoPath": "assets/img/svg/book.svg",
+      "_appFaviconPath": "assets/img/svg/book.svg",
       "_enableSearch": true,
       "_disableContribution": true,
       "pdf": true
