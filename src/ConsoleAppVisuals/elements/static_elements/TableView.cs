@@ -69,7 +69,7 @@ public class TableView<T> : Element
     /// <param name="line">The line to display the table on.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public TableView(
         string? title = null,
         List<string>? headers = null,
@@ -408,7 +408,7 @@ public class TableView<T> : Element
     /// <summary>
     /// Toggles the rounded corners of the table.
     /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public void SetRoundedCorners(bool rounded = true)
     {
         _roundedCorners = rounded;
@@ -479,7 +479,7 @@ public class TableView<T> : Element
     /// </summary>
     /// <param name="line">The line to add.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public void AddLine(List<T> line)
     {
         if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
@@ -506,7 +506,7 @@ public class TableView<T> : Element
     /// <param name="line">The new line.</param>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public void UpdateLine(int index, List<T> line)
     {
         if (_rawLines?.Count > 0)
@@ -532,7 +532,7 @@ public class TableView<T> : Element
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public void RemoveLine(int index)
     {
         if (_rawLines?.Count > 0 && (index < 0 || index >= _rawLines.Count))
@@ -559,7 +559,7 @@ public class TableView<T> : Element
     /// <param name="index">The index of the line to return.</param>
     /// <returns>The line at the specified index.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs </remarks>
+    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public List<T> GetLine(int index)
     {
         if (index < 0 || index >= _rawLines?.Count)
