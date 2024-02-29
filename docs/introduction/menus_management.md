@@ -7,7 +7,7 @@ In this section, we will see how to manage menus in a console application. We wi
 
 ## Setup
 
-We will be using the same project from the previous tutorial. If you haven't done it yet, please follow the steps from the [First app](ConsoleAppVisuals/introduction/first_app.html) tutorial.
+We will be using the same project from the previous tutorial. If you haven't done it yet, please follow the steps from the First app tutorial.
 
 Your file structure is like this:
 
@@ -104,9 +104,9 @@ switch (response?.Status)
 Window.Close();
 ```
 
-# === ADD PHOTOS ===
+![Simple menu](../assets/vid/gif/menus_management/embed.gif)
 
-We filter the output to use the output only for the selected item:
+We can also filter the output to use the output only for the selected item:
 
 ```csharp
 switch (response?.Status)
@@ -171,6 +171,8 @@ switch (response?.Status)
         break;
 }
 ```
+
+![Using Value](../assets/vid/gif/menus_management/value.gif)
 
 That way, you may act differently depending on the selected item and create useful menu without too much effort.
 
@@ -291,11 +293,11 @@ switch (settingsResponse?.Status)
 goto SettingsMenu;
 ```
 
-# == ADD PHOTOS ==
+![Navigation](../assets/vid/gif/menus_management/navigation.gif)
 
 ## Centralized navigation
 
 Work in progress...
 
 > [!NOTE]
-> If this part really raise your interest, feel free to notify me by [opening an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [contact me by email](mailto:morgan@kodelab.fr).
+> If this part really raises your interest, feel free to notify me by [opening an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [contact me by email](mailto:morgan@kodelab.fr).
