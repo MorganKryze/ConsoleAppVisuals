@@ -15,7 +15,6 @@ public class TableView<T> : Element
     private List<List<T>>? _rawLines;
     private string[]? _displayArray;
     private bool _roundedCorners;
-    private readonly int _line;
     private readonly Placement _placement;
     #endregion
 
@@ -34,11 +33,6 @@ public class TableView<T> : Element
     /// This property returns the title of the table.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// This property returns the line to display the table on.
-    /// </summary>
-    public override int Line => _line;
 
     /// <summary>
     /// This property returns the height of the table.
@@ -66,7 +60,6 @@ public class TableView<T> : Element
     /// <param name="lines">The lines of the table.</param>
     /// <param name="roundedCorners">The rounded corners of the table.</param>
     /// <param name="placement">The placement of the table.</param>
-    /// <param name="line">The line to display the table on.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
@@ -75,8 +68,7 @@ public class TableView<T> : Element
         List<string>? headers = null,
         List<List<T>>? lines = null,
         bool roundedCorners = false,
-        Placement placement = Placement.TopCenter,
-        int? line = null
+        Placement placement = Placement.TopCenter
     )
     {
         _title = title;
@@ -84,7 +76,6 @@ public class TableView<T> : Element
         _rawLines = lines;
         _roundedCorners = roundedCorners;
         _placement = placement;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         if (CompatibilityCheck())
         {
             BuildTable();
@@ -642,7 +633,7 @@ public class TableView<T> : Element
         for (int j = 0; j < _displayArray.Length; j++)
         {
             array[j] = _displayArray[j];
-            Core.WritePositionedString(array[j], _placement.ToTextAlignment(), false, _line + j);
+            Core.WritePositionedString(array[j], _placement.ToTextAlignment(), false, Line + j);
         }
     }
     #endregion

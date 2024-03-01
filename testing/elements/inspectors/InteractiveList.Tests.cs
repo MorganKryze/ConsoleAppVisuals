@@ -82,7 +82,7 @@ public class UnitTestInteractiveList
         var list = new InteractiveList(Placement.TopLeft, true);
 
         // Act
-        var lines = list.GetLines;
+        var lines = list.Lines;
 
         // Assert
         Assert.IsNotNull(lines);

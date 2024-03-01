@@ -549,106 +549,9 @@ public class UnitTestWindow
         // Cleanup
         Window.RemoveAllElements();
     }
-
-    [TestMethod]
-    public void OnResize_ColorSet()
-    {
-        // Arrange
-        Core.SetBackgroundColor(ConsoleColor.Blue);
-
-        // Act
-        var result = Window.OnResize();
-
-        // Assert
-        Assert.IsTrue(result);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
-    [TestMethod]
-    public void OnResize_ColorReset()
-    {
-        // Arrange
-        Core.RestoreColorPanel();
-
-        // Act
-        var result = Window.OnResize();
-
-        // Assert
-        Assert.IsFalse(result);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
     #endregion
 
     #region RenderElements
-    [TestMethod]
-    public void RenderOneElement_ElementRenderedById()
-    {
-        // Arrange
-        var title = new Title("Hello World!");
-        Window.AddElement(title);
-
-        // Act
-        var result = Window.RenderOneElement(title.Id);
-
-        // Assert
-        Assert.IsTrue(result);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
-    [TestMethod]
-    public void RenderOneElement_InvalidId_ExceptionThrown()
-    {
-        // Arrange
-        var title = new Title("Hello World!");
-        Window.AddElement(title);
-
-        // Act and Assert
-        Assert.ThrowsException<ElementNotFoundException>(
-            () => Window.RenderOneElement(title.Id + 1)
-        );
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
-    [TestMethod]
-    public void RenderOneElement_ElementRenderedByElement()
-    {
-        // Arrange
-        var title = new Title("Hello World!");
-        Window.AddElement(title);
-
-        // Act
-        var result = Window.RenderOneElement(title);
-
-        // Assert
-        Assert.IsTrue(result);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
-    [TestMethod]
-    public void RenderOneElement_InvalidElement_ExceptionThrown()
-    {
-        // Arrange
-        var title = new Title("Hello World!");
-        Window.AddElement(title);
-        var prompt = new Prompt("Hello World!");
-
-        // Act and Assert
-        Assert.ThrowsException<ElementNotFoundException>(() => Window.RenderOneElement(prompt));
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
     [TestMethod]
     public void RenderAllElements_AllElementsRendered()
     {
@@ -657,7 +560,7 @@ public class UnitTestWindow
         Window.AddElement(title);
 
         // Act
-        var result = Window.RenderAllElementsSpace();
+        var result = Window.RenderElementsSpace();
 
         // Assert
         Assert.IsTrue(result);

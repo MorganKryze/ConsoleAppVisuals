@@ -82,7 +82,7 @@ public class UnitTestElementList
         var list = new ElementList(Placement.TopLeft, true);
 
         // Act
-        var lines = list.GetLines;
+        var lines = list.Lines;
 
         // Assert
         Assert.IsNotNull(lines);

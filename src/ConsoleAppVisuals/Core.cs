@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// The <see cref="Core"/> class contains visual elements for a console app.
+/// The <see cref="Core"/> class contains all the interactions between the application and the console.
 /// </summary>
 public static class Core
 {
@@ -61,20 +61,28 @@ public static class Core
     /// </summary>
     /// <returns>A tuple containing the initial font color and the initial background color.</returns>
     public static (ConsoleColor, ConsoleColor) GetInitialColorPanel => s_initialColorPanel;
+    #endregion
 
+    #region Low abstraction level methods
     /// <summary>
-    /// This property is used to check if the screen has been updated.
+    /// This method is used to check if the screen has been updated.
     /// </summary>
     /// <returns>True if the screen has been updated, false otherwise.</returns>
     /// <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
     [Visual]
-    public static bool IsScreenUpdated =>
-        Console.WindowWidth != s_previousWindowWidth
-        || Console.WindowHeight != s_previousWindowHeight
-        || s_colorPanel != s_initialColorPanel;
-    #endregion
+    public static bool IsScreenUpdated()
+    {
+        var isUpdated =
+            Console.WindowWidth != s_previousWindowWidth
+            || Console.WindowHeight != s_previousWindowHeight
+            || s_colorPanel != s_initialColorPanel;
+        if (isUpdated)
+        {
+            SetConsoleDimensions();
+        }
+        return isUpdated;
+    }
 
-    #region Low abstraction level methods
     /// <summary>
     /// This method is used to set the selector of the console menus.
     /// </summary>

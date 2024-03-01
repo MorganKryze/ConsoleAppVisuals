@@ -52,8 +52,6 @@ namespace example
                     switch (response.Value) // Check the response info (the index of the selected item). Here the Info for a ScrollingMenu is an int
                     {
                         case 0:
-                            Window.OnResize(); // Render the window if the console has been resized
-
                             Window.AddElement(
                                 new ScrollingMenu(
                                     "What color do you want to change?",
@@ -99,11 +97,9 @@ namespace example
                             }
 
                             Window.RemoveElement(5);
-                            Window.OnResize();
                             goto Menu;
 
                         case 1: // These following functions are at the core of the library, they should not be used directly
-                            Window.OnResize();
 
                             Core.WriteContinuousString(
                                 "Have a look on the console to see all the text!",
@@ -146,12 +142,9 @@ namespace example
                             Window.StopExecution();
 
                             Window.Render();
-                            Window.OnResize();
                             goto Menu;
 
                         case 2:
-                            Window.OnResize();
-
                             Window.AddElement( // When you add an element, the info of the constructor are not displayed by default consider looking to the documentation to know what they are or use your IDE to see them
                                 new EmbedText(
                                     new List<string>()
@@ -167,11 +160,9 @@ namespace example
                             Window.ActivateElement<EmbedText>(); // Activate the element to display it on the console
 
                             Window.RemoveElement<EmbedText>(); // Removing the elements from the window after their use is not mandatory but it is recommended to keep the list clean
-                            Window.OnResize();
                             goto Menu;
 
                         case 3: // These following functions are at the core of the library, they should not be used directly
-                            Window.OnResize();
 
                             Core.WritePositionedStyledText(
                                 Core.StyleText("Hello World!"),
@@ -188,12 +179,9 @@ namespace example
                             Window.StopExecution();
 
                             Window.Render();
-                            Window.OnResize();
                             goto Menu;
 
                         case 4:
-                            Window.OnResize();
-
                             List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 }; // We first create the data to display
                             List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
                             List<int?> thirdRow = new() { 7, 8, null, 3, 4, 5 };
@@ -222,12 +210,9 @@ namespace example
 
                             Window.RemoveElement<Matrix<int?>>();
                             Window.Render();
-                            Window.OnResize();
                             goto Menu;
 
                         case 5:
-                            Window.OnResize();
-
                             Window.AddElement(new Prompt("What is your name?", "Theo")); // For more information about the Prompt element, see the documentation
 
                             Window.ActivateElement<Prompt>();
@@ -248,8 +233,6 @@ namespace example
                             Window.RemoveElement<EmbedText>();
                             goto Menu;
                         case 6:
-                            Window.OnResize();
-
                             Window.AddElement(new IntSelector("Select a number", 10, 100, 25, 5)); // A FloatSelector is also available depending on your needs
 
                             Window.ActivateElement<IntSelector>();
@@ -267,14 +250,11 @@ namespace example
                             );
                             Window.ActivateElement<EmbedText>();
 
-                            Window.OnResize();
                             Window.RemoveElement<IntSelector>();
                             Window.RemoveElement<EmbedText>();
                             goto Menu;
 
                         case 7:
-                            Window.OnResize();
-
                             List<string> studentsHeaders =
                                 new() { "id", "name", "major", "grades" }; // We first create the data to display, pay attention to the order of the data and their length (the length of the headers and the data must be the same)
                             List<string> student1 = new() { "01", "Theo", "Technology", "97" };
@@ -301,13 +281,10 @@ namespace example
                             Window.StopExecution();
                             Window.DeactivateElement<TableView<string>>();
 
-                            Window.OnResize();
                             Window.RemoveElement<TableView<string>>();
                             goto Menu;
 
                         case 8:
-                            Window.OnResize();
-
                             List<string> playersHeaders =
                                 new() { "id", "first name", "last name", "nationality", "slams" };
                             List<string> player1 =
@@ -355,21 +332,17 @@ namespace example
                             );
                             Window.ActivateElement<EmbedText>();
 
-                            Window.OnResize();
                             Window.RemoveElement<TableSelector<string>>();
                             Window.RemoveElement<EmbedText>();
                             goto Menu;
 
                         case 9:
-                            Window.OnResize();
-
                             float progress = 0f; // Contrary to the FakeLoadingBar, the LoadingBar is corresponds to a real loading defined by a variable, here progress
                             Window.AddElement(
                                 new LoadingBar(
                                     "[ Loading ...]",
                                     ref progress, // The variable must be passed by reference so the updates on the variable are taken in account
                                     Placement.TopCenter,
-                                    default,
                                     2000
                                 )
                             );
@@ -394,8 +367,6 @@ namespace example
                             goto Menu;
 
                         case 10: // These following functions are for debugging purposes, they should not be used in a production state of a software
-                            Window.OnResize();
-
                             Window.AddElement(
                                 new EmbedText(
                                     new List<string>()
@@ -408,18 +379,15 @@ namespace example
                             );
                             Window.ActivateElement<EmbedText>(false);
 
-                            Window.RenderAllElementsSpace(); // This method will display all the spaces taken by the element in teh window
+                            Window.RenderElementsSpace(); // This method will display all the spaces taken by the element in teh window
                             Window.StopExecution();
 
                             Window.Render(); // Render the window to display the elements above
 
-                            Window.OnResize();
                             Window.RemoveElement<EmbedText>();
                             goto Menu;
 
                         case 11:
-                            Window.OnResize();
-
                             Window.AddElement(
                                 new StaticDemo( // Custom element, see the StaticDemo class for more information
                                     new List<string>()
@@ -434,12 +402,9 @@ namespace example
                             Window.ActivateElement<StaticDemo>();
 
                             Window.RemoveElement<StaticDemo>();
-                            Window.OnResize();
                             goto Menu;
 
                         case 12:
-                            Window.OnResize();
-
                             Window.AddElement(
                                 new InteractDemo(
                                     "This element is also custom for demo purposes, you may type something:"
@@ -450,7 +415,6 @@ namespace example
                             Window.DeactivateElement<InteractDemo>();
 
                             Window.RemoveElement<InteractDemo>();
-                            Window.OnResize();
                             goto Menu;
 
                         case 13: // These following functions are for debugging purposes, they should not be used in a production state of a software
@@ -476,8 +440,6 @@ namespace example
 
                             Window.StopExecution();
                             Window.DeactivateElement<InteractiveList>();
-
-                            Window.OnResize();
                             goto Menu;
 
                         default:
@@ -487,8 +449,6 @@ namespace example
                     break;
 
                 case Output.Escaped:
-                    Window.OnResize();
-
                     Window.AddElement(
                         new EmbedText(
                             new List<string>()
@@ -506,8 +466,6 @@ namespace example
                     break;
 
                 case Output.Deleted:
-                    Window.OnResize();
-
                     Window.AddElement(
                         new EmbedText(
                             new List<string>()

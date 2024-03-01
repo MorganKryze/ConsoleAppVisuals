@@ -36,6 +36,10 @@ public static class Window
     /// <summary>
     /// The default visibility of the elements when they are added to the window.
     /// </summary>
+    /// <remarks>
+    /// This value should not be changed.
+    /// Each time the user adds an element to the window, it will try to toggle the visibility of the element.
+    /// </remarks>
     public const bool DEFAULT_VISIBILITY = false;
     #endregion
 
@@ -57,6 +61,18 @@ public static class Window
     #endregion
 
     #region Managing Methods: Get, Add, Insert, Remove, RemoveAll
+
+    /// <summary>
+    /// This method returns a range of elements given a start and end ids.
+    /// </summary>
+    /// <param name="start">The start id of the range.</param>
+    /// <param name="end">The end id of the range.</param>
+    /// <returns>The range of elements from the start to the end id.</returns>
+    public static List<Element> GetRange(int start, int end)
+    {
+        return s_elements.GetRange(start, end);
+    }
+
     /// <summary>
     /// This method returns the first element of the given type.
     /// </summary>
@@ -132,8 +148,9 @@ public static class Window
     {
         foreach (var element in elements)
         {
+            element.Id = NextId;
             s_elements.Add(element);
-            if (!element.IsInteractive && AllowVisibilityToggle(element.Id))
+            if (AllowVisibilityToggle(element.Id))
             {
                 element.ToggleVisibility();
             }
@@ -341,7 +358,7 @@ public static class Window
     /// <summary>
     /// After activating the visibility of an interactive element, this method will return the response for the user.
     /// </summary>
-    /// <param name="clear">If true, the element will be cleared.</param>
+    /// <param name="clear">If true, the element will be cleared afterward.</param>
     /// <typeparam name="T">The type of interactive element.</typeparam>
     /// <typeparam name="TResponse">The type of the response (int, string, float...).</typeparam>
     /// <returns>The response of the user.</returns>
@@ -389,7 +406,7 @@ public static class Window
     /// This method to deactivate the visibility of the element with the given id.
     /// </summary>
     /// <param name="id">The id of the element.</param>
-    /// <param name="clear">If true, the element will be cleared.</param>
+    /// <param name="clear">If true, the element will be cleared from the console.</param>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -412,14 +429,13 @@ public static class Window
                 s_elements[id].Clear();
             }
         }
-        Render();
     }
 
     /// <summary>
     /// This method deactivate the visibility of the element with the given type.
     /// </summary>
     /// <param name="element">The element to be deactivated.</param>
-    /// <param name="clear">If true, the element will be cleared.</param>
+    /// <param name="clear">If true, the element will be cleared from the console.</param>
     /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -493,11 +509,10 @@ public static class Window
                 element.ToggleVisibility();
             }
         }
-        Render();
     }
     #endregion
 
-    #region Utility Methods: AllowVisibilityToggle, GetLineAvailable, Clear, StopExecution, RenderOne, Refresh
+    #region Utility Methods: AllowVisibilityToggle, GetLineAvailable, Clear, StopExecution, Refresh
     [ExcludeFromCodeCoverage]
     private static void UpdateIDs()
     {
@@ -635,7 +650,6 @@ public static class Window
     [Visual]
     public static void StopExecution(ConsoleKey key = ConsoleKey.Enter)
     {
-        // wait until the user presses a key
         while (Console.ReadKey(intercept: true).Key != key)
         {
             Thread.Sleep(10);
@@ -643,54 +657,7 @@ public static class Window
     }
 
     /// <summary>
-    /// This method draws the element with the given id on the console.
-    /// </summary>
-    /// <param name="id">The id of the element.</param>
-    /// <exception cref="ElementNotFoundException">Thrown when the id is out of range.</exception>
-    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static bool RenderOneElement(int id)
-    {
-        if (id < 0 || id >= s_elements.Count)
-        {
-            throw new ElementNotFoundException("Invalid element ID.");
-        }
-        s_elements[id].RenderElement();
-        return true;
-    }
-
-    /// <summary>
-    /// This method draws the given element on the console.
-    /// </summary>
-    /// <param name="element">The element to be drawn.</param>
-    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
-    /// <returns>True if the element is successfully drawn, false otherwise.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static bool RenderOneElement(Element element)
-    {
-        if (element == null || !s_elements.Contains(element))
-        {
-            throw new ElementNotFoundException("Invalid element. Not found in the window.");
-        }
-
-        element.RenderElement();
-        return true;
-    }
-
-    /// <summary>
-    /// This method draws all the non interactive elements of the window on the console.
+    /// This method draws all visible elements of the window on the console.
     /// </summary>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -702,10 +669,7 @@ public static class Window
     public static void Render()
     {
         Clear();
-        if (Core.IsScreenUpdated)
-        {
-            Core.SetConsoleDimensions();
-        }
+        Core.IsScreenUpdated();
         foreach (var element in s_elements)
         {
             element.RenderElement();
@@ -713,18 +677,33 @@ public static class Window
     }
 
     /// <summary>
-    /// This method is called to refresh the window when the size of the console is changed.
+    /// This method draws all given visible elements of the window on the console.
     /// </summary>
-    /// <returns>True if the window is refreshed, false otherwise.</returns>
-    public static bool OnResize()
+    /// <param name="elements">The elements to be drawn.</param>
+    /// <exception cref="ElementNotFoundException">Thrown when the element is not found in the window.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public static void Render(params Element[] elements)
     {
-        if (Core.IsScreenUpdated)
+        if (Core.IsScreenUpdated())
         {
-            Core.SetConsoleDimensions();
             Render();
-            return true;
+            return;
         }
-        return false;
+
+        foreach (var element in elements)
+        {
+            if (!s_elements.Contains(element))
+            {
+                throw new ElementNotFoundException($"Element {element} is not in the Window.");
+            }
+            element.RenderElement();
+        }
     }
 
     /// <summary>
@@ -738,7 +717,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static bool RenderAllElementsSpace()
+    public static bool RenderElementsSpace()
     {
         foreach (var element in s_elements)
         {
