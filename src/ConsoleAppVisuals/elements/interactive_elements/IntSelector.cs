@@ -17,14 +17,13 @@ namespace ConsoleAppVisuals.Elements;
 public class IntSelector : InteractiveElement<int>
 {
     #region Fields
-    private readonly string _question;
-    private readonly int _minimumValue;
-    private readonly int _maximumValue;
-    private readonly int _startValue;
-    private readonly int _step;
-    private readonly bool _roundedCorners;
-    private readonly Placement _placement;
-    private readonly int _line;
+    private string _question;
+    private int _minimumValue;
+    private int _maximumValue;
+    private int _startValue;
+    private int _step;
+    private bool _roundedCorners;
+    private Placement _placement;
     #endregion
 
     #region Properties
@@ -32,11 +31,6 @@ public class IntSelector : InteractiveElement<int>
     /// The placement of the selector on the console.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// The line where the selector will be displayed.
-    /// </summary>
-    public override int Line => _line;
 
     /// <summary>
     /// The height of the selector.
@@ -51,9 +45,6 @@ public class IntSelector : InteractiveElement<int>
             _question.Length,
             $" {Core.GetSelector.Item1} {BuildNumber(_maximumValue)} {Core.GetSelector.Item2} ".Length
         );
-    #endregion
-
-    #region Getters
 
     /// <summary>
     /// The question to ask the user.
@@ -96,7 +87,6 @@ public class IntSelector : InteractiveElement<int>
     /// <param name="start">The start value of the selector.</param>
     /// <param name="step">The step of the selector.</param>
     /// <param name="placement">The placement of the selector on the console.</param>
-    /// <param name="line">The line where the selector will be displayed.</param>
     /// <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -112,7 +102,6 @@ public class IntSelector : InteractiveElement<int>
         int start = 0,
         int step = 100,
         Placement placement = Placement.TopCenter,
-        int? line = null,
         bool roundedCorners = false
     )
     {
@@ -123,7 +112,6 @@ public class IntSelector : InteractiveElement<int>
         _startValue = CheckStart(start, _minimumValue, _maximumValue);
         _step = CheckStep(step, _minimumValue, _maximumValue);
         _placement = placement;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(_placement);
         _roundedCorners = roundedCorners;
     }
 
@@ -160,14 +148,132 @@ public class IntSelector : InteractiveElement<int>
 
     #region Methods
     /// <summary>
+    /// This method is used to update the question of the selector.
+    /// </summary>
+    /// <param name="question">The question to ask the user.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateQuestion(string question)
+    {
+        _question = question;
+    }
+
+    /// <summary>
+    /// This method is used to update the minimum value of the selector.
+    /// </summary>
+    /// <param name="min">The minimum value of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateMin(int min)
+    {
+        CheckMinNotHigherThanMax(min, _maximumValue);
+        _minimumValue = min;
+        _startValue = CheckStart(_startValue, _minimumValue, _maximumValue);
+        _step = CheckStep(_step, _minimumValue, _maximumValue);
+    }
+
+    /// <summary>
+    /// This method is used to update the maximum value of the selector.
+    /// </summary>
+    /// <param name="max">The maximum value of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateMax(int max)
+    {
+        CheckMinNotHigherThanMax(_minimumValue, max);
+        _maximumValue = max;
+        _startValue = CheckStart(_startValue, _minimumValue, _maximumValue);
+        _step = CheckStep(_step, _minimumValue, _maximumValue);
+    }
+
+    /// <summary>
+    /// This method is used to update the start value of the selector.
+    /// </summary>
+    /// <param name="start">The start value of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateStart(int start)
+    {
+        _startValue = CheckStart(start, _minimumValue, _maximumValue);
+    }
+
+    /// <summary>
+    /// This method is used to update the step of the selector.
+    /// </summary>
+    /// <param name="step">The step of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateStep(int step)
+    {
+        _step = CheckStep(step, _minimumValue, _maximumValue);
+    }
+
+    /// <summary>
+    /// This method is used to update the placement of the selector.
+    /// </summary>
+    /// <param name="placement">The placement of the selector on the console.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = placement;
+    }
+
+    /// <summary>
+    /// This method is used to update the rounded corners of the selector.
+    /// </summary>
+    /// <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void SetRoundedCorners(bool roundedCorners = true)
+    {
+        _roundedCorners = roundedCorners;
+    }
+
+    /// <summary>
     /// This method is used to draw the selector on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
     {
-        Core.WriteContinuousString(_question, _line, default, 1500, 50);
+        Core.WriteContinuousString(_question, Line, default, 1500, 50);
         int currentNumber = _startValue;
-        int lineSelector = _line + 4;
+        int lineSelector = Line + 4;
         while (true)
         {
             DisplayChoices(lineSelector, currentNumber);
@@ -183,10 +289,16 @@ public class IntSelector : InteractiveElement<int>
                     currentNumber = NextNumber(Direction.Down, currentNumber);
                     break;
                 case ConsoleKey.Enter:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Selected, currentNumber));
+                    SendResponse(
+                        this,
+                        new InteractionEventArgs<int>(Output.Selected, currentNumber)
+                    );
                     return;
                 case ConsoleKey.Escape:
-                    SendResponse(this, new InteractionEventArgs<int>(Output.Escaped, currentNumber));
+                    SendResponse(
+                        this,
+                        new InteractionEventArgs<int>(Output.Escaped, currentNumber)
+                    );
                     return;
                 default:
                     break;

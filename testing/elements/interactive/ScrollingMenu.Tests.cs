@@ -22,7 +22,14 @@ public class UnitTestScrollingMenu
     public void Placement_Getter()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question",0, Placement.TopCenter, 0, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            0,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var placement = scrollingMenu.Placement;
@@ -38,7 +45,14 @@ public class UnitTestScrollingMenu
     public void Line_Getter()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question", 0, Placement.TopCenter, 0, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            0,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var line = scrollingMenu.Line;
@@ -52,7 +66,14 @@ public class UnitTestScrollingMenu
     public void Line_Getter_NoInput()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question", 0, Placement.TopCenter, default, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            0,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var line = scrollingMenu.Line;
@@ -68,7 +89,14 @@ public class UnitTestScrollingMenu
     public void Height_Getter()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question", 0, Placement.TopCenter, 0, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            0,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var height = scrollingMenu.Height;
@@ -84,7 +112,14 @@ public class UnitTestScrollingMenu
     public void Width_Getter()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question", 0, Placement.TopCenter, 0, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            0,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var width = scrollingMenu.Width;
@@ -100,7 +135,14 @@ public class UnitTestScrollingMenu
     public void Question_Getter()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question", 0, Placement.TopCenter, 0, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            0,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var question = scrollingMenu.Question;
@@ -116,7 +158,14 @@ public class UnitTestScrollingMenu
     public void Choices_Getter()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question", 0, Placement.TopCenter, 0, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            0,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var choices = scrollingMenu.Choices;
@@ -135,7 +184,14 @@ public class UnitTestScrollingMenu
     public void DefaultIndex_Getter()
     {
         // Arrange
-        var scrollingMenu = new ScrollingMenu("Question", 1, Placement.TopCenter, 0, "Choice1", "Choice2", "Choice3");
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            1,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
 
         // Act
         var defaultIndex = scrollingMenu.DefaultIndex;

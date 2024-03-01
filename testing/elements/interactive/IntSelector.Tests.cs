@@ -25,7 +25,7 @@ public class UnitTestIntSelector
     public void Placement_Getter(Placement placement)
     {
         // Arrange
-        var intSelector = new IntSelector("Question", 0, 10, 5, 1, placement, 0);
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, placement);
 
         // Act
         var actualPlacement = intSelector.Placement;
@@ -43,7 +43,7 @@ public class UnitTestIntSelector
     {
         // Arrange
         var line = 0;
-        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter, line);
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
 
         // Act
         var actualLine = intSelector.Line;
@@ -75,7 +75,7 @@ public class UnitTestIntSelector
     public void Height_Getter()
     {
         // Arrange
-        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter, 0);
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
 
         // Act
         var actualHeight = intSelector.Height;
@@ -91,7 +91,7 @@ public class UnitTestIntSelector
     public void Width_Getter()
     {
         // Arrange
-        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter, 0);
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
 
         // Act
         var actualWidth = intSelector.Width;
@@ -117,7 +117,7 @@ public class UnitTestIntSelector
         var line = 0;
 
         // Act
-        var intSelector = new IntSelector(question, min, max, start, step, placement, line);
+        var intSelector = new IntSelector(question, min, max, start, step, placement);
 
         // Assert
         Assert.AreEqual(question, intSelector.Question);
@@ -141,11 +141,10 @@ public class UnitTestIntSelector
         var start = 5;
         var step = 1;
         var placement = Placement.TopCenter;
-        var line = 0;
 
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(
-            () => new IntSelector(question, min, max, start, step, placement, line)
+            () => new IntSelector(question, min, max, start, step, placement)
         );
     }
 
@@ -159,11 +158,10 @@ public class UnitTestIntSelector
         var question = "Question";
         var step = 1;
         var placement = Placement.TopCenter;
-        var line = 0;
 
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(
-            () => new IntSelector(question, min, max, start, step, placement, line)
+            () => new IntSelector(question, min, max, start, step, placement)
         );
     }
 
@@ -177,11 +175,10 @@ public class UnitTestIntSelector
         // Arrange
         var question = "Question";
         var placement = Placement.TopCenter;
-        var line = 0;
 
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(
-            () => new IntSelector(question, min, max, start, step, placement, line)
+            () => new IntSelector(question, min, max, start, step, placement)
         );
     }
     #endregion

@@ -23,7 +23,6 @@ public class UnitTestFakeLoadingBar
     public void Constructor_Initialization(
         string text,
         Placement placement,
-        int line,
         int processDuration,
         int additionalDuration
     )

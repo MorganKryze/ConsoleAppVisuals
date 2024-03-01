@@ -54,8 +54,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act
@@ -129,8 +128,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act
@@ -182,8 +180,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act
@@ -235,8 +232,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act
@@ -358,8 +354,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act
@@ -454,8 +449,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act
@@ -501,8 +495,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act
@@ -572,8 +565,7 @@ public class UnitTestTableSelector
             default,
             default,
             default,
-            default,
-            0
+            default
         );
 
         // Act

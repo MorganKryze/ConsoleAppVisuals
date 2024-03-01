@@ -27,23 +27,6 @@ public class UnitTestFooter
         //Act
         footer.Placement = placement;
         //Assert
-        Assert.AreEqual(placement, footer.Placement);
-    }
-    #endregion
-
-    #region PlacementFalse
-    [TestMethod]
-    [ExpectedException(typeof(AssertFailedException))]
-    [DataRow(Placement.TopLeft)]
-    [DataRow(Placement.TopCenter)]
-    [DataRow(Placement.TopRight)]
-    public void PlacementFalse(Placement placement)
-    {
-        //Arrange
-        Footer footer = new Footer();
-        //Act
-        footer.Placement = placement;
-        //Assert
         Assert.AreEqual(Placement.BottomCenterFullWidth, footer.Placement);
     }
     #endregion
