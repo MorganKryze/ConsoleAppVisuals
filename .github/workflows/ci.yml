@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
       - name: Build
-        run: dotnet build -c Release
+        run: dotnet build -c Release /p:ContinuousIntegrationBuild=true
       - name: Test
         run: dotnet test -c Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
       - name: Adding dotnet tools
