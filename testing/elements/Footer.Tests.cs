@@ -16,22 +16,6 @@ public class UnitTestFooter
     }
     #endregion
 
-    #region Text
-    [TestMethod]
-    [DataRow(" ", " ", " ")]
-    [DataRow("l ", "m ", "r ")]
-    public void Text(string left, string mid, string right)
-    {
-        //Arrange
-        var text = (left, mid, right);
-        Footer footer = new Footer();
-        //Act
-        footer.Text = text;
-        //Assert
-        Assert.AreEqual(text, footer.Text);
-    }
-    #endregion
-
     #region Placement
     [TestMethod]
     [DataRow(Placement.BottomCenterFullWidth)]

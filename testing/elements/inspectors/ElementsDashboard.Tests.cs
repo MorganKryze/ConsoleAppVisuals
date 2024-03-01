@@ -36,7 +36,7 @@ public class UnitTestElementsDashboard
     public void Constructor_WithLine()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true, 0);
+        var list = new ElementsDashboard(Placement.TopLeft, true);
 
         // Act
         // No additional action needed
@@ -71,7 +71,7 @@ public class UnitTestElementsDashboard
         var list = new ElementsDashboard(Placement.TopLeft, true);
 
         // Act
-        var headers = list.Headers;
+        var headers = ElementsDashboard.Headers;
 
         // Assert
         Assert.IsNotNull(headers);
@@ -107,7 +107,7 @@ public class UnitTestElementsDashboard
     public void Line_ReturnsLine()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true, 0);
+        var list = new ElementsDashboard(Placement.TopLeft, true);
 
         // Act
         var line = list.Line;

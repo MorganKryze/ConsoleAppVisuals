@@ -18,8 +18,8 @@ public class UnitTestFakeLoadingBar
 
     #region Constructor
     [TestMethod]
-    [DataRow("Test", Placement.TopCenterFullWidth, 0, 1000, 1000)]
-    [DataRow("Test", Placement.TopCenterFullWidth, null, 1000, 1000)]
+    [DataRow("Test", Placement.TopCenterFullWidth, 1000, 1000)]
+    [DataRow("Test", Placement.TopCenterFullWidth, 1000, 1000)]
     public void Constructor_Initialization(
         string text,
         Placement placement,
@@ -34,7 +34,6 @@ public class UnitTestFakeLoadingBar
         var loadingBar = new FakeLoadingBar(
             text,
             placement,
-            line,
             processDuration,
             additionalDuration
         );
@@ -51,7 +50,6 @@ public class UnitTestFakeLoadingBar
         var loadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            default,
             1000,
             1000
         );
@@ -61,19 +59,6 @@ public class UnitTestFakeLoadingBar
 
         // Assert
         Assert.AreEqual(line, lineAvailable);
-    }
-
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    [DataRow(30000)]
-    [DataRow(-1)]
-    public void Constructor_InvalidLine_ExceptionThrown(int line)
-    {
-        // Arrange
-
-        // Act
-        new FakeLoadingBar("Test", Placement.TopCenterFullWidth, line, 1000, 1000);
-        // Assert
     }
     #endregion
 
@@ -87,7 +72,6 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );
@@ -110,13 +94,12 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );
 
         // Act
-        fakeLoadingBar.Text = text;
+        fakeLoadingBar.UpdateText(text);
 
         // Assert
         Assert.AreEqual(fakeLoadingBar.Text, text);
@@ -131,7 +114,6 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );
@@ -152,7 +134,6 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );
@@ -173,7 +154,6 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );
@@ -194,7 +174,6 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );
@@ -215,7 +194,6 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );
@@ -236,7 +214,6 @@ public class UnitTestFakeLoadingBar
         var fakeLoadingBar = new FakeLoadingBar(
             "Test",
             Placement.TopCenterFullWidth,
-            0,
             1000,
             1000
         );

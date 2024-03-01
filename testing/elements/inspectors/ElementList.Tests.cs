@@ -34,7 +34,7 @@ public class UnitTestElementList
     public void Constructor_WithLine()
     {
         // Arrange
-        var list = new ElementList(Placement.TopLeft, true, 0);
+        var list = new ElementList(Placement.TopLeft, true);
 
         // Act
         // No additional action needed
@@ -69,7 +69,7 @@ public class UnitTestElementList
         var list = new ElementList(Placement.TopLeft, true);
 
         // Act
-        var headers = list.GetHeaders;
+        var headers = ElementList.Headers;
 
         // Assert
         Assert.IsNotNull(headers);
@@ -105,7 +105,7 @@ public class UnitTestElementList
     public void Line_ReturnsLine()
     {
         // Arrange
-        var list = new ElementList(Placement.TopLeft, true, 0);
+        var list = new ElementList(Placement.TopLeft, true);
 
         // Act
         var line = list.Line;
