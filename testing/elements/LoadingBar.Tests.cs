@@ -121,7 +121,7 @@ public class UnitTestLoadingBar
     {
         //Arrange
         float valuee = 0.3f;
-        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 0, 1000);
+        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 1000);
         //Act
         var newAdditionalDuration = loadingBar.AdditionalDuration;
         //Assert
