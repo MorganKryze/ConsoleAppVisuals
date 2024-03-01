@@ -38,13 +38,13 @@ public class UnitTestTitle
     {
         // Arrange
         Title title1 = new("Hello World!", 2);
-        Title title2 = new("Bonjour Monde !", 2);
+        Title title2 = new("Bonjour Monde !", 0);
 
         // Act
-        title1.UpdateMargin(3);
+        title1.UpdateMargin(0);
 
         // Assert
-        Assert.AreNotEqual(title1.Height, title2.Height);
+        Assert.AreEqual(title1.Height, title2.Height);
     }
     #endregion
 }

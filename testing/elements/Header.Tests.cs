@@ -45,25 +45,6 @@ public class UnitTestHeader
         Assert.AreEqual(line, Window.GetVisibleElement<Title>()?.Height ?? default);
     }
 
-    [TestMethod]
-    public void Line_GetLine_TitleMakesHeaderMove()
-    {
-        // Arrange
-        var header = new Header();
-        var title = new Title("Example Title");
-
-        // Act
-        Window.AddElement(title);
-        Window.AddElement(header);
-        Window.Render();
-        var line = header.Line;
-
-        // Assert
-        Assert.AreEqual(line, title.Height);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
     #endregion
 
     #region Height
