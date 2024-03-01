@@ -1133,12 +1133,6 @@
             The placement of the banner.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.Banner.Line">
-            <summary>
-            The line of the banner in the console.
-            </summary>
-            <remarks>We add 2 because so the banner does not overlap with the title.</remarks>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.Banner.Height">
             <summary>
             The height of the banner.
@@ -1151,20 +1145,20 @@
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Banner.Text">
             <summary>
-            Getter and setter of the text of the banner.
+            The text of the banner.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Banner.UpperMargin">
             <summary>
-            Getter and setter of the upper margin of the banner.
+            The upper margin of the banner.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Banner.LowerMargin">
             <summary>
-            Getter and setter of the lower margin of the banner.
+            The lower margin of the banner.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.Banner.#ctor(System.String,System.String,System.String,System.Int32,System.Int32,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.Elements.Banner.#ctor(System.String,System.String,System.String,System.Int32,System.Int32,ConsoleAppVisuals.Enums.Placement)">
             <summary>
             The natural constructor of the banner.
             </summary>
@@ -1174,7 +1168,6 @@
             <param name="upperMargin">The upper margin of the banner.</param>
             <param name="lowerMargin">The lower margin of the banner.</param>
             <param name="placement">The placement of the banner.</param>
-            <param name="line">The line of the banner in the console.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -1222,6 +1215,47 @@
             </list>
             </remarks>
         </member>
+        <member name="M:ConsoleAppVisuals.Elements.Banner.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the banner.
+            </summary>
+            <param name="placement">The new placement of the banner.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Banner.UpdateUpperMargin(System.Int32)">
+            <summary>
+            This method is used to update the upper margin of the banner.
+            </summary>
+            <param name="upperMargin">The new upper margin of the banner.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The upper margin of the banner must be between 0 and the height of the console window.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Banner.UpdateLowerMargin(System.Int32)">
+            <summary>
+            This method is used to update the lower margin of the banner.
+            </summary>
+            <param name="lowerMargin">The new lower margin of the banner.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The lower margin of the banner must be between 0 and the height of the console window.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
         <member name="M:ConsoleAppVisuals.Elements.Banner.RenderElementActions">
             <summary>
             This method is used to render the banner on the console.
@@ -1239,12 +1273,6 @@
             </list>
             </remarks>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.FakeLoadingBar.Line">
-            <summary>
-            The line of the loading bar in the console.
-            </summary>
-            <remarks>We add 2 because so the loading bar does not overlap with the title.</remarks>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.FakeLoadingBar.Height">
             <summary>
             The height of the loading bar.
@@ -1258,12 +1286,12 @@
         </member>
         <member name="P:ConsoleAppVisuals.Elements.FakeLoadingBar.Text">
             <summary>
-            Getter and setter of the text of the loading bar.
+            The text of the loading bar.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.FakeLoadingBar.Placement">
             <summary>
-            Getter of the placement of the loading bar.
+            The placement of the loading bar.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.FakeLoadingBar.ProcessDuration">
@@ -1276,13 +1304,12 @@
             Getter of the additional duration of the loading bar at the end.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.FakeLoadingBar.#ctor(System.String,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32},System.Int32,System.Int32)">
+        <member name="M:ConsoleAppVisuals.Elements.FakeLoadingBar.#ctor(System.String,ConsoleAppVisuals.Enums.Placement,System.Int32,System.Int32)">
             <summary>
             The natural constructor of the loading bar.
             </summary>
             <param name="text">The text of the loading bar.</param>
             <param name="placement">The placement of the loading bar.</param>
-            <param name="line">The line of the loading bar.</param>
             <param name="processDuration">The duration of the loading bar.</param>
             <param name="additionalDuration">The additional duration of the loading bar at the end.</param>
             <remarks>
@@ -1298,6 +1325,33 @@
             This method is used to update the text of the loading bar.
             </summary>
             <param name="text">The new text of the loading bar.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FakeLoadingBar.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the loading bar.
+            </summary>
+            <param name="placement">The new placement of the loading bar.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FakeLoadingBar.UpdateAdditionalDuration(System.Int32)">
+            <summary>
+            This method is used to update the additional duration of the loading bar.
+            </summary>
+            <param name="additionalDuration">The new additional duration of the loading bar.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The additional duration of the loading bar cannot be negative.</exception>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -1326,11 +1380,6 @@
         <member name="P:ConsoleAppVisuals.Elements.Footer.Placement">
             <summary>
             The placement of the footer.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.Footer.Line">
-            <summary>
-            The line of the footer in the console.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Footer.Height">
@@ -1424,11 +1473,6 @@
             The placement of the header.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.Header.Line">
-            <summary>
-            The line of the header in the console.
-            </summary>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.Header.Height">
             <summary>
             The height of the header.
@@ -1441,12 +1485,12 @@
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Header.Text">
             <summary>
-            The getter of the text of the header.
+            The text of the header.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Header.Margin">
             <summary>
-            The getter and setter of the margin of the header.
+            The margin of the header.
             </summary>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.Header.#ctor(System.String,System.String,System.String,System.Int32)">
@@ -1532,12 +1576,17 @@
             This property wether the corners of the ElementList are rounded.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.ElementList.GetHeaders">
+        <member name="P:ConsoleAppVisuals.Elements.ElementList.Title">
+            <summary>
+            This property returns the title of the ElementList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Elements.ElementList.Headers">
             <summary>
             This property returns the headers of the ElementList.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.ElementList.GetLines">
+        <member name="P:ConsoleAppVisuals.Elements.ElementList.Lines">
             <summary>
             This property returns the lines of the ElementList.
             </summary>
@@ -1545,11 +1594,6 @@
         <member name="P:ConsoleAppVisuals.Elements.ElementList.Placement">
             <summary>
             This property returns the title of the ElementList.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.ElementList.Line">
-            <summary>
-            This property returns the line to display the ElementList on.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.ElementList.Height">
@@ -1567,19 +1611,38 @@
             This property returns the number of lines in the ElementList.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.ElementList.#ctor(ConsoleAppVisuals.Enums.Placement,System.Boolean,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.Elements.ElementList.#ctor(ConsoleAppVisuals.Enums.Placement,System.Boolean)">
             <summary>
             This constructor creates a new instance of the WindowElementsElementList class.
             </summary>
             <param name="placement">The placement of the ElementList.</param>
             <param name="roundedCorners">If true, the corners of the ElementList will be rounded.</param>
-            <param name="line">The line to display the ElementList on.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.ElementList.SetRoundedCorners(System.Boolean)">
             <summary>
             Toggles the rounded corners of the element.
             </summary>
-            <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
+            <param name="rounded">If true, the corners of the ElementList will be rounded.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.ElementList.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method adds a line to the ElementList.
+            </summary>
+            <param name="placement">The placement of the ElementList.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.ElementList.RenderElementActions">
             <summary>
@@ -1596,12 +1659,17 @@
             This property wether the corners of the dashboard are rounded.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.GetHeaders">
+        <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.Title">
+            <summary>
+            This property returns the title of the dashboard.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.Headers">
             <summary>
             This property returns the headers of the dashboard.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.GetLines">
+        <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.Lines">
             <summary>
             This property returns the lines of the dashboard.
             </summary>
@@ -1609,11 +1677,6 @@
         <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.Placement">
             <summary>
             This property returns the title of the dashboard.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.Line">
-            <summary>
-            This property returns the line to display the dashboard on.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.ElementsDashboard.Height">
@@ -1631,19 +1694,31 @@
             This property returns the number of lines in the dashboard.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.ElementsDashboard.#ctor(ConsoleAppVisuals.Enums.Placement,System.Boolean,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.Elements.ElementsDashboard.#ctor(ConsoleAppVisuals.Enums.Placement,System.Boolean)">
             <summary>
             This constructor creates a new instance of the WindowElementsDashboard class.
             </summary>
             <param name="placement">The placement of the dashboard.</param>
             <param name="roundedCorners">If true, the corners of the dashboard will be rounded.</param>
-            <param name="line">The line to display the dashboard on.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.ElementsDashboard.SetRoundedCorners(System.Boolean)">
             <summary>
             Toggles the rounded corners of the element.
             </summary>
             <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.ElementsDashboard.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method updates the placement of the dashboard.
+            </summary>
+            <param name="placement">The new placement of the dashboard.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.ElementsDashboard.RenderElementActions">
             <summary>
@@ -1655,17 +1730,22 @@
             This class is used to display a InteractiveList of all the elements in the window.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.Title">
+            <summary>
+            This property returns the title of the InteractiveList.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.Headers">
+            <summary>
+            This property returns the headers of the dashboard.
+            </summary>
+        </member>
         <member name="P:ConsoleAppVisuals.Elements.InteractiveList.RoundedCorners">
             <summary>
             This property wether the corners of the InteractiveList are rounded.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.GetHeaders">
-            <summary>
-            This property returns the headers of the InteractiveList.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.GetLines">
+        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.Lines">
             <summary>
             This property returns the lines of the InteractiveList.
             </summary>
@@ -1675,12 +1755,10 @@
             This property returns the title of the InteractiveList.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.Line">
+        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.Height">
             <summary>
             This property returns the line to display the InteractiveList on.
             </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.InteractiveList.Height">
             <summary>
             This property returns the height of the InteractiveList.
             </summary>
@@ -1695,19 +1773,31 @@
             This property returns the number of lines in the InteractiveList.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.InteractiveList.#ctor(ConsoleAppVisuals.Enums.Placement,System.Boolean,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.Elements.InteractiveList.#ctor(ConsoleAppVisuals.Enums.Placement,System.Boolean)">
             <summary>
             This constructor creates a new instance of the WindowElementsInteractiveList class.
             </summary>
             <param name="placement">The placement of the InteractiveList.</param>
             <param name="roundedCorners">If true, the corners of the InteractiveList will be rounded.</param>
-            <param name="line">The line to display the InteractiveList on.</param>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.InteractiveList.SetRoundedCorners(System.Boolean)">
             <summary>
             Toggles the rounded corners of the element.
             </summary>
             <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.InteractiveList.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method updates the placement of the InteractiveList.
+            </summary>
+            <param name="placement">The new placement of the InteractiveList.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.InteractiveList.RenderElementActions">
             <summary>
@@ -1725,12 +1815,6 @@
             <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
             </list>
             </remarks>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.LoadingBar.Line">
-            <summary>
-            The line of the loading bar in the console.
-            </summary>
-            <remarks>We add 2 because so the loading bar does not overlap with the title.</remarks>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.LoadingBar.Height">
             <summary>
@@ -1763,14 +1847,13 @@
             Getters of the additional duration of the loading bar at the end.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.LoadingBar.#ctor(System.String,System.Single@,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32},System.Int32)">
+        <member name="M:ConsoleAppVisuals.Elements.LoadingBar.#ctor(System.String,System.Single@,ConsoleAppVisuals.Enums.Placement,System.Int32)">
             <summary>
             The natural constructor of the loading bar.
             </summary>
             <param name="text">The text of the loading bar.</param>
             <param name="progress">The reference of the progress of the loading bar (that means that you should put a reference to a variable that will contain the percentage of progress of your process).</param>
             <param name="placement">The placement of the loading bar.</param>
-            <param name="line">The line of the loading bar.</param>
             <param name="additionalDuration">The duration of the loading bar after the process.</param>
             <remarks>
             For more information, refer to the following resources:
@@ -1785,6 +1868,33 @@
             This method is used to update the text of the loading bar.
             </summary>
             <param name="text">The new text of the loading bar.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.LoadingBar.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the loading bar.
+            </summary>
+            <param name="placement">The new placement of the loading bar.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.LoadingBar.UpdateAdditionalDuration(System.Int32)">
+            <summary>
+            This method is used to update the additional duration of the loading bar.
+            </summary>
+            <param name="additionalDuration">The new additional duration of the loading bar.</param>
+            <exception cref="T:System.ArgumentException">The additional duration of the loading bar cannot be negative.</exception>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -1842,19 +1952,13 @@
             Gets the width of the matrix.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.Matrix`1.Line">
-            <summary>
-            Gets the line of the matrix.
-            </summary>
-        </member>
-        <member name="M:ConsoleAppVisuals.Elements.Matrix`1.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.Elements.Matrix`1.#ctor(System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,ConsoleAppVisuals.Enums.Placement)">
             <summary>
             The natural constructor of the <see cref="T:ConsoleAppVisuals.Elements.Matrix`1"/> class.
             </summary>
             <param name="rawLines">The matrix to be used.</param>
             <param name="roundedCorners">Whether the matrix should have rounded corners or not.</param>
             <param name="placement">The placement of the matrix.</param>
-            <param name="line">The line of the matrix.</param>
             <exception cref="T:System.ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
             <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
         </member>
@@ -1862,6 +1966,19 @@
             <summary>
             Toggles the rounded corners of the table.
             </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Matrix`1.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the matrix.
+            </summary>
+            <param name="placement">The new placement of the matrix.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -2012,11 +2129,6 @@
             This property returns the title of the table.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.TableView`1.Line">
-            <summary>
-            This property returns the line to display the table on.
-            </summary>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.TableView`1.Height">
             <summary>
             This property returns the height of the table.
@@ -2032,7 +2144,7 @@
             This property returns the maximum number of this element that can be displayed on the console.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.TableView`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.Elements.TableView`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,ConsoleAppVisuals.Enums.Placement)">
             <summary>
             The <see cref="T:ConsoleAppVisuals.Elements.TableView`1"/> natural constructor.
             </summary>
@@ -2041,7 +2153,6 @@
             <param name="lines">The lines of the table.</param>
             <param name="roundedCorners">The rounded corners of the table.</param>
             <param name="placement">The placement of the table.</param>
-            <param name="line">The line to display the table on.</param>
             <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
             <exception cref="T:System.NullReferenceException">Is thrown when no body lines were provided.</exception>
             <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
@@ -2171,9 +2282,9 @@
             </remarks>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Title.StyledText">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Title.Placement">
             <summary>
@@ -2188,6 +2299,11 @@
         <member name="P:ConsoleAppVisuals.Elements.Title.Width">
             <summary>
             The width of the title.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Elements.Title.Line">
+            <summary>
+            The line of the title.
             </summary>
         </member>
         <member name="M:ConsoleAppVisuals.Elements.Title.#ctor(System.String,System.Int32,System.Nullable{System.Int32},ConsoleAppVisuals.Enums.TextAlignment)">
@@ -2224,6 +2340,34 @@
             This method updates the margin of the title.
             </summary>
             <param name="margin">The new margin of the title.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The margin must be between 0 and the half of the console height.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Title.UpdateWidth(System.Int32)">
+            <summary>
+            This method updates the width of the title.
+            </summary>
+            <param name="width">The new width of the title.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The width must be between 0 and the console width.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Title.UpdateAlignment(ConsoleAppVisuals.Enums.TextAlignment)">
+            <summary>
+            This method updates the alignment of the title.
+            </summary>
+            <param name="align">The new alignment of the title.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -2925,6 +3069,10 @@
             <summary>
             The default visibility of the elements when they are added to the window.
             </summary>
+            <remarks>
+            This value should not be changed.
+            Each time the user adds an element to the window, it will try to toggle the visibility of the element.
+            </remarks>
         </member>
         <member name="P:ConsoleAppVisuals.Window.NextId">
             <summary>
@@ -3267,6 +3415,13 @@
             </summary>
             <param name="elements">The elements to be drawn.</param>
             <exception cref="T:ConsoleAppVisuals.Errors.ElementNotFoundException">Thrown when the element is not found in the window.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Window.RenderElementsSpace">
             <summary>
