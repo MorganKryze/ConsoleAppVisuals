@@ -21,7 +21,7 @@ public abstract class Element
     /// The id number of the element.
     /// </summary>
     /// <remarks>This property is sealed. The ID of an element is automatically generated and managed by the <see cref="Window"/> class.</remarks>
-    public int Id { get; set; } = Window.NextId;
+    public int Id { get; set; }
 
     /// <summary>
     /// The visibility of the element.
@@ -47,8 +47,59 @@ public abstract class Element
     /// <summary>
     /// The line of the element in the console.
     /// </summary>
-    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual int Line { get; } = 0;
+    public virtual int Line
+    {
+        get
+        {
+            var elements = Window.GetRange(0, Id);
+            return Placement switch
+            {
+                Placement.TopCenterFullWidth
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
+                            .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
+                            .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopRight && e.Visibility)
+                            .Sum(e => e.Height),
+                Placement.TopCenter
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
+                            .Sum(e => e.Height),
+                Placement.TopLeft
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
+                            .Sum(e => e.Height),
+
+                Placement.TopRight
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopRight && e.Visibility)
+                            .Sum(e => e.Height),
+                Placement.BottomCenterFullWidth
+                    => Console.WindowHeight
+                        - elements
+                            .Where(e =>
+                                e.Placement == Placement.BottomCenterFullWidth && e.Visibility
+                            )
+                            .Sum(e => e.Height),
+                _ => throw new ArgumentOutOfRangeException(nameof(Placement), "Invalid placement.")
+            };
+        }
+    }
 
     /// <summary>
     /// The height of the element.

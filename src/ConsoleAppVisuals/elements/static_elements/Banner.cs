@@ -21,7 +21,6 @@ public class Banner : Element
     private int _upperMargin;
     private int _lowerMargin;
     private Placement _placement;
-    private int _line;
     #endregion
 
     #region Properties
@@ -29,12 +28,6 @@ public class Banner : Element
     /// The placement of the banner.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// The line of the banner in the console.
-    /// </summary>
-    /// <remarks>We add 2 because so the banner does not overlap with the title.</remarks>
-    public override int Line => _line;
 
     /// <summary>
     /// The height of the banner.
@@ -45,31 +38,21 @@ public class Banner : Element
     /// The width of the banner.
     /// </summary>
     public override int Width => Console.WindowWidth;
-    #endregion
 
-    #region Getters and Setters
     /// <summary>
-    /// Getter and setter of the text of the banner.
+    /// The text of the banner.
     /// </summary>
     public (string, string, string) Text => _text;
 
     /// <summary>
-    /// Getter and setter of the upper margin of the banner.
+    /// The upper margin of the banner.
     /// </summary>
-    public int UpperMargin
-    {
-        get => _upperMargin;
-        set => _upperMargin = value;
-    }
+    public int UpperMargin => _upperMargin;
 
     /// <summary>
-    /// Getter and setter of the lower margin of the banner.
+    /// The lower margin of the banner.
     /// </summary>
-    public int LowerMargin
-    {
-        get => _lowerMargin;
-        set => _lowerMargin = value;
-    }
+    public int LowerMargin => _lowerMargin;
     #endregion
 
 
@@ -83,7 +66,6 @@ public class Banner : Element
     /// <param name="upperMargin">The upper margin of the banner.</param>
     /// <param name="lowerMargin">The lower margin of the banner.</param>
     /// <param name="placement">The placement of the banner.</param>
-    /// <param name="line">The line of the banner in the console.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -97,17 +79,15 @@ public class Banner : Element
         string rightText = "Banner Right",
         int upperMargin = 0,
         int lowerMargin = 0,
-        Placement placement = Placement.TopCenterFullWidth,
-        int? line = null
+        Placement placement = Placement.TopCenterFullWidth
     )
     {
         _text.Item1 = leftText;
         _text.Item2 = centerText;
         _text.Item3 = rightText;
-        UpperMargin = upperMargin;
-        LowerMargin = lowerMargin;
+        _upperMargin = upperMargin;
+        _lowerMargin = lowerMargin;
         _placement = CheckPlacement(placement);
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(_placement);
     }
 
     private static Placement CheckPlacement(Placement placement)
@@ -169,6 +149,70 @@ public class Banner : Element
     public void UpdateRightText(string rightText)
     {
         _text.Item3 = rightText;
+    }
+
+    /// <summary>
+    /// This method is used to update the placement of the banner.
+    /// </summary>
+    /// <param name="placement">The new placement of the banner.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = CheckPlacement(placement);
+    }
+
+    /// <summary>
+    /// This method is used to update the upper margin of the banner.
+    /// </summary>
+    /// <param name="upperMargin">The new upper margin of the banner.</param>
+    /// <exception cref="ArgumentOutOfRangeException">The upper margin of the banner must be between 0 and the height of the console window.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateUpperMargin(int upperMargin)
+    {
+        if (upperMargin < 0 || upperMargin > Console.WindowHeight - 1)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(upperMargin),
+                "The upper margin of the banner must be between 0 and the height of the console window."
+            );
+        }
+        _upperMargin = upperMargin;
+    }
+
+    /// <summary>
+    /// This method is used to update the lower margin of the banner.
+    /// </summary>
+    /// <param name="lowerMargin">The new lower margin of the banner.</param>
+    /// <exception cref="ArgumentOutOfRangeException">The lower margin of the banner must be between 0 and the height of the console window.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateLowerMargin(int lowerMargin)
+    {
+        if (lowerMargin < 0 || lowerMargin > Console.WindowHeight - 1)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(lowerMargin),
+                "The lower margin of the banner must be between 0 and the height of the console window."
+            );
+        }
+        _lowerMargin = lowerMargin;
     }
 
     /// <summary>

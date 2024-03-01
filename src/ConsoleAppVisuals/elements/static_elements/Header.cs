@@ -21,6 +21,10 @@ public class Header : Element
     private int _margin;
     #endregion
 
+    #region Constants
+    private const int TEXT_HEIGHT = 1;
+    #endregion
+
     #region Properties
     /// <summary>
     /// The placement of the header.
@@ -28,29 +32,22 @@ public class Header : Element
     public override Placement Placement => Placement.TopCenterFullWidth;
 
     /// <summary>
-    /// The line of the header in the console.
-    /// </summary>
-    public override int Line => Window.GetVisibleElement<Title>()?.Height ?? 0;
-
-    /// <summary>
     /// The height of the header.
     /// </summary>
-    public override int Height => 1 + _margin;
+    public override int Height => TEXT_HEIGHT + _margin;
 
     /// <summary>
     /// The width of the header.
     /// </summary>
     public override int Width => Console.WindowWidth;
-    #endregion
 
-    #region Getters and Setters
     /// <summary>
-    /// The getter of the text of the header.
+    /// The text of the header.
     /// </summary>
     public (string, string, string) Text => _text;
 
     /// <summary>
-    /// The getter and setter of the margin of the header.
+    /// The margin of the header.
     /// </summary>
     public int Margin => _margin;
     #endregion

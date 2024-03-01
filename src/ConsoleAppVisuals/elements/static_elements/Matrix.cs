@@ -13,8 +13,7 @@ public class Matrix<T> : Element
     private readonly List<List<T?>> _lines;
     private string[]? _displayArray;
     private bool _roundedCorners;
-    private readonly Placement _placement;
-    private readonly int _line;
+    private Placement _placement;
     #endregion
 
     #region Properties: GetCorners, Count, Placement, Height, Width, Line
@@ -45,10 +44,6 @@ public class Matrix<T> : Element
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
 
-    /// <summary>
-    /// Gets the line of the matrix.
-    /// </summary>
-    public override int Line => _line;
     #endregion
 
     #region Constructor
@@ -58,19 +53,16 @@ public class Matrix<T> : Element
     /// <param name="rawLines">The matrix to be used.</param>
     /// <param name="roundedCorners">Whether the matrix should have rounded corners or not.</param>
     /// <param name="placement">The placement of the matrix.</param>
-    /// <param name="line">The line of the matrix.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
     /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
     public Matrix(
         List<List<T?>>? rawLines = null,
         bool roundedCorners = false,
-        Placement placement = Placement.TopCenter,
-        int? line = null
+        Placement placement = Placement.TopCenter
     )
     {
         _roundedCorners = roundedCorners;
         _placement = placement;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         if (rawLines is not null)
         {
             _lines = rawLines;
@@ -213,6 +205,22 @@ public class Matrix<T> : Element
         {
             BuildMatrix();
         }
+    }
+
+    /// <summary>
+    /// This method is used to update the placement of the matrix.
+    /// </summary>
+    /// <param name="placement">The new placement of the matrix.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = placement;
     }
 
     /// <summary>
@@ -429,7 +437,7 @@ public class Matrix<T> : Element
             true,
             _placement.ToTextAlignment(),
             false,
-            _line,
+            Line,
             _displayArray
         );
     }

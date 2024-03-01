@@ -20,34 +20,30 @@ public class Footer : Element
     private (string, string, string) _text;
     #endregion
 
+    #region Constants
+    private const int TEXT_HEIGHT = 1;
+    #endregion
+
     #region Properties
     /// <summary>
     /// The placement of the footer.
     /// </summary>
-    public override Placement Placement { get; set; } = Placement.BottomCenterFullWidth;
-
-    /// <summary>
-    /// The line of the footer in the console.
-    /// </summary>
-    public override int Line => Window.GetLineAvailable(Placement);
+    public override Placement Placement => Placement.BottomCenterFullWidth;
 
     /// <summary>
     /// The height of the footer.
     /// </summary>
-    public override int Height => 1;
+    public override int Height => TEXT_HEIGHT;
 
     /// <summary>
     /// The width of the footer.
     /// </summary>
     public override int Width => Console.WindowWidth;
-    #endregion
 
-    #region Getters and Setters
     /// <summary>
     /// The text of the footer.
     /// </summary>
-    public (string,string,string) Text{get => _text; set => _text = value;}
-    
+    public (string, string, string) Text => _text;
     #endregion
 
 

@@ -71,7 +71,7 @@ public class UnitTestElementsDashboard
         var list = new ElementsDashboard(Placement.TopLeft, true);
 
         // Act
-        var headers = list.GetHeaders;
+        var headers = list.Headers;
 
         // Assert
         Assert.IsNotNull(headers);
@@ -84,7 +84,7 @@ public class UnitTestElementsDashboard
         var list = new ElementsDashboard(Placement.TopLeft, true);
 
         // Act
-        var lines = list.GetLines;
+        var lines = list.Lines;
 
         // Assert
         Assert.IsNotNull(lines);
