@@ -18,10 +18,9 @@ public class LoadingBar : Element
 {
     #region Fields
     private string _text;
-    private readonly Placement _placement;
+    private Placement _placement;
     private float _progress;
-    private readonly int _line;
-    private readonly int _additionalDuration;
+    private int _additionalDuration;
     #endregion
 
     #region Constants
@@ -32,12 +31,6 @@ public class LoadingBar : Element
     #endregion
 
     #region Properties
-    /// <summary>
-    /// The line of the loading bar in the console.
-    /// </summary>
-    /// <remarks>We add 2 because so the loading bar does not overlap with the title.</remarks>
-    public override int Line => _line;
-
     /// <summary>
     /// The height of the loading bar.
     /// </summary>
@@ -53,9 +46,6 @@ public class LoadingBar : Element
     /// The placement of the loading bar.
     /// </summary>
     public override Placement Placement => _placement;
-    #endregion
-
-    #region Getters & Setters
 
     /// <summary>
     /// Getters and setters of the text of the loading bar.
@@ -80,7 +70,6 @@ public class LoadingBar : Element
     /// <param name="text">The text of the loading bar.</param>
     /// <param name="progress">The reference of the progress of the loading bar (that means that you should put a reference to a variable that will contain the percentage of progress of your process).</param>
     /// <param name="placement">The placement of the loading bar.</param>
-    /// <param name="line">The line of the loading bar.</param>
     /// <param name="additionalDuration">The duration of the loading bar after the process.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -93,19 +82,19 @@ public class LoadingBar : Element
         string text,
         ref float progress,
         Placement placement = Placement.TopCenter,
-        int? line = null,
         int additionalDuration = 1000
     )
     {
-        if(Console.WindowWidth -1 < 0){
+        if (Console.WindowWidth - 1 < 0)
+        {
             _text = text[..Math.Min(text.Length, 0)];
         }
-        else{
+        else
+        {
             _text = text[..Math.Min(text.Length, Console.WindowWidth - 1)];
         }
         _progress = progress;
         _placement = placement;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         _additionalDuration = additionalDuration;
     }
     #endregion
@@ -125,6 +114,43 @@ public class LoadingBar : Element
     public void UpdateText(string text)
     {
         _text = text;
+    }
+
+    /// <summary>
+    /// This method is used to update the placement of the loading bar.
+    /// </summary>
+    /// <param name="placement">The new placement of the loading bar.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = placement;
+    }
+
+    /// <summary>
+    /// This method is used to update the additional duration of the loading bar.
+    /// </summary>
+    /// <param name="additionalDuration">The new additional duration of the loading bar.</param>
+    /// <exception cref="ArgumentException">The additional duration of the loading bar cannot be negative.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateAdditionalDuration(int additionalDuration)
+    {
+        if (additionalDuration < 0)
+        {
+            throw new ArgumentException("The additional duration of the loading bar cannot be negative.");
+        }
+        _additionalDuration = additionalDuration;
     }
 
     /// <summary>
@@ -167,12 +193,12 @@ public class LoadingBar : Element
             );
         }
 
-        Core.WritePositionedString(_text, _placement.ToTextAlignment(), false, _line, false);
+        Core.WritePositionedString(_text, _placement.ToTextAlignment(), false, Line, false);
         while (_progress < MAX_PROGRESS)
         {
-            BuildBar(_text, _progress, _line);
+            BuildBar(_text, _progress, Line);
         }
-        BuildBar(_text, MAX_PROGRESS, _line);
+        BuildBar(_text, MAX_PROGRESS, Line);
         Thread.Sleep(_additionalDuration);
         _progress = MIN_PROGRESS;
         Window.DeactivateElement(this);

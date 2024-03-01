@@ -10,13 +10,10 @@ namespace ConsoleAppVisuals.Elements;
 public class ElementList : Element
 {
     #region Fields: title, headers, lines, display array, rounded corners
-    private readonly string _title;
-    private readonly List<string> _headers;
     private List<List<string>> _lines;
     private string[] _displayArray;
     private bool _roundedCorners;
-    private readonly Placement _placement;
-    private readonly int _line;
+    private Placement _placement;
     #endregion
 
     #region Properties: get headers, get lines
@@ -28,24 +25,24 @@ public class ElementList : Element
     public bool RoundedCorners => _roundedCorners;
 
     /// <summary>
+    /// This property returns the title of the ElementList.
+    /// </summary>
+    public static string Title => "Window Elements";
+
+    /// <summary>
     /// This property returns the headers of the ElementList.
     /// </summary>
-    public List<string> GetHeaders => _headers;
+    public static List<string> Headers => new() { "Id", "Type", "Project" };
 
     /// <summary>
     /// This property returns the lines of the ElementList.
     /// </summary>
-    public List<List<string>> GetLines => _lines;
+    public List<List<string>> Lines => _lines;
 
     /// <summary>
     /// This property returns the title of the ElementList.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// This property returns the line to display the ElementList on.
-    /// </summary>
-    public override int Line => _line;
 
     /// <summary>
     /// This property returns the height of the ElementList.
@@ -70,19 +67,11 @@ public class ElementList : Element
     /// </summary>
     /// <param name="placement">The placement of the ElementList.</param>
     /// <param name="roundedCorners">If true, the corners of the ElementList will be rounded.</param>
-    /// <param name="line">The line to display the ElementList on.</param>
-    public ElementList(
-        Placement placement = Placement.TopCenter,
-        bool roundedCorners = false,
-        int? line = null
-    )
+    public ElementList(Placement placement = Placement.TopCenter, bool roundedCorners = false)
     {
-        _title = "Element types available";
-        _headers = new List<string> { "Id", "Type", "Project" };
         _lines = UpdateLines();
         _placement = placement;
         _roundedCorners = roundedCorners;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         _displayArray = Array.Empty<string>();
         BuildDisplay();
     }
@@ -92,10 +81,34 @@ public class ElementList : Element
     /// <summary>
     /// Toggles the rounded corners of the element.
     /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
+    /// <param name="rounded">If true, the corners of the ElementList will be rounded.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void SetRoundedCorners(bool rounded = true)
     {
         _roundedCorners = rounded;
+        BuildDisplay();
+    }
+
+    /// <summary>
+    /// This method adds a line to the ElementList.
+    /// </summary>
+    /// <param name="placement">The placement of the ElementList.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = placement;
         BuildDisplay();
     }
 
@@ -133,12 +146,12 @@ public class ElementList : Element
     private void BuildDisplay()
     {
         var stringList = new List<string>();
-        var localMax = new int[_headers.Count];
-        for (int i = 0; i < _headers.Count; i++)
+        var localMax = new int[Headers.Count];
+        for (int i = 0; i < Headers.Count; i++)
         {
-            if (_headers[i]?.Length > localMax[i])
+            if (Headers[i]?.Length > localMax[i])
             {
-                localMax[i] = _headers[i]?.Length ?? 0;
+                localMax[i] = Headers[i]?.Length ?? 0;
             }
         }
 
@@ -154,10 +167,10 @@ public class ElementList : Element
         }
 
         StringBuilder headerBuilder = new("│ ");
-        for (int i = 0; i < _headers.Count; i++)
+        for (int i = 0; i < Headers.Count; i++)
         {
-            headerBuilder.Append(_headers[i]?.PadRight(localMax[i]) ?? "");
-            if (i != _headers.Count - 1)
+            headerBuilder.Append(Headers[i]?.PadRight(localMax[i]) ?? "");
+            if (i != Headers.Count - 1)
             {
                 headerBuilder.Append(" │ ");
             }
@@ -169,18 +182,18 @@ public class ElementList : Element
         stringList.Add(headerBuilder.ToString());
 
         StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
-        for (int i = 0; i < _headers.Count; i++)
+        for (int i = 0; i < Headers.Count; i++)
         {
             upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-            upperBorderBuilder.Append((i != _headers.Count - 1) ? "┬" : GetCorners[1].ToString());
+            upperBorderBuilder.Append((i != Headers.Count - 1) ? "┬" : GetCorners[1].ToString());
         }
         stringList.Insert(0, upperBorderBuilder.ToString());
 
         StringBuilder intermediateBorderBuilder = new("├");
-        for (int i = 0; i < _headers.Count; i++)
+        for (int i = 0; i < Headers.Count; i++)
         {
             intermediateBorderBuilder.Append(new string('─', localMax[i] + 2));
-            intermediateBorderBuilder.Append((i != _headers.Count - 1) ? "┼" : "┤");
+            intermediateBorderBuilder.Append((i != Headers.Count - 1) ? "┼" : "┤");
         }
         stringList.Add(intermediateBorderBuilder.ToString());
 
@@ -203,10 +216,10 @@ public class ElementList : Element
         }
 
         StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
-        for (int i = 0; i < _headers.Count; i++)
+        for (int i = 0; i < Headers.Count; i++)
         {
             lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-            lowerBorderBuilder.Append((i != _headers.Count - 1) ? "┴" : GetCorners[3].ToString());
+            lowerBorderBuilder.Append((i != Headers.Count - 1) ? "┴" : GetCorners[3].ToString());
         }
         stringList.Add(lowerBorderBuilder.ToString());
 
@@ -217,7 +230,7 @@ public class ElementList : Element
     private void BuildTitle()
     {
         var len = _displayArray![0].Length;
-        var title = _title.ResizeString(len - 4);
+        var title = Title.ResizeString(len - 4);
         title = $"│ {title} │";
         var upperBorderBuilder = new StringBuilder(GetCorners[0].ToString());
         upperBorderBuilder.Append(new string('─', len - 2));
@@ -245,7 +258,7 @@ public class ElementList : Element
         for (int j = 0; j < _displayArray.Length; j++)
         {
             array[j] = _displayArray[j];
-            Core.WritePositionedString(array[j], _placement.ToTextAlignment(), false, _line + j);
+            Core.WritePositionedString(array[j], _placement.ToTextAlignment(), false, Line + j);
         }
     }
     #endregion

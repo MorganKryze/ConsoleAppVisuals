@@ -53,7 +53,7 @@
         </member>
         <member name="T:ConsoleAppVisuals.Core">
             <summary>
-            The <see cref="T:ConsoleAppVisuals.Core"/> class contains visual elements for a console app.
+            The <see cref="T:ConsoleAppVisuals.Core"/> class contains all the interactions between the application and the console.
             </summary>
         </member>
         <member name="F:ConsoleAppVisuals.Core.NEGATIVE_ANCHOR">
@@ -78,9 +78,9 @@
             </summary>
             <returns>A tuple containing the initial font color and the initial background color.</returns>
         </member>
-        <member name="P:ConsoleAppVisuals.Core.IsScreenUpdated">
+        <member name="M:ConsoleAppVisuals.Core.IsScreenUpdated">
             <summary>
-            This property is used to check if the screen has been updated.
+            This method is used to check if the screen has been updated.
             </summary>
             <returns>True if the screen has been updated, false otherwise.</returns>
             <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
@@ -2534,7 +2534,6 @@
             <summary>
             The line of the element in the console.
             </summary>
-            <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
         </member>
         <member name="P:ConsoleAppVisuals.Models.Element.Height">
             <summary>
@@ -2942,6 +2941,14 @@
             Gives the list of elements in the window.
             </summary>
         </member>
+        <member name="M:ConsoleAppVisuals.Window.GetRange(System.Int32,System.Int32)">
+            <summary>
+            This method returns a range of elements given a start and end ids.
+            </summary>
+            <param name="start">The start id of the range.</param>
+            <param name="end">The end id of the range.</param>
+            <returns>The range of elements from the start to the end id.</returns>
+        </member>
         <member name="M:ConsoleAppVisuals.Window.GetElement``1">
             <summary>
             This method returns the first element of the given type.
@@ -3111,7 +3118,7 @@
             <summary>
             After activating the visibility of an interactive element, this method will return the response for the user.
             </summary>
-            <param name="clear">If true, the element will be cleared.</param>
+            <param name="clear">If true, the element will be cleared afterward.</param>
             <typeparam name="T">The type of interactive element.</typeparam>
             <typeparam name="TResponse">The type of the response (int, string, float...).</typeparam>
             <returns>The response of the user.</returns>
@@ -3141,7 +3148,7 @@
             This method to deactivate the visibility of the element with the given id.
             </summary>
             <param name="id">The id of the element.</param>
-            <param name="clear">If true, the element will be cleared.</param>
+            <param name="clear">If true, the element will be cleared from the console.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the id is out of range.</exception>
             <remarks>
             For more information, refer to the following resources:
@@ -3156,7 +3163,7 @@
             This method deactivate the visibility of the element with the given type.
             </summary>
             <param name="element">The element to be deactivated.</param>
-            <param name="clear">If true, the element will be cleared.</param>
+            <param name="clear">If true, the element will be cleared from the console.</param>
             <exception cref="T:ConsoleAppVisuals.Errors.ElementNotFoundException">Thrown when the element is invalid.</exception>
             <remarks>
             For more information, refer to the following resources:
@@ -3242,39 +3249,9 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.RenderOneElement(System.Int32)">
-            <summary>
-            This method draws the element with the given id on the console.
-            </summary>
-            <param name="id">The id of the element.</param>
-            <exception cref="T:ConsoleAppVisuals.Errors.ElementNotFoundException">Thrown when the id is out of range.</exception>
-            <returns>True if the element is successfully drawn, false otherwise.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Window.RenderOneElement(ConsoleAppVisuals.Models.Element)">
-            <summary>
-            This method draws the given element on the console.
-            </summary>
-            <param name="element">The element to be drawn.</param>
-            <exception cref="T:ConsoleAppVisuals.Errors.ElementNotFoundException">Thrown when the element is invalid.</exception>
-            <returns>True if the element is successfully drawn, false otherwise.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
         <member name="M:ConsoleAppVisuals.Window.Render">
             <summary>
-            This method draws all the non interactive elements of the window on the console.
+            This method draws all visible elements of the window on the console.
             </summary>
             <remarks>
             For more information, refer to the following resources:
@@ -3284,13 +3261,14 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.OnResize">
+        <member name="M:ConsoleAppVisuals.Window.Render(ConsoleAppVisuals.Models.Element[])">
             <summary>
-            This method is called to refresh the window when the size of the console is changed.
+            This method draws all given visible elements of the window on the console.
             </summary>
-            <returns>True if the window is refreshed, false otherwise.</returns>
+            <param name="elements">The elements to be drawn.</param>
+            <exception cref="T:ConsoleAppVisuals.Errors.ElementNotFoundException">Thrown when the element is not found in the window.</exception>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.RenderAllElementsSpace">
+        <member name="M:ConsoleAppVisuals.Window.RenderElementsSpace">
             <summary>
             This method draws all the space of the visible elements of the window on the console.
             </summary>
