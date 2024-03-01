@@ -420,11 +420,6 @@
             The position of the Embed text.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.EmbedText.Line">
-            <summary>
-            The Line of the Embed text.
-            </summary>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.EmbedText.Height">
             <summary>
             The height of the Embed text.
@@ -450,7 +445,12 @@
             The text to display.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.EmbedText.#ctor(System.Collections.Generic.List{System.String},System.String,ConsoleAppVisuals.Enums.TextAlignment,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32})">
+        <member name="P:ConsoleAppVisuals.Elements.EmbedText.RoundedCorners">
+            <summary>
+            Wether the corners are rounded or not.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.EmbedText.#ctor(System.Collections.Generic.List{System.String},System.String,ConsoleAppVisuals.Enums.TextAlignment,ConsoleAppVisuals.Enums.Placement,System.Boolean)">
             <summary>
             The natural constructor of the Embed text.
             </summary>
@@ -458,7 +458,72 @@
             <param name="button">The text of the button.</param>
             <param name="align">The alignment of the Embed text.</param>
             <param name="placement">The placement of the Embed text element.</param>
-            <param name="line">The line of the Embed text.</param>
+            <param name="roundedCorners">Wether the corners are rounded or not.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.EmbedText.UpdateButtonText(System.String)">
+            <summary>
+            This method updates the text of the button.
+            </summary>
+            <param name="newButton">The new text of the button.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.EmbedText.UpdateText(System.Collections.Generic.List{System.String})">
+            <summary>
+            This method updates the text of the Embed text.
+            </summary>
+            <param name="newText">The new text of the Embed text.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.EmbedText.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method updates the placement of the Embed text.
+            </summary>
+            <param name="newPlacement">The new placement of the Embed text.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.EmbedText.UpdateAlignment(ConsoleAppVisuals.Enums.TextAlignment)">
+            <summary>
+            This method updates the alignment of the Embed text.
+            </summary>
+            <param name="newAlignment">The new alignment of the Embed text.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.EmbedText.SetRoundedCorners(System.Boolean)">
+            <summary>
+            This method updates the rounded corners of the Embed text.
+            </summary>
+            <param name="roundedCorners">Wether the corners are rounded or not.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -542,11 +607,6 @@
             The placement of the selector on the console.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.FloatSelector.Line">
-            <summary>
-            The line where the selector will be displayed.
-            </summary>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.FloatSelector.Height">
             <summary>
             The height of the selector.
@@ -587,7 +647,7 @@
             Whether the corners of the selector are rounded.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.#ctor(System.String,System.Single,System.Single,System.Single,System.Single,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32},System.Boolean)">
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.#ctor(System.String,System.Single,System.Single,System.Single,System.Single,ConsoleAppVisuals.Enums.Placement,System.Boolean)">
             <summary>
             The constructor of the FloatSelector class.
             </summary>
@@ -597,7 +657,97 @@
             <param name="start">The start value of the selector.</param>
             <param name="step">The step of the selector.</param>
             <param name="placement">The placement of the selector on the console.</param>
-            <param name="line">The line where the selector will be displayed.</param>
+            <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.UpdateQuestion(System.String)">
+            <summary>
+            This method is used to update the question of the selector.
+            </summary>
+            <param name="question">The question to ask the user.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.UpdateMin(System.Single)">
+            <summary>
+            This method is used to update the minimum value of the selector.
+            </summary>
+            <param name="min">The minimum value of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.UpdateMax(System.Single)">
+            <summary>
+            This method is used to update the maximum value of the selector.
+            </summary>
+            <param name="max">The maximum value of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.UpdateStart(System.Single)">
+            <summary>
+            This method is used to update the start value of the selector.
+            </summary>
+            <param name="start">The start value of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.UpdateStep(System.Single)">
+            <summary>
+            This method is used to update the step of the selector.
+            </summary>
+            <param name="step">The step of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the selector.
+            </summary>
+            <param name="placement">The placement of the selector on the console.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.FloatSelector.SetRoundedCorners(System.Boolean)">
+            <summary>
+            This method is used to update the rounded corners of the selector.
+            </summary>
             <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
             <remarks>
             For more information, refer to the following resources:
@@ -627,11 +777,6 @@
         <member name="P:ConsoleAppVisuals.Elements.IntSelector.Placement">
             <summary>
             The placement of the selector on the console.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.IntSelector.Line">
-            <summary>
-            The line where the selector will be displayed.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.IntSelector.Height">
@@ -674,7 +819,7 @@
             Whether the corners of the selector are rounded.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.IntSelector.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32},System.Boolean)">
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,ConsoleAppVisuals.Enums.Placement,System.Boolean)">
             <summary>
             The constructor of the intSelector class.
             </summary>
@@ -684,7 +829,97 @@
             <param name="start">The start value of the selector.</param>
             <param name="step">The step of the selector.</param>
             <param name="placement">The placement of the selector on the console.</param>
-            <param name="line">The line where the selector will be displayed.</param>
+            <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.UpdateQuestion(System.String)">
+            <summary>
+            This method is used to update the question of the selector.
+            </summary>
+            <param name="question">The question to ask the user.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.UpdateMin(System.Int32)">
+            <summary>
+            This method is used to update the minimum value of the selector.
+            </summary>
+            <param name="min">The minimum value of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.UpdateMax(System.Int32)">
+            <summary>
+            This method is used to update the maximum value of the selector.
+            </summary>
+            <param name="max">The maximum value of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.UpdateStart(System.Int32)">
+            <summary>
+            This method is used to update the start value of the selector.
+            </summary>
+            <param name="start">The start value of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.UpdateStep(System.Int32)">
+            <summary>
+            This method is used to update the step of the selector.
+            </summary>
+            <param name="step">The step of the selector.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the selector.
+            </summary>
+            <param name="placement">The placement of the selector on the console.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.IntSelector.SetRoundedCorners(System.Boolean)">
+            <summary>
+            This method is used to update the rounded corners of the selector.
+            </summary>
             <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
             <remarks>
             For more information, refer to the following resources:
@@ -716,12 +951,6 @@
             The placement of the prompt element.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.Prompt.Line">
-            <summary>
-            The line of the prompt element in the console.
-            </summary>
-            <remarks>We add 2 because so the prompt element does not overlap with the title.</remarks>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.Prompt.Height">
             <summary>
             The height of the prompt element.
@@ -733,14 +962,62 @@
             </summary>
             <remarks>We add a margin of 2 to be sur to take in account odd question lengths.</remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.Prompt.#ctor(System.String,System.String,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32})">
+        <member name="P:ConsoleAppVisuals.Elements.Prompt.Question">
+            <summary>
+            The question of the prompt element.
+            </summary>
+        </member>
+        <member name="P:ConsoleAppVisuals.Elements.Prompt.DefaultValue">
+            <summary>
+            The default value of the response.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Prompt.#ctor(System.String,System.String,ConsoleAppVisuals.Enums.Placement)">
             <summary>
             The natural constructor of the prompt element.
             </summary>
             <param name="question">The text on the left of the prompt element.</param>
             <param name="defaultValue">The text in the center of the prompt element.</param>
             <param name="placement">The placement of the prompt element.</param>
-            <param name="line">The line of the prompt element in the console.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Prompt.UpdateQuestion(System.String)">
+            <summary>
+            This method is used to update the question of the prompt element.
+            </summary>
+            <param name="question">The new question of the prompt element.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Prompt.UpdateDefaultValue(System.String)">
+            <summary>
+            This method is used to update the default value of the prompt element.
+            </summary>
+            <param name="defaultValue">The new default value of the prompt element.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Prompt.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the prompt element.
+            </summary>
+            <param name="placement">The new placement of the prompt element.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -771,11 +1048,6 @@
             The placement of the menu on the console.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Elements.ScrollingMenu.Line">
-            <summary>
-            The line where the menu will be displayed.
-            </summary>
-        </member>
         <member name="P:ConsoleAppVisuals.Elements.ScrollingMenu.Height">
             <summary>
             The height of the menu.
@@ -801,15 +1073,66 @@
             The index of the default choice(initially 0).
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.ScrollingMenu.#ctor(System.String,System.Int32,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32},System.String[])">
+        <member name="M:ConsoleAppVisuals.Elements.ScrollingMenu.#ctor(System.String,System.Int32,ConsoleAppVisuals.Enums.Placement,System.String[])">
             <summary>
             The constructor of the ScrollingMenu class.
             </summary>
             <param name="question">The question to ask the user.</param>
             <param name="defaultIndex">The index of the default choice(initially 0).</param>
             <param name="placement">The placement of the menu on the console.</param>
-            <param name="line">The line where the menu will be displayed.</param>
             <param name="choices">The different choices of the menu.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.ScrollingMenu.UpdateQuestion(System.String)">
+            <summary>
+            This method is used to update the question of the menu.
+            </summary>
+            <param name="question">The new question of the menu.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.ScrollingMenu.UpdateChoices(System.String[])">
+            <summary>
+            This method is used to update the choices of the menu.
+            </summary>
+            <param name="choices">The new choices of the menu.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.ScrollingMenu.UpdateDefaultIndex(System.Int32)">
+            <summary>
+            This method is used to update the default index of the menu.
+            </summary>
+            <param name="defaultIndex">The new default index of the menu.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.ScrollingMenu.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method is used to update the placement of the menu.
+            </summary>
+            <param name="placement">The new placement of the menu.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -824,19 +1147,20 @@
             </summary>
         </member>
         <member name="T:ConsoleAppVisuals.Elements.TableSelector`1">
-             <summary>
-             The <see cref="T:ConsoleAppVisuals.Elements.TableSelector`1"/> class that contains the methods to create a table and display it.
-             </summary>
-            
+            <summary>
+            The <see cref="T:ConsoleAppVisuals.Elements.TableSelector`1"/> class that contains the methods to create a table and display it.
+            </summary>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.TableSelector`1.Placement">
             <summary>
             This property returns the title of the table.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Elements.TableSelector`1.Line">
-            <summary>
-            This property returns the line to display the table on.
             </summary>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.TableSelector`1.Height">
@@ -899,7 +1223,7 @@
             This property returns the display array of the table.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.TableSelector`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,System.Boolean,System.String,ConsoleAppVisuals.Enums.Placement,System.Nullable{System.Int32})">
+        <member name="M:ConsoleAppVisuals.Elements.TableSelector`1.#ctor(System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.Collections.Generic.List{`0}},System.Boolean,System.Boolean,System.String,ConsoleAppVisuals.Enums.Placement)">
             <summary>
             The <see cref="T:ConsoleAppVisuals.Elements.TableSelector`1"/> natural constructor.
             </summary>
@@ -910,9 +1234,53 @@
             <param name="excludeFooter">Whether to exclude the footer from selectable elements.</param>
             <param name="footerText">The text to display in the footer.</param>
             <param name="placement">The placement of the table.</param>
-            <param name="line">The line to display the table on.</param>
             <exception cref="T:System.ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
             <exception cref="T:System.NullReferenceException">Is thrown when no body lines were provided.</exception>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.TableSelector`1.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+            <summary>
+            This method updates the placement of the table.
+            </summary>
+            <param name="placement">The placement of the table.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.TableSelector`1.UpdateFooterText(System.String)">
+            <summary>
+            This method updates the text of the footer.
+            </summary>
+            <param name="footerText"></param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.TableSelector`1.SetExcludeHeader(System.Boolean)">
+            <summary>
+            This method sets the table to exclude the header.
+            </summary>
+            <param name="excludeHeader">Whether to exclude the header or not.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.TableSelector`1.SetExcludeFooter(System.Boolean)">
+            <summary>
+            This method sets the table to exclude the footer.
+            </summary>
+            <param name="excludeFooter">Whether to exclude the footer or not.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">

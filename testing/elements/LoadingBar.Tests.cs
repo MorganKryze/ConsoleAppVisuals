@@ -138,20 +138,6 @@ public class UnitTestLoadingBar
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    [DataRow(-1)]
-    [DataRow(300000)]
-    public void Test_ConstructorFalseLine(int line)
-    {
-        //Arrange
-        float valuee = 0.3f;
-        string text = "test";
-        Placement placement = Placement.TopCenter;
-        //Act
-        new LoadingBar(text, ref valuee, placement, line);
-    }
-
-    [TestMethod]
     [DataRow("test")]
     [DataRow("hello world")]
     [DataRow("")]

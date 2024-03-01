@@ -29,8 +29,7 @@ public class UnitTestEmbedText
             new List<string>() { "Test for the placement", "123was tested" },
             "Button",
             TextAlignment.Left,
-            placement,
-            0
+            placement
         );
 
         // Act
@@ -51,8 +50,7 @@ public class UnitTestEmbedText
             new List<string>() { "Test for the placement", "123was tested" },
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -74,8 +72,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -98,8 +95,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -122,8 +118,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -147,8 +142,7 @@ public class UnitTestEmbedText
             textToDisplay,
             buttonText,
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -171,7 +165,7 @@ public class UnitTestEmbedText
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var EmbedText = new EmbedText(textToDisplay, "Button", align, Placement.TopCenter, 0);
+        var EmbedText = new EmbedText(textToDisplay, "Button", align, Placement.TopCenter);
 
         // Assert
         Assert.IsNotNull(EmbedText.TextToDisplay);
@@ -181,7 +175,7 @@ public class UnitTestEmbedText
     #region Constructor
     [TestMethod]
     [TestCategory("EmbedText")]
-    public void Constructor_NoLineinputBuilds()
+    public void Constructor_NoLineInputBuilds()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
@@ -200,7 +194,7 @@ public class UnitTestEmbedText
 
     [TestMethod]
     [TestCategory("EmbedText")]
-    public void Constructor_LineinputBuilds()
+    public void Constructor_LineInputBuilds()
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
@@ -210,8 +204,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Assert
@@ -230,8 +223,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Assert
@@ -250,8 +242,7 @@ public class UnitTestEmbedText
             textToDisplay,
             default,
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Assert
@@ -270,8 +261,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
         var marginValue = 2;
 
@@ -294,8 +284,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
         var marginValue = 2;
 
@@ -330,8 +319,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -351,8 +339,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -369,8 +356,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -392,8 +378,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act
@@ -413,8 +398,7 @@ public class UnitTestEmbedText
             textToDisplay,
             "Button",
             TextAlignment.Left,
-            Placement.TopCenter,
-            0
+            Placement.TopCenter
         );
 
         // Act

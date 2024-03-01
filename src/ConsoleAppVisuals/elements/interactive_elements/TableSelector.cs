@@ -7,33 +7,33 @@ namespace ConsoleAppVisuals.Elements;
 /// <summary>
 /// The <see cref="TableSelector{T}"/> class that contains the methods to create a table and display it.
 /// </summary>
-///
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class TableSelector<T> : InteractiveElement<int>
 {
-    #region Fields: title, headers, lines, display array, rounded corners
+    #region Fields
     private string? _title;
     private List<string>? _rawHeaders;
     private List<List<T>>? _rawLines;
-    private readonly bool _excludeHeader;
-    private readonly bool _excludeFooter;
-    private readonly string? _footerText;
+    private bool _excludeHeader;
+    private bool _excludeFooter;
+    private string? _footerText;
     private string[]? _displayArray;
     private bool _roundedCorners = false;
-    private readonly int _line;
-    private readonly Placement _placement;
+    private Placement _placement;
 
     #endregion
 
-    #region Properties: get headers, get lines
+    #region Properties
     /// <summary>
     /// This property returns the title of the table.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// This property returns the line to display the table on.
-    /// </summary>
-    public override int Line => _line;
 
     /// <summary>
     /// This property returns the height of the table.
@@ -44,9 +44,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// This property returns the width of the table.
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
-    #endregion
 
-    #region Properties: get corners, count
     /// <summary>
     /// This property returns the title of the table.
     /// </summary>
@@ -110,7 +108,6 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <param name="excludeFooter">Whether to exclude the footer from selectable elements.</param>
     /// <param name="footerText">The text to display in the footer.</param>
     /// <param name="placement">The placement of the table.</param>
-    /// <param name="line">The line to display the table on.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
     /// <remarks>
@@ -127,8 +124,7 @@ public class TableSelector<T> : InteractiveElement<int>
         bool excludeHeader = true,
         bool excludeFooter = true,
         string? footerText = null,
-        Placement placement = Placement.TopCenter,
-        int? line = null
+        Placement placement = Placement.TopCenter
     )
     {
         _title = title;
@@ -138,7 +134,6 @@ public class TableSelector<T> : InteractiveElement<int>
         _excludeFooter = excludeFooter;
         _footerText = footerText;
         _placement = placement;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
         if (CompatibilityCheck())
         {
             BuildTable();
@@ -448,6 +443,79 @@ public class TableSelector<T> : InteractiveElement<int>
     #endregion
 
     #region Methods: Get, Add, Update, Remove, Clear
+    /// <summary>
+    /// This method updates the placement of the table.
+    /// </summary>
+    /// <param name="placement">The placement of the table.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = placement;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+    }
+
+    /// <summary>
+    /// This method updates the text of the footer.
+    /// </summary>
+    /// <param name="footerText"></param>
+    public void UpdateFooterText(string footerText)
+    {
+        _footerText = footerText;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+    }
+
+    /// <summary>
+    /// This method sets the table to exclude the header.
+    /// </summary>
+    /// <param name="excludeHeader">Whether to exclude the header or not.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void SetExcludeHeader(bool excludeHeader = true)
+    {
+        _excludeHeader = excludeHeader;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+    }
+
+    /// <summary>
+    /// This method sets the table to exclude the footer.
+    /// </summary>
+    /// <param name="excludeFooter">Whether to exclude the footer or not.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void SetExcludeFooter(bool excludeFooter = true)
+    {
+        _excludeFooter = excludeFooter;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+    }
+
     /// <summary>
     /// This method adds headers to the table.
     /// </summary>
@@ -777,7 +845,7 @@ public class TableSelector<T> : InteractiveElement<int>
             for (int j = 0; j < _displayArray.Length; j++)
             {
                 array[j] = _displayArray[j];
-                Core.WritePositionedString(array[j], TextAlignment.Center, false, _line + j);
+                Core.WritePositionedString(array[j], TextAlignment.Center, false, Line + j);
                 if (j == index)
                 {
                     Core.WritePositionedString(
@@ -788,7 +856,7 @@ public class TableSelector<T> : InteractiveElement<int>
                             : array[j][1..^1],
                         TextAlignment.Center,
                         true,
-                        _line + j
+                        Line + j
                     );
                 }
             }
