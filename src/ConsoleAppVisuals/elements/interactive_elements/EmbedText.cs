@@ -18,11 +18,12 @@ public class EmbedText : InteractiveElement<string>
 {
     #region Fields
     private readonly List<string> _text;
-    private readonly string _button;
-    private readonly TextAlignment _align;
-    private readonly Placement _placement;
-    private readonly int _line;
+    private string _button;
+    private bool _roundedCorners;
+    private TextAlignment _align;
+    private Placement _placement;
     private List<string>? _textToDisplay;
+
     #endregion
 
     #region Properties
@@ -30,11 +31,6 @@ public class EmbedText : InteractiveElement<string>
     /// The position of the Embed text.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// The Line of the Embed text.
-    /// </summary>
-    public override int Line => _line;
 
     /// <summary>
     /// The height of the Embed text.
@@ -45,9 +41,7 @@ public class EmbedText : InteractiveElement<string>
     /// The width of the Embed text.
     /// </summary>
     public override int Width => _textToDisplay!.Max((string s) => s.Length) - 8;
-    #endregion
 
-    #region Getters and setters
     /// <summary>
     /// The text of the Embed text.
     /// </summary>
@@ -62,6 +56,13 @@ public class EmbedText : InteractiveElement<string>
     /// The text to display.
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
+
+    /// <summary>
+    /// Wether the corners are rounded or not.
+    /// </summary>
+    public bool RoundedCorners => _roundedCorners;
+    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+
     #endregion
 
     #region Constructor
@@ -72,7 +73,7 @@ public class EmbedText : InteractiveElement<string>
     /// <param name="button">The text of the button.</param>
     /// <param name="align">The alignment of the Embed text.</param>
     /// <param name="placement">The placement of the Embed text element.</param>
-    /// <param name="line">The line of the Embed text.</param>
+    /// <param name="roundedCorners">Wether the corners are rounded or not.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -85,21 +86,20 @@ public class EmbedText : InteractiveElement<string>
         string? button = null,
         TextAlignment align = TextAlignment.Left,
         Placement placement = Placement.TopCenter,
-        int? line = null
+        bool roundedCorners = false
     )
     {
         _text = text;
         _button = button ?? "Press [Enter] to continue";
         _align = align;
         _placement = placement;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement);
+        _roundedCorners = roundedCorners;
         if (CheckIntegrity())
             BuildText();
     }
     #endregion
 
     #region Methods
-
     private bool CheckIntegrity()
     {
         if (_text.Count == 0)
@@ -112,6 +112,87 @@ public class EmbedText : InteractiveElement<string>
             return false;
         }
         return true;
+    }
+
+    /// <summary>
+    /// This method updates the text of the button.
+    /// </summary>
+    /// <param name="newButton">The new text of the button.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateButtonText(string newButton)
+    {
+        _button = newButton;
+    }
+
+    /// <summary>
+    /// This method updates the text of the Embed text.
+    /// </summary>
+    /// <param name="newText">The new text of the Embed text.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateText(List<string> newText)
+    {
+        _text.Clear();
+        _text.AddRange(newText);
+    }
+
+    /// <summary>
+    /// This method updates the placement of the Embed text.
+    /// </summary>
+    /// <param name="newPlacement">The new placement of the Embed text.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement newPlacement)
+    {
+        _placement = newPlacement;
+    }
+
+    /// <summary>
+    /// This method updates the alignment of the Embed text.
+    /// </summary>
+    /// <param name="newAlignment">The new alignment of the Embed text.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateAlignment(TextAlignment newAlignment)
+    {
+        _align = newAlignment;
+    }
+
+    /// <summary>
+    /// This method updates the rounded corners of the Embed text.
+    /// </summary>
+    /// <param name="roundedCorners">Wether the corners are rounded or not.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void SetRoundedCorners(bool roundedCorners = true)
+    {
+        _roundedCorners = roundedCorners;
     }
 
     /// <summary>
@@ -198,7 +279,7 @@ public class EmbedText : InteractiveElement<string>
             false,
             _placement.ToTextAlignment(),
             false,
-            _line,
+            Line,
             _textToDisplay!.ToArray()
         );
         Window.StopExecution();

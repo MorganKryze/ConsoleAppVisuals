@@ -17,10 +17,9 @@ namespace ConsoleAppVisuals.Elements;
 public class Prompt : InteractiveElement<string>
 {
     #region Fields
-    private readonly string _question;
-    private readonly string _defaultValue;
-    private readonly Placement _placement;
-    private readonly int _line;
+    private string _question;
+    private string _defaultValue;
+    private Placement _placement;
     #endregion
 
     #region Properties
@@ -28,12 +27,6 @@ public class Prompt : InteractiveElement<string>
     /// The placement of the prompt element.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// The line of the prompt element in the console.
-    /// </summary>
-    /// <remarks>We add 2 because so the prompt element does not overlap with the title.</remarks>
-    public override int Line => _line;
 
     /// <summary>
     /// The height of the prompt element.
@@ -45,6 +38,16 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     /// <remarks>We add a margin of 2 to be sur to take in account odd question lengths.</remarks>
     public override int Width => _question.Length + 2;
+
+    /// <summary>
+    /// The question of the prompt element.
+    /// </summary>
+    public string Question => _question;
+
+    /// <summary>
+    /// The default value of the response.
+    /// </summary>
+    public string DefaultValue => _defaultValue;
     #endregion
 
     #region Constructor
@@ -54,7 +57,6 @@ public class Prompt : InteractiveElement<string>
     /// <param name="question">The text on the left of the prompt element.</param>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
     /// <param name="placement">The placement of the prompt element.</param>
-    /// <param name="line">The line of the prompt element in the console.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -65,18 +67,64 @@ public class Prompt : InteractiveElement<string>
     public Prompt(
         string question,
         string? defaultValue = null,
-        Placement placement = Placement.TopCenter,
-        int? line = null
+        Placement placement = Placement.TopCenter
     )
     {
         _question = question;
         _defaultValue = defaultValue ?? string.Empty;
         _placement = placement;
-        _line = Window.CheckLine(line) ?? Window.GetLineAvailable(_placement);
     }
     #endregion
 
     #region Methods
+    /// <summary>
+    /// This method is used to update the question of the prompt element.
+    /// </summary>
+    /// <param name="question">The new question of the prompt element.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateQuestion(string question)
+    {
+        _question = question;
+    }
+
+    /// <summary>
+    /// This method is used to update the default value of the prompt element.
+    /// </summary>
+    /// <param name="defaultValue">The new default value of the prompt element.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateDefaultValue(string defaultValue)
+    {
+        _defaultValue = defaultValue;
+    }
+
+    /// <summary>
+    /// This method is used to update the placement of the prompt element.
+    /// </summary>
+    /// <param name="placement">The new placement of the prompt element.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = placement;
+    }
+
     /// <summary>
     /// This method is used to render the prompt element on the console.
     /// </summary>
@@ -85,7 +133,7 @@ public class Prompt : InteractiveElement<string>
     {
         Core.WriteContinuousString(
             _question,
-            _line,
+            Line,
             false,
             1500,
             50,
@@ -97,7 +145,7 @@ public class Prompt : InteractiveElement<string>
         do
         {
             Console.CursorVisible = false;
-            Core.WritePositionedString(GetRenderSpace()[0], TextAlignment.Center, false, _line + 2);
+            Core.WritePositionedString(GetRenderSpace()[0], TextAlignment.Center, false, Line + 2);
             Console.SetCursorPosition(0, Console.CursorTop);
             Console.Write("{0," + (Console.WindowWidth / 2 - _question.Length / 2 + 2) + "}", "> ");
             Console.Write($"{field}");

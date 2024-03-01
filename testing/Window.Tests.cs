@@ -125,7 +125,7 @@ public class UnitTestWindow
     public void GetVisibleElement_ElementNotFound()
     {
         // Arrange
-        var prompt = new Prompt("Hello World!", default, Placement.TopCenter, 0);
+        var prompt = new Prompt("Hello World!", default, Placement.TopCenter);
         Window.AddElement(prompt);
 
         // Act
@@ -470,54 +470,6 @@ public class UnitTestWindow
     #endregion
 
     #region General
-    [TestMethod]
-    [DataRow(Placement.TopCenter)]
-    [DataRow(Placement.TopLeft)]
-    [DataRow(Placement.TopRight)]
-    [DataRow(Placement.TopCenterFullWidth)]
-    [DataRow(Placement.BottomCenterFullWidth)]
-    public void GetLine_AvailableLine(Placement placement)
-    {
-        // Arrange
-        var title = new Title("Title");
-        Window.AddElement(title);
-        var prompt = new Prompt("Hello World!");
-        Window.AddElement(prompt);
-
-        // Act
-        var line = Window.GetLineAvailable(placement);
-
-        // Assert
-        if (placement == Placement.BottomCenterFullWidth)
-            Assert.AreEqual(Console.WindowHeight, line);
-        else
-            Assert.AreEqual(8, line);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
-    [TestMethod]
-    public void GetLine_AvailableLine_TopCenterFullWidth()
-    {
-        // Arrange
-        var table1 = new TableView<string>("Title", null, null, false, Placement.TopLeft);
-        Window.AddElement(table1);
-        var table2 = new TableView<string>("Title", null, null, false, Placement.TopRight);
-        Window.AddElement(table2);
-        var table3 = new TableView<string>("Title", null, null, false, Placement.TopCenter);
-        Window.AddElement(table3);
-
-        // Act
-        Window.ActivateAllElements();
-        var line = Window.GetLineAvailable(Placement.TopCenterFullWidth);
-
-        // Assert
-        Assert.AreEqual(0, line);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
 
     [TestMethod]
     [DataRow(null)]

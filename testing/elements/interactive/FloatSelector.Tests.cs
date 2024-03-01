@@ -25,7 +25,7 @@ public class UnitTestFloatSelector
     public void Placement_Getter(Placement placement)
     {
         // Arrange
-        var floatSelector = new FloatSelector("Question", 0.0f, 10.0f, 5.0f, 1.0f, placement, 0);
+        var floatSelector = new FloatSelector("Question", 0.0f, 10.0f, 5.0f, 1.0f, placement);
 
         // Act
         var actualPlacement = floatSelector.Placement;
@@ -43,7 +43,14 @@ public class UnitTestFloatSelector
     {
         // Arrange
         var line = 0;
-        var floatSelector = new FloatSelector("Question", 0.0f, 10.0f, 5.0f, 1.0f, Placement.TopCenter, line);
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
 
         // Act
         var actualLine = floatSelector.Line;
@@ -58,7 +65,14 @@ public class UnitTestFloatSelector
     {
         // Arrange
         var line = 0;
-        var floatSelector = new FloatSelector("Question", 0.0f, 10.0f, 5.0f, 1.0f, Placement.TopCenter);
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
 
         // Act
         var actualLine = floatSelector.Line;
@@ -75,7 +89,14 @@ public class UnitTestFloatSelector
     public void Height_Getter()
     {
         // Arrange
-        var floatSelector = new FloatSelector("Question", 0.0f, 10.0f, 5.0f, 1.0f, Placement.TopCenter, 0);
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
 
         // Act
         var actualHeight = floatSelector.Height;
@@ -91,7 +112,14 @@ public class UnitTestFloatSelector
     public void Width_Getter()
     {
         // Arrange
-        var floatSelector = new FloatSelector("Question", 0.0f, 10.0f, 5.0f, 1.0f, Placement.TopCenter, 0);
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
 
         // Act
         var actualWidth = floatSelector.Width;
@@ -117,7 +145,7 @@ public class UnitTestFloatSelector
         var line = 0;
 
         // Act
-        var floatSelector = new FloatSelector(question, min, max, start, step, placement, line);
+        var floatSelector = new FloatSelector(question, min, max, start, step, placement);
 
         // Assert
         Assert.AreEqual(question, floatSelector.Question);
@@ -141,11 +169,10 @@ public class UnitTestFloatSelector
         var start = 5.0f;
         var step = 1.0f;
         var placement = Placement.TopCenter;
-        var line = 0;
 
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(
-            () => new FloatSelector(question, min, max, start, step, placement, line)
+            () => new FloatSelector(question, min, max, start, step, placement)
         );
     }
 
@@ -159,11 +186,10 @@ public class UnitTestFloatSelector
         var question = "Question";
         var step = 1.0f;
         var placement = Placement.TopCenter;
-        var line = 0;
 
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(
-            () => new FloatSelector(question, min, max, start, step, placement, line)
+            () => new FloatSelector(question, min, max, start, step, placement)
         );
     }
 
@@ -177,11 +203,10 @@ public class UnitTestFloatSelector
         // Arrange
         var question = "Question";
         var placement = Placement.TopCenter;
-        var line = 0;
 
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(
-            () => new FloatSelector(question, min, max, start, step, placement, line)
+            () => new FloatSelector(question, min, max, start, step, placement)
         );
     }
     #endregion
