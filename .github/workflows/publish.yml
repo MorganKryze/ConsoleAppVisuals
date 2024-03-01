@@ -22,7 +22,7 @@ jobs:
     - name: Set VERSION variable from tag
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
     - name: Build
-      run: dotnet build --configuration Release /p:Version=${VERSION}
+      run: dotnet build -c Release /p:Version=${VERSION} /p:ContinuousIntegrationBuild=true
     - name: Pack
       run: dotnet pack src/ConsoleAppVisuals/ConsoleAppVisuals.csproj --configuration Release /p:ContinuousIntegrationBuild=true /p:Version=${VERSION} --no-build --output .
     - name: Push to GitHub Packages
