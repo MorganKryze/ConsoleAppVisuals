@@ -275,7 +275,8 @@ public class FloatSelector : InteractiveElement<float>
         Core.WriteContinuousString(_question, Line, default, 1500, 50);
         float currentNumber = _startValue;
         int lineSelector = Line + 4;
-        while (true)
+        bool loop = true;
+        while (loop)
         {
             DisplayChoices(lineSelector, currentNumber);
 
@@ -294,13 +295,16 @@ public class FloatSelector : InteractiveElement<float>
                         this,
                         new InteractionEventArgs<float>(Output.Selected, currentNumber)
                     );
-                    return;
+                    Window.DeactivateElement(this);
+                    loop = false;
+                    break;
                 case ConsoleKey.Escape:
                     SendResponse(
                         this,
                         new InteractionEventArgs<float>(Output.Escaped, currentNumber)
                     );
-                    return;
+                    loop = false;
+                    break;
                 default:
                     break;
             }

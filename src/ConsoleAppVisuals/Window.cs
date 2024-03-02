@@ -356,32 +356,6 @@ public static class Window
     }
 
     /// <summary>
-    /// After activating the visibility of an interactive element, this method will return the response for the user.
-    /// </summary>
-    /// <param name="clear">If true, the element will be cleared afterward.</param>
-    /// <typeparam name="T">The type of interactive element.</typeparam>
-    /// <typeparam name="TResponse">The type of the response (int, string, float...).</typeparam>
-    /// <returns>The response of the user.</returns>
-    /// <exception cref="ElementNotFoundException">Thrown when the element is invalid.</exception>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    [Visual]
-    public static InteractionEventArgs<TResponse>? GetResponse<T, TResponse>(bool clear = true)
-        where T : InteractiveElement<TResponse>
-    {
-        var element =
-            GetVisibleElement<T>()
-            ?? throw new ElementNotFoundException("Invalid element. Not found in the window.");
-        DeactivateElement<T>(clear);
-        return element.GetInteractionResponse;
-    }
-
-    /// <summary>
     /// This method attempts to activate the visibility of all elements.
     /// </summary>
     /// <remarks>
@@ -640,6 +614,7 @@ public static class Window
     /// <summary>
     /// This method stops the execution of the program until a key is pressed.
     /// </summary>
+    /// <param name="key">The key to be pressed to continue the execution.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -648,7 +623,7 @@ public static class Window
     /// </list>
     /// </remarks>
     [Visual]
-    public static void StopExecution(ConsoleKey key = ConsoleKey.Enter)
+    public static void Freeze(ConsoleKey key = ConsoleKey.Enter)
     {
         while (Console.ReadKey(intercept: true).Key != key)
         {

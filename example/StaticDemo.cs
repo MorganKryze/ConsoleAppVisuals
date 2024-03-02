@@ -4,145 +4,195 @@ using ConsoleAppVisuals.Models;
 
 namespace example
 {
-    // This object is a slight modification of the EmbedText object for the demo (here not interactive).
+    // This object is a slight modification of the Banner object for the demo (here not interactive).
     public class StaticDemo : Element
     {
-        #region Fields 
-        private readonly List<string> _text; // Your attributes should be private.
-        private readonly TextAlignment _align;
-        private readonly Placement _placement;
-        private readonly int _line;
-        private List<string>? _textToDisplay;
+        #region Fields
+        // Your attributes should be private.
+        private (string, string, string) _text;
+        private int _upperMargin;
+        private int _lowerMargin;
+        private Placement _placement;
         #endregion
 
         #region Properties
+        // You can limit the number of this element in the window.
+        // Do not forget that the default value is 1.
+        public override int MaxNumberOfThisElement => 10;
+
         /// <summary>
-        /// The position of the StaticDemo element in the console. <see cref="ConsoleAppVisuals.Placement"/> for more information.
+        /// The placement of the banner.
         /// </summary>
         public override Placement Placement => _placement;
 
         /// <summary>
-        /// The Line of the StaticDemo element.
+        /// The height of the banner.
         /// </summary>
-        public override int Line => _line;
+        public override int Height => UpperMargin + 1 + LowerMargin;
 
         /// <summary>
-        /// The height of the StaticDemo element.
+        /// The width of the banner.
         /// </summary>
-        public override int Height => _textToDisplay!.Count; // Find the maximum of the height or width of the element to avoid conflict with other elements.
+        public override int Width => Console.WindowWidth;
 
         /// <summary>
-        /// The width of the StaticDemo element.
+        /// The text of the banner.
         /// </summary>
-        public override int Width => _textToDisplay!.Max((string s) => s.Length);
+        public (string, string, string) Text => _text;
 
-        public override int MaxNumberOfThisElement => 10; // You can limit the number of this element in the window. Do not forget that the default value is 1.
+        /// <summary>
+        /// The upper margin of the banner.
+        /// </summary>
+        public int UpperMargin => _upperMargin;
+
+        /// <summary>
+        /// The lower margin of the banner.
+        /// </summary>
+        public int LowerMargin => _lowerMargin;
         #endregion
 
         #region Constructor
         /// <summary>
-        /// The natural constructor of the StaticDemo element.
+        /// The natural constructor of the banner.
         /// </summary>
-        /// <param name="text">The text to display.</param>
-        /// <param name="align">The alignment of the StaticDemo element.</param>
-        /// <param name="placement">The placement of the StaticDemo element.</param>
-        /// <param name="line">The line of the StaticDemo element.</param>
+        /// <param name="leftText">The text on the left of the banner.</param>
+        /// <param name="centerText">The text in the center of the banner.</param>
+        /// <param name="rightText">The text on the right of the banner.</param>
+        /// <param name="upperMargin">The upper margin of the banner.</param>
+        /// <param name="lowerMargin">The lower margin of the banner.</param>
+        /// <param name="placement">The placement of the banner.</param>
         public StaticDemo(
-            List<string> text,
-            TextAlignment align = TextAlignment.Left,
-            Placement placement = Placement.TopCenter,
-            int? line = null
+            string leftText = "Banner Left",
+            string centerText = "Banner Center",
+            string rightText = "Banner Right",
+            int upperMargin = 0,
+            int lowerMargin = 0,
+            Placement placement = Placement.TopCenterFullWidth
         )
         {
-            _text = text;
-            _align = align;
-            _placement = placement;
-            _line = Window.CheckLine(line) ?? Window.GetLineAvailable(placement); // We consider this line mandatory to keep the code safe.
-            BuildText();
+            _text.Item1 = leftText;
+            _text.Item2 = centerText;
+            _text.Item3 = rightText;
+            _upperMargin = upperMargin;
+            _lowerMargin = lowerMargin;
+            _placement = CheckPlacement(placement);
+        }
+
+        private static Placement CheckPlacement(Placement placement)
+        {
+            if (placement is not (Placement.BottomCenterFullWidth or Placement.TopCenterFullWidth))
+            {
+                throw new ArgumentException(
+                    "The placement of the banner must be TopCenterFullWidth or BottomCenterFullWidth."
+                );
+            }
+            return placement;
         }
         #endregion
 
         #region Methods
         /// <summary>
-        /// Adds a line to the StaticDemo element.
+        /// This method is used to update the text on the left of the banner.
         /// </summary>
-        /// <param name="line">The line to add.</param>
-        public void AddLine(string line) // Feel free to add your own methods to manipulate your element after adding it to the window.
+        /// <param name="leftText">The new text on the left of the banner.</param>
+        public void UpdateLeftText(string leftText) // Feel free to add your own methods to manipulate your element after adding it to the window.
         {
-            _text.Add(line);
+            _text.Item1 = leftText;
         }
 
         /// <summary>
-        /// Inserts a line to the StaticDemo element.
+        /// This method is used to update the text in the center of the banner.
         /// </summary>
-        /// <param name="line">The line to insert.</param>
-        /// <param name="index">The index where to insert the line.</param>
-        public void InsertLine(string line, int index)
+        /// <param name="centerText">The new text in the center of the banner.</param>
+        public void UpdateCenterText(string centerText)
         {
-            _text.Insert(index, line);
+            _text.Item2 = centerText;
         }
 
         /// <summary>
-        /// Removes a line from the StaticDemo element.
+        /// This method is used to update the text on the right of the banner.
         /// </summary>
-        /// <param name="line">The line to remove.</param>
-        public void RemoveLine(string line)
+        /// <param name="rightText">The new text on the right of the banner.</param>
+        public void UpdateRightText(string rightText)
         {
-            _text.Remove(line);
+            _text.Item3 = rightText;
         }
 
         /// <summary>
-        /// Removes a line from the StaticDemo element.
+        /// This method is used to update the placement of the banner.
         /// </summary>
-        /// <param name="index">The index of the line to remove.</param>
-        public void RemoveLine(int index)
+        /// <param name="placement">The new placement of the banner.</param>
+        public void UpdatePlacement(Placement placement)
         {
-            _text.RemoveAt(index);
+            _placement = CheckPlacement(placement);
         }
 
         /// <summary>
-        /// Renders the StaticDemo element.
+        /// This method is used to update the upper margin of the banner.
+        /// </summary>
+        /// <param name="upperMargin">The new upper margin of the banner.</param>
+        /// <exception cref="ArgumentOutOfRangeException">The upper margin of the banner must be between 0 and the height of the console window.</exception>
+        public void UpdateUpperMargin(int upperMargin)
+        {
+            if (upperMargin < 0 || upperMargin > Console.WindowHeight - 1)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(upperMargin),
+                    "The upper margin of the banner must be between 0 and the height of the console window."
+                );
+            }
+            _upperMargin = upperMargin;
+        }
+
+        /// <summary>
+        /// This method is used to update the lower margin of the banner.
+        /// </summary>
+        /// <param name="lowerMargin">The new lower margin of the banner.</param>
+        /// <exception cref="ArgumentOutOfRangeException">The lower margin of the banner must be between 0 and the height of the console window.</exception>
+        public void UpdateLowerMargin(int lowerMargin)
+        {
+            if (lowerMargin < 0 || lowerMargin > Console.WindowHeight - 1)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(lowerMargin),
+                    "The lower margin of the banner must be between 0 and the height of the console window."
+                );
+            }
+            _lowerMargin = lowerMargin;
+        }
+
+        /// <summary>
+        /// This method is used to render the banner on the console.
         /// </summary>
         protected override void RenderElementActions() // This method is mandatory to render correctly your element. If not, an error will be thrown.
         {
-            BuildText();
-            Core.WriteMultiplePositionedLines(
-                false,
-                _placement.ToTextAlignment(),
-                false,
-                _line,
-                _textToDisplay!.ToArray()
-            );
-            Window.StopExecution();
-            Window.DeactivateElement<StaticDemo>();
-        }
-
-        private void BuildText()
-        {
-            var maxLength = _text.Max((string s) => s.Length);
-            _textToDisplay = new List<string>();
-            foreach (var line in _text)
+            for (int i = 0; i < UpperMargin; i++)
             {
-                var lineToDisplay = "│ ";
-                switch (_align)
-                {
-                    case TextAlignment.Center:
-                        int totalPadding = maxLength - line.Length;
-                        int padLeft = totalPadding / 2;
-                        lineToDisplay += line.PadLeft(line.Length + padLeft).PadRight(maxLength);
-                        break;
-                    case TextAlignment.Left:
-                        lineToDisplay += line.PadRight(maxLength);
-                        break;
-                    case TextAlignment.Right:
-                        lineToDisplay += line.PadLeft(maxLength);
-                        break;
-                }
-                lineToDisplay += " │";
-                _textToDisplay.Add(lineToDisplay);
+                Core.WritePositionedString(
+                    string.Empty,
+                    TextAlignment.Center,
+                    true,
+                    Line + i,
+                    false
+                );
             }
-            _textToDisplay.Insert(0, "┌" + new string('─', maxLength + 2) + "┐");
-            _textToDisplay.Add("└" + new string('─', maxLength + 2) + "┘");
+            Core.WritePositionedString(
+                Text.BannerToString(),
+                TextAlignment.Center,
+                true,
+                Line,
+                false
+            );
+            for (int i = 0; i < LowerMargin; i++)
+            {
+                Core.WritePositionedString(
+                    string.Empty,
+                    TextAlignment.Center,
+                    true,
+                    Line + Height - 1 - i,
+                    false
+                );
+            }
         }
         #endregion
     }

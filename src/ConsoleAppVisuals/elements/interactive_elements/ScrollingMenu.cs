@@ -161,7 +161,8 @@ public class ScrollingMenu : InteractiveElement<int>
         Core.WriteContinuousString(_question, Line, false, 1500, 50);
         int lineChoice = Line + 2;
         bool delay = true;
-        while (true)
+        bool loop = true;
+        while (loop)
         {
             DisplayChoices(_defaultIndex, _placement, _choices, lineChoice, delay);
             delay = false;
@@ -181,55 +182,60 @@ public class ScrollingMenu : InteractiveElement<int>
                         this,
                         new InteractionEventArgs<int>(Output.Selected, _defaultIndex)
                     );
-                    return;
+                    loop = false;
+                    break;
                 case ConsoleKey.Escape:
                     SendResponse(
                         this,
                         new InteractionEventArgs<int>(Output.Escaped, _defaultIndex)
                     );
-                    return;
+                    loop = false;
+                    break;
                 case ConsoleKey.Backspace:
                     SendResponse(
                         this,
                         new InteractionEventArgs<int>(Output.Deleted, _defaultIndex)
                     );
-                    return;
+                    loop = false;
+                    break;
             }
         }
-        [Visual]
-        static void EqualizeChoicesLength(string[] choices)
+    }
+
+    [Visual]
+    private static void EqualizeChoicesLength(string[] choices)
+    {
+        int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
+        for (int i = 0; i < choices.Length; i++)
         {
-            int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
-            for (int i = 0; i < choices.Length; i++)
-            {
-                choices[i] = choices[i].PadRight(totalWidth);
-            }
+            choices[i] = choices[i].PadRight(totalWidth);
         }
-        [Visual]
-        static void DisplayChoices(
-            int defaultIndex,
-            Placement placement,
-            string[] choices,
-            int lineChoice,
-            bool delay = false
-        )
+    }
+
+    [Visual]
+    private static void DisplayChoices(
+        int defaultIndex,
+        Placement placement,
+        string[] choices,
+        int lineChoice,
+        bool delay = false
+    )
+    {
+        string[] array = new string[choices.Length];
+        for (int i = 0; i < choices.Length; i++)
         {
-            string[] array = new string[choices.Length];
-            for (int i = 0; i < choices.Length; i++)
-            {
-                array[i] =
-                    (i == defaultIndex)
-                        ? $" {Core.GetSelector.Item1} {choices[i]}  "
-                        : $"   {choices[i]}  ";
-                Core.WritePositionedString(
-                    array[i],
-                    placement.ToTextAlignment(),
-                    i == defaultIndex,
-                    lineChoice + i
-                );
-                if (delay)
-                    Thread.Sleep(30);
-            }
+            array[i] =
+                (i == defaultIndex)
+                    ? $" {Core.GetSelector.Item1} {choices[i]}  "
+                    : $"   {choices[i]}  ";
+            Core.WritePositionedString(
+                array[i],
+                placement.ToTextAlignment(),
+                i == defaultIndex,
+                lineChoice + i
+            );
+            if (delay)
+                Thread.Sleep(30);
         }
     }
     #endregion
