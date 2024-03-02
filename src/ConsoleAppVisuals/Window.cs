@@ -150,7 +150,7 @@ public static class Window
         {
             element.Id = NextId;
             s_elements.Add(element);
-            if (AllowVisibilityToggle(element.Id))
+            if (!element.IsInteractive && AllowVisibilityToggle(element.Id))
             {
                 element.ToggleVisibility();
             }
@@ -298,7 +298,7 @@ public static class Window
         }
         if (render)
         {
-            s_elements[id].RenderElement();
+            Render(s_elements[id]);
         }
     }
 
@@ -321,7 +321,7 @@ public static class Window
         }
         if (render)
         {
-            element.RenderElement();
+            Render(element);
         }
     }
 
@@ -351,7 +351,7 @@ public static class Window
         }
         if (render)
         {
-            element.RenderElement();
+            Render(element);
         }
     }
 
@@ -730,6 +730,9 @@ public static class Window
     /// This method clears the console.
     /// </summary>
     /// <param name="continuous">If true, the window will be cleared continuously.</param>
+    /// <param name="startLine">The start line of the window to be cleared.</param>
+    /// <param name="length">The number of lines to be cleared.</param>
+    /// <param name="step">The step of the window to be cleared.</param>
     /// <returns>True if the window is successfully cleared, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -738,18 +741,30 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public static bool Clear(bool continuous = false)
+    public static bool Clear(
+        bool continuous = false,
+        int? startLine = null,
+        int? length = null,
+        int step = 1
+    )
     {
-        if (continuous)
+        startLine = CheckLine(startLine) ?? 0;
+        length = CheckLine(startLine + length) ?? Console.WindowHeight;
+        if (step < 1 || step > Console.WindowHeight)
         {
-            for (int i = 0; i < Console.WindowHeight; i++)
+            throw new ArgumentOutOfRangeException(
+                nameof(step),
+                "Invalid step, less than 0 or greater than the window height."
+            );
+        }
+
+        for (int i = (int)startLine; i < (int)length; i += step)
+        {
+            if (continuous)
             {
                 Core.WriteContinuousString("".PadRight(Console.WindowWidth), i, false, 100, 10);
             }
-        }
-        else
-        {
-            for (int i = 0; i < Console.WindowHeight; i++)
+            else
             {
                 Core.WritePositionedString(
                     "".PadRight(Console.WindowWidth),
