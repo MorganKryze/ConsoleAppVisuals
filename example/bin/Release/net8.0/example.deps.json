@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "example/1.0.0": {
         "dependencies": {
-          "ConsoleAppVisuals": "0.0.0"
+          "ConsoleAppVisuals": "1.0.0"
         },
         "runtime": {
           "example.dll": {}
@@ -66,7 +66,7 @@
           }
         }
       },
-      "ConsoleAppVisuals/0.0.0": {
+      "ConsoleAppVisuals/1.0.0": {
         "dependencies": {
           "Moq": "4.20.70",
           "YamlDotNet": "15.1.2"
@@ -111,7 +111,7 @@
       "path": "yamldotnet/15.1.2",
       "hashPath": "yamldotnet.15.1.2.nupkg.sha512"
     },
-    "ConsoleAppVisuals/0.0.0": {
+    "ConsoleAppVisuals/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -20,6 +20,12 @@ public class Prompt : InteractiveElement<string>
     private string _question;
     private string _defaultValue;
     private Placement _placement;
+    private int _maxLength;
+    #endregion
+
+    #region Constants
+    private const int PROMPT_HEIGHT = 3;
+    private const int PROMPT_LEFT_MARGIN = 4;
     #endregion
 
     #region Properties
@@ -31,13 +37,12 @@ public class Prompt : InteractiveElement<string>
     /// <summary>
     /// The height of the prompt element.
     /// </summary>
-    public override int Height => 3;
+    public override int Height => PROMPT_HEIGHT;
 
     /// <summary>
     /// The width of the prompt element.
     /// </summary>
-    /// <remarks>We add a margin of 2 to be sur to take in account odd question lengths.</remarks>
-    public override int Width => _question.Length + 2;
+    public override int Width => Math.Max(_question.Length + 1, PROMPT_LEFT_MARGIN + _maxLength);
 
     /// <summary>
     /// The question of the prompt element.
@@ -48,6 +53,11 @@ public class Prompt : InteractiveElement<string>
     /// The default value of the response.
     /// </summary>
     public string DefaultValue => _defaultValue;
+
+    /// <summary>
+    /// The maximum length of the response.
+    /// </summary>
+    public int MaxLength => _maxLength;
     #endregion
 
     #region Constructor
@@ -57,6 +67,7 @@ public class Prompt : InteractiveElement<string>
     /// <param name="question">The text on the left of the prompt element.</param>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
     /// <param name="placement">The placement of the prompt element.</param>
+    /// <param name="maxLength">The maximum length of the response.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -67,12 +78,14 @@ public class Prompt : InteractiveElement<string>
     public Prompt(
         string question,
         string? defaultValue = null,
-        Placement placement = Placement.TopCenter
+        Placement placement = Placement.TopCenter,
+        int maxLength = 30
     )
     {
         _question = question;
         _defaultValue = defaultValue ?? string.Empty;
         _placement = placement;
+        _maxLength = maxLength;
     }
     #endregion
 
@@ -123,6 +136,28 @@ public class Prompt : InteractiveElement<string>
     public void UpdatePlacement(Placement placement)
     {
         _placement = placement;
+    }
+
+    /// <summary>
+    /// This method is used to update the maximum length of the response.
+    /// </summary>
+    /// <param name="maxLength">The new maximum length of the response.</param>
+    /// <exception cref="ArgumentOutOfRangeException">The maximum length of the response must be greater than 0 and less than the width of the console window.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateMaxLength(int maxLength)
+    {
+        if (maxLength < 1 || maxLength > Console.WindowWidth)
+            throw new ArgumentOutOfRangeException(
+                nameof(maxLength),
+                "The maximum length of the response must be greater than 0 and less than the width of the console window."
+            );
+        _maxLength = maxLength;
     }
 
     /// <summary>

@@ -70,20 +70,24 @@
             <summary>
             This property is used to get the colors of the console.
             </summary>
-            <returns>A tuple containing the font color and the background color.</returns>
         </member>
         <member name="P:ConsoleAppVisuals.Core.GetInitialColorPanel">
             <summary>
             This property is used to get the initial colors of the console.
             </summary>
-            <returns>A tuple containing the initial font color and the initial background color.</returns>
         </member>
         <member name="M:ConsoleAppVisuals.Core.IsScreenUpdated">
             <summary>
             This method is used to check if the screen has been updated.
             </summary>
             <returns>True if the screen has been updated, false otherwise.</returns>
-            <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Core.SetSelector(System.Char,System.Char)">
             <summary>
@@ -960,7 +964,6 @@
             <summary>
             The width of the prompt element.
             </summary>
-            <remarks>We add a margin of 2 to be sur to take in account odd question lengths.</remarks>
         </member>
         <member name="P:ConsoleAppVisuals.Elements.Prompt.Question">
             <summary>
@@ -972,13 +975,19 @@
             The default value of the response.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.Prompt.#ctor(System.String,System.String,ConsoleAppVisuals.Enums.Placement)">
+        <member name="P:ConsoleAppVisuals.Elements.Prompt.MaxLength">
+            <summary>
+            The maximum length of the response.
+            </summary>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Prompt.#ctor(System.String,System.String,ConsoleAppVisuals.Enums.Placement,System.Int32)">
             <summary>
             The natural constructor of the prompt element.
             </summary>
             <param name="question">The text on the left of the prompt element.</param>
             <param name="defaultValue">The text in the center of the prompt element.</param>
             <param name="placement">The placement of the prompt element.</param>
+            <param name="maxLength">The maximum length of the response.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -1018,6 +1027,20 @@
             This method is used to update the placement of the prompt element.
             </summary>
             <param name="placement">The new placement of the prompt element.</param>
+            <remarks>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:ConsoleAppVisuals.Elements.Prompt.UpdateMaxLength(System.Int32)">
+            <summary>
+            This method is used to update the maximum length of the response.
+            </summary>
+            <param name="maxLength">The new maximum length of the response.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">The maximum length of the response must be greater than 0 and less than the width of the console window.</exception>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -3208,11 +3231,6 @@
             The response of the user.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Models.InteractiveElement`1.GetInteractionResponse">
-            <summary>
-            Returns the response of the user.
-            </summary>
-        </member>
         <member name="M:ConsoleAppVisuals.Models.InteractiveElement`1.SetInteractionResponse(System.Object,ConsoleAppVisuals.Models.InteractionEventArgs{`0})">
             <summary>
             Sets the response of the user in the attribute field.
@@ -3226,6 +3244,23 @@
             </summary>
             <param name="sender">The sender of the event.</param>
             <param name="e">The response of the user.</param>
+        </member>
+        <member name="M:ConsoleAppVisuals.Models.InteractiveElement`1.GetResponse">
+            <summary>
+            Returns the response of the user after an interaction.
+            </summary>
+            <returns>Null if the user has not interacted with the element, otherwise the response of the user.</returns>
+            <remarks>
+            This sample shows how to use the <see cref="M:ConsoleAppVisuals.Models.InteractiveElement`1.GetResponse"/> method using the var keyword:
+            <code>
+            var response = element.GetResponse();
+            </code>
+            For more information, refer to the following resources:
+            <list type="bullet">
+            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+            </list>
+            </remarks>
         </member>
         <member name="M:ConsoleAppVisuals.Models.InteractiveElement`1.RenderOptionsBeforeHand">
             <summary>
@@ -3630,23 +3665,6 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.GetResponse``2(System.Boolean)">
-            <summary>
-            After activating the visibility of an interactive element, this method will return the response for the user.
-            </summary>
-            <param name="clear">If true, the element will be cleared afterward.</param>
-            <typeparam name="T">The type of interactive element.</typeparam>
-            <typeparam name="TResponse">The type of the response (int, string, float...).</typeparam>
-            <returns>The response of the user.</returns>
-            <exception cref="T:ConsoleAppVisuals.Errors.ElementNotFoundException">Thrown when the element is invalid.</exception>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
         <member name="M:ConsoleAppVisuals.Window.ActivateAllElements">
             <summary>
             This method attempts to activate the visibility of all elements.
@@ -3753,10 +3771,11 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.StopExecution(System.ConsoleKey)">
+        <member name="M:ConsoleAppVisuals.Window.Freeze(System.ConsoleKey)">
             <summary>
             This method stops the execution of the program until a key is pressed.
             </summary>
+            <param name="key">The key to be pressed to continue the execution.</param>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">
@@ -3804,11 +3823,14 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Window.Clear(System.Boolean)">
+        <member name="M:ConsoleAppVisuals.Window.Clear(System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32)">
             <summary>
             This method clears the console.
             </summary>
             <param name="continuous">If true, the window will be cleared continuously.</param>
+            <param name="startLine">The start line of the window to be cleared.</param>
+            <param name="length">The number of lines to be cleared.</param>
+            <param name="step">The step of the window to be cleared.</param>
             <returns>True if the window is successfully cleared, false otherwise.</returns>
             <remarks>
             For more information, refer to the following resources:

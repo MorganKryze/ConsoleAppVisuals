@@ -90,7 +90,7 @@ public class EmbedText : InteractiveElement<string>
     )
     {
         _text = text;
-        _button = button ?? "Press [Enter] to continue";
+        _button = button ?? "Next";
         _align = align;
         _placement = placement;
         _roundedCorners = roundedCorners;
@@ -282,8 +282,7 @@ public class EmbedText : InteractiveElement<string>
             Line,
             _textToDisplay!.ToArray()
         );
-        Window.StopExecution();
-        Window.DeactivateElement(this);
+        Window.Freeze();
     }
 
     private void BuildText()
