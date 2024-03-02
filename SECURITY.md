@@ -4,6 +4,7 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 3.1.x   | :warning:          |
 | 3.0.x   | :warning:          |
 | 2.7.x   | :white_check_mark: |
 | 2.6.x   | :white_check_mark: |
@@ -14,7 +15,7 @@
 | 2.1.x   | :white_check_mark: |
 | < 2.1.0 | :x:                |
 
-3.0.x are the latest versions. They are not fully tested yet and may contain some bugs. Please report any issue you may encounter.
+3.0.x and 3.0.x are the latest versions. They are not fully tested yet and may contain some bugs. Please report any issue you may encounter.
 
 1.0.x and 2.0.x are not supported anymore. Please update to the latest version to benefit from the latest security updates.
 
