@@ -10,12 +10,12 @@
 
 Feel free to check out the following resources to help you get started:
 
+- A guided [documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
 - Take a quick look at our [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to understand how to implement the library in your own project
-- A [complete documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
 
 ## Install
 
-Install the library using the .NET CLI:
+Install the library for your project using the .NET CLI:
 
 ```bash
 dotnet add package ConsoleAppVisuals
@@ -31,7 +31,6 @@ Install-Package ConsoleAppVisuals
 
 ## First steps into the library
 
-> [!WARNING]
 > If you have been using the library before v3, please note that the library has been completely rewritten. The old version is not compatible with the new one. Please take the time to explore our documentation to update your code.
 
 ### Principle
@@ -125,7 +124,6 @@ Console.WriteLine(responsePrompt?.State);
 Console.WriteLine(responsePrompt?.Info);
 ```
 
-> [!NOTE]
 > The `InteractiveElement` object deactivate themselves after their execution.
 
 You may now remove the element from the list if you want to:
@@ -133,16 +131,6 @@ You may now remove the element from the list if you want to:
 ```csharp
 Window.RemoveElement(examplePrompt);
 ```
-
-## Roadmap
-
-The library is still in development and we are working on the following features:
-
-- [x] Add a new visual: the `TableSelector`
-- [ ] Add colorization to `TableSelector` (highlight data according to a condition)
-- [ ] Add example of a custom font in the example project
-- [ ] Add more default fonts
-- [ ] Add a new visual: the `Chart`
 
 ## Supported .NET versions
 
@@ -160,7 +148,7 @@ Consider reading our [security policy](SECURITY.md) to know more about how we ha
 ## Development team
 
 - [MorganKryze](https://github.com/MorganKryze) - creator and maintainer
-- [robin l'hyver](https://github.com/robinmoon2) - contributor
+- [Robin L'hyver](https://github.com/robinmoon2) - contributor
 
 ## Contributing
 
