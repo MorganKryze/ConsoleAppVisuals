@@ -10,12 +10,12 @@
 
 Feel free to check out the following resources to help you get started:
 
+- A guided [documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
 - Take a quick look at our [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to understand how to implement the library in your own project
-- A [complete documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
 
 ## Install
 
-Install the library using the .NET CLI:
+Install the library for your project using the .NET CLI:
 
 ```bash
 dotnet add package ConsoleAppVisuals
@@ -160,7 +160,7 @@ Consider reading our [security policy](SECURITY.md) to know more about how we ha
 ## Development team
 
 - [MorganKryze](https://github.com/MorganKryze) - creator and maintainer
-- [robin l'hyver](https://github.com/robinmoon2) - contributor
+- [Robin L'hyver](https://github.com/robinmoon2) - contributor
 
 ## Contributing
 
