@@ -21,10 +21,7 @@ This PR [adds/removes/fixes/replaces] the [feature/bug/etc].
 - [ ] 🧑‍💻 Code Refactor
 - [ ] 🔥 Performance Improvements
 - [ ] ✅ Test
-- [ ] 🤖 Build
 - [ ] 🔁 CI
-- [ ] 📦 Chore (Release)
-- [ ] ⏩ Revert
 
 ## Related Tickets & Documents
 <!-- 
@@ -36,21 +33,9 @@ https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-git
 
 <!-- Visual changes require screenshots -->
 
-## Steps to QA
-
-<!-- 
-Please provide some steps for the reviewer to test your change. If you have wrote tests, you can mention that here instead.
-
-1. Click a link
-2. Do this thing
-3. Validate you see the thing working
--->
-
 ## Added to documentation?
 
 - [ ] 📜 README.md
 - [ ] 📓 docs
 - [ ] 📕 already in the code
 - [ ] 🙅 no documentation needed
-
-## [optional] Are there any post-deployment tasks we need to perform?
