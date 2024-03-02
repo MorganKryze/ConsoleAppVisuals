@@ -38,29 +38,6 @@ public class NotSupportedCharException : Exception, ISerializable
     public NotSupportedCharException(string message, Exception inner)
         : base(message, inner) { }
 
-    /// <summary>
-    /// Serialization constructor.
-    /// </summary>
-    /// <param name="info">Serialization info.</param>
-    /// <param name="context">Streaming context.</param>
-    protected NotSupportedCharException(SerializationInfo info, StreamingContext context)
-        : base(info, context) { }
-
-    /// <summary>
-    /// Get object data for serialization.
-    /// </summary>
-    /// <param name="info">Serialization info.</param>
-    /// <param name="context">Streaming context.</param>
-    /// <exception cref="ArgumentNullException"></exception>
-    public override void GetObjectData(SerializationInfo? info, StreamingContext context)
-    {
-        if (info == null)
-        {
-            throw new ArgumentNullException(nameof(info));
-        }
-        base.GetObjectData(info, context);
-    }
-
     private string GetDebuggerDisplay()
     {
         return ToString();
