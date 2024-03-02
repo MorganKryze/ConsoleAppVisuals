@@ -1,7 +1,7 @@
 name: CI and docs
 
 env:
-  ACTIONS_RUNNER_NODE16: true
+  ACTIONS_RUNNER_NODE20: true
 
 on:
   push:
