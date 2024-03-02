@@ -53,13 +53,11 @@ public static class Core
     /// <summary>
     /// This property is used to get the colors of the console.
     /// </summary>
-    /// <returns>A tuple containing the font color and the background color.</returns>
     public static (ConsoleColor, ConsoleColor) GetColorPanel => s_colorPanel;
 
     /// <summary>
     /// This property is used to get the initial colors of the console.
     /// </summary>
-    /// <returns>A tuple containing the initial font color and the initial background color.</returns>
     public static (ConsoleColor, ConsoleColor) GetInitialColorPanel => s_initialColorPanel;
     #endregion
 
@@ -68,7 +66,13 @@ public static class Core
     /// This method is used to check if the screen has been updated.
     /// </summary>
     /// <returns>True if the screen has been updated, false otherwise.</returns>
-    /// <remarks>The screen is updated if the window size has changed or if the color panel has changed.</remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     [Visual]
     public static bool IsScreenUpdated()
     {

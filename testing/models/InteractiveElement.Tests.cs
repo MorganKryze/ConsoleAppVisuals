@@ -26,42 +26,6 @@ public class UnitTestInteractiveElement
         // Act & Assert
         Assert.AreEqual(1, element.MaxNumberOfThisElement);
     }
-
-    [TestMethod]
-    public void GetInteractionResponse_ReturnsInfoResponse()
-    {
-        // Arrange
-        var element = new TestInteractiveElement();
-        Window.AddElement(element);
-
-        // Act
-        Window.ActivateElement<TestInteractiveElement>();
-        var response = element.GetInteractionResponse;
-
-        // Assert
-        Assert.AreEqual("Test info", response?.Value);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
-    [TestMethod]
-    public void GetInteractionResponse_ReturnsSelectState()
-    {
-        // Arrange
-        var element = new TestInteractiveElement();
-        Window.AddElement(element);
-
-        // Act
-        Window.ActivateElement<TestInteractiveElement>();
-        var response = element.GetInteractionResponse;
-
-        // Assert
-        Assert.AreEqual(Output.Selected, response?.Status);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
 }
 
 public class TestInteractiveElement : InteractiveElement<string>

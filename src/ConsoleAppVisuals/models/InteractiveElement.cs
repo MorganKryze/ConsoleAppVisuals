@@ -36,11 +36,6 @@ public abstract class InteractiveElement<TResponse> : Element
     /// The response of the user.
     /// </summary>
     protected InteractionEventArgs<TResponse>? _interactionResponse;
-
-    /// <summary>
-    /// Returns the response of the user.
-    /// </summary>
-    public InteractionEventArgs<TResponse>? GetInteractionResponse => _interactionResponse;
     #endregion
 
     #region Methods
@@ -66,6 +61,27 @@ public abstract class InteractiveElement<TResponse> : Element
     }
 
     /// <summary>
+    /// Returns the response of the user after an interaction.
+    /// </summary>
+    /// <returns>Null if the user has not interacted with the element, otherwise the response of the user.</returns>
+    /// <remarks>
+    /// This sample shows how to use the <see cref="GetResponse"/> method using the var keyword:
+    /// <code>
+    /// var response = element.GetResponse();
+    /// </code>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    [Visual]
+    public InteractionEventArgs<TResponse>? GetResponse()
+    {
+        return _interactionResponse;
+    }
+
+    /// <summary>
     /// This method is used to set options before drawing the element on the console.
     /// </summary>
     protected sealed override void RenderOptionsBeforeHand()
@@ -79,6 +95,7 @@ public abstract class InteractiveElement<TResponse> : Element
     protected sealed override void RenderOptionsAfterHand()
     {
         EndOfInteractionEvent -= SetInteractionResponse;
+        Window.DeactivateElement(this);
     }
     #endregion
 }
