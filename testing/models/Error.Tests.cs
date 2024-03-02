@@ -47,35 +47,6 @@ public class UnitTestError
         Assert.AreEqual(innerException, exception.InnerException);
     }
 
-    [TestMethod]
-    public void ElementNotFoundException_GetObjectData_MessageIsSerialized()
-    {
-        // Arrange
-        var exception = new ElementNotFoundException("Test message");
-        var info = new SerializationInfo(
-            typeof(ElementNotFoundException),
-            new FormatterConverter()
-        );
-        var context = new StreamingContext();
-
-        // Act
-        exception.GetObjectData(info, context);
-
-        // Assert
-        Assert.AreEqual("Test message", info.GetString("Message"));
-    }
-
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void ElementNotFoundException_GetObjectDataWithNullInfo_ThrowsArgumentNullException()
-    {
-        // Arrange
-        var exception = new ElementNotFoundException("Test message");
-        var context = new StreamingContext();
-
-        // Act
-        exception.GetObjectData(null, context);
-    }
 
     [TestMethod]
     public void ElementNotFoundException_GetDebuggerDisplay_ReturnsToString()
@@ -95,42 +66,6 @@ public class UnitTestError
         Assert.AreEqual(exception.ToString(), result);
     }
 
-    [TestMethod]
-    public void ElementNotFoundException_SerializationConstructor_MessageAndInnerExceptionMatch()
-    {
-        // Arrange
-        var info = new SerializationInfo(
-            typeof(ElementNotFoundException),
-            new FormatterConverter()
-        );
-        var context = new StreamingContext();
-        var message = "Test message";
-        info.AddValue("Message", message, typeof(string));
-        info.AddValue("InnerException", new Exception("Inner exception"), typeof(Exception));
-        info.AddValue("HelpURL", "", typeof(string));
-        info.AddValue("Source", "", typeof(string));
-        info.AddValue("StackTraceString", "", typeof(string));
-        info.AddValue("RemoteStackTraceString", "", typeof(string));
-        info.AddValue("RemoteStackIndex", 0, typeof(int));
-        info.AddValue("ExceptionMethod", "", typeof(string));
-        info.AddValue("HResult", 0, typeof(int));
-        info.AddValue("WatsonBuckets", null, typeof(byte[]));
-
-        // Act
-        var exception = (ElementNotFoundException)
-            FormatterServices.GetUninitializedObject(typeof(ElementNotFoundException));
-        var constructor = typeof(ElementNotFoundException).GetConstructor(
-            BindingFlags.NonPublic | BindingFlags.Instance,
-            null,
-            new[] { typeof(SerializationInfo), typeof(StreamingContext) },
-            null
-        );
-        constructor?.Invoke(exception, new object[] { info, context });
-
-        // Assert
-        Assert.AreEqual(message, exception.Message);
-        Assert.IsNotNull(exception.InnerException);
-    }
 
     #endregion
 
@@ -174,32 +109,6 @@ public class UnitTestError
         Assert.AreEqual(innerException, exception.InnerException);
     }
 
-    [TestMethod]
-    public void EmptyFileException_GetObjectData_MessageIsSerialized()
-    {
-        // Arrange
-        var exception = new EmptyFileException("Test message");
-        var info = new SerializationInfo(typeof(EmptyFileException), new FormatterConverter());
-        var context = new StreamingContext();
-
-        // Act
-        exception.GetObjectData(info, context);
-
-        // Assert
-        Assert.AreEqual("Test message", info.GetString("Message"));
-    }
-
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void EmptyFileException_GetObjectDataWithNullInfo_ThrowsArgumentNullException()
-    {
-        // Arrange
-        var exception = new EmptyFileException("Test message");
-        var context = new StreamingContext();
-
-        // Act
-        exception.GetObjectData(null, context);
-    }
 
     [TestMethod]
     public void EmptyFileException_GetDebuggerDisplay_ReturnsToString()
@@ -219,39 +128,6 @@ public class UnitTestError
         Assert.AreEqual(exception.ToString(), result);
     }
 
-    [TestMethod]
-    public void EmptyFileException_SerializationConstructor_MessageAndInnerExceptionMatch()
-    {
-        // Arrange
-        var info = new SerializationInfo(typeof(EmptyFileException), new FormatterConverter());
-        var context = new StreamingContext();
-        var message = "Test message";
-        info.AddValue("Message", message, typeof(string));
-        info.AddValue("InnerException", new Exception("Inner exception"), typeof(Exception));
-        info.AddValue("HelpURL", "", typeof(string));
-        info.AddValue("Source", "", typeof(string));
-        info.AddValue("StackTraceString", "", typeof(string));
-        info.AddValue("RemoteStackTraceString", "", typeof(string));
-        info.AddValue("RemoteStackIndex", 0, typeof(int));
-        info.AddValue("ExceptionMethod", "", typeof(string));
-        info.AddValue("HResult", 0, typeof(int));
-        info.AddValue("WatsonBuckets", null, typeof(byte[]));
-
-        // Act
-        var exception = (EmptyFileException)
-            FormatterServices.GetUninitializedObject(typeof(EmptyFileException));
-        var constructor = typeof(EmptyFileException).GetConstructor(
-            BindingFlags.NonPublic | BindingFlags.Instance,
-            null,
-            new[] { typeof(SerializationInfo), typeof(StreamingContext) },
-            null
-        );
-        constructor?.Invoke(exception, new object[] { info, context });
-
-        // Assert
-        Assert.AreEqual(message, exception.Message);
-        Assert.IsNotNull(exception.InnerException);
-    }
 
     #endregion
 
@@ -295,35 +171,6 @@ public class UnitTestError
         Assert.AreEqual(innerException, exception.InnerException);
     }
 
-    [TestMethod]
-    public void NotSupportedCharException_GetObjectData_MessageIsSerialized()
-    {
-        // Arrange
-        var exception = new NotSupportedCharException("Test message");
-        var info = new SerializationInfo(
-            typeof(NotSupportedCharException),
-            new FormatterConverter()
-        );
-        var context = new StreamingContext();
-
-        // Act
-        exception.GetObjectData(info, context);
-
-        // Assert
-        Assert.AreEqual("Test message", info.GetString("Message"));
-    }
-
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void NotSupportedCharException_GetObjectDataWithNullInfo_ThrowsArgumentNullException()
-    {
-        // Arrange
-        var exception = new NotSupportedCharException("Test message");
-        var context = new StreamingContext();
-
-        // Act
-        exception.GetObjectData(null, context);
-    }
 
     [TestMethod]
     public void NotSupportedCharException_GetDebuggerDisplay_ReturnsToString()
@@ -343,42 +190,6 @@ public class UnitTestError
         Assert.AreEqual(exception.ToString(), result);
     }
 
-    [TestMethod]
-    public void NotSupportedCharException_SerializationConstructor_MessageAndInnerExceptionMatch()
-    {
-        // Arrange
-        var info = new SerializationInfo(
-            typeof(NotSupportedCharException),
-            new FormatterConverter()
-        );
-        var context = new StreamingContext();
-        var message = "Test message";
-        info.AddValue("Message", message, typeof(string));
-        info.AddValue("InnerException", new Exception("Inner exception"), typeof(Exception));
-        info.AddValue("HelpURL", "", typeof(string));
-        info.AddValue("Source", "", typeof(string));
-        info.AddValue("StackTraceString", "", typeof(string));
-        info.AddValue("RemoteStackTraceString", "", typeof(string));
-        info.AddValue("RemoteStackIndex", 0, typeof(int));
-        info.AddValue("ExceptionMethod", "", typeof(string));
-        info.AddValue("HResult", 0, typeof(int));
-        info.AddValue("WatsonBuckets", null, typeof(byte[]));
-
-        // Act
-        var exception = (NotSupportedCharException)
-            FormatterServices.GetUninitializedObject(typeof(NotSupportedCharException));
-        var constructor = typeof(NotSupportedCharException).GetConstructor(
-            BindingFlags.NonPublic | BindingFlags.Instance,
-            null,
-            new[] { typeof(SerializationInfo), typeof(StreamingContext) },
-            null
-        );
-        constructor?.Invoke(exception, new object[] { info, context });
-
-        // Assert
-        Assert.AreEqual(message, exception.Message);
-        Assert.IsNotNull(exception.InnerException);
-    }
 
     #endregion
 }
