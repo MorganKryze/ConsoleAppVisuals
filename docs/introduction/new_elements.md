@@ -82,12 +82,12 @@ ElementsDashboard dashboard = new ElementsDashboard();
 Window.AddElement(dashboard);
 
 Window.Render();
-Window.StopExecution();
+Window.Freeze();
 
 Window.DeactivateElement(title);
 
 Window.Render();
-Window.StopExecution();
+Window.Freeze();
 ```
 
 ![DashBoard](../assets/vid/gif/new_elements/dash_deactivate.gif)
@@ -117,12 +117,12 @@ ElementsDashboard dashboard = new ElementsDashboard();
 Window.AddElement(dashboard);
 
 Window.Render();
-Window.StopExecution();
+Window.Freeze();
 
 Window.RemoveElement(title);
 
 Window.Render();
-Window.StopExecution();
+Window.Freeze();
 ```
 
 ![DashBoard](../assets/vid/gif/new_elements/dash_remove.gif)
@@ -151,7 +151,7 @@ Window.AddElement(students);
 
 Window.Render();
 // TableView is a static element, so we need to stop the execution to see the result without exiting the application
-Window.StopExecution();
+Window.Freeze();
 ```
 
 ![TableView](../assets/img/jpg/new_elements/table_view.jpg)
@@ -188,7 +188,7 @@ TableSelector<string> players =
 
 Window.AddElement(players);
 // Contrary to the TableView, the TableSelector is interactive, so we do not have to stop the execution to see it, but to activate it
-Window.ActivateElement<TableSelector<string>>();
+Window.ActivateElement(players);
 ```
 
 ![TableSelector](../assets/vid/gif/new_elements/table_selector.gif)
@@ -197,9 +197,8 @@ Now let's collect the user interaction response:
 
 ```csharp
 // Here a little subtlety, the type is TableSelector<string> and is associated with an int response, string refers to the type of the data displayed in the table
-var response = Window.GetResponse<TableSelector<string>, int>();
-
-Window.AddElement(
+var response = players.GetResponse();
+var playersEmbedResponse =
     new EmbedText(
         new List<string>()
         {
@@ -210,9 +209,9 @@ Window.AddElement(
         },
         $"Next {Core.GetSelector.Item1}",
         TextAlignment.Center
-    )
-);
-Window.ActivateElement<EmbedText>();
+    );
+Window.AddElement(playersEmbedResponse);
+Window.ActivateElement(playersEmbedResponse);
 ```
 
 ![DashBoard](../assets/vid/gif/new_elements/embed.gif)
@@ -234,7 +233,8 @@ Matrix<int?> matrix = new(data);
 
 Window.AddElement(matrix);
 
-Window.ActivateElement<Matrix<int?>>();
+Window.Render(matrix);
+Window.Freeze();
 ```
 
 ![Matrix](../assets/img/jpg/new_elements/matrix.jpg)
@@ -256,13 +256,13 @@ var menu = new ScrollingMenu(
 );
 Window.AddElement(menu);
 Window.ActivateElement(menu);
-var response = Window.GetResponse<ScrollingMenu, int>();
+var responseMenu = menu.GetResponse();
 var embedResponse = new EmbedText(
     new List<string>()
     {
-        $"The user: {response?.Status}",
-        $"Index: {response?.Value}",
-        $"Which corresponds to: {options[response?.Value ?? 0]}"
+        $"The user: {responseMenu?.Status}",
+        $"Index: {responseMenu?.Value}",
+        $"Which corresponds to: {options[responseMenu?.Value ?? 0]}"
     },
     $"Next {Core.GetSelector.Item1}",
     TextAlignment.Left

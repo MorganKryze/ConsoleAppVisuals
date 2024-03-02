@@ -90,6 +90,8 @@ Here is a template for a `.csproj` file made for publishing a package:
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- MANDATORY: add your metadata comments to your package -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -110,15 +112,15 @@ Here is a template for a `.csproj` file made for publishing a package:
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <!-- MANDATORY: add your metadata comments to your package -->
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- This line make your package deterministic -->
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
-    <!-- This code block make your package deterministic -->
-  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  <PropertyGroup>
+    <!-- NuGet Package Explorer health standards -->
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
   <ItemGroup>
@@ -210,7 +212,7 @@ jobs:
       - name: Set VERSION variable from tag
         run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
       - name: Build
-        run: dotnet build --configuration Release /p:Version=${VERSION}
+        run: dotnet build --configuration Release /p:ContinuousIntegrationBuild=true /p:Version=${VERSION}
       - name: Pack
         run: dotnet pack <your_path_from_your_project_file> --configuration Release /p:ContinuousIntegrationBuild=true /p:Version=${VERSION} --no-build --output .
       - name: Push to GitHub Packages
@@ -242,7 +244,6 @@ If that project was indeed for you for demo purposes, you cannot delete it from 
 ## Resources
 
 - [Official NuGet documentation](https://learn.microsoft.com/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli)
-
 - [Main Source](https://acraven.medium.com/a-nuget-package-workflow-using-github-actions-7da8c6557863)
-
 - [Recap](https://levelup.gitconnected.com/publish-to-nuget-with-github-actions-4e1486e7c19f)
+- [Deterministic Builds](https://github.com/clairernovotny/DeterministicBuilds)

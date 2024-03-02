@@ -106,7 +106,7 @@ Window.AddElement(title);
 And finally, we can render the `Title` from the `Window`:
 
 ```csharp
-Window.RenderOneElement(title);
+Window.Render(title);
 ```
 
 ![Title](../assets/img/jpg/first_app/title.jpg)
@@ -159,7 +159,7 @@ Window.ActivateElement(prompt);
 Now that we have well displayed the prompt, we can get the user's response by adding the following line of code after the `Window.ActivateElement(prompt)` line:
 
 ```csharp
-var response = Window.GetResponse<Prompt, string>();
+var response = prompt.GetResponse();
 ```
 
 This will retrieve an response object that has two properties: `State` and `Value`:
@@ -187,6 +187,7 @@ EmbeddedText text = new EmbeddedText(
         );
 
 Window.AddElement(text);
+
 Window.ActivateElement(text);
 ```
 
@@ -226,7 +227,7 @@ Window.AddElement(prompt);
 
 Window.ActivateElement(prompt);
 
-var response = Window.GetResponse<Prompt, string>();
+var response = prompt.GetResponse();
 EmbedText text = new EmbedText(
     new List<string>()
     {
@@ -236,6 +237,7 @@ EmbedText text = new EmbedText(
     $"Next {Core.GetSelector.Item1}"
 );
 Window.AddElement(text);
+
 Window.ActivateElement(text);
 
 Window.Close();

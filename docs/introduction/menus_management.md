@@ -59,7 +59,7 @@ var menu = new ScrollingMenu(
 Window.AddElement(menu);
 Window.ActivateElement(menu);
 
-var response = Window.GetResponse<ScrollingMenu, int>();
+var response = menu.GetResponse();
 
 switch (response?.Status)
 {
@@ -76,6 +76,8 @@ switch (response?.Status)
         );
         Window.AddElement(embedSelected);
         Window.ActivateElement(embedSelected);
+
+        Window.RemoveElement(embedSelected);
         break;
     case Output.Escaped:
         var embedEscaped = new EmbedText(
@@ -90,6 +92,8 @@ switch (response?.Status)
         );
         Window.AddElement(embedEscaped);
         Window.ActivateElement(embedEscaped);
+
+        Window.RemoveElement(embedEscaped);
         break;
     case Output.Deleted:
         var embedDeleted = new EmbedText(
@@ -104,6 +108,8 @@ switch (response?.Status)
         );
         Window.AddElement(embedDeleted);
         Window.ActivateElement(embedDeleted);
+        
+        Window.RemoveElement(embedDeleted);
         break;
 }
 Window.Close();
@@ -129,6 +135,8 @@ switch (response?.Status)
         );
         Window.AddElement(embedSelected);
         Window.ActivateElement(embedSelected);
+        
+        Window.RemoveElement(embedSelected);
         break;
     case Output.Escaped:
     case Output.Deleted:
@@ -153,7 +161,7 @@ var menu = new ScrollingMenu(
 Window.AddElement(menu);
 Window.ActivateElement(menu);
 
-var response = Window.GetResponse<ScrollingMenu, int>();
+var response = menu.GetResponse();
 switch (response?.Status)
 {
     case Output.Selected:
@@ -206,7 +214,7 @@ EmbedText play = new(
     TextAlignment.Left
 );
 Window.AddElement(play);
-Window.DeactivateElement(play);
+Window.DeactivateElement(play, false);
 
 EmbedText language = new(
     new List<string>() { "Changing language..." },
@@ -214,7 +222,7 @@ EmbedText language = new(
     TextAlignment.Left
 );
 Window.AddElement(language);
-Window.DeactivateElement(language);
+Window.DeactivateElement(language, false);
 
 EmbedText sound = new(
     new List<string>() { "Changing volume..." },
@@ -222,7 +230,7 @@ EmbedText sound = new(
     TextAlignment.Left
 );
 Window.AddElement(sound);
-Window.DeactivateElement(sound);
+Window.DeactivateElement(sound, false);
 
 var settingsOptions = new string[] { "Language", "Sound", "Back" };
 var settingsMenu = new ScrollingMenu(
@@ -242,7 +250,7 @@ MainMenu:
 
 Window.ActivateElement(menu);
 
-var response = Window.GetResponse<ScrollingMenu, int>();
+var response = menu.GetResponse();
 switch (response?.Status)
 {
     case Output.Selected:
@@ -273,7 +281,7 @@ SettingsMenu:
 
 Window.ActivateElement(settingsMenu);
 
-var settingsResponse = Window.GetResponse<ScrollingMenu, int>();
+var settingsResponse = settingsMenu.GetResponse();
 switch (settingsResponse?.Status)
 {
     case Output.Selected:

@@ -61,7 +61,7 @@ Window.Render();
 Now at each refresh, the `Title` element will appear on screen. To disable it, you may add:
 
 ```csharp
-Window.DeactivateElement<Title>();
+Window.DeactivateElement(exampleTitle);
 ```
 
 ## Installation

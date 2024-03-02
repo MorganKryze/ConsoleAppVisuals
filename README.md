@@ -74,20 +74,15 @@ Finally, you can display the `Window`:
 Window.Render();
 ```
 
-Now at each refresh, the `Title` element will appear on screen. To disable it, you may choose one of these options:
+Now at each refresh, the `Title` element will appear on screen. To disable it, you can use:
 
 ```csharp
-// Will look for a Title element and deactivate it, the first on the list
-Window.DeactivateElement<Title>();
-
-// Will deactivate the exampleTitle element
 Window.DeactivateElement(exampleTitle);
 ```
 
 Or simply remove it from the list:
 
 ```csharp
-Window.RemoveElement<Title>();
 Window.RemoveElement(exampleTitle);
 ```
 
@@ -96,7 +91,7 @@ Window.RemoveElement(exampleTitle);
 The process is similar to the static elements. The difference is that you can get a response from your interaction with these elements. Let's create a `Prompt` element:
 
 ```csharp
-Prompt examplePrompt = new Prompt("What is your name?", "Theo");
+Prompt examplePrompt = new Prompt("What is your name?");
 ```
 
 Then, you can add it to `Window`:
@@ -111,13 +106,13 @@ Finally, you can display the `Window`, remember that interactive element are dis
 // Add this line if you have static elements to display
 Window.Render();
 
-Window.ActivateElement<Prompt>();
+Window.ActivateElement(examplePrompt);
 ```
 
 To get the response simply add:
 
 ```csharp
-var responsePrompt = Window.GetResponse<Prompt, string>();
+var responsePrompt = examplePrompt.GetResponse();
 ```
 
 Access to the response data using:
@@ -131,12 +126,12 @@ Console.WriteLine(responsePrompt?.Info);
 ```
 
 > [!NOTE]
-> Getting the response from an interactive element will automatically deactivate it.
+> The `InteractiveElement` object deactivate themselves after their execution.
 
 You may now remove the element from the list if you want to:
 
 ```csharp
-Window.RemoveElement<Prompt>();
+Window.RemoveElement(examplePrompt);
 ```
 
 ## Roadmap
