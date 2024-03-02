@@ -723,9 +723,10 @@ public static class Window
         int step = 1
     )
     {
+        int stepMax = Console.WindowHeight == 0 ? 1 : Console.WindowHeight;
         startLine = CheckLine(startLine) ?? 0;
         length = CheckLine(startLine + length) ?? Console.WindowHeight;
-        if (step < 1 || step > Console.WindowHeight)
+        if (step < 1 || step > stepMax)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(step),
