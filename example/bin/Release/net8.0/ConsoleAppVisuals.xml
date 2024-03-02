@@ -2921,21 +2921,6 @@
             <param name="message">Message to be displayed.</param>
             <param name="inner">Inner exception.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Errors.ElementNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Serialization constructor.
-            </summary>
-            <param name="info">Serialization info.</param>
-            <param name="context">Streaming context.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Errors.ElementNotFoundException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Get object data for serialization.
-            </summary>
-            <param name="info">Serialization info.</param>
-            <param name="context">Streaming context.</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-        </member>
         <member name="T:ConsoleAppVisuals.Errors.EmptyFileException">
             <summary>
             Exception thrown when no data is found in a file.
@@ -2966,21 +2951,6 @@
             <param name="message">Message to be displayed.</param>
             <param name="inner">Inner exception.</param>
         </member>
-        <member name="M:ConsoleAppVisuals.Errors.EmptyFileException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Serialization constructor.
-            </summary>
-            <param name="info">Serialization info.</param>
-            <param name="context">Streaming context.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Errors.EmptyFileException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Get object data for serialization.
-            </summary>
-            <param name="info">Serialization info.</param>
-            <param name="context">Streaming context.</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
-        </member>
         <member name="T:ConsoleAppVisuals.Errors.NotSupportedCharException">
             <summary>
             Exception thrown when a character is not supported by the TextStyler class.
@@ -3010,21 +2980,6 @@
             </summary>
             <param name="message">Message to be displayed.</param>
             <param name="inner">Inner exception.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Errors.NotSupportedCharException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Serialization constructor.
-            </summary>
-            <param name="info">Serialization info.</param>
-            <param name="context">Streaming context.</param>
-        </member>
-        <member name="M:ConsoleAppVisuals.Errors.NotSupportedCharException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            Get object data for serialization.
-            </summary>
-            <param name="info">Serialization info.</param>
-            <param name="context">Streaming context.</param>
-            <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="T:ConsoleAppVisuals.Models.Element">
             <summary>
