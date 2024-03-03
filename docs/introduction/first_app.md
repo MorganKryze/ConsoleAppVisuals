@@ -82,7 +82,7 @@ namespace MyApp
 }
 ```
 
-Now, let's add the `ConsoleAppVisuals` package to our project:
+Now, let's add to your project the `ConsoleAppVisuals` package and `ConsoleAppVisuals.Elements` (to use the visual elements):
 
 ```csharp
 using System;
@@ -119,6 +119,8 @@ Window.Render(title);
 
 ## Minimal app
 
+### `Header`, `Footer` and `FakeLoadingBar`
+
 Now, let's create a minimal app with a `Title`, a `Header`, a `Footer` and finally a `Prompt` element:
 
 ```csharp
@@ -143,6 +145,8 @@ Window.Render();
 
 ![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
+### `Prompt`
+
 Now let's add a `Prompt` element:
 
 ```csharp
@@ -152,8 +156,6 @@ Window.AddElement(prompt);
 Window.Render();
 ```
 
-![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
-
 As you may have noticed, we have the same output as earlier. No prompt was printed. That's because we need to activate manually the `Prompt` element. Interactive elements are not activated by default. To do so, we can add the following line of code:
 
 ```csharp
@@ -162,23 +164,34 @@ Window.ActivateElement(prompt);
 
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
+> [!TIP] > `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
+
+### Get response and `EmbedText` element
+
 Now that we have well displayed the prompt, we can get the user's response by adding the following line of code after the `Window.ActivateElement(prompt)` line:
 
 ```csharp
 var response = prompt.GetResponse();
 ```
 
-This will retrieve an response object that has two properties: `State` and `Value`:
+This will retrieve a response object that has the following properties:
 
-- `Status` can be `None`, `Selected`, `Deleted` or `Escaped`.
-- `Value` is the user's response. Its type depend on the Element you are using. In this case, it's a `string` for the `Prompt` element.
+- `Status`: is how the interaction ended. It can be `Selected` (pressed enter), `Deleted`(pressed delete) or `Escaped` (pressed escape).
+- `Value`: is the user's response. Its type depends on the Element you are using. In this case, the `Prompt` element returns a `string`.
 
 To access this data, you can use the following code:
 
 ```csharp
-response.Status;
-response.Value;
+response?.Status;
+response?.Value;
 ```
+
+> [!NOTE]
+> Here we use the `?.` operator to avoid a `NullReferenceException` if the response is `null`.
+> Meaning:
+>
+> - If `response` is `null`, `response?.Status` will return `null`.
+> - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
 Finally, let's add a `EmbedText` element to display the user's response:
 
@@ -188,8 +201,7 @@ EmbedText text = new EmbedText(
             {
                 "You just wrote " + response?.Value + "!",
                 "And you " + response?.Status + "!"
-            },
-            $"Next {Core.GetSelector.Item1}"
+            }
         );
 
 Window.AddElement(text);
@@ -198,6 +210,8 @@ Window.ActivateElement(text);
 ```
 
 ![Embed](../assets/vid/gif/first_app/embed.gif)
+
+### Exit the application
 
 Finally, let's exit smoothly the application:
 
@@ -208,6 +222,9 @@ Window.Close();
 ![Prompt](../assets/vid/gif/first_app/close.gif)
 
 ## Recap
+
+> [!TIP]
+> To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
 
 And that's it! You have created your first app using the `ConsoleAppVisuals` package. You can now run the app and see the result.
 
@@ -242,11 +259,7 @@ EmbedText text = new EmbedText(
     }
 );
 Window.AddElement(text);
-
 Window.ActivateElement(text);
 
 Window.Close();
 ```
-
-> [!TIP]
-> To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
