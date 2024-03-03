@@ -2,7 +2,7 @@
 
 This section describes all references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.
 
-> [!CAUTION]
+> [!IMPORTANT]
 > Adding `using ConsoleAppVisuals;` at the beginning of your C# file is necessary but not sufficient to use the full potential of the library. Refer to the descriptions below to discover which namespaces to add to your project and the Introduction section to see how they are used.
 
 ## Namespace descriptions
@@ -67,7 +67,7 @@ Here is the detailed file structure of the library:
 ConsoleAppVisuals
 ├───elements
 │   ├───interactive
-│   │   ├───EmbeddedText.cs
+│   │   ├───EmbedText.cs
 │   │   ├───FloatSelector.cs
 │   │   ├───IntSelector.cs
 │   │   ├───Prompt.cs

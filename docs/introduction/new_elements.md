@@ -8,7 +8,7 @@ In this section, you will learn:
 - Discover `ScrollingMenu` element
 
 > [!TIP]
-> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs). It is a good way to understand how to use the library.
+> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) if you go into any trouble.
 
 ## Setup
 
@@ -19,7 +19,7 @@ Your file structure is like this:
 ```bash
 Example_project  <-- root
 └───MyApp
-    ├───bin
+    ├───obj
     ├───MyApp.csproj
     └───Program.cs
 ```
@@ -44,7 +44,7 @@ namespace MyApp
 }
 ```
 
-> ![Note]
+> [!NOTE]
 > We added `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enums.
 
 ## Disabling elements
@@ -57,7 +57,7 @@ To disable element rendering, you have two options:
 - Remove the element
 
 > [!TIP]
-> To witness the effect of the functions we will use, we created several inspector elements.
+> To witness the effects of the functions we will use, we created several inspector elements.
 
 ### Deactivate the element
 
@@ -196,7 +196,6 @@ Window.ActivateElement(players);
 Now let's collect the user interaction response:
 
 ```csharp
-// Here a little subtlety, the type is TableSelector<string> and is associated with an int response, string refers to the type of the data displayed in the table
 var response = players.GetResponse();
 var playersEmbedResponse =
     new EmbedText(
@@ -206,9 +205,7 @@ var playersEmbedResponse =
             "the player "
                 + playersData[response?.Value ?? 0][2]
                 + "!"
-        },
-        $"Next {Core.GetSelector.Item1}",
-        TextAlignment.Center
+        }
     );
 Window.AddElement(playersEmbedResponse);
 Window.ActivateElement(playersEmbedResponse);
@@ -221,7 +218,8 @@ Window.ActivateElement(playersEmbedResponse);
 The `Matrix` element is used to display data in a matrix format.
 
 ```csharp
-List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 }; // We first create the data to display
+// We first create the data to display
+List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 }; 
 List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
 List<int?> thirdRow = new() { 7, 8, null, 3, 4, 5 };
 List<int?> fourthRow = new() { null, 2, 3, 4, 5, 6 };
@@ -263,9 +261,7 @@ var embedResponse = new EmbedText(
         $"The user: {responseMenu?.Status}",
         $"Index: {responseMenu?.Value}",
         $"Which corresponds to: {options[responseMenu?.Value ?? 0]}"
-    },
-    $"Next {Core.GetSelector.Item1}",
-    TextAlignment.Left
+    }
 );
 Window.AddElement(embedResponse);
 Window.ActivateElement(embedResponse);
@@ -273,4 +269,4 @@ Window.ActivateElement(embedResponse);
 
 ![ScrollingMenu](../assets/vid/gif/new_elements/scrolling_menu.gif)
 
-We will develop in the next section how to create a complex app using menu management.
+We will develop how to create a complex app using menu management in the next section.
