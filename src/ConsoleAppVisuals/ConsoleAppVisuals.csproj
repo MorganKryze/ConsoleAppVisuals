@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishRelease>true</PublishRelease>
+    <PackRelease>true</PackRelease>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -39,6 +41,11 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup
+    Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(GITHUB_ACTION)' == 'Publish on GitHub and NuGet'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
