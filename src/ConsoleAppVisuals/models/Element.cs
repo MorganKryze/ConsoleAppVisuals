@@ -91,6 +91,7 @@ public abstract class Element
                             .Sum(e => e.Height),
                 Placement.BottomCenterFullWidth
                     => Console.WindowHeight
+                        - 1
                         - elements
                             .Where(e =>
                                 e.Placement == Placement.BottomCenterFullWidth && e.Visibility
