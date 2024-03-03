@@ -1,4 +1,4 @@
-name: 'Check Branch'
+name: PR should target main only from dev
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ jobs:
   check_branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check branch
+      - name: check base and head branches
         if: github.base_ref == 'main' && github.head_ref != 'dev'
         run: |
           echo "ERROR: You can only merge to main from dev."
