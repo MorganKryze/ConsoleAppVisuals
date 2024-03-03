@@ -188,9 +188,9 @@ public class Prompt : InteractiveElement<string>
             key = Console.ReadKey();
             if (key.Key == ConsoleKey.Backspace && field.Length > 0)
                 field.Remove(field.Length - 1, 1);
-            else if (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape)
+            else if (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape && key.Key != ConsoleKey.Backspace)
                 field.Append(key.KeyChar);
-        } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
+        } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape );
         Console.CursorVisible = false;
         SendResponse(
             this,
