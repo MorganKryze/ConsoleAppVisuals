@@ -542,20 +542,6 @@ namespace example
         public static void Debugging()
         {
             // Debug code placeholder
-            Window.Clear();
-
-            ElementList elementList = new();
-            Window.AddElement(elementList);
-            Window.Render(elementList);
-            Window.Freeze();
-            Window.Clear();
-            Window.RemoveElement<ElementList>();
-
-            InteractiveList interactiveList = new();
-            Window.AddElement(interactiveList);
-            Window.Render(interactiveList);
-            Window.Freeze();
-
         }
     }
 }
