@@ -3,7 +3,7 @@
 In this section, we will see how to manage menus in a console application. We will see how to create a menu, how to navigate in a complex application.
 
 > [!TIP]
-> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs). It is a good way to understand how to use the library.
+> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) if you go into any trouble.
 
 ## Setup
 
@@ -14,7 +14,7 @@ Your file structure is like this:
 ```bash
 Example_project  <-- root
 └───MyApp
-    ├───bin
+    ├───obj
     ├───MyApp.csproj
     └───Program.cs
 ```
@@ -70,9 +70,7 @@ switch (response?.Status)
                 $"The user: {response?.Status}",
                 $"Index: {response?.Value}",
                 $"Which corresponds to: {options[response?.Value ?? 0]}"
-            },
-            $"Next {Core.GetSelector.Item1}",
-            TextAlignment.Left
+            }
         );
         Window.AddElement(embedSelected);
         Window.ActivateElement(embedSelected);
@@ -86,9 +84,7 @@ switch (response?.Status)
                 $"The user: {response?.Status}",
                 $"Index: {response?.Value}",
                 $"Which corresponds to: {options[response?.Value ?? 0]}"
-            },
-            $"Next {Core.GetSelector.Item1}",
-            TextAlignment.Left
+            }
         );
         Window.AddElement(embedEscaped);
         Window.ActivateElement(embedEscaped);
@@ -209,25 +205,19 @@ var menu = new ScrollingMenu(
 Window.AddElement(menu);
 
 EmbedText play = new(
-    new List<string>() { "Playing..." },
-    "Next",
-    TextAlignment.Left
+    new List<string>() { "Playing..." }
 );
 Window.AddElement(play);
 Window.DeactivateElement(play, false);
 
 EmbedText language = new(
-    new List<string>() { "Changing language..." },
-    "Next",
-    TextAlignment.Left
+    new List<string>() { "Changing language..." }
 );
 Window.AddElement(language);
 Window.DeactivateElement(language, false);
 
 EmbedText sound = new(
-    new List<string>() { "Changing volume..." },
-    "Next",
-    TextAlignment.Left
+    new List<string>() { "Changing volume..." }
 );
 Window.AddElement(sound);
 Window.DeactivateElement(sound, false);

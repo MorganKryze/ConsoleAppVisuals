@@ -8,7 +8,7 @@ This tutorial will show you how to create a simple console application using the
 - How to exit the application
 
 > [!TIP]
-> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs). It is a good way to understand how to use the library.
+> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) if you go into any trouble.
 
 ## Setup
 
@@ -19,7 +19,7 @@ First, let's create a dummy project to work with. Please choose your method acco
 Open your terminal and navigate to the folder where you want to create your project. Run the following command:
 
 ```bash
-dotnet new console -n MyApp
+dotnet new console --output MyApp --use-program-main
 ```
 
 If your file structure is like this:
@@ -27,12 +27,18 @@ If your file structure is like this:
 ```bash
 Example_project  <-- root
 └───MyApp
-    ├───bin
+    ├───obj
     ├───MyApp.csproj
     └───Program.cs
 ```
 
-Jump into the `MyApp` folder and run the following command:
+Jump into the `MyApp` folder:
+
+```bash
+cd MyApp
+```
+
+Finally, run the following command to install the library:
 
 ```bash
 dotnet add package ConsoleAppVisuals
@@ -148,7 +154,7 @@ Window.Render();
 
 ![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
-As you may have noticed, we have the same output as earlier. No prompt was printed. That's because we need to activate manually the `Prompt` element. Interactive elements are not activated by default. To do so, we can use the following line of code:
+As you may have noticed, we have the same output as earlier. No prompt was printed. That's because we need to activate manually the `Prompt` element. Interactive elements are not activated by default. To do so, we can add the following line of code:
 
 ```csharp
 Window.ActivateElement(prompt);
@@ -177,7 +183,7 @@ response.Value;
 Finally, let's add a `EmbedText` element to display the user's response:
 
 ```csharp
-EmbeddedText text = new EmbeddedText(
+EmbedText text = new EmbedText(
             new List<string>()
             {
                 "You just wrote " + response?.Value + "!",
@@ -233,8 +239,7 @@ EmbedText text = new EmbedText(
     {
         "You just wrote " + response?.Value + "!",
         "And you " + response?.Status + "!"
-    },
-    $"Next {Core.GetSelector.Item1}"
+    }
 );
 Window.AddElement(text);
 
@@ -242,3 +247,6 @@ Window.ActivateElement(text);
 
 Window.Close();
 ```
+
+> [!TIP]
+> To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
