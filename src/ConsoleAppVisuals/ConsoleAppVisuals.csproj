@@ -5,15 +5,13 @@
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PublishRelease>true</PublishRelease>
-    <PackRelease>true</PackRelease>
   </PropertyGroup>
 
   <PropertyGroup>
     <!-- Package Info-->
     <Title>ConsoleAppVisuals</Title>
     <PackageId>ConsoleAppVisuals</PackageId>
+    <PackageType>Dependency</PackageType>
     <Authors>MorganK</Authors>
     <Description>User-friendly .NET visuals library designed for console apps</Description>
     <Summary>ConsoleAppVisuals is a library mainly made to get fast results in the console using
@@ -41,6 +39,14 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Publishing Settings -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishRelease>true</PublishRelease>
+    <PackRelease>true</PackRelease>
   </PropertyGroup>
 
   <PropertyGroup
