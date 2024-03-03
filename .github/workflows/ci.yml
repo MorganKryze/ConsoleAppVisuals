@@ -1,4 +1,4 @@
-name: CI and docs
+name: Build, test and deploy docs
 
 env:
   ACTIONS_RUNNER_NODE20: true
