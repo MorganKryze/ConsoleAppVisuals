@@ -5,7 +5,6 @@ In this section, you will learn:
 - How to remove elements
 - Discover the inspector elements
 - Discover data visualization with `TableView`, `TableSelector` and `Matrix` elements
-- Discover `ScrollingMenu` element
 
 > [!TIP]
 > Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) if you go into any trouble.
@@ -30,7 +29,6 @@ And your cleaned `Program.cs` file should look like this:
 using System;
 using ConsoleAppVisuals;
 using ConsoleAppVisuals.Elements;
-using ConsoleAppVisuals.Enums;
 
 namespace MyApp
 {
@@ -43,9 +41,6 @@ namespace MyApp
     }
 }
 ```
-
-> [!NOTE]
-> We added `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enums.
 
 ## Disabling elements
 
@@ -82,11 +77,14 @@ ElementsDashboard dashboard = new ElementsDashboard();
 Window.AddElement(dashboard);
 
 Window.Render();
+// Window.Freeze() will stop the execution to see the result without exiting the application
+// As ElementDashboard is a static element
 Window.Freeze();
 
 Window.DeactivateElement(title);
 
 Window.Render();
+// Same as before, we need to stop the execution to see the result without exiting the application
 Window.Freeze();
 ```
 
@@ -134,23 +132,32 @@ The `TableView` element is used to display data in a table format. It is useful 
 Let's create a `TableView` element and add it to the window.
 
 ```csharp
-List<string> studentsHeaders = new() { "id", "name", "major", "grades" };
+List<string> studentsHeaders = new List<string>() { "id", "name", "major", "grades" };
 
-List<string> student1 = new() { "01", "Theo", "Technology", "97" };
-List<string> student2 = new() { "02", "Paul", "Mathematics", "86" };
-List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
-List<string> student4 = new() { "04", "Charles", "Computer Science", "100" };
+List<string> student1 = new List<string>() { "01", "Theo", "Technology", "97" };
+List<string> student2 = new List<string>() { "02", "Paul", "Mathematics", "86" };
+List<string> student3 = new List<string>() { "03", "Maxime", "Physics", "92" };
+List<string> student4 = new List<string>() { "04", "Charles", "Computer Science", "100" };
+
+List<List<string>> studentsData = 
+    new List<List<string>>() 
+    { 
+        student1, 
+        student2, 
+        student3, 
+        student4 
+    };
 
 TableView<string> students =
-    new(
+    new TableView<string>(
         "Students grades",
         studentsHeaders,
-        new() { student1, student2, student3, student4 }
+        studentsData
     );
-Window.AddElement(students);
 
-Window.Render();
-// TableView is a static element, so we need to stop the execution to see the result without exiting the application
+Window.AddElement(students);
+Window.Render(students);
+// TableView is a static element, so we need to stop the execution to see it
 Window.Freeze();
 ```
 
@@ -158,21 +165,23 @@ Window.Freeze();
 
 ## The `TableSelector` element
 
-The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table to update the data.
+The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table.
+
+Here is an example of how to use it:
 
 ```csharp
-List<string> playersHeaders = new() { "id", "first name", "last name", "nationality", "slams" };
+List<string> playersHeaders = new List<string>() { "id", "first name", "last name", "nationality", "slams" };
 
-List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
-List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
-List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
-List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
-List<string> player5 = new() { "05", "Andy", "Murray", "England", "3" };
-List<string> player6 = new() { "06", "Daniil", "Medvedev", "Russia", "1" };
-List<string> player7 = new() { "07", "Stan", "Wawrinka", "Switzerland", "2" };
+List<string> player1 = new List<string>() { "01", "Novak", "Djokovic", "Serbia", "24" };
+List<string> player2 = new List<string>() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+List<string> player3 = new List<string>() { "03", "Roger", "Federer", "Switzerland", "21" };
+List<string> player4 = new List<string>() { "04", "Rafael", "Nadal", "Spain", "23" };
+List<string> player5 = new List<string>() { "05", "Andy", "Murray", "England", "3" };
+List<string> player6 = new List<string>() { "06", "Daniil", "Medvedev", "Russia", "1" };
+List<string> player7 = new List<string>() { "07", "Stan", "Wawrinka", "Switzerland", "2" };
 
 List<List<string>> playersData =
-    new()
+    new List<List<string>> ()
     {
         player1,
         player2,
@@ -184,10 +193,15 @@ List<List<string>> playersData =
     };
 
 TableSelector<string> players =
-    new("Great tennis players", playersHeaders, playersData);
+    new TableSelector<string>(
+        "Great tennis players",
+         playersHeaders,
+         playersData
+    );
 
 Window.AddElement(players);
-// Contrary to the TableView, the TableSelector is interactive, so we do not have to stop the execution to see it, but to activate it
+// Contrary to the TableView, the TableSelector is interactive,
+// so we do not have to stop the execution to see it, but to activate it
 Window.ActivateElement(players);
 ```
 
@@ -197,16 +211,17 @@ Now let's collect the user interaction response:
 
 ```csharp
 var response = players.GetResponse();
-var playersEmbedResponse =
+EmbedText playersEmbedResponse =
     new EmbedText(
         new List<string>()
         {
-            "You chose to " + response?.Status.ToString(),
-            "the player "
+            "Status: " + response?.Status,
+            "You selected the player "
                 + playersData[response?.Value ?? 0][2]
                 + "!"
         }
     );
+
 Window.AddElement(playersEmbedResponse);
 Window.ActivateElement(playersEmbedResponse);
 ```
@@ -218,16 +233,20 @@ Window.ActivateElement(playersEmbedResponse);
 The `Matrix` element is used to display data in a matrix format.
 
 ```csharp
-// We first create the data to display
-List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 }; 
-List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
-List<int?> thirdRow = new() { 7, 8, null, 3, 4, 5 };
-List<int?> fourthRow = new() { null, 2, 3, 4, 5, 6 };
+List<int?> firstRow = new List<int?>() { 1, null, 2, 7, 9, 3 };
+List<int?> secondRow = new List<int?>() { 4, 5, 6, 8, null, 2 };
+List<int?> thirdRow = new List<int?>() { 7, 8, null, 3, 4, 5 };
+List<int?> fourthRow = new List<int?>() { null, 2, 3, 4, 5, 6 };
 
 List<List<int?>> data =
-    new() { firstRow, secondRow, thirdRow, fourthRow };
+    new List<List<int?>>() { 
+    firstRow, 
+    secondRow, 
+    thirdRow, 
+    fourthRow 
+};
 
-Matrix<int?> matrix = new(data);
+Matrix<int?> matrix = new Matrix<int?>(data);
 
 Window.AddElement(matrix);
 
@@ -237,36 +256,5 @@ Window.Freeze();
 
 ![Matrix](../assets/img/jpg/new_elements/matrix.jpg)
 
-## The `ScrollingMenu` element
-
-The `ScrollingMenu` element is an historic element of the library. Some features about it changed but the principle remains the same. It is used to display a list of items and allow the user to select one or several items.
-
-Here is a minimal example of how to use it:
-
-```csharp
-var options = new string[] { "Option 0", "Option 1", "Option 2" };
-var menu = new ScrollingMenu(
-    "Please choose an option among those below.",
-    0,
-    Placement.TopCenter,
-    null,
-    options
-);
-Window.AddElement(menu);
-Window.ActivateElement(menu);
-var responseMenu = menu.GetResponse();
-var embedResponse = new EmbedText(
-    new List<string>()
-    {
-        $"The user: {responseMenu?.Status}",
-        $"Index: {responseMenu?.Value}",
-        $"Which corresponds to: {options[responseMenu?.Value ?? 0]}"
-    }
-);
-Window.AddElement(embedResponse);
-Window.ActivateElement(embedResponse);
-```
-
-![ScrollingMenu](../assets/vid/gif/new_elements/scrolling_menu.gif)
-
-We will develop how to create a complex app using menu management in the next section.
+> [!TIP]
+> To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
