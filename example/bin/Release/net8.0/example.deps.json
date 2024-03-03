@@ -14,50 +14,6 @@
           "example.dll": {}
         }
       },
-      "Castle.Core/5.1.1": {
-        "dependencies": {
-          "System.Diagnostics.EventLog": "6.0.0"
-        },
-        "runtime": {
-          "lib/net6.0/Castle.Core.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.1.1.0"
-          }
-        }
-      },
-      "Moq/4.20.70": {
-        "dependencies": {
-          "Castle.Core": "5.1.1"
-        },
-        "runtime": {
-          "lib/net6.0/Moq.dll": {
-            "assemblyVersion": "4.20.70.0",
-            "fileVersion": "4.20.70.0"
-          }
-        }
-      },
-      "System.Diagnostics.EventLog/6.0.0": {
-        "runtime": {
-          "lib/net6.0/System.Diagnostics.EventLog.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.21.52210"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.Messages.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.21.52210"
-          },
-          "runtimes/win/lib/net6.0/System.Diagnostics.EventLog.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.21.52210"
-          }
-        }
-      },
       "YamlDotNet/15.1.2": {
         "runtime": {
           "lib/net8.0/YamlDotNet.dll": {
@@ -68,7 +24,6 @@
       },
       "ConsoleAppVisuals/1.0.0": {
         "dependencies": {
-          "Moq": "4.20.70",
           "YamlDotNet": "15.1.2"
         },
         "runtime": {
@@ -82,27 +37,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "Castle.Core/5.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
-      "path": "castle.core/5.1.1",
-      "hashPath": "castle.core.5.1.1.nupkg.sha512"
-    },
-    "Moq/4.20.70": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4rNnAwdpXJBuxqrOCzCyICXHSImOTRktCgCWXWykuF1qwoIsVvEnR7PjbMk/eLOxWvhmj5Kwt+kDV3RGUYcNwg==",
-      "path": "moq/4.20.70",
-      "hashPath": "moq.4.20.70.nupkg.sha512"
-    },
-    "System.Diagnostics.EventLog/6.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lcyUiXTsETK2ALsZrX+nWuHSIQeazhqPphLfaRxzdGaG93+0kELqpgEHtwWOlQe7+jSFnKwaCAgL4kjeZCQJnw==",
-      "path": "system.diagnostics.eventlog/6.0.0",
-      "hashPath": "system.diagnostics.eventlog.6.0.0.nupkg.sha512"
     },
     "YamlDotNet/15.1.2": {
       "type": "package",
