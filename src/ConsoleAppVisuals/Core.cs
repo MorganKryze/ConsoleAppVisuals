@@ -640,16 +640,21 @@ public static class Core
     /// </list>
     /// </remarks>
     [Visual]
-    public static string BannerToString(this (string, string, string) banner) =>
-        " "
-        + banner.Item1
-        + banner.Item2.ResizeString(
-            Console.WindowWidth - 2 - banner.Item1.Length - banner.Item3.Length,
+    public static string BannerToString(this (string, string, string) banner)
+    {
+        string centeredText = banner.Item2.ResizeString(
+            Console.WindowWidth - 2,
             TextAlignment.Center,
             true
-        )
-        + banner.Item3
-        + " ";
+        );
+
+        string leftAndCenter = banner.Item1 + centeredText.Substring(banner.Item1.Length);
+
+        string fullBanner =
+            leftAndCenter.Substring(0, leftAndCenter.Length - banner.Item3.Length) + banner.Item3;
+
+        return " " + fullBanner + " ";
+    }
 
     /// <summary>
     /// This method is used to get the range of a negative sequence in a string and remove the negative anchors.
