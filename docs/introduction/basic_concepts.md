@@ -63,5 +63,5 @@ Window.Render(exampleTitle);
 Now that you have the basic concepts, let's dive into this guided path to know how to use the library:
 
 - [Create a simple console application](/ConsoleAppVisuals/introduction/first_app.html)
-- [Discover new elements for your project](/ConsoleAppVisuals/introduction/advanced_app.html)
+- [Discover new elements for your project](/ConsoleAppVisuals/introduction/new_elements.html)
 - [Manage multiple menus](/ConsoleAppVisuals/introduction/menus_managment.html)
