@@ -315,7 +315,7 @@ public class EmbedText : InteractiveElement<string>
             lineToDisplay += " │";
             _textToDisplay.Add(lineToDisplay);
         }
-        _textToDisplay.Insert(0, "┌" + new string('─', maxLength + 2) + "┐");
+        _textToDisplay.Insert(0, GetCorners[0] + new string('─', maxLength + 2) + GetCorners[1]);
         _textToDisplay.Add("│ " + new string(' ', maxLength) + " │");
         _textToDisplay.Add(
             "│ "
@@ -327,7 +327,7 @@ public class EmbedText : InteractiveElement<string>
                 + Core.NEGATIVE_ANCHOR
                 + " │"
         );
-        _textToDisplay.Add("└" + new string('─', maxLength + 2) + "┘");
+        _textToDisplay.Add(GetCorners[2] + new string('─', maxLength + 2) + GetCorners[3]);
     }
     #endregion
 }
