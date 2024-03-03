@@ -183,6 +183,8 @@ Window.DeactivateElement(elementList);
 Window.RemoveElement(elementList);
 ```
 
+![Elements list](../assets/img/jpg/create_element/elements_list.jpg)
+
 Or target only interactive elements:
 
 ```csharp
@@ -195,3 +197,5 @@ Window.Freeze();
 Window.DeactivateElement(interactiveList);
 Window.RemoveElement(interactiveList);
 ```
+
+![Interactive elements list](../assets/img/jpg/create_element/interactive_list.jpg)
