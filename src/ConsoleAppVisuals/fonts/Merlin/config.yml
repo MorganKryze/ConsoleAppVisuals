@@ -3,6 +3,6 @@ author: LG Beard
 height: 8
 
 chars:
-  alphabet: abcdefghijklmnopqrstuvwxyz
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
   numbers: 0123456789
   symbols: " !\"%'()=.,/:;<>?[\\]^`{|}"

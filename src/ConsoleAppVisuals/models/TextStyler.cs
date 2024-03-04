@@ -419,7 +419,6 @@ public class TextStyler
     /// </remarks>
     public string StyleTextToString(string text)
     {
-        text = text.ToLower();
         var lines = new List<string[]>();
         foreach (char c in text)
         {
@@ -458,7 +457,6 @@ public class TextStyler
     /// </remarks>
     public string[] StyleTextToStringArray(string text)
     {
-        text = text.ToLower();
         var lines = new List<string[]>();
         foreach (char c in text)
         {

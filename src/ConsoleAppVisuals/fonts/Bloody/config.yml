@@ -3,6 +3,6 @@ author: Unknown
 height: 10
 
 chars:
-  alphabet: abcdefghijklmnopqrstuvwxyz
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
   numbers: 
   symbols: " "
