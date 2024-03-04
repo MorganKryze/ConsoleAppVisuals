@@ -56,6 +56,13 @@ namespace testing
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void fontPath_NotNullForNonCustomFont()
+        {
+            new TextStyler(Font.ANSI_Shadow, "../../../resources/fonts/ANSI_Shadow/");
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(FormatException))]
         [DataRow("../../../resources/fonts/Throw_Error/")]
         public void Constructor_EmptyFileExceptionThrown(string path)
