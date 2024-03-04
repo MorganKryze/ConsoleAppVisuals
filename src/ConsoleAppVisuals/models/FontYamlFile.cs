@@ -19,11 +19,23 @@ public class FontYamlFile
     /// <summary>
     /// The name of the font.
     /// </summary>
-    // [YamlMember(Alias = "name", ApplyNamingConventions = false)]
+    [YamlMember(Alias = "name", ApplyNamingConventions = false)]
     public string? Name { get; set; }
+
+    /// <summary>
+    /// The author of the font.
+    /// </summary>
+    [YamlMember(Alias = "author", ApplyNamingConventions = false)]
+    public string? Author { get; set; }
+
+    /// <summary>
+    /// The height of each font element.
+    /// </summary>
+    [YamlMember(Alias = "height", ApplyNamingConventions = false)]
+    public int? Height { get; set; }
 
     /// <summary>
     /// The height of the elements of the font.
     /// </summary>
-    public Dictionary<string, int>? Chars { get; set; }
+    public Dictionary<string, string>? Chars { get; set; }
 }
