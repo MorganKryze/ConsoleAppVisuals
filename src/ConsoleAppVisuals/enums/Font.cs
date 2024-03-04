@@ -40,4 +40,9 @@ public enum Font
     /// Author: LG Beard, Height: 8
     /// </summary>
     Merlin,
+
+    /// <summary>
+    /// Author: Unknown, Height: 8
+    /// </summary>
+    Bloody,
 }
