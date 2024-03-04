@@ -1,0 +1,8 @@
+name: Merlin
+author: LG Beard
+height: 8
+
+chars:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: " !\"%'()=.,/:;<>?[\\]^`{|}"
