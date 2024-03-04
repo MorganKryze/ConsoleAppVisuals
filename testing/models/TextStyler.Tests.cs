@@ -73,6 +73,123 @@ namespace testing
             // Act
             new TextStyler(Font.Custom, path);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Constructor_CustomWithoutPath_ExceptionThrown()
+        {
+            // Act
+            new TextStyler(Font.Custom);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Constructor_FontNotRecognized_ExceptionThrown()
+        {
+            // Act
+            new TextStyler((Font)100);
+        }
+        #endregion
+
+        #region Properties
+        [TestMethod]
+        public void FontProperty_ValidFont()
+        {
+            // Arrange
+            var expected = Font.ANSI_Shadow;
+            var styler = new TextStyler(expected);
+
+            // Act
+            var actual = styler.Font;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void FontPath_ValidPath()
+        {
+            // Arrange
+            var expected = "../../../resources/fonts/ANSI_Shadow/";
+            var styler = new TextStyler(Font.Custom, expected);
+
+            // Act
+            var actual = styler.FontPath;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        #endregion
+
+        #region ParseYaml
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ParseYaml_NameNull()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_FormatError_NameNull/");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ParseYaml_AuthorNull()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_FormatError_AuthorNull/");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ParseYaml_HeightNull()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_FormatError_HeightNull/");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCastException))]
+        public void ParseYaml_HeightNegative()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_FormatError_HeightNeg/");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ParseYaml_CharsNull()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_FormatError_CharsNull/");
+        }
+
+        [TestMethod]
+        public void ParseYaml_CharsFieldsNull_NoError()
+        {
+            // Arrange
+            var styler = new TextStyler(
+                Font.Custom,
+                "../../../resources/fonts/Throw_FormatError_CharsFieldsNull/"
+            );
+
+            // Assert
+            Assert.IsNotNull(styler);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ParseYaml_MissingArobase()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_Error_@/");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ParseYaml_MissingArobase2()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_Error_@@/");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void ParseYaml_InconsistentHeight()
+        {
+            new TextStyler(Font.Custom, "../../../resources/fonts/Throw_Error_InconsistentHeight/");
+        }
         #endregion
 
         #region StyleTextToString
