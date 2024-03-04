@@ -2901,6 +2901,26 @@
             Author: Jef Poskanzer, Height: 4
             </summary>
         </member>
+        <member name="F:ConsoleAppVisuals.Enums.Font.Ghost">
+            <summary>
+            Author: myflix, Height: 9
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Enums.Font.Merlin">
+            <summary>
+            Author: LG Beard, Height: 8
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Enums.Font.Bloody">
+            <summary>
+            Author: Unknown, Height: 8
+            </summary>
+        </member>
+        <member name="F:ConsoleAppVisuals.Enums.Font.Big">
+            <summary>
+            Author: Glenn Chappell, Height: 8
+            </summary>
+        </member>
         <member name="T:ConsoleAppVisuals.Enums.Output">
             <summary>
             Enum for the output of the scrolling menus.

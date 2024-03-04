@@ -3,6 +3,6 @@ author: myflix
 height: 9
 
 chars:
-  alphabet: abcdefghijklmnopqrstuvwxyz
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
   numbers: 0123456789
   symbols: " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
