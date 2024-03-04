@@ -169,7 +169,8 @@ Window.ActivateElement(prompt);
 
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
-> [!TIP] `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
+> [!TIP]
+> `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
 
 ### Get response and `EmbedText` element
 
