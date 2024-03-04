@@ -2921,6 +2921,11 @@
             Author: Glenn Chappell, Height: 8
             </summary>
         </member>
+        <member name="F:ConsoleAppVisuals.Enums.Font.Lil_Devil">
+            <summary>
+            Author: myflix, Height: 8
+            </summary>
+        </member>
         <member name="T:ConsoleAppVisuals.Enums.Output">
             <summary>
             Enum for the output of the scrolling menus.

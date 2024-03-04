@@ -50,4 +50,9 @@ public enum Font
     /// Author: Glenn Chappell, Height: 8
     /// </summary>
     Big,
+
+    /// <summary>
+    /// Author: myflix, Height: 8
+    /// </summary>
+    Lil_Devil,
 }
