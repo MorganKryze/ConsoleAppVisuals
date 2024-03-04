@@ -1,0 +1,8 @@
+name: Bloody
+author: Unknown
+height: 10
+
+chars:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  numbers: 
+  symbols: " "

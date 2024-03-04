@@ -152,20 +152,21 @@ public class TextStyler
         {
             config = deserializer.Deserialize<FontYamlFile>(yamlContent);
         }
-        catch (YamlException ex)
+        catch (YamlException e)
         {
             throw new YamlException(
                 "The config.yml file is not in the correct format. Check that the file is a YAML file.",
-                ex
+                e
             );
         }
-        catch (InvalidCastException ex)
+        catch (InvalidCastException e)
         {
             throw new InvalidCastException(
                 "The config.yml file is not in the correct format. Consider reading the documentation.",
-                ex
+                e
             );
         }
+
         if (config.Height is null)
         {
             throw new FormatException("Height is not defined in the config.yml file.");
@@ -178,36 +179,60 @@ public class TextStyler
         {
             throw new FormatException("Chars is not defined in the config.yml file.");
         }
-        ValidateTextFile(
-            _source is Font.Custom
-                ? _fontPath + ALPHABET_PATH
-                : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_ALPHABET_PATH,
-            (int)config.Height
-        );
-        alphabet = config.Chars["alphabet"];
 
-        ValidateTextFile(
-            _source is Font.Custom
-                ? _fontPath + NUMBERS_PATH
-                : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_NUMBERS_PATH,
-            (int)config.Height
-        );
-        numbers = config.Chars["numbers"];
+        if (config.Chars["alphabet"] is null or "")
+        {
+            alphabet = "";
+        }
+        else
+        {
+            ValidateTextFile(
+                _source is Font.Custom
+                    ? _fontPath + ALPHABET_PATH
+                    : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_ALPHABET_PATH,
+                (int)config.Height
+            );
+            alphabet = config.Chars["alphabet"];
+        }
 
-        ValidateTextFile(
-            _source is Font.Custom
-                ? _fontPath + SYMBOLS_PATH
-                : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_SYMBOLS_PATH,
-            (int)config.Height
-        );
-        symbols = config.Chars["symbols"];
+        if (config.Chars["numbers"] is null or "")
+        {
+            numbers = "";
+        }
+        else
+        {
+            ValidateTextFile(
+                _source is Font.Custom
+                    ? _fontPath + NUMBERS_PATH
+                    : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_NUMBERS_PATH,
+                (int)config.Height
+            );
+            numbers = config.Chars["numbers"];
+        }
+
+        if (config.Chars["symbols"] is null or "")
+        {
+            symbols = "";
+        }
+        else
+        {
+            ValidateTextFile(
+                _source is Font.Custom
+                    ? _fontPath + SYMBOLS_PATH
+                    : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_SYMBOLS_PATH,
+                (int)config.Height
+            );
+            symbols = config.Chars["symbols"];
+        }
 
         if (config.Author is null)
         {
-            throw new FormatException("Author is not defined in the config.yml file.");
+            throw new FormatException(
+                "Author is not defined in the config.yml file. If Unknown, use 'Unknown'."
+            );
         }
 
-        return (config, alphabet, numbers, symbols, (string)config.Author);
+        return (config, alphabet, numbers, symbols, config.Author);
     }
 
     private void ValidateTextFile(string filePath, int expectedHeight)
@@ -264,47 +289,79 @@ public class TextStyler
 
     private void BuildDictionary()
     {
-        List<string> alphabetStyled;
-        List<string> numbersStyled;
-        List<string> symbolsStyled;
+        if (_supportedAlphabet != "")
+        {
+            AddAlphabetToDictionary();
+        }
 
-        if (_source is Font.Custom)
+        if (_supportedNumbers != "")
         {
-            alphabetStyled = ReadResourceLines(ALPHABET_PATH);
-            numbersStyled = ReadResourceLines(NUMBERS_PATH);
-            symbolsStyled = ReadResourceLines(SYMBOLS_PATH);
+            AddNumbersToDictionary();
         }
-        else
+
+        if (_supportedSymbols != "")
         {
-            alphabetStyled = ReadResourceLines(DEFAULT_ALPHABET_PATH);
-            numbersStyled = ReadResourceLines(DEFAULT_NUMBERS_PATH);
-            symbolsStyled = ReadResourceLines(DEFAULT_SYMBOLS_PATH);
+            AddSymbolsToDictionary();
         }
-        if (_config.Chars is null)
-            throw new EmptyFileException("The config.yml file is empty.");
+    }
+
+    private void AddAlphabetToDictionary()
+    {
+        List<string> alphabetStyled;
+        alphabetStyled = ReadResourceLines(
+            _source is Font.Custom ? ALPHABET_PATH : DEFAULT_ALPHABET_PATH
+        );
 
         var alphabetStyledGrouped = alphabetStyled
             .Select((line, index) => new { line, index })
             .GroupBy(x => x.index / _config.Height)
             .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
             .ToList();
+
+        for (int i = 0; i < SupportedAlphabet.Length; i++)
+        {
+            _dictionary.Add(SupportedAlphabet[i], alphabetStyledGrouped[i]);
+        }
+    }
+
+    private void AddNumbersToDictionary()
+    {
+        List<string> numbersStyled;
+
+        numbersStyled = ReadResourceLines(
+            _source is Font.Custom ? NUMBERS_PATH : DEFAULT_NUMBERS_PATH
+        );
+
         var numbersStyledGrouped = numbersStyled
             .Select((line, index) => new { line, index })
             .GroupBy(x => x.index / _config.Height)
             .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
             .ToList();
+
+        for (int i = 0; i < SupportedNumbers.Length; i++)
+        {
+            _dictionary.Add(SupportedNumbers[i], numbersStyledGrouped[i]);
+        }
+    }
+
+    private void AddSymbolsToDictionary()
+    {
+        List<string> symbolsStyled;
+
+        symbolsStyled = ReadResourceLines(
+            _source is Font.Custom ? SYMBOLS_PATH : DEFAULT_SYMBOLS_PATH
+        );
+
         var symbolsStyledGrouped = symbolsStyled
             .Select((line, index) => new { line, index })
             .GroupBy(x => x.index / _config.Height)
             .Select(g => string.Join(Environment.NewLine, g.Select(x => x.line)))
             .ToList();
 
-        for (int i = 0; i < SupportedAlphabet.Length; i++)
-            _dictionary.Add(SupportedAlphabet[i], alphabetStyledGrouped[i]);
-        for (int i = 0; i < SupportedNumbers.Length; i++)
-            _dictionary.Add(SupportedNumbers[i], numbersStyledGrouped[i]);
         for (int i = 0; i < SupportedSymbols.Length; i++)
+        {
             _dictionary.Add(SupportedSymbols[i], symbolsStyledGrouped[i]);
+        }
     }
 
     private List<string> ReadResourceLines(string path)
