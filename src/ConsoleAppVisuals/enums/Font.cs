@@ -35,4 +35,9 @@ public enum Font
     /// Author: myflix, Height: 9
     /// </summary>
     Ghost,
+
+    /// <summary>
+    /// Author: LG Beard, Height: 8
+    /// </summary>
+    Merlin,
 }
