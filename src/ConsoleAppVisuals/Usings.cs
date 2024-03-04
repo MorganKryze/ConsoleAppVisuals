@@ -3,6 +3,7 @@ global using System.Diagnostics.CodeAnalysis;
 global using System.Reflection;
 global using System.Runtime.Serialization;
 global using System.Text;
+global using YamlDotNet.Core;
 global using YamlDotNet.Serialization;
 global using YamlDotNet.Serialization.NamingConventions;
 

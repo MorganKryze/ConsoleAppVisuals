@@ -30,7 +30,7 @@ namespace testing
         public void Constructor_WithFontPath_ValidDictionary(string path)
         {
             // Act
-            var custom = new TextStyler(path);
+            var custom = new TextStyler(Font.Custom, path);
 
             // Assert
             var expected =
@@ -49,19 +49,19 @@ namespace testing
         public void Constructor_WithFontPathAndDefault_ValidDictionary(string path)
         {
             // Arrange
-            var stylerCustom = new TextStyler(path);
+            var stylerCustom = new TextStyler(Font.Custom, path);
 
             // Assert
             Assert.AreEqual(styler.Dictionary['a'], stylerCustom.Dictionary['a']);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(EmptyFileException))]
+        [ExpectedException(typeof(FormatException))]
         [DataRow("../../../resources/fonts/Throw_Error/")]
         public void Constructor_EmptyFileExceptionThrown(string path)
         {
             // Act
-            TextStyler emptyStyler = new(path); // Exception should be thrown here
+            TextStyler emptyStyler = new(Font.Custom, path); // Exception should be thrown here
             emptyStyler.StyleTextToString("Hello World!");
         }
 
@@ -71,7 +71,7 @@ namespace testing
         public void Constructor_InvalidFontPath_ExceptionThrown(string path)
         {
             // Act
-            new TextStyler(path);
+            new TextStyler(Font.Custom, path);
         }
         #endregion
 
@@ -138,20 +138,6 @@ namespace testing
         }
 
         [TestMethod]
-        public void SetStyler_FontPathSet_StyleTextCorrect()
-        {
-            // Arrange
-            Core.SetStyler("../../../resources/fonts/ANSI_Shadow/");
-
-            // Act
-            var result1 = styler.StyleTextToStringArray("a");
-            var result2 = Core.StyleText("a");
-
-            // Assert
-            Assert.AreEqual(result1[0], result2[0]);
-        }
-
-        [TestMethod]
         public void GetRandomColor_ValidColorReturned()
         {
             // Arrange & Act
@@ -186,7 +172,7 @@ namespace testing
 
             // Act & Assert
             Assert.ThrowsException<FileNotFoundException>(
-                () => new TextStyler(resourceName, mockAssembly.Object)
+                () => new TextStyler(Font.Custom, resourceName, mockAssembly.Object)
             );
         }
         #endregion

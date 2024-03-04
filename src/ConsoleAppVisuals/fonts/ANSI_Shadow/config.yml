@@ -1,6 +1,8 @@
 name: ANSI Shadow
+author: Unknown
+height: 6
 
 chars:
-  alphabet: 6
-  numbers: 6
-  symbols: 6
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: "?!:.,;/-_()[]%$^*@ "

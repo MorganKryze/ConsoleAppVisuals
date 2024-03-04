@@ -17,7 +17,6 @@ public static class Core
     #endregion
 
     #region Fields
-    private static TextStyler s_styler = new();
     private static (char, char) s_selector = ('▶', '◀');
 
     [Visual]
@@ -190,36 +189,6 @@ public static class Core
         s_previousWindowWidth = Console.WindowWidth;
         s_previousWindowHeight = Console.WindowHeight;
     }
-
-    /// <summary>
-    /// This method is used to set a new styler for the application.
-    /// </summary>
-    /// <param name="path">The path of the new styler files.</param>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static void SetStyler(string path)
-    {
-        s_styler = new TextStyler(path);
-    }
-
-    /// <summary>
-    /// This method is used to style a string.
-    /// </summary>
-    /// <param name="str">The string to style.</param>
-    /// <returns>The styled string.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static string[] StyleText(string str) => s_styler.StyleTextToStringArray(str);
 
     /// <summary>
     /// This methods is used to get a random color from a selection.
