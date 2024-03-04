@@ -2,7 +2,7 @@
 
 > User-friendly .NET visuals library designed for console apps
 
-[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main)[![License: GNU GPL](https://img.shields.io/badge/License-GNU_GPL-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE)
+[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![License: GNU GPL](https://img.shields.io/badge/License-GNU_GPL-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE)
 
 ![title](https://gitlab.com/MorganKryze/consoleappvisuals/-/raw/main/presentation.gif)
 
@@ -10,8 +10,8 @@
 
 Feel free to check out the following resources to help you get started:
 
-- A guided [documentation](https://morgankryze.github.io/ConsoleAppVisuals/) is also available.
-- Take a quick look at our [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to understand how to implement the library in your own project
+- A guided [documentation](https://morgankryze.github.io/ConsoleAppVisuals/).
+- An [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to understand how to implement the library in your own project.
 
 ## Install
 
