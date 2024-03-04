@@ -56,10 +56,7 @@
 
   <ItemGroup>
     <!-- Fonts preloaded -->
-    <EmbeddedResource Include="fonts\ANSI_Shadow\config.yml" />
-    <EmbeddedResource Include="fonts\ANSI_Shadow\data\alphabet.txt" />
-    <EmbeddedResource Include="fonts\ANSI_Shadow\data\numbers.txt" />
-    <EmbeddedResource Include="fonts\ANSI_Shadow\data\symbols.txt" />
+    <EmbeddedResource Include="fonts\**\**\*" />
   </ItemGroup>
 
   <ItemGroup>

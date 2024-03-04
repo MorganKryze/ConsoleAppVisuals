@@ -2783,13 +2783,12 @@
             The line of the title.
             </summary>
         </member>
-        <member name="M:ConsoleAppVisuals.Elements.Title.#ctor(System.String,System.Int32,System.Nullable{System.Int32},ConsoleAppVisuals.Enums.TextAlignment,ConsoleAppVisuals.Enums.Font,System.String)">
+        <member name="M:ConsoleAppVisuals.Elements.Title.#ctor(System.String,System.Int32,ConsoleAppVisuals.Enums.TextAlignment,ConsoleAppVisuals.Enums.Font,System.String)">
             <summary>
             The constructor of the title.
             </summary>
             <param name="text">The text of the title.</param>
             <param name="margin">The margin of the title.</param>
-            <param name="width">The width of the title (by default the width of the console).</param>
             <param name="align">The alignment of the title.</param>
             <param name="font">The font of the title.</param>
             <param name="fontPath">ATTENTION: fill this parameter only if you want to use a custom font (Font.Custom).</param>
@@ -2820,20 +2819,6 @@
             </summary>
             <param name="margin">The new margin of the title.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">The margin must be between 0 and the half of the console height.</exception>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Elements.Title.UpdateWidth(System.Int32)">
-            <summary>
-            This method updates the width of the title.
-            </summary>
-            <param name="width">The new width of the title.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">The width must be between 0 and the console width.</exception>
             <remarks>
             For more information, refer to the following resources:
             <list type="bullet">

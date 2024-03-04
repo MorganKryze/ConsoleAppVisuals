@@ -1,0 +1,8 @@
+name: Bulbhead
+author: Jef Poskanzer
+height: 4
+
+chars:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: "#$%&'()*+,-./:;<=>?@[\\]^_\"{|}~ ÄÖÜäöüß"
