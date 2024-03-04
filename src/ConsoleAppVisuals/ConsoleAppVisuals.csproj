@@ -50,7 +50,7 @@
   </PropertyGroup>
 
   <PropertyGroup
-    Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(GITHUB_ACTION)' == 'Publish on GitHub and NuGet'">
+    Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(GITHUB_ACTION)' == 'publish'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
