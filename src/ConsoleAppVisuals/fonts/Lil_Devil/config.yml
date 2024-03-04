@@ -1,0 +1,8 @@
+name: Lil Devil
+author: myflix
+height: 8
+
+chars:
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
