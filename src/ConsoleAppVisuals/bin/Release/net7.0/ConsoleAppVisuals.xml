@@ -2926,6 +2926,11 @@
             Author: myflix, Height: 8
             </summary>
         </member>
+        <member name="F:ConsoleAppVisuals.Enums.Font.Stop">
+            <summary>
+            Author: David Walton, Height: 7
+            </summary>
+        </member>
         <member name="T:ConsoleAppVisuals.Enums.Output">
             <summary>
             Enum for the output of the scrolling menus.
