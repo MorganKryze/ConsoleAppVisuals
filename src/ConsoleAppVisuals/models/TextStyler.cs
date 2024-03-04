@@ -96,7 +96,14 @@ public class TextStyler
         {
             throw new ArgumentNullException(
                 nameof(fontPath),
-                "No font path provided for a custom font."
+                "A Custom font path implies a non-null value for fontPath."
+            );
+        } 
+        else if (source is not Font.Custom && fontPath is not null)
+        {
+            throw new ArgumentException(
+                nameof(fontPath),
+                "A non-Custom font implies a null value for fontPath."
             );
         }
         _font = source;
