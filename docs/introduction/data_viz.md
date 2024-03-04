@@ -1,4 +1,4 @@
-# New elements
+# Data visualization
 
 In this section, you will learn:
 
@@ -88,7 +88,7 @@ Window.Render();
 Window.Freeze();
 ```
 
-![DashBoard](../assets/vid/gif/new_elements/dash_deactivate.gif)
+![DashBoard](../assets/vid/gif/data_viz/dash_deactivate.gif)
 
 As you noticed, the title is not rendered on the screen because its Visibility property has been set to false.
 
@@ -123,7 +123,7 @@ Window.Render();
 Window.Freeze();
 ```
 
-![DashBoard](../assets/vid/gif/new_elements/dash_remove.gif)
+![DashBoard](../assets/vid/gif/data_viz/dash_remove.gif)
 
 ## The `TableView` element
 
@@ -161,7 +161,7 @@ Window.Render(students);
 Window.Freeze();
 ```
 
-![TableView](../assets/img/jpg/new_elements/table_view.jpg)
+![TableView](../assets/img/jpg/data_viz/table_view.jpg)
 
 ## The `TableSelector` element
 
@@ -205,7 +205,7 @@ Window.AddElement(players);
 Window.ActivateElement(players);
 ```
 
-![TableSelector](../assets/vid/gif/new_elements/table_selector.gif)
+![TableSelector](../assets/vid/gif/data_viz/table_selector.gif)
 
 Now let's collect the user interaction response:
 
@@ -226,7 +226,7 @@ Window.AddElement(playersEmbedResponse);
 Window.ActivateElement(playersEmbedResponse);
 ```
 
-![DashBoard](../assets/vid/gif/new_elements/embed.gif)
+![DashBoard](../assets/vid/gif/data_viz/embed.gif)
 
 ## The `Matrix` element
 
@@ -254,7 +254,7 @@ Window.Render(matrix);
 Window.Freeze();
 ```
 
-![Matrix](../assets/img/jpg/new_elements/matrix.jpg)
+![Matrix](../assets/img/jpg/data_viz/matrix.jpg)
 
 > [!TIP]
 > To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
