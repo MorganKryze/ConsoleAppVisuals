@@ -61,6 +61,24 @@ For testing, we use the following conventions:
 - Tests should have the `TestCategory("ClassToTest")` attribute.
 - Tests content should follow the `Arrange`, `Act`, `Assert` pattern.
 
+### Commit names conventions
+
+For commit names, we use the github hooks:
+
+- New feature: `:feat:` • 🌟
+- refactor: `:refactor:` • 🚧
+- New tests: `:test:` • ✅
+- Update of project's CI/CD: `:ci:` • 🤖
+- Update of documentation: `:docs:` • 📖
+- Bug fix: `:fix:` • 🚑
+- Improve performances: `:perf:` • ⚡
+- Aesthetic improvement: `:style:` • 💄
+
+We also use the following conventions:
+
+- Commit names should be written in the present tense.
+- Commit names should be descriptive and concise.
+
 ### Reviewing Pull Requests
 
 All pull requests will be reviewed by members of the project maintainers team. Please be patient while we review your contribution. We may provide feedback or request changes before merging your pull request.
