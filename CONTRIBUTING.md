@@ -32,6 +32,22 @@ Before submitting your pull request, please ensure that you have:
 - Provided a detailed description of the changes made.
 - Mentioned any related issues or pull requests.
 
+### Versioning conventions
+
+We use the [Semantic Versioning](https://semver.org/) convention for versioning. The version number is composed of three parts: Major, Minor, and Patch. We also use a suffix to denote pre-release versions (vX.Y.Z-PreRelease):
+
+- Major. Breaking changes
+- Minor: New features, but backwards compatible
+- Patch: Backwards compatible bug fixes only
+- -Suffix (optional): a hyphen followed by a string denoting a pre-release version (following the Semantic Versioning
+  or SemVer« convention).
+
+For the pre-release suffix, we use the following conventions:
+
+- -alpha: Alpha release, typically used for work-in-progress and experimentation.
+- -beta: Beta release, typically one that is feature complete for the next planned release, but may contain known bugs.
+- -rc: Release candidate, typically a release that's potentially final (stable) unless significant bugs emerge.
+
 ### Testing Conventions
 
 For testing, we use the following conventions:
@@ -39,10 +55,10 @@ For testing, we use the following conventions:
 - Tests should be written in the `testing` directory.
 - Tests filenames should follow the `ClassToTest.Tests.cs` pattern.
 - Classes should have a `TestCleanup` function.
-- Tests are wirtten using the `MSTests` framework.
+- Tests are written using the `MSTests` framework.
 - Tests methods names should be descriptive and follow the `ElementToTest_BehaviorExpected` pattern.
 - Tests should have the `TestMethod` attribute.
-- Tests should have the `TestCategoty("ClassToTest")` attribute.
+- Tests should have the `TestCategory("ClassToTest")` attribute.
 - Tests content should follow the `Arrange`, `Act`, `Assert` pattern.
 
 ### Reviewing Pull Requests
