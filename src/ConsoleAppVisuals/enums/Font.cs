@@ -30,4 +30,9 @@ public enum Font
     /// Author: Jef Poskanzer, Height: 4
     /// </summary>
     Bulbhead,
+
+    /// <summary>
+    /// Author: myflix, Height: 9
+    /// </summary>
+    Ghost,
 }
