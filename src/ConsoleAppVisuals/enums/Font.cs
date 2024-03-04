@@ -45,4 +45,9 @@ public enum Font
     /// Author: Unknown, Height: 8
     /// </summary>
     Bloody,
+
+    /// <summary>
+    /// Author: Glenn Chappell, Height: 8
+    /// </summary>
+    Big,
 }

@@ -1,0 +1,8 @@
+name: Big
+author: Glenn Chappell
+height: 8
+
+chars:
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: " !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~Äß¡€£¥©®°•¿ÀÂÃÇÉÈÊËÌÎÏÑÒÔÕÖÙÛÜàâãäçèéêëìîïñòôõö÷ùûüÿ"
