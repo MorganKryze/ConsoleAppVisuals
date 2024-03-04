@@ -1,0 +1,8 @@
+name: Bulbhead
+author: myflix
+height: 9
+
+chars:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
