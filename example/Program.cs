@@ -12,8 +12,8 @@ namespace example
             // Empty, do not mind, just for debugging purposes
             Debugging();
 
-            // Create the title element (You may try to change the font to see the result)
-            var title = new Title("Example project", 1, TextAlignment.Center, Font.ANSI_Shadow);
+            // Create the title element 
+            var title = new Title("Example project"); // Bonus for visiting example project! You may try to change the font by updating the font parameter: var title = new Title("Example project", 1, TextAlignment.Center, Font.ANSI_Shadow);
             // Add the title to the window
             Window.AddElement(title);
 
