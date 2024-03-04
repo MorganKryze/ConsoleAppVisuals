@@ -49,7 +49,7 @@ public abstract class Element
     /// <summary>
     /// The line of the element in the console.
     /// </summary>
-    /// <remarks>ATTENTION: This property is not marked as virtual. Though, it is not recommended to override this specific property </remarks>
+    /// <remarks>ATTENTION: This property is not marked as virtual. Override this property only to give it a constant value.</remarks>
     public virtual int Line
     {
         get
