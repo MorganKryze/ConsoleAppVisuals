@@ -150,6 +150,12 @@ Consider reading our [security policy](SECURITY.md) to know more about how we ha
 - [MorganKryze](https://github.com/MorganKryze) - creator and maintainer
 - [Robin L'hyver](https://github.com/robinmoon2) - contributor
 
+## Inspiration
+
+The library is originally inspired by the work of [l-eg116](https://github.com/l-eg116): [A3S5-TransConnect](https://github.com/l-eg116/A3S5-TransConnect).
+
+Fonts come from the [figlet.js](https://github.com/patorjk/figlet.js/tree/main) repository.
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](CONTRIBUTING.md) file.
