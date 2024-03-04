@@ -19,7 +19,6 @@ public class Title : Element
     #region Fields
     private string _text;
     private int _margin;
-    private int _width;
     private TextAlignment _align;
     private TextStyler _styler;
 
@@ -44,7 +43,7 @@ public class Title : Element
     /// <summary>
     /// The width of the title.
     /// </summary>
-    public override int Width => _width;
+    public override int Width => Console.WindowWidth;
 
     /// <summary>
     /// The line of the title.
@@ -58,7 +57,6 @@ public class Title : Element
     /// </summary>
     /// <param name="text">The text of the title.</param>
     /// <param name="margin">The margin of the title.</param>
-    /// <param name="width">The width of the title (by default the width of the console).</param>
     /// <param name="align">The alignment of the title.</param>
     /// <param name="font">The font of the title.</param>
     /// <param name="fontPath">ATTENTION: fill this parameter only if you want to use a custom font (Font.Custom).</param>
@@ -72,7 +70,6 @@ public class Title : Element
     public Title(
         string text,
         int margin = 1,
-        int? width = null,
         TextAlignment align = TextAlignment.Center,
         Font font = Font.ANSI_Shadow,
         string? fontPath = null
@@ -80,7 +77,6 @@ public class Title : Element
     {
         _text = text;
         _margin = margin;
-        _width = width ?? Console.WindowWidth;
         _align = align;
         _styler = new TextStyler(font, fontPath);
     }
@@ -128,30 +124,6 @@ public class Title : Element
     }
 
     /// <summary>
-    /// This method updates the width of the title.
-    /// </summary>
-    /// <param name="width">The new width of the title.</param>
-    /// <exception cref="ArgumentOutOfRangeException">The width must be between 0 and the console width.</exception>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public void UpdateWidth(int width)
-    {
-        if (width < 0 || width > Console.WindowWidth)
-        {
-            throw new ArgumentOutOfRangeException(
-                nameof(width),
-                "The width must be between 0 and the console width."
-            );
-        }
-        _width = width;
-    }
-
-    /// <summary>
     /// This method updates the alignment of the title.
     /// </summary>
     /// <param name="align">The new alignment of the title.</param>
@@ -182,7 +154,7 @@ public class Title : Element
     /// </summary>
     protected override void RenderElementActions()
     {
-        Core.WritePositionedStyledText(StyledText, Line, _width, _margin, _align, false);
+        Core.WritePositionedStyledText(StyledText, Line, Width, _margin, _align, false);
     }
     #endregion
 }
