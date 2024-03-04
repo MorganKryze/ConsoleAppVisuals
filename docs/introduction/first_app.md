@@ -156,7 +156,12 @@ Window.AddElement(prompt);
 Window.Render();
 ```
 
-As you may have noticed, we have the same output as earlier. No prompt was printed. That's because we need to activate manually the `Prompt` element. Interactive elements are not activated by default. To do so, we can add the following line of code:
+As you may have noticed, we have the same output as earlier. No prompt was displayed.
+
+> [!IMPORTANT]
+> Static elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
+
+To do so, we can add the following line of code:
 
 ```csharp
 Window.ActivateElement(prompt);
@@ -164,7 +169,7 @@ Window.ActivateElement(prompt);
 
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
-> [!TIP] > `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
+> [!TIP] `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
 
 ### Get response and `EmbedText` element
 

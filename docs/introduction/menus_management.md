@@ -1,6 +1,11 @@
 # Menus management
 
-In this section, we will see how to manage menus in a console application. We will see how to create a menu, how to navigate in a complex application.
+In this section, you will learn:
+
+- How to create a menu using the `ScrollingMenu` element
+- Collect their output
+- Manage the output
+- Navigate in an application
 
 > [!TIP]
 > Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) if you go into any trouble.
@@ -19,40 +24,59 @@ Example_project  <-- root
     └───Program.cs
 ```
 
+> [!IMPORTANT]
+> We add `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enums.
+
 And your cleaned `Program.cs` file should look like this:
 
+[!code-csharp[](../assets/code/ProgramDemo.cs?highlight=4)]
+
+## The `ScrollingMenu` element
+
+The `ScrollingMenu` element is an historic element of the library. Some features about it changed but the principle remains the same. It is used to display a list of items and allow the user to select one or several items.
+
+Here is a minimal example of how to use it:
+
 ```csharp
-using System;
-using ConsoleAppVisuals;
-using ConsoleAppVisuals.Elements;
-using ConsoleAppVisuals.Enums;
+string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
 
-namespace MyApp
-{
-    internal class Program
+ScrollingMenu menu = new ScrollingMenu(
+    "Please choose an option among those below.",
+    0,
+    Placement.TopCenter,
+    options
+);
+
+Window.AddElement(menu);
+Window.ActivateElement(menu);
+
+var responseMenu = menu.GetResponse();
+
+EmbedText embedResponse = new EmbedText(
+    new List<string>()
     {
-        static void Main(string[] args)
-        {
-
-        }
+        $"The user: {responseMenu?.Status}",
+        $"Index: {responseMenu?.Value}",
+        $"Which corresponds to: {options[responseMenu?.Value ?? 0]}"
     }
-}
+);
+
+Window.AddElement(embedResponse);
+Window.ActivateElement(embedResponse);
 ```
 
-> ![Note]
-> We added `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enums.
+![ScrollingMenu](../assets/vid/gif/menus_management/scrolling_menu.gif)
 
 ## Manage menu status
 
 Now that we can create a menu and collect the output, let's see how to manage the output and act accordingly:
 
 ```csharp
-var options = new string[] { "Option 0", "Option 1", "Option 2" };
-var menu = new ScrollingMenu(
+string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
+ScrollingMenu menu = new ScrollingMenu(
     "Please choose an option among those below.",
     0,
     Placement.TopCenter,
-    null,
     options
 );
 
@@ -67,9 +91,7 @@ switch (response?.Status)
         var embedSelected = new EmbedText(
             new List<string>()
             {
-                $"The user: {response?.Status}",
-                $"Index: {response?.Value}",
-                $"Which corresponds to: {options[response?.Value ?? 0]}"
+                "The user pressed the Enter key",
             }
         );
         Window.AddElement(embedSelected);
@@ -81,9 +103,7 @@ switch (response?.Status)
         var embedEscaped = new EmbedText(
             new List<string>()
             {
-                $"The user: {response?.Status}",
-                $"Index: {response?.Value}",
-                $"Which corresponds to: {options[response?.Value ?? 0]}"
+                "The user pressed the Escape key",
             }
         );
         Window.AddElement(embedEscaped);
@@ -95,16 +115,12 @@ switch (response?.Status)
         var embedDeleted = new EmbedText(
             new List<string>()
             {
-                $"The user: {response?.Status}",
-                $"Index: {response?.Value}",
-                $"Which corresponds to: {options[response?.Value ?? 0]}"
-            },
-            $"Next {Core.GetSelector.Item1}",
-            TextAlignment.Left
+                "The user pressed the Delete key",
+            }
         );
         Window.AddElement(embedDeleted);
         Window.ActivateElement(embedDeleted);
-        
+
         Window.RemoveElement(embedDeleted);
         break;
 }
@@ -125,14 +141,13 @@ switch (response?.Status)
                 $"The user: {response?.Status}",
                 $"Index: {response?.Value}",
                 $"Which corresponds to: {options[response?.Value ?? 0]}"
-            },
-            $"Next {Core.GetSelector.Item1}",
-            TextAlignment.Left
+            }
         );
         Window.AddElement(embedSelected);
         Window.ActivateElement(embedSelected);
-        
+
         Window.RemoveElement(embedSelected);
+        Window.Close();
         break;
     case Output.Escaped:
     case Output.Deleted:
@@ -143,15 +158,14 @@ switch (response?.Status)
 
 ## Manage menu value
 
-We can also manage the value of the selected item:
+We can also manage the value of the selected item (this example is a placeholder for your own functions):
 
 ```csharp
-var options = new string[] { "Play", "Settings", "Quit" };
-var menu = new ScrollingMenu(
+string[] options = new string[] { "Play", "Settings", "Quit" };
+ScrollingMenu menu = new ScrollingMenu(
     "Please choose an option among those below.",
     0,
     Placement.TopCenter,
-    null,
     options
 );
 Window.AddElement(menu);
@@ -170,12 +184,14 @@ switch (response?.Status)
                 // Settings() function
                 break;
             case 2:
+                // Quit the app
                 Window.Close();
                 break;
         }
         break;
     case Output.Escaped:
     case Output.Deleted:
+        // Quit the app anyway
         Window.Close();
         break;
 }
@@ -189,53 +205,50 @@ That way, you may act differently depending on the selected item and create usef
 
 For a simple navigation, you may use a decentralized way to manage your navigation, making each menu redirect to the other part of your project. We will use a controversial but useful tool: the `goto` statement. [Learn more](https://learn.microsoft.com/dotnet/csharp/language-reference/statements/jump-statements#the-goto-statement)
 
-We start by creating the menus and the elements:
+1. We start by creating the menus and the elements:
 
 ```csharp
-Window.Render();
-
-var options = new string[] { "Play", "Settings", "Quit" };
-var menu = new ScrollingMenu(
+string[] options = new string[] { "Play", "Settings", "Quit" };
+ScrollingMenu menu = new ScrollingMenu(
     "Please choose an option among those below.",
     0,
     Placement.TopCenter,
-    null,
     options
 );
 Window.AddElement(menu);
 
-EmbedText play = new(
-    new List<string>() { "Playing..." }
-);
-Window.AddElement(play);
-Window.DeactivateElement(play, false);
-
-EmbedText language = new(
-    new List<string>() { "Changing language..." }
-);
-Window.AddElement(language);
-Window.DeactivateElement(language, false);
-
-EmbedText sound = new(
-    new List<string>() { "Changing volume..." }
-);
-Window.AddElement(sound);
-Window.DeactivateElement(sound, false);
-
-var settingsOptions = new string[] { "Language", "Sound", "Back" };
-var settingsMenu = new ScrollingMenu(
+string[] settingsOptions = new string[] { "Language", "Sound", "Back" };
+ScrollingMenu settingsMenu = new ScrollingMenu(
     "Please choose an option among those below.",
     0,
     Placement.TopCenter,
-    null,
     settingsOptions
 );
 Window.AddElement(settingsMenu);
+
+EmbedText play = new EmbedText(
+    new List<string>() { "Playing..." }
+);
+Window.AddElement(play);
+
+EmbedText language = new EmbedText(
+    new List<string>() { "Changing language..." }
+);
+Window.AddElement(language);
+
+EmbedText sound = new EmbedText(
+    new List<string>() { "Changing volume..." }
+);
+Window.AddElement(sound);
 ```
 
-Then we add the navigation:
+2. Then we add the navigation:
 
 ```csharp
+// Start by cleaning the window
+Window.Clear();
+
+// This is a label, it will be used to navigate in the code using the goto statements
 MainMenu:
 
 Window.ActivateElement(menu);
@@ -264,7 +277,6 @@ switch (response?.Status)
 Play:
 
 Window.ActivateElement(play);
-Window.DeactivateElement(play);
 goto MainMenu;
 
 SettingsMenu:
@@ -279,11 +291,9 @@ switch (settingsResponse?.Status)
         {
             case 0:
                 Window.ActivateElement(language);
-                Window.DeactivateElement(language);
                 break;
             case 1:
                 Window.ActivateElement(sound);
-                Window.DeactivateElement(sound);
                 break;
             case 2:
                 goto MainMenu;
