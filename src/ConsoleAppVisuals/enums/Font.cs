@@ -55,4 +55,9 @@ public enum Font
     /// Author: myflix, Height: 8
     /// </summary>
     Lil_Devil,
+
+    /// <summary>
+    /// Author: David Walton, Height: 7
+    /// </summary>
+    Stop,
 }
