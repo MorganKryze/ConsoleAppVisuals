@@ -572,7 +572,7 @@ public static class Window
                         .Where(e => e.Placement == Placement.TopRight && e.Visibility)
                         .Sum(e => e.Height),
             Placement.BottomCenterFullWidth
-                => Console.WindowHeight
+                => (Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1)
                     - s_elements
                         .Where(e => e.Placement == Placement.BottomCenterFullWidth && e.Visibility)
                         .Sum(e => e.Height),

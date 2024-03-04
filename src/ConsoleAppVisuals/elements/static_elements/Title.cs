@@ -21,13 +21,15 @@ public class Title : Element
     private int _margin;
     private int _width;
     private TextAlignment _align;
+    private TextStyler _styler;
+
     #endregion
 
     #region Properties
     /// <summary>
     ///
     /// </summary>
-    public string[] StyledText => Core.StyleText(_text);
+    public string[] StyledText => _styler.StyleTextToStringArray(_text);
 
     /// <summary>
     /// The placement of the title.
@@ -58,6 +60,8 @@ public class Title : Element
     /// <param name="margin">The margin of the title.</param>
     /// <param name="width">The width of the title (by default the width of the console).</param>
     /// <param name="align">The alignment of the title.</param>
+    /// <param name="font">The font of the title.</param>
+    /// <param name="fontPath">ATTENTION: fill this parameter only if you want to use a custom font (Font.Custom).</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -69,13 +73,16 @@ public class Title : Element
         string text,
         int margin = 1,
         int? width = null,
-        TextAlignment align = TextAlignment.Center
+        TextAlignment align = TextAlignment.Center,
+        Font font = Font.ANSI_Shadow,
+        string? fontPath = null
     )
     {
         _text = text;
         _margin = margin;
         _width = width ?? Console.WindowWidth;
         _align = align;
+        _styler = new TextStyler(font, fontPath);
     }
     #endregion
 
@@ -158,6 +165,16 @@ public class Title : Element
     public void UpdateAlignment(TextAlignment align)
     {
         _align = align;
+    }
+
+    /// <summary>
+    /// This method updates the font of the title.
+    /// </summary>
+    /// <param name="font">The new font of the title.</param>
+    /// <param name="fontPath">ATTENTION: fill this parameter only if you want to use a custom font (Font.Custom).</param>
+    public void UpdateFont(Font font, string? fontPath = null)
+    {
+        _styler = new TextStyler(font, fontPath);
     }
 
     /// <summary>
