@@ -35,7 +35,6 @@ namespace example
                 Placement.TopCenter,
                 "Change Console color",
                 "Write on the console",
-                "Display styled text",
                 "Display paragraph",
                 "Answer some prompt",
                 "Select number",
@@ -168,19 +167,6 @@ namespace example
                             goto Menu;
 
                         case 2:
-                            // These following functions are at the core of the library,
-                            // they should not be used directly but can be useful
-                            int styledTextStartLine = Window.GetLineAvailable(Placement.TopCenter);
-                            Core.WritePositionedStyledText(
-                                Core.StyleText("Hello World!"),
-                                styledTextStartLine
-                            );
-                            Window.Freeze();
-
-                            Window.Clear(default, styledTextStartLine, 6);
-                            goto Menu;
-
-                        case 3:
                             var text = new EmbedText(
                                 new List<string>()
                                 {
@@ -201,7 +187,7 @@ namespace example
                             Window.RemoveElement(text);
                             goto Menu;
 
-                        case 4:
+                        case 3:
                             var prompt = new Prompt("What is your name?", "Theo");
                             Window.AddElement(prompt);
 
@@ -225,7 +211,7 @@ namespace example
                             Window.RemoveElement(embedResponsePrompt);
                             goto Menu;
 
-                        case 5:
+                        case 4:
                             // A FloatSelector is also available depending on your needs
                             var intSelector = new IntSelector("Select a number", 10, 100, 25, 5);
                             Window.AddElement(intSelector);
@@ -247,7 +233,7 @@ namespace example
                             Window.RemoveElement(embedResponseNumber);
                             goto Menu;
 
-                        case 6:
+                        case 5:
                             // We first create the data to display
                             List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
                             List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
@@ -286,7 +272,7 @@ namespace example
                             Window.RemoveElement(matrix);
                             goto Menu;
 
-                        case 7:
+                        case 6:
                             // We first create the data to display,
                             // pay attention to the order of the data and their length
                             // (the length of the headers and the data must be the same)
@@ -322,7 +308,7 @@ namespace example
                             Window.RemoveElement(students);
                             goto Menu;
 
-                        case 8:
+                        case 7:
                             List<string> playersHeaders =
                                 new() { "id", "first name", "last name", "nationality", "slams" };
                             List<string> player1 =
@@ -371,7 +357,7 @@ namespace example
                             Window.RemoveElement(embedResponseTable);
                             goto Menu;
 
-                        case 9:
+                        case 8:
                             // Contrary to the FakeLoadingBar, the LoadingBar
                             // corresponds to a real loading defined by a variable (here progress)
                             float progress = 0f;
@@ -409,7 +395,7 @@ namespace example
                             Window.RemoveElement(loadingBar);
                             goto Menu;
 
-                        case 10:
+                        case 9:
                             // Custom element, see the StaticDemo class
                             // in this project for more information
                             var customStaticElement = new StaticDemo(
@@ -427,7 +413,7 @@ namespace example
                             Window.RemoveElement(customStaticElement);
                             goto Menu;
 
-                        case 11:
+                        case 10:
                             var customInteractiveElement = new InteractDemo(
                                 "This element is also custom for demo purposes, you may type something:"
                             );
@@ -438,7 +424,7 @@ namespace example
                             Window.RemoveElement(customInteractiveElement);
                             goto Menu;
 
-                        case 12:
+                        case 11:
                             // These following elements are for debugging purposes,
                             // they should not be used in a production state of a project
                             var embedInfo = new EmbedText(
@@ -460,7 +446,7 @@ namespace example
                             Window.RemoveElement(embedInfo);
                             goto Menu;
 
-                        case 13:
+                        case 12:
                             // These following functions are for debugging purposes,
                             // they should not be used in a production state of a software
 
