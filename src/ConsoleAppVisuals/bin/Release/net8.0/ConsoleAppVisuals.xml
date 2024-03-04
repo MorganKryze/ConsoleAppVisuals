@@ -3506,7 +3506,7 @@
             The dictionary that stores the characters and their styled equivalent.
             </summary>
         </member>
-        <member name="P:ConsoleAppVisuals.Models.TextStyler.Source">
+        <member name="P:ConsoleAppVisuals.Models.TextStyler.Font">
             <summary>
             The font to use. Font.Custom if you want to use your own font.
             </summary>
@@ -3529,11 +3529,6 @@
         <member name="P:ConsoleAppVisuals.Models.TextStyler.SupportedSymbols">
             <summary>
             The supported symbols by the font.
-            </summary>
-        </member>
-        <member name="P:ConsoleAppVisuals.Models.TextStyler.Author">
-            <summary>
-            The author of the font.
             </summary>
         </member>
         <member name="M:ConsoleAppVisuals.Models.TextStyler.#ctor(ConsoleAppVisuals.Enums.Font,System.String,System.Reflection.Assembly)">

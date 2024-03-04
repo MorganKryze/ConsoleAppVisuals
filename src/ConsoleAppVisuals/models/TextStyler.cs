@@ -29,7 +29,7 @@ public class TextStyler
     #endregion
 
     #region Fields: Font path, config, dictionary
-    private readonly Font _source;
+    private readonly Font _font;
     private readonly string? _fontPath;
     private readonly FontYamlFile _config;
     private readonly Dictionary<char, string> _dictionary;
@@ -48,7 +48,7 @@ public class TextStyler
     /// <summary>
     /// The font to use. Font.Custom if you want to use your own font.
     /// </summary>
-    public Font Source => _source;
+    public Font Font => _font;
 
     /// <summary>
     /// The path to the font files. Null if the font is not custom.
@@ -69,11 +69,6 @@ public class TextStyler
     /// The supported symbols by the font.
     /// </summary>
     public string SupportedSymbols => _supportedSymbols;
-
-    /// <summary>
-    /// The author of the font.
-    /// </summary>
-    public string Author => _author;
     #endregion
 
     #region Constructor
@@ -104,7 +99,7 @@ public class TextStyler
                 "No font path provided for a custom font."
             );
         }
-        _source = source;
+        _font = source;
         _fontPath = fontPath;
         _dictionary = new Dictionary<char, string>();
 
@@ -148,22 +143,17 @@ public class TextStyler
             .WithNamingConvention(CamelCaseNamingConvention.Instance)
             .Build();
 
-        try
+        config = deserializer.Deserialize<FontYamlFile>(yamlContent);
+
+        if (config.Name is null)
         {
-            config = deserializer.Deserialize<FontYamlFile>(yamlContent);
+            throw new FormatException("Name is not defined in the config.yml file.");
         }
-        catch (YamlException e)
+
+        if (config.Author is null)
         {
-            throw new YamlException(
-                "The config.yml file is not in the correct format. Check that the file is a YAML file.",
-                e
-            );
-        }
-        catch (InvalidCastException e)
-        {
-            throw new InvalidCastException(
-                "The config.yml file is not in the correct format. Consider reading the documentation.",
-                e
+            throw new FormatException(
+                "Author is not defined in the config.yml file. If Unknown, use 'Unknown'."
             );
         }
 
@@ -173,8 +163,9 @@ public class TextStyler
         }
         if (config.Height < 1)
         {
-            throw new FormatException("Height must be greater than 0.");
+            throw new InvalidCastException("Height must be greater than 0.");
         }
+
         if (config.Chars is null)
         {
             throw new FormatException("Chars is not defined in the config.yml file.");
@@ -187,9 +178,9 @@ public class TextStyler
         else
         {
             ValidateTextFile(
-                _source is Font.Custom
+                _font is Font.Custom
                     ? _fontPath + ALPHABET_PATH
-                    : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_ALPHABET_PATH,
+                    : DEFAULT_FONT_PATH + _font.ToString() + DEFAULT_ALPHABET_PATH,
                 (int)config.Height
             );
             alphabet = config.Chars["alphabet"];
@@ -202,9 +193,9 @@ public class TextStyler
         else
         {
             ValidateTextFile(
-                _source is Font.Custom
+                _font is Font.Custom
                     ? _fontPath + NUMBERS_PATH
-                    : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_NUMBERS_PATH,
+                    : DEFAULT_FONT_PATH + _font.ToString() + DEFAULT_NUMBERS_PATH,
                 (int)config.Height
             );
             numbers = config.Chars["numbers"];
@@ -217,19 +208,12 @@ public class TextStyler
         else
         {
             ValidateTextFile(
-                _source is Font.Custom
+                _font is Font.Custom
                     ? _fontPath + SYMBOLS_PATH
-                    : DEFAULT_FONT_PATH + _source.ToString() + DEFAULT_SYMBOLS_PATH,
+                    : DEFAULT_FONT_PATH + _font.ToString() + DEFAULT_SYMBOLS_PATH,
                 (int)config.Height
             );
             symbols = config.Chars["symbols"];
-        }
-
-        if (config.Author is null)
-        {
-            throw new FormatException(
-                "Author is not defined in the config.yml file. If Unknown, use 'Unknown'."
-            );
         }
 
         return (config, alphabet, numbers, symbols, config.Author);
@@ -238,7 +222,7 @@ public class TextStyler
     private void ValidateTextFile(string filePath, int expectedHeight)
     {
         string[] lines;
-        if (_source is Font.Custom)
+        if (_font is Font.Custom)
         {
             lines = File.ReadAllLines(filePath);
         }
@@ -250,10 +234,19 @@ public class TextStyler
             lines = reader.ReadToEnd().Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
         }
 
+        if (lines.Length % expectedHeight != 0)
+        {
+            throw new FormatException(
+                $"Invalid number of lines in file: {filePath}. "
+                    + $"Number of lines: {lines.Length}, "
+                    + $"Expected multiple of: {expectedHeight}"
+            );
+        }
+
         for (int i = 0; i < lines.Length; i++)
         {
             var index = i + 1;
-            if (index % expectedHeight == 0 && index == 1)
+            if (index % expectedHeight == 0 && index != 1)
             {
                 var line = lines[i].TrimEnd('\r', '\n');
                 if (!line.EndsWith("@@"))
@@ -275,15 +268,6 @@ public class TextStyler
                     );
                 }
             }
-        }
-
-        if (lines.Length % expectedHeight != 0)
-        {
-            throw new FormatException(
-                $"Invalid number of lines in file: {filePath}. "
-                    + $"Number of lines: {lines.Length}, "
-                    + $"Expected multiple of: {expectedHeight}"
-            );
         }
     }
 
@@ -309,7 +293,7 @@ public class TextStyler
     {
         List<string> alphabetStyled;
         alphabetStyled = ReadResourceLines(
-            _source is Font.Custom ? ALPHABET_PATH : DEFAULT_ALPHABET_PATH
+            _font is Font.Custom ? ALPHABET_PATH : DEFAULT_ALPHABET_PATH
         );
 
         var alphabetStyledGrouped = alphabetStyled
@@ -329,7 +313,7 @@ public class TextStyler
         List<string> numbersStyled;
 
         numbersStyled = ReadResourceLines(
-            _source is Font.Custom ? NUMBERS_PATH : DEFAULT_NUMBERS_PATH
+            _font is Font.Custom ? NUMBERS_PATH : DEFAULT_NUMBERS_PATH
         );
 
         var numbersStyledGrouped = numbersStyled
@@ -349,7 +333,7 @@ public class TextStyler
         List<string> symbolsStyled;
 
         symbolsStyled = ReadResourceLines(
-            _source is Font.Custom ? SYMBOLS_PATH : DEFAULT_SYMBOLS_PATH
+            _font is Font.Custom ? SYMBOLS_PATH : DEFAULT_SYMBOLS_PATH
         );
 
         var symbolsStyledGrouped = symbolsStyled
@@ -368,7 +352,7 @@ public class TextStyler
     {
         List<string> lines;
 
-        if (_source is Font.Custom)
+        if (_font is Font.Custom)
         {
             lines = File.ReadLines(_fontPath + path).ToList();
         }
@@ -376,7 +360,7 @@ public class TextStyler
         {
             var assembly = Assembly.GetExecutingAssembly();
             using var stream = assembly.GetManifestResourceStream(
-                DEFAULT_FONT_PATH + _source.ToString() + path
+                DEFAULT_FONT_PATH + _font.ToString() + path
             );
             using var reader = new StreamReader(
                 stream
