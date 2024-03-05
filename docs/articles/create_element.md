@@ -1,4 +1,4 @@
-# Create custom visual elements
+# Create your own elements
 
 ## Introduction
 
