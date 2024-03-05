@@ -63,16 +63,6 @@ namespace testing
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FormatException))]
-        [DataRow("../../../resources/fonts/Throw_Error/")]
-        public void Constructor_EmptyFileExceptionThrown(string path)
-        {
-            // Act
-            TextStyler emptyStyler = new(Font.Custom, path); // Exception should be thrown here
-            emptyStyler.StyleTextToString("Hello World!");
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(DirectoryNotFoundException))]
         [DataRow("invalid/path")]
         public void Constructor_InvalidFontPath_ExceptionThrown(string path)
@@ -103,7 +93,8 @@ namespace testing
         public void SupportedChars_Getter()
         {
             // Arrange
-            var expected = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789?!:.,;/-_()[]%$^*@ ";
+            var expected =
+                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789?!:.,;/-_()[]%$^*@ ";
             var styler = new TextStyler(Font.Custom, "../../../resources/fonts/ANSI_Shadow/");
 
             // Act
@@ -213,34 +204,13 @@ namespace testing
         }
         #endregion
 
-        #region StyleTextToString
-        [TestMethod]
-        [DataRow("Hello World")]
-        public void StyleTextToString_NotNull(string value)
-        {
-            // Act
-            string styledText = styler.StyleTextToString(value);
-
-            // Assert
-            Assert.IsNotNull(styledText);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(NotSupportedCharException))]
-        public void StyleTextToString_UnsupportedCharExceptionThrown()
-        {
-            // Assert
-            styler.StyleTextToString("Hello World! +=è$%&/()=?^*[]{}@#|");
-        }
-        #endregion
-
         #region StyleTextToStringArray
         [TestMethod]
         [DataRow("Hello World")]
         public void StyleTextToStringArray_NotNull(string value)
         {
             // Act
-            string[] styledText = styler.StyleTextToStringArray(value);
+            string[] styledText = styler.Style(value);
 
             // Assert
             Assert.IsNotNull(styledText);
@@ -251,7 +221,7 @@ namespace testing
         public void StyleTextToStringArray_UnsupportedCharExceptionThrown()
         {
             // Assert
-            styler.StyleTextToStringArray("Hello World! +=è$%&/()=?^*[]{}@#|");
+            styler.Style("Hello World! +=è$%&/()=?^*[]{}@#|");
         }
         #endregion
 

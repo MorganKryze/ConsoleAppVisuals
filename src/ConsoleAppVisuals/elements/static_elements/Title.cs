@@ -28,7 +28,7 @@ public class Title : Element
     /// <summary>
     ///
     /// </summary>
-    public string[] StyledText => _styler.StyleTextToStringArray(_text);
+    public string[] StyledText => _styler.Style(_text);
 
     /// <summary>
     /// The placement of the title.
