@@ -405,44 +405,6 @@ public class TextStyler
     /// Styles the given text with the font files.
     /// </summary>
     /// <param name="text">The text to style.</param>
-    /// <returns>The styled text.</returns>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public string StyleTextToString(string text)
-    {
-        var lines = new List<string[]>();
-        foreach (char c in text)
-        {
-            if (_dictionary.ContainsKey(c))
-                lines.Add(
-                    _dictionary[c].Split(new[] { Environment.NewLine }, StringSplitOptions.None)
-                );
-            else
-                throw new NotSupportedCharException($"The character '{c}' is not supported.");
-        }
-
-        var sb = new StringBuilder();
-        for (int i = 0; i < lines[0].Length; i++)
-        {
-            foreach (var line in lines)
-            {
-                sb.Append(line[i]);
-            }
-            sb.AppendLine();
-        }
-
-        return sb.ToString();
-    }
-
-    /// <summary>
-    /// Styles the given text with the font files.
-    /// </summary>
-    /// <param name="text">The text to style.</param>
     /// <returns>The styled text as a string array.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -451,7 +413,7 @@ public class TextStyler
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public string[] StyleTextToStringArray(string text)
+    public string[] Style(string text)
     {
         var lines = new List<string[]>();
         foreach (char c in text)
