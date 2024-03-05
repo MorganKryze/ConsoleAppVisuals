@@ -184,13 +184,10 @@ Example_project  <-- root
 To check that `ANSI_Shadow` is working, update the `Program.cs` file:
 
 ```csharp
-TextStyler styler = new TextStyler(Font.Custom, "../../../ANSI_Shadow/");
+TextStyler styler = new TextStyler(Font.Custom, "ANSI_Shadow/");
 ```
 
 The path here leads to the font directory. The library will automatically target or the `config.yml` file and the `data` folder.
-
-> [!NOTE]
-> As you noticed, the path is relative to the executable directory (`bin/Debug/net8.0`), not the `MyApp` directory.
 
 If no error was thrown, that means that the font is working. You can now use it in your elements like a `Title`:
 
