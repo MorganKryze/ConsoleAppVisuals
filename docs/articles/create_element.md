@@ -10,7 +10,11 @@ This article will guide you through the process of creating custom visual elemen
 - ConsoleAppVisuals library: 3.0.0 or later
 - Having looked at the project from the [Introduction section](/introduction/index.html)
 
-Here is the file structure of the project:
+## Setup workspace
+
+We will take the example project of the [Introduction section](/introduction/index.html).
+
+As a reminder, here is the file structure of the project:
 
 ```bash
 Example_project  <-- root

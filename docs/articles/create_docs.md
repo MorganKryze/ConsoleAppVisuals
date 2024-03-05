@@ -23,7 +23,7 @@ To install docfx, or update it, open any terminal and run the following command:
 dotnet tool update -g docfx
 ```
 
-## Setting up the workspace
+## Setup workspace
 
 As we are taking back the `Introduction project` to set the example, here is the file structure before generating the documentation:
 
