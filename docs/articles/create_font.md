@@ -181,19 +181,45 @@ Example_project  <-- root
     └───Program.cs
 ```
 
+> [!WARNING]
+> Do not forget to add at the beginning of your `Program.cs` file the following using statements:
+>
+> ```csharp
+> using ConsoleAppVisuals;
+> using ConsoleAppVisuals.Elements;
+> using ConsoleAppVisuals.Enums;
+> using ConsoleAppVisuals.Models;
+> ```
+
 To check that `ANSI_Shadow` is working, update the `Program.cs` file:
+
+```csharp
+Title title = new Title("Example project", 1, TextAlignment.Center, Font.Custom, "../ANSI_Shadow/");
+```
+
+The path here leads to the font directory. The library will automatically target or the `config.yml` file and the `data` folder.
+
+If no error was thrown, that means that the font is working. You can now use it. Here is how to manipulate the styler:
+
+Creation:
 
 ```csharp
 TextStyler styler = new TextStyler(Font.Custom, "ANSI_Shadow/");
 ```
 
-The path here leads to the font directory. The library will automatically target or the `config.yml` file and the `data` folder.
-
-If no error was thrown, that means that the font is working. You can now use it in your elements like a `Title`:
+Usage (String -> Styled text):
 
 ```csharp
-Title title = new Title("Example project", 1, TextAlignment.Center, Font.Custom, "../../../ANSI_Shadow/");
+string[] styledText = styler.Style("Hello, world!");
 ```
+
+Display:
+
+```csharp
+Core.WritePositionedStyledText(styledText);
+```
+
+For more information about the `TextStyler` class and `WritePositionedStyledText()` method, please refer to the [References](/ConsoleAppVisuals/references/index.html) section.
 
 ### Contributing
 
