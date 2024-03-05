@@ -138,11 +138,17 @@ Window.RemoveElement(examplePrompt);
 
 The library is still in development and we are working on the following features:
 
-- [x] Add a new visual: the `TableSelector`
-- [ ] Add colorization to `TableSelector` (highlight data according to a condition)
-- [ ] Add example of a custom font in the example project
-- [ ] Add more default fonts
-- [ ] Add a new visual: the `Chart`
+- [x] BUG: Footer generates error when displayed on PowerShell (Windows).
+- [x] FEAT: Add a built-in fonts.
+- [x] FEAT: Add example of a custom font in the example project.
+- [x] DOCS: Add a tutorial on how to create a custom font.
+- [ ] BUG: Cursor always visible in PowerShell (Windows).
+- [ ] FEAT: Convert CSV files into a data visualization element (e.g. `TableView`, `Matrix`, ...).
+- [ ] FEAT: Give styles to the `Prompt`, `ScrollingMenu`
+- [ ] FEAT: Add colorization to `TableView` (highlight data according to a condition)
+- [ ] FEAT: Use the `Window` classes as instances to create a multi-window system
+- [ ] FEAT: Add built-in window mockups
+- [ ] FEAT: Give style to window opening and closing
 
 ## Supported .NET versions
 
