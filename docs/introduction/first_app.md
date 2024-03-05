@@ -117,6 +117,9 @@ Window.Render(title);
 
 ![Title](../assets/img/jpg/first_app/title.jpg)
 
+> [!TIP]
+> Bonus: You may update the style of the `Title` element by giving a look at this article: [Create and use fonts](/ConsoleAppVisuals/articles/create_font.html).
+
 ## Minimal app
 
 ### `Header`, `Footer` and `FakeLoadingBar`
