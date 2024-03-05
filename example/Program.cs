@@ -12,8 +12,8 @@ namespace example
             // Empty, do not mind, just for debugging purposes
             Debugging();
 
-            // Create the title element 
-            var title = new Title("Example project"); // Bonus for visiting example project! You may try to change the font by updating the font parameter: var title = new Title("Example project", 1, TextAlignment.Center, Font.ANSI_Shadow);
+            // Create the title element
+            var title = new Title("Example project");
             // Add the title to the window
             Window.AddElement(title);
 
@@ -38,6 +38,7 @@ namespace example
                 "Display paragraph",
                 "Answer some prompt",
                 "Select number",
+                "Change title style",
                 "Display matrix",
                 "Display table",
                 "Interact with table",
@@ -234,6 +235,50 @@ namespace example
                             goto Menu;
 
                         case 5:
+                            ScrollingMenu fontMenu =
+                                new(
+                                    "What font do you want to use?",
+                                    0,
+                                    Placement.TopCenter,
+                                    "Lil_Devil",
+                                    "ANSI_Shadow",
+                                    "Big",
+                                    "Merlin",
+                                    "Bloody",
+                                    "Custom: Stop"
+                                );
+                            Window.AddElement(fontMenu);
+
+                            Window.ActivateElement(fontMenu);
+                            var responseFont = fontMenu.GetResponse();
+
+                            switch (responseFont?.Value)
+                            {
+                                case 0:
+                                    title.UpdateFont(Font.Lil_Devil);
+                                    break;
+                                case 1:
+                                    title.UpdateFont(Font.ANSI_Shadow);
+                                    break;
+                                case 2:
+                                    title.UpdateFont(Font.Big);
+                                    break;
+                                case 3:
+                                    title.UpdateFont(Font.Merlin);
+                                    break;
+                                case 4:
+                                    title.UpdateFont(Font.Bloody);
+                                    break;
+                                case 5:
+                                    title.UpdateFont(Font.Custom, "Stop/");
+                                    break;
+                            }
+                            Window.Render();
+
+                            Window.RemoveElement(fontMenu);
+                            goto Menu;
+
+                        case 6:
                             // We first create the data to display
                             List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
                             List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
@@ -272,7 +317,7 @@ namespace example
                             Window.RemoveElement(matrix);
                             goto Menu;
 
-                        case 6:
+                        case 7:
                             // We first create the data to display,
                             // pay attention to the order of the data and their length
                             // (the length of the headers and the data must be the same)
@@ -308,7 +353,7 @@ namespace example
                             Window.RemoveElement(students);
                             goto Menu;
 
-                        case 7:
+                        case 8:
                             List<string> playersHeaders =
                                 new() { "id", "first name", "last name", "nationality", "slams" };
                             List<string> player1 =
@@ -357,7 +402,7 @@ namespace example
                             Window.RemoveElement(embedResponseTable);
                             goto Menu;
 
-                        case 8:
+                        case 9:
                             // Contrary to the FakeLoadingBar, the LoadingBar
                             // corresponds to a real loading defined by a variable (here progress)
                             float progress = 0f;
@@ -395,7 +440,7 @@ namespace example
                             Window.RemoveElement(loadingBar);
                             goto Menu;
 
-                        case 9:
+                        case 10:
                             // Custom element, see the StaticDemo class
                             // in this project for more information
                             var customStaticElement = new StaticDemo(
@@ -413,7 +458,7 @@ namespace example
                             Window.RemoveElement(customStaticElement);
                             goto Menu;
 
-                        case 10:
+                        case 11:
                             var customInteractiveElement = new InteractDemo(
                                 "This element is also custom for demo purposes, you may type something:"
                             );
@@ -424,7 +469,7 @@ namespace example
                             Window.RemoveElement(customInteractiveElement);
                             goto Menu;
 
-                        case 11:
+                        case 12:
                             // These following elements are for debugging purposes,
                             // they should not be used in a production state of a project
                             var embedInfo = new EmbedText(
@@ -446,7 +491,7 @@ namespace example
                             Window.RemoveElement(embedInfo);
                             goto Menu;
 
-                        case 12:
+                        case 13:
                             // These following functions are for debugging purposes,
                             // they should not be used in a production state of a software
 

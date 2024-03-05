@@ -1,0 +1,8 @@
+name: Stop
+author: David Walton
+height: 7
+
+chars:
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: " !\"#$%&'()*+,-./:;<=>?[\\]^_`{|}~ÄÖÜäöüß"
