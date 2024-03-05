@@ -14,7 +14,7 @@ NuGet is a package manager for .NET that allows you to share your code with the 
 - [Github account](https://github.com/login)
 - Put your project on GitHub to be able to use GitHub actions
 
-## Preparing you project
+## Setup workspace
 
 We will take the example project of the [Introduction section](/introduction/index.html) and we will publish it on NuGet.org and GitHub packages as an example.
 
