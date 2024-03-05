@@ -1,6 +1,218 @@
-# Create your own font
+# Create and use fonts
 
-Work in progress...
+## Introduction
+
+This article will guide you through the process of creating your own font using the `Font` enum.
+
+![ANSI_Shadow](../assets/img/jpg/create_font/ANSI_Shadow.jpg)
+_ANSI_Shadow_
+
+![Lil_Devil](../assets/img/jpg/create_font/Lil_Devil.jpg)
+_Lil_Devil_
+
+![Merlin](../assets/img/jpg/create_font/Merlin.jpg)
+_Merlin_
+
+## Prerequisites
+
+- .NET framework 6 or later
+- ConsoleAppVisuals library: 3.0.0 or later
+- Having looked at the project from the [Introduction section](/introduction/index.html)
+
+## Setup workspace
+
+We will take the example project of the [Introduction section](/introduction/index.html).
+
+As a reminder, here is the file structure of the project:
+
+```bash
+Example_project  <-- root
+└───MyApp
+    ├───bin
+    ├───MyApp.csproj
+    └───Program.cs
+```
+
+## What are fonts
+
+In ConsoleAppVisuals, a font is a collection of ASCII characters on multiple lines associated to keys (e.g. `abc123?!/`). Some fonts are already available in the `Font` enum like the `ANSI_Shadow`, `Bulbhead`, `Lil_Devil` accessible using: `Font.ANSI_Shadow`, `Font.Bulbhead`, `Font.Lil_Devil`.
+
+Fonts are not available to all elements, for example, find it in the `Title` element:
+
+```csharp
+Title title = new Title("Example project", 1, TextAlignment.Center, Font.ANSI_Shadow);
+```
+
+To use a custom font, update the font variable and add the font path:
+
+```csharp
+Title title = new Title("Example project", 1, TextAlignment.Center, Font.Custom, "path/to/font");
+```
+
+> [!CAUTION]
+> In elements that use fonts:
+>
+> - If you use built-in fonts, you MUST NOT specify a font path.
+> - If you use a custom font, you MUST specify a font path.
+
+Here is a recap of fonts work:
+
+```mermaid
+flowchart LR
+    A[ASCII files] -->|Parsed into| B[Font]
+    C[config file] -->|Parsed into| B
+    D[Element: Title] -->|1.Input a string| B
+    B -->|2.Return styled text| D
+    D -->|Render on| E[Console]
+```
+
+## Creating a font
+
+### Structure
+
+Here is briefly the structure of a font for the ANSI_Shadow font:
+
+```bash
+ANSI_Shadow
+├───data
+│   ├───alphabet.txt
+│   ├───numbers.txt
+│   └───symbols.txt
+└───config.yml
+```
+
+### Config file
+
+The config.yml is the config file of the font. It contains the name, the author, the height of the characters and all the supported ones. Find an example below for the ANSI_Shadow font:
+
+```yaml
+name: ANSI Shadow
+author: Unknown
+height: 6
+
+chars:
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+  numbers: 0123456789
+  symbols: '?!:.,;/-_()[]%$^*@ '
+```
 
 > [!NOTE]
-> If this part really raises your interest, feel free to notify me by [opening an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [contact me by email](mailto:morgan@kodelab.fr).
+> Pay attention to the alphabet as the fonts are case-sensitive. In the `alphabet` category, mind to include both the upper and lower case letters. If your font does not support both, just copy and paste the letters twice. `ANSI_Shadow` font is a good example. [Find it here](https://github.com/MorganKryze/ConsoleAppVisuals/tree/main/src/ConsoleAppVisuals/fonts/ANSI_Shadow)
+
+Here, `name`, `author`, `height` and `chars` are required. They must not be null or empty. If the author is unknown, you can put `Unknown` by convention.
+
+In contrast, the `alphabet`, `numbers` and `symbols` are optional. If you don't have a specific category, you can let it empty and not include the ASCII file associated.
+
+An example of empty `numbers`:
+
+```yaml
+name: Bloody
+author: Unknown
+height: 10
+
+chars:
+  alphabet: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+  numbers:
+  symbols: ' '
+```
+
+> [!NOTE]
+> It is highly recommended to have a `' '` (space) char in the `symbols` category for a readable font.
+
+By convention, the `À`, `é`, `ü`... should be included in the `symbols` category.
+
+### ASCII files
+
+The ASCII files are the representation of the characters in the font. They are stored in the `data` folder. The name of the file must be the category name (e.g. `alphabet.txt`, `numbers.txt`, `symbols.txt`).
+
+Here is an example of the `alphabet.txt` file for the `ANSI_Shadow` font:
+
+```plaintext
+██████╗  @
+╚════██╗ @
+  ▄███╔╝ @
+  ▀▀══╝  @
+  ██╗    @
+  ╚═╝    @@
+██╗ @
+██║ @
+██║ @
+╚═╝ @
+██╗ @
+╚═╝ @@
+    @
+██╗ @
+╚═╝ @
+██╗ @
+╚═╝ @
+    @@
+```
+
+As you noticed:
+
+1. All characters are 6 lines high as specified in the config file.
+2. Each line ends with a `@`.
+3. The final line of a character ends with a `@@`.
+4. The width of the characters is not fixed. It can be different from one character to another.
+5. The `@`characters are aligned for a given character.
+6. One space is added between the characters and the `@` to make the result styled text more readable.
+7. DO NOT USE `@` CHAR IN YOUR FONT ITSELF.
+
+Points 1, 2, 3 are mandatory and will throw an exception if not respected. Points 4, 5, 6, 7 are optional but recommended for a better result.
+
+> [!NOTE]
+> The characters are ordered following the order given by the `chars` categories in the config file.
+
+### Using your font
+
+If you followed the previous steps rigorously, you should have a font ready to use. Consider the following project:
+
+```bash
+Example_project  <-- root
+└───MyApp
+    ├───ANSI_Shadow
+    │   ├───data
+    │   │   ├───alphabet.txt
+    │   │   ├───numbers.txt
+    │   │   └───symbols.txt
+    │   └───config.yml
+    ├───bin
+    ├───MyApp.csproj
+    └───Program.cs
+```
+
+To check that `ANSI_Shadow` is working, update the `Program.cs` file:
+
+```csharp
+TextStyler styler = new TextStyler(Font.Custom, "../../../ANSI_Shadow/");
+```
+
+The path here leads to the font directory. The library will automatically target or the `config.yml` file and the `data` folder.
+
+> [!NOTE]
+> As you noticed, the path is relative to the executable directory (`bin/Debug/net8.0`), not the `MyApp` directory.
+
+If no error was thrown, that means that the font is working. You can now use it in your elements like a `Title`:
+
+```csharp
+Title title = new Title("Example project", 1, TextAlignment.Center, Font.Custom, "../../../ANSI_Shadow/");
+```
+
+### Contributing
+
+If you want to contribute to the library by adding a font, you can do so by creating a pull request on the [GitHub repository](https://github.com/MorganKryze/ConsoleAppVisuals/pulls).
+
+Here are the steps to follow:
+
+1. Fork the repository and create a new branch for your new font.
+2. Add your font to the `src/ConsoleAppVisuals/fonts` directory.
+3. Make sure to match all the requirements for the font defined above in the article.
+4. Add your font name to the `Font` enum (`src/ConsoleAppVisuals/enums/Font.cs`) and precise the author and the height of the characters in the metadata comments.
+5. Submit a pull request to the dev branch of the repository.
+
+After these steps, your font will be reviewed and merged into the library to be available for everyone.
+
+## Resources
+
+- [Test fonts Figlet](https://patorjk.com/software/taag/#p=testall&f=Bell&t=Type%20Something%20)
+- [Fonts collection](https://github.com/patorjk/figlet.js/tree/main/importable-fonts)
