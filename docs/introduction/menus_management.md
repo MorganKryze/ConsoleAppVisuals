@@ -152,6 +152,8 @@ ScrollingMenu menu = new ScrollingMenu(
 );
 
 Window.AddElement(menu);
+// Labels are tackled in the next section with the goto statement
+Test:
 Window.ActivateElement(menu);
 
 var response = menu.GetResponse();
@@ -190,6 +192,9 @@ switch (response?.Status)
         Window.Close();
         break;
 }
+// Waits before displaying the menu again if the window is not closed
+Thread.Sleep(1000);
+goto Test;
 ```
 
 ![Using Value](../assets/vid/gif/menus_management/value.gif)
