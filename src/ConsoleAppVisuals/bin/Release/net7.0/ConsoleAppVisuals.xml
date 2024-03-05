@@ -3552,21 +3552,7 @@
             </list>
             </remarks>
         </member>
-        <member name="M:ConsoleAppVisuals.Models.TextStyler.StyleTextToString(System.String)">
-            <summary>
-            Styles the given text with the font files.
-            </summary>
-            <param name="text">The text to style.</param>
-            <returns>The styled text.</returns>
-            <remarks>
-            For more information, refer to the following resources:
-            <list type="bullet">
-            <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-            <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-            </list>
-            </remarks>
-        </member>
-        <member name="M:ConsoleAppVisuals.Models.TextStyler.StyleTextToStringArray(System.String)">
+        <member name="M:ConsoleAppVisuals.Models.TextStyler.Style(System.String)">
             <summary>
             Styles the given text with the font files.
             </summary>
