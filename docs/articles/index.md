@@ -4,8 +4,8 @@ On this section, you will find articles related to the ConsoleAppVisuals project
 
 On the menu, find:
 
-- [Create your visual element](/ConsoleAppVisuals/articles/create_element.html)
-- [Create your font](/ConsoleAppVisuals/articles/create_font.html)
+- [Create your own visual element](/ConsoleAppVisuals/articles/create_element.html)
+- [Create and use font](/ConsoleAppVisuals/articles/create_font.html)
 - [Create your project documentation](/ConsoleAppVisuals/articles/create_docs.html)
 - [Publish a library](/ConsoleAppVisuals/articles/publish_library.html)
 
