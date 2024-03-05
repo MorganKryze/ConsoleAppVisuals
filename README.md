@@ -13,22 +13,6 @@ Feel free to check out the following resources to help you get started:
 - A guided [documentation](https://morgankryze.github.io/ConsoleAppVisuals/).
 - An [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to understand how to implement the library in your own project.
 
-## Install
-
-Install the library for your project using the .NET CLI:
-
-```bash
-dotnet add package ConsoleAppVisuals
-```
-
-Install the library for Visual Studio users, go through [this tutorial](https://www.youtube.com/watch?v=IprbRazS3b8).
-
-Or Enter the following command in the Package Manager Console in Visual Studio:
-
-```bash
-Install-Package ConsoleAppVisuals
-```
-
 ## First steps into the library
 
 > [!WARNING]
@@ -44,6 +28,22 @@ The library is designed to be user-friendly and easy to use. It is based on the 
 These visuals are stored in `Window` as a list. From this class, you can display the visuals, add, remove, or update them. Each one of the visual element has its rendering method that lets the `Window` display it.
 
 The basics of the interaction between the library and the console are defined in the `Core` class.
+
+### Install
+
+Install the library for your project using the .NET CLI:
+
+```bash
+dotnet add package ConsoleAppVisuals
+```
+
+Install the library for Visual Studio users, go through [this tutorial](https://www.youtube.com/watch?v=IprbRazS3b8).
+
+Or Enter the following command in the Package Manager Console in Visual Studio:
+
+```bash
+Install-Package ConsoleAppVisuals
+```
 
 ### Use flow
 
