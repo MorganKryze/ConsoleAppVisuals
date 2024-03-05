@@ -168,11 +168,11 @@ Consider reading our [security policy](.github/SECURITY) to know more about how 
 - [MorganKryze](https://github.com/MorganKryze) - creator and maintainer
 - [Robin L'hyver](https://github.com/robinmoon2) - contributor
 
-## Inspiration
+## Acknowledgments
 
-The library is originally inspired by the work of [l-eg116](https://github.com/l-eg116): [A3S5-TransConnect](https://github.com/l-eg116/A3S5-TransConnect).
+The [ACKNOWLEDGMENTS](.github/ACKNOWLEDGMENTS.md) file records all those who have contributed to the development of this project. It serves as a testament to the collaborative efforts that have gone into enhancing and refining the library. We extend our gratitude to all contributors for their invaluable input and the significant impact they've made on the project.
 
-Fonts come from the [figlet.js](https://github.com/patorjk/figlet.js/tree/main) repository.
+It also lists the open source projects that have been used to build this library until now.
 
 ## Contributing
 
