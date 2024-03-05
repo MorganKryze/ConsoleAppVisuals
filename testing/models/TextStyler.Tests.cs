@@ -100,6 +100,20 @@ namespace testing
 
         #region Properties
         [TestMethod]
+        public void SupportedChars_Getter()
+        {
+            // Arrange
+            var expected = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789?!:.,;/-_()[]%$^*@ ";
+            var styler = new TextStyler(Font.Custom, "../../../resources/fonts/ANSI_Shadow/");
+
+            // Act
+            var actual = styler.SupportedChars;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void FontProperty_ValidFont()
         {
             // Arrange

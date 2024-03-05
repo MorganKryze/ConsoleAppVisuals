@@ -3531,6 +3531,11 @@
             The supported symbols by the font.
             </summary>
         </member>
+        <member name="P:ConsoleAppVisuals.Models.TextStyler.SupportedChars">
+            <summary>
+            All the supported characters by the font.
+            </summary>
+        </member>
         <member name="M:ConsoleAppVisuals.Models.TextStyler.#ctor(ConsoleAppVisuals.Enums.Font,System.String,System.Reflection.Assembly)">
             <summary>
             The constructor of the TextStyler class.
