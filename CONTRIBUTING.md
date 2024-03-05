@@ -79,6 +79,20 @@ We also use the following conventions:
 - Commit names should be written in the present tense.
 - Commit names should be descriptive and concise.
 
+### Adding your custom font
+
+If you want to contribute to the library by adding a font, you can do so by creating a pull request on the [GitHub repository](https://github.com/MorganKryze/ConsoleAppVisuals/pulls).
+
+Here are the steps to follow:
+
+1. Fork the repository and create a new branch for your new font.
+2. Add your font to the `src/ConsoleAppVisuals/fonts` directory.
+3. Make sure to match all the requirements for the font defined in the [font article](https://morgankryze.github.io/ConsoleAppVisuals/articles/create_font.html).
+4. Add your font name to the `Font` enum (`src/ConsoleAppVisuals/enums/Font.cs`) and precise the author and the height of the characters in the metadata comments.
+5. Submit a pull request to the dev branch of the repository.
+
+After these steps, your font will be reviewed and merged into the library to be available for everyone.
+
 ### Reviewing Pull Requests
 
 All pull requests will be reviewed by members of the project maintainers team. Please be patient while we review your contribution. We may provide feedback or request changes before merging your pull request.
