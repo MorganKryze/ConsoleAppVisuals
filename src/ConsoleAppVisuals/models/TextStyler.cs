@@ -69,6 +69,11 @@ public class TextStyler
     /// The supported symbols by the font.
     /// </summary>
     public string SupportedSymbols => _supportedSymbols;
+
+    /// <summary>
+    /// All the supported characters by the font.
+    /// </summary>
+    public string SupportedChars => _supportedAlphabet + _supportedNumbers + _supportedSymbols;
     #endregion
 
     #region Constructor
