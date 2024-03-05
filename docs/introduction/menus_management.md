@@ -31,6 +31,9 @@ And your cleaned `Program.cs` file should look like this:
 
 [!code-csharp[](../assets/code/ProgramDemo.cs?highlight=4)]
 
+> [!TIP]
+> Each section is independent. I recommend you to overwrite the `Program.cs` file with the code of each section to avoid any confusion. Attention: the last section has two code blocks for one example!
+
 ## The `ScrollingMenu` element
 
 The `ScrollingMenu` element is an historic element of the library. Some features about it changed but the principle remains the same. It is used to display a list of items and allow the user to select one or several items.
@@ -38,6 +41,7 @@ The `ScrollingMenu` element is an historic element of the library. Some features
 Here is a minimal example of how to use it:
 
 ```csharp
+// Optional: create the options list
 string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
 
 ScrollingMenu menu = new ScrollingMenu(
@@ -48,8 +52,10 @@ ScrollingMenu menu = new ScrollingMenu(
 );
 
 Window.AddElement(menu);
+// the ScrollingMenu is an interactive element, so we need to activate it
 Window.ActivateElement(menu);
 
+// The ScrollingMenu will return an int as a value (represents the index of the selected item)
 var responseMenu = menu.GetResponse();
 
 EmbedText embedResponse = new EmbedText(
@@ -57,6 +63,7 @@ EmbedText embedResponse = new EmbedText(
     {
         $"The user: {responseMenu?.Status}",
         $"Index: {responseMenu?.Value}",
+        // We find the option selected by the user from the index
         $"Which corresponds to: {options[responseMenu?.Value ?? 0]}"
     }
 );
@@ -69,7 +76,9 @@ Window.ActivateElement(embedResponse);
 
 ## Manage menu status
 
-Now that we can create a menu and collect the output, let's see how to manage the output and act accordingly:
+The most practical way to manage actions according the the outcome of the `ScrollingMenu` is a switch-case statement. [Learn more](https://www.w3schools.com/cs/cs_switch.php)
+
+Here is a basic example where we display a custom message according to the user's action (pressing Enter, Escape or Delete):
 
 ```csharp
 string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
@@ -84,7 +93,6 @@ Window.AddElement(menu);
 Window.ActivateElement(menu);
 
 var response = menu.GetResponse();
-
 switch (response?.Status)
 {
     case Output.Selected:
@@ -129,45 +137,20 @@ Window.Close();
 
 ![Simple menu](../assets/vid/gif/menus_management/embed.gif)
 
-We can also filter the output to use the output only for the selected item:
-
-```csharp
-switch (response?.Status)
-{
-    case Output.Selected:
-        var embedSelected = new EmbedText(
-            new List<string>()
-            {
-                $"The user: {response?.Status}",
-                $"Index: {response?.Value}",
-                $"Which corresponds to: {options[response?.Value ?? 0]}"
-            }
-        );
-        Window.AddElement(embedSelected);
-        Window.ActivateElement(embedSelected);
-
-        Window.RemoveElement(embedSelected);
-        Window.Close();
-        break;
-    case Output.Escaped:
-    case Output.Deleted:
-        Window.Close();
-        break;
-}
-```
-
 ## Manage menu value
 
-We can also manage the value of the selected item (this example is a placeholder for your own functions):
+As we mentioned earlier, the `ScrollingMenu` returns an `int` as a value. This value represents the index of the selected item. You may use it to act differently according to the selected item. Here we decide to act differently when the user selects an item and quit the app otherwise:
 
 ```csharp
 string[] options = new string[] { "Play", "Settings", "Quit" };
+
 ScrollingMenu menu = new ScrollingMenu(
     "Please choose an option among those below.",
     0,
     Placement.TopCenter,
     options
 );
+
 Window.AddElement(menu);
 Window.ActivateElement(menu);
 
@@ -178,10 +161,22 @@ switch (response?.Status)
         switch (response.Value)
         {
             case 0:
-                // Play() function
+                EmbedText play = new EmbedText(
+                    new List<string>() { "Playing..." }
+                );
+                Window.AddElement(play);
+                Window.ActivateElement(play);
+
+                Window.RemoveElement(play);
                 break;
             case 1:
-                // Settings() function
+                EmbedText settings = new EmbedText(
+                    new List<string>() { "Consulting the settings..." }
+                );
+                Window.AddElement(settings);
+                Window.ActivateElement(settings);
+
+                Window.RemoveElement(settings);
                 break;
             case 2:
                 // Quit the app
@@ -205,9 +200,10 @@ That way, you may act differently depending on the selected item and create usef
 
 For a simple navigation, you may use a decentralized way to manage your navigation, making each menu redirect to the other part of your project. We will use a controversial but useful tool: the `goto` statement. [Learn more](https://learn.microsoft.com/dotnet/csharp/language-reference/statements/jump-statements#the-goto-statement)
 
-1. We start by creating the menus and the elements:
+Here is an example of a simple navigation between a main menu and a settings menu:
 
 ```csharp
+// Creating the visuals and adding them to the window
 string[] options = new string[] { "Play", "Settings", "Quit" };
 ScrollingMenu menu = new ScrollingMenu(
     "Please choose an option among those below.",
@@ -240,11 +236,8 @@ EmbedText sound = new EmbedText(
     new List<string>() { "Changing volume..." }
 );
 Window.AddElement(sound);
-```
 
-2. Then we add the navigation:
 
-```csharp
 // Start by cleaning the window
 Window.Clear();
 
