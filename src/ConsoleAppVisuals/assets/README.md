@@ -143,7 +143,7 @@ Window.RemoveElement(examplePrompt);
 
 ## Security Policy
 
-Consider reading our [security policy](SECURITY.md) to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
+Consider reading our [security policy](.github/SECURITY) to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
 
 ## Development team
 
@@ -158,7 +158,7 @@ Fonts come from the [figlet.js](https://github.com/patorjk/figlet.js/tree/main) 
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](CONTRIBUTING.md) file.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](.github/CONTRIBUTING) file.
 
 We are always open for feedback and discussions. If you are using our library and want to share your use case, or if you have any suggestions for improvement, please feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [open a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on our GitHub repository. Your input helps us understand possible use cases and make necessary improvements.
 
