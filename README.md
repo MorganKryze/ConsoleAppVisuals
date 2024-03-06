@@ -156,6 +156,7 @@ The library is still in development and we are working on the following features
 - [x] FEAT: Add a built-in fonts.
 - [x] FEAT: Add example of a custom font in the example project.
 - [x] DOCS: Add a tutorial on how to create a custom font.
+- [x] FEAT: `EmbedText` buttons can be disabled.
 - [ ] BUG: Cursor always visible in PowerShell (Windows).
 - [ ] FEAT: Convert CSV files into a data visualization element (e.g. `TableView`, `Matrix`, ...).
 - [ ] FEAT: Give styles to the `Prompt`, `ScrollingMenu`
