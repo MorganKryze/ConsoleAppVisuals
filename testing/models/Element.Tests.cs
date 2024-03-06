@@ -69,6 +69,31 @@ public class UnitTestElement
     }
 
     #endregion
+
+    #region Line
+    [TestMethod]
+    public void Line_MinimalApp()
+    {
+        // Arrange
+        var title = new Title("Title");
+        var header = new Header();
+        var footer = new Footer();
+        var loadingBarLeft = new FakeLoadingBar("LoadingBarLeft", Placement.TopLeft);
+        var loadingBarRight = new FakeLoadingBar("LoadingBarRight", Placement.TopRight);
+        var loadingBarCenter = new FakeLoadingBar("LoadingBarCenter", Placement.TopCenter);
+
+        // Act
+        Window.AddElement(title, header, footer, loadingBarLeft, loadingBarRight, loadingBarCenter);
+
+        // Assert
+        Assert.IsNotNull(title.Line);
+        Assert.IsNotNull(header.Line);
+        Assert.IsNotNull(footer.Line);
+        Assert.IsNotNull(loadingBarLeft.Line);
+        Assert.IsNotNull(loadingBarRight.Line);
+        Assert.IsNotNull(loadingBarCenter.Line);
+    }
+    #endregion
 }
 
 public class TestElement : Element { }
