@@ -338,7 +338,7 @@ public class UnitTestWindow
 
         // Act
         Window.ActivateElement(id, false);
-        Window.DeactivateElement(id);
+        Window.DeactivateElement(id, false);
 
         // Assert
         Assert.IsFalse(element.Visibility);
@@ -396,7 +396,7 @@ public class UnitTestWindow
         //Act
         Window.AddElement(element);
         Window.ActivateElement(element.Id, false);
-        Window.DeactivateElement(element, true);
+        Window.DeactivateElement(element, false);
 
         // Assert
         Assert.IsFalse(element.Visibility);
@@ -503,22 +503,44 @@ public class UnitTestWindow
     }
     #endregion
 
-    #region RenderElements
+    #region GetLineAvailable
     [TestMethod]
-    public void RenderAllElements_AllElementsRendered()
+    public void GetLineAvailable_MinimalApp()
     {
         // Arrange
-        var title = new Title("Hello World!");
-        Window.AddElement(title);
+        var title = new Title("Title");
+        var header = new Header();
+        var footer = new Footer();
+        var loadingBarLeft = new FakeLoadingBar("LoadingBarLeft", Placement.TopLeft);
+        var loadingBarRight = new FakeLoadingBar("LoadingBarRight", Placement.TopRight);
+        var loadingBarCenter = new FakeLoadingBar("LoadingBarCenter", Placement.TopCenter);
 
         // Act
-        var result = Window.RenderElementsSpace();
+        Window.AddElement(title, header, footer, loadingBarLeft, loadingBarRight, loadingBarCenter);
 
         // Assert
-        Assert.IsTrue(result);
+        Assert.IsNotNull(Window.GetLineAvailable(Placement.TopLeft));
+        Assert.IsNotNull(Window.GetLineAvailable(Placement.TopRight));
+        Assert.IsNotNull(Window.GetLineAvailable(Placement.TopCenter));
+        Assert.IsNotNull(Window.GetLineAvailable(Placement.TopCenterFullWidth));
+        Assert.IsNotNull(Window.GetLineAvailable(Placement.BottomCenterFullWidth));
+    }
 
-        // Cleanup
-        Window.RemoveAllElements();
+    [TestMethod]
+    public void UpdateIDs_IdChanged()
+    {
+        // Arrange
+        var title = new Title("Title");
+        var header = new Header();
+        Window.AddElement(title, header);
+
+        // Act
+        var initialHeaderId = 1;
+        Window.RemoveElement(title);
+
+        // Assert
+        Assert.AreEqual(1, Window.CountElements);
+        Assert.AreNotEqual(initialHeaderId, header.Id);
     }
     #endregion
 }

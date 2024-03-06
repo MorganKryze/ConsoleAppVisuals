@@ -487,7 +487,6 @@ public static class Window
     #endregion
 
     #region Utility Methods: AllowVisibilityToggle, GetLineAvailable, Clear, StopExecution, Refresh
-    [ExcludeFromCodeCoverage]
     private static void UpdateIDs()
     {
         for (int i = 0; i < s_elements.Count; i++)
@@ -641,6 +640,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void Render()
     {
         Clear();
@@ -663,6 +663,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void Render(params Element[] elements)
     {
         if (Core.IsScreenUpdated())
@@ -692,6 +693,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static bool RenderElementsSpace()
     {
         foreach (var element in s_elements)
@@ -716,6 +718,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static bool Clear(
         bool continuous = false,
         int? startLine = null,
@@ -763,7 +766,7 @@ public static class Window
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    [ExcludeFromCodeCoverage]
+    [Visual]
     public static void Close()
     {
         Core.LoadTerminalColorPanel();
