@@ -8,7 +8,7 @@ This tutorial will show you how to create a simple console application using the
 - How to exit the application
 
 > [!TIP]
-> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) if you go into any trouble.
+> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) of dive into the [reference section](/ConsoleAppVisuals/references/index.html) if you go into any trouble.
 
 ## Setup
 
@@ -200,8 +200,7 @@ Window.ActivateElement(prompt);
 
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
-> [!TIP]
-> `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
+> [!TIP] > `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
 
 ### Get response and `EmbedText` element
 
