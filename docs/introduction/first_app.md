@@ -68,8 +68,6 @@ Console.WriteLine("Hello, World!");
 And replace by the following:
 
 ```csharp
-using System;
-
 namespace MyApp
 {
     internal class Program
@@ -82,15 +80,32 @@ namespace MyApp
 }
 ```
 
+# [.NET CLI](#tab/cli)
+
+Let's try to run the app by typing the following command in your terminal:
+
+```bash
+dotnet run
+```
+
+# [Visual Studio](#tab/vs)
+
+Let's try to run the app by clicking on the green arrow at the top of the window.
+
+![Run](../assets/img/png/first_app/run.png)
+
+---
+
 Now, let's add to your project the `ConsoleAppVisuals` package and `ConsoleAppVisuals.Elements` (to use the visual elements):
 
 ```csharp
-using System;
 using ConsoleAppVisuals;
 using ConsoleAppVisuals.Elements;
 
 namespace MyApp
 {
+    internal class Program
+    {
 ...
 ```
 
@@ -130,9 +145,11 @@ Window.Render(title);
 
 ### `Header`, `Footer` and `FakeLoadingBar`
 
-Now, let's create a minimal app with a `Title`, a `Header`, a `Footer` and finally a `Prompt` element:
+You may remove the previous code. Now, let's create a minimal app with a `Title`, a `Header`, a `Footer` and finally a `Prompt` element:
 
 ```csharp
+Window.Open();
+
 Title title = new Title("My first app");
 Window.AddElement(title);
 
@@ -156,9 +173,14 @@ Window.Render();
 
 ### `Prompt`
 
-Now let's add a `Prompt` element:
+Now let's add a `Prompt` element to your previous code:
 
 ```csharp
+...
+Window.AddElement(loadingBar);
+
+Window.Render();
+
 Prompt prompt = new Prompt("What's your name?");
 Window.AddElement(prompt);
 
@@ -191,15 +213,8 @@ var response = prompt.GetResponse();
 
 This will retrieve a response object that has the following properties:
 
-- `Status`: is how the interaction ended. It can be `Selected` (pressed enter), `Deleted`(pressed delete) or `Escaped` (pressed escape).
-- `Value`: is the user's response. Its type depends on the Element you are using. In this case, the `Prompt` element returns a `string`.
-
-To access this data, you can use the following code:
-
-```csharp
-response?.Status;
-response?.Value;
-```
+- `Status`: is how the interaction ended. It can be `Selected` (pressed enter), `Deleted`(pressed delete) or `Escaped` (pressed escape). It is accessible using: `response?.Status`.
+- `Value`: is the user's response. Its type depends on the Element you are using. In this case, the `Prompt` element returns a `string`. It is accessible using: `response?.Value`.
 
 > [!NOTE]
 > Here we use the `?.` operator to avoid a `NullReferenceException` if the response is `null`.
@@ -208,14 +223,14 @@ response?.Value;
 > - If `response` is `null`, `response?.Status` will return `null`.
 > - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
-Finally, let's add a `EmbedText` element to display the user's response:
+Finally, let's add a `EmbedText` element to display the user's response on the console:
 
 ```csharp
 EmbedText text = new EmbedText(
             new List<string>()
             {
-                "You just wrote " + response?.Value + "!",
-                "And you " + response?.Status + "!"
+                "Status: " + response?.Status,
+                "You just wrote " + response?.Value + "!"
             }
         );
 
