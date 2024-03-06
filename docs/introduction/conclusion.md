@@ -1,6 +1,6 @@
 # Next steps
 
-Well done! You have finished the guided path through the general features of the library. Starting from your first element, to a complex menu management to create real console applications.
+![Congrats](../assets/img/jpg/conclusion/congrats.jpg)
 
 Now, you can go further and explore the library by yourself. Here are the resources available:
 
