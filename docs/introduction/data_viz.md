@@ -36,7 +36,7 @@ namespace MyApp
     {
         static void Main(string[] args)
         {
-
+            Window.Open();
         }
     }
 }

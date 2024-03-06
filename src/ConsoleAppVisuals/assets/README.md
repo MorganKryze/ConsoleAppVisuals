@@ -53,6 +53,12 @@ using ConsoleAppVisuals;
 using ConsoleAppVisuals.Elements;
 ```
 
+And then, add the following line to your `Main` method to set up the console:
+
+```csharp
+Window.Open();
+```
+
 #### Work with static elements
 
 The first step is to create an element to display. For example, let's create a `Title` element:
@@ -130,6 +136,14 @@ You may now remove the element from the list if you want to:
 
 ```csharp
 Window.RemoveElement(examplePrompt);
+```
+
+#### Exit the program
+
+Do not forget to close the `Window` at the end of your program:
+
+```csharp
+Window.Close();
 ```
 
 ## Supported .NET versions
