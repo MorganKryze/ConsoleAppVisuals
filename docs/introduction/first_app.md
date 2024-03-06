@@ -97,7 +97,13 @@ namespace MyApp
 > [!NOTE]
 > All the code below will be added inside the `Main` method.
 
-Now we can use all the elements from the package. Let's start by creating a `Title` to our application:
+Let's start by adding the following line to your `Main` method to set up the console:
+
+```csharp
+Window.Open();
+```
+
+Now we can use all the elements from the package. Our first element will be a `Title`:
 
 ```csharp
 Title title = new Title("My first app");
@@ -240,6 +246,8 @@ And that's it! You have created your first app using the `ConsoleAppVisuals` pac
 Here is the full code:
 
 ```csharp
+Window.Open();
+
 Title title = new Title("My first app");
 Window.AddElement(title);
 

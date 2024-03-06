@@ -16,18 +16,6 @@ namespace ConsoleAppVisuals;
 /// </remarks>
 public static class Window
 {
-    #region Setup
-    /// <summary>
-    /// This method sets up the console as soon as the Program starts.
-    /// </summary>
-    [Visual]
-    static Window()
-    {
-        Console.Clear();
-        Console.CursorVisible = false;
-    }
-    #endregion
-
     #region Fields: s_elements
     private static readonly List<Element> s_elements = new();
     #endregion
@@ -754,6 +742,16 @@ public static class Window
             }
         }
         return true;
+    }
+
+    /// <summary>
+    /// This method "opens" the window (clears the console and hides the cursor).
+    /// </summary>
+    [Visual]
+    public static void Open()
+    {
+        Console.Clear();
+        Console.CursorVisible = false;
     }
 
     /// <summary>
