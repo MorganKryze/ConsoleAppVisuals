@@ -44,6 +44,7 @@ public abstract class InteractiveElement<TResponse> : Element
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The response of the user.</param>
+    [Visual]
     protected void SetInteractionResponse(object? sender, InteractionEventArgs<TResponse> e)
     {
         _interactionResponse = e;
@@ -84,6 +85,7 @@ public abstract class InteractiveElement<TResponse> : Element
     /// <summary>
     /// This method is used to set options before drawing the element on the console.
     /// </summary>
+    [Visual]
     protected sealed override void RenderOptionsBeforeHand()
     {
         EndOfInteractionEvent += SetInteractionResponse;
@@ -92,6 +94,7 @@ public abstract class InteractiveElement<TResponse> : Element
     /// <summary>
     /// This method is used to set options after drawing the element on the console.
     /// </summary>
+    [Visual]
     protected sealed override void RenderOptionsAfterHand()
     {
         EndOfInteractionEvent -= SetInteractionResponse;
