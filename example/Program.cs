@@ -12,6 +12,8 @@ namespace example
             // Empty, do not mind, just for debugging purposes
             Debugging();
 
+            Window.Open();
+
             // Create the title element
             var title = new Title("Example project");
             // Add the title to the window
