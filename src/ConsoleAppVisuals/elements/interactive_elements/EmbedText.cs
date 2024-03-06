@@ -18,7 +18,7 @@ public class EmbedText : InteractiveElement<string>
 {
     #region Fields
     private readonly List<string> _text;
-    private string _button;
+    private string? _button;
     private bool _roundedCorners;
     private TextAlignment _align;
     private Placement _placement;
@@ -50,7 +50,7 @@ public class EmbedText : InteractiveElement<string>
     /// <summary>
     /// The text of the button.
     /// </summary>
-    public string ButtonText => _button;
+    public string ButtonText => _button ?? "No button text";
 
     /// <summary>
     /// The text to display.
@@ -70,7 +70,7 @@ public class EmbedText : InteractiveElement<string>
     /// The natural constructor of the Embed text.
     /// </summary>
     /// <param name="text">The text to display.</param>
-    /// <param name="button">The text of the button.</param>
+    /// <param name="button">The text of the button. Null to not display a button.</param>
     /// <param name="align">The alignment of the Embed text.</param>
     /// <param name="placement">The placement of the Embed text element.</param>
     /// <param name="roundedCorners">Wether the corners are rounded or not.</param>
@@ -90,7 +90,7 @@ public class EmbedText : InteractiveElement<string>
     )
     {
         _text = text;
-        _button = button ?? "Next";
+        _button = button;
         _align = align;
         _placement = placement;
         _roundedCorners = roundedCorners;
@@ -106,10 +106,12 @@ public class EmbedText : InteractiveElement<string>
         {
             return false;
         }
-
-        if (_text.Max((string s) => s.Length) < _button.Length)
+        if (_button is not null)
         {
-            return false;
+            if (_text.Max((string s) => s.Length) < _button.Length)
+            {
+                return false;
+            }
         }
         return true;
     }
@@ -125,7 +127,7 @@ public class EmbedText : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateButtonText(string newButton)
+    public void UpdateButtonText(string? newButton)
     {
         _button = newButton;
     }
@@ -316,17 +318,20 @@ public class EmbedText : InteractiveElement<string>
             _textToDisplay.Add(lineToDisplay);
         }
         _textToDisplay.Insert(0, GetCorners[0] + new string('─', maxLength + 2) + GetCorners[1]);
-        _textToDisplay.Add("│ " + new string(' ', maxLength) + " │");
-        _textToDisplay.Add(
-            "│ "
-                + "".PadRight(maxLength - _button.Length - 2)
-                + Core.NEGATIVE_ANCHOR
-                + " "
-                + _button
-                + " "
-                + Core.NEGATIVE_ANCHOR
-                + " │"
-        );
+        if (_button is not null)
+        {
+            _textToDisplay.Add("│ " + new string(' ', maxLength) + " │");
+            _textToDisplay.Add(
+                "│ "
+                    + "".PadRight(maxLength - _button.Length - 2)
+                    + Core.NEGATIVE_ANCHOR
+                    + " "
+                    + _button
+                    + " "
+                    + Core.NEGATIVE_ANCHOR
+                    + " │"
+            );
+        }
         _textToDisplay.Add(GetCorners[2] + new string('─', maxLength + 2) + GetCorners[3]);
     }
     #endregion
