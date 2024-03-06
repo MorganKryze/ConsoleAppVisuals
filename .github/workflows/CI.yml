@@ -30,10 +30,8 @@ jobs:
         run: dotnet build -c Release
       - name: Test
         run: dotnet test -c Release --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
-      - name: Adding dotnet tools
-        run: dotnet tool restore
-      - name: Ensure Coverlet Install
-        run: dotnet tool install --global coverlet.console --version 6.0.0.0
+      - name: Install Coverlet
+        run: dotnet tool install --global coverlet.console
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
       - name: Generate test results using coverlet
