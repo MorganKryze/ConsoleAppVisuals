@@ -2,10 +2,14 @@
 
 This section describes all references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.
 
+Access to the namespaces classes and functions at the left side of this page.
+
 > [!IMPORTANT]
 > Adding `using ConsoleAppVisuals;` at the beginning of your C# file is necessary but not sufficient to use the full potential of the library. Refer to the descriptions below to discover which namespaces to add to your project and the Introduction section to see how they are used.
 
 ## Namespace descriptions
+
+Namespaces are used to organize the classes and interfaces of the library. They are used to avoid naming conflicts and to group the classes that are related to each other. Here are the different namespaces of the library:
 
 ### `ConsoleAppVisuals`
 
