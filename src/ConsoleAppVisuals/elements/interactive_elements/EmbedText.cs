@@ -17,7 +17,7 @@ namespace ConsoleAppVisuals.Elements;
 public class EmbedText : InteractiveElement<string>
 {
     #region Fields
-    private readonly List<string> _text;
+    private List<string> _text;
     private string? _button;
     private bool _roundedCorners;
     private TextAlignment _align;
@@ -31,6 +31,11 @@ public class EmbedText : InteractiveElement<string>
     /// The position of the Embed text.
     /// </summary>
     public override Placement Placement => _placement;
+
+    /// <summary>
+    /// The alignment of the Embed text.
+    /// </summary>
+    public override TextAlignment TextAlignment => _align;
 
     /// <summary>
     /// The height of the Embed text.
@@ -50,7 +55,7 @@ public class EmbedText : InteractiveElement<string>
     /// <summary>
     /// The text of the button.
     /// </summary>
-    public string ButtonText => _button ?? "No button text";
+    public string? ButtonText => _button;
 
     /// <summary>
     /// The text to display.
@@ -146,7 +151,7 @@ public class EmbedText : InteractiveElement<string>
     public void UpdateText(List<string> newText)
     {
         _text.Clear();
-        _text.AddRange(newText);
+        _text = newText;
     }
 
     /// <summary>
@@ -176,7 +181,7 @@ public class EmbedText : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateAlignment(TextAlignment newAlignment)
+    public void UpdateTextAlignment(TextAlignment newAlignment)
     {
         _align = newAlignment;
     }

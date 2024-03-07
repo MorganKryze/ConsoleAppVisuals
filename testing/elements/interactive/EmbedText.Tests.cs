@@ -248,6 +248,27 @@ public class UnitTestEmbedText
         // Assert
         Assert.IsNotNull(EmbedText);
     }
+
+    [TestMethod]
+    [TestCategory("EmbedText")]
+    public void Constructor_ButtonTooBigForText()
+    {
+        // Arrange
+        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
+        var buttonText = "ButtonTooBigForText1234567890";
+
+        //Act
+        var EmbedText = new EmbedText(
+            textToDisplay,
+            buttonText,
+            TextAlignment.Left,
+            Placement.TopCenter
+        );
+
+        // Assert
+        Assert.IsNull(EmbedText.TextToDisplay);
+
+    }
     #endregion
 
     #region AddLine
@@ -405,6 +426,151 @@ public class UnitTestEmbedText
         Assert.ThrowsException<ArgumentException>(
             () => EmbedText.RemoveLine("Test for the placement2")
         );
+    }
+    #endregion
+
+    #region RoundedCorners
+    [TestMethod]
+    [TestCategory("EmbedText")]
+    [DataRow(true)]
+    [DataRow(false)]
+    public void RoundedCorners_Getter(bool roundedCorners)
+    {
+        // Arrange
+        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
+        var EmbedText = new EmbedText(
+            textToDisplay,
+            "Button",
+            TextAlignment.Left,
+            Placement.TopCenter,
+            roundedCorners
+        );
+
+        // Act
+        var actual = EmbedText.RoundedCorners;
+
+        // Assert
+        Assert.AreEqual(roundedCorners, actual);
+    }
+    #endregion
+
+    #region UpdateButtonText
+    [TestMethod]
+    [TestCategory("EmbedText")]
+    [DataRow("Button")]
+    [DataRow(null)]
+    public void UpdateButtonText_UpdatesButtonTextCorrectly(string? newButtonText)
+    {
+        // Arrange
+        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
+        var EmbedText = new EmbedText(
+            textToDisplay,
+            "Button",
+            TextAlignment.Left,
+            Placement.TopCenter
+        );
+
+        // Act
+        EmbedText.UpdateButtonText(newButtonText);
+
+        // Assert
+        Assert.AreEqual(newButtonText, EmbedText.ButtonText);
+    }
+    #endregion
+
+    #region UpdateText
+    [TestMethod]
+    [TestCategory("EmbedText")]
+    public void UpdateText_UpdatesTextCorrectly()
+    {
+        // Arrange
+        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
+        var newTextToDisplay = new List<string>() { "Test for the placement", "123was tested", "New line" };
+        var EmbedText = new EmbedText(
+            textToDisplay,
+            "Button",
+            TextAlignment.Left,
+            Placement.TopCenter
+        );
+
+        // Act
+        EmbedText.UpdateText(newTextToDisplay);
+
+        // Assert
+        Assert.AreEqual(newTextToDisplay, EmbedText.Text);
+    }
+    #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    [TestCategory("EmbedText")]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.TopLeft)]
+    public void UpdatePlacement_UpdatesPlacementCorrectly(Placement newPlacement)
+    {
+        // Arrange
+        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
+        var EmbedText = new EmbedText(
+            textToDisplay,
+            "Button",
+            TextAlignment.Left,
+            Placement.TopCenter
+        );
+
+        // Act
+        EmbedText.UpdatePlacement(newPlacement);
+
+        // Assert
+        Assert.AreEqual(newPlacement, EmbedText.Placement);
+    }
+    #endregion
+
+    #region UpdateTextAlignment
+    [TestMethod]
+    [TestCategory("EmbedText")]
+    [DataRow(TextAlignment.Left)]
+    [DataRow(TextAlignment.Center)]
+    public void UpdateTextAlignment_UpdatesTextAlignmentCorrectly(TextAlignment newTextAlignment)
+    {
+        // Arrange
+        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
+        var EmbedText = new EmbedText(
+            textToDisplay,
+            "Button",
+            TextAlignment.Left,
+            Placement.TopCenter
+        );
+
+        // Act
+        EmbedText.UpdateTextAlignment(newTextAlignment);
+
+        // Assert
+        Assert.AreEqual(newTextAlignment, EmbedText.TextAlignment);
+    }
+
+    #endregion
+
+    #region SetRoundedCorners
+    [TestMethod]
+    [TestCategory("EmbedText")]
+    [DataRow(true)]
+    [DataRow(false)]
+    public void SetRoundedCorners_SetsRoundedCornersCorrectly(bool roundedCorners)
+    {
+        // Arrange
+        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
+        var EmbedText = new EmbedText(
+            textToDisplay,
+            "Button",
+            TextAlignment.Left,
+            Placement.TopCenter
+        );
+
+        // Act
+        EmbedText.SetRoundedCorners(roundedCorners);
+
+        // Assert
+        Assert.AreEqual(roundedCorners, EmbedText.RoundedCorners);
     }
     #endregion
 }
