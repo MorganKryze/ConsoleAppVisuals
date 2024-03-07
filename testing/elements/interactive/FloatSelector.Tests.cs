@@ -210,4 +210,174 @@ public class UnitTestFloatSelector
         );
     }
     #endregion
+
+    #region UpdateQuestion
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    public void UpdateQuestion()
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateQuestion("New question");
+
+        // Assert
+        Assert.AreEqual("New question", floatSelector.Question);
+    }
+    #endregion
+
+
+    #region UpdateMin
+
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    public void UpdateMin()
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateMin(1.0f);
+
+        // Assert
+        Assert.AreEqual(1.0f, floatSelector.Min);
+    }
+
+    #endregion
+
+    #region UpdateMax
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    public void UpdateMax()
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateMax(20.0f);
+
+        // Assert
+        Assert.AreEqual(20.0f, floatSelector.Max);
+    }
+    #endregion
+
+    #region UpdateStart
+
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    public void UpdateStart()
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateStart(2.0f);
+
+        // Assert
+        Assert.AreEqual(2.0f, floatSelector.Start);
+    }
+    #endregion
+
+    #region UpdateStep
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    public void UpdateStep()
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateStep(2.0f);
+
+        // Assert
+        Assert.AreEqual(2.0f, floatSelector.Step);
+    }
+    #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.TopLeft)]
+    [DataRow(Placement.TopRight)]
+    public void UpdatePlacement(Placement placement)
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdatePlacement(placement);
+
+        // Assert
+        Assert.AreEqual(placement, floatSelector.Placement);
+    }
+    #endregion
+
+    #region SetRoundedCorners
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    [DataRow(true)]
+    [DataRow(false)]
+    public void SetRoundedCorners(bool roundedCorners)
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.SetRoundedCorners(roundedCorners);
+
+        // Assert
+        Assert.AreEqual(roundedCorners, floatSelector.RoundedCorners);
+    }
+    #endregion
 }
