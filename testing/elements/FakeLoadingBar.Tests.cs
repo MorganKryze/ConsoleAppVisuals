@@ -224,4 +224,60 @@ public class UnitTestFakeLoadingBar
         // No assertion provided as width is not settable
     }
     #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    public void UpdatePlacement_UpdatePlacement_PlacementUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
+
+        // Act
+        fakeLoadingBar.UpdatePlacement(Placement.BottomCenterFullWidth);
+
+        // Assert
+        Assert.AreEqual(Placement.BottomCenterFullWidth, fakeLoadingBar.Placement);
+    }
+    #endregion
+
+    #region UpdateAdditionalDuration
+    [TestMethod]
+    public void UpdateAdditionalDuration_UpdateAdditionalDuration_AdditionalDurationUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
+
+        // Act
+        fakeLoadingBar.UpdateAdditionalDuration(2000);
+
+        // Assert
+        Assert.AreEqual(2000, fakeLoadingBar.AdditionalDuration);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void UpdateAdditionalDuration_UpdateAdditionalDurationWithNegativeValue_AdditionalDurationNotUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
+
+        // Act
+        fakeLoadingBar.UpdateAdditionalDuration(-2000);
+    }
+    #endregion
 }
