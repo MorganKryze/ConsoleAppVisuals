@@ -427,6 +427,7 @@ public class Matrix<T> : Element
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     protected override void RenderElementActions()
     {
         if (_displayArray is null || _displayArray.Length == 0)
