@@ -200,4 +200,101 @@ public class UnitTestScrollingMenu
         Assert.AreEqual(1, defaultIndex);
     }
     #endregion
+
+    #region UpdateQuestion
+    [TestMethod]
+    [TestCategory("ScrollingMenu")]
+    public void UpdateQuestion()
+    {
+        // Arrange
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            1,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
+
+        // Act
+        scrollingMenu.UpdateQuestion("New Question");
+
+        // Assert
+        Assert.AreEqual("New Question", scrollingMenu.Question);
+    }
+    #endregion
+
+    #region UpdateChoices
+    [TestMethod]
+    [TestCategory("ScrollingMenu")]
+    public void UpdateChoices()
+    {
+        // Arrange
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            1,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
+
+        // Act
+        scrollingMenu.UpdateChoices("NewChoice1", "NewChoice2");
+
+        // Assert
+        var choices = scrollingMenu.Choices;
+        Assert.AreEqual(2, choices.Length);
+        Assert.AreEqual("NewChoice1", choices[0]);
+        Assert.AreEqual("NewChoice2", choices[1]);
+    }
+    #endregion
+
+    #region UpdateDefaultIndex
+    [TestMethod]
+    [TestCategory("ScrollingMenu")]
+    public void UpdateDefaultIndex()
+    {
+        // Arrange
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            1,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
+
+        // Act
+        scrollingMenu.UpdateDefaultIndex(2);
+
+        // Assert
+        Assert.AreEqual(2, scrollingMenu.DefaultIndex);
+    }
+    #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    [TestCategory("ScrollingMenu")]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.TopLeft)]
+    public void UpdatePlacement(Placement placement)
+    {
+        // Arrange
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            1,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
+
+        // Act
+        scrollingMenu.UpdatePlacement(placement);
+
+        // Assert
+        Assert.AreEqual(placement, scrollingMenu.Placement);
+    }
+    #endregion
 }
