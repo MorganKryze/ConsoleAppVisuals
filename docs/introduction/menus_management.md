@@ -25,14 +25,14 @@ Example_project  <-- root
 ```
 
 > [!IMPORTANT]
-> We add `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enums.
+> We will add `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enumerations.
 
 And your cleaned `Program.cs` file should look like this:
 
 [!code-csharp[](../assets/code/ProgramDemo.cs?highlight=4)]
 
 > [!TIP]
-> Each section is independent. I recommend you to overwrite the `Program.cs` file with the code of each section to avoid any confusion. Attention: the last section has two code blocks for one example!
+> Each section is independent. I recommend you to overwrite the `Program.cs` file with the code of each section to avoid any confusion.
 
 ## The `ScrollingMenu` element
 
@@ -152,8 +152,6 @@ ScrollingMenu menu = new ScrollingMenu(
 );
 
 Window.AddElement(menu);
-// Labels are tackled in the next section with the goto statement
-Test:
 Window.ActivateElement(menu);
 
 var response = menu.GetResponse();
@@ -192,9 +190,6 @@ switch (response?.Status)
         Window.Close();
         break;
 }
-// Waits before displaying the menu again if the window is not closed
-Thread.Sleep(1000);
-goto Test;
 ```
 
 ![Using Value](../assets/vid/gif/menus_management/value.gif)
