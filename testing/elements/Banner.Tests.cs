@@ -226,4 +226,95 @@ public class UnitTestBanner
         Assert.AreEqual(width, banner.Width);
     }
     #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    [DataRow(Placement.TopCenterFullWidth)]
+    [DataRow(Placement.BottomCenterFullWidth)]
+    public void UpdatePlacement(Placement placement)
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        banner.UpdatePlacement(placement);
+
+        //Assert
+        Assert.AreEqual(banner.Placement, placement);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    [DataRow(Placement.TopLeft)]
+    [DataRow(Placement.TopRight)]
+    public void UpdatePlacementWrongPlacement(Placement placement)
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        banner.UpdatePlacement(placement);
+    }
+    #endregion
+
+    #region UpdateUpperMargin
+    [TestMethod]
+    [DataRow(1)]
+    [DataRow(2)]
+    public void UpdateUpperMargin(int margin)
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        banner.UpdateUpperMargin(margin);
+
+        //Assert
+        Assert.AreEqual(banner.UpperMargin, margin);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    [DataRow(-1)]
+    [DataRow(200)]
+    public void UpdateUpperMarginNegative(int margin)
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        banner.UpdateUpperMargin(margin);
+    }
+    #endregion
+
+    #region UpdateLowerMargin
+
+    [TestMethod]
+    [DataRow(1)]
+    [DataRow(2)]
+    public void UpdateLowerMargin(int margin)
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        banner.UpdateLowerMargin(margin);
+
+        //Assert
+        Assert.AreEqual(banner.LowerMargin, margin);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    [DataRow(-1)]
+    [DataRow(200)]
+    public void UpdateLowerMarginNegative(int margin)
+    {
+        //Arrange
+        var banner = new Banner();
+
+        //Act
+        banner.UpdateLowerMargin(margin);
+    }
+    #endregion
 }
