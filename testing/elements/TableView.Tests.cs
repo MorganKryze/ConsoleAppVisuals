@@ -631,4 +631,28 @@ public class UnitTestTableView
         Assert.IsNull(_tableView.GetColumnData("Column1"));
     }
     #endregion
+
+    #region GetPLacement
+    [TestMethod]
+    public void GetPlacement_ReturnsCorrectPlacement()
+    {
+        // Arrange
+        TableView<string> table =
+            new(
+                "title",
+                new List<string>() { "header1", "header2", "header3" },
+                new List<List<string>>()
+                {
+                    new() { "1", "2", "3" },
+                    new() { "4", "5", "6" }
+                }
+            );
+
+        // Act
+        var placement = table.Placement;
+
+        // Assert
+        Assert.AreEqual(Placement.TopCenter, placement);
+    }
+    #endregion
 }
