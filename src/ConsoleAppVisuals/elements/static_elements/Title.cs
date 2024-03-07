@@ -49,6 +49,11 @@ public class Title : Element
     /// The line of the title.
     /// </summary>
     public override int Line => 0;
+
+    /// <summary>
+    /// The text styler of the title.
+    /// </summary>
+    public TextStyler Styler => _styler;
     #endregion
 
     #region Constructor
@@ -152,6 +157,7 @@ public class Title : Element
     /// <summary>
     /// This method is used to draw the title on the console.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         Core.WritePositionedStyledText(StyledText, Line, Width, _margin, _align, false);
