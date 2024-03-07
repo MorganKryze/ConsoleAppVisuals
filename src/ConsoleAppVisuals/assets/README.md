@@ -166,13 +166,13 @@ Consider reading our [security policy](.github/SECURITY) to know more about how 
 
 ## Acknowledgments
 
-Consider reading the [acknowledgments](.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
+Consider reading the [acknowledgments](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
 
 It also lists the open source projects that have been used to build this library until now.
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](.github/CONTRIBUTING) file.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main.github/CONTRIBUTING) file.
 
 We are always open for feedback and discussions. If you are using our library and want to share your use case, or if you have any suggestions for improvement, please feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [open a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on our GitHub repository. Your input helps us understand possible use cases and make necessary improvements.
 
