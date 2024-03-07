@@ -46,5 +46,47 @@ public class UnitTestTitle
         // Assert
         Assert.AreEqual(title1.Height, title2.Height);
     }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void UpdateMargin_UpdatesMarginOutOfWindowHeight()
+    {
+        // Arrange
+        Title title1 = new("Hello World!", 2);
+        
+        // Act
+        title1.UpdateMargin(100);
+    }
+    #endregion
+
+    #region UpdateAlignmentTests
+
+    [TestMethod]
+    public void UpdateAlignment_UpdatesAlignmentCorrectly()
+    {
+        // Arrange
+        Title title1 = new("Hello World!", 2);
+
+        // Act
+        title1.UpdateAlignment(TextAlignment.Center);
+
+        // Assert
+        Assert.AreEqual(TextAlignment.Center, title1.TextAlignment);
+    }
+    #endregion
+
+    #region UpdateFont
+    [TestMethod]
+    public void UpdateFont_UpdatesFontCorrectly()
+    {
+        // Arrange
+        Title title1 = new("Hello World!", 2);
+
+        // Act
+        title1.UpdateFont(Font.Ghost);
+
+        // Assert
+        Assert.AreEqual(Font.Ghost, title1.Styler.Font);
+    }
     #endregion
 }
