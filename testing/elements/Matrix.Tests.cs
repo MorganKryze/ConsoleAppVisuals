@@ -585,4 +585,30 @@ public class UnitTestMatrix
         Window.RemoveElement<Matrix<string>>();
     }
     #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    [DataRow(Placement.TopLeft)]
+    [DataRow(Placement.TopCenter)]
+    public void UpdatePlacement(Placement placement)
+    {
+        // Arrange
+        Matrix<string> matrix =
+            new(
+                new List<List<string?>>()
+                {
+                    new() { "1", "2", "3" },
+                    new() { "4", "5", "6" }
+                },
+                false
+            );
+
+        // Act
+        matrix.UpdatePlacement(placement);
+
+        // Assert
+        Assert.AreEqual(placement, matrix.Placement);
+    }
+
+    #endregion
 }
