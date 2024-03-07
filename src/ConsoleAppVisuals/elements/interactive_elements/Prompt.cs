@@ -152,7 +152,7 @@ public class Prompt : InteractiveElement<string>
     /// </remarks>
     public void UpdateMaxLength(int maxLength)
     {
-        if (maxLength < 1 || maxLength > Console.WindowWidth)
+        if (maxLength < 1)
             throw new ArgumentOutOfRangeException(
                 nameof(maxLength),
                 "The maximum length of the response must be greater than 0 and less than the width of the console window."
