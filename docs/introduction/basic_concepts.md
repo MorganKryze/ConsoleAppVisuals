@@ -40,6 +40,8 @@ sequenceDiagram
 
 In C# terms, the use flow is as follows:
 
+(No need to copy & paste for now)
+
 1. Creating an element:
 
 ```csharp
