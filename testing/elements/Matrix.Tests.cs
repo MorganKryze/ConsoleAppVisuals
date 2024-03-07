@@ -555,7 +555,7 @@ public class UnitTestMatrix
 
         // Act
         Window.AddElement(matrix);
-        Window.ActivateElement<Matrix<string>>();
+        Window.ActivateElement<Matrix<string>>(false);
 
         // Assert
         Assert.IsNotNull(matrix.Count);

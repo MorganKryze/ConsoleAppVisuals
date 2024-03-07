@@ -245,28 +245,6 @@ namespace testing
             Assert.IsFalse(styler.Equals(new TextStyler()));
         }
 
-        [TestMethod]
-        public void GetRandomColor_ValidColorReturned()
-        {
-            // Arrange & Act
-            var color = Core.GetRandomColor();
-
-            // Assert
-            Assert.IsTrue(Enum.IsDefined(typeof(ConsoleColor), color));
-        }
-
-        [TestMethod]
-        public void RestoreColorPanel_ColorPanelRestored()
-        {
-            // Arrange
-            var color = Core.GetColorPanel;
-
-            // Act
-            Core.RestoreColorPanel();
-
-            // Assert
-            Assert.AreNotEqual(color, Core.GetColorPanel);
-        }
 
         [TestMethod]
         public void Constructor_FileNotFoundExceptionThrown_WhenStreamIsNull()

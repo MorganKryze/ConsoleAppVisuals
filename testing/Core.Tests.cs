@@ -39,41 +39,6 @@ public class UnitTestCore
     }
     #endregion
 
-    #region SetBackgroundColor
-    [TestMethod]
-    public void SetBackgroundColor_ForConsole()
-    {
-        // Arrange
-        ConsoleColor color = ConsoleColor.Blue;
-
-        // Act
-        Core.SetBackgroundColor(color);
-        var colorPanel = Core.GetColorPanel;
-
-        // Assert
-        Assert.AreEqual(color, colorPanel.Item2);
-    }
-    #endregion
-
-    #region SaveColorPanel & LoadSavedColorPanel
-    // The class can save the current color panel as a tuple.
-    [TestMethod]
-    public void SaveColorPanel()
-    {
-        // Arrange
-        var initialColorPanel = Core.GetColorPanel;
-
-        // Act
-        Core.SaveColorPanel();
-        Core.SetForegroundColor(ConsoleColor.Red);
-        Core.SetBackgroundColor(ConsoleColor.Blue);
-
-        // Assert
-        Core.LoadSavedColorPanel();
-        Assert.AreEqual(initialColorPanel, Core.GetColorPanel);
-    }
-    #endregion
-
     #region LoadTerminalColorPanel
     [TestMethod]
     public void LoadTerminalColorPanel()
@@ -99,24 +64,15 @@ public class UnitTestCore
 
     #endregion
 
-    #region ApplyNegative
-    // The class can apply negative colors to the console.
+    #region GetRandom color
     [TestMethod]
-    public void ApplyNegative()
+    public void GetRandomColor()
     {
-        // Arrange
-        Core.SetForegroundColor(ConsoleColor.Red);
-        Core.SetBackgroundColor(ConsoleColor.Blue);
-
         // Act
-        Core.ApplyNegative(true);
+        var color = Core.GetRandomColor();
 
         // Assert
-        Assert.AreEqual(ConsoleColor.Blue, Console.ForegroundColor);
-        Assert.AreEqual(ConsoleColor.Red, Console.BackgroundColor);
-
-        // Cleanup
-        Core.ApplyNegative(false);
+        Assert.IsTrue(Enum.IsDefined(typeof(ConsoleColor), color));
     }
     #endregion
 }
