@@ -9,6 +9,8 @@ We would like to express our gratitude to the following individuals and organiza
 - **[athomsAF](https://github.com/athomsAF)**: Provided valuable feedbacks and open-sourced suggestions.
 - **[sheesh3218](https://github.com/sheesh3218)**: Provided valuable font-backs.
 - **[CHAOTANK](https://github.com/CHAOTANK)**: Provided valuable and detailed feedbacks thorough all the docs.
+- **[Poomme](https://github.com/Poomme)**: Provided light-speed valuable feedbacks.
+- **[AllisonSTIOUI](https://github.com/AllisonSTIOUI)**: Patiently provided valuable feedbacks and useful non?
 
 We also want to thank all the users and supporters of ConsoleAppVisuals for using the library and providing feedback. Your input helps us understand possible use cases and make necessary improvements.
 
