@@ -152,7 +152,21 @@ public class UnitTestElementList
         // Assert
         Assert.IsNotNull(count);
     }
+    #endregion
 
+    #region UpdatePlacement
+    [TestMethod]
+    public void UpdatePlacement_UpdatesPlacementCorrectly()
+    {
+        // Arrange
+        var list = new ElementList(Placement.TopLeft, true);
+        var list2 = new ElementList(Placement.TopCenter, true);
 
+        // Act
+        list.UpdatePlacement(Placement.TopCenter);
+
+        // Assert
+        Assert.AreEqual(list.Placement, list2.Placement);
+    }
     #endregion
 }
