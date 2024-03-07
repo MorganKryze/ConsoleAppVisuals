@@ -109,10 +109,10 @@ namespace MyApp
 ...
 ```
 
-> [!NOTE]
-> All the code below will be added inside the `Main` method.
+> [!TIP]
+> Take the larger size of the console to have a better view of the result. An error may occur if the console is too small when trying to render elements.
 
-Let's start by adding the following line to your `Main` method to set up the console:
+Let's start by removing `Console.WriteLine()` instruction and adding the following line to your `Main` method to set up the console:
 
 ```csharp
 Window.Open();
@@ -176,11 +176,6 @@ Window.Render();
 Now let's add a `Prompt` element to your previous code:
 
 ```csharp
-...
-Window.AddElement(loadingBar);
-
-Window.Render();
-
 Prompt prompt = new Prompt("What's your name?");
 Window.AddElement(prompt);
 
@@ -192,7 +187,7 @@ As you may have noticed, we have the same output as earlier. No prompt was displ
 > [!IMPORTANT]
 > Static elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
 
-To do so, we can add the following line of code:
+To do so, we can finally add the following line of code:
 
 ```csharp
 Window.ActivateElement(prompt);
@@ -200,7 +195,8 @@ Window.ActivateElement(prompt);
 
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
-> [!TIP] > `Window.ActivateElement()` is a method that will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
+> [!TIP]
+> The method `Window.ActivateElement()` will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
 
 ### Get response and `EmbedText` element
 
@@ -213,7 +209,7 @@ var response = prompt.GetResponse();
 This will retrieve a response object that has the following properties:
 
 - `Status`: is how the interaction ended. It can be `Selected` (pressed enter), `Deleted`(pressed delete) or `Escaped` (pressed escape). It is accessible using: `response?.Status`.
-- `Value`: is the user's response. Its type depends on the Element you are using. In this case, the `Prompt` element returns a `string`. It is accessible using: `response?.Value`.
+- `Value`: is the user's response data. Its type depends on the Element you are using. In this case, the `Prompt` element returns a `string`. It is accessible using: `response?.Value`.
 
 > [!NOTE]
 > Here we use the `?.` operator to avoid a `NullReferenceException` if the response is `null`.
@@ -226,12 +222,12 @@ Finally, let's add a `EmbedText` element to display the user's response on the c
 
 ```csharp
 EmbedText text = new EmbedText(
-            new List<string>()
-            {
-                "Status: " + response?.Status,
-                "You just wrote " + response?.Value + "!"
-            }
-        );
+    new List<string>()
+    {
+        "You just wrote " + response?.Value + "!",
+        "And you " + response?.Status + "!"
+    }
+    );
 
 Window.AddElement(text);
 
