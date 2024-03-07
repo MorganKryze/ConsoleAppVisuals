@@ -129,7 +129,7 @@ Window.Freeze();
 
 ## The `TableView` element
 
-The `TableView` element is used to display data in a table format. It is useful when you want to display a list of items with multiple columns.
+The `TableView` element is used to display data in a table format. It is useful when you want to display a list of items with multiple columns. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.TableView-1.html)
 
 Let's create a `TableView` element and add it to the window.
 
@@ -166,7 +166,7 @@ Window.Freeze();
 
 ## The `TableSelector` element
 
-The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table.
+The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.TableSelector-1.html)
 
 Here is an example of how to use it:
 
@@ -231,7 +231,7 @@ Window.ActivateElement(playersEmbedResponse);
 
 ## The `Matrix` element
 
-The `Matrix` element is used to display data in a matrix format.
+The `Matrix` element is used to display data in a matrix format. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Matrix-1.html)
 
 ```csharp
 List<int?> firstRow = new List<int?>() { 1, null, 2, 7, 9, 3 };

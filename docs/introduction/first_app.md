@@ -118,7 +118,7 @@ Let's start by removing `Console.WriteLine()` instruction and adding the followi
 Window.Open();
 ```
 
-Now we can use all the elements from the package. Our first element will be a `Title`:
+Now we can use all the elements from the package. Our first element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
 
 ```csharp
 Title title = new Title("My first app");
@@ -145,7 +145,7 @@ Window.Render(title);
 
 ### `Header`, `Footer` and `FakeLoadingBar`
 
-You may remove the previous code. Now, let's create a minimal app with a `Title`, a `Header`, a `Footer` and finally a `Prompt` element:
+You may remove the previous code. Now, let's create a minimal app with a `Title`, a `Header`, a `Footer` and finally a `Prompt` element. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.html)
 
 ```csharp
 Window.Open();
@@ -173,7 +173,7 @@ Window.Render();
 
 ### `Prompt`
 
-Now let's add a `Prompt` element to your previous code:
+Now let's add a `Prompt` element to your previous code. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Prompt.html)
 
 ```csharp
 Prompt prompt = new Prompt("What's your name?");
@@ -218,7 +218,7 @@ This will retrieve a response object that has the following properties:
 > - If `response` is `null`, `response?.Status` will return `null`.
 > - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
-Finally, let's add a `EmbedText` element to display the user's response on the console:
+Finally, let's add a `EmbedText` element to display the user's response on the console. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
 
 ```csharp
 EmbedText text = new EmbedText(
