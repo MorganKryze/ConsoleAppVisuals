@@ -1333,4 +1333,181 @@ public class UnitTestTableSelector
         Assert.IsNull(tableSelector.DisplayArray);
     }
     #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    [DataRow(Placement.TopRight)]
+    [DataRow(Placement.TopLeft)]
+    public void UpdatePlacement(Placement placement)
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.UpdatePlacement(placement);
+        var actualPlacement = tableSelector.Placement;
+
+        // Assert
+        Assert.AreEqual(placement, actualPlacement);
+    }
+    #endregion
+
+    #region UpdateFooter
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateFooter_FooterUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act
+        tableSelector.UpdateFooterText("This is the footer");
+        var actualFooter = tableSelector.FooterText;
+
+        // Assert
+        Assert.AreEqual("This is the footer", actualFooter);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateFooter_FooterUpdatedAndBuild()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.UpdateFooterText("This is the footer");
+        var actualFooter = tableSelector.FooterText;
+
+        // Assert
+        Assert.AreEqual("This is the footer", actualFooter);
+    }
+    #endregion
+
+    #region SetExcludeHeader
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void SetExcludeHeader_ExcludeHeaderUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act
+        tableSelector.SetExcludeHeader(true);
+        var actualExcludeHeader = tableSelector.ExcludeHeader;
+
+        // Assert
+        Assert.IsTrue(actualExcludeHeader);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void SetExcludeHeader_ExcludeHeaderUpdatedAndBuild()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.SetExcludeHeader(true);
+        var actualExcludeHeader = tableSelector.ExcludeHeader;
+
+        // Assert
+        Assert.IsTrue(actualExcludeHeader);
+    }
+    #endregion
+
+    #region SetExcludeFooter
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void SetExcludeFooter_ExcludeFooterUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act
+        tableSelector.SetExcludeFooter(true);
+        var actualExcludeFooter = tableSelector.ExcludeFooter;
+
+        // Assert
+        Assert.IsTrue(actualExcludeFooter);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void SetExcludeFooter_ExcludeFooterUpdatedAndBuild()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector<string>(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.SetExcludeFooter(true);
+        var actualExcludeFooter = tableSelector.ExcludeFooter;
+
+        // Assert
+        Assert.IsTrue(actualExcludeFooter);
+    }
+    #endregion
+
 }
