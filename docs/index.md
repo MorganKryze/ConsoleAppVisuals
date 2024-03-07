@@ -35,7 +35,7 @@ Consider reading our [security policy](https://github.com/MorganKryze/ConsoleApp
 
 ## Acknowledgments
 
-The [ACKNOWLEDGMENTS](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/ACKNOWLEDGMENTS.md) file records all those who have contributed to the development of this project. It serves as a testament to the collaborative efforts that have gone into enhancing and refining the library. We extend our gratitude to all contributors for their invaluable input and the significant impact they've made on the project.
+Consider reading the [acknowledgments]([.github/ACKNOWLEDGMENTS.md](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/ACKNOWLEDGMENTS.md)) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
 
 It also lists the open source projects that have been used to build this library until now.
 
