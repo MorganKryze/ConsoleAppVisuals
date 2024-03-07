@@ -155,4 +155,19 @@ public class UnitTestInteractiveList
 
 
     #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    public void UpdatePlacement_HappyPath()
+    {
+        // Arrange
+        var list = new InteractiveList(Placement.TopLeft, true);
+
+        // Act
+        list.UpdatePlacement(Placement.TopCenter);
+
+        // Assert
+        Assert.AreEqual(Placement.TopCenter, list.Placement);
+    }
+    #endregion
 }
