@@ -223,6 +223,7 @@ public abstract class Element
     /// </summary>
     /// <returns>The space taken by the element.</returns>
     /// <remarks>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</remarks>
+    [Visual]
     protected virtual string[] GetRenderSpace()
     {
         var space = new string[Height];
