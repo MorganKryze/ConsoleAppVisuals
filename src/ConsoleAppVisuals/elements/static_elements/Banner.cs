@@ -181,7 +181,8 @@ public class Banner : Element
     /// </remarks>
     public void UpdateUpperMargin(int upperMargin)
     {
-        if (upperMargin < 0 || upperMargin > Console.WindowHeight - 1)
+        var maxWidth = Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1;
+        if (upperMargin < 0 || upperMargin > maxWidth)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(upperMargin),
@@ -205,7 +206,8 @@ public class Banner : Element
     /// </remarks>
     public void UpdateLowerMargin(int lowerMargin)
     {
-        if (lowerMargin < 0 || lowerMargin > Console.WindowHeight - 1)
+        var maxWidth = Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1;
+        if (lowerMargin < 0 || lowerMargin > maxWidth)
         {
             throw new ArgumentOutOfRangeException(
                 nameof(lowerMargin),
