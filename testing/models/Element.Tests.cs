@@ -53,6 +53,18 @@ public class UnitTestElement
 
     #endregion
 
+    #region TextAlignmentTests
+    [TestMethod]
+    public void TextAlignment_DefaultValue_ReturnsCenter()
+    {
+        // Arrange
+        var element = new TestElement();
+
+        // Assert
+        Assert.AreEqual(TextAlignment.Center, element.TextAlignment);
+    }
+    #endregion
+
     #region ToggleVisibilityTests
 
     [TestMethod]
@@ -92,6 +104,9 @@ public class UnitTestElement
         Assert.IsNotNull(loadingBarLeft.Line);
         Assert.IsNotNull(loadingBarRight.Line);
         Assert.IsNotNull(loadingBarCenter.Line);
+
+        // Cleanup
+        Window.RemoveAllElements();
     }
     #endregion
 }
