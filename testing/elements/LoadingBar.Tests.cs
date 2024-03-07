@@ -169,4 +169,44 @@ public class UnitTestLoadingBar
         //Assert
         Assert.AreEqual(progress, loadingBar.Progress);
     }
+
+    [TestMethod]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.TopRight)]
+    [DataRow(Placement.TopLeft)]
+    public void UpdatePlacement(Placement placement)
+    {
+        //Arrange
+        float valuee = 0.3f;
+        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 0);
+        //Act
+        loadingBar.UpdatePlacement(placement);
+        //Assert
+        Assert.AreEqual(placement, loadingBar.Placement);
+    }
+
+    [TestMethod]
+    [DataRow(200)]
+    public void UpdateAdditionalDuration(int additionalDuration)
+    {
+        //Arrange
+        float valuee = 0.3f;
+        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 0);
+        //Act
+        loadingBar.UpdateAdditionalDuration(additionalDuration);
+        //Assert
+        Assert.AreEqual(additionalDuration, loadingBar.AdditionalDuration);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    [DataRow(-1)]
+    public void UpdateAdditionalDurationNegative(int additionalDuration)
+    {
+        //Arrange
+        float valuee = 0.3f;
+        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 0);
+        //Act
+        loadingBar.UpdateAdditionalDuration(additionalDuration);
+    }
 }
