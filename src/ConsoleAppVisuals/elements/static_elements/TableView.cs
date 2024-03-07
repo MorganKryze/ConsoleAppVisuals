@@ -740,6 +740,7 @@ public class TableView<T> : Element
     /// <summary>
     /// This method displays the table without interaction.
     /// </summary>
+    [Visual]
     protected override void RenderElementActions()
     {
         string[] array = new string[_displayArray!.Length];
