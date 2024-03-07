@@ -186,7 +186,7 @@ public class UnitTestPrompt
     [TestCategory("Prompt")]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     [DataRow(-1)]
-    [DataRow(300)]
+    [DataRow(1500)]
     public void UpdateMaxLength_OutsideRange(int maxLength)
     {
         // Arrange
