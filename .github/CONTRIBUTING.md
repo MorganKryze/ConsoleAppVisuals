@@ -44,9 +44,9 @@ We use the [Semantic Versioning](https://semver.org/) convention for versioning.
 
 For the pre-release suffix, we use the following conventions:
 
-- -alpha: Alpha release, typically used for work-in-progress and experimentation.
-- -beta: Beta release, typically one that is feature complete for the next planned release, but may contain known bugs.
-- -rc: Release candidate, typically a release that's potentially final (stable) unless significant bugs emerge.
+- -alpha: Alpha release, typically used for work-in-progress and experimentation (No tests or docs at this point)
+- -beta: Beta release, typically one that is feature complete for the next planned release, but may contain known bugs (No docs at this point)
+- -rc: Release candidate, typically a release that's potentially final (stable) unless significant bugs emerge (contains tests and docs)
 
 ### Testing Conventions
 
