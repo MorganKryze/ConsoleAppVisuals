@@ -182,4 +182,127 @@ public class UnitTestIntSelector
         );
     }
     #endregion
+
+    #region UpdateQuestion
+
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    public void UpdateQuestion()
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+        var newQuestion = "New question";
+
+        // Act
+        intSelector.UpdateQuestion(newQuestion);
+
+        // Assert
+        Assert.AreEqual(newQuestion, intSelector.Question);
+    }
+    #endregion
+
+    #region UpdateMin
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    public void UpdateMin()
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+        var newMin = 5;
+
+        // Act
+        intSelector.UpdateMin(newMin);
+
+        // Assert
+        Assert.AreEqual(newMin, intSelector.Min);
+    }
+    #endregion
+
+    #region UpdateMax
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    public void UpdateMax()
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+        var newMax = 15;
+
+        // Act
+        intSelector.UpdateMax(newMax);
+
+        // Assert
+        Assert.AreEqual(newMax, intSelector.Max);
+    }
+    #endregion
+
+    #region UpdateStart
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    public void UpdateStart()
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+        var newStart = 7;
+
+        // Act
+        intSelector.UpdateStart(newStart);
+
+        // Assert
+        Assert.AreEqual(newStart, intSelector.Start);
+    }
+    #endregion
+
+    #region UpdateStep
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    public void UpdateStep()
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+        var newStep = 2;
+
+        // Act
+        intSelector.UpdateStep(newStep);
+
+        // Assert
+        Assert.AreEqual(newStep, intSelector.Step);
+    }
+    #endregion
+
+    #region UpdatePlacement
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    [DataRow(Placement.TopCenter)]
+    [DataRow(Placement.TopLeft)]
+    [DataRow(Placement.TopRight)]
+    public void UpdatePlacement(Placement placement)
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+
+        // Act
+        intSelector.UpdatePlacement(placement);
+
+        // Assert
+        Assert.AreEqual(placement, intSelector.Placement);
+    }
+    #endregion
+
+    #region UpdateRoundedCorners
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    [DataRow(true)]
+    [DataRow(false)]
+    public void UpdateRoundedCorners(bool roundedCorners)
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+
+        // Act
+        intSelector.SetRoundedCorners(roundedCorners);
+
+        // Assert
+        Assert.AreEqual(roundedCorners, intSelector.RoundedCorners);
+    }
+    #endregion
 }
