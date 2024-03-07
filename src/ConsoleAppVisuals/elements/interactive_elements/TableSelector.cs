@@ -529,7 +529,6 @@ public class TableSelector<T> : InteractiveElement<int>
     /// </remarks>
     public void AddHeaders(List<string> headers)
     {
-        var lastStateOfHeaders = _rawHeaders;
         _rawHeaders = headers;
         if (CompatibilityCheck())
         {
