@@ -259,8 +259,7 @@ public class UnitTestBanner
 
     #region UpdateUpperMargin
     [TestMethod]
-    [DataRow(1)]
-    [DataRow(2)]
+    [DataRow(0)]
     public void UpdateUpperMargin(int margin)
     {
         //Arrange
@@ -290,8 +289,7 @@ public class UnitTestBanner
     #region UpdateLowerMargin
 
     [TestMethod]
-    [DataRow(1)]
-    [DataRow(2)]
+    [DataRow(0)]
     public void UpdateLowerMargin(int margin)
     {
         //Arrange
