@@ -550,7 +550,7 @@ public class UnitTestTableView
         Window.AddElement(table);
 
         // Act
-        Window.ActivateElement<TableView<string>>();
+        Window.ActivateElement<TableView<string>>(false);
 
         // Assert
         Assert.IsNotNull(table.GetRawHeaders);

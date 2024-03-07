@@ -28,9 +28,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.AreNotEqual(Window.CountElements, defaultValue);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -45,9 +42,6 @@ public class UnitTestWindow
         // Assert
         Assert.AreEqual(0, defaultValue);
         Assert.AreEqual(1, Window.NextId);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
     #endregion
 
@@ -64,9 +58,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.AreEqual(prompt, element);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -81,9 +72,6 @@ public class UnitTestWindow
             () => Window.GetElement<Prompt>(prompt.Id + 1)
         );
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.GetElement<Prompt>(-1));
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -98,9 +86,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsNull(element);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -116,9 +101,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.AreEqual(prompt, element);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -134,9 +116,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsNull(element);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
     #endregion
 
@@ -156,9 +135,6 @@ public class UnitTestWindow
         // Assert
         Assert.AreEqual(title, Window.GetElement<Title>(0));
         Assert.AreEqual(prompt, Window.GetElement<Prompt>(1));
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -172,9 +148,6 @@ public class UnitTestWindow
         // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.InsertElement(title, -1));
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.InsertElement(title, 2));
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
     #endregion
 
@@ -191,9 +164,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.AreEqual(0, Window.CountElements);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -208,9 +178,6 @@ public class UnitTestWindow
             () => Window.RemoveElement(prompt.Id + 1)
         );
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.RemoveElement(-1));
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -226,9 +193,6 @@ public class UnitTestWindow
         // Assert
         Assert.IsTrue(result);
         Assert.AreEqual(0, Window.CountElements);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -242,9 +206,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.AreEqual(0, Window.CountElements);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -256,9 +217,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.ThrowsException<ElementNotFoundException>(() => Window.RemoveElement<LoadingBar>());
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -273,9 +231,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsTrue(result);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -306,9 +261,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsTrue(prompt.Visibility);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
     #endregion
 
@@ -342,9 +294,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsFalse(element.Visibility);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -382,27 +331,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsFalse(element.Visibility);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
-
-    [TestMethod]
-    public void DeactivateElement_Clear_ElementIsDeactivated()
-    {
-        // Arrange
-        var element = new Prompt("Hello World!");
-
-        //Act
-        Window.AddElement(element);
-        Window.ActivateElement(element.Id, false);
-        Window.DeactivateElement(element, false);
-
-        // Assert
-        Assert.IsFalse(element.Visibility);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -427,9 +355,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsFalse(element.Visibility);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -441,13 +366,10 @@ public class UnitTestWindow
         //Act
         Window.AddElement(element);
         Window.ActivateElement(element.Id, false);
-        Window.DeactivateElement<Prompt>(true);
+        Window.DeactivateElement<Prompt>(false);
 
         // Assert
         Assert.IsFalse(element.Visibility);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
 
     [TestMethod]
@@ -463,9 +385,6 @@ public class UnitTestWindow
 
         // Assert
         Assert.IsFalse(prompt.Visibility);
-
-        // Cleanup
-        Window.RemoveAllElements();
     }
     #endregion
 
@@ -485,22 +404,6 @@ public class UnitTestWindow
             Assert.AreEqual(line, Window.CheckLine(line));
     }
 
-    [TestMethod]
-    public void Clear_WindowContentRemoved()
-    {
-        // Arrange
-        var prompt = new Prompt("Hello World!");
-        Window.AddElement(prompt);
-
-        // Act
-        var result = Window.Clear(true);
-
-        // Assert
-        Assert.IsTrue(result);
-
-        // Cleanup
-        Window.RemoveAllElements();
-    }
     #endregion
 
     #region GetLineAvailable

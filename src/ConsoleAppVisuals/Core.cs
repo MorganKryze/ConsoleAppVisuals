@@ -114,6 +114,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void SetForegroundColor(ConsoleColor color)
     {
         s_colorPanel.Item1 = color;
@@ -131,6 +132,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void SetBackgroundColor(ConsoleColor color)
     {
         s_colorPanel.Item2 = color;
@@ -147,6 +149,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void SaveColorPanel() => s_savedColorPanel = s_colorPanel;
 
     /// <summary>
@@ -159,6 +162,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void LoadSavedColorPanel() => s_colorPanel = s_savedColorPanel;
 
     /// <summary>
@@ -171,6 +175,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void LoadTerminalColorPanel() => s_colorPanel = s_terminalColorPanel;
 
     /// <summary>
@@ -225,6 +230,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void RestoreColorPanel()
     {
         Console.ForegroundColor = s_initialColorPanel.Item1;
@@ -244,6 +250,7 @@ public static class Core
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
+    [Visual]
     public static void ApplyNegative(bool negative = false)
     {
         Console.ForegroundColor = negative ? s_colorPanel.Item2 : s_colorPanel.Item1;
