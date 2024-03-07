@@ -26,7 +26,6 @@ Example_project  <-- root
 And your cleaned `Program.cs` file should look like this:
 
 ```csharp
-using System;
 using ConsoleAppVisuals;
 using ConsoleAppVisuals.Elements;
 
@@ -69,6 +68,9 @@ Window.Render();
 
 Let's see how to perceive the effect of deactivating an element. Update your code to the following:
 
+> [!NOTE]
+> The method `Window.Freeze()` is used to stop the execution to see the window content without exiting the application when the window only contains static elements.
+
 ```csharp
 Title title = new Title("New elements");
 Window.AddElement(title);
@@ -77,14 +79,11 @@ ElementsDashboard dashboard = new ElementsDashboard();
 Window.AddElement(dashboard);
 
 Window.Render();
-// Window.Freeze() will stop the execution to see the result without exiting the application
-// As ElementDashboard is a static element
 Window.Freeze();
 
 Window.DeactivateElement(title);
 
 Window.Render();
-// Same as before, we need to stop the execution to see the result without exiting the application
 Window.Freeze();
 ```
 
@@ -125,6 +124,9 @@ Window.Freeze();
 
 ![DashBoard](../assets/vid/gif/data_viz/dash_remove.gif)
 
+> [!NOTE]
+> For the following sections, you may delete your previous code and start from scratch at each section.
+
 ## The `TableView` element
 
 The `TableView` element is used to display data in a table format. It is useful when you want to display a list of items with multiple columns.
@@ -157,7 +159,6 @@ TableView<string> students =
 
 Window.AddElement(students);
 Window.Render(students);
-// TableView is a static element, so we need to stop the execution to see it
 Window.Freeze();
 ```
 
@@ -207,7 +208,7 @@ Window.ActivateElement(players);
 
 ![TableSelector](../assets/vid/gif/data_viz/table_selector.gif)
 
-Now let's collect the user interaction response:
+Now let's collect the user interaction response by adding the following code:
 
 ```csharp
 var response = players.GetResponse();
