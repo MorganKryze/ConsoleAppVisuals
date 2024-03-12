@@ -11,6 +11,8 @@ We would like to express our gratitude to the following individuals and organiza
 - **[CHAOTANK](https://github.com/CHAOTANK)**: Provided valuable and detailed feedbacks thorough all the docs.
 - **[Poomme](https://github.com/Poomme)**: Provided light-speed valuable feedbacks.
 - **[AllisonSTIOUI](https://github.com/AllisonSTIOUI)**: Patiently provided valuable feedbacks and useful non?
+- **[Stanley Arnaud](https://github.com/stantonik)**: Provided vim-able feedbacks and cli suggestions.
+- **[MailiTruong](https://github.com/MailiTruong)**: Provided well-documented enthusiast feedbacks.
 
 We also want to thank all the users and supporters of ConsoleAppVisuals for using the library and providing feedback. Your input helps us understand possible use cases and make necessary improvements.
 
