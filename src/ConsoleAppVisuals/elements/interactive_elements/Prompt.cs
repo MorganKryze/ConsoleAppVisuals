@@ -21,9 +21,12 @@ public class Prompt : InteractiveElement<string>
     private string _defaultValue;
     private Placement _placement;
     private int _maxLength;
+    private int _printDuration;
     #endregion
 
     #region Constants
+    private const int DEFAULT_PROMPT_MAX_LENGTH = 10;
+    private const int DEFAULT_PRINT_DURATION = 1500;
     private const int PROMPT_HEIGHT = 3;
     private const int PROMPT_LEFT_MARGIN = 4;
     #endregion
@@ -58,6 +61,11 @@ public class Prompt : InteractiveElement<string>
     /// The maximum length of the response.
     /// </summary>
     public int MaxLength => _maxLength;
+
+    /// <summary>
+    /// The duration of the print animation of the question.
+    /// </summary>
+    public int PrintDuration => _printDuration;
     #endregion
 
     #region Constructor
@@ -68,6 +76,7 @@ public class Prompt : InteractiveElement<string>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
     /// <param name="placement">The placement of the prompt element.</param>
     /// <param name="maxLength">The maximum length of the response.</param>
+    /// <param name="printDuration">The duration of the print animation.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -79,13 +88,15 @@ public class Prompt : InteractiveElement<string>
         string question,
         string? defaultValue = null,
         Placement placement = Placement.TopCenter,
-        int maxLength = 10
+        int maxLength = DEFAULT_PROMPT_MAX_LENGTH,
+        int printDuration = DEFAULT_PRINT_DURATION
     )
     {
         _question = question;
         _defaultValue = defaultValue ?? string.Empty;
         _placement = placement;
         _maxLength = maxLength;
+        _printDuration = printDuration;
     }
     #endregion
 
@@ -161,6 +172,30 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
+    /// This method is used to update the duration of the print animation.
+    /// </summary>
+    /// <param name="printDuration">The new duration of the print animation.</param>
+    /// <exception cref="ArgumentOutOfRangeException">The print duration must be greater than or equal to 0.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdatePrintDuration(int printDuration)
+    {
+        if (printDuration < 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(printDuration),
+                "The print duration must be greater than or equal to 0."
+            );
+        }
+        _printDuration = printDuration;
+    }
+
+    /// <summary>
     /// This method is used to render the prompt element on the console.
     /// </summary>
     [Visual]
@@ -188,9 +223,14 @@ public class Prompt : InteractiveElement<string>
             key = Console.ReadKey();
             if (key.Key == ConsoleKey.Backspace && field.Length > 0)
                 field.Remove(field.Length - 1, 1);
-            else if (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape && key.Key != ConsoleKey.Backspace && field.Length < MaxLength)
+            else if (
+                key.Key != ConsoleKey.Enter
+                && key.Key != ConsoleKey.Escape
+                && key.Key != ConsoleKey.Backspace
+                && field.Length < MaxLength
+            )
                 field.Append(key.KeyChar);
-        } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape );
+        } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
         Console.CursorVisible = false;
         SendResponse(
             this,
