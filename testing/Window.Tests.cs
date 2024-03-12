@@ -449,7 +449,7 @@ public class UnitTestWindow
 
     #region AddElement Duplicate
     [TestMethod]
-    [ExpectedException(typeof(DuplicateElementFoundException))]
+    [ExpectedException(typeof(DuplicateElementException))]
     public void AddElement_Duplicate()
     {
         // Arrange
