@@ -41,7 +41,6 @@ The `ScrollingMenu` element is an historic element of the library. Some features
 Here is a minimal example of how to use it:
 
 ```csharp
-// Optional: create the options list
 string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
 
 ScrollingMenu menu = new ScrollingMenu(
@@ -96,7 +95,7 @@ var response = menu.GetResponse();
 switch (response?.Status)
 {
     case Output.Selected:
-        var embedSelected = new EmbedText(
+        EmbedText embedSelected = new EmbedText(
             new List<string>()
             {
                 "The user pressed the Enter key",
@@ -108,7 +107,7 @@ switch (response?.Status)
         Window.RemoveElement(embedSelected);
         break;
     case Output.Escaped:
-        var embedEscaped = new EmbedText(
+        EmbedText embedEscaped = new EmbedText(
             new List<string>()
             {
                 "The user pressed the Escape key",
@@ -120,7 +119,7 @@ switch (response?.Status)
         Window.RemoveElement(embedEscaped);
         break;
     case Output.Deleted:
-        var embedDeleted = new EmbedText(
+        EmbedText embedDeleted = new EmbedText(
             new List<string>()
             {
                 "The user pressed the Delete key",
@@ -204,12 +203,13 @@ Here is an example of a simple navigation between a main menu and a settings men
 
 ```csharp
 // Creating the visuals and adding them to the window
-string[] options = new string[] { "Play", "Settings", "Quit" };
+
+string[] menuOptions = new string[] { "Play", "Settings", "Quit" };
 ScrollingMenu menu = new ScrollingMenu(
     "Please choose an option among those below.",
     0,
     Placement.TopCenter,
-    options
+    menuOptions
 );
 Window.AddElement(menu);
 
@@ -277,6 +277,7 @@ SettingsMenu:
 Window.ActivateElement(settingsMenu);
 
 var settingsResponse = settingsMenu.GetResponse();
+
 switch (settingsResponse?.Status)
 {
     case Output.Selected:
@@ -307,3 +308,9 @@ Work in progress...
 
 > [!NOTE]
 > If this part really raises your interest, feel free to notify me by [opening an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [contact me by email](mailto:morgan@kodelab.fr).
+
+## Conclusion
+
+In this section, you learned how to create a menu using the `ScrollingMenu` element, collect their output, manage the output and navigate in an application. You also learned how to manage the menu status and value and how to navigate in a simple way.
+
+Now let's jump to the final section!
