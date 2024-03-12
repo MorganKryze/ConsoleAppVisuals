@@ -125,6 +125,8 @@ public static class Window
     /// This method adds elements to the window.
     /// </summary>
     /// <param name="elements">The elements to be added.</param>
+    /// <exception cref="ArgumentException">Thrown when no elements are provided.</exception>
+    /// <exception cref="DuplicateElementException">Thrown when the element is already present in the window.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -143,7 +145,7 @@ public static class Window
         {
             if (s_elements.Contains(element))
             {
-                throw new DuplicateElementFoundException($"Element with ID {element.Id} is already present in the window");
+                throw new DuplicateElementException($"Element with ID {element.Id} is already present in the window");
             }
 
             element.Id = NextId;
