@@ -157,7 +157,7 @@ Window.Close();
 
 ## Security Policy
 
-Consider reading our [security policy](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/SECURITY.md) to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
+Consider reading our [SECURITY](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/SECURITY.md) policy to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
 
 ## Development team
 
@@ -166,7 +166,7 @@ Consider reading our [security policy](https://github.com/MorganKryze/ConsoleApp
 
 ## Acknowledgments
 
-Consider reading the [acknowledgments](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
+Consider reading the [ACKNOWlEDGMENTS](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
 
 It also lists the open source projects that have been used to build this library until now.
 

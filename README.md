@@ -176,7 +176,7 @@ The library is still in development and we are working on the following features
 
 ## Security Policy
 
-Consider reading our [security policy](.github/SECURITY) to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
+Consider reading our [SECURITY](.github/SECURITY) policy to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
 
 ## Development team
 
@@ -185,7 +185,7 @@ Consider reading our [security policy](.github/SECURITY) to know more about how 
 
 ## Acknowledgments
 
-Consider reading the [acknowledgments](.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
+Consider reading the [ACKNOWLEDGMENTS](.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
 
 It also lists the open source projects that have been used to build this library until now.
 
