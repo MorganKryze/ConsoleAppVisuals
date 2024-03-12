@@ -6,7 +6,7 @@ Thank you for your interest in contributing to ConsoleAppVisuals! We welcome con
 
 ### Reporting Bugs
 
-If you encounter a bug while using [Project Name], please ensure that the bug hasn't already been reported by checking the Issues section of our repository. If it hasn't been reported yet, please open a new issue and provide as much detail as possible, including:
+If you encounter a bug while using ConsoleAppVisuals, please ensure that the bug hasn't already been reported by checking the Issues section of our repository. If it hasn't been reported yet, please open a new issue and provide as much detail as possible, including:
 
 A clear and descriptive title
 Steps to reproduce the bug
