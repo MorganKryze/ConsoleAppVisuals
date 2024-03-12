@@ -192,4 +192,63 @@ public class UnitTestError
 
 
     #endregion
+
+    #region DuplicateElementFoundExceptionTests
+    [TestMethod]
+    public void DuplicateElementFoundException_DefaultConstructor_MessageIsNull()
+    {
+        // Arrange & Act
+        var exception = new DuplicateElementFoundException();
+
+        // Assert
+        Assert.IsNotNull(exception);
+    }
+
+    [TestMethod]
+    public void DuplicateElementFoundException_ConstructorWithMessage_MessageMatches()
+    {
+        // Arrange
+        var message = "Test message";
+
+        // Act
+        var exception = new DuplicateElementFoundException(message);
+
+        // Assert
+        Assert.AreEqual(message, exception.Message);
+    }
+
+    [TestMethod]
+    public void DuplicateElementFoundException_ConstructorWithMessageAndInnerException_MessageAndInnerExceptionMatch()
+    {
+        // Arrange
+        var message = "Test message";
+        var innerException = new Exception("Inner exception");
+
+        // Act
+        var exception = new DuplicateElementFoundException(message, innerException);
+
+        // Assert
+        Assert.AreEqual(message, exception.Message);
+        Assert.AreEqual(innerException, exception.InnerException);
+    }
+
+    [TestMethod]
+    public void DuplicateElementFoundException_GetDebuggerDisplay_ReturnsToString()
+    {
+        // Arrange
+        var message = "Test message";
+        var exception = new DuplicateElementFoundException(message);
+        var method = typeof(DuplicateElementFoundException).GetMethod(
+            "GetDebuggerDisplay",
+            BindingFlags.NonPublic | BindingFlags.Instance
+        );
+
+        // Act
+        var result = method?.Invoke(exception, null);
+
+        // Assert
+        Assert.AreEqual(exception.ToString(), result);
+    }
+
+    #endregion
 }
