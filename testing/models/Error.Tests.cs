@@ -251,4 +251,63 @@ public class UnitTestError
     }
 
     #endregion
+
+    #region LineOutOfConsoleExceptionTests
+    [TestMethod]
+    public void LineOutOfConsoleException_DefaultConstructor_MessageIsNull()
+    {
+        // Arrange & Act
+        var exception = new LineOutOfConsoleException();
+
+        // Assert
+        Assert.IsNotNull(exception);
+    }
+
+    [TestMethod]
+    public void LineOutOfConsoleException_ConstructorWithMessage_MessageMatches()
+    {
+        // Arrange
+        var message = "Test message";
+
+        // Act
+        var exception = new LineOutOfConsoleException(message);
+
+        // Assert
+        Assert.AreEqual(message, exception.Message);
+    }
+
+    [TestMethod]
+    public void LineOutOfConsoleException_ConstructorWithMessageAndInnerException_MessageAndInnerExceptionMatch()
+    {
+        // Arrange
+        var message = "Test message";
+        var innerException = new Exception("Inner exception");
+
+        // Act
+        var exception = new LineOutOfConsoleException(message, innerException);
+
+        // Assert
+        Assert.AreEqual(message, exception.Message);
+        Assert.AreEqual(innerException, exception.InnerException);
+    }
+
+
+    [TestMethod]
+    public void LineOutOfConsoleException_GetDebuggerDisplay_ReturnsToString()
+    {
+        // Arrange
+        var message = "Test message";
+        var exception = new LineOutOfConsoleException(message);
+        var method = typeof(LineOutOfConsoleException).GetMethod(
+            "GetDebuggerDisplay",
+            BindingFlags.NonPublic | BindingFlags.Instance
+        );
+
+        // Act
+        var result = method?.Invoke(exception, null);
+
+        // Assert
+        Assert.AreEqual(exception.ToString(), result);
+    }
+    #endregion
 }
