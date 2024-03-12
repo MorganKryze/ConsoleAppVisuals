@@ -28,7 +28,7 @@ public static class Window
     /// This value should not be changed.
     /// Each time the user adds an element to the window, it will try to toggle the visibility of the element.
     /// </remarks>
-    public const bool DEFAULT_VISIBILITY = false;
+    public const bool DEFAULT_ELEMENT_VISIBILITY = false;
     #endregion
 
     #region Properties: NextId, NumberOfElements, Elements
@@ -145,7 +145,9 @@ public static class Window
         {
             if (s_elements.Contains(element))
             {
-                throw new DuplicateElementException($"Element with ID {element.Id} is already present in the window");
+                throw new DuplicateElementException(
+                    $"Element with ID {element.Id} is already present in the window"
+                );
             }
 
             element.Id = NextId;
@@ -584,7 +586,7 @@ public static class Window
     /// </summary>
     /// <param name="line">The line to be checked.</param>
     /// <returns>The line if it is valid.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the line is out of range.</exception>
+    /// <exception cref="LineOutOfConsoleException">Thrown when the line is out of range.</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -602,8 +604,7 @@ public static class Window
         }
         if (line < minLine || line > maxLine)
         {
-            throw new ArgumentOutOfRangeException(
-                nameof(line),
+            throw new LineOutOfConsoleException(
                 $"Invalid line. The line must be between 0 and {maxLine}."
             );
         }

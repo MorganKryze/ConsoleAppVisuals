@@ -27,7 +27,7 @@ public abstract class Element
     /// The visibility of the element.
     /// </summary>
     /// <remarks>This property is sealed. The visibility of an element is managed by the <see cref="ToggleVisibility"/> method.</remarks>
-    public bool Visibility { get; private set; } = Window.DEFAULT_VISIBILITY;
+    public bool Visibility { get; private set; } = Window.DEFAULT_ELEMENT_VISIBILITY;
 
     /// <summary>
     /// The placement of the element.
