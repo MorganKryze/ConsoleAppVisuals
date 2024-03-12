@@ -50,7 +50,7 @@ If you are using Visual Studio, launch the app and follow these steps in the vid
 
 > [!Video https://www.youtube.com/embed/1TqKF3ZJodk]
 
-Then, install the `ConsoleAppVisuals` package by following these steps in the video:
+Then, install the `ConsoleAppVisuals` package by following these steps in the video and searching for `ConsoleAppVisuals` instead of `Newtonsoft.Json`:
 
 > [!Video https://www.youtube.com/embed/IprbRazS3b8]
 
@@ -112,13 +112,13 @@ namespace MyApp
 > [!TIP]
 > Take the larger size of the console to have a better view of the result. An error may occur if the console is too small when trying to render elements.
 
-Let's start by removing `Console.WriteLine()` instruction and adding the following line to your `Main` method to set up the console:
+Let's start by removing `Console.WriteLine()` instruction and adding the following line to your `Main` method to set up the console (clear and set the cursor invisible):
 
 ```csharp
 Window.Open();
 ```
 
-Now we can use all the elements from the package. Our first element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
+Now we can use all the elements from the package. Our first *static* element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
 
 ```csharp
 Title title = new Title("My first app");
@@ -145,7 +145,7 @@ Window.Render(title);
 
 ### `Header`, `Footer` and `FakeLoadingBar`
 
-You may remove the previous code. Now, let's create a minimal app with a `Title`, a `Header`, a `Footer` and finally a `Prompt` element. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.html)
+You may remove the previous code. Now, let's create a minimal app with a `Title`, a `Header`,  `Footer` and finally a `FakeLoadingBar` element. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.html)
 
 ```csharp
 Window.Open();
@@ -161,33 +161,31 @@ Window.AddElement(footer);
 
 FakeLoadingBar loadingBar = new FakeLoadingBar();
 Window.AddElement(loadingBar);
-```
 
-Instead of rendering each element separately, we can render all of them at once:
-
-```csharp
 Window.Render();
 ```
+
+Instead of rendering each element separately, we rendered all of them at once using the `Window.Render()` method.
 
 ![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
 ### `Prompt`
 
-Now let's add a `Prompt` element to your previous code. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Prompt.html)
+Now let's add a `Prompt` *interactive* element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Prompt.html)
 
 ```csharp
 Prompt prompt = new Prompt("What's your name?");
 Window.AddElement(prompt);
 
-Window.Render();
+Window.Render(prompt);
 ```
 
-As you may have noticed, we have the same output as earlier. No prompt was displayed.
+As you may have noticed, we have the same output as earlier. No prompt was rendered on the console.
 
 > [!IMPORTANT]
 > Static elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
 
-To do so, we can finally add the following line of code:
+To do so, we can finally add the following line of code after the `Window.Render()`:
 
 ```csharp
 Window.ActivateElement(prompt);
@@ -196,7 +194,7 @@ Window.ActivateElement(prompt);
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
 > [!TIP]
-> The method `Window.ActivateElement()` will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other elements.
+> The method `Window.ActivateElement()` will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other *static* elements.
 
 ### Get response and `EmbedText` element
 
@@ -206,9 +204,12 @@ Now that we have well displayed the prompt, we can get the user's response by ad
 var response = prompt.GetResponse();
 ```
 
-This will retrieve a response object that has the following properties:
+> [!TIP]
+> Here we use `var` to let the compiler infer the type of the variable. It is equivalent to `InteractionEventArgs<string> response = prompt.GetResponse();`. But in some case, it can be `InteractionEventArgs<int>`, `InteractionEventArgs<bool>`, etc. depending on the element. Using `var` is a good practice to keep the code clean and readable.
 
-- `Status`: is how the interaction ended. It can be `Selected` (pressed enter), `Deleted`(pressed delete) or `Escaped` (pressed escape). It is accessible using: `response?.Status`.
+The previous line will retrieve a response object that has the following properties:
+
+- `Status`: is how the interaction ended. It can be `Selected` (pressed enter), `Deleted` (pressed delete) or `Escaped` (pressed escape). It is accessible using: `response?.Status`.
 - `Value`: is the user's response data. Its type depends on the Element you are using. In this case, the `Prompt` element returns a `string`. It is accessible using: `response?.Value`.
 
 > [!NOTE]
@@ -218,7 +219,7 @@ This will retrieve a response object that has the following properties:
 > - If `response` is `null`, `response?.Status` will return `null`.
 > - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
-Finally, let's add a `EmbedText` element to display the user's response on the console. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
+Finally, let's add a `EmbedText` *interactive* element to display the user's response on the console. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
 
 ```csharp
 EmbedText text = new EmbedText(
