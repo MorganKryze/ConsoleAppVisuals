@@ -50,9 +50,6 @@ To disable element rendering, you have two options:
 - Deactivate the element
 - Remove the element
 
-> [!TIP]
-> To witness the effects of the functions we will use, we created several inspector elements.
-
 ### Deactivate the element
 
 Deactivating an element can be useful for it to be used later. To do so, let's create a `Title` element and deactivate it. Nothing will be rendered on the screen.
@@ -66,10 +63,10 @@ Window.DeactivateElement(title);
 Window.Render();
 ```
 
-Let's see how to perceive the effect of deactivating an element. Update your code to the following:
+Let's see how to perceive the effect of deactivating an element. Update your code to add a `ElementsDashboard` _static_ element and deactivate the title. The dashboard will be rendered, but not the title:
 
 > [!NOTE]
-> The method `Window.Freeze()` is used to stop the execution to see the window content without exiting the application when the window only contains static elements.
+> The method `Window.Freeze()` is used to stop the execution by waiting the user to press a key (Enter by default) to see the window content without exiting the application when the window only contains static elements.
 
 ```csharp
 Title title = new Title("New elements");
@@ -141,13 +138,13 @@ List<string> student2 = new List<string>() { "02", "Paul", "Mathematics", "86" }
 List<string> student3 = new List<string>() { "03", "Maxime", "Physics", "92" };
 List<string> student4 = new List<string>() { "04", "Charles", "Computer Science", "100" };
 
-List<List<string>> studentsData = 
-    new List<List<string>>() 
-    { 
-        student1, 
-        student2, 
-        student3, 
-        student4 
+List<List<string>> studentsData =
+    new List<List<string>>()
+    {
+        student1,
+        student2,
+        student3,
+        student4
     };
 
 TableView<string> students =
@@ -212,6 +209,7 @@ Now let's collect the user interaction response by adding the following code:
 
 ```csharp
 var response = players.GetResponse();
+
 EmbedText playersEmbedResponse =
     new EmbedText(
         new List<string>()
@@ -229,6 +227,9 @@ Window.ActivateElement(playersEmbedResponse);
 
 ![DashBoard](../assets/vid/gif/data_viz/embed.gif)
 
+> [!NOTE]
+> Here the `??` operator is used to provide a default value if the response is `null`. In this case, if the response is `null`, the default value is `0`.
+
 ## The `Matrix` element
 
 The `Matrix` element is used to display data in a matrix format. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Matrix-1.html)
@@ -240,11 +241,11 @@ List<int?> thirdRow = new List<int?>() { 7, 8, null, 3, 4, 5 };
 List<int?> fourthRow = new List<int?>() { null, 2, 3, 4, 5, 6 };
 
 List<List<int?>> data =
-    new List<List<int?>>() { 
-    firstRow, 
-    secondRow, 
-    thirdRow, 
-    fourthRow 
+    new List<List<int?>>() {
+    firstRow,
+    secondRow,
+    thirdRow,
+    fourthRow
 };
 
 Matrix<int?> matrix = new Matrix<int?>(data);
@@ -257,5 +258,9 @@ Window.Freeze();
 
 ![Matrix](../assets/img/jpg/data_viz/matrix.jpg)
 
+## Conclusion
+
 > [!TIP]
 > To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
+
+In this tutorial, you learned how to remove elements from the window and how to use the `TableView`, `TableSelector` and `Matrix` elements. You are now ready to start the menus management tutorial.
