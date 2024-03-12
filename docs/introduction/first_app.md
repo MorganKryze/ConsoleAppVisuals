@@ -247,7 +247,7 @@ Window.Close();
 
 ![Prompt](../assets/vid/gif/first_app/close.gif)
 
-## Recap
+## Conclusion
 
 > [!TIP]
 > To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
