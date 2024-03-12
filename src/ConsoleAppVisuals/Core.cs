@@ -508,6 +508,34 @@ public static class Core
         }
     }
 
+    /// <summary>
+    /// This method is used to clear a paragraph in the console.
+    /// </summary>
+    /// <param name="placement">The placement of the paragraph.</param>
+    /// <param name="line">The height of the paragraph.</param>
+    /// <param name="text">The lines of the paragraph.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    [Visual]
+    public static void ClearMultiplePositionedLines(
+        Placement placement,
+        int line,
+        params string[] text
+    )
+    {
+        foreach (string str in text)
+        {
+            WritePositionedString(str, placement.ToTextAlignment(), false, line++);
+            if (line >= Console.WindowHeight - 1)
+                break;
+        }
+    }
+
     #endregion
 
     #region Extensions

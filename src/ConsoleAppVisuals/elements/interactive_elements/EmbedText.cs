@@ -45,7 +45,7 @@ public class EmbedText : InteractiveElement<string>
     /// <summary>
     /// The width of the Embed text.
     /// </summary>
-    public override int Width => _textToDisplay!.Max((string s) => s.Length) - 8;
+    public override int Width => _textToDisplay!.Max((string s) => s.Length);
 
     /// <summary>
     /// The text of the Embed text.
