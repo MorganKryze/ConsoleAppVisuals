@@ -5,7 +5,7 @@
 We would like to express our gratitude to the following individuals and organizations for their contributions to ConsoleAppVisuals:
 
 - **[Robin L'hyver](https://github.com/robinmoon2)**: Created tests, contributed to the development of the library, and provided valuable feedbacks.
-- **[l-eg166](https://github.com/l-eg116)**: Provided valuable feedbacks with a lot of enthusiasm.
+- **[l-eg116](https://github.com/l-eg116)**: Provided valuable feedbacks with a lot of enthusiasm.
 - **[athomsAF](https://github.com/athomsAF)**: Provided valuable feedbacks and open-sourced suggestions.
 - **[sheesh3218](https://github.com/sheesh3218)**: Provided valuable font-backs.
 - **[CHAOTANK](https://github.com/CHAOTANK)**: Provided valuable and detailed feedbacks thorough all the docs.
