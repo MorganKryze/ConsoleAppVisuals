@@ -446,4 +446,39 @@ public class UnitTestWindow
         Assert.AreNotEqual(initialHeaderId, header.Id);
     }
     #endregion
+
+    #region AddElement Duplicate
+    [TestMethod]
+    [ExpectedException(typeof(DuplicateElementFoundException))]
+    public void AddElement_Duplicate()
+    {
+        // Arrange
+        var title = new Title("Title");
+
+        // Act
+        Window.AddElement(title, title);
+    }
+    #endregion
+
+    #region AddElement Empty
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void AddElement_Null()
+    {
+        // Act
+        Window.AddElement();
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void AddElement_Empty()
+    {
+        // Arrange
+        var elements = Array.Empty<Element>();
+
+        // Act
+        Window.AddElement(elements);
+    }
+    #endregion
 }

@@ -134,8 +134,18 @@ public static class Window
     /// </remarks>
     public static void AddElement(params Element[] elements)
     {
+        if (elements == null || elements.Length == 0)
+        {
+            throw new ArgumentException("No elements provided");
+        }
+
         foreach (var element in elements)
         {
+            if (s_elements.Contains(element))
+            {
+                throw new DuplicateElementFoundException($"Element with ID {element.Id} is already present in the window");
+            }
+
             element.Id = NextId;
             s_elements.Add(element);
             if (!element.IsInteractive && AllowVisibilityToggle(element.Id))
@@ -750,7 +760,7 @@ public static class Window
     [Visual]
     public static void Open()
     {
-        Console.Clear();
+        Clear();
         Console.CursorVisible = false;
     }
 
