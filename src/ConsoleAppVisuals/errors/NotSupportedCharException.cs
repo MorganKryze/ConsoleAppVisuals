@@ -19,19 +19,19 @@ namespace ConsoleAppVisuals.Errors;
 public class NotSupportedCharException : Exception, ISerializable
 {
     /// <summary>
-    /// Default constructor.
+    /// Exception thrown when a character is not supported by the TextStyler class.
     /// </summary>
     public NotSupportedCharException() { }
 
     /// <summary>
-    /// Constructor with message.
+    /// Exception thrown when a character is not supported by the TextStyler class.
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
     public NotSupportedCharException(string message)
         : base(message) { }
 
     /// <summary>
-    /// Constructor with message and inner exception.
+    /// Exception thrown when a character is not supported by the TextStyler class.
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
     /// <param name="inner">Inner exception.</param>

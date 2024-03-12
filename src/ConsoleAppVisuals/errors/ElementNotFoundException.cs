@@ -19,19 +19,19 @@ namespace ConsoleAppVisuals.Errors;
 public class ElementNotFoundException : Exception, ISerializable
 {
     /// <summary>
-    /// Default constructor.
+    /// Exception thrown when an element is not found in a collection.
     /// </summary>
     public ElementNotFoundException() { }
 
     /// <summary>
-    /// Constructor with message.
+    /// Exception thrown when an element is not found in a collection.
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
     public ElementNotFoundException(string message)
         : base(message) { }
 
     /// <summary>
-    /// Constructor with message and inner exception.
+    /// Exception thrown when an element is not found in a collection.
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
     /// <param name="inner">Inner exception.</param>
