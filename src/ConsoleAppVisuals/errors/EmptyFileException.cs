@@ -19,19 +19,19 @@ namespace ConsoleAppVisuals.Errors;
 public class EmptyFileException : Exception, ISerializable
 {
     /// <summary>
-    /// Default constructor.
+    /// Exception thrown when no data is found in a file.
     /// </summary>
     public EmptyFileException() { }
 
     /// <summary>
-    /// Constructor with message.
+    /// Exception thrown when no data is found in a file.
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
     public EmptyFileException(string message)
         : base(message) { }
 
     /// <summary>
-    /// Constructor with message and inner exception.
+    /// Exception thrown when no data is found in a file.
     /// </summary>
     /// <param name="message">Message to be displayed.</param>
     /// <param name="inner">Inner exception.</param>
