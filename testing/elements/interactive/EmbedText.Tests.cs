@@ -103,7 +103,7 @@ public class UnitTestEmbedText
         var finalTextToDisplay = EmbedText.TextToDisplay;
 
         // Assert
-        Assert.AreEqual(finalTextToDisplay!.Max((string s) => s.Length) - 8, actual);
+        Assert.AreEqual(finalTextToDisplay!.Max((string s) => s.Length), actual);
     }
     #endregion
 

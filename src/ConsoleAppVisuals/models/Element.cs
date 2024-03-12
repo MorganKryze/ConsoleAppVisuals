@@ -194,6 +194,7 @@ public abstract class Element
     /// <summary>
     /// This method is used to draw the space taken by the element on the console.
     /// </summary>
+    /// <param name="ignoreVisibility">Whether to ignore the visibility of the element or not.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -202,9 +203,9 @@ public abstract class Element
     /// </list>
     /// </remarks>
     [Visual]
-    public void RenderElementSpace()
+    public void RenderElementSpace(bool ignoreVisibility = false)
     {
-        if (Visibility)
+        if (Visibility || ignoreVisibility)
         {
             Core.SaveColorPanel();
             Core.SetForegroundColor(Core.GetRandomColor());
@@ -241,7 +242,7 @@ public abstract class Element
     [Visual]
     public void Clear()
     {
-        Core.WriteMultiplePositionedLines(false, TextAlignment, false, Line, GetRenderSpace());
+        Core.ClearMultiplePositionedLines(Placement, Line, GetRenderSpace());
     }
     #endregion
 }

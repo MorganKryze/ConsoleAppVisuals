@@ -685,6 +685,7 @@ public static class Window
     /// <summary>
     /// This method draws all the space of the visible elements of the window on the console.
     /// </summary>
+    /// <param name="ignoreVisibility">If true, the space of the hidden elements will be drawn.</param>
     /// <returns>True if the space of the elements is successfully drawn, false otherwise.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -694,11 +695,11 @@ public static class Window
     /// </list>
     /// </remarks>
     [Visual]
-    public static bool RenderElementsSpace()
+    public static bool RenderElementsSpace(bool ignoreVisibility = false)
     {
         foreach (var element in s_elements)
         {
-            element.RenderElementSpace();
+            element.RenderElementSpace(ignoreVisibility);
         }
         return true;
     }
