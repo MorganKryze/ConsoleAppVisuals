@@ -198,7 +198,7 @@ public class UnitTestError
     public void DuplicateElementFoundException_DefaultConstructor_MessageIsNull()
     {
         // Arrange & Act
-        var exception = new DuplicateElementFoundException();
+        var exception = new DuplicateElementException();
 
         // Assert
         Assert.IsNotNull(exception);
@@ -211,7 +211,7 @@ public class UnitTestError
         var message = "Test message";
 
         // Act
-        var exception = new DuplicateElementFoundException(message);
+        var exception = new DuplicateElementException(message);
 
         // Assert
         Assert.AreEqual(message, exception.Message);
@@ -225,7 +225,7 @@ public class UnitTestError
         var innerException = new Exception("Inner exception");
 
         // Act
-        var exception = new DuplicateElementFoundException(message, innerException);
+        var exception = new DuplicateElementException(message, innerException);
 
         // Assert
         Assert.AreEqual(message, exception.Message);
@@ -237,8 +237,8 @@ public class UnitTestError
     {
         // Arrange
         var message = "Test message";
-        var exception = new DuplicateElementFoundException(message);
-        var method = typeof(DuplicateElementFoundException).GetMethod(
+        var exception = new DuplicateElementException(message);
+        var method = typeof(DuplicateElementException).GetMethod(
             "GetDebuggerDisplay",
             BindingFlags.NonPublic | BindingFlags.Instance
         );
