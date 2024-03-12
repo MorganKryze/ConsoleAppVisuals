@@ -399,7 +399,7 @@ public class UnitTestWindow
         if (line == null)
             Assert.IsNull(Window.CheckLine(line));
         else if (line < 0)
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => Window.CheckLine(line));
+            Assert.ThrowsException<LineOutOfConsoleException>(() => Window.CheckLine(line));
         else
             Assert.AreEqual(line, Window.CheckLine(line));
     }
