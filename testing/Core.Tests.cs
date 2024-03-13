@@ -7,21 +7,6 @@ namespace testing;
 [TestClass]
 public class UnitTestCore
 {
-    #region SetSelector
-    [TestMethod]
-    public void SetSelector_NewChar()
-    {
-        // Arrange
-        Core.SetSelector('>', '<');
-
-        // Act
-        var selector = Core.GetSelector;
-
-        // Assert
-        Assert.AreEqual('>', selector.Item1);
-        Assert.AreEqual('<', selector.Item2);
-    }
-    #endregion
 
     #region SetForegroundColor
     [TestMethod]

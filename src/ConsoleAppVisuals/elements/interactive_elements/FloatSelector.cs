@@ -24,6 +24,25 @@ public class FloatSelector : InteractiveElement<float>
     private float _step;
     private bool _roundedCorners;
     private Placement _placement;
+    private (char, char) _selector = (DEFAULT_SELECTOR_LEFT, DEFAULT_SELECTOR_RIGHT);
+    #endregion
+
+    #region Constants
+    /// <summary>
+    /// The default left selector of the number selector.
+    /// </summary>
+    /// <remarks>
+    /// Can be updated with the <see cref="UpdateLeftSelector(char)"/> method.
+    /// </remarks>
+    public const char DEFAULT_SELECTOR_LEFT = '>';
+
+    /// <summary>
+    /// The default right selector of the number selector.
+    /// </summary>
+    /// <remarks>
+    /// Can be updated with the <see cref="UpdateRightSelector(char)"/> method.
+    /// </remarks>
+    public const char DEFAULT_SELECTOR_RIGHT = '<';
     #endregion
 
     #region Properties
@@ -43,7 +62,7 @@ public class FloatSelector : InteractiveElement<float>
     public override int Width =>
         Math.Max(
             _question.Length,
-            $" {Core.GetSelector.Item1} {BuildNumber((float)Math.Round(_maximumValue, 1))} {Core.GetSelector.Item2} ".Length
+            $" {LeftSelector} {BuildNumber((float)Math.Round(_maximumValue, 1))} {RightSelector} ".Length
         );
 
     /// <summary>
@@ -75,6 +94,16 @@ public class FloatSelector : InteractiveElement<float>
     /// Whether the corners of the selector are rounded.
     /// </summary>
     public bool RoundedCorners => _roundedCorners;
+
+    /// <summary>
+    /// The left selector of the selector.
+    /// </summary>
+    public char LeftSelector => _selector.Item1;
+
+    /// <summary>
+    /// The right selector of the selector.
+    /// </summary>
+    public char RightSelector => _selector.Item2;
     #endregion
 
     #region Constructor
@@ -267,6 +296,38 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
+    /// This method is used to update the selector of the selector.
+    /// </summary>
+    /// <param name="leftSelector">The new left selector of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateLeftSelector(char leftSelector)
+    {
+        _selector.Item1 = leftSelector;
+    }
+
+    /// <summary>
+    /// This method is used to update the selector of the selector.
+    /// </summary>
+    /// <param name="rightSelector">The new right selector of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateRightSelector(char rightSelector)
+    {
+        _selector.Item2 = rightSelector;
+    }
+
+    /// <summary>
     /// This method is used to draw the selector on the console.
     /// </summary>
     [Visual]
@@ -328,7 +389,7 @@ public class FloatSelector : InteractiveElement<float>
             lineSelector - 1
         );
         Core.WritePositionedString(
-            $" {Core.GetSelector.Item1} {BuildNumber((float)Math.Round(currentNumber, 1))} {Core.GetSelector.Item2} ",
+            $" {LeftSelector} {BuildNumber((float)Math.Round(currentNumber, 1))} {RightSelector} ",
             TextAlignment.Center,
             true,
             lineSelector

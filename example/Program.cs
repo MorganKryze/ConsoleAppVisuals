@@ -204,7 +204,7 @@ namespace example
                                 {
                                     "You just wrote " + responsePrompt?.Value + "!"
                                 },
-                                $"Next {Core.GetSelector.Item1}",
+                                $"Next ▶",
                                 TextAlignment.Center
                             );
                             Window.AddElement(embedResponsePrompt);
@@ -540,7 +540,7 @@ namespace example
                         {
                             "You have selected to quit the app. Press [Enter] to continue..."
                         },
-                        $"Next {Core.GetSelector.Item1}",
+                        $"Next ▶",
                         TextAlignment.Left
                     );
                     Window.AddElement(exitText);

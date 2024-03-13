@@ -305,4 +305,40 @@ public class UnitTestIntSelector
         Assert.AreEqual(roundedCorners, intSelector.RoundedCorners);
     }
     #endregion
+
+    #region UpdateLeftSelector
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    [DataRow('X')]
+    [DataRow('Y')]
+    public void UpdateLeftSelector(char leftSelector)
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+
+        // Act
+        intSelector.UpdateLeftSelector(leftSelector);
+
+        // Assert
+        Assert.AreEqual(leftSelector, intSelector.LeftSelector);
+    }
+    #endregion
+
+    #region UpdateRightSelector
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    [DataRow('X')]
+    [DataRow('Y')]
+    public void UpdateRightSelector(char rightSelector)
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+
+        // Act
+        intSelector.UpdateRightSelector(rightSelector);
+
+        // Assert
+        Assert.AreEqual(rightSelector, intSelector.RightSelector);
+    }
+    #endregion
 }
