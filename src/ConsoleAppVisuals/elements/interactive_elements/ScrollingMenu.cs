@@ -21,6 +21,17 @@ public class ScrollingMenu : InteractiveElement<int>
     private string[] _choices;
     private int _defaultIndex;
     private Placement _placement;
+    private char _selector = DEFAULT_CURSOR;
+    #endregion
+
+    #region Constants
+    /// <summary>
+    /// The default cursor of the menu.
+    /// </summary>
+    /// <remarks>
+    /// Can be updated with the <see cref="UpdateSelector(char)"/> method.
+    /// </remarks>
+    public const char DEFAULT_CURSOR = '>';
     #endregion
 
     #region Properties
@@ -54,6 +65,11 @@ public class ScrollingMenu : InteractiveElement<int>
     /// The index of the default choice(initially 0).
     /// </summary>
     public int DefaultIndex => _defaultIndex;
+
+    /// <summary>
+    /// The selector char of the menu.
+    /// </summary>
+    public char Selector => _selector;
 
     #endregion
 
@@ -152,6 +168,22 @@ public class ScrollingMenu : InteractiveElement<int>
     }
 
     /// <summary>
+    /// This method is used to update the selector of the menu.
+    /// </summary>
+    /// <param name="selector">The new selector of the menu.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateSelector(char selector)
+    {
+        _selector = selector;
+    }
+
+    /// <summary>
     /// This method is used to draw the menu on the console.
     /// </summary>
     [Visual]
@@ -213,7 +245,7 @@ public class ScrollingMenu : InteractiveElement<int>
     }
 
     [Visual]
-    private static void DisplayChoices(
+    private void DisplayChoices(
         int defaultIndex,
         Placement placement,
         string[] choices,
@@ -224,10 +256,7 @@ public class ScrollingMenu : InteractiveElement<int>
         string[] array = new string[choices.Length];
         for (int i = 0; i < choices.Length; i++)
         {
-            array[i] =
-                (i == defaultIndex)
-                    ? $" {Core.GetSelector.Item1} {choices[i]}  "
-                    : $"   {choices[i]}  ";
+            array[i] = (i == defaultIndex) ? $" {Selector} {choices[i]}  " : $"   {choices[i]}  ";
             Core.WritePositionedString(
                 array[i],
                 placement.ToTextAlignment(),

@@ -380,4 +380,50 @@ public class UnitTestFloatSelector
         Assert.AreEqual(roundedCorners, floatSelector.RoundedCorners);
     }
     #endregion
+
+    #region UpdateLeftSelector
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    public void UpdateLeftSelector()
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateLeftSelector('A');
+
+        // Assert
+        Assert.AreEqual('A', floatSelector.LeftSelector);
+    }
+    #endregion
+
+    #region UpdateRightSelector
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    public void UpdateRightSelector()
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateRightSelector('B');
+
+        // Assert
+        Assert.AreEqual('B', floatSelector.RightSelector);
+    }
+    #endregion
 }
