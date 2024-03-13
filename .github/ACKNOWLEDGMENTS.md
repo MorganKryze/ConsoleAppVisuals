@@ -58,6 +58,14 @@ We found a lot of inspiration in this project for the original version of the li
 No license found.
 ```
 
+### @eivindml/template-release-note
+
+We used the template of the release note from this project. Original source of inspiration [here](https://uxdesign.cc/design-better-release-notes-3e8c8c785231#.k5feqldab).
+
+```plaintext
+No license found.
+```
+
 ---
 
 Note: This acknowledgments file is regularly updated to recognize new contributions and support.
