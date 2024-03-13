@@ -29,6 +29,11 @@ public static class Window
     /// Each time the user adds an element to the window, it will try to toggle the visibility of the element.
     /// </remarks>
     public const bool DEFAULT_ELEMENT_VISIBILITY = false;
+
+    /// <summary>
+    /// Defines the interval of milliseconds between different read key of the console (used in the <see cref="Freeze"/> method).
+    /// </summary>
+    public const int INTERVAL_BETWEEN_READS = 10;
     #endregion
 
     #region Properties: NextId, NumberOfElements, Elements
@@ -627,7 +632,7 @@ public static class Window
     {
         while (Console.ReadKey(intercept: true).Key != key)
         {
-            Thread.Sleep(10);
+            Thread.Sleep(INTERVAL_BETWEEN_READS);
         }
     }
 
@@ -728,6 +733,7 @@ public static class Window
         int step = 1
     )
     {
+        // TODO: Work on clear patterns
         int stepMax = Console.WindowHeight == 0 ? 1 : Console.WindowHeight;
         startLine = CheckLine(startLine) ?? 0;
         length = CheckLine(startLine + length) ?? Console.WindowHeight;
