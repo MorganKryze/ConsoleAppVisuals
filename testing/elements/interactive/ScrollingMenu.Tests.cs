@@ -297,4 +297,27 @@ public class UnitTestScrollingMenu
         Assert.AreEqual(placement, scrollingMenu.Placement);
     }
     #endregion
+
+    #region UpdateSelector
+    [TestMethod]
+    [TestCategory("ScrollingMenu")]
+    public void UpdateSelector()
+    {
+        // Arrange
+        var scrollingMenu = new ScrollingMenu(
+            "Question",
+            1,
+            Placement.TopCenter,
+            "Choice1",
+            "Choice2",
+            "Choice3"
+        );
+
+        // Act
+        scrollingMenu.UpdateSelector('X');
+
+        // Assert
+        Assert.AreEqual('X', scrollingMenu.Selector);
+    }
+    #endregion
 }

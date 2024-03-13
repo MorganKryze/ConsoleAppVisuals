@@ -17,8 +17,6 @@ public static class Core
     #endregion
 
     #region Fields
-    private static (char, char) s_selector = ('▶', '◀');
-
     [Visual]
     private static int s_previousWindowWidth = Console.WindowWidth;
 
@@ -44,11 +42,6 @@ public static class Core
     #endregion
 
     #region Properties
-    /// <summary>
-    /// This property is used to get the selector of the console menus.
-    /// </summary>
-    public static (char, char) GetSelector => s_selector;
-
     /// <summary>
     /// This property is used to get the colors of the console.
     /// </summary>
@@ -84,23 +77,6 @@ public static class Core
             SetConsoleDimensions();
         }
         return isUpdated;
-    }
-
-    /// <summary>
-    /// This method is used to set the selector of the console menus.
-    /// </summary>
-    /// <param name="onward">The new selector facing forward.</param>
-    /// <param name="backward">The new selector facing backward.</param>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public static void SetSelector(char onward, char backward)
-    {
-        s_selector = (onward, backward);
     }
 
     /// <summary>
