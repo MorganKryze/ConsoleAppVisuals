@@ -5,7 +5,7 @@ Extra short description of the PR
 ## Features ⭐
 
 - NEW: Feature description
-- IMPORVED: Feature description
+- IMPROVED: Feature description
 
 ## Bug Fixes 🐛
 
