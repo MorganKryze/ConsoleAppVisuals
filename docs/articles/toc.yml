@@ -4,6 +4,7 @@
 - name: Library use
 - href: create_element.md
 - href: create_font.md
+- href: debugging.md
 
 - name: Additional articles
 - href: create_docs.md

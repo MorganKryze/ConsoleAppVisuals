@@ -9,6 +9,6 @@ On the menu, find:
 - [Create your project documentation](/ConsoleAppVisuals/articles/create_docs.html)
 - [Publish a library](/ConsoleAppVisuals/articles/publish_library.html)
 
-## Questions & Improvement requests
+---
 
-Do not hesitate to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) if you have any questions or improvement requests. We will be happy to help you.
+Have a question, give a feedback or found a bug? Feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [start a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on the GitHub repository.

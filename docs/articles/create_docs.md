@@ -417,3 +417,7 @@ Now, on every push on the main branch, the documentation will be generated and d
 - [Useful but not official documentation](https://tehgm.net/blog/docfx-github-actions/)
 - [C# documentation comments](https://docs.microsoft.com/dotnet/csharp/programming-guide/xmldoc/xml-documentation-comments)
 - [DocFX markdown support](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html)
+
+---
+
+Have a question, give a feedback or found a bug? Feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [start a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on the GitHub repository.

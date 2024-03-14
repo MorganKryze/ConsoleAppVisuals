@@ -65,5 +65,10 @@ Window.Render(exampleTitle);
 Now that you have the basic concepts, let's dive into this guided path to know how to use the library:
 
 - [Create a simple console application](/ConsoleAppVisuals/introduction/first_app.html)
+- [Explore element operations](/ConsoleAppVisuals/introduction/elements_operations.html)
 - [Discover data visualization](/ConsoleAppVisuals/introduction/data_viz.html)
 - [Manage multiple menus](/ConsoleAppVisuals/introduction/menus_managment.html)
+
+---
+
+Have a question, give a feedback or found a bug? Feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [start a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on the GitHub repository.
