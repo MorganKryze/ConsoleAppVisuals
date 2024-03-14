@@ -39,14 +39,15 @@ We use the [Semantic Versioning](https://semver.org/) convention for versioning.
 - Major. Breaking changes
 - Minor: New features, but backwards compatible
 - Patch: Backwards compatible bug fixes only
-- -Suffix (optional): a hyphen followed by a string denoting a pre-release version (following the Semantic Versioning
-  or SemVer« convention).
+- -Suffix (optional): a hyphen followed by a string denoting a pre-release version (following the Semantic Versioning or SemVer« convention)
 
 For the pre-release suffix, we use the following conventions:
 
 - -alpha: Alpha release, typically used for work-in-progress and experimentation (No tests or docs at this point)
 - -beta: Beta release, typically one that is feature complete for the next planned release, but may contain known bugs (No docs at this point)
 - -rc: Release candidate, typically a release that's potentially final (stable) unless significant bugs emerge (contains tests and docs)
+
+Example: v1.0.0-alpha < v1.0.0-alpha.1 < v1.0.0-beta < v1.0.0-beta.2 < v1.0.0-beta.11 < v1.0.0-rc.1 < v1.0.0
 
 ### Testing Conventions
 
@@ -71,8 +72,9 @@ For commit names, we use the github hooks:
 - Update of project's CI/CD: `:ci:` • 🤖
 - Update of documentation: `:docs:` • 📖
 - Bug fix: `:fix:` • 🚑
-- Improve performances: `:perf:` • ⚡
 - Aesthetic improvement: `:style:` • 💄
+- Update project's dependencies: `:build:` • 📦
+- Add or remove a file: `:file:` • 📄
 
 We also use the following conventions:
 
