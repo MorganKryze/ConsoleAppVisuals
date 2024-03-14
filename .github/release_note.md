@@ -2,25 +2,25 @@
 
 ## TL; DR 🎯
 
-• An extra short summary of these notes goes here.
+An extra short summary of these notes goes here.
 
 ## NEW ✨
 
-• This is where you layout any new features.
-• Explain where these features are within the library.
-• How do users find these new features?
-• Which users will this benefits, or how exactly will this benefits them?
+- This is where you layout any new features.
+- Explain where these features are within the library.
+- How do users find these new features?
+- Which users will this benefits, or how exactly will this benefits them?
 
 ## IMPROVED 📈
 
-• If improving an existing feature, rather than something that’s brand new, use the "Improvements" title instead of "New".
-• If you've improved something as a result of user feedback, consider a sentence like, "you asked, we listened".
+- If improving an existing feature, rather than something that’s brand new, use the "Improvements" title instead of "New".
+- If you've improved something as a result of user feedback, consider a sentence like, "you asked, we listened".
 
 ## FIXED 🐛
 
-• List out any major bugs that might have affected many users.
-• If you've only addressed minor fixes, or nothing specific, use something like:
-• E.g. "Minor Bug fixes"
+- List out any major bugs that might have affected many users.
+- If you've only addressed minor fixes, or nothing specific, use something like:
+- E.g. "Minor Bug fixes"
 
 ## FEEDBACK 📃
 
