@@ -86,12 +86,11 @@ Here is a template for a `.csproj` file made for publishing a package:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <PropertyGroup>
+    <!-- Project Info-->
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <!-- MANDATORY: add your metadata comments to your package -->
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -100,8 +99,6 @@ Here is a template for a `.csproj` file made for publishing a package:
     <PackageId>MyFirstApp1234</PackageId>
     <!-- Change this by the name of the publisher on nuget.org -->
     <Authors>YourNugetAccountName</Authors>
-    <!-- Change this by the version of your package -->
-    <Version>0.0.0</Version>
     <!-- Change this by the description of your package -->
     <Description>Descriptive description to describe the package use</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -112,8 +109,6 @@ Here is a template for a `.csproj` file made for publishing a package:
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <!-- This line make your package deterministic -->
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -121,13 +116,33 @@ Here is a template for a `.csproj` file made for publishing a package:
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+    <!-- This condition let you build locally, and on a test github action without issue. Only the action CD.yml (see later) will enable this condition. this is part of the package health standards for deterministic build. -->
+  <PropertyGroup
+    Condition="'$(GITHUB_ACTIONS)' == 'true' AND '$(GITHUB_ACTION)' == 'publish'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Publishing Settings -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishRelease>true</PublishRelease>
+    <PackRelease>true</PackRelease>
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Assets load-->
     <!-- MANDATORY: give the filepath to the files declared -->
     <!-- OPTIONAL: give a custom path to store them inside your package -->
     <None Include="..\README.md" Pack="true" PackagePath=""/>
     <None Include="..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Dependencies if you have-->
+    <PackageReference Include="yamldotnet" Version="15.1.2" />
   </ItemGroup>
 </Project>
 ```
@@ -185,10 +200,10 @@ Now we will set up a github action to automate the process of publishing your pa
 
 Create two folders in the root of your project: `.github` then `workflows` inside.
 
-Create a new file in the `.github/workflows` folder and name it `publish.yml`.
+Create a new file in the `.github/workflows` folder and name it `CD.yml`.
 
 ```yml
-name: Publish (Github & NuGet)
+name: Publish package
 
 on:
   push:
@@ -201,7 +216,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Verify commit exists in origin/main
@@ -211,16 +226,17 @@ jobs:
           git log --pretty=format:'%d %s' ${GITHUB_REF} | perl -pe 's| \(.*tag: v(\d+.\d+.\d+(-preview\d{3})?)(, .*?)*\)|\n## \1\n|g' > RELEASE-NOTES
       - name: Set VERSION variable from tag
         run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
-      - name: Build
-        run: dotnet build --configuration Release /p:ContinuousIntegrationBuild=true /p:Version=${VERSION}
-      - name: Pack
-        run: dotnet pack <your_path_from_your_project_file> --configuration Release /p:ContinuousIntegrationBuild=true /p:Version=${VERSION} --no-build --output .
+      - name: Pack library
+      run: dotnet pack <your_path_from_your_project_file.csproj> /p:Version=${VERSION} /p:ContinuousIntegrationBuild=true --output .
+      env:
+        GITHUB_ACTIONS: true
+        GITHUB_ACTION: 'publish'
       - name: Push to GitHub Packages
-        run: dotnet nuget push <name_of_your_app>.${VERSION}.nupkg --source https://nuget.pkg.github.com/<nuget_username>/index.json --api-key ${GITHUB_TOKEN}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push to NuGet.org
-        run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push <name_of_your_app>.${VERSION}.nupkg --source https://nuget.pkg.github.com/<nuget_username>/index.json --api-key ${GITHUB_TOKEN}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push to NuGet.org
+      run: dotnet nuget push <name_of_your_app>.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
 ```
 
 > [!IMPORTANT]
@@ -241,9 +257,16 @@ Finally, create a new release and add a tag to it as follow "vX.X.X" where X is 
 
 If that project was indeed for you for demo purposes, you cannot delete it from NuGet.org, but you can hide it by unlisting it: Go to Manage Packages > select the package > click on the Edit button > Listing category > unchecked the "List in search results" checkbox > Save.
 
+### Bonus: Prefix ID
+
+To protect the uniqueness of your package name, you can reserve a prefix for your package. This will prevent someone else from using the same name as your package. That way, I reserved "ConsoleAppVisuals" and "ConsoleAppVisuals.\*" (meaning that "ConsoleAppVisuals" and "ConsoleAppVisuals.MyApp" will be reserved for example).
+
+To do so, you only need to send an email to `account@nuget.org` with the subject "Package ID prefix reservation" and give your NuGet username (or organization, or other name of collaborators) and the prefixes you want to reserve. The criteria are given in this [page](https://learn.microsoft.com/nuget/nuget-org/id-prefix-reservation#id-prefix-reservation-criteria).
+
 ## Resources
 
 - [Official NuGet documentation](https://learn.microsoft.com/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli)
 - [Main Source](https://acraven.medium.com/a-nuget-package-workflow-using-github-actions-7da8c6557863)
 - [Recap](https://levelup.gitconnected.com/publish-to-nuget-with-github-actions-4e1486e7c19f)
 - [Deterministic Builds](https://github.com/clairernovotny/DeterministicBuilds)
+- [Package ID](https://learn.microsoft.com/nuget/nuget-org/id-prefix-reservation)
