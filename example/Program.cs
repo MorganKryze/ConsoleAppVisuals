@@ -24,11 +24,14 @@ namespace example
             var footer = new Footer();
             Window.AddElement(footer);
 
+            // Render the window to display the elements above
+            Window.Render();
+
             var fakeLoadingBar = new FakeLoadingBar("[ Loading ...]");
             Window.AddElement(fakeLoadingBar);
 
-            // Render the window to display the elements above
-            Window.Render();
+            // Only this line will make the loading bar appear on the console
+            Window.ActivateElement(fakeLoadingBar);
 
             // Create the main menu element
             var mainMenu = new ScrollingMenu(

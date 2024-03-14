@@ -111,7 +111,7 @@ Let's start by removing `Console.WriteLine("Hello World!");` instruction and add
 Window.Open();
 ```
 
-Now we can use all the elements from the package. Our first *static* element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
+Now we can use all the elements from the package. Our first _static_ element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
 
 ```csharp
 Title title = new Title("My first app");
@@ -136,62 +136,77 @@ Window.Render(title);
 
 ## Minimal app
 
-### `Header`, `Footer` and `FakeLoadingBar`
+Now, let's create a minimal app with a `Title`, a `Header`, a `Footer`, a `FakeLoadingBar` and finally a `Prompt` element.
 
-You may remove the previous code. Now, let's create a minimal app with a `Title`, a `Header`,  `Footer` and finally a `FakeLoadingBar` element. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.html)
+### `Title`
+
+Let's keep the `Title` element created previously and remove the `Window.Render(title)`. Here is the updated code:
 
 ```csharp
 Window.Open();
 
 Title title = new Title("My first app");
 Window.AddElement(title);
+```
 
+### `Header`, `Footer`
+
+Add the `Header` and `Footer` _static_ elements to the `Window`:
+
+```csharp
 Header header = new Header();
-Window.AddElement(header);
-
 Footer footer = new Footer();
-Window.AddElement(footer);
 
-FakeLoadingBar loadingBar = new FakeLoadingBar();
-Window.AddElement(loadingBar);
+Window.AddElement(header, footer);
 
 Window.Render();
 ```
 
-Instead of rendering each element separately, we rendered all of them at once using the `Window.Render()` method.
+Instead of rendering each element separately, we rendered the `Title`, `Header` and `Footer` elements at once using the `Window.Render()` method.
 
 ![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
-### `Prompt`
+### `FakeLoadingBar`
 
-Now let's add a `Prompt` *interactive* element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Prompt.html)
+Now let's add a `FakeLoadingBar` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.FakeLoadingBar.html)
 
 ```csharp
-Prompt prompt = new Prompt("What's your name?");
-Window.AddElement(prompt);
+FakeLoadingBar loadingBar = new FakeLoadingBar();
+Window.AddElement(loadingBar);
 
-Window.Render(prompt);
+Window.Render(loadingBar);
 ```
 
-As you may have noticed, we have the same output as earlier. No prompt was rendered on the console.
-
 > [!IMPORTANT]
-> Static elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
+> As you may have noticed, we have the same output as earlier. No loading bar was rendered on the console. Static elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
 
-To do so, we can finally add the following line of code after the `Window.Render()`:
+To do so, replace the `Window.Render(loadingBar)` instruction with the following:
 
 ```csharp
 Window.ActivateElement(prompt);
 ```
 
-![Prompt](../assets/vid/gif/first_app/prompt.gif)
+<!-- TODO:  ADD DEMO HERE -->
 
 > [!TIP]
-> The method `Window.ActivateElement()` will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other *static* elements.
+> The method `Window.ActivateElement()` will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other _static_ elements like `Title`, `Header` or `Footer` for example.
+
+### `Prompt`
+
+Now let's add a `Prompt` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Prompt.html)
+
+```csharp
+Prompt prompt = new Prompt("What's your name?");
+Window.AddElement(prompt);
+
+Window.ActivateElement(prompt);
+```
+
+![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
 ### Get response and `EmbedText` element
 
-Now that we have well displayed the prompt, we can get the user's response by adding the following line of code after the `Window.ActivateElement(prompt)` line:
+A `FakeLoadingBar` (or a `EmbedText` by the way) will not give you any response. But a `Prompt` will. To get the user's response, let's add the following line of code after the `Window.ActivateElement(prompt)` line:
 
 ```csharp
 var response = prompt.GetResponse();
@@ -212,7 +227,7 @@ The previous line will retrieve a response object that has the following propert
 > - If `response` is `null`, `response?.Status` will return `null`.
 > - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
-Finally, let's add a `EmbedText` *interactive* element to display the user's response on the console. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
+Finally, let's add a `EmbedText` _interactive_ element to display the user's response on the console (As said earlier, the `EmbedText` is _interactive_ but does not return any response, `text.GetResponse()` will always return `null`). [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
 
 ```csharp
 EmbedText text = new EmbedText(
@@ -242,9 +257,6 @@ Window.Close();
 
 ## Conclusion
 
-> [!TIP]
-> To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
-
 And that's it! You have created your first app using the `ConsoleAppVisuals` package. You can now run the app and see the result.
 
 Here is the full code:
@@ -261,10 +273,12 @@ Window.AddElement(header);
 Footer footer = new Footer();
 Window.AddElement(footer);
 
+Window.Render();
+
 FakeLoadingBar loadingBar = new FakeLoadingBar();
 Window.AddElement(loadingBar);
 
-Window.Render();
+Window.ActivateElement(loadingBar);
 
 Prompt prompt = new Prompt("What's your name?");
 Window.AddElement(prompt);

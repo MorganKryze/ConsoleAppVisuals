@@ -76,13 +76,13 @@ ConsoleAppVisuals
 │   │   ├───IntSelector.cs
 │   │   ├───Prompt.cs
 │   │   ├───ScrollingMenu.cs
+│   │   ├───FakeLoadingBar.cs
 │   │   └───TableSelector.cs
 │   └───static
 │       ├───inspectors
 │       │   ├───ElementList.cs
 │       │   ├───InteractiveList.cs
 │       │   └───ElementsDashboard.cs
-│       ├───FakeLoadingBar.cs
 │       ├───LoadingBar.cs
 │       ├───Matrix.cs
 │       ├───TableView.cs
