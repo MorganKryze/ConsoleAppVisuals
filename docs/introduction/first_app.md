@@ -50,7 +50,10 @@ If you are using Visual Studio, launch the app and follow these steps in the vid
 
 > [!Video https://www.youtube.com/embed/1TqKF3ZJodk]
 
-Then, install the `ConsoleAppVisuals` package by following these steps in the video and searching for `ConsoleAppVisuals` instead of `Newtonsoft.Json`:
+Then, install the `ConsoleAppVisuals` package by following these steps in the video and searching for `ConsoleAppVisuals`.
+
+> [!WARNING]
+> The video is about the `Newtonsoft.Json` package. You need to search for `ConsoleAppVisuals` package instead.
 
 > [!Video https://www.youtube.com/embed/IprbRazS3b8]
 
@@ -58,14 +61,10 @@ Then, install the `ConsoleAppVisuals` package by following these steps in the vi
 
 ## First steps
 
-Open the `Program.cs` file. If the content is this one below, you can remove it:
+> [!TIP]
+> Take the larger size of the console to have a better view of the result. An error may occur if the console is too small when trying to render elements.
 
-```csharp
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-```
-
-And replace by the following:
+Open the `Program.cs` file and ensure that the content is the following:
 
 ```csharp
 namespace MyApp
@@ -96,23 +95,17 @@ Let's try to run the app by clicking on the green arrow at the top of the window
 
 ---
 
-Now, let's add to your project the `ConsoleAppVisuals` package and `ConsoleAppVisuals.Elements` (to use the visual elements):
+> [!WARNING]
+> Add these using statements at the top of your `Program.cs` file to use the `ConsoleAppVisuals` package and its elements:
+>
+> ```csharp
+> using ConsoleAppVisuals;
+> using ConsoleAppVisuals.Elements;
+> ```
+>
+> Sometimes, you will need to add more statements. All available namespaces are available in the [references](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html) section.
 
-```csharp
-using ConsoleAppVisuals;
-using ConsoleAppVisuals.Elements;
-
-namespace MyApp
-{
-    internal class Program
-    {
-...
-```
-
-> [!TIP]
-> Take the larger size of the console to have a better view of the result. An error may occur if the console is too small when trying to render elements.
-
-Let's start by removing `Console.WriteLine()` instruction and adding the following line to your `Main` method to set up the console (clear and set the cursor invisible):
+Let's start by removing `Console.WriteLine("Hello World!");` instruction and adding the following line to your `Main` method to set up the console (clear and set the cursor invisible):
 
 ```csharp
 Window.Open();
