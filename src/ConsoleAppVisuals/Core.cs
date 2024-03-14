@@ -512,6 +512,79 @@ public static class Core
         }
     }
 
+    /// <summary>
+    /// This method is used for debug purposes. It overrites any text in the console at a specified placement.
+    /// </summary>
+    /// <param name="placement">The placement of the debug mark.</param>
+    /// <param name="lines">The lines of the debug mark.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    [Visual]
+    public static void WriteDebugMark(
+        Placement placement = Placement.TopRight,
+        params string[] lines
+    )
+    {
+        placement = placement switch
+        {
+            Placement.TopLeft => Placement.TopLeft,
+            Placement.TopCenter => Placement.TopCenter,
+            Placement.TopRight => Placement.TopRight,
+            _ => Placement.TopRight
+        };
+
+        (int, int) cursorPosition = (Console.CursorLeft, Console.CursorTop);
+        const int DEFAULT_LENGHT = 7;
+
+        var finalLines = new List<string>();
+
+        int maxLength =
+            lines.Length > 0
+                ? (
+                    lines.Max(s => s.Length) < DEFAULT_LENGHT
+                        ? DEFAULT_LENGHT
+                        : lines.Max(s => s.Length)
+                )
+                : DEFAULT_LENGHT;
+
+        finalLines.Add(
+            "┌Debug"
+                + (maxLength != DEFAULT_LENGHT ? new string('─', maxLength - DEFAULT_LENGHT) : "")
+                + "─//─┐"
+        );
+        if (lines.Length is 0)
+        {
+            finalLines.Add("│ " + " ".ResizeString(maxLength, TextAlignment.Left) + " │");
+        }
+        else
+        {
+            foreach (string line in lines)
+            {
+                finalLines.Add("│ " + line.ResizeString(maxLength, TextAlignment.Left) + " │");
+            }
+        }
+
+        finalLines.Add(
+            "└─//───"
+                + (maxLength != DEFAULT_LENGHT ? new string('─', maxLength - DEFAULT_LENGHT) : "")
+                + "───┘"
+        );
+
+        WriteMultiplePositionedLines(
+            false,
+            placement.ToTextAlignment(),
+            false,
+            0,
+            finalLines.ToArray()
+        );
+
+        Console.SetCursorPosition(cursorPosition.Item1, cursorPosition.Item2);
+    }
     #endregion
 
     #region Extensions
