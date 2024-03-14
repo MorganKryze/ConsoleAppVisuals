@@ -4,6 +4,7 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 3.2.x   | :white_check_mark: |
 | 3.1.x   | :warning:          |
 | 3.0.x   | :warning:          |
 | 2.7.x   | :white_check_mark: |
@@ -15,13 +16,13 @@
 | 2.1.x   | :white_check_mark: |
 | < 2.1.0 | :x:                |
 
-3.0.x and 3.1.x are the latest versions. They are not fully tested yet and may contain some bugs. Please report any issue you may encounter.
+3.0.x and 3.1.x were the pre-versions of the v3 update. They were not fully tested yet and may contain some bugs (some fixed since 3.2.0). We recommend to use the latest version of the library.
 
 1.0.x and 2.0.x are not supported anymore. Please update to the latest version to benefit from the latest security updates.
 
 ## Reporting a Vulnerability
 
-To report a minor vulnerability, please open an issue on this repository. To report a major vulnerability, please send an email to this adress: <morgan@kodelab.fr>.
+To report a minor vulnerability, please open an issue on this repository. To report a major vulnerability, please send an email to this address: <morgan@kodelab.fr>.
 
 We will be reactive to fix the issue and we will keep you informed of the progress.
 
