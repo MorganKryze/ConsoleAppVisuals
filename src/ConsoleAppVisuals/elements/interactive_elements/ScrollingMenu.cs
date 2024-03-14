@@ -190,7 +190,7 @@ public class ScrollingMenu : InteractiveElement<int>
     protected override void RenderElementActions()
     {
         EqualizeChoicesLength(_choices);
-        Core.WriteContinuousString(_question, Line, false, 1500, 50);
+        Core.WriteContinuousString(_question, Line, false, 1500, 50, -1, _placement.ToTextAlignment());
         int lineChoice = Line + 2;
         bool delay = true;
         bool loop = true;
