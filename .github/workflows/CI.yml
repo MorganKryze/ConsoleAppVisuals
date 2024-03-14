@@ -29,16 +29,30 @@ jobs:
       - name: Build
         run: dotnet build -c Release
       - name: Test
-        run: dotnet test -c Release --no-build --verbosity minimal --logger "trx;LogFileName=TestResults.trx"
+        run: dotnet test -c Release --verbosity minimal
+
+  coverlet:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
       - name: Install Coverlet
         run: dotnet tool install --global coverlet.console --version 6.0.0.0
       - name: Install ReportGenerator
         run: dotnet tool install --global dotnet-reportgenerator-globaltool
+      - name: Build
+        run: dotnet build -c Release --verbosity quiet
       - name: Generate test results using coverlet
-        run: coverlet testing/bin/Release/net8.0/testing.dll --target "dotnet" --targetargs "test -c Release --no-build" --format opencover --exclude-by-attribute 'Visual' --exclude-by-attribute 'Obsolete'
+        run: coverlet testing/bin/Release/net8.0/testing.dll --target "dotnet" --targetargs "test -c Release --no-build --verbosity quiet" --format opencover --exclude-by-attribute 'Visual' --exclude-by-attribute 'Obsolete'
       - name: Convert coverage report to lcov format
         run: reportgenerator "-reports:./coverage.opencover.xml" "-targetdir:coverage" "-reporttypes:lcov"
       - name: Coveralls upload
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -46,6 +60,7 @@ jobs:
 
   publish-docs:
     needs: build-and-test
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
