@@ -12,4 +12,4 @@ If you have any questions, feel free to ask them in the [discussions](https://gi
 
 For now, no known project is using the version 3.x.x of the library. If you are using our library feel free to [notify us](mailto:morgan@kodelab.fr) and we will add your project to the list to inspire people and show the potential of the library.
 
-Finally, do not hesitate to **star** and **share** the project [on GitHub](https://github.com/MorganKryze/ConsoleAppVisuals/) if you like it! Your input helps us understand possible use cases and make necessary improvements.
+Finally, do not hesitate to **star** and **share** the project on [GitHub](https://github.com/MorganKryze/ConsoleAppVisuals/) if you like it! Your input helps us understand possible use cases and make necessary improvements.
