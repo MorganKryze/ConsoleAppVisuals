@@ -128,11 +128,13 @@ And finally, we can render the `Title` from the `Window`:
 ```csharp
 Window.Render(title);
 ```
-
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 ![Title](../assets/img/jpg/first_app/title.jpg)
 
 > [!TIP]
-> Bonus: You may update the style of the `Title` element by giving a look at this article: [Create and use fonts](/ConsoleAppVisuals/articles/create_font.html).
+> Bonus: You may update the style of the `Title` element like the one blow by giving a look at this article: [Create and use fonts](/ConsoleAppVisuals/articles/create_font.html).
+>
+> ![Lil_Devil](../assets/img/jpg/create_font/Lil_Devil.jpg)
 
 ## Minimal app
 
@@ -164,6 +166,7 @@ Window.Render();
 
 Instead of rendering each element separately, we rendered the `Title`, `Header` and `Footer` elements at once using the `Window.Render()` method.
 
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 ![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
 ### `FakeLoadingBar`
@@ -186,7 +189,7 @@ To do so, replace the `Window.Render(loadingBar)` instruction with the following
 Window.ActivateElement(prompt);
 ```
 
-<!-- TODO:  ADD DEMO HERE -->
+<!-- TODO:  ADD DEMO VISUAL HERE -->
 
 > [!TIP]
 > The method `Window.ActivateElement()` will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other _static_ elements like `Title`, `Header` or `Footer` for example.
@@ -202,6 +205,7 @@ Window.AddElement(prompt);
 Window.ActivateElement(prompt);
 ```
 
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
 ### Get response and `EmbedText` element
@@ -227,7 +231,7 @@ The previous line will retrieve a response object that has the following propert
 > - If `response` is `null`, `response?.Status` will return `null`.
 > - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
-Finally, let's add a `EmbedText` _interactive_ element to display the user's response on the console (As said earlier, the `EmbedText` is _interactive_ but does not return any response, `text.GetResponse()` will always return `null`). [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
+Finally, let's add a `EmbedText` _interactive_ element to display the user's response on the console (as said earlier, the `EmbedText` is _interactive_ but does not return any response, `text.GetResponse()` will always return `null`). [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
 
 ```csharp
 EmbedText text = new EmbedText(
@@ -243,6 +247,7 @@ Window.AddElement(text);
 Window.ActivateElement(text);
 ```
 
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 ![Embed](../assets/vid/gif/first_app/embed.gif)
 
 ### Exit the application
@@ -253,6 +258,7 @@ Finally, let's exit smoothly the application:
 Window.Close();
 ```
 
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 ![Prompt](../assets/vid/gif/first_app/close.gif)
 
 ## Conclusion
