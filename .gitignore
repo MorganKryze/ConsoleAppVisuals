@@ -13,3 +13,4 @@ settings.json
 # Coverage
 coverage/*
 coverage.opencover.xml
+testing/TestResults/*
