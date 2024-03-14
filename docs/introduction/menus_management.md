@@ -314,3 +314,7 @@ Work in progress...
 In this section, you learned how to create a menu using the `ScrollingMenu` element, collect their output, manage the output and navigate in an application. You also learned how to manage the menu status and value and how to navigate in a simple way.
 
 Now let's jump to the final section!
+
+---
+
+Have a question, give a feedback or found a bug? Feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [start a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on the GitHub repository.

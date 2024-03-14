@@ -239,3 +239,7 @@ After these steps, your font will be reviewed and merged into the library to be 
 
 - [Test fonts Figlet](https://patorjk.com/software/taag/#p=testall&f=Bell&t=Type%20Something%20)
 - [Fonts collection](https://github.com/patorjk/figlet.js/tree/main/importable-fonts)
+
+---
+
+Have a question, give a feedback or found a bug? Feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [start a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on the GitHub repository.

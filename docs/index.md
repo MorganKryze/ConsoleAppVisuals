@@ -8,12 +8,12 @@
 
 Welcome to the documentation of the `ConsoleAppVisuals` library. This is a simple and easy-to-use library that allows you to create visual elements in the console. Here are all the resources available:
 
-1. [Introduction](/ConsoleAppVisuals/introduction/basic_concepts.html): find the installation process, the first steps into the library and the description of the `Core` and `Window` classes.
-2. [References](/ConsoleAppVisuals/references/index.html): find all methods, properties and classes with their description and all arguments available.
-3. [Articles](/ConsoleAppVisuals/articles/index.html): find some additional articles about how to create and publish a library or create your documentation.
-4. [Legacy](/ConsoleAppVisuals/legacy/index.html): find the old documentation of the library for the versions 2.x.x and below.
+- [Introduction](/ConsoleAppVisuals/introduction/basic_concepts.html): find the basic concepts and the first steps into the library.
+- [References](/ConsoleAppVisuals/references/index.html): find all methods, properties and classes with their description and all arguments available.
+- [Articles](/ConsoleAppVisuals/articles/index.html): find some additional library-related articles.
+- [Legacy](/ConsoleAppVisuals/legacy/index.html): find the outdated documentation of the library for the versions 2.x.x and below.
 
-Finally, a commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to see how to use the library in a real project. If you have any questions, feel free to ask them in the [discussions](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) section.
+Finally, a commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to see how to use the library in a real project.
 
 ## Supported .NET versions
 

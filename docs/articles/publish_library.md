@@ -270,3 +270,7 @@ To do so, you only need to send an email to `account@nuget.org` with the subject
 - [Recap](https://levelup.gitconnected.com/publish-to-nuget-with-github-actions-4e1486e7c19f)
 - [Deterministic Builds](https://github.com/clairernovotny/DeterministicBuilds)
 - [Package ID](https://learn.microsoft.com/nuget/nuget-org/id-prefix-reservation)
+
+---
+
+Have a question, give a feedback or found a bug? Feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [start a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on the GitHub repository.
