@@ -2,7 +2,7 @@
 
 > User-friendly .NET visuals library designed for console apps.
 
-[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![License: GNU GPL](https://img.shields.io/badge/License-GNU_GPL-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE)
+[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![License: GNU GPL](https://img.shields.io/badge/License-GPL_v2.0-orange.svg))](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md)
 
 ![title](https://raw.githubusercontent.com/MorganKryze/ConsoleAppVisuals/main/docs/assets/vid/gif/presentation.gif)
 
@@ -180,4 +180,4 @@ Do not hesitate to **star** and **share** the project if you like it!
 
 ## License
 
-Distributed under the GNU GPL v3.0 License. See [`LICENSE`](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md) for more information.
+Distributed under the GNU GPL v2.0 License. See [LICENSE](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md) for more information.
