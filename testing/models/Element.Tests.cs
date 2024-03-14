@@ -109,6 +109,29 @@ public class UnitTestElement
         Window.RemoveAllElements();
     }
     #endregion
+
+    #region InvalidPlacement_Line
+    [TestMethod]
+    public void InvalidPlacement_ThrowsArgumentException()
+    {
+        // Arrange
+        Matrix<string> matrix =
+            new(
+                new List<List<string?>>()
+                {
+                    new() { "1", "2", "3" },
+                    new() { "4", "5", "6" }
+                },
+                false,
+                (Placement)int.MaxValue
+            );
+        
+        Window.AddElement(matrix);
+
+        // Act & Assert
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => matrix.Line);
+    }
+    #endregion
 }
 
 public class TestElement : Element { }

@@ -260,7 +260,4 @@ Window.Freeze();
 
 ## Conclusion
 
-> [!TIP]
-> To customize the elements, find all the available properties and methods in the [references](/ConsoleAppVisuals/references/index.html) section.
-
 In this tutorial, you learned how to remove elements from the window and how to use the `TableView`, `TableSelector` and `Matrix` elements. You are now ready to start the menus management tutorial.

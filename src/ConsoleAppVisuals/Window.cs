@@ -733,7 +733,6 @@ public static class Window
         int step = 1
     )
     {
-        // TODO: Work on clear patterns
         int stepMax = Console.WindowHeight == 0 ? 1 : Console.WindowHeight;
         startLine = CheckLine(startLine) ?? 0;
         length = CheckLine(startLine + length) ?? Console.WindowHeight;

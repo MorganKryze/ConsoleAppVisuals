@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.Elements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class FakeLoadingBar : Element
+public class FakeLoadingBar : InteractiveElement<string>
 {
     #region Fields
     private string _text;
@@ -174,7 +174,7 @@ public class FakeLoadingBar : Element
             _processDuration,
             _additionalDuration,
             Width,
-            default,
+            _placement.ToTextAlignment(),
             false
         );
         Window.DeactivateElement(this);
