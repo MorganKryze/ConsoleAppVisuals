@@ -790,6 +790,7 @@ public static class Window
         Core.LoadTerminalColorPanel();
         Clear(true);
         Console.CursorVisible = true;
+        Console.SetCursorPosition(0, 0);
         Environment.Exit(0);
     }
     #endregion
