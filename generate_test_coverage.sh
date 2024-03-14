@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo " --- Running tests --- \n"
 
 dotnet test -c Release --verbosity m
