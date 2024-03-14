@@ -2,7 +2,7 @@
 
 ## People
 
-We would like to express our gratitude to the following individuals and organizations for their contributions to ConsoleAppVisuals:
+We would like to express our gratitude to the following individuals for their contributions to ConsoleAppVisuals:
 
 - **[Robin L'hyver](https://github.com/robinmoon2)**: Created tests, contributed to the development of the library, and provided valuable feedbacks.
 - **[l-eg116](https://github.com/l-eg116)**: Provided valuable feedbacks with a lot of enthusiasm.
@@ -13,8 +13,11 @@ We would like to express our gratitude to the following individuals and organiza
 - **[AllisonSTIOUI](https://github.com/AllisonSTIOUI)**: Patiently provided valuable feedbacks and useful non?
 - **[Stanley Arnaud](https://github.com/stantonik)**: Provided vim-able feedbacks and cli suggestions.
 - **[MailiTruong](https://github.com/MailiTruong)**: Provided well-documented enthusiast feedbacks.
+- **[NotHilal](https://github.com/NotHilal)**: Provided valuable interactive feedbacks over an intuitive and entertaining guide.
+- **[V-SENAUX](https://github.com/V-SENAUX)**: Provided simple and stylish feedbacks (without any chichi).
+- **[floshv1](https://github.com/floshv1)**: Provided very helpful feedbacks and deep suggestions.
 
-We also want to thank all the users and supporters of ConsoleAppVisuals for using the library and providing feedback. Your input helps us understand possible use cases and make necessary improvements.
+We also want to thank all the users and supporters of ConsoleAppVisuals for using the library. Your input helps us understand possible use cases and make necessary improvements.
 
 If we've inadvertently missed anyone, please let us know, and we'll make sure to include them.
 
