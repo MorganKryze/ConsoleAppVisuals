@@ -23,14 +23,14 @@
     <RepositoryUrl>https://github.com/MorganKryze/ConsoleAppVisuals</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- Assets load-->
     <None Include="assets/README.md" Pack="true" PackagePath="" />
-    <None Include="assets/LICENSE" Pack="true" PackagePath="" />
+    <None Include="assets/LICENSE.md" Pack="true" PackagePath="" />
     <None Include="assets/icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
