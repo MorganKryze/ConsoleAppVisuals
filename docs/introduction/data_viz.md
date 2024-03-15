@@ -40,6 +40,9 @@ namespace MyApp
 }
 ```
 
+> [!NOTE]
+> For this section, you may delete your previous code and start from scratch at each section.
+
 ## The `TableView` element
 
 The `TableView` element is used to display data in a table format. It is useful when you want to display a list of items with multiple columns. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.PassiveElements.TableView-1.html)
