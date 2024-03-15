@@ -1,10 +1,10 @@
 # Basic concepts
 
-This section is made for you to understand what is ConsoleAppVisuals, its purposes, use case, how to install it use it. We will guide you into the creation of your first project and how to use the library to add visual elements to your console application.
+This section is made for you to understand what is **ConsoleAppVisuals**, its purpose and use flow. We will guide you later on into the creation of your first project until the advanced use of the library with data visualization and menus management.
 
 ## What is ConsoleAppVisuals?
 
-The ambition of ConsoleAppVisuals is to provide the best compromise between an easy-to-use library and a complex tool to create console applications with visual elements. The library is designed to be simple to use and to provide a wide range of visual elements to make your console application more user-friendly and interactive.
+The ambition of ConsoleAppVisuals is to provide the best compromise between an **easy-to-use library** and a **complex tool** to create console applications with visual elements. The library is designed to be simple to use and to provide a wide range of visual elements to make your console application more stylish and useful.
 
 ```mermaid
 flowchart LR
@@ -16,8 +16,8 @@ flowchart LR
 
 It is relies on the concept of "visuals" which are elements that can be displayed in the console. There are two types of visuals:
 
-- **Passive visuals**: elements that do not change by themselves, you may display several from the same type at the same time
-- **Interactive visuals**: elements that can be updated and create a response that can be collected, you may display only one at a time
+- **Passive visuals**: elements that do not provide any interaction, you may display several from the same type at the same time
+- **Interactive visuals**: elements that provide an explicit interaction and create a response that can be collected, you may display only one at a time
 
 These visuals are stored in `Window` as a list. From this class, you can display the visuals, add, remove, or update them. Each one of the visual element has its rendering method that will be called from the `Window` class.
 
@@ -38,9 +38,7 @@ sequenceDiagram
     Window->>Element: Calls the Element's Render Function
 ```
 
-In C# terms, the use flow is as follows:
-
-(No need to copy & paste for now)
+In C# terms, the use flow can be interpreted like this:
 
 1. Creating an element:
 
@@ -64,10 +62,10 @@ Window.Render(exampleTitle);
 
 Now that you have the basic concepts, let's dive into this guided path to know how to use the library:
 
-- [Create a simple console application](/ConsoleAppVisuals/introduction/first_app.html)
-- [Explore element operations](/ConsoleAppVisuals/introduction/elements_operations.html)
-- [Discover data visualization](/ConsoleAppVisuals/introduction/data_viz.html)
-- [Manage multiple menus](/ConsoleAppVisuals/introduction/menus_managment.html)
+1. [Create a simple console application](/ConsoleAppVisuals/introduction/first_app.html)
+2. [Explore element operations](/ConsoleAppVisuals/introduction/elements_operations.html)
+3. [Discover data visualization](/ConsoleAppVisuals/introduction/data_viz.html)
+4. [Manage multiple menus](/ConsoleAppVisuals/introduction/menus_managment.html)
 
 ---
 
