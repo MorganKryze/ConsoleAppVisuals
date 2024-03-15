@@ -10,27 +10,6 @@ In this section, you will learn:
 > [!TIP]
 > Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) of dive into the [references section](/ConsoleAppVisuals/references/index.html) if you go into any trouble.
 
-## Setup
-
-We will be using the same project from the previous tutorial. If you haven't done it yet, please follow the steps from the First app tutorial.
-
-Your file structure is like this:
-
-```bash
-Example_project  <-- root
-└───MyApp
-    ├───obj
-    ├───MyApp.csproj
-    └───Program.cs
-```
-
-> [!IMPORTANT]
-> We will add `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enumerations.
-
-And your cleaned `Program.cs` file should look like this:
-
-[!code-csharp[](../assets/code/ProgramDemo.cs?highlight=4)]
-
 > [!TIP]
 > Each section is independent. I recommend you to overwrite the `Program.cs` file with the code of each section to avoid any confusion.
 
