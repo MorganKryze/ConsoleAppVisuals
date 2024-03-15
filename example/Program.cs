@@ -334,7 +334,7 @@ namespace example
                             List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
                             List<string> student4 =
                                 new() { "04", "Charles", "Computer Science", "89" };
-                            TableView<string> students =
+                            TableView students =
                                 new(
                                     "Students grades",
                                     studentsHeaders,
@@ -386,7 +386,7 @@ namespace example
                                     player7
                                 };
 
-                            TableSelector<string> players =
+                            TableSelector players =
                                 new("Great tennis players", playersHeaders, playersData);
                             Window.AddElement(players);
 

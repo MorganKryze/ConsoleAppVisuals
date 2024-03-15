@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// The <see cref="TableView{T}"/> class that contains the methods to create a table and display it.
+/// The <see cref="TableView"/> class contains the methods to create a table and display it.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -14,12 +14,12 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class TableView<T> : PassiveElement
+public class TableView : PassiveElement
 {
     #region Fields: title, headers, lines, display array, rounded corners
     private string? _title;
     private List<string>? _rawHeaders;
-    private List<List<T>>? _rawLines;
+    private List<List<string>>? _rawLines;
     private string[]? _displayArray;
     private bool _roundedCorners;
     private readonly Placement _placement;
@@ -34,7 +34,7 @@ public class TableView<T> : PassiveElement
     /// <summary>
     /// This property returns the lines of the table.
     /// </summary>
-    public List<List<T>>? GetRawLines => _rawLines;
+    public List<List<string>>? GetRawLines => _rawLines;
 
     /// <summary>
     /// This property returns the title of the table.
@@ -54,7 +54,7 @@ public class TableView<T> : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The <see cref="TableView{T}"/> natural constructor.
+    /// The <see cref="TableView"/> class contains the methods to create a table and display it.
     /// </summary>
     /// <param name="title">The title of the table.</param>
     /// <param name="headers">The headers of the table.</param>
@@ -73,7 +73,7 @@ public class TableView<T> : PassiveElement
     public TableView(
         string? title = null,
         List<string>? headers = null,
-        List<List<T>>? lines = null,
+        List<List<string>>? lines = null,
         bool roundedCorners = false,
         Placement placement = Placement.TopCenter
     )
@@ -532,7 +532,7 @@ public class TableView<T> : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void AddLine(List<T> line)
+    public void AddLine(List<string> line)
     {
         if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
         {
@@ -546,7 +546,7 @@ public class TableView<T> : PassiveElement
                 "The number of columns in the table is not consistent with the headers."
             );
         }
-        _rawLines ??= new List<List<T>>();
+        _rawLines ??= new List<List<string>>();
         _rawLines.Add(line);
         BuildTable();
     }
@@ -565,7 +565,7 @@ public class TableView<T> : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateLine(int index, List<T> line)
+    public void UpdateLine(int index, List<string> line)
     {
         if (_rawLines?.Count > 0)
         {
@@ -637,7 +637,7 @@ public class TableView<T> : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public List<T> GetLine(int index)
+    public List<string> GetLine(int index)
     {
         if (index < 0 || index >= _rawLines?.Count)
         {
@@ -659,7 +659,7 @@ public class TableView<T> : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public List<T>? GetColumnData(int index)
+    public List<string>? GetColumnData(int index)
     {
         if (_rawLines is null)
         {
@@ -671,7 +671,7 @@ public class TableView<T> : PassiveElement
             throw new ArgumentOutOfRangeException(nameof(index), "Invalid column index.");
         }
 
-        List<T>? list = new();
+        List<string>? list = new();
         for (int i = 0; i < _rawLines.Count; i++)
         {
             list.Add(_rawLines[i][index]);
@@ -693,7 +693,7 @@ public class TableView<T> : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public List<T>? GetColumnData(string header)
+    public List<string>? GetColumnData(string header)
     {
         if (_rawHeaders is null)
         {
