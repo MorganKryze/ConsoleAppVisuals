@@ -28,4 +28,4 @@ We are always open for feedback and discussions. If you are using our library an
 
 ---
 
-Full changelog:
+**Full changelog**:
