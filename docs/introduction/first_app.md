@@ -3,7 +3,7 @@
 This tutorial will show you how to create a simple console application using the `ConsoleAppVisuals` package. You will learn:
 
 - How to add elements
-- Discover: `Title`, `Header` and `Footer`, `FakeLoadingBar`, `Prompt`, `EmbedText` elements
+- Discover: `Title`, `Header`, `Footer`, `FakeLoadingBar`, `Prompt` and finally `EmbedText` elements
 - How to get the response from the user
 - How to exit the application
 
@@ -128,11 +128,13 @@ And finally, we can render the `Title` from the `Window`:
 ```csharp
 Window.Render(title);
 ```
+
 <!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![Title](../assets/img/jpg/first_app/title.jpg)
 
 > [!TIP]
-> Bonus: You may update the style of the `Title` element like the one blow by giving a look at this article: [Create and use fonts](/ConsoleAppVisuals/articles/create_font.html).
+> You may update the style of the `Title` element like the one blow by giving a look at this article: [Create and use fonts](/ConsoleAppVisuals/articles/create_font.html).
 >
 > ![Lil_Devil](../assets/img/jpg/create_font/Lil_Devil.jpg)
 
@@ -167,6 +169,7 @@ Window.Render();
 Instead of rendering each element separately, we rendered the `Title`, `Header` and `Footer` elements at once using the `Window.Render()` method.
 
 <!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
 
 ### `FakeLoadingBar`
@@ -180,7 +183,7 @@ Window.AddElement(loadingBar);
 Window.Render(loadingBar);
 ```
 
-> [!IMPORTANT]
+> [!WARNING]
 > As you may have noticed, we have the same output as earlier. No loading bar was rendered on the console. Static elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
 
 To do so, replace the `Window.Render(loadingBar)` instruction with the following:
@@ -206,6 +209,7 @@ Window.ActivateElement(prompt);
 ```
 
 <!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
 ### Get response and `EmbedText` element
@@ -217,7 +221,7 @@ var response = prompt.GetResponse();
 ```
 
 > [!TIP]
-> Here we use `var` to let the compiler infer the type of the variable. It is equivalent to `InteractionEventArgs<string> response = prompt.GetResponse();`. But in some case, it can be `InteractionEventArgs<int>`, `InteractionEventArgs<bool>`, etc. depending on the element. Using `var` is a good practice to keep the code clean and readable.
+> Here we use `var` to let the compiler infer the type of the variable. Here `var` is equivalent to `InteractionEventArgs<string>`. But in some case, it can be `InteractionEventArgs<int>`, `InteractionEventArgs<bool>`, etc. depending on the element. Using `var` is a good practice to keep the code clean and readable.
 
 The previous line will retrieve a response object that has the following properties:
 
@@ -248,6 +252,7 @@ Window.ActivateElement(text);
 ```
 
 <!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![Embed](../assets/vid/gif/first_app/embed.gif)
 
 ### Exit the application
@@ -259,6 +264,7 @@ Window.Close();
 ```
 
 <!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![Prompt](../assets/vid/gif/first_app/close.gif)
 
 ## Conclusion
@@ -283,15 +289,14 @@ Window.Render();
 
 FakeLoadingBar loadingBar = new FakeLoadingBar();
 Window.AddElement(loadingBar);
-
 Window.ActivateElement(loadingBar);
 
 Prompt prompt = new Prompt("What's your name?");
 Window.AddElement(prompt);
-
 Window.ActivateElement(prompt);
 
 var response = prompt.GetResponse();
+
 EmbedText text = new EmbedText(
     new List<string>()
     {
