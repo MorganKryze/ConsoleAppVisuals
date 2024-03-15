@@ -1,4 +1,4 @@
-# Elements operations
+# Elements options
 
 In this section, you will learn:
 
@@ -9,7 +9,7 @@ In this section, you will learn:
 
 ## Setup
 
-> [!IMPORTANT]
+> [!WARNING]
 > We will add `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enumerations.
 
 And your cleaned `Program.cs` file should look like this:
@@ -30,7 +30,7 @@ To disable element rendering, you have two options:
 Deactivating an element can be useful for it to be used later. To do so, let's create a `Title` element and deactivate it. Nothing will be rendered on the screen.
 
 ```csharp
-Title title = new Title("New elements");
+Title title = new Title("Elements options");
 Window.AddElement(title);
 
 Window.DeactivateElement(title);
@@ -44,7 +44,7 @@ Let's see how to perceive the effect of deactivating an element. Update your cod
 > The method `Window.Freeze()` is used to stop the execution by waiting the user to press a key (Enter by default) to see the window content without exiting the application when the window only contains _passive_ elements.
 
 ```csharp
-Title title = new Title("New elements");
+Title title = new Title("Elements options");
 Window.AddElement(title);
 
 ElementsDashboard dashboard = new ElementsDashboard();
@@ -70,7 +70,7 @@ As you noticed, the title is not rendered on the screen because its `Visibility`
 Removing an element is useful when you don't want to use it anymore. To do so, let's create a `Title` element and remove it. Nothing will be rendered on the screen.
 
 ```csharp
-Title title = new Title("New elements");
+Title title = new Title("Elements options");
 Window.AddElement(title);
 
 Window.RemoveElement(title);
@@ -81,7 +81,7 @@ Window.Render();
 Let's see how to perceive the effect of removing an element. Update your code to the following:
 
 ```csharp
-Title title = new Title("New elements");
+Title title = new Title("Elements options");
 Window.AddElement(title);
 
 ElementsDashboard dashboard = new ElementsDashboard();
@@ -100,7 +100,11 @@ Window.Freeze();
 
 ![DashBoard](../assets/vid/gif/data_viz/dash_remove.gif)
 
-## Discover elements options
+## Access and update elements parameters
+
+In all the tutorials and the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) the elements definitions are simplified and do not declare all the arguments available. To see all the arguments available for each element, you can consult the [references documentation](/ConsoleAppVisuals/references/index.html).
+
+Most of them are specific with generic type (`string`, `int`, `bool`...) and are used to customize the element. But some of them are common to all elements and are used to place the element on the window. These are the `Placement` and `TextAlignment` enumerations.
 
 ### `Placement`
 
@@ -128,6 +132,15 @@ The available values are:
 
 <!-- TODO:  ADD DEMO VISUAL HERE -->
 
+> [!NOTE]
+> To choose the placement of an element, you can either set it from the constructor or use the `UpdatePlacement()` method after creating the element.
+>
+> ```csharp
+> Prompt prompt = new Prompt("Enter your name", "Name", Placement.TopCenter);
+> // or
+> prompt.UpdatePlacement(Placement.TopCenter);
+> ```
+
 ### `TextAlignment`
 
 The `TextAlignment` enumeration is used to align the text in a string. It is used by some elements from the library. Here are the available values:
@@ -144,9 +157,14 @@ The `TextAlignment` enumeration is used to align the text in a string. It is use
 
 <!-- TODO:  ADD DEMO VISUAL HERE -->
 
-### Consult the references documentation
-
-In all the tutorials and the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) the elements definitions are simplified and do not declare all the arguments available. To see all the arguments available for each element, you can consult the [references documentation](/ConsoleAppVisuals/references/index.html).
+> [!NOTE]
+> To choose the text alignment of an element, you can either set it from the constructor or use the `UpdateTextAlignment()` method after creating the element (some elements may not have this method if the text alignment is not used in it so refer to the references documentation to get that specific information).
+>
+> ```csharp
+> EmbedText embedText = new EmbedText(new List<string>(){"This is a debug message"},"Next ▶",TextAlignment.Center);
+> // or
+> embedText.UpdateTextAlignment(TextAlignment.Center);
+> ```
 
 ## Conclusion
 

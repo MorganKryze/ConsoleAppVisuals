@@ -3,8 +3,7 @@
 In this section, you will learn:
 
 - How to create a menu using the `ScrollingMenu` element
-- Collect their output
-- Manage the output
+- Collect & manage their output
 - Navigate in an application
 
 > [!TIP]
