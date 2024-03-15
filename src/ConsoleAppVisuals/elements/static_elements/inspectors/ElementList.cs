@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals.Elements;
+namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
 /// This class is used to display a ElementList of all the elements in the window.

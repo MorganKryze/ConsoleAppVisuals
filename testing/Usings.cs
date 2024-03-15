@@ -1,8 +1,8 @@
 global using System.Reflection;
-global using System.Runtime.Serialization;
 global using ConsoleAppVisuals;
 global using ConsoleAppVisuals.Attributes;
-global using ConsoleAppVisuals.Elements;
+global using ConsoleAppVisuals.PassiveElements;
+global using ConsoleAppVisuals.InteractiveElements;
 global using ConsoleAppVisuals.Enums;
 global using ConsoleAppVisuals.Errors;
 global using ConsoleAppVisuals.Models;
