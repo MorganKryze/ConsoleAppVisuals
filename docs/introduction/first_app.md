@@ -44,6 +44,9 @@ Finally, run the following command to install the library:
 dotnet add package ConsoleAppVisuals
 ```
 
+> [!TIP]
+> Consider running the same command to update the package to the latest version, stay tuned!
+
 # [Visual Studio](#tab/vs)
 
 If you are using Visual Studio, launch the app and follow these steps in the video to create a new project:
@@ -57,12 +60,12 @@ Then, install the `ConsoleAppVisuals` package by following these steps in the vi
 
 > [!Video https://www.youtube.com/embed/IprbRazS3b8]
 
+> [!TIP]
+> Consider updating the package ofter to the latest version, stay tuned! More info on this [page](https://learn.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#update-a-package).
+
 ---
 
 ## First steps
-
-> [!TIP]
-> Take the larger size of the console to have a better view of the result. An error may occur if the console is too small when trying to render elements.
 
 Open the `Program.cs` file and ensure that the content is the following:
 
@@ -135,7 +138,7 @@ Window.Render(title);
 ![Title](../assets/img/jpg/first_app/title.jpg)
 
 > [!TIP]
-> You may update the style of the `Title` element like the one blow by giving a look at this article: [Create and use fonts](/ConsoleAppVisuals/articles/create_font.html).
+> You may update the style of the `Title` element like the one below by giving a look at this article: [create and use fonts](/ConsoleAppVisuals/articles/create_font.html).
 >
 > ![Lil_Devil](../assets/img/jpg/create_font/Lil_Devil.jpg)
 

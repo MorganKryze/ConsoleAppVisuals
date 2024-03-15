@@ -93,9 +93,6 @@ Window.Freeze();
 
 ![DashBoard](../assets/vid/gif/data_viz/dash_remove.gif)
 
-> [!NOTE]
-> For the following sections, you may delete your previous code and start from scratch at each section.
-
 ## Discover elements options
 
 ### `Placement`
