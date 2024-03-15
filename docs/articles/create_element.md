@@ -37,7 +37,7 @@ using ConsoleAppVisuals;
 
 namespace MyApp
 {
-    public class PassiveExample : Element
+    public class PassiveExample : PassiveElement
     {
         #region Fields
         // Add your custom fields here.
@@ -75,18 +75,18 @@ namespace MyApp
 
 ### Customize your new passive element
 
-Now let's look at the `Element` class. This class is the base class for all visual elements. It contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.
+Now let's look at the `Element` class. This class is the base class for all visual elements. It contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element (the `PassiveElement` class inherits from all the `Element` class attributes, so you can take the `Element` class as a model to create `PassiveElements`).
 
 The method that you can override are highlighted in yellow here:
 
-[!code-csharp[](../assets/code/Element.cs?highlight=35,40,45,51,57,63,69,129,138,144,179)]
+[!code-csharp[](../assets/code/Element.cs?highlight=36,42,54,113,119,125,178,187,193,230)]
 
 > [!TIP]
 > Depending on the element you want to create, you may not need to override all of these methods. You can override only the ones that are necessary for your element. However I highly recommend to override these:
 >
-> - `MaxNumberOfThisElement`: Define the maximum number of this element that can be displayed on the screen (default is 1).
+> - `MaxNumberOfThisElement`: Define the maximum number of this element that can be displayed on the screen simultaneously.
 > - `RenderElementActions()`: Describe how the element should be displayed.
-> - `Height` and `Width`: Depending on the element, you may want to override these properties to define the size of the element.
+> - `Height` and `Width`: Depending on the element, you may want to override these properties to define the size of your element.
 
 Once your customization is done, you may use your element in your application just like a default element.
 
@@ -154,7 +154,7 @@ The method that you can override are the same as the `Element` class at some exc
 - `MaxNumberOfThisElement`: is set to one.
 - `RenderOptionsBeforeHand` & `RenderOptionsBeforeHand`: cannot be modified.
 
-The callable attributes and methods are highlighted in yellow here:
+The callable attributes and methods are **highlighted in yellow** here:
 
 [!code-csharp[](../assets/code/InteractiveElement.cs?highlight=23,28,62)]
 
@@ -176,7 +176,7 @@ Once your customization is done, you may use your element in your application ju
 Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library (available in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)). Here is an example of how to do it:
 
 ```csharp
-PassiveElementsList passiveList = new PassiveElementsList();
+ElementsList passiveList = new ElementsList(ElementType.Passive);
 Window.AddElement(passiveList);
 
 
@@ -187,12 +187,14 @@ Window.DeactivateElement(passiveList);
 Window.RemoveElement(passiveList);
 ```
 
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![Passive elements list](../assets/img/jpg/create_element/elements_list.jpg)
 
 Or target only interactive elements:
 
 ```csharp
-InteractiveElementsList interactiveList = new InteractiveElementsList();
+ElementsList interactiveList = new ElementsList(ElementType.Interactive);
 Window.AddElement(interactiveList);
 
 Window.Render(interactiveList);
@@ -201,6 +203,8 @@ Window.Freeze();
 Window.DeactivateElement(interactiveList);
 Window.RemoveElement(interactiveList);
 ```
+
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 
 ![Interactive elements list](../assets/img/jpg/create_element/interactive_list.jpg)
 

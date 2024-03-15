@@ -190,7 +190,7 @@ Window.Render(loadingBar);
 > [!WARNING]
 > As you may have noticed, we have the same output as earlier. No loading bar was rendered on the console. Passive elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
 
-To do so, replace the `Window.Render(loadingBar)` instruction with the following:
+To do so, **replace** the `Window.Render(loadingBar)` instruction with the following:
 
 ```csharp
 Window.ActivateElement(loadingBar);

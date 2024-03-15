@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals;
+namespace ConsoleAppVisuals.Models;
 
 /// <summary>
 /// Defines the basic properties of an console element.
@@ -11,7 +11,7 @@ namespace ConsoleAppVisuals;
 /// For more information, refer to the following resources:
 /// <list type="bullet">
 /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
 public abstract class Element
@@ -21,34 +21,90 @@ public abstract class Element
     /// The id number of the element.
     /// </summary>
     /// <remarks>This property is sealed. The ID of an element is automatically generated and managed by the <see cref="Window"/> class.</remarks>
-    public int Id { get; set; } = Window.NextId;
+    public int Id { get; set; }
 
     /// <summary>
     /// The visibility of the element.
     /// </summary>
     /// <remarks>This property is sealed. The visibility of an element is managed by the <see cref="ToggleVisibility"/> method.</remarks>
-    public bool Visibility { get; private set; } = Window.DEFAULT_VISIBILITY;
+    public bool Visibility { get; private set; } = Window.DEFAULT_ELEMENT_VISIBILITY;
 
     /// <summary>
     /// The placement of the element.
     /// </summary>
-    public virtual Placement Placement { get; set; } = Placement.TopCenter;
+    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
+    public virtual Placement Placement { get; set; }
 
     /// <summary>
     /// The text alignment of the text of the element.
     /// </summary>
-    public virtual TextAlignment TextAlignment { get; set; } = TextAlignment.Center;
+    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
+    public virtual TextAlignment TextAlignment { get; set; }
 
     /// <summary>
     /// Whether the element is executable or not.
     /// </summary>
-    public virtual bool IsInteractive { get; } = false;
+    [Visual]
+    public virtual bool IsInteractive { get; }
 
     /// <summary>
     /// The line of the element in the console.
     /// </summary>
-    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual int Line { get; } = 0;
+    /// <remarks>ATTENTION: This property is not marked as virtual. Override this property only to give it a constant value.</remarks>
+    public virtual int Line
+    {
+        get
+        {
+            var elements = Window.GetRange(0, Id);
+            return Placement switch
+            {
+                Placement.TopCenterFullWidth
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
+                            .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
+                            .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopRight && e.Visibility)
+                            .Sum(e => e.Height),
+                Placement.TopCenter
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopCenter && e.Visibility)
+                            .Sum(e => e.Height),
+                Placement.TopLeft
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopLeft && e.Visibility)
+                            .Sum(e => e.Height),
+
+                Placement.TopRight
+                    => elements
+                        .Where(e => e.Placement == Placement.TopCenterFullWidth && e.Visibility)
+                        .Sum(e => e.Height)
+                        + elements
+                            .Where(e => e.Placement == Placement.TopRight && e.Visibility)
+                            .Sum(e => e.Height),
+                Placement.BottomCenterFullWidth
+                    => (Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1)
+                        - (this.Height - 1)
+                        - elements
+                            .Where(e =>
+                                e.Placement == Placement.BottomCenterFullWidth && e.Visibility
+                            )
+                            .Sum(e => e.Height),
+                _ => throw new ArgumentOutOfRangeException(nameof(Placement), "Invalid placement.")
+            };
+        }
+    }
 
     /// <summary>
     /// The height of the element.
@@ -66,13 +122,7 @@ public abstract class Element
     /// The maximum number of this element that can be drawn on the console.
     /// </summary>
     /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual int MaxNumberOfThisElement { get; } = 1;
-
-    /// <summary>
-    /// The source of the element. This property is used to determine whether the element is a user element or a library element for internal use.
-    /// </summary>
-    /// <remarks><c>[ DANGEROUS ]</c> Please do not change this property unless you know what you are doing.</remarks>
-    public Source ElementSource { get; set; } = Source.User;
+    public virtual int MaxNumberOfThisElement { get; } = int.MaxValue;
     #endregion
 
     #region Methods
@@ -106,7 +156,7 @@ public abstract class Element
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     [Visual]
@@ -117,7 +167,6 @@ public abstract class Element
             RenderOptionsBeforeHand();
             RenderElementActions();
             RenderOptionsAfterHand();
-            
         }
     }
 
@@ -146,17 +195,18 @@ public abstract class Element
     /// <summary>
     /// This method is used to draw the space taken by the element on the console.
     /// </summary>
+    /// <param name="ignoreVisibility">Whether to ignore the visibility of the element or not.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
     /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs">Example Project</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
     [Visual]
-    public void RenderElementSpace()
+    public void RenderElementSpace(bool ignoreVisibility = false)
     {
-        if (Visibility)
+        if (Visibility || ignoreVisibility)
         {
             Core.SaveColorPanel();
             Core.SetForegroundColor(Core.GetRandomColor());
@@ -176,6 +226,7 @@ public abstract class Element
     /// </summary>
     /// <returns>The space taken by the element.</returns>
     /// <remarks>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</remarks>
+    [Visual]
     protected virtual string[] GetRenderSpace()
     {
         var space = new string[Height];
@@ -192,7 +243,7 @@ public abstract class Element
     [Visual]
     public void Clear()
     {
-        Core.WriteMultiplePositionedLines(false, TextAlignment, false, Line, GetRenderSpace());
+        Core.ClearMultiplePositionedLines(Placement, Line, GetRenderSpace());
     }
     #endregion
 }
