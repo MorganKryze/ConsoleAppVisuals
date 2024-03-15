@@ -1,6 +1,6 @@
-using System;
 using ConsoleAppVisuals;
-using ConsoleAppVisuals.Elements;
+using ConsoleAppVisuals.PassiveElements;
+using ConsoleAppVisuals.InteractiveElements;
 using ConsoleAppVisuals.Enums;
 
 namespace MyApp

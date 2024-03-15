@@ -25,7 +25,8 @@ And your cleaned `Program.cs` file should look like this:
 
 ```csharp
 using ConsoleAppVisuals;
-using ConsoleAppVisuals.Elements;
+using ConsoleAppVisuals.PassiveElements;
+using ConsoleAppVisuals.InteractiveElements;
 
 namespace MyApp
 {

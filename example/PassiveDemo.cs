@@ -5,7 +5,7 @@ using ConsoleAppVisuals.Models;
 namespace example
 {
     // This object is a slight modification of the Banner object for the demo (here not interactive).
-    public class StaticDemo : Element
+    public class PassiveDemo : Element
     {
         #region Fields
         // Your attributes should be private.
@@ -61,7 +61,7 @@ namespace example
         /// <param name="upperMargin">The upper margin of the banner.</param>
         /// <param name="lowerMargin">The lower margin of the banner.</param>
         /// <param name="placement">The placement of the banner.</param>
-        public StaticDemo(
+        public PassiveDemo(
             string leftText = "Banner Left",
             string centerText = "Banner Center",
             string rightText = "Banner Right",

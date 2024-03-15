@@ -35,10 +35,10 @@ Window.DeactivateElement(title);
 Window.Render();
 ```
 
-Let's see how to perceive the effect of deactivating an element. Update your code to add a `ElementsDashboard` _static_ element and deactivate the title. The dashboard will be rendered, but not the title:
+Let's see how to perceive the effect of deactivating an element. Update your code to add a `ElementsDashboard` _passive_ element and deactivate the title. The dashboard will be rendered, but not the title:
 
 > [!NOTE]
-> The method `Window.Freeze()` is used to stop the execution by waiting the user to press a key (Enter by default) to see the window content without exiting the application when the window only contains static elements.
+> The method `Window.Freeze()` is used to stop the execution by waiting the user to press a key (Enter by default) to see the window content without exiting the application when the window only contains _passive_ elements.
 
 ```csharp
 Title title = new Title("New elements");

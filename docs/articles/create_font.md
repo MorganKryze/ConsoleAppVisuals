@@ -186,7 +186,8 @@ Example_project  <-- root
 >
 > ```csharp
 > using ConsoleAppVisuals;
-> using ConsoleAppVisuals.Elements;
+> using ConsoleAppVisuals.PassiveElements;
+> using ConsoleAppVisuals.InteractiveElements;
 > using ConsoleAppVisuals.Enums;
 > using ConsoleAppVisuals.Models;
 > ```

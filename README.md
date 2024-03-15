@@ -22,7 +22,7 @@ Feel free to check out the following resources to help you get started:
 
 The library is designed to be user-friendly and easy to use. It is based on the concept of "visuals" which are elements that can be displayed in the console. There are two types of visuals:
 
-- **Static visuals**: elements that do not change by themselves, you may display several from the same type at the same time
+- **Passive visuals**: elements that do not change by themselves, you may display several from the same type at the same time
 - **Interactive visuals**: elements that can be updated and create a response that can be collected, you may display only one at a time
 
 These visuals are stored in `Window` as a list. From this class, you can display the visuals, add, remove, or update them. Each one of the visual element has its rendering method that lets the `Window` display it.
@@ -60,7 +60,7 @@ And then, add the following line to your `Main` method to set up the console:
 Window.Open();
 ```
 
-#### Work with static elements
+#### Work with passive elements
 
 The first step is to create an element to display. For example, let's create a `Title` element:
 
@@ -94,7 +94,7 @@ Window.RemoveElement(exampleTitle);
 
 #### Work with interactive elements
 
-The process is similar to the static elements. The difference is that you can get a response from your interaction with these elements. Let's create a `Prompt` element:
+The process is similar to the passive elements. The difference is that you can get a response from your interaction with these elements. Let's create a `Prompt` element:
 
 ```csharp
 Prompt examplePrompt = new Prompt("What is your name?");
@@ -109,7 +109,7 @@ Window.AddElement(examplePrompt);
 Finally, you can display the `Window`, remember that interactive element are disabled by default:
 
 ```csharp
-// Add this line if you have static elements to display
+// Add this line if you have passive elements to display
 Window.Render();
 
 Window.ActivateElement(examplePrompt);

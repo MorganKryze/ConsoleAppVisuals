@@ -49,7 +49,7 @@ namespace example
                 "Display table",
                 "Interact with table",
                 "Display loading bar",
-                "Custom window element",
+                "Custom passive element",
                 "Custom interactive element",
                 "Display elements space",
                 "Display dashboard",
@@ -447,25 +447,25 @@ namespace example
                             goto Menu;
 
                         case 10:
-                            // Custom element, see the StaticDemo class
+                            // Custom element, see the PassiveDemo class
                             // in this project for more information
-                            var customStaticElement = new StaticDemo(
+                            var customPassiveElement = new PassiveDemo(
                                 "This element has been created in this project",
                                 "Its interest is for demonstration only",
-                                "The model in on the StaticDemo.cs file",
+                                "The model in on the PassiveDemo.cs file",
                                 3,
                                 2,
                                 Placement.TopCenterFullWidth
                             );
-                            Window.AddElement(customStaticElement);
-                            Window.Render(customStaticElement);
+                            Window.AddElement(customPassiveElement);
+                            Window.Render(customPassiveElement);
                             Window.Freeze();
 
-                            Window.RemoveElement(customStaticElement);
+                            Window.RemoveElement(customPassiveElement);
                             goto Menu;
 
                         case 11:
-                            var customInteractiveElement = new InteractDemo(
+                            var customInteractiveElement = new InteractiveDemo(
                                 "This element is also custom for demo purposes, you may type something:"
                             );
                             Window.AddElement(customInteractiveElement);

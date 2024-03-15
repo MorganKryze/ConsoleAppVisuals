@@ -14,18 +14,26 @@ Namespaces are used to organize the classes and interfaces of the library. They 
 ### `ConsoleAppVisuals`
 
 ```csharp
-using ConsoleAppVisuals;
+using ConsoleAppVisuals.Elements;
 ```
 
 This is the main namespace of the library. It contains the `Core` and `Window` classes. The `Core` class is the core of the library interaction with the console. It contains the methods to interact with the console on a low level basis. The `Window` class is used to manage visual elements. You may use it to add, remove, update and display elements on the console.
 
-### `Elements`
+### `PassiveElements`
 
 ```csharp
-using ConsoleAppVisuals.Elements;
+using ConsoleAppVisuals.PassiveElements;
 ```
 
-This namespace contains all the visual elements of the library. You may find the static elements as well as the interactive elements. They share common characteristics and methods defined in the `models/Element.cs` and the `models/InteractiveElement.cs` class.
+This namespace contains all the passive elements of the library. You may find the elements that do not provide interaction with the user and that you may display several from the same type at the same time. They share common characteristics and methods defined in the `models/Element.cs` class.
+
+### `InteractiveElements`
+
+```csharp
+using ConsoleAppVisuals.InteractiveElements;
+```
+
+This namespace contains all the interactive elements of the library. You may find the elements that provide interaction with the user and that you may display only one at a time. They share common characteristics and methods defined in the `models/InteractiveElement.cs` class.
 
 ### `Enums`
 
@@ -78,7 +86,7 @@ ConsoleAppVisuals
 │   │   ├───ScrollingMenu.cs
 │   │   ├───FakeLoadingBar.cs
 │   │   └───TableSelector.cs
-│   └───static
+│   └───passive
 │       ├───inspectors
 │       │   ├───ElementList.cs
 │       │   ├───InteractiveList.cs
