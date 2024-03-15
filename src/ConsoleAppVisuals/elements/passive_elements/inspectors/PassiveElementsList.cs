@@ -7,7 +7,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <summary>
 /// This class is used to display a ElementList of all the elements in the window.
 /// </summary>
-public class ElementList : Element
+public class PassiveElementsList : Element
 {
     #region Fields: title, headers, lines, display array, rounded corners
     private List<List<string>> _lines;
@@ -67,7 +67,7 @@ public class ElementList : Element
     /// </summary>
     /// <param name="placement">The placement of the ElementList.</param>
     /// <param name="roundedCorners">If true, the corners of the ElementList will be rounded.</param>
-    public ElementList(Placement placement = Placement.TopCenter, bool roundedCorners = false)
+    public PassiveElementsList(Placement placement = Placement.TopCenter, bool roundedCorners = false)
     {
         _lines = UpdateLines();
         _placement = placement;
