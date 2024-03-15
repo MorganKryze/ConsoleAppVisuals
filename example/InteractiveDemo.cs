@@ -6,7 +6,7 @@ using ConsoleAppVisuals.Models;
 namespace example
 {
     // This object is a commented copy of the Prompt object for the demo.
-    public class InteractDemo : InteractiveElement<string>
+    public class InteractiveDemo : InteractiveElement<string>
     {
         #region Fields
         private readonly string _question;
@@ -49,7 +49,7 @@ namespace example
         /// <param name="defaultValue">The text in the center of the prompt element.</param>
         /// <param name="placement">The placement of the prompt element.</param>
         /// <param name="line">The line of the prompt element in the console.</param>
-        public InteractDemo(
+        public InteractiveDemo(
             string question,
             string? defaultValue = null,
             Placement placement = Placement.TopCenter,

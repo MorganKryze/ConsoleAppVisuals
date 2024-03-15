@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This article will guide you through the process of creating custom visual elements using the library. This will enable you to create static elements as well as interactive elements that can be used in your applications.
+This article will guide you through the process of creating custom visual elements using the library. This will enable you to create passive elements as well as interactive elements that can be used in your applications.
 
 ## Prerequisites
 
@@ -24,20 +24,20 @@ Example_project  <-- root
     └───Program.cs
 ```
 
-## Static elements
+## Passive elements
 
-Static elements are visual elements that do not have any interactive behavior. They are used to display information to the user. They can be updated and change display properties.
+Passive elements are visual elements that do not have any interactive behavior. They are used to display information to the user. They can be updated and change display properties.
 
-### Setup of a static element
+### Setup of a passive element
 
-Start by creating a new file in your project and name it `StaticExample.cs`. Then, add the following code to the file (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/StaticDemo.cs)):
+Start by creating a new file in your project and name it `PassiveExample.cs`. Then, add the following code to the file (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/PassiveDemo.cs)):
 
 ```csharp
 using ConsoleAppVisuals;
 
 namespace MyApp
 {
-    public class StaticExample : Element
+    public class PassiveExample : Element
     {
         #region Fields
         // Add your custom fields here.
@@ -50,9 +50,9 @@ namespace MyApp
 
         #region Constructor
         /// <summary>
-        /// The natural constructor of the StaticExample element.
+        /// The natural constructor of the PassiveExample element.
         /// </summary>
-        public StaticExample(){}
+        public PassiveExample(){}
         #endregion
 
         #region Methods
@@ -61,7 +61,7 @@ namespace MyApp
 
         #region Rendering
         /// <summary>
-        /// Renders the StaticExample element.
+        /// Renders the PassiveExample element.
         /// </summary>
         protected override void RenderElementActions()
         {
@@ -73,7 +73,7 @@ namespace MyApp
 }
 ```
 
-### Customize your new static element
+### Customize your new passive element
 
 Now let's look at the `Element` class. This class is the base class for all visual elements. It contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.
 
@@ -96,16 +96,16 @@ Interactive elements are visual elements that have interactive behavior. They ca
 
 ### Setup of an interactive element
 
-Similar to the static elements, you can create interactive elements but this time they inherit from the `InteractiveElement` class. This class contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.
+Similar to the passive elements, you can create interactive elements but this time they inherit from the `InteractiveElement` class. This class contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.
 
-Start by creating a new file in your project and name it `StaticExample.cs`. Then, create your new element following this template (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)):
+Start by creating a new file in your project and name it `InteractiveExample.cs`. Then, create your new element following this template (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)):
 
 ```csharp
 using ConsoleAppVisuals;
 
 namespace MyApp
 {
-    public class StaticExample : InteractiveElement<T>
+    public class InteractiveExample : InteractiveElement<T>
     {
         #region Fields
         // Add your custom fields here.
@@ -118,9 +118,9 @@ namespace MyApp
 
         #region Constructor
         /// <summary>
-        /// The natural constructor of the StaticExample element.
+        /// The natural constructor of the InteractiveExample element.
         /// </summary>
-        public StaticExample(){}
+        public InteractiveExample(){}
         #endregion
 
         #region Methods
@@ -129,7 +129,7 @@ namespace MyApp
 
         #region Rendering
         /// <summary>
-        /// Renders the StaticExample element.
+        /// Renders the InteractiveExample element.
         /// </summary>
         protected override void RenderElementActions()
         {

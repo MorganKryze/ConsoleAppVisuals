@@ -100,7 +100,8 @@ Let's try to run the app by clicking on the green arrow at the top of the window
 >
 > ```csharp
 > using ConsoleAppVisuals;
-> using ConsoleAppVisuals.Elements;
+> using ConsoleAppVisuals.PassiveElements;
+> using ConsoleAppVisuals.InteractiveElements;
 > ```
 >
 > Sometimes, you will need to add more statements. All available namespaces are available in the [references](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html) section.
@@ -111,7 +112,7 @@ Let's start by removing `Console.WriteLine("Hello World!");` instruction and add
 Window.Open();
 ```
 
-Now we can use all the elements from the package. Our first _static_ element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
+Now we can use all the elements from the package. Our first _passive_ element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
 
 ```csharp
 Title title = new Title("My first app");
@@ -155,7 +156,7 @@ Window.AddElement(title);
 
 ### `Header`, `Footer`
 
-Add the `Header` and `Footer` _static_ elements to the `Window`:
+Add the `Header` and `Footer` _passive_ elements to the `Window`:
 
 ```csharp
 Header header = new Header();
@@ -184,7 +185,7 @@ Window.Render(loadingBar);
 ```
 
 > [!WARNING]
-> As you may have noticed, we have the same output as earlier. No loading bar was rendered on the console. Static elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
+> As you may have noticed, we have the same output as earlier. No loading bar was rendered on the console. Passive elements are activated by default when added to the window. On the contrary, interactive elements need to be activated manually.
 
 To do so, replace the `Window.Render(loadingBar)` instruction with the following:
 
@@ -195,7 +196,7 @@ Window.ActivateElement(prompt);
 <!-- TODO:  ADD DEMO VISUAL HERE -->
 
 > [!TIP]
-> The method `Window.ActivateElement()` will activate the element and render it on the console. Do not forget to write `Window.Render()` before to render the other _static_ elements like `Title`, `Header` or `Footer` for example.
+> The method `Window.ActivateElement()` will activate the element and render it on the console. Do not forget to write `Window.Render()` before to render the other _passive_ elements like `Title`, `Header` or `Footer` for example.
 
 ### `Prompt`
 
