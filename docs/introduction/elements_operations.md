@@ -104,14 +104,53 @@ Window.Freeze();
 
 ### `Placement`
 
+The `Placement` enumeration is used to place elements at a convenient location on the window. It is used by every element from the library that can be placed on the window. According to the placement, the element position and line will be calculated and rendered.
+
+The available values are:
+
+- `TopLeft`: x(line) = 0, y(char) = 0
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
+- `TopCenter`: x(line) = 0, y(char) = windowWidth / 2
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
+- `TopRight`: x(line) = 0, y(char) = windowWidth
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
+- `TopCenterFullWidth`: x(line) = 0, y(char) = 0 (In fact, it is the same as `TopLeft` but we know that the element will be rendered with the full width of the window, following top elements will be placed below it)
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
+- `BottomCenterFullWidth`: x(line) = windowHeight, y(char) = 0 (In preview for now as not fully implemented)
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
 ### `TextAlignment`
+
+The `TextAlignment` enumeration is used to align the text in a string. It is used by some elements from the library. Here are the available values:
+
+- `Left`: Align the text to the left
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
+- `Center`: Align the text to the center
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
+- `Right`: Align the text to the right
+
+<!-- TODO:  ADD DEMO VISUAL HERE -->
+
+### Consult the references documentation
+
+In all the tutorials and the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) the elements definitions are simplified and do not declare all the arguments available. To see all the arguments available for each element, you can consult the [references documentation](/ConsoleAppVisuals/references/index.html).
 
 ## Conclusion
 
-Work in progress...
-
-> [!NOTE]
-> If this part really raises your interest, feel free to notify me by [opening an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [contact me by email](mailto:morgan@kodelab.fr).
+In this section, you learned how to deactivate and remove elements from the window. You also discovered the `Placement` and `TextAlignment` enumerations and how to use the full potential of the element options by knowing all the arguments available. You may now be able to use more complex elements and place them at your desired location.
 
 ---
 
