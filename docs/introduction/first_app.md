@@ -195,7 +195,7 @@ Window.ActivateElement(prompt);
 <!-- TODO:  ADD DEMO VISUAL HERE -->
 
 > [!TIP]
-> The method `Window.ActivateElement()` will activate the element and display it on the console. Do not forget to write `Window.Render()` before to display the other _static_ elements like `Title`, `Header` or `Footer` for example.
+> The method `Window.ActivateElement()` will activate the element and render it on the console. Do not forget to write `Window.Render()` before to render the other _static_ elements like `Title`, `Header` or `Footer` for example.
 
 ### `Prompt`
 
