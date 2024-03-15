@@ -59,6 +59,8 @@ Window.Render();
 Window.Freeze();
 ```
 
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![DashBoard](../assets/vid/gif/data_viz/dash_deactivate.gif)
 
 As you noticed, the title is not rendered on the screen because its `Visibility` property has been set to false.
@@ -94,6 +96,8 @@ Window.Render();
 Window.Freeze();
 ```
 
+<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
+
 ![DashBoard](../assets/vid/gif/data_viz/dash_remove.gif)
 
 ## Discover elements options
@@ -103,6 +107,11 @@ Window.Freeze();
 ### `TextAlignment`
 
 ## Conclusion
+
+Work in progress...
+
+> [!NOTE]
+> If this part really raises your interest, feel free to notify me by [opening an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [contact me by email](mailto:morgan@kodelab.fr).
 
 ---
 
