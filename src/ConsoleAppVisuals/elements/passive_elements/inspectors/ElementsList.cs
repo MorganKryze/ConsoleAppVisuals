@@ -5,15 +5,29 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// This class is used to display a InteractiveList of all the elements in the window.
+/// The <see cref="ElementsList"/> class is used to display a list of all the elements in the window.
 /// </summary>
-public class InteractiveElementsList : PassiveElement
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+/// </list>
+/// </remarks>
+public class ElementsList : PassiveElement
 {
     #region Fields: title, headers, lines, display array, rounded corners
+    private ElementType _elementsTypeExpected;
     private List<List<string>> _lines;
     private string[] _displayArray;
     private bool _roundedCorners;
     private Placement _placement;
+    #endregion
+
+    #region Constants
+    private const string ELEMENTS_TITLE = "Element types available";
+    private const string PASSIVE_ELEMENTS_TITLE = "Passive element types available";
+    private const string INTERACTIVE_ELEMENTS_TITLE = "Interactive element types available";
     #endregion
 
     #region Properties: get headers, get lines
@@ -21,7 +35,14 @@ public class InteractiveElementsList : PassiveElement
     /// <summary>
     /// This property returns the title of the InteractiveList.
     /// </summary>
-    public static string Title => "Interactive Element types available";
+    public string Title =>
+        _elementsTypeExpected switch
+        {
+            ElementType.Default => ELEMENTS_TITLE,
+            ElementType.Passive => PASSIVE_ELEMENTS_TITLE,
+            ElementType.Interactive => INTERACTIVE_ELEMENTS_TITLE,
+            _ => ELEMENTS_TITLE
+        };
 
     /// <summary>
     /// This property returns the headers of the dashboard.
@@ -63,16 +84,34 @@ public class InteractiveElementsList : PassiveElement
     /// </summary>
     public int Count => _lines.Count;
 
+    /// <summary>
+    /// This property returns the type of element expected.
+    /// </summary>
+    public ElementType ElementsTypeExpected => _elementsTypeExpected;
+
     #endregion
 
     #region Constructor
     /// <summary>
-    /// This constructor creates a new instance of the WindowElementsInteractiveList class.
+    /// The <see cref="ElementsList"/> class is used to display a list of all the elements in the window.
     /// </summary>
+    /// <param name="elementTypeExpected">The type of element expected.</param>
     /// <param name="placement">The placement of the InteractiveList.</param>
     /// <param name="roundedCorners">If true, the corners of the InteractiveList will be rounded.</param>
-    public InteractiveElementsList(Placement placement = Placement.TopCenter, bool roundedCorners = false)
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public ElementsList(
+        ElementType elementTypeExpected = ElementType.Default,
+        Placement placement = Placement.TopCenter,
+        bool roundedCorners = false
+    )
     {
+        _elementsTypeExpected = elementTypeExpected;
         _lines = UpdateLines();
         _placement = placement;
         _roundedCorners = roundedCorners;
@@ -85,7 +124,13 @@ public class InteractiveElementsList : PassiveElement
     /// <summary>
     /// Toggles the rounded corners of the element.
     /// </summary>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public void SetRoundedCorners(bool rounded = true)
     {
         _roundedCorners = rounded;
@@ -109,7 +154,25 @@ public class InteractiveElementsList : PassiveElement
         BuildDisplay();
     }
 
-    private static List<List<string>> UpdateLines()
+    /// <summary>
+    /// This method updates the type of element expected.
+    /// </summary>
+    /// <param name="elementsTypeExpected">The new type of element expected.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateElementsTypeExpected(ElementType elementsTypeExpected)
+    {
+        _elementsTypeExpected = elementsTypeExpected;
+        _lines = UpdateLines();
+        BuildDisplay();
+    }
+
+    private List<List<string>> UpdateLines()
     {
         var elements = new List<List<string>>();
         var types = new List<Type>();
@@ -122,15 +185,48 @@ public class InteractiveElementsList : PassiveElement
                 && !assembly.FullName.StartsWith("Microsoft")
             )
             {
-                types.AddRange(
-                    assembly
-                        .GetTypes()
-                        .Where(t =>
-                            t.BaseType != null
-                            && t.BaseType.IsGenericType
-                            && t.BaseType.GetGenericTypeDefinition() == typeof(InteractiveElement<>)
-                        )
-                );
+                switch (_elementsTypeExpected)
+                {
+                    case ElementType.Default:
+                        types.AddRange(
+                            assembly
+                                .GetTypes()
+                                .Where(t => t.BaseType != null && t.IsSubclassOf(typeof(Element))&& t != typeof(PassiveElement) 
+                        && t != typeof(InteractiveElement<>))
+                        );
+                        break;
+
+                    case ElementType.Passive:
+                        types.AddRange(
+                            assembly
+                                .GetTypes()
+                                .Where(t =>
+                                    t.BaseType != null && t.IsSubclassOf(typeof(PassiveElement))
+                                )
+                        );
+                        break;
+
+                    case ElementType.Interactive:
+                        types.AddRange(
+                            assembly
+                                .GetTypes()
+                                .Where(t =>
+                                    t.BaseType != null
+                                    && t.BaseType.IsGenericType
+                                    && t.BaseType.GetGenericTypeDefinition()
+                                        == typeof(InteractiveElement<>)
+                                )
+                        );
+                        break;
+
+                    default:
+                        types.AddRange(
+                            assembly
+                                .GetTypes()
+                                .Where(t => t.BaseType != null && t.IsSubclassOf(typeof(Element)))
+                        );
+                        break;
+                }
             }
         }
         var id = 0;
@@ -144,6 +240,7 @@ public class InteractiveElementsList : PassiveElement
         return elements;
     }
 
+    [Visual]
     private void BuildDisplay()
     {
         var stringList = new List<string>();

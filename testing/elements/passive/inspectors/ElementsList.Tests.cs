@@ -5,7 +5,7 @@
 namespace testing;
 
 [TestClass]
-public class UnitTestInteractiveElementsList
+public class UnitTestElementsList
 {
     #region Cleanup
     [TestCleanup]
@@ -21,7 +21,7 @@ public class UnitTestInteractiveElementsList
     public void Constructor_HappyPath()
     {
         // Arrange
-        var list = new InteractiveElementsList();
+        var list = new ElementsList();
 
         // Act
         // No additional action needed
@@ -34,7 +34,7 @@ public class UnitTestInteractiveElementsList
     public void Constructor_WithLine()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Interactive, Placement.TopLeft, true);
 
         // Act
         // No additional action needed
@@ -51,8 +51,8 @@ public class UnitTestInteractiveElementsList
     public void RoundedCorners_SetsRoundedCornersCorrectly()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
-        var list2 = new InteractiveElementsList(Placement.TopLeft, false);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list2 = new ElementsList(ElementType.Passive, Placement.TopLeft, false);
 
         // Act
         list.SetRoundedCorners(false);
@@ -66,10 +66,10 @@ public class UnitTestInteractiveElementsList
     public void GetHeaders_ReturnsHeaders()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
-        var headers = InteractiveElementsList.Headers;
+        var headers = ElementsList.Headers;
 
         // Assert
         Assert.IsNotNull(headers);
@@ -79,7 +79,7 @@ public class UnitTestInteractiveElementsList
     public void GetLines_ReturnsLines()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
         var lines = list.Lines;
@@ -92,7 +92,7 @@ public class UnitTestInteractiveElementsList
     public void Placement_ReturnsPlacement()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
         var placement = list.Placement;
@@ -105,7 +105,7 @@ public class UnitTestInteractiveElementsList
     public void Line_ReturnsLine()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
         var line = list.Line;
@@ -118,7 +118,7 @@ public class UnitTestInteractiveElementsList
     public void Height_ReturnsHeight()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
         var height = list.Height;
@@ -131,7 +131,7 @@ public class UnitTestInteractiveElementsList
     public void Width_ReturnsWidth()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
         var width = list.Width;
@@ -144,7 +144,7 @@ public class UnitTestInteractiveElementsList
     public void Count_ReturnsCount()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
         var count = list.Count;
@@ -161,13 +161,43 @@ public class UnitTestInteractiveElementsList
     public void UpdatePlacement_HappyPath()
     {
         // Arrange
-        var list = new InteractiveElementsList(Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
 
         // Act
         list.UpdatePlacement(Placement.TopCenter);
 
         // Assert
         Assert.AreEqual(Placement.TopCenter, list.Placement);
+    }
+    #endregion
+
+    #region UpdateElementsTypeExpected
+    [TestMethod]
+    public void UpdateElementsTypeExpected_HappyPath()
+    {
+        // Arrange
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+
+        // Act
+        list.UpdateElementsTypeExpected(ElementType.Interactive);
+
+        // Assert
+        Assert.AreEqual(ElementType.Interactive, list.ElementsTypeExpected);
+    }
+    #endregion
+
+    #region Get Title default
+    [TestMethod]
+    public void GetTitle_Default()
+    {
+        // Arrange
+        var list = new ElementsList((ElementType)int.MaxValue, Placement.TopLeft, true);
+
+        // Act
+        var title = list.Title;
+
+        // Assert
+        Assert.AreEqual("Element types available", title);
     }
     #endregion
 }
