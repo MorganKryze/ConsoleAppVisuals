@@ -7,7 +7,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <summary>
 /// This class is used to display a InteractiveList of all the elements in the window.
 /// </summary>
-public class InteractiveList : Element
+public class InteractiveElementsList : Element
 {
     #region Fields: title, headers, lines, display array, rounded corners
     private List<List<string>> _lines;
@@ -71,7 +71,7 @@ public class InteractiveList : Element
     /// </summary>
     /// <param name="placement">The placement of the InteractiveList.</param>
     /// <param name="roundedCorners">If true, the corners of the InteractiveList will be rounded.</param>
-    public InteractiveList(Placement placement = Placement.TopCenter, bool roundedCorners = false)
+    public InteractiveElementsList(Placement placement = Placement.TopCenter, bool roundedCorners = false)
     {
         _lines = UpdateLines();
         _placement = placement;

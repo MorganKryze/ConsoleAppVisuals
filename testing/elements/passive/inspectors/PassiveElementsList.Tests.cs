@@ -5,7 +5,7 @@
 namespace testing;
 
 [TestClass]
-public class UnitTestInteractiveList
+public class UnitTestPassiveElementsList
 {
     #region Cleanup
     [TestCleanup]
@@ -21,7 +21,7 @@ public class UnitTestInteractiveList
     public void Constructor_HappyPath()
     {
         // Arrange
-        var list = new InteractiveList();
+        var list = new PassiveElementsList();
 
         // Act
         // No additional action needed
@@ -34,7 +34,7 @@ public class UnitTestInteractiveList
     public void Constructor_WithLine()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
         // No additional action needed
@@ -51,8 +51,8 @@ public class UnitTestInteractiveList
     public void RoundedCorners_SetsRoundedCornersCorrectly()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
-        var list2 = new InteractiveList(Placement.TopLeft, false);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
+        var list2 = new PassiveElementsList(Placement.TopLeft, false);
 
         // Act
         list.SetRoundedCorners(false);
@@ -66,10 +66,10 @@ public class UnitTestInteractiveList
     public void GetHeaders_ReturnsHeaders()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
-        var headers = InteractiveList.Headers;
+        var headers = PassiveElementsList.Headers;
 
         // Assert
         Assert.IsNotNull(headers);
@@ -79,7 +79,7 @@ public class UnitTestInteractiveList
     public void GetLines_ReturnsLines()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
         var lines = list.Lines;
@@ -92,7 +92,7 @@ public class UnitTestInteractiveList
     public void Placement_ReturnsPlacement()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
         var placement = list.Placement;
@@ -105,7 +105,7 @@ public class UnitTestInteractiveList
     public void Line_ReturnsLine()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
         var line = list.Line;
@@ -118,7 +118,7 @@ public class UnitTestInteractiveList
     public void Height_ReturnsHeight()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
         var height = list.Height;
@@ -131,7 +131,7 @@ public class UnitTestInteractiveList
     public void Width_ReturnsWidth()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
         var width = list.Width;
@@ -144,7 +144,7 @@ public class UnitTestInteractiveList
     public void Count_ReturnsCount()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
 
         // Act
         var count = list.Count;
@@ -152,22 +152,21 @@ public class UnitTestInteractiveList
         // Assert
         Assert.IsNotNull(count);
     }
-
-
     #endregion
 
     #region UpdatePlacement
     [TestMethod]
-    public void UpdatePlacement_HappyPath()
+    public void UpdatePlacement_UpdatesPlacementCorrectly()
     {
         // Arrange
-        var list = new InteractiveList(Placement.TopLeft, true);
+        var list = new PassiveElementsList(Placement.TopLeft, true);
+        var list2 = new PassiveElementsList(Placement.TopCenter, true);
 
         // Act
         list.UpdatePlacement(Placement.TopCenter);
 
         // Assert
-        Assert.AreEqual(Placement.TopCenter, list.Placement);
+        Assert.AreEqual(list.Placement, list2.Placement);
     }
     #endregion
 }

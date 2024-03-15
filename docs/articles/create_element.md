@@ -176,23 +176,23 @@ Once your customization is done, you may use your element in your application ju
 Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library (available in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)). Here is an example of how to do it:
 
 ```csharp
-ElementsList elementList = new ElementsList();
-Window.AddElement(elementList);
+PassiveElementsList passiveList = new PassiveElementsList();
+Window.AddElement(passiveList);
 
 
-Window.Render(elementList);
+Window.Render(passiveList);
 Window.Freeze();
 
-Window.DeactivateElement(elementList);
-Window.RemoveElement(elementList);
+Window.DeactivateElement(passiveList);
+Window.RemoveElement(passiveList);
 ```
 
-![Elements list](../assets/img/jpg/create_element/elements_list.jpg)
+![Passive elements list](../assets/img/jpg/create_element/elements_list.jpg)
 
 Or target only interactive elements:
 
 ```csharp
-InteractiveList interactiveList = new InteractiveList();
+InteractiveElementsList interactiveList = new InteractiveElementsList();
 Window.AddElement(interactiveList);
 
 Window.Render(interactiveList);
