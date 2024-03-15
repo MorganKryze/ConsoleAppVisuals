@@ -61,7 +61,7 @@ Then, install the `ConsoleAppVisuals` package by following these steps in the vi
 > [!Video https://www.youtube.com/embed/IprbRazS3b8]
 
 > [!TIP]
-> Consider updating the package ofter to the latest version, stay tuned! More info on this [page](https://learn.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#update-a-package).
+> Consider updating the package often to the latest version, stay tuned! More info on this [page](https://learn.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#update-a-package).
 
 ---
 
@@ -193,7 +193,7 @@ Window.Render(loadingBar);
 To do so, replace the `Window.Render(loadingBar)` instruction with the following:
 
 ```csharp
-Window.ActivateElement(prompt);
+Window.ActivateElement(loadingBar);
 ```
 
 <!-- TODO:  ADD DEMO VISUAL HERE -->
