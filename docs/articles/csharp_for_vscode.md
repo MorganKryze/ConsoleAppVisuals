@@ -30,6 +30,8 @@ Visual Studio Code is a free source code editor developed by Microsoft for Windo
 
 3. Once installed, open Visual Studio Code.
 
+4. Click on `File` > `Auto Save` to enable the auto-save feature.
+
 # [MacOS](#tab/macos)
 
 1. Download the Visual Studio Code installer from the [official website](https://code.visualstudio.com/) or use the following command in the terminal:
@@ -44,6 +46,8 @@ brew install --cask visual-studio-code
 
 4. Open the Command Palette (`Ctrl+Shift+P`) and type `shell command` to find the `Shell Command: Install 'code' command in PATH` command.
 
+5. Click on `File` > `Auto Save` to enable the auto-save feature.
+
 # [Linux](#tab/linux)
 
 1. Download the Visual Studio Code installer from the [official website](https://code.visualstudio.com/download) (available as `.deb` or `.rpm`). Or check the [Visual Studio Code Insiders](https://code.visualstudio.com/insiders/) version for more availability.
@@ -53,6 +57,8 @@ brew install --cask visual-studio-code
 3. Once installed, open Visual Studio Code.
 
 4. Open the Command Palette (`Ctrl+Shift+P`) and type `shell command` to find the `Shell Command: Install 'code' command in PATH` command.
+
+5. Click on `File` > `Auto Save` to enable the auto-save feature.
 
 ---
 
