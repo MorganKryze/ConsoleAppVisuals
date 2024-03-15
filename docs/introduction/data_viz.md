@@ -5,10 +5,7 @@ In this section, you will:
 - Discover data visualization with `TableView`, `TableSelector` and `Matrix` elements
 
 > [!TIP]
-> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) of dive into the [references section](/ConsoleAppVisuals/references/index.html) if you go into any trouble.
-
-> [!NOTE]
-> For this section, you may delete your previous code and start from scratch at each section.
+> Each subsection is independent. I recommend you to overwrite the `Program.cs` file with the code of each section to avoid any confusion.
 
 ## The `TableView` element
 

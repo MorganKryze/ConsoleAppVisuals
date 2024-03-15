@@ -8,10 +8,7 @@ In this section, you will learn:
 - Navigate in an application
 
 > [!TIP]
-> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) of dive into the [references section](/ConsoleAppVisuals/references/index.html) if you go into any trouble.
-
-> [!TIP]
-> Each section is independent. I recommend you to overwrite the `Program.cs` file with the code of each section to avoid any confusion.
+> Each subsection is independent. I recommend you to overwrite the `Program.cs` file with the code of each section to avoid any confusion.
 
 ## The `ScrollingMenu` element
 
