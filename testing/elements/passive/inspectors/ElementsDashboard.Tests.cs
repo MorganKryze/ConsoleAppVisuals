@@ -104,6 +104,19 @@ public class UnitTestElementsDashboard
     }
 
     [TestMethod]
+    public void MaxNumberOfThisElement_ReturnsMaxNumberOfThisElement()
+    {
+        // Arrange
+        var list = new ElementsDashboard(Placement.TopLeft, true);
+
+        // Act
+        var maxNumberOfThisElement = list.MaxNumberOfThisElement;
+
+        // Assert
+        Assert.AreEqual(1, maxNumberOfThisElement);
+    }
+
+    [TestMethod]
     public void Line_ReturnsLine()
     {
         // Arrange

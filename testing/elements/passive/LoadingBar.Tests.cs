@@ -90,6 +90,18 @@ public class UnitTestLoadingBar
     }
 
     [TestMethod]
+    public void MaxNumberOfThisElement_Getter()
+    {
+        //Arrange
+        float valuee = 0.3f;
+        var loadingBar = new LoadingBar("test", ref valuee, Placement.TopCenter, 0);
+        //Act
+        var maxNumberOfThisElement = loadingBar.MaxNumberOfThisElement;
+        //Assert
+        Assert.AreEqual(1, maxNumberOfThisElement);
+    }
+
+    [TestMethod]
     [DataRow(0.5f)]
     [DataRow(0.3f)]
     public void Progress_Getter(float progress)

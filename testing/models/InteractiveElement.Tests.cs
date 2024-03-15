@@ -26,6 +26,23 @@ public class UnitTestInteractiveElement
         // Act & Assert
         Assert.AreEqual(1, element.MaxNumberOfThisElement);
     }
+
+    [TestMethod]
+    public void MaxNumberOfThisElement_ThrowsException()
+    {
+        // Arrange
+        var element = new Title("Test");
+        var element2 = new Title("Test2");
+
+        // Act
+        Window.AddElement(element, element2);
+
+        // Assert
+        Assert.ThrowsException<InvalidOperationException>(() => Window.ActivateElement(element2));
+
+        // Cleanup
+        Window.RemoveAllElements();
+    }
 }
 
 public class TestInteractiveElement : InteractiveElement<string>

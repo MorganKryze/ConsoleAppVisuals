@@ -7,7 +7,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <summary>
 /// This class is used to display a dashboard of all the elements in the window.
 /// </summary>
-public class ElementsDashboard : Element
+public class ElementsDashboard : PassiveElement
 {
     #region Fields: title, headers, lines, display array, rounded corners
     private List<List<string>> _lines;
@@ -70,6 +70,10 @@ public class ElementsDashboard : Element
     /// </summary>
     public int Count => _lines.Count;
 
+    /// <summary>
+    /// The maximum number of this element.
+    /// </summary>
+    public override int MaxNumberOfThisElement => 1;
     #endregion
 
     #region Constructor

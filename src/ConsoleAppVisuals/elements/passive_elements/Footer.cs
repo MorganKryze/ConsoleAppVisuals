@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class Footer : Element
+public class Footer : PassiveElement
 {
     #region Fields
     private (string, string, string) _text;
@@ -39,6 +39,11 @@ public class Footer : Element
     /// The width of the footer.
     /// </summary>
     public override int Width => Console.WindowWidth;
+
+    /// <summary>
+    /// The maximum number of this element.
+    /// </summary>
+    public override int MaxNumberOfThisElement => 1;
 
     /// <summary>
     /// The text of the footer.
