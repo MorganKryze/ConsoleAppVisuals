@@ -4,6 +4,7 @@ In this section, you will learn:
 
 - How to deactivate/ remove elements
 - How to use the `ElementsDashboard` inspector element
+- Discover `Placement` and `TextAlignment` enumerations
 - How to use the full potential of the element options
 
 > [!TIP]
@@ -11,7 +12,12 @@ In this section, you will learn:
 
 ## Setup
 
-The setup will remain the same as the previous section. If you have not done it yet, please follow the [First app](/ConsoleAppVisuals/introduction/first_app.html) tutorial.
+> [!IMPORTANT]
+> We will add `using ConsoleAppVisuals.Enums;` to the using statements to use the `Placement` and `TextAlignment` enumerations.
+
+And your cleaned `Program.cs` file should look like this:
+
+[!code-csharp[](../assets/code/ProgramDemo.cs?highlight=4)]
 
 ## Disabling elements
 
@@ -22,7 +28,7 @@ To disable element rendering, you have two options:
 - Deactivate the element
 - Remove the element
 
-### Deactivate the element
+### Deactivating
 
 Deactivating an element can be useful for it to be used later. To do so, let's create a `Title` element and deactivate it. Nothing will be rendered on the screen.
 
@@ -58,9 +64,9 @@ Window.Freeze();
 
 ![DashBoard](../assets/vid/gif/data_viz/dash_deactivate.gif)
 
-As you noticed, the title is not rendered on the screen because its Visibility property has been set to false.
+As you noticed, the title is not rendered on the screen because its `Visibility` property has been set to false.
 
-### Remove the element
+### Removing
 
 Removing an element is useful when you don't want to use it anymore. To do so, let's create a `Title` element and remove it. Nothing will be rendered on the screen.
 

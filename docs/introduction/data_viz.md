@@ -7,39 +7,6 @@ In this section, you will:
 > [!TIP]
 > Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) of dive into the [references section](/ConsoleAppVisuals/references/index.html) if you go into any trouble.
 
-## Setup
-
-We will be using the same project from the previous tutorial. If you haven't done it yet, please follow the steps from the First app tutorial.
-
-Your file structure is like this:
-
-```bash
-Example_project  <-- root
-└───MyApp
-    ├───obj
-    ├───MyApp.csproj
-    └───Program.cs
-```
-
-And your cleaned `Program.cs` file should look like this:
-
-```csharp
-using ConsoleAppVisuals;
-using ConsoleAppVisuals.PassiveElements;
-using ConsoleAppVisuals.InteractiveElements;
-
-namespace MyApp
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            Window.Open();
-        }
-    }
-}
-```
-
 > [!NOTE]
 > For this section, you may delete your previous code and start from scratch at each section.
 
