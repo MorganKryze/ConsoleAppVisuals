@@ -112,7 +112,7 @@ Let's start by removing `Console.WriteLine("Hello World!");` instruction and add
 Window.Open();
 ```
 
-Now we can use all the elements from the package. Our first _passive_ element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Title.html)
+Now we can use all the elements from the package. Our first _passive_ element will be a `Title`. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.PassiveElements.Title.html)
 
 ```csharp
 Title title = new Title("My first app");
@@ -175,7 +175,7 @@ Instead of rendering each element separately, we rendered the `Title`, `Header` 
 
 ### `FakeLoadingBar`
 
-Now let's add a `FakeLoadingBar` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.FakeLoadingBar.html)
+Now let's add a `FakeLoadingBar` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.FakeLoadingBar.html)
 
 ```csharp
 FakeLoadingBar loadingBar = new FakeLoadingBar();
@@ -200,7 +200,7 @@ Window.ActivateElement(prompt);
 
 ### `Prompt`
 
-Now let's add a `Prompt` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.Prompt.html)
+Now let's add a `Prompt` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.Prompt.html)
 
 ```csharp
 Prompt prompt = new Prompt("What's your name?");
@@ -236,7 +236,7 @@ The previous line will retrieve a response object that has the following propert
 > - If `response` is `null`, `response?.Status` will return `null`.
 > - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
-Finally, let's add a `EmbedText` _interactive_ element to display the user's response on the console (as said earlier, the `EmbedText` is _interactive_ but does not return any response, `text.GetResponse()` will always return `null`). [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Elements.EmbedText.html)
+Finally, let's add a `EmbedText` _interactive_ element to display the user's response on the console (as said earlier, the `EmbedText` is _interactive_ but does not return any response, `text.GetResponse()` will always return `null`). [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.EmbedText.html)
 
 ```csharp
 EmbedText text = new EmbedText(
