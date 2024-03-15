@@ -98,6 +98,10 @@ Window.Freeze();
 
 ## Discover elements options
 
+### `Placement`
+
+### `TextAlignment`
+
 ## Conclusion
 
 ---
