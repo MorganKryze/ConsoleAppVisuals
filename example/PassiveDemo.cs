@@ -5,7 +5,7 @@ using ConsoleAppVisuals.Models;
 namespace example
 {
     // This object is a slight modification of the Banner object for the demo (here not interactive).
-    public class PassiveDemo : Element
+    public class PassiveDemo : PassiveElement
     {
         #region Fields
         // Your attributes should be private.

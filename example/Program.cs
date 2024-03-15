@@ -512,24 +512,20 @@ namespace example
                             Window.RemoveElement<ElementsDashboard>();
 
                             // See all the element types available
-                            var elementList = new PassiveElementsList();
-                            Window.AddElement(elementList);
+                            var elementList = new ElementsList(ElementType.Default, Placement.TopCenter);
+                            // See all passive element types available
+                            var passiveList = new ElementsList(ElementType.Passive, Placement.TopLeft);
+                            // See all the interactive element types available
+                            var interactiveList = new ElementsList(ElementType.Interactive, Placement.TopRight);
+                            Window.AddElement(elementList, passiveList, interactiveList);
 
-                            Window.Render(elementList);
+                            Window.Render(passiveList, interactiveList, elementList);
                             Window.Freeze();
 
                             Window.DeactivateElement(elementList);
-                            Window.RemoveElement<PassiveElementsList>();
-
-                            // See all the interactive element types available
-                            var interactiveList = new InteractiveElementsList();
-                            Window.AddElement(interactiveList);
-
-                            Window.Render(interactiveList);
-                            Window.Freeze();
-
+                            Window.DeactivateElement(passiveList);
                             Window.DeactivateElement(interactiveList);
-                            Window.RemoveElement<InteractiveElementsList>();
+                            Window.RemoveElement(elementList, passiveList, interactiveList);
                             goto Menu;
 
                         default:
