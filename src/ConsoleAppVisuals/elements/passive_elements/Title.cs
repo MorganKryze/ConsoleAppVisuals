@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class Title : Element
+public class Title : PassiveElement
 {
     #region Fields
     private string _text;
@@ -49,6 +49,11 @@ public class Title : Element
     /// The line of the title.
     /// </summary>
     public override int Line => 0;
+
+    /// <summary>
+    /// The maximum number of this element.
+    /// </summary>
+    public override int MaxNumberOfThisElement => 1;
 
     /// <summary>
     /// The text styler of the title.

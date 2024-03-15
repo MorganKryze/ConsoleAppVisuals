@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class TableView<T> : Element
+public class TableView<T> : PassiveElement
 {
     #region Fields: title, headers, lines, display array, rounded corners
     private string? _title;
@@ -50,12 +50,6 @@ public class TableView<T> : Element
     /// This property returns the width of the table.
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
-
-    /// <summary>
-    /// This property returns the maximum number of this element that can be displayed on the console.
-    /// </summary>
-    public override int MaxNumberOfThisElement { get; } = 9;
-
     #endregion
 
     #region Constructor

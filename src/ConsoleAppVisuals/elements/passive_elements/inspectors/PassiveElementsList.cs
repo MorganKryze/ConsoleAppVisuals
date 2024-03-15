@@ -7,7 +7,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <summary>
 /// This class is used to display a ElementList of all the elements in the window.
 /// </summary>
-public class PassiveElementsList : Element
+public class PassiveElementsList : PassiveElement
 {
     #region Fields: title, headers, lines, display array, rounded corners
     private List<List<string>> _lines;
@@ -27,7 +27,7 @@ public class PassiveElementsList : Element
     /// <summary>
     /// This property returns the title of the ElementList.
     /// </summary>
-    public static string Title => "Window Elements";
+    public static string Title => "Passive Element types available";
 
     /// <summary>
     /// This property returns the headers of the ElementList.
@@ -67,7 +67,10 @@ public class PassiveElementsList : Element
     /// </summary>
     /// <param name="placement">The placement of the ElementList.</param>
     /// <param name="roundedCorners">If true, the corners of the ElementList will be rounded.</param>
-    public PassiveElementsList(Placement placement = Placement.TopCenter, bool roundedCorners = false)
+    public PassiveElementsList(
+        Placement placement = Placement.TopCenter,
+        bool roundedCorners = false
+    )
     {
         _lines = UpdateLines();
         _placement = placement;
@@ -125,7 +128,11 @@ public class PassiveElementsList : Element
                 && !assembly.FullName.StartsWith("Microsoft")
             )
             {
-                types.AddRange(assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Element))));
+                types.AddRange(
+                    assembly
+                        .GetTypes()
+                        .Where(t => t.BaseType != null && t.IsSubclassOf(typeof(PassiveElement)))
+                );
             }
         }
         var id = 0;

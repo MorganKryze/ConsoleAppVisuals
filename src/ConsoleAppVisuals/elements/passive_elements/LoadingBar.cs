@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class LoadingBar : Element
+public class LoadingBar : PassiveElement
 {
     #region Fields
     private string _text;
@@ -46,6 +46,11 @@ public class LoadingBar : Element
     /// The placement of the loading bar.
     /// </summary>
     public override Placement Placement => _placement;
+
+    /// <summary>
+    /// The maximum number of this element.
+    /// </summary>
+    public override int MaxNumberOfThisElement => 1;
 
     /// <summary>
     /// Getters and setters of the text of the loading bar.
@@ -148,7 +153,9 @@ public class LoadingBar : Element
     {
         if (additionalDuration < 0)
         {
-            throw new ArgumentException("The additional duration of the loading bar cannot be negative.");
+            throw new ArgumentException(
+                "The additional duration of the loading bar cannot be negative."
+            );
         }
         _additionalDuration = additionalDuration;
     }

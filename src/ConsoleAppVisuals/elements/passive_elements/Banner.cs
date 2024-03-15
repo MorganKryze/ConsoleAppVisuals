@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class Banner : Element
+public class Banner : PassiveElement
 {
     #region Fields
     private (string, string, string) _text;

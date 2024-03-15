@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class Header : Element
+public class Header : PassiveElement
 {
     #region Fields
     private (string, string, string) _text;
@@ -50,6 +50,11 @@ public class Header : Element
     /// The margin of the header.
     /// </summary>
     public int Margin => _margin;
+
+    /// <summary>
+    /// The maximum number of this element.
+    /// </summary>
+    public override int MaxNumberOfThisElement => 1;
     #endregion
 
     #region Constructor

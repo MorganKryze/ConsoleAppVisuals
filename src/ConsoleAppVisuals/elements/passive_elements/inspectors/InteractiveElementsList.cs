@@ -7,7 +7,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <summary>
 /// This class is used to display a InteractiveList of all the elements in the window.
 /// </summary>
-public class InteractiveElementsList : Element
+public class InteractiveElementsList : PassiveElement
 {
     #region Fields: title, headers, lines, display array, rounded corners
     private List<List<string>> _lines;

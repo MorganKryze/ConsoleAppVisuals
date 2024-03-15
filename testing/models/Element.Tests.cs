@@ -68,7 +68,7 @@ public class UnitTestElement
     #region ToggleVisibilityTests
 
     [TestMethod]
-    public void ToggleVisibility_WhenAddedToWindow_ThrowsInvalidOperationException()
+    public void ToggleVisibility_WhenAddedToWindow()
     {
         // Arrange
         var element1 = new TestElement();
@@ -77,7 +77,7 @@ public class UnitTestElement
         Window.AddElement(element2);
 
         // Act & Assert
-        Assert.ThrowsException<InvalidOperationException>(() => element2.ToggleVisibility());
+        Assert.IsTrue(element1.Visibility && element2.Visibility);
     }
 
     #endregion
@@ -134,4 +134,4 @@ public class UnitTestElement
     #endregion
 }
 
-public class TestElement : Element { }
+public class TestElement : PassiveElement { }

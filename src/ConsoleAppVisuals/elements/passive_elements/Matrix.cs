@@ -7,7 +7,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <summary>
 /// A matrix class for the console.
 /// </summary>
-public class Matrix<T> : Element
+public class Matrix<T> : PassiveElement
 {
     #region Fields: Lines, display array, rounded corners, placement, line
     private readonly List<List<T?>> _lines;
@@ -44,6 +44,10 @@ public class Matrix<T> : Element
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
 
+    /// <summary>
+    /// The maximum number of this element.
+    /// </summary>
+    public override int MaxNumberOfThisElement => 1;
     #endregion
 
     #region Constructor

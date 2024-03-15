@@ -33,18 +33,19 @@ public abstract class Element
     /// The placement of the element.
     /// </summary>
     /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual Placement Placement { get; set; } = Placement.TopCenter;
+    public virtual Placement Placement { get; set; }
 
     /// <summary>
     /// The text alignment of the text of the element.
     /// </summary>
     /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual TextAlignment TextAlignment { get; set; } = TextAlignment.Center;
+    public virtual TextAlignment TextAlignment { get; set; }
 
     /// <summary>
     /// Whether the element is executable or not.
     /// </summary>
-    public virtual bool IsInteractive { get; } = false;
+    [Visual]
+    public virtual bool IsInteractive { get; }
 
     /// <summary>
     /// The line of the element in the console.
@@ -121,7 +122,7 @@ public abstract class Element
     /// The maximum number of this element that can be drawn on the console.
     /// </summary>
     /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual int MaxNumberOfThisElement { get; } = 1;
+    public virtual int MaxNumberOfThisElement { get; } = int.MaxValue;
     #endregion
 
     #region Methods
