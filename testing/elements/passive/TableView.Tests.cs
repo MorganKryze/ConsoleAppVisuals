@@ -21,7 +21,7 @@ public class UnitTestTableView
     public void Constructor_CreatesTableViewWithHeadersAndBody()
     {
         // Arrange
-        var table = new TableView<string>(
+        var table = new TableView(
             "title",
             new List<string>() { "header1", "header2", "header3" },
             new List<List<string>>()
@@ -42,7 +42,7 @@ public class UnitTestTableView
     public void Constructor_CreatesTableViewWithoutHeaders()
     {
         // Arrange
-        var table = new TableView<string>(
+        var table = new TableView(
             null,
             null,
             new List<List<string>>()
@@ -66,7 +66,7 @@ public class UnitTestTableView
         Assert.ThrowsException<ArgumentException>(() =>
         {
             // Act
-            _ = new TableView<string>(
+            _ = new TableView(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
                 new List<List<string>>()
@@ -85,7 +85,7 @@ public class UnitTestTableView
         Assert.ThrowsException<ArgumentException>(() =>
         {
             // Act
-            _ = new TableView<string>(
+            _ = new TableView(
                 null,
                 null,
                 new List<List<string>>()
@@ -101,7 +101,7 @@ public class UnitTestTableView
     public void Constructor_CreatesTableViewWithNullParameters()
     {
         // Arrange
-        var table = new TableView<string>(null, null, null);
+        var table = new TableView(null, null, null);
 
         // Act
         // No additional action needed
@@ -117,7 +117,7 @@ public class UnitTestTableView
     public void GetLine_ReturnsCorrectLine()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -139,7 +139,7 @@ public class UnitTestTableView
     public void GetLine_ThrowsExceptionOnWrongIndex()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -164,7 +164,7 @@ public class UnitTestTableView
     public void PropertiesWithNullEntry_ReturnsZeroCountHeightAndWidth()
     {
         // Arrange
-        TableView<string> table = new(null, null, null);
+        TableView table = new(null, null, null);
 
         // Act
         // No additional action needed
@@ -181,13 +181,13 @@ public class UnitTestTableView
     public void AddTitle_AddsTitleCorrectly()
     {
         // Arrange
-        TableView<string> table1 =
+        TableView table1 =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
                 new List<List<string>>()
             );
-        TableView<string> table2 =
+        TableView table2 =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -214,7 +214,7 @@ public class UnitTestTableView
     public void AddHeaders_AddsHeadersCorrectly()
     {
         // Arrange
-        TableView<string> table1 =
+        TableView table1 =
             new(
                 null,
                 null,
@@ -224,7 +224,7 @@ public class UnitTestTableView
                     new() { "4", "5", "6" }
                 }
             );
-        TableView<string> table2 =
+        TableView table2 =
             new(
                 null,
                 null,
@@ -253,7 +253,7 @@ public class UnitTestTableView
     public void AddHeaders_ThrowsExceptionOnInconsistentHeaders()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 null,
@@ -278,7 +278,7 @@ public class UnitTestTableView
     public void AddLine_AddsLineOnEmptyBody()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -296,7 +296,7 @@ public class UnitTestTableView
     public void AddLine_ThrowsExceptionOnWrongLine()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -316,7 +316,7 @@ public class UnitTestTableView
     public void AddLine_ThrowsExceptionOnWrongLineWithHeaders()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(null, new List<string>() { "header1", "header2", "header3" }, null);
 
         // Assert
@@ -331,7 +331,7 @@ public class UnitTestTableView
     public void RemoveLine_RemovesLineCorrectly()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -353,7 +353,7 @@ public class UnitTestTableView
     public void RemoveLine_ThrowsExceptionOnWrongIndex()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -376,7 +376,7 @@ public class UnitTestTableView
     public void UpdateLine_UpdatesLineCorrectly()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -398,7 +398,7 @@ public class UnitTestTableView
     public void UpdateLine_ThrowsExceptionOnWrongIndex()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -421,7 +421,7 @@ public class UnitTestTableView
     public void UpdateLine_ThrowsExceptionOnWrongLineIndex()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -447,7 +447,7 @@ public class UnitTestTableView
     public void RoundedCorners_SetsRoundedCornersCorrectly()
     {
         // Arrange
-        TableView<string> table1 =
+        TableView table1 =
             new(
                 "title",
                 new List<string>() { "header1", "header2", "header3" },
@@ -456,7 +456,7 @@ public class UnitTestTableView
                     new() { "1", "2", "3" }
                 }
             );
-        TableView<string> table2 =
+        TableView table2 =
             new(
                 "title",
                 new List<string>() { "header1", "header2", "header3" },
@@ -479,7 +479,7 @@ public class UnitTestTableView
     public void ClearEverything_ClearsAllElements()
     {
         // Arrange
-        TableView<string> table1 =
+        TableView table1 =
             new(
                 "title",
                 new List<string>() { "header1", "header2", "header3" },
@@ -488,7 +488,7 @@ public class UnitTestTableView
                     new() { "1", "2", "3" }
                 }
             );
-        TableView<string> table2 =
+        TableView table2 =
             new(
                 "title",
                 new List<string>() { "header1", "header2", "header3" },
@@ -516,7 +516,7 @@ public class UnitTestTableView
     public void Clear_ResetsTable()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 null,
                 new List<string>() { "header1", "header2", "header3" },
@@ -537,7 +537,7 @@ public class UnitTestTableView
     public void Render_AddsTableToWindowAndActivates()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 "title",
                 new List<string>() { "header1", "header2", "header3" },
@@ -550,7 +550,7 @@ public class UnitTestTableView
         Window.AddElement(table);
 
         // Act
-        Window.ActivateElement<TableView<string>>(false);
+        Window.ActivateElement<TableView>(false);
 
         // Assert
         Assert.IsNotNull(table.GetRawHeaders);
@@ -561,14 +561,14 @@ public class UnitTestTableView
     #endregion
 
     #region GetColumnDataTests
-    private readonly TableView<int> _tableView =
+    private readonly TableView _tableView =
         new(
             null,
             new List<string> { "Column1", "Column2", "Column3" },
-            new List<List<int>>
+            new List<List<string>>
             {
-                new List<int> { 1, 2, 3 },
-                new List<int> { 4, 5, 6 }
+                new() { "1", "2", "3" },
+                new() { "4", "5", "6" }
             }
         );
 
@@ -579,7 +579,7 @@ public class UnitTestTableView
         var result = _tableView.GetColumnData(1);
 
         // Assert
-        CollectionAssert.AreEqual(new List<int> { 2, 5 }, result);
+        CollectionAssert.AreEqual(new List<string> { "2", "5" }, result);
     }
 
     [TestMethod]
@@ -598,7 +598,7 @@ public class UnitTestTableView
         var result = _tableView.GetColumnData("Column2");
 
         // Assert
-        CollectionAssert.AreEqual(new List<int> { 2, 5 }, result);
+        CollectionAssert.AreEqual(new List<string> { "2", "5" }, result);
     }
 
     [TestMethod]
@@ -637,7 +637,7 @@ public class UnitTestTableView
     public void GetPlacement_ReturnsCorrectPlacement()
     {
         // Arrange
-        TableView<string> table =
+        TableView table =
             new(
                 "title",
                 new List<string>() { "header1", "header2", "header3" },

@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// The <see cref="TableSelector{T}"/> class that contains the methods to create a table and display it.
+/// The <see cref="TableSelector"/> class contains the methods to create an interactive table and display it.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -14,12 +14,12 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class TableSelector<T> : InteractiveElement<int>
+public class TableSelector : InteractiveElement<int>
 {
     #region Fields
     private string? _title;
     private List<string>? _rawHeaders;
-    private List<List<T>>? _rawLines;
+    private List<List<string>>? _rawLines;
     private bool _excludeHeader;
     private bool _excludeFooter;
     private string? _footerText;
@@ -83,7 +83,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <summary>
     /// This property returns the lines of the table.
     /// </summary>
-    public List<List<T>>? GetRawLines => _rawLines;
+    public List<List<string>>? GetRawLines => _rawLines;
 
     /// <summary>
     /// This property returns the number of lines in the table.
@@ -99,7 +99,7 @@ public class TableSelector<T> : InteractiveElement<int>
 
     #region Constructor
     /// <summary>
-    /// The <see cref="TableSelector{T}"/> natural constructor.
+    /// The <see cref="TableSelector"/> class contains the methods to create an interactive table and display it.
     /// </summary>
     /// <param name="title">The title of the table.</param>
     /// <param name="lines">The lines of the table.</param>
@@ -120,7 +120,7 @@ public class TableSelector<T> : InteractiveElement<int>
     public TableSelector(
         string? title = null,
         List<string>? headers = null,
-        List<List<T>>? lines = null,
+        List<List<string>>? lines = null,
         bool excludeHeader = true,
         bool excludeFooter = true,
         string? footerText = null,
@@ -615,7 +615,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public List<T> GetLine(int index)
+    public List<string> GetLine(int index)
     {
         if (index < 0 || index >= _rawLines?.Count)
         {
@@ -637,7 +637,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public List<T>? GetColumnData(int index)
+    public List<string>? GetColumnData(int index)
     {
         if (_rawLines is null)
         {
@@ -649,7 +649,7 @@ public class TableSelector<T> : InteractiveElement<int>
             throw new ArgumentOutOfRangeException(nameof(index), "Invalid column index.");
         }
 
-        List<T>? list = new();
+        List<string>? list = new();
         for (int i = 0; i < _rawLines.Count; i++)
         {
             list.Add(_rawLines[i][index]);
@@ -670,7 +670,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public List<T>? GetColumnData(string header)
+    public List<string>? GetColumnData(string header)
     {
         if (_rawHeaders is null)
         {
@@ -700,7 +700,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void AddLine(List<T> line)
+    public void AddLine(List<string> line)
     {
         if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
         {
@@ -714,7 +714,7 @@ public class TableSelector<T> : InteractiveElement<int>
                 "The number of columns in the table is not consistent with the headers."
             );
         }
-        _rawLines ??= new List<List<T>>();
+        _rawLines ??= new List<List<string>>();
         _rawLines.Add(line);
         BuildTable();
     }
@@ -756,7 +756,7 @@ public class TableSelector<T> : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateLine(int index, List<T> line)
+    public void UpdateLine(int index, List<string> line)
     {
         if (_rawLines?.Count > 0)
         {

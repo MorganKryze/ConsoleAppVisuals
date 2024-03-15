@@ -14,6 +14,8 @@ The `TableView` element is used to display data in a table format. It is useful 
 Let's create a `TableView` element and add it to the window.
 
 ```csharp
+Window.Open();
+
 List<string> studentsHeaders = new List<string>() { "id", "name", "major", "grades" };
 
 List<string> student1 = new List<string>() { "01", "Theo", "Technology", "97" };
@@ -30,8 +32,8 @@ List<List<string>> studentsData =
         student4
     };
 
-TableView<string> students =
-    new TableView<string>(
+TableView students =
+    new TableView(
         "Students grades",
         studentsHeaders,
         studentsData
@@ -40,17 +42,21 @@ TableView<string> students =
 Window.AddElement(students);
 Window.Render(students);
 Window.Freeze();
+
+Window.Close();
 ```
 
 ![TableView](../assets/img/jpg/data_viz/table_view.jpg)
 
 ## The `TableSelector` element
 
-The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.TableSelector-1.html)
+The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table. You may use the `Up` and `Down` arrows or the `Z` and `S` keys to move int the selector. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.TableSelector-1.html)
 
 Here is an example of how to use it:
 
 ```csharp
+Window.Open();
+
 List<string> playersHeaders = new List<string>() { "id", "first name", "last name", "nationality", "slams" };
 
 List<string> player1 = new List<string>() { "01", "Novak", "Djokovic", "Serbia", "24" };
@@ -73,8 +79,8 @@ List<List<string>> playersData =
         player7
     };
 
-TableSelector<string> players =
-    new TableSelector<string>(
+TableSelector players =
+    new TableSelector(
         "Great tennis players",
          playersHeaders,
          playersData
@@ -106,6 +112,8 @@ EmbedText playersEmbedResponse =
 
 Window.AddElement(playersEmbedResponse);
 Window.ActivateElement(playersEmbedResponse);
+
+Window.Close();
 ```
 
 ![DashBoard](../assets/vid/gif/data_viz/embed.gif)
@@ -118,6 +126,8 @@ Window.ActivateElement(playersEmbedResponse);
 The `Matrix` element is used to display data in a matrix format. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.PassiveElements.Matrix-1.html)
 
 ```csharp
+Window.Open();
+
 List<int?> firstRow = new List<int?>() { 1, null, 2, 7, 9, 3 };
 List<int?> secondRow = new List<int?>() { 4, 5, 6, 8, null, 2 };
 List<int?> thirdRow = new List<int?>() { 7, 8, null, 3, 4, 5 };
@@ -137,13 +147,15 @@ Window.AddElement(matrix);
 
 Window.Render(matrix);
 Window.Freeze();
+
+Window.Close();
 ```
 
 ![Matrix](../assets/img/jpg/data_viz/matrix.jpg)
 
 ## Conclusion
 
-In this tutorial, you learned how to remove elements from the window and how to use the `TableView`, `TableSelector` and `Matrix` elements. You are now ready to start the menus management tutorial.
+In this tutorial, you learned how to use the `TableView`, `TableSelector` and `Matrix` elements. You are now ready to start the menus management tutorial.
 
 ---
 

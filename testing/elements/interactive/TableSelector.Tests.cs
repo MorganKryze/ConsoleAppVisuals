@@ -25,7 +25,7 @@ public class UnitTestTableSelector
     public void Placement_Getter(Placement placement)
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -47,7 +47,7 @@ public class UnitTestTableSelector
     public void Line_Getter()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -69,7 +69,7 @@ public class UnitTestTableSelector
     public void Line_Getter_NoInput()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -103,7 +103,7 @@ public class UnitTestTableSelector
         List<List<string>> playersData =
             new() { player1, player2, player3, player4, player5, player6, player7 };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             playersData
@@ -121,7 +121,7 @@ public class UnitTestTableSelector
     public void Height_Getter_NullArray()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -155,7 +155,7 @@ public class UnitTestTableSelector
         List<List<string>> playersData =
             new() { player1, player2, player3, player4, player5, player6, player7 };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             playersData
@@ -173,7 +173,7 @@ public class UnitTestTableSelector
     public void Width_Getter_NullArray()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -207,7 +207,7 @@ public class UnitTestTableSelector
         List<List<string>> playersData =
             new() { player1, player2, player3, player4, player5, player6, player7 };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             playersData
@@ -225,7 +225,7 @@ public class UnitTestTableSelector
     public void Title_Getter_NullArray()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -255,7 +255,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 },
@@ -282,7 +282,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 },
@@ -308,7 +308,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -329,7 +329,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "nationality", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>>()
@@ -347,7 +347,7 @@ public class UnitTestTableSelector
     public void RoundedCorners_Getter_NullArray()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -375,7 +375,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -399,7 +399,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -421,7 +421,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "nationality", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>>(),
@@ -442,7 +442,7 @@ public class UnitTestTableSelector
     public void FooterText_Getter_NullArray()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -470,7 +470,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -488,7 +488,7 @@ public class UnitTestTableSelector
     public void GetRawHeaders_Getter_NullArray()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -516,7 +516,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -540,7 +540,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -558,7 +558,7 @@ public class UnitTestTableSelector
     public void Count_Getter_NullArray()
     {
         // Arrange
-        var tableSelector = new TableSelector<int>(
+        var tableSelector = new TableSelector(
             default,
             default,
             default,
@@ -585,7 +585,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             default
@@ -607,7 +607,7 @@ public class UnitTestTableSelector
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
-            var tableSelector = new TableSelector<string>(
+            var tableSelector = new TableSelector(
                 "Great tennis players",
                 default,
                 new List<List<string>> { player1, player2, player3 }
@@ -623,7 +623,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             null,
             null,
             new List<List<string>> { player1, player2, player3 }
@@ -647,7 +647,7 @@ public class UnitTestTableSelector
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(() =>
         {
-            var tableSelector = new TableSelector<string>(
+            var tableSelector = new TableSelector(
                 "Great tennis players",
                 playersHeaders,
                 new List<List<string>> { player1, player2, player3 }
@@ -666,7 +666,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -689,7 +689,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -713,7 +713,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             default,
             new List<List<string>> { player1, player2, player3 }
@@ -738,7 +738,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             default,
             new List<List<string>> { player1, player2, player3 }
@@ -763,7 +763,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -792,7 +792,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -817,7 +817,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -842,7 +842,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -869,7 +869,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -894,7 +894,7 @@ public class UnitTestTableSelector
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
         List<List<string>> playersData = new() { player1, player2, player3 };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+        var tableSelector = new TableSelector(default, playersHeaders, playersData);
 
         // Act
         var columnData = tableSelector.GetColumnData(2);
@@ -920,7 +920,7 @@ public class UnitTestTableSelector
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
         List<List<string>> playersData = new() { player1, player2, player3 };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+        var tableSelector = new TableSelector(default, playersHeaders, playersData);
 
         // Act & Assert
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
@@ -937,7 +937,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, default);
+        var tableSelector = new TableSelector(default, playersHeaders, default);
 
         // Act & Assert
         Assert.IsNull(tableSelector.GetColumnData(2));
@@ -953,7 +953,7 @@ public class UnitTestTableSelector
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
         List<List<string>> playersData = new() { player1, player2, player3 };
 
-        var tableSelector = new TableSelector<string>(default, default, playersData);
+        var tableSelector = new TableSelector(default, default, playersData);
 
         // Act & Assert
         Assert.IsNull(tableSelector.GetColumnData("first name"));
@@ -967,7 +967,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, default);
+        var tableSelector = new TableSelector(default, playersHeaders, default);
 
         // Act & Assert
         Assert.IsNull(tableSelector.GetColumnData("first name"));
@@ -985,7 +985,7 @@ public class UnitTestTableSelector
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
         List<List<string>> playersData = new() { player1, player2, player3 };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+        var tableSelector = new TableSelector(default, playersHeaders, playersData);
 
         // Act & Assert
         Assert.ThrowsException<ArgumentException>(() =>
@@ -1006,7 +1006,7 @@ public class UnitTestTableSelector
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
         List<List<string>> playersData = new() { player1, player2, player3 };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+        var tableSelector = new TableSelector(default, playersHeaders, playersData);
 
         // Act
         var columnData = tableSelector.GetColumnData("last name");
@@ -1025,7 +1025,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>>()
@@ -1048,7 +1048,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>>()
@@ -1074,7 +1074,7 @@ public class UnitTestTableSelector
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
         List<List<string>> playersData = new() { player1, player2, player3 };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+        var tableSelector = new TableSelector(default, playersHeaders, playersData);
 
         // Act & Assert
         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain" };
@@ -1093,7 +1093,7 @@ public class UnitTestTableSelector
             new() { "id", "first name", "last name", "national", "slams" };
         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player4 }
@@ -1115,7 +1115,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>>()
@@ -1142,7 +1142,7 @@ public class UnitTestTableSelector
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
         List<List<string>> playersData = new() { player1, player2, player3 };
 
-        var tableSelector = new TableSelector<string>(default, playersHeaders, playersData);
+        var tableSelector = new TableSelector(default, playersHeaders, playersData);
 
         // Act & Assert
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
@@ -1160,7 +1160,7 @@ public class UnitTestTableSelector
             new() { "id", "first name", "last name", "national", "slams" };
         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player4 }
@@ -1187,7 +1187,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>>()
@@ -1212,7 +1212,7 @@ public class UnitTestTableSelector
             new() { "id", "first name", "last name", "national", "slams" };
         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player4 }
@@ -1235,7 +1235,7 @@ public class UnitTestTableSelector
             new() { "id", "first name", "last name", "national", "slams" };
         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player4 }
@@ -1264,7 +1264,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             default,
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -1289,7 +1289,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -1314,7 +1314,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -1348,7 +1348,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -1372,7 +1372,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>>()
@@ -1397,7 +1397,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -1421,7 +1421,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>>()
@@ -1446,7 +1446,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }
@@ -1470,7 +1470,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>>()
@@ -1495,7 +1495,7 @@ public class UnitTestTableSelector
         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
         List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
 
-        var tableSelector = new TableSelector<string>(
+        var tableSelector = new TableSelector(
             "Great tennis players",
             playersHeaders,
             new List<List<string>> { player1, player2, player3 }

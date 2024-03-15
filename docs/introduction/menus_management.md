@@ -17,8 +17,9 @@ The `ScrollingMenu` element is an historic element of the library. Some features
 Here is a minimal example of how to use it:
 
 ```csharp
-string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
+Window.Open();
 
+string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
 ScrollingMenu menu = new ScrollingMenu(
     "Please choose an option among those below.",
     0,
@@ -32,7 +33,6 @@ Window.ActivateElement(menu);
 
 // The ScrollingMenu will return an int as a value (represents the index of the selected item)
 var responseMenu = menu.GetResponse();
-
 EmbedText embedResponse = new EmbedText(
     new List<string>()
     {
@@ -45,6 +45,8 @@ EmbedText embedResponse = new EmbedText(
 
 Window.AddElement(embedResponse);
 Window.ActivateElement(embedResponse);
+
+Window.Close();
 ```
 
 ![ScrollingMenu](../assets/vid/gif/menus_management/scrolling_menu.gif)
@@ -55,60 +57,7 @@ The most practical way to manage actions according the the outcome of the `Scrol
 
 Here is a basic example where we display a custom message according to the user's action (pressing Enter, Escape or Delete):
 
-```csharp
-string[] options = new string[] { "Option 0", "Option 1", "Option 2" };
-ScrollingMenu menu = new ScrollingMenu(
-    "Please choose an option among those below.",
-    0,
-    Placement.TopCenter,
-    options
-);
-
-Window.AddElement(menu);
-Window.ActivateElement(menu);
-
-var response = menu.GetResponse();
-switch (response?.Status)
-{
-    case Output.Selected:
-        EmbedText embedSelected = new EmbedText(
-            new List<string>()
-            {
-                "The user pressed the Enter key",
-            }
-        );
-        Window.AddElement(embedSelected);
-        Window.ActivateElement(embedSelected);
-
-        Window.RemoveElement(embedSelected);
-        break;
-    case Output.Escaped:
-        EmbedText embedEscaped = new EmbedText(
-            new List<string>()
-            {
-                "The user pressed the Escape key",
-            }
-        );
-        Window.AddElement(embedEscaped);
-        Window.ActivateElement(embedEscaped);
-
-        Window.RemoveElement(embedEscaped);
-        break;
-    case Output.Deleted:
-        EmbedText embedDeleted = new EmbedText(
-            new List<string>()
-            {
-                "The user pressed the Delete key",
-            }
-        );
-        Window.AddElement(embedDeleted);
-        Window.ActivateElement(embedDeleted);
-
-        Window.RemoveElement(embedDeleted);
-        break;
-}
-Window.Close();
-```
+[!code-csharp[](../assets/code/menus/status.cs?highlight=15,17,29,41)]
 
 ![Simple menu](../assets/vid/gif/menus_management/embed.gif)
 
@@ -116,56 +65,7 @@ Window.Close();
 
 As we mentioned earlier, the `ScrollingMenu` returns an `int` as a value. This value represents the index of the selected item. You may use it to act differently according to the selected item. Here we decide to act differently when the user selects an item and quit the app otherwise:
 
-```csharp
-string[] options = new string[] { "Play", "Settings", "Quit" };
-
-ScrollingMenu menu = new ScrollingMenu(
-    "Please choose an option among those below.",
-    0,
-    Placement.TopCenter,
-    options
-);
-
-Window.AddElement(menu);
-Window.ActivateElement(menu);
-
-var response = menu.GetResponse();
-switch (response?.Status)
-{
-    case Output.Selected:
-        switch (response.Value)
-        {
-            case 0:
-                EmbedText play = new EmbedText(
-                    new List<string>() { "Playing..." }
-                );
-                Window.AddElement(play);
-                Window.ActivateElement(play);
-
-                Window.RemoveElement(play);
-                break;
-            case 1:
-                EmbedText settings = new EmbedText(
-                    new List<string>() { "Consulting the settings..." }
-                );
-                Window.AddElement(settings);
-                Window.ActivateElement(settings);
-
-                Window.RemoveElement(settings);
-                break;
-            case 2:
-                // Quit the app
-                Window.Close();
-                break;
-        }
-        break;
-    case Output.Escaped:
-    case Output.Deleted:
-        // Quit the app anyway
-        Window.Close();
-        break;
-}
-```
+[!code-csharp[](../assets/code/menus/value.cs?highlight=19,21,30,39)]
 
 ![Using Value](../assets/vid/gif/menus_management/value.gif)
 
@@ -177,104 +77,7 @@ For a simple navigation, you may use a decentralized way to manage your navigati
 
 Here is an example of a simple navigation between a main menu and a settings menu:
 
-```csharp
-// Creating the visuals and adding them to the window
-
-string[] menuOptions = new string[] { "Play", "Settings", "Quit" };
-ScrollingMenu menu = new ScrollingMenu(
-    "Please choose an option among those below.",
-    0,
-    Placement.TopCenter,
-    menuOptions
-);
-Window.AddElement(menu);
-
-string[] settingsOptions = new string[] { "Language", "Sound", "Back" };
-ScrollingMenu settingsMenu = new ScrollingMenu(
-    "Please choose an option among those below.",
-    0,
-    Placement.TopCenter,
-    settingsOptions
-);
-Window.AddElement(settingsMenu);
-
-EmbedText play = new EmbedText(
-    new List<string>() { "Playing..." }
-);
-Window.AddElement(play);
-
-EmbedText language = new EmbedText(
-    new List<string>() { "Changing language..." }
-);
-Window.AddElement(language);
-
-EmbedText sound = new EmbedText(
-    new List<string>() { "Changing volume..." }
-);
-Window.AddElement(sound);
-
-
-// Start by cleaning the window
-Window.Clear();
-
-// This is a label, it will be used to navigate in the code using the goto statements
-MainMenu:
-
-Window.ActivateElement(menu);
-
-var response = menu.GetResponse();
-switch (response?.Status)
-{
-    case Output.Selected:
-        switch (response.Value)
-        {
-            case 0:
-                goto Play;
-            case 1:
-                goto SettingsMenu;
-            case 2:
-                Window.Close();
-                break;
-        }
-        break;
-    case Output.Escaped:
-    case Output.Deleted:
-        Window.Close();
-        break;
-}
-
-Play:
-
-Window.ActivateElement(play);
-goto MainMenu;
-
-SettingsMenu:
-
-Window.ActivateElement(settingsMenu);
-
-var settingsResponse = settingsMenu.GetResponse();
-
-switch (settingsResponse?.Status)
-{
-    case Output.Selected:
-        switch (settingsResponse.Value)
-        {
-            case 0:
-                Window.ActivateElement(language);
-                break;
-            case 1:
-                Window.ActivateElement(sound);
-                break;
-            case 2:
-                goto MainMenu;
-        }
-        break;
-    case Output.Escaped:
-    case Output.Deleted:
-        goto MainMenu;
-}
-goto SettingsMenu;
-```
+[!code-csharp[](../assets/code/menus/navigation.cs?highlight=40,65,70)]
 
 ![Navigation](../assets/vid/gif/menus_management/navigation.gif)
 
