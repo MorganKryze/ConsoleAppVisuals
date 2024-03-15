@@ -9,3 +9,4 @@
 - name: Additional articles
 - href: create_docs.md
 - href: publish_library.md
+- href: csharp_for_vscode.md
