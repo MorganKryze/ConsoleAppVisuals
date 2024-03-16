@@ -32,7 +32,7 @@ public static class Core
     );
 
     [Visual]
-    private static (ConsoleColor, ConsoleColor) s_terminalColorPanel = (
+    private static readonly (ConsoleColor, ConsoleColor) s_terminalColorPanel = (
         Console.ForegroundColor,
         Console.BackgroundColor
     );
@@ -75,6 +75,7 @@ public static class Core
         if (isUpdated)
         {
             SetConsoleDimensions();
+            SetConsoleColors();
         }
         return isUpdated;
     }
@@ -169,6 +170,22 @@ public static class Core
     {
         s_previousWindowWidth = Console.WindowWidth;
         s_previousWindowHeight = Console.WindowHeight;
+    }
+
+    /// <summary>
+    /// This method is used to set the console colors to the Core variables associated. This does not change the actual colors of the console.
+    /// </summary>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    [Visual]
+    public static void SetConsoleColors()
+    {
+        s_initialColorPanel = s_colorPanel;
     }
 
     /// <summary>
