@@ -21,7 +21,14 @@ If needed, add here the screenshots or recordings of the changes
 
 ## Documentation added? 📜
 
-- [ ] 📜 README.md
-- [ ] 📓 docs
-- [ ] 📕 already in the code
-- [ ] 🙅 no documentation needed
+- [ ] 📓 Docs
+- [ ] 📜 .github docs
+- [ ] 📕 Already in the code
+- [ ] 🙅 No documentation needed
+
+## Tests added? 🔍
+
+- [ ] ✅ Features totally covered
+- [ ] 🚧 Features tests incomplete
+- [ ] ❌ no tests added
+- [ ] ⏩ no tests needed
