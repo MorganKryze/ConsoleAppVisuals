@@ -160,7 +160,9 @@ namespace example
             }
             _lowerMargin = lowerMargin;
         }
+        #endregion
 
+        #region Render: the render method is the most important part of an element
         /// <summary>
         /// This method is used to render the banner on the console.
         /// </summary>
