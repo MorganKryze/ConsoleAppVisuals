@@ -9,7 +9,7 @@ Extra short description of the PR
 
 ## Bug Fixes 🐛
 
-- Bug fix description
+- FIXED: Bug fix description
 
 ## Related Tickets & Documents 📑
 
