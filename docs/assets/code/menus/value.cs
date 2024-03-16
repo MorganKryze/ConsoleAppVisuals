@@ -48,3 +48,4 @@ switch (response?.Status)
         Window.Close();
         break;
 }
+Window.Close();
