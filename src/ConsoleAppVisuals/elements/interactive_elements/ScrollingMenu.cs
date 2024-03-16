@@ -49,7 +49,7 @@ public class ScrollingMenu : InteractiveElement<int>
     /// The width of the menu.
     /// </summary>
     public override int Width =>
-        Math.Max(_question.Length + 1, _choices.Max((string s) => s.Length) + 4);
+        Math.Max(_question.Length + 1, _choices.Max((string s) => s.Length) + 5);
 
     /// <summary>
     /// The question to ask the user.
