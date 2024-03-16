@@ -30,12 +30,16 @@ To disable element rendering, you have two options:
 Deactivating an element can be useful for it to be used later. To do so, let's create a `Title` element and deactivate it. Nothing will be rendered on the screen.
 
 ```csharp
+Window.Open();
+
 Title title = new Title("Elements options");
 Window.AddElement(title);
 
 Window.DeactivateElement(title);
 
 Window.Render();
+
+Window.Close();
 ```
 
 Let's see how to perceive the effect of deactivating an element. Update your code to add a `ElementsDashboard` _passive_ element and deactivate the title. The dashboard will be rendered, but not the title:
@@ -44,6 +48,8 @@ Let's see how to perceive the effect of deactivating an element. Update your cod
 > The method `Window.Freeze()` is used to stop the execution by waiting the user to press a key (Enter by default) to see the window content without exiting the application when the window only contains _passive_ elements.
 
 ```csharp
+Window.Open();
+
 Title title = new Title("Elements options");
 Window.AddElement(title);
 
@@ -57,11 +63,11 @@ Window.DeactivateElement(title);
 
 Window.Render();
 Window.Freeze();
+
+Window.Close();
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
-![DashBoard](../assets/vid/gif/data_viz/dash_deactivate.gif)
+![DashBoard](../assets/vid/gif/elements_options/deactivate.gif)
 
 As you noticed, the title is not rendered on the screen because its `Visibility` property has been set to false.
 
@@ -70,17 +76,23 @@ As you noticed, the title is not rendered on the screen because its `Visibility`
 Removing an element is useful when you don't want to use it anymore. To do so, let's create a `Title` element and remove it. Nothing will be rendered on the screen.
 
 ```csharp
+Window.Open();
+
 Title title = new Title("Elements options");
 Window.AddElement(title);
 
 Window.RemoveElement(title);
 
 Window.Render();
+
+Window.Close();
 ```
 
 Let's see how to perceive the effect of removing an element. Update your code to the following:
 
 ```csharp
+Window.Open();
+
 Title title = new Title("Elements options");
 Window.AddElement(title);
 
@@ -94,11 +106,11 @@ Window.RemoveElement(title);
 
 Window.Render();
 Window.Freeze();
+
+Window.Close();
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
-![DashBoard](../assets/vid/gif/data_viz/dash_remove.gif)
+![DashBoard](../assets/vid/gif/elements_options/remove.gif)
 
 ## Access and update elements parameters
 
@@ -114,23 +126,23 @@ The available values are:
 
 - `TopLeft`: x(line) = 0, y(char) = 0
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![TopLeft](../assets/img/jpg/elements_options/topleft.jpg)
 
 - `TopCenter`: x(line) = 0, y(char) = windowWidth / 2
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![TopCenter](../assets/img/jpg/elements_options/topcenter.jpg)
 
 - `TopRight`: x(line) = 0, y(char) = windowWidth
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![TopRight](../assets/img/jpg/elements_options/topright.jpg)
 
 - `TopCenterFullWidth`: x(line) = 0, y(char) = 0 (In fact, it is the same as `TopLeft` but we know that the element will be rendered with the full width of the window, following top elements will be placed below it)
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![TopCenter](../assets/img/jpg/elements_options/topcenter.jpg)
 
 - `BottomCenterFullWidth`: x(line) = windowHeight, y(char) = 0 (In preview for now as not fully implemented)
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![BottomCenterFullWidth](../assets/img/jpg/elements_options/bottomcenter.jpg)
 
 > [!NOTE]
 > To choose the placement of an element, you can either set it from the constructor or use the `UpdatePlacement()` method after creating the element.
@@ -147,21 +159,21 @@ The `TextAlignment` enumeration is used to align the text in a string. It is use
 
 - `Left`: Align the text to the left
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![Left](../assets/img/jpg/elements_options/left.jpg)
 
 - `Center`: Align the text to the center
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![Center](../assets/img/jpg/elements_options/center.jpg)
 
 - `Right`: Align the text to the right
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![Right](../assets/img/jpg/elements_options/right.jpg)
 
 > [!NOTE]
 > To choose the text alignment of an element, you can either set it from the constructor or use the `UpdateTextAlignment()` method after creating the element (some elements may not have this method if the text alignment is not used in it so refer to the references documentation to get that specific information).
 >
 > ```csharp
-> EmbedText embedText = new EmbedText(new List<string>(){"This is a message"},"OK ▶",TextAlignment.Center);
+> EmbedText embedText = new EmbedText(new List<string>(){"Demo", "This is a message"},"OK ▶",TextAlignment.Center);
 > // or
 > embedText.UpdateTextAlignment(TextAlignment.Center);
 > ```
