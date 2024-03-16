@@ -49,10 +49,6 @@ public class HeightSpacer : PassiveElement
     public HeightSpacer(int height = 1, Placement placement = Placement.TopCenter)
     {
         int windowHeightMax = Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1;
-        if (Console.WindowHeight == 0)
-        {
-            height = 0;
-        }
         if (height < 0 || height > windowHeightMax)
         {
             throw new ArgumentOutOfRangeException(
