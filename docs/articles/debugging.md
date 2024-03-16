@@ -17,14 +17,18 @@ Debugging is a crucial part of software development. It is the process of identi
 The first tool that we will discuss is the `ElementsDashboard`. It is a debugging tool that allows you to visualize the elements added to the Window. they are presented like a list of elements with their properties. This tool is very useful when you want to see the updates of the elements properties in real-time after activating, deactivating or modifying them.
 
 ```csharp
+Window.Open();
+
 ElementsDashboard dashboard = new ElementsDashboard(Placement.TopCenter, false);
 Window.AddElement(dashboard);
 
 Window.Render(dashboard);
 Window.Freeze();
+
+Window.Close();
 ```
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![ElementsDashboard](../assets/img/jpg/debugging/dashboard.jpg)
 
 > [!TIP]
 > The arguments available for the `ElementsDashboard` are:
@@ -37,14 +41,18 @@ Window.Freeze();
 The `ElementsList` is another debugging tool that allows you to visualize the elements inherited from the `Element`, `PassiveElement` or `InteractiveElement` classes. It lets you see their type and project location (library or your own). This tool is very useful when you want to add your custom element and see if they are recognized by the library.
 
 ```csharp
+Window.Open();
+
 ElementsList list = new ElementsList(ElementType.Default, Placement.TopCenter, false);
 Window.AddElement(list);
 
 Window.Render(list);
 Window.Freeze();
+
+Window.Close();
 ```
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![ElementsList](../assets/img/jpg/debugging/list.jpg)
 
 > [!TIP]
 > The arguments available for the `ElementsList` are:
@@ -58,12 +66,16 @@ Window.Freeze();
 The `Core.WriteDebugMark()` method is a simple debugging tool that allows you to print a debug mark in the console. This mark overrides whatever is currently in the console and is useful when you want to display information without creating an `EmbedText` for example (it is also a quick alternative to the `Console.WriteLine()` method).
 
 ```csharp
+Window.Open();
+
 // Here the info are dummy but you may pass real elements or window variables
 Core.WriteDebugMark(Placement.TopRight, "h: 12", "w: 12", "x: 0", "y: 0");
 Window.Freeze();
+
+Window.Close();
 ```
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![DebugMark](../assets/img/jpg/debugging/debug_mark.jpg)
 
 > [!TIP]
 > The arguments available for the `Core.WriteDebugMark()` are:
