@@ -22,7 +22,7 @@ public class UnitTestSpacer
     public void Placement_Getter()
     {
         // Arrange
-        var spacer = new HeightSpacer();
+        var spacer = new HeightSpacer(0);
 
         // Act
         var placement = spacer.Placement;
@@ -36,7 +36,7 @@ public class UnitTestSpacer
     public void UpdatePlacement()
     {
         // Arrange
-        var spacer = new HeightSpacer();
+        var spacer = new HeightSpacer(0);
 
         // Act
         spacer.UpdatePlacement(Placement.TopLeft);
