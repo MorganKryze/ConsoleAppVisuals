@@ -46,8 +46,6 @@ Window.Freeze();
 Window.Close();
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
 ![TableView](../assets/img/jpg/data_viz/table_view.jpg)
 
 ## The `TableSelector` element
@@ -94,8 +92,6 @@ Window.AddElement(players);
 Window.ActivateElement(players);
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
 ![TableSelector](../assets/vid/gif/data_viz/table_selector.gif)
 
 Now let's collect the user interaction response by adding the following code:
@@ -120,9 +116,7 @@ Window.ActivateElement(playersEmbedResponse);
 Window.Close();
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
-![DashBoard](../assets/vid/gif/data_viz/embed.gif)
+![Embed response](../assets/vid/gif/data_viz/embed.gif)
 
 > [!NOTE]
 > Here the `??` operator is used to provide a default value if the response is `null`. In this case, if the response is `null`, the default value is `0`.
@@ -156,8 +150,6 @@ Window.Freeze();
 
 Window.Close();
 ```
-
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 
 ![Matrix](../assets/img/jpg/data_viz/matrix.jpg)
 
