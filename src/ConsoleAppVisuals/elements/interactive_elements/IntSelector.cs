@@ -373,31 +373,31 @@ public class IntSelector : InteractiveElement<int>
     {
         Core.WritePositionedString(
             BuildLine(Direction.Up),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector - 2
         );
         Core.WritePositionedString(
             BuildNumber(NextNumber(Direction.Up, currentNumber)),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector - 1
         );
         Core.WritePositionedString(
             $" {LeftSelector} {BuildNumber(currentNumber)} {RightSelector} ",
-            TextAlignment.Center,
+            Placement,
             true,
             lineSelector
         );
         Core.WritePositionedString(
             BuildNumber(NextNumber(Direction.Down, currentNumber)),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector + 1
         );
         Core.WritePositionedString(
             BuildLine(Direction.Down),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector + 2
         );

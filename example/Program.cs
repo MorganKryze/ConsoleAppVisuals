@@ -1,8 +1,8 @@
 ﻿using ConsoleAppVisuals;
-using ConsoleAppVisuals.PassiveElements;
-using ConsoleAppVisuals.InteractiveElements;
 using ConsoleAppVisuals.Enums;
+using ConsoleAppVisuals.InteractiveElements;
 using ConsoleAppVisuals.Models;
+using ConsoleAppVisuals.PassiveElements;
 
 namespace example
 {
@@ -39,22 +39,24 @@ namespace example
                 "What will be your next action?",
                 0,
                 Placement.TopCenter,
-                "Change Console color",
-                "Write on the console",
-                "Display paragraph",
-                "Answer some prompt",
-                "Select number",
+                "Display embed paragraph",
+                "Answer a prompt",
+                "Select a number",
                 "Change title style",
-                "Display matrix",
-                "Display table",
-                "Interact with table",
-                "Display loading bar",
-                "Custom passive element",
-                "Custom interactive element",
+                "Display a matrix",
+                "Display a table",
+                "Interact with a table",
+                "Display a loading bar",
                 "Display elements space",
-                "Display dashboard",
+                "Display dashboards",
+                "Change the console color",
+                "Custom: passive element",
+                "Custom: interactive element",
                 "Quit the app"
             );
+            // Update the selector from '>' to '▶'
+            mainMenu.UpdateSelector('▶');
+
             // Add the main menu to the window
             Window.AddElement(mainMenu);
 
@@ -76,104 +78,6 @@ namespace example
                     switch (response.Value)
                     {
                         case 0:
-                            var colorMenu = new ScrollingMenu(
-                                "What color do you want to change?",
-                                0,
-                                Placement.TopCenter,
-                                "White",
-                                "Red",
-                                "Green",
-                                "Blue",
-                                "Yellow",
-                                "Magenta",
-                                "Cyan"
-                            );
-                            Window.AddElement(colorMenu);
-
-                            // Activate the element at the index 5 (the ScrollingMenu)
-                            Window.ActivateElement(5);
-                            var responseColor = colorMenu.GetResponse();
-
-                            switch (responseColor?.Value)
-                            {
-                                case 0:
-                                    Core.SetForegroundColor(ConsoleColor.White);
-                                    break;
-                                case 1:
-                                    Core.SetForegroundColor(ConsoleColor.Red);
-                                    break;
-                                case 2:
-                                    Core.SetForegroundColor(ConsoleColor.Green);
-                                    break;
-                                case 3:
-                                    Core.SetForegroundColor(ConsoleColor.Blue);
-                                    break;
-                                case 4:
-                                    Core.SetForegroundColor(ConsoleColor.Yellow);
-                                    break;
-                                case 5:
-                                    Core.SetForegroundColor(ConsoleColor.Magenta);
-                                    break;
-                                case 6:
-                                    Core.SetForegroundColor(ConsoleColor.Cyan);
-                                    break;
-                                default:
-                                    break;
-                            }
-                            // This will refresh the window to apply the new color
-                            Window.Render();
-
-                            Window.RemoveElement(5);
-                            goto Menu;
-
-                        case 1:
-                            int startLine = Window.GetLineAvailable(Placement.TopCenter);
-                            // These following functions are at the core of the library,
-                            // they should not be used directly but can be useful
-                            Core.WriteContinuousString(
-                                "Have a look on the console to see all the text!",
-                                startLine,
-                                true,
-                                1500,
-                                100,
-                                default,
-                                default,
-                                true
-                            );
-                            Core.WritePositionedString(
-                                "Bonjour le monde !",
-                                TextAlignment.Left,
-                                false,
-                                startLine + 1,
-                                true
-                            );
-                            Core.WritePositionedString(
-                                "Hola Mundo !",
-                                TextAlignment.Right,
-                                false,
-                                startLine + 2,
-                                true
-                            );
-                            Core.WritePositionedString(
-                                "Hallo Welt !",
-                                TextAlignment.Center,
-                                false,
-                                startLine + 3,
-                                true
-                            );
-                            Core.WritePositionedString(
-                                "Ciao mondo !",
-                                TextAlignment.Left,
-                                false,
-                                startLine + 4,
-                                true
-                            );
-                            Window.Freeze();
-
-                            Window.Clear(default, startLine, 5);
-                            goto Menu;
-
-                        case 2:
                             var text = new EmbedText(
                                 new List<string>()
                                 {
@@ -194,7 +98,7 @@ namespace example
                             Window.RemoveElement(text);
                             goto Menu;
 
-                        case 3:
+                        case 1:
                             var prompt = new Prompt("What is your name?", "Theo");
                             Window.AddElement(prompt);
 
@@ -218,9 +122,11 @@ namespace example
                             Window.RemoveElement(embedResponsePrompt);
                             goto Menu;
 
-                        case 4:
+                        case 2:
                             // A FloatSelector is also available depending on your needs
                             var intSelector = new IntSelector("Select a number", 10, 100, 25, 5);
+                            intSelector.UpdateLeftSelector('▶');
+                            intSelector.UpdateRightSelector('◀');
                             Window.AddElement(intSelector);
 
                             Window.ActivateElement(intSelector);
@@ -240,19 +146,20 @@ namespace example
                             Window.RemoveElement(embedResponseNumber);
                             goto Menu;
 
-                        case 5:
+                        case 3:
                             ScrollingMenu fontMenu =
                                 new(
                                     "What font do you want to use?",
                                     0,
                                     Placement.TopCenter,
                                     "Lil_Devil",
-                                    "ANSI_Shadow",
+                                    "Bloody",
                                     "Big",
                                     "Merlin",
-                                    "Bloody",
+                                    "ANSI_Shadow",
                                     "Custom: Stop"
                                 );
+                            fontMenu.UpdateSelector('▶');
                             Window.AddElement(fontMenu);
 
                             Window.ActivateElement(fontMenu);
@@ -264,7 +171,7 @@ namespace example
                                     title.UpdateFont(Font.Lil_Devil);
                                     break;
                                 case 1:
-                                    title.UpdateFont(Font.ANSI_Shadow);
+                                    title.UpdateFont(Font.Bloody);
                                     break;
                                 case 2:
                                     title.UpdateFont(Font.Big);
@@ -273,7 +180,7 @@ namespace example
                                     title.UpdateFont(Font.Merlin);
                                     break;
                                 case 4:
-                                    title.UpdateFont(Font.Bloody);
+                                    title.UpdateFont(Font.ANSI_Shadow);
                                     break;
                                 case 5:
                                     title.UpdateFont(Font.Custom, "Stop/");
@@ -284,7 +191,7 @@ namespace example
                             Window.RemoveElement(fontMenu);
                             goto Menu;
 
-                        case 6:
+                        case 4:
                             // We first create the data to display
                             List<int?> firstRow = new() { 1, null, 2, 7, 9, 3 };
                             List<int?> secondRow = new() { 4, 5, 6, 8, null, 2 };
@@ -323,7 +230,7 @@ namespace example
                             Window.RemoveElement(matrix);
                             goto Menu;
 
-                        case 7:
+                        case 5:
                             // We first create the data to display,
                             // pay attention to the order of the data and their length
                             // (the length of the headers and the data must be the same)
@@ -359,7 +266,7 @@ namespace example
                             Window.RemoveElement(students);
                             goto Menu;
 
-                        case 8:
+                        case 6:
                             List<string> playersHeaders =
                                 new() { "id", "first name", "last name", "nationality", "slams" };
                             List<string> player1 =
@@ -408,7 +315,7 @@ namespace example
                             Window.RemoveElement(embedResponseTable);
                             goto Menu;
 
-                        case 9:
+                        case 7:
                             // Contrary to the FakeLoadingBar, the LoadingBar
                             // corresponds to a real loading defined by a variable (here progress)
                             float progress = 0f;
@@ -446,36 +353,7 @@ namespace example
                             Window.RemoveElement(loadingBar);
                             goto Menu;
 
-                        case 10:
-                            // Custom element, see the PassiveDemo class
-                            // in this project for more information
-                            var customPassiveElement = new PassiveDemo(
-                                "This element has been created in this project",
-                                "Its interest is for demonstration only",
-                                "The model in on the PassiveDemo.cs file",
-                                3,
-                                2,
-                                Placement.TopCenterFullWidth
-                            );
-                            Window.AddElement(customPassiveElement);
-                            Window.Render(customPassiveElement);
-                            Window.Freeze();
-
-                            Window.RemoveElement(customPassiveElement);
-                            goto Menu;
-
-                        case 11:
-                            var customInteractiveElement = new InteractiveDemo(
-                                "This element is also custom for demo purposes, you may type something:"
-                            );
-                            Window.AddElement(customInteractiveElement);
-
-                            Window.ActivateElement(customInteractiveElement);
-
-                            Window.RemoveElement(customInteractiveElement);
-                            goto Menu;
-
-                        case 12:
+                        case 8:
                             // These following elements are for debugging purposes,
                             // they should not be used in a production state of a project
                             var embedInfo = new EmbedText(
@@ -497,7 +375,7 @@ namespace example
                             Window.RemoveElement(embedInfo);
                             goto Menu;
 
-                        case 13:
+                        case 9:
                             // These following functions are for debugging purposes,
                             // they should not be used in a production state of a software
 
@@ -512,11 +390,20 @@ namespace example
                             Window.RemoveElement<ElementsDashboard>();
 
                             // See all the element types available
-                            var elementList = new ElementsList(ElementType.Default, Placement.TopCenter);
+                            var elementList = new ElementsList(
+                                ElementType.Default,
+                                Placement.TopCenter
+                            );
                             // See all passive element types available
-                            var passiveList = new ElementsList(ElementType.Passive, Placement.TopLeft);
+                            var passiveList = new ElementsList(
+                                ElementType.Passive,
+                                Placement.TopLeft
+                            );
                             // See all the interactive element types available
-                            var interactiveList = new ElementsList(ElementType.Interactive, Placement.TopRight);
+                            var interactiveList = new ElementsList(
+                                ElementType.Interactive,
+                                Placement.TopRight
+                            );
                             Window.AddElement(elementList, passiveList, interactiveList);
 
                             Window.Render(passiveList, interactiveList, elementList);
@@ -526,6 +413,87 @@ namespace example
                             Window.DeactivateElement(passiveList);
                             Window.DeactivateElement(interactiveList);
                             Window.RemoveElement(elementList, passiveList, interactiveList);
+                            goto Menu;
+
+                        case 10:
+                            var colorMenu = new ScrollingMenu(
+                                "What color do you want to change?",
+                                0,
+                                Placement.TopCenter,
+                                "White",
+                                "Red",
+                                "Green",
+                                "Blue",
+                                "Yellow",
+                                "Magenta",
+                                "Cyan"
+                            );
+                            colorMenu.UpdateSelector('▶');
+                            Window.AddElement(colorMenu);
+
+                            // Activate the element at the index 5 (the ScrollingMenu)
+                            Window.ActivateElement(5);
+                            var responseColor = colorMenu.GetResponse();
+
+                            switch (responseColor?.Value)
+                            {
+                                case 0:
+                                    Core.SetForegroundColor(ConsoleColor.White);
+                                    break;
+                                case 1:
+                                    Core.SetForegroundColor(ConsoleColor.Red);
+                                    break;
+                                case 2:
+                                    Core.SetForegroundColor(ConsoleColor.Green);
+                                    break;
+                                case 3:
+                                    Core.SetForegroundColor(ConsoleColor.Blue);
+                                    break;
+                                case 4:
+                                    Core.SetForegroundColor(ConsoleColor.Yellow);
+                                    break;
+                                case 5:
+                                    Core.SetForegroundColor(ConsoleColor.Magenta);
+                                    break;
+                                case 6:
+                                    Core.SetForegroundColor(ConsoleColor.Cyan);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            // This will refresh the window to apply the new color
+                            Window.Render();
+
+                            Window.RemoveElement(5);
+                            goto Menu;
+
+                        case 11:
+                            // Custom element, see the PassiveDemo class
+                            // in this project for more information
+                            var customPassiveElement = new PassiveDemo(
+                                "This element has been created in this project",
+                                "Its interest is for demonstration only",
+                                "The model in on the PassiveDemo.cs file",
+                                3,
+                                2,
+                                Placement.TopCenterFullWidth
+                            );
+                            Window.AddElement(customPassiveElement);
+                            Window.Render(customPassiveElement);
+                            Window.Freeze();
+
+                            Window.RemoveElement(customPassiveElement);
+                            goto Menu;
+
+                        case 12:
+                            var customInteractiveElement = new InteractiveDemo(
+                                "This element is also custom for demo purposes, you may type something:"
+                            );
+                            Window.AddElement(customInteractiveElement);
+
+                            Window.ActivateElement(customInteractiveElement);
+
+                            Window.RemoveElement(customInteractiveElement);
                             goto Menu;
 
                         default:

@@ -754,7 +754,7 @@ public static class Window
             {
                 Core.WritePositionedString(
                     "".PadRight(Console.WindowWidth),
-                    TextAlignment.Center,
+                    Placement.TopCenter,
                     false,
                     i
                 );

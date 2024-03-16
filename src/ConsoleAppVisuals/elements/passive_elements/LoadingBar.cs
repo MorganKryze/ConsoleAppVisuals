@@ -193,14 +193,14 @@ public class LoadingBar : PassiveElement
             }
             Core.WritePositionedString(
                 loadingBar.ToString().ResizeString(text.Length, TextAlignment.Left),
-                _placement.ToTextAlignment(),
+                _placement,
                 false,
                 line + 2,
                 false
             );
         }
 
-        Core.WritePositionedString(_text, _placement.ToTextAlignment(), false, Line, false);
+        Core.WritePositionedString(_text, _placement, false, Line, false);
         while (_progress < MAX_PROGRESS)
         {
             BuildBar(_text, _progress, Line);

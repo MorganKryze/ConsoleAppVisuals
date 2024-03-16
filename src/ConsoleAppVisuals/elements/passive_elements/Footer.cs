@@ -134,7 +134,7 @@ public class Footer : PassiveElement
     [Visual]
     protected override void RenderElementActions()
     {
-        Core.WritePositionedString(_text.BannerToString(), TextAlignment.Center, true, Line, false);
+        Core.WritePositionedString(_text.BannerToString(), Placement, true, Line, false);
     }
     #endregion
 }

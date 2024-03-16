@@ -157,7 +157,7 @@ public class Header : PassiveElement
     [Visual]
     protected override void RenderElementActions()
     {
-        Core.WritePositionedString(Text.BannerToString(), TextAlignment.Center, true, Line, false);
+        Core.WritePositionedString(Text.BannerToString(), Placement, true, Line, false);
     }
     #endregion
 }

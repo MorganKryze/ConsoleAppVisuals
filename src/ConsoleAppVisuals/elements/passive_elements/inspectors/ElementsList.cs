@@ -356,7 +356,7 @@ public class ElementsList : PassiveElement
         for (int j = 0; j < _displayArray.Length; j++)
         {
             array[j] = _displayArray[j];
-            Core.WritePositionedString(array[j], _placement.ToTextAlignment(), false, Line + j);
+            Core.WritePositionedString(array[j], _placement, false, Line + j);
         }
     }
     #endregion

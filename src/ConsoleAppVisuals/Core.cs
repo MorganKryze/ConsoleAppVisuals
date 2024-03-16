@@ -257,7 +257,7 @@ public static class Core
     /// This method is used to write a string positioned in the console.
     /// </summary>
     /// <param name="str">The string to write.</param>
-    /// <param name="align">The position of the string in the console.</param>
+    /// <param name="placement">The placement of the string in the console.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <param name="line">The line where the string is written in the console. If null, will be written where the cursor is.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
@@ -271,7 +271,7 @@ public static class Core
     [Visual]
     public static void WritePositionedString(
         string str,
-        TextAlignment align = TextAlignment.Center,
+        Placement placement = Placement.TopCenter,
         bool negative = false,
         int? line = null,
         bool writeLine = false
@@ -281,21 +281,27 @@ public static class Core
         var negativeRng = str.GetRangeAndRemoveNegativeAnchors();
         str = negativeRng.Item1;
         line ??= Console.CursorTop;
+
         if (str.Length < Console.WindowWidth)
-            switch (align)
+            switch (placement)
             {
-                case TextAlignment.Left:
+                case Placement.TopLeft:
                     Console.SetCursorPosition(0, (int)line);
                     break;
-                case TextAlignment.Center:
+                case Placement.TopCenterFullWidth:
+                case Placement.BottomCenterFullWidth:
+                case Placement.TopCenter:
                     Console.SetCursorPosition((Console.WindowWidth - str.Length) / 2, (int)line);
                     break;
-                case TextAlignment.Right:
+                case Placement.TopRight:
                     Console.SetCursorPosition(Console.WindowWidth - str.Length, (int)line);
                     break;
             }
         else
+        {
             Console.SetCursorPosition(0, (int)line);
+        }
+
         if (writeLine)
         {
             if (negativeRng.Item2 is not null)
@@ -342,7 +348,7 @@ public static class Core
     /// <param name="additionalTime">The additional time to wait after the string is written in ms.</param>
     /// <param name="length">The length of the string. If null, the length is the window width.</param>
     /// <param name="align">The alignment of the string.</param>
-    /// <param name="writeLine">If true, the string is written with a line break.</param>
+    /// <param name="placement">The placement of the string.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -357,14 +363,15 @@ public static class Core
         bool negative = false,
         int printTime = 2000,
         int additionalTime = 1000,
-        int length = -1,
+        int? length = null,
         TextAlignment align = TextAlignment.Center,
-        bool writeLine = false
+        Placement placement = Placement.TopCenter
     )
     {
         line ??= Console.CursorTop;
-        length = length == -1 ? Console.WindowWidth : length;
+        length ??= Console.WindowWidth;
         int timeInterval = printTime / str.Length;
+
         for (int i = 0; i <= str.Length; i++)
         {
             StringBuilder continuous = new StringBuilder();
@@ -372,11 +379,10 @@ public static class Core
                 continuous.Append(str[j]);
             string continuousStr = continuous.ToString().PadRight(str.Length);
             WritePositionedString(
-                continuousStr.ResizeString(length, align, default),
-                align,
+                continuousStr.ResizeString((int)length, align),
+                placement,
                 negative,
-                line,
-                writeLine
+                line
             );
             Thread.Sleep(timeInterval);
 
@@ -389,7 +395,9 @@ public static class Core
                 }
             }
         }
-        WritePositionedString(str.ResizeString(length, align, default), align, negative, line);
+
+        WritePositionedString(str.ResizeString((int)length, align), placement, negative, line);
+
         Thread.Sleep(additionalTime);
     }
 
@@ -423,12 +431,12 @@ public static class Core
         margin ??= 0;
         if (text is not null)
         {
-            Console.SetCursorPosition(0, line ?? Window.GetLineAvailable(align.ToPlacement()));
+            Console.SetCursorPosition(0, (int)line);
 
             for (int i = 0; i < margin; i++)
                 WritePositionedString(
                     "".ResizeString(width ?? Console.WindowWidth, align),
-                    align,
+                    align.ToPlacement(),
                     negative,
                     (line ?? Window.GetLineAvailable(align.ToPlacement())) + i,
                     true
@@ -436,7 +444,7 @@ public static class Core
             for (int i = 0; i < text.Length; i++)
                 WritePositionedString(
                     text[i].ResizeString(width ?? Console.WindowWidth, align),
-                    align,
+                    align.ToPlacement(),
                     negative,
                     (line ?? Window.GetLineAvailable(align.ToPlacement())) + margin + i,
                     true
@@ -444,7 +452,7 @@ public static class Core
             for (int i = 0; i < margin; i++)
                 WritePositionedString(
                     "".ResizeString(width ?? Console.WindowWidth, align),
-                    align,
+                    align.ToPlacement(),
                     negative,
                     (line ?? Window.GetLineAvailable(align.ToPlacement()))
                         + margin
@@ -459,7 +467,9 @@ public static class Core
     /// This method prints a paragraph in the console.
     /// </summary>
     /// <param name="equalizeLengths">Whether or not the lines of the paragraph should be equalized to the same length.</param>
+
     /// <param name="align">The alignment of the paragraph.</param>
+    /// <param name="placement">The placement of the paragraph.</param>
     /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
@@ -474,6 +484,7 @@ public static class Core
     public static void WriteMultiplePositionedLines(
         bool equalizeLengths = true,
         TextAlignment align = TextAlignment.Center,
+        Placement placement = Placement.TopCenter,
         bool negative = false,
         int? line = null,
         params string[] text
@@ -485,7 +496,12 @@ public static class Core
             int maxLength = text.Length > 0 ? text.Max(s => s.Length) : 0;
             foreach (string str in text)
             {
-                WritePositionedString(str.ResizeString(maxLength, align), align, negative, line++);
+                WritePositionedString(
+                    str.ResizeString(maxLength, align),
+                    placement,
+                    negative,
+                    line++
+                );
                 if (line >= Console.WindowHeight - 1)
                     break;
             }
@@ -494,7 +510,7 @@ public static class Core
         {
             foreach (string str in text)
             {
-                WritePositionedString(str, align, negative, line++);
+                WritePositionedString(str, placement, negative, line++);
                 if (line >= Console.WindowHeight - 1)
                     break;
             }
@@ -523,14 +539,14 @@ public static class Core
     {
         foreach (string str in text)
         {
-            WritePositionedString(str, placement.ToTextAlignment(), false, line++);
-            if (line >= Console.WindowHeight - 1)
+            WritePositionedString(str, placement, false, line++);
+            if (line > Console.WindowHeight - 1)
                 break;
         }
     }
 
     /// <summary>
-    /// This method is used for debug purposes. It overrites any text in the console at a specified placement.
+    /// This method is used for debug purposes. It overwrites any text in the console at a specified placement.
     /// </summary>
     /// <param name="placement">The placement of the debug mark.</param>
     /// <param name="lines">The lines of the debug mark.</param>
@@ -556,22 +572,22 @@ public static class Core
         };
 
         (int, int) cursorPosition = (Console.CursorLeft, Console.CursorTop);
-        const int DEFAULT_LENGHT = 7;
+        const int DEFAULT_LENGTH = 7;
 
         var finalLines = new List<string>();
 
         int maxLength =
             lines.Length > 0
                 ? (
-                    lines.Max(s => s.Length) < DEFAULT_LENGHT
-                        ? DEFAULT_LENGHT
+                    lines.Max(s => s.Length) < DEFAULT_LENGTH
+                        ? DEFAULT_LENGTH
                         : lines.Max(s => s.Length)
                 )
-                : DEFAULT_LENGHT;
+                : DEFAULT_LENGTH;
 
         finalLines.Add(
             "┌Debug"
-                + (maxLength != DEFAULT_LENGHT ? new string('─', maxLength - DEFAULT_LENGHT) : "")
+                + (maxLength != DEFAULT_LENGTH ? new string('─', maxLength - DEFAULT_LENGTH) : "")
                 + "─//─┐"
         );
         if (lines.Length is 0)
@@ -588,13 +604,14 @@ public static class Core
 
         finalLines.Add(
             "└─//───"
-                + (maxLength != DEFAULT_LENGHT ? new string('─', maxLength - DEFAULT_LENGHT) : "")
+                + (maxLength != DEFAULT_LENGTH ? new string('─', maxLength - DEFAULT_LENGTH) : "")
                 + "───┘"
         );
 
         WriteMultiplePositionedLines(
             false,
             placement.ToTextAlignment(),
+            placement,
             false,
             0,
             finalLines.ToArray()
@@ -657,7 +674,7 @@ public static class Core
     /// </summary>
     /// <param name="inserted">The string that receives the other.</param>
     /// <param name="toInsert">The string to insert.</param>
-    /// <param name="position">The placement of the string to insert.</param>
+    /// <param name="align">The alignment of the string to insert.</param>
     /// <returns>The final string after computing.</returns>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -669,7 +686,7 @@ public static class Core
     public static string InsertString(
         this string inserted,
         string toInsert,
-        Placement position = Placement.TopCenter
+        TextAlignment align = TextAlignment.Center
     )
     {
         if (inserted.Length < toInsert.Length)
@@ -678,22 +695,20 @@ public static class Core
                 "The string to insert is longer than the string to insert into"
             );
         }
-        switch (position)
+        switch (align)
         {
-            case Placement.TopCenter:
-            case Placement.BottomCenterFullWidth:
-            case Placement.TopCenterFullWidth:
+            case TextAlignment.Center:
                 int center = inserted.Length / 2;
                 int start = center - (toInsert.Length / 2);
                 return inserted.Remove(start, toInsert.Length).Insert(start, toInsert);
-            case Placement.TopLeft:
+            case TextAlignment.Left:
                 return inserted.Remove(0, toInsert.Length).Insert(0, toInsert);
-            case Placement.TopRight:
+            case TextAlignment.Right:
                 return inserted
                     .Remove(inserted.Length - toInsert.Length, toInsert.Length)
                     .Insert(inserted.Length - toInsert.Length, toInsert);
             default:
-                throw new ArgumentException("The placement is not valid");
+                throw new ArgumentException("The alignment is not valid");
         }
     }
 

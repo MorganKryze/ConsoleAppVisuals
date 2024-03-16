@@ -440,7 +440,8 @@ public class Matrix<T> : PassiveElement
             );
         Core.WriteMultiplePositionedLines(
             true,
-            _placement.ToTextAlignment(),
+            TextAlignment.Center,
+            _placement,
             false,
             Line,
             _displayArray

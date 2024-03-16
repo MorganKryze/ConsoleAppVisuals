@@ -75,7 +75,7 @@ namespace example
                 false,
                 1500,
                 50,
-                -1,
+                null,
                 _placement.ToTextAlignment()
             );
             var field = new StringBuilder(_defaultValue);
@@ -85,7 +85,7 @@ namespace example
                 Console.CursorVisible = false;
                 Core.WritePositionedString(
                     GetRenderSpace()[0],
-                    TextAlignment.Center,
+                    Placement,
                     false,
                     _line + 2
                 );

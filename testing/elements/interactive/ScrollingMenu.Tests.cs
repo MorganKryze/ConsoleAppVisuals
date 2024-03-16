@@ -125,7 +125,7 @@ public class UnitTestScrollingMenu
         var width = scrollingMenu.Width;
 
         // Assert
-        Assert.AreEqual(11, width);
+        Assert.AreEqual(12, width);
     }
     #endregion
 

@@ -28,7 +28,7 @@ public class Prompt : InteractiveElement<string>
     private const int DEFAULT_PROMPT_MAX_LENGTH = 10;
     private const int DEFAULT_PRINT_DURATION = 1500;
     private const int PROMPT_HEIGHT = 3;
-    private const int PROMPT_LEFT_MARGIN = 4;
+    private const int PROMPT_LEFT_MARGIN = 3;
     #endregion
 
     #region Properties
@@ -207,31 +207,56 @@ public class Prompt : InteractiveElement<string>
             false,
             1500,
             50,
-            -1,
-            _placement.ToTextAlignment()
+            Width,
+            TextAlignment.Left,
+            _placement
         );
+
         var field = new StringBuilder(_defaultValue);
+        int fieldLine = Line + 2;
+        int offset = _placement switch
+        {
+            Placement.TopCenter => Console.WindowWidth / 2 - Width / 2,
+            Placement.TopCenterFullWidth => Console.WindowWidth / 2 - Width / 2,
+            Placement.BottomCenterFullWidth => Console.WindowWidth / 2 - Width / 2,
+            Placement.TopLeft => 0,
+            Placement.TopRight => Console.WindowWidth - Width,
+            _ => 0
+        };
         ConsoleKeyInfo key;
+
         do
         {
             Console.CursorVisible = false;
-            Core.WritePositionedString(GetRenderSpace()[0], TextAlignment.Center, false, Line + 2);
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write("{0," + (Console.WindowWidth / 2 - _question.Length / 2 + 2) + "}", "> ");
-            Console.Write($"{field}");
+
+            Core.WritePositionedString(
+                GetRenderSpace()[0],
+                _placement,
+                false,
+                fieldLine
+            );
+
+            Console.SetCursorPosition(offset, Console.CursorTop);
+            Console.Write($"▶ {field}");
+
             Console.CursorVisible = true;
             key = Console.ReadKey();
             if (key.Key == ConsoleKey.Backspace && field.Length > 0)
+            {
                 field.Remove(field.Length - 1, 1);
+            }
             else if (
                 key.Key != ConsoleKey.Enter
                 && key.Key != ConsoleKey.Escape
                 && key.Key != ConsoleKey.Backspace
                 && field.Length < MaxLength
             )
+            {
                 field.Append(key.KeyChar);
+            }
         } while (key.Key != ConsoleKey.Enter && key.Key != ConsoleKey.Escape);
         Console.CursorVisible = false;
+
         SendResponse(
             this,
             new InteractionEventArgs<string>(

@@ -161,7 +161,7 @@ public class FakeLoadingBar : InteractiveElement<string>
     [Visual]
     protected override void RenderElementActions()
     {
-        Core.WritePositionedString(_text, _placement.ToTextAlignment(), false, Line, false);
+        Core.WritePositionedString(_text, _placement, false, Line, false);
         StringBuilder loadingBar = new();
         for (int j = 0; j < _text.Length; j++)
         {
@@ -174,8 +174,7 @@ public class FakeLoadingBar : InteractiveElement<string>
             _processDuration,
             _additionalDuration,
             Width,
-            _placement.ToTextAlignment(),
-            false
+            _placement.ToTextAlignment()
         );
         Window.DeactivateElement(this);
     }

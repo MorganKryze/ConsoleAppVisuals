@@ -225,14 +225,14 @@ public class Banner : PassiveElement
     {
         for (int i = 0; i < UpperMargin; i++)
         {
-            Core.WritePositionedString(string.Empty, TextAlignment.Center, true, Line + i, false);
+            Core.WritePositionedString(string.Empty, Placement, true, Line + i, false);
         }
-        Core.WritePositionedString(Text.BannerToString(), TextAlignment.Center, true, Line, false);
+        Core.WritePositionedString(Text.BannerToString(), Placement, true, Line, false);
         for (int i = 0; i < LowerMargin; i++)
         {
             Core.WritePositionedString(
                 string.Empty,
-                TextAlignment.Center,
+                Placement,
                 true,
                 Line + Height - 1 - i,
                 false
