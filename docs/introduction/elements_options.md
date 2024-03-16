@@ -4,6 +4,7 @@ In this section, you will learn:
 
 - How to deactivate/ remove elements
 - How to use the `ElementsDashboard` inspector element
+- How to use the `HeightSpacer` element
 - Discover `Placement` and `TextAlignment` enumerations
 - How to use the full potential of the element options
 
@@ -111,6 +112,35 @@ Window.Close();
 ```
 
 ![DashBoard](../assets/vid/gif/elements_options/remove.gif)
+
+## Setting a height spacer between elements
+
+Sometimes, you may want to add a space between elements. To do so, you can use the `HeightSpacer` element. It is a _passive_ element that will only render a space of a specific height between elements.
+
+Here is a concrete example between two banners:
+
+```csharp
+Window.Open();
+
+Title title = new Title("Elements options");
+Window.AddElement(title);
+
+Banner banner1 = new Banner();
+HeightSpacer spacer = new HeightSpacer(5);
+Banner banner2 = new Banner();
+
+Window.AddElement(banner1, spacer, banner2);
+
+Window.Render();
+Window.Freeze();
+
+Window.Close();
+```
+
+![HeightSpacer](../assets/img/jpg/elements_options/spacer.jpg)
+
+> [!NOTE]
+> You may update afterward the `Placement` and `Height` of the `HeightSpacer` element using the `UpdatePlacement()` and `UpdateHeight()` methods.
 
 ## Access and update elements parameters
 
