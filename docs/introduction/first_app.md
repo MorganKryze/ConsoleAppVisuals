@@ -133,8 +133,6 @@ And finally, we can render the `Title` from the `Window`:
 Window.Render(title);
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
 ![Title](../assets/img/jpg/first_app/title.jpg)
 
 > [!TIP]
@@ -172,9 +170,7 @@ Window.Render();
 
 Instead of rendering each element separately, we rendered the `Title`, `Header` and `Footer` elements at once using the `Window.Render()` method.
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
-![Minimal app](../assets/vid/gif/first_app/loading_bar.gif)
+![Header & Footer](../assets/img/jpg/first_app/header_footer.jpg)
 
 ### `FakeLoadingBar`
 
@@ -196,7 +192,7 @@ To do so, **replace** the `Window.Render(loadingBar)` instruction with the follo
 Window.ActivateElement(loadingBar);
 ```
 
-<!-- TODO:  ADD DEMO VISUAL HERE -->
+![LoadingBar](../assets/vid/gif/first_app/loading_bar.gif)
 
 > [!TIP]
 > The method `Window.ActivateElement()` will activate the element and render it on the console. Do not forget to write `Window.Render()` before to render the other _passive_ elements like `Title`, `Header` or `Footer` for example.
@@ -211,8 +207,6 @@ Window.AddElement(prompt);
 
 Window.ActivateElement(prompt);
 ```
-
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 
 ![Prompt](../assets/vid/gif/first_app/prompt.gif)
 
@@ -255,8 +249,6 @@ Window.AddElement(text);
 Window.ActivateElement(text);
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
 ![Embed](../assets/vid/gif/first_app/embed.gif)
 
 ### Exit the application
@@ -267,9 +259,7 @@ Finally, let's exit smoothly the application:
 Window.Close();
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
-![Prompt](../assets/vid/gif/first_app/close.gif)
+![Close](../assets/vid/gif/first_app/close.gif)
 
 ## Conclusion
 

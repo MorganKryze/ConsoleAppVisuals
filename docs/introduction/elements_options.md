@@ -161,7 +161,7 @@ The `TextAlignment` enumeration is used to align the text in a string. It is use
 > To choose the text alignment of an element, you can either set it from the constructor or use the `UpdateTextAlignment()` method after creating the element (some elements may not have this method if the text alignment is not used in it so refer to the references documentation to get that specific information).
 >
 > ```csharp
-> EmbedText embedText = new EmbedText(new List<string>(){"This is a debug message"},"Next ▶",TextAlignment.Center);
+> EmbedText embedText = new EmbedText(new List<string>(){"This is a message"},"OK ▶",TextAlignment.Center);
 > // or
 > embedText.UpdateTextAlignment(TextAlignment.Center);
 > ```
