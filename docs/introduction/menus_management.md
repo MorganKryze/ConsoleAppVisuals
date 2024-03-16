@@ -58,7 +58,7 @@ Here is a basic example where we display a custom message according to the user'
 
 [!code-csharp[](../assets/code/menus/status.cs?highlight=15,17,29,41)]
 
-![Simple menu](../assets/vid/gif/menus_management/embed.gif)
+![Using Status](../assets/vid/gif/menus_management/status.gif)
 
 ## Manage menu value
 
