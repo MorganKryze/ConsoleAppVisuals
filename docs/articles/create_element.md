@@ -191,8 +191,6 @@ Window.RemoveElement(passiveList);
 Window.Close();
 ```
 
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
-
 ![Passive elements list](../assets/img/jpg/create_element/passive.jpg)
 
 Or target only interactive elements:
@@ -211,8 +209,6 @@ Window.RemoveElement(interactiveList);
 
 Window.Close();
 ```
-
-<!-- TODO:  ADD NEW DEMO VISUAL HERE -->
 
 ![Interactive elements list](../assets/img/jpg/create_element/interactive.jpg)
 
