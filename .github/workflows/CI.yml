@@ -29,7 +29,7 @@ jobs:
       - name: Build
         run: dotnet build -c Release
       - name: Test
-        run: dotnet test -c Release --verbosity minimal
+        run: dotnet test -c Release --no-build --verbosity minimal
 
   coverlet:
     needs: build-and-test
