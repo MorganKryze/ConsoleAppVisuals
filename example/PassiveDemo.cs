@@ -170,7 +170,7 @@ namespace example
             {
                 Core.WritePositionedString(
                     string.Empty,
-                    TextAlignment.Center,
+                    Placement,
                     true,
                     Line + i,
                     false
@@ -178,7 +178,7 @@ namespace example
             }
             Core.WritePositionedString(
                 Text.BannerToString(),
-                TextAlignment.Center,
+                Placement,
                 true,
                 Line,
                 false
@@ -187,7 +187,7 @@ namespace example
             {
                 Core.WritePositionedString(
                     string.Empty,
-                    TextAlignment.Center,
+                    Placement,
                     true,
                     Line + Height - 1 - i,
                     false

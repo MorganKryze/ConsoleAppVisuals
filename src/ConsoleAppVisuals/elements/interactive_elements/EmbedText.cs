@@ -284,7 +284,8 @@ public class EmbedText : InteractiveElement<string>
         BuildText();
         Core.WriteMultiplePositionedLines(
             false,
-            _placement.ToTextAlignment(),
+            TextAlignment,
+            Placement,
             false,
             Line,
             _textToDisplay!.ToArray()

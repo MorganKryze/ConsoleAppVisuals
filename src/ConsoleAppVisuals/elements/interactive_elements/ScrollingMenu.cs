@@ -190,7 +190,7 @@ public class ScrollingMenu : InteractiveElement<int>
     protected override void RenderElementActions()
     {
         EqualizeChoicesLength(_choices);
-        Core.WriteContinuousString(_question, Line, false, 1500, 50, -1, _placement.ToTextAlignment());
+        Core.WriteContinuousString(_question, Line, false, 1500, 50, Width, TextAlignment.Center, _placement);
         int lineChoice = Line + 2;
         bool delay = true;
         bool loop = true;
@@ -259,7 +259,7 @@ public class ScrollingMenu : InteractiveElement<int>
             array[i] = (i == defaultIndex) ? $" {Selector} {choices[i]}  " : $"   {choices[i]}  ";
             Core.WritePositionedString(
                 array[i],
-                placement.ToTextAlignment(),
+                placement,
                 i == defaultIndex,
                 lineChoice + i
             );

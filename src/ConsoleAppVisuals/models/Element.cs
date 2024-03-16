@@ -95,7 +95,7 @@ public abstract class Element
                             .Sum(e => e.Height),
                 Placement.BottomCenterFullWidth
                     => (Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1)
-                        - (this.Height - 1)
+                        - (Height - 1)
                         - elements
                             .Where(e =>
                                 e.Placement == Placement.BottomCenterFullWidth && e.Visibility
@@ -212,7 +212,8 @@ public abstract class Element
             Core.SetForegroundColor(Core.GetRandomColor());
             Core.WriteMultiplePositionedLines(
                 false,
-                Placement.ToTextAlignment(),
+                TextAlignment.Center,
+                Placement,
                 true,
                 Line,
                 GetRenderSpace()

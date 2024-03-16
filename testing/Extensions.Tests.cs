@@ -84,9 +84,9 @@ public class UnitTestExtensions
     {
         // Arrange, Act & Assert
         if (value == "Hello World")
-            Assert.AreEqual("testo World", value.InsertString("test", Placement.TopLeft));
+            Assert.AreEqual("testo World", value.InsertString("test", TextAlignment.Left));
         else if (value == "Bonjour Le Monde")
-            Assert.AreEqual("testour Le Monde", value.InsertString("test", Placement.TopLeft));
+            Assert.AreEqual("testour Le Monde", value.InsertString("test", TextAlignment.Left));
     }
 
     [TestMethod]
@@ -96,9 +96,9 @@ public class UnitTestExtensions
     {
         // Arrange, Act & Assert
         if (value == "Hello World")
-            Assert.AreEqual("Hello Wtest", value.InsertString("test", Placement.TopRight));
+            Assert.AreEqual("Hello Wtest", value.InsertString("test", TextAlignment.Right));
         else if (value == "Bonjour Le Monde")
-            Assert.AreEqual("Bonjour Le Mtest", value.InsertString("test", Placement.TopRight));
+            Assert.AreEqual("Bonjour Le Mtest", value.InsertString("test", TextAlignment.Right));
     }
 
     [TestMethod]
@@ -108,15 +108,15 @@ public class UnitTestExtensions
     {
         // Arrange, Act & Assert
         if (value == "Hello World")
-            Assert.AreEqual("Heltestorld", value.InsertString("test", Placement.TopCenter));
+            Assert.AreEqual("Heltestorld", value.InsertString("test", TextAlignment.Center));
         else if (value == "Bonjour Le Monde")
-            Assert.AreEqual("Bonjoutest Monde", value.InsertString("test", Placement.TopCenter));
+            Assert.AreEqual("Bonjoutest Monde", value.InsertString("test", TextAlignment.Center));
     }
 
     [TestMethod]
-    [DataRow((Placement)999)]
+    [DataRow((TextAlignment)999)]
     [ExpectedException(typeof(ArgumentException))]
-    public void InsertString_InvalidPlacement(Placement value)
+    public void InsertString_InvalidPlacement(TextAlignment value)
     {
         // Act & Assert
         "Hello World".InsertString("test", value);

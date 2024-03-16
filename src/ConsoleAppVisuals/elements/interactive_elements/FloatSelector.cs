@@ -378,31 +378,31 @@ public class FloatSelector : InteractiveElement<float>
     {
         Core.WritePositionedString(
             BuildLine(Direction.Up),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector - 2
         );
         Core.WritePositionedString(
             BuildNumber((float)Math.Round(NextNumber(Direction.Up, currentNumber), 1)),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector - 1
         );
         Core.WritePositionedString(
             $" {LeftSelector} {BuildNumber((float)Math.Round(currentNumber, 1))} {RightSelector} ",
-            TextAlignment.Center,
+            Placement,
             true,
             lineSelector
         );
         Core.WritePositionedString(
             BuildNumber((float)Math.Round(NextNumber(Direction.Down, currentNumber), 1)),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector + 1
         );
         Core.WritePositionedString(
             BuildLine(Direction.Down),
-            TextAlignment.Center,
+            Placement,
             false,
             lineSelector + 2
         );

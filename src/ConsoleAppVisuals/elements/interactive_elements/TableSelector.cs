@@ -844,16 +844,16 @@ public class TableSelector : InteractiveElement<int>
             for (int j = 0; j < _displayArray.Length; j++)
             {
                 array[j] = _displayArray[j];
-                Core.WritePositionedString(array[j], TextAlignment.Center, false, Line + j);
+                Core.WritePositionedString(array[j], Placement, false, Line + j);
                 if (j == index)
                 {
                     Core.WritePositionedString(
                         j == _displayArray.Length - 1
-                            ? array[j].InsertString($"┤ {_footerText} ├", Placement.TopCenter)[
+                            ? array[j].InsertString($"┤ {_footerText} ├", TextAlignment.Center)[
                                 2..^2
                             ]
                             : array[j][1..^1],
-                        TextAlignment.Center,
+                        Placement,
                         true,
                         Line + j
                     );
