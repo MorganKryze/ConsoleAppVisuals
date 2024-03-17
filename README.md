@@ -150,20 +150,7 @@ Window.Close();
 
 ## Roadmap
 
-The library is still in development and we are working on the following features:
-
-- [x] BUG: Footer generates error when displayed on PowerShell (Windows).
-- [x] FEAT: Add a built-in fonts.
-- [x] FEAT: Add example of a custom font in the example project.
-- [x] DOCS: Add a tutorial on how to create a custom font.
-- [x] FEAT: `EmbedText` buttons can be disabled.
-- [ ] BUG: Cursor always visible in PowerShell (Windows).
-- [ ] FEAT: Convert CSV files into a data visualization element (e.g. `TableView`, `Matrix`, ...).
-- [ ] FEAT: Give styles to the `Prompt`, `ScrollingMenu`
-- [ ] FEAT: Add colorization to `TableView` (highlight data according to a condition)
-- [ ] FEAT: Use the `Window` classes as instances to create a multi-window system
-- [ ] FEAT: Add built-in window mockups
-- [ ] FEAT: Give style to window opening and closing
+The library is still in active development. The next feature and bug resolutions are listed in the [Project](https://github.com/users/MorganKryze/projects/3/views/2) section of the GitHub repository.
 
 ## Supported .NET versions
 
