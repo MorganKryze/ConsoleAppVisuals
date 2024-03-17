@@ -4,7 +4,7 @@ This section describes all references of the library. you will find all argument
 
 Access to the namespaces classes and functions at the left side of this page.
 
-> [!IMPORTANT]
+> [!WARNING]
 > Adding `using ConsoleAppVisuals;` at the beginning of your C# file is necessary but not sufficient to use the full potential of the library. Refer to the descriptions below to discover which namespaces to add to your project and the Introduction section to see how they are used.
 
 ## Namespace descriptions
