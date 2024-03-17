@@ -15,6 +15,10 @@ Welcome to the documentation of the `ConsoleAppVisuals` library. This is a simpl
 
 Finally, a commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to see how to use the library in a real project.
 
+## Roadmap
+
+The library is still in active development. The next feature and bug resolutions are listed in the [Project](https://github.com/users/MorganKryze/projects/3/views/2) section of the GitHub repository.
+
 ## Supported .NET versions
 
 | Version  | Supported          |
