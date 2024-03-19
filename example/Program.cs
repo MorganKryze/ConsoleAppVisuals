@@ -72,7 +72,7 @@ namespace example
             // see the Output enum for more details
             switch (response?.Status)
             {
-                case Output.Selected:
+                case Status.Selected:
                     // Check the response info (the index of the selected item).
                     // Here the Info for a ScrollingMenu is an int
                     switch (response.Value)
@@ -502,7 +502,7 @@ namespace example
                     }
                     break;
 
-                case Output.Escaped:
+                case Status.Escaped:
                     var exitText = new EmbedText(
                         new List<string>()
                         {
@@ -520,7 +520,7 @@ namespace example
                     Window.Close();
                     break;
 
-                case Output.Deleted:
+                case Status.Deleted:
                     var backspaceText = new EmbedText(
                         new List<string>()
                         {

@@ -354,7 +354,7 @@ public class FloatSelector : InteractiveElement<float>
                 case ConsoleKey.Enter:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<float>(Output.Selected, currentNumber)
+                        new InteractionEventArgs<float>(Status.Selected, currentNumber)
                     );
                     Window.DeactivateElement(this);
                     loop = false;
@@ -362,7 +362,7 @@ public class FloatSelector : InteractiveElement<float>
                 case ConsoleKey.Escape:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<float>(Output.Escaped, currentNumber)
+                        new InteractionEventArgs<float>(Status.Escaped, currentNumber)
                     );
                     loop = false;
                     break;

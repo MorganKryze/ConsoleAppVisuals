@@ -44,7 +44,7 @@ Window.ActivateElement(menu);
 var response = menu.GetResponse();
 switch (response?.Status)
 {
-    case Output.Selected:
+    case Status.Selected:
         switch (response.Value)
         {
             case 0:
@@ -56,8 +56,8 @@ switch (response?.Status)
                 break;
         }
         break;
-    case Output.Escaped:
-    case Output.Deleted:
+    case Status.Escaped:
+    case Status.Deleted:
         Window.Close();
         break;
 }
@@ -75,7 +75,7 @@ var settingsResponse = settingsMenu.GetResponse();
 
 switch (settingsResponse?.Status)
 {
-    case Output.Selected:
+    case Status.Selected:
         switch (settingsResponse.Value)
         {
             case 0:
@@ -88,8 +88,8 @@ switch (settingsResponse?.Status)
                 goto MainMenu;
         }
         break;
-    case Output.Escaped:
-    case Output.Deleted:
+    case Status.Escaped:
+    case Status.Deleted:
         goto MainMenu;
 }
 goto SettingsMenu;

@@ -352,13 +352,13 @@ public class IntSelector : InteractiveElement<int>
                 case ConsoleKey.Enter:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<int>(Output.Selected, currentNumber)
+                        new InteractionEventArgs<int>(Status.Selected, currentNumber)
                     );
                     return;
                 case ConsoleKey.Escape:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<int>(Output.Escaped, currentNumber)
+                        new InteractionEventArgs<int>(Status.Escaped, currentNumber)
                     );
                     return;
                 default:

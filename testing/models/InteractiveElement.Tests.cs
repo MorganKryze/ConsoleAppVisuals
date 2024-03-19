@@ -52,6 +52,6 @@ public class TestInteractiveElement : InteractiveElement<string>
 
     protected override void RenderElementActions()
     {
-        SendResponse(this, new InteractionEventArgs<string>(Output.Selected, "Test info"));
+        SendResponse(this, new InteractionEventArgs<string>(Status.Selected, "Test info"));
     }
 }
