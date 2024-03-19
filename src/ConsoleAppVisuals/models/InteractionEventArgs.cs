@@ -20,7 +20,7 @@ public class InteractionEventArgs<T> : EventArgs
     /// The status after exiting the interactive element.
     /// </summary>
     /// <value>Output.Escaped : pressed escape, Output.Deleted : pressed backspace, Output.Selected : pressed enter, Output.None : default value</value>
-    public Output Status { get; set; }
+    public Status Status { get; set; }
 
     /// <summary>
     /// The value of the response after exiting the interactive element.
@@ -32,7 +32,7 @@ public class InteractionEventArgs<T> : EventArgs
     /// </summary>
     /// <param name="status">The status of the exit from the menu.</param>
     /// <param name="value">The value of the response after exiting the interactive element.</param>
-    public InteractionEventArgs(Output status, T value)
+    public InteractionEventArgs(Status status, T value)
     {
         Status = status;
         Value = value;

@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Enums;
 
 /// <summary>
-/// Enum for the output of the scrolling menus.
+/// Enum for the status of any interactive element.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.Enums;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public enum Output
+public enum Status
 {
     /// <summary>
     /// Default value.

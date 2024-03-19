@@ -213,7 +213,7 @@ namespace example
             SendResponse(
                 this, // The sender of the event so this object.
                 new InteractionEventArgs<string>( // The response format, the type associated depends on the type of the interactive element. We defined InteractDemo : InteractiveElement<string>, so the type is string.
-                    key.Key == ConsoleKey.Enter ? Output.Selected : Output.Escaped, // The first parameter is always an Output enum. Here we use the Output enum to determine whether the user pressed Enter or Escape.
+                    key.Key == ConsoleKey.Enter ? Status.Selected : Status.Escaped, // The first parameter is always an Output enum. Here we use the Output enum to determine whether the user pressed Enter or Escape.
                     field.ToString() // The second parameter is the response of the user. Here we use the field variable that contains the response of the user.
                 )
             );

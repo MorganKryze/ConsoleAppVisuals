@@ -19,8 +19,8 @@ public class InteractionEventArgs<T> : EventArgs
     /// <summary>
     /// The state of the exit from the menu.
     /// </summary>
-    /// <value>Output.Exit : pressed escape, Output.Delete : pressed backspace, Output.Select : pressed enter</value>
-    public Output State { get; set; }
+    /// <value>Status.Exit : pressed escape, Status.Delete : pressed backspace, Status.Select : pressed enter</value>
+    public Status State { get; set; }
 
     /// <summary>
     /// The index of the choice of the user among the different choices.
@@ -32,7 +32,7 @@ public class InteractionEventArgs<T> : EventArgs
     /// </summary>
     /// <param name="state">The state of the exit from the menu.</param>
     /// <param name="info">The index of the choice of the user among the different choices.</param>
-    public InteractionEventArgs(Output state, T info)
+    public InteractionEventArgs(Status state, T info)
     {
         State = state;
         Info = info;

@@ -167,7 +167,7 @@ To understand how is defined the interaction response, I highlighted the two att
 
 [!code-csharp[](../assets/code/InteractionEventArgs.cs?highlight=23,28)]
 
-Where `State` depends on the values of the [`Output` enum](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/enums/Output.cs) and `Info` depends on the `T` type of the `InteractiveElement` you created.
+Where `State` depends on the values of the [`Status` enum](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/enums/Status.cs) and `Info` depends on the `T` type of the `InteractiveElement` you created.
 
 Once your customization is done, you may use your element in your application just like a default element.
 

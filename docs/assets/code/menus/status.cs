@@ -14,7 +14,7 @@ Window.ActivateElement(menu);
 var response = menu.GetResponse();
 switch (response?.Status)
 {
-    case Output.Selected:
+    case Status.Selected:
         EmbedText embedSelected = new EmbedText(
             new List<string>()
             {
@@ -26,7 +26,7 @@ switch (response?.Status)
 
         Window.RemoveElement(embedSelected);
         break;
-    case Output.Escaped:
+    case Status.Escaped:
         EmbedText embedEscaped = new EmbedText(
             new List<string>()
             {
@@ -38,7 +38,7 @@ switch (response?.Status)
 
         Window.RemoveElement(embedEscaped);
         break;
-    case Output.Deleted:
+    case Status.Deleted:
         EmbedText embedDeleted = new EmbedText(
             new List<string>()
             {

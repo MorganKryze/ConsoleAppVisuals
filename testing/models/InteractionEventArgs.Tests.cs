@@ -13,7 +13,7 @@ public class UnitTestInteractionEventArgs
     public void Constructor_StateAndInfo_SetCorrectly()
     {
         // Arrange
-        var state = Output.Escaped;
+        var state = Status.Escaped;
         var info = "Test info";
 
         // Act
@@ -32,10 +32,10 @@ public class UnitTestInteractionEventArgs
     public void StateProperty_ReturnsCorrectState()
     {
         // Arrange
-        var args = new InteractionEventArgs<string>(Output.Deleted, "Test info");
+        var args = new InteractionEventArgs<string>(Status.Deleted, "Test info");
 
         // Act & Assert
-        Assert.AreEqual(Output.Deleted, args.Status);
+        Assert.AreEqual(Status.Deleted, args.Status);
     }
 
     #endregion
@@ -46,7 +46,7 @@ public class UnitTestInteractionEventArgs
     public void InfoProperty_ReturnsCorrectInfo()
     {
         // Arrange
-        var args = new InteractionEventArgs<string>(Output.Deleted, "Test info");
+        var args = new InteractionEventArgs<string>(Status.Deleted, "Test info");
 
         // Act & Assert
         Assert.AreEqual("Test info", args.Value);

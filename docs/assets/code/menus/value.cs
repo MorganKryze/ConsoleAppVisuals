@@ -15,7 +15,7 @@ Window.ActivateElement(menu);
 var response = menu.GetResponse();
 switch (response?.Status)
 {
-    case Output.Selected:
+    case Status.Selected:
         switch (response.Value)
         {
             case 0:
@@ -42,8 +42,8 @@ switch (response?.Status)
                 break;
         }
         break;
-    case Output.Escaped:
-    case Output.Deleted:
+    case Status.Escaped:
+    case Status.Deleted:
         // Quit the app anyway
         Window.Close();
         break;

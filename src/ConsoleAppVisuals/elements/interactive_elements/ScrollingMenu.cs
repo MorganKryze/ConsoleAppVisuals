@@ -212,21 +212,21 @@ public class ScrollingMenu : InteractiveElement<int>
                 case ConsoleKey.Enter:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<int>(Output.Selected, _defaultIndex)
+                        new InteractionEventArgs<int>(Status.Selected, _defaultIndex)
                     );
                     loop = false;
                     break;
                 case ConsoleKey.Escape:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<int>(Output.Escaped, _defaultIndex)
+                        new InteractionEventArgs<int>(Status.Escaped, _defaultIndex)
                     );
                     loop = false;
                     break;
                 case ConsoleKey.Backspace:
                     SendResponse(
                         this,
-                        new InteractionEventArgs<int>(Output.Deleted, _defaultIndex)
+                        new InteractionEventArgs<int>(Status.Deleted, _defaultIndex)
                     );
                     loop = false;
                     break;
