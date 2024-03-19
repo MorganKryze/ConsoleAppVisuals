@@ -22,6 +22,7 @@ public class Prompt : InteractiveElement<string>
     private Placement _placement;
     private int _maxLength;
     private int _printDuration;
+    private char _selector = DEFAULT_CURSOR;
     #endregion
 
     #region Constants
@@ -29,6 +30,7 @@ public class Prompt : InteractiveElement<string>
     private const int DEFAULT_PRINT_DURATION = 1500;
     private const int PROMPT_HEIGHT = 3;
     private const int PROMPT_LEFT_MARGIN = 3;
+    private const char DEFAULT_CURSOR = '>';
     #endregion
 
     #region Properties
@@ -66,6 +68,11 @@ public class Prompt : InteractiveElement<string>
     /// The duration of the print animation of the question.
     /// </summary>
     public int PrintDuration => _printDuration;
+
+    /// <summary>
+    /// The selector of the prompt element.
+    /// </summary>
+    public char Selector => _selector;
     #endregion
 
     #region Constructor
@@ -196,6 +203,22 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
+    /// This method is used to update the selector of the prompt element.
+    /// </summary>
+    /// <param name="selector">The new selector of the prompt element.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateSelector(char selector)
+    {
+        _selector = selector;
+    }
+
+    /// <summary>
     /// This method is used to render the prompt element on the console.
     /// </summary>
     [Visual]
@@ -229,15 +252,10 @@ public class Prompt : InteractiveElement<string>
         {
             Console.CursorVisible = false;
 
-            Core.WritePositionedString(
-                GetRenderSpace()[0],
-                _placement,
-                false,
-                fieldLine
-            );
+            Core.WritePositionedString(GetRenderSpace()[0], _placement, false, fieldLine);
 
             Console.SetCursorPosition(offset, Console.CursorTop);
-            Console.Write($"▶ {field}");
+            Console.Write($"{_selector} {field}");
 
             Console.CursorVisible = true;
             key = Console.ReadKey();

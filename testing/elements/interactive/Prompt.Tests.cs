@@ -264,4 +264,22 @@ public class UnitTestPrompt
     }
     #endregion
 
+    #region UpdateSelector
+    [TestMethod]
+    [TestCategory("Prompt")]
+    public void UpdateSelector()
+    {
+        // Arrange
+        var prompt = new Prompt("What is your name?", "John Doe");
+
+        // Act
+        prompt.UpdateSelector('>');
+        char actual = prompt.Selector;
+        char expected = '>';
+
+        // Assert
+        Assert.AreEqual(expected, actual);
+    }
+    #endregion
+
 }
