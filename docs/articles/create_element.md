@@ -8,11 +8,11 @@ This article will guide you through the process of creating custom visual elemen
 
 - .NET framework 6 or later
 - ConsoleAppVisuals library: 3.0.0 or later
-- Having looked at the project from the [Introduction section](/introduction/index.html)
+- Having looked at the project from the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html)
 
 ## Setup workspace
 
-We will take the example project of the [Introduction section](/introduction/index.html).
+We will take the example project of the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html).
 
 As a reminder, here is the file structure of the project:
 

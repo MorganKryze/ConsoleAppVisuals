@@ -17,11 +17,11 @@ _Merlin_
 
 - .NET framework 6 or later
 - ConsoleAppVisuals library: 3.0.0 or later
-- Having looked at the project from the [Introduction section](/introduction/index.html)
+- Having looked at the project from the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html)
 
 ## Setup workspace
 
-We will take the example project of the [Introduction section](/introduction/index.html).
+We will take the example project of the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html).
 
 As a reminder, here is the file structure of the project:
 
@@ -220,7 +220,7 @@ Display:
 Core.WritePositionedStyledText(styledText);
 ```
 
-For more information about the `TextStyler` class and `WritePositionedStyledText()` method, please refer to the [References](/ConsoleAppVisuals/references/index.html) section.
+For more information about the `TextStyler` class and `WritePositionedStyledText()` method, please refer to the [References](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html) section.
 
 ### Contributing
 
