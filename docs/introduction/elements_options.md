@@ -144,7 +144,7 @@ Window.Close();
 
 ## Access and update elements parameters
 
-In all the tutorials and the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) the elements definitions are simplified and do not declare all the arguments available. To see all the arguments available for each element, you can consult the [references documentation](/ConsoleAppVisuals/references/index.html).
+In all the tutorials and the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) the elements definitions are simplified and do not declare all the arguments available. To see all the arguments available for each element, you can consult the [references documentation](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html).
 
 Most of them are specific with generic type (`string`, `int`, `bool`...) and are used to customize the element. But some of them are common to all elements and are used to place the element on the window. These are the `Placement` and `TextAlignment` enumerations.
 

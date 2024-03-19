@@ -65,7 +65,7 @@ Now that you have the basic concepts, let's dive into this guided path to know h
 1. [Create a simple console application](/ConsoleAppVisuals/introduction/first_app.html)
 2. [Explore element options](/ConsoleAppVisuals/introduction/elements_options.html)
 3. [Discover data visualization](/ConsoleAppVisuals/introduction/data_viz.html)
-4. [Manage multiple menus](/ConsoleAppVisuals/introduction/menus_managment.html)
+4. [Manage multiple menus](/ConsoleAppVisuals/introduction/menus_management.html)
 
 ---
 
