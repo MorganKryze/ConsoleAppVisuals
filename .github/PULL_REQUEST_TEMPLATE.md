@@ -2,14 +2,20 @@
 
 Extra short description of the PR
 
-## Features ⭐
+## NEW ✨
 
-- NEW: Feature description
-- IMPROVED: Feature description
+- This is where you layout any new features.
+- Explain where these features are within the library.
 
-## Bug Fixes 🐛
+## IMPROVED 📈
 
-- FIXED: Bug fix description
+- This is where you layout any improvements on existing features.
+
+## FIXED 🐛
+
+- List out any major bugs that might have affected many users.
+- If you've only addressed minor fixes, or nothing specific, use something like:
+- E.g. "Minor Bug fixes"
 
 ## Related Tickets & Documents 📑
 
