@@ -71,7 +71,7 @@ public class UnitTestPrompt
 
         // Act
         var actual = prompt.Width;
-        var expected = 19;
+        var expected = 22;
 
         // Assert
         Assert.AreEqual(expected, actual);
@@ -98,9 +98,9 @@ public class UnitTestPrompt
     {
         // Arrange
         var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 20);
- 
+
         // Act
-        var actual = prompt.MaxLength;
+        var actual = prompt.MaxInputLength;
         var expected = 20;
 
         // Assert
@@ -115,7 +115,7 @@ public class UnitTestPrompt
         var prompt = new Prompt("What is your name?", "John Doe");
 
         // Act
-        var actual = prompt.MaxLength;
+        var actual = prompt.MaxInputLength;
         var expected = 10;
 
         // Assert
@@ -177,6 +177,33 @@ public class UnitTestPrompt
         Assert.AreEqual(expected, actual);
     }
 
+    [TestMethod]
+    [TestCategory("Prompt")]
+    public void UpdateDefaultValue_Empty()
+    {
+        // Arrange
+        var prompt = new Prompt("What is your name?", "John Doe");
+
+        // Act
+        prompt.UpdateDefaultValue(null);
+        var actual = prompt.DefaultValue;
+        var expected = "";
+
+        // Assert
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    [TestCategory("Prompt")]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void UpdateDefaultValue_OutOfRange()
+    {
+        // Arrange
+        var prompt = new Prompt("What is your name?", "John Doe");
+
+        // Act
+        prompt.UpdateDefaultValue("John Doe, John Doe");
+    }
     #endregion
 
     #region UpdateMaxLength
@@ -190,7 +217,7 @@ public class UnitTestPrompt
 
         // Act
         prompt.UpdateMaxLength(20);
-        var actual = prompt.MaxLength;
+        var actual = prompt.MaxInputLength;
         var expected = 20;
 
         // Assert
@@ -208,7 +235,6 @@ public class UnitTestPrompt
 
         // Act
         prompt.UpdateMaxLength(maxLength);
-        
     }
 
     #endregion
@@ -282,4 +308,17 @@ public class UnitTestPrompt
     }
     #endregion
 
+    #region MaxLengthOutOfRange
+    [TestMethod]
+    [TestCategory("Prompt")]
+    [DataRow(-1)]
+    [DataRow(0)]
+    [DataRow(int.MaxValue)]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void MaxLengthOutOfRange(int max)
+    {
+        // Act
+        new Prompt("What is your name?", "John Doe", Placement.TopCenter, max);
+    }
+    #endregion
 }
