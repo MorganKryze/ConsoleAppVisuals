@@ -22,13 +22,14 @@ public class Prompt : InteractiveElement<string>
     private Placement _placement;
     private int _maxInputLength;
     private PromptInputStyle _style;
+    private Borders _borders;
     private char _selector = DEFAULT_CURSOR;
     private string[]? _displayArray;
     #endregion
 
     #region Constants
     private const int DEFAULT_PROMPT_MAX_LENGTH = 12;
-    private const int PROMPT_HEIGHT = 4;
+    private const int PROMPT_HEIGHT = 5;
     private const int MAX_LENGTH_LEFT_MARGIN = 2;
     private const int LEFT_AND_RIGHT_MARGIN = 2;
     private const char DEFAULT_CURSOR = '>';
@@ -68,6 +69,11 @@ public class Prompt : InteractiveElement<string>
     public int MaxInputLength => _maxInputLength;
 
     /// <summary>
+    /// The borders of the prompt element.
+    /// </summary>
+    public Borders Borders => _borders;
+
+    /// <summary>
     /// The selector of the prompt element.
     /// </summary>
     public char Selector => _selector;
@@ -87,6 +93,7 @@ public class Prompt : InteractiveElement<string>
     /// <param name="placement">The placement of the prompt element.</param>
     /// <param name="maxInputLength">The maximum length of the response.</param>
     /// <param name="style">The style of the prompt input.</param>
+    /// <param name="borderType">The type of border to use for the element.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -99,7 +106,8 @@ public class Prompt : InteractiveElement<string>
         string? defaultValue = null,
         Placement placement = Placement.TopCenter,
         int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH,
-        PromptInputStyle style = PromptInputStyle.Default
+        PromptInputStyle style = PromptInputStyle.Default,
+        BorderType borderType = BorderType.SingleStraight
     )
     {
         _question = question;
@@ -107,6 +115,7 @@ public class Prompt : InteractiveElement<string>
         _defaultValue = defaultValue is null ? string.Empty : CheckDefaultValue(defaultValue);
         _placement = placement;
         _style = style;
+        _borders = new Borders(borderType);
     }
 
     private int CheckMaxLength(int maxLength)
@@ -233,6 +242,22 @@ public class Prompt : InteractiveElement<string>
     {
         _style = style;
     }
+
+    /// <summary>
+    /// This method is used to update the border type of the prompt element.
+    /// </summary>
+    /// <param name="borderType">The new border type of the prompt element.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateBorders(BorderType borderType)
+    {
+        _borders.UpdateBorderType(borderType);
+    }
     #endregion
 
     #region Render
@@ -256,7 +281,7 @@ public class Prompt : InteractiveElement<string>
             _displayArray
         );
         var field = new StringBuilder(_defaultValue);
-        int fieldLine = Line + 2;
+        int fieldLine = Line + 3;
         int offset = _placement switch
         {
             Placement.TopCenter => Console.WindowWidth / 2 - Width / 2 + 2,
@@ -321,21 +346,32 @@ public class Prompt : InteractiveElement<string>
         );
 
         _displayArray = new string[PROMPT_HEIGHT];
-        _displayArray[0] = "┌" + new string('─', Width - 2) + "┐";
-        _displayArray[1] = "│ " + finalQuestion + " │";
+        _displayArray[0] =
+            Borders.TopLeft.ToString()
+            + new string(Borders.Horizontal, Width - 2)
+            + Borders.TopRight.ToString();
+        _displayArray[1] = $"{Borders.Vertical} " + finalQuestion + $" {Borders.Vertical}";
+        _displayArray[2] =
+            $"{Borders.Vertical} " + new string(' ', MaxLength) + $" {Borders.Vertical}";
         if (_style == PromptInputStyle.Fill)
         {
-            _displayArray[2] =
-                $"│ {_selector} "
+            _displayArray[3] =
+                $"{Borders.Vertical} {_selector} "
                 + new string('-', MaxInputLength)
                 + new string(' ', MaxLength - MaxInputLength - 2)
-                + " │";
+                + $" {Borders.Vertical}";
         }
         else
         {
-            _displayArray[2] = $"│ " + new string(' ', finalField.Length) + " │";
+            _displayArray[3] =
+                $"{Borders.Vertical} "
+                + new string(' ', finalField.Length)
+                + $" {Borders.Vertical}";
         }
-        _displayArray[3] = "└" + new string('─', Width - 2) + "┘";
+        _displayArray[4] =
+            Borders.BottomLeft.ToString()
+            + new string(Borders.Horizontal, Width - 2)
+            + Borders.BottomRight.ToString();
     }
     #endregion
 }

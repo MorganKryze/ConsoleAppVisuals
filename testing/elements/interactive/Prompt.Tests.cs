@@ -56,7 +56,7 @@ public class UnitTestPrompt
 
         // Act
         var actual = prompt.Height;
-        var expected = 4;
+        var expected = 5;
 
         // Assert
         Assert.AreEqual(expected, actual);
@@ -283,12 +283,37 @@ public class UnitTestPrompt
     public void PromptInputStyle()
     {
         // Arrange
-        var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 10, ConsoleAppVisuals.Enums.PromptInputStyle.Fill);
+        var prompt = new Prompt(
+            "What is your name?",
+            "John Doe",
+            Placement.TopCenter,
+            10,
+            ConsoleAppVisuals.Enums.PromptInputStyle.Fill
+        );
 
         // Act
         prompt.UpdateStyle(ConsoleAppVisuals.Enums.PromptInputStyle.Secret);
         var actual = prompt.Style;
         var expected = ConsoleAppVisuals.Enums.PromptInputStyle.Secret;
+
+        // Assert
+        Assert.AreEqual(expected, actual);
+    }
+    #endregion
+
+    #region UpdateBorderType
+
+    [TestMethod]
+    [TestCategory("Prompt")]
+    public void UpdateBorderType()
+    {
+        // Arrange
+        var prompt = new Prompt("What is your name?", "John Doe");
+
+        // Act
+        prompt.UpdateBorders(BorderType.SingleRounded);
+        var actual = prompt.Borders.Type;
+        var expected = BorderType.SingleRounded;
 
         // Assert
         Assert.AreEqual(expected, actual);
