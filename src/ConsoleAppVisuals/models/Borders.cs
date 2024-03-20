@@ -25,7 +25,7 @@ public class Borders
     private const string SINGLE_ROUNDED = "╭╮╰╯─│┬┴├┤┼";
     private const string SINGLE_BOLD = "┏┓┗┛━┃┳┻┣┫╋";
     private const string DOUBLE_STRAIGHT = "╔╗╚╝═║╦╩╠╣╬";
-    private const string ASCII = "+-|+++++";
+    private const string ASCII = "++++-|--+++";
     #endregion
 
     #region Properties
@@ -102,25 +102,25 @@ public class Borders
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public Borders(BorderType type)
+    public Borders(BorderType type = BorderType.SingleStraight)
     {
         _type = CheckType(type);
     }
 
-    private BorderType CheckType(BorderType type)
+    private static BorderType CheckType(BorderType type)
     {
         if (
             type
-            is not BorderType.SingleStraight
+            is BorderType.SingleStraight
                 or BorderType.SingleRounded
                 or BorderType.SingleBold
                 or BorderType.DoubleStraight
                 or BorderType.ASCII
         )
         {
-            throw new ArgumentException("Invalid border type.");
+            return type;
         }
-        return type;
+        throw new ArgumentException("Invalid border type.");
     }
     #endregion
 
