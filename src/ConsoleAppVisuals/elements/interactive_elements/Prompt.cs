@@ -21,6 +21,7 @@ public class Prompt : InteractiveElement<string>
     private string _defaultValue;
     private Placement _placement;
     private int _maxInputLength;
+    private PromptInputStyle _style;
     private char _selector = DEFAULT_CURSOR;
     private string[]? _displayArray;
     #endregion
@@ -70,6 +71,11 @@ public class Prompt : InteractiveElement<string>
     /// The selector of the prompt element.
     /// </summary>
     public char Selector => _selector;
+
+    /// <summary>
+    /// The style of the prompt input.
+    /// </summary>
+    public PromptInputStyle Style => _style;
     #endregion
 
     #region Constructor
@@ -80,6 +86,7 @@ public class Prompt : InteractiveElement<string>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
     /// <param name="placement">The placement of the prompt element.</param>
     /// <param name="maxInputLength">The maximum length of the response.</param>
+    /// <param name="style">The style of the prompt input.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -91,13 +98,15 @@ public class Prompt : InteractiveElement<string>
         string question,
         string? defaultValue = null,
         Placement placement = Placement.TopCenter,
-        int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH
+        int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH,
+        PromptInputStyle style = PromptInputStyle.Default
     )
     {
         _question = question;
         _maxInputLength = CheckMaxLength(maxInputLength);
         _defaultValue = defaultValue is null ? string.Empty : CheckDefaultValue(defaultValue);
         _placement = placement;
+        _style = style;
     }
 
     private int CheckMaxLength(int maxLength)
@@ -208,6 +217,22 @@ public class Prompt : InteractiveElement<string>
     {
         _selector = selector;
     }
+
+    /// <summary>
+    /// This method is used to update the style of the prompt input.
+    /// </summary>
+    /// <param name="style">The new style of the prompt input.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateStyle(PromptInputStyle style)
+    {
+        _style = style;
+    }
     #endregion
 
     #region Render
@@ -250,9 +275,16 @@ public class Prompt : InteractiveElement<string>
             Core.WritePositionedString(_displayArray[2], Placement, false, fieldLine);
 
             Console.SetCursorPosition(offset, Console.CursorTop);
-            Console.Write($"{_selector} {field}");
+            if (_style == PromptInputStyle.Secret)
+            {
+                Console.Write($"{_selector} {new string('*', field.Length)}");
+            }
+            else
+            {
+                Console.Write($"{_selector} {field}");
+            }
 
-            Console.CursorVisible = true;
+            Console.CursorVisible = _style == PromptInputStyle.Default;
             key = Console.ReadKey();
             if (key.Key == ConsoleKey.Backspace && field.Length > 0)
             {
@@ -291,7 +323,18 @@ public class Prompt : InteractiveElement<string>
         _displayArray = new string[PROMPT_HEIGHT];
         _displayArray[0] = "┌" + new string('─', Width - 2) + "┐";
         _displayArray[1] = "│ " + finalQuestion + " │";
-        _displayArray[2] = "│ " + new string(' ', finalField.Length) + " │";
+        if (_style == PromptInputStyle.Fill)
+        {
+            _displayArray[2] =
+                $"│ {_selector} "
+                + new string('-', MaxInputLength)
+                + new string(' ', MaxLength - MaxInputLength - 2)
+                + " │";
+        }
+        else
+        {
+            _displayArray[2] = $"│ " + new string(' ', finalField.Length) + " │";
+        }
         _displayArray[3] = "└" + new string('─', Width - 2) + "┘";
     }
     #endregion

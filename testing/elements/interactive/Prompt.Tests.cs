@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals;
+namespace testing;
 
 [TestClass]
 public class UnitTestPrompt
@@ -274,6 +274,24 @@ public class UnitTestPrompt
     {
         // Act
         new Prompt("What is your name?", "John Doe", Placement.TopCenter, max);
+    }
+    #endregion
+
+    #region PromptInputStyle
+    [TestMethod]
+    [TestCategory("Prompt")]
+    public void PromptInputStyle()
+    {
+        // Arrange
+        var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 10, ConsoleAppVisuals.Enums.PromptInputStyle.Fill);
+
+        // Act
+        prompt.UpdateStyle(ConsoleAppVisuals.Enums.PromptInputStyle.Secret);
+        var actual = prompt.Style;
+        var expected = ConsoleAppVisuals.Enums.PromptInputStyle.Secret;
+
+        // Assert
+        Assert.AreEqual(expected, actual);
     }
     #endregion
 }

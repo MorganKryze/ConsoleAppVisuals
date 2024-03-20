@@ -78,7 +78,7 @@ namespace example
                     switch (response.Value)
                     {
                         case 0:
-                            var text = new EmbedText(
+                            EmbedText text = new EmbedText(
                                 new List<string>()
                                 {
                                     "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,",
@@ -99,15 +99,14 @@ namespace example
                             goto Menu;
 
                         case 1:
-                            var prompt = new Prompt("What is your name?", "Theo");
+                            Prompt prompt = new Prompt("What is your name?", "Theo");
                             Window.AddElement(prompt);
-
                             Window.ActivateElement(prompt);
 
                             var responsePrompt = prompt.GetResponse();
 
                             // We create an EmbedText to display the response
-                            var embedResponsePrompt = new EmbedText(
+                            EmbedText embedResponsePrompt = new EmbedText(
                                 new List<string>()
                                 {
                                     "You just wrote " + responsePrompt?.Value + "!"
@@ -120,11 +119,44 @@ namespace example
 
                             Window.RemoveElement(prompt);
                             Window.RemoveElement(embedResponsePrompt);
+
+                            Prompt passwordPrompt = new Prompt(
+                                "What is your password?",
+                                "azerty",
+                                Placement.TopCenter,
+                                20,
+                                PromptInputStyle.Secret
+                            );
+                            Window.AddElement(passwordPrompt);
+
+                            Window.ActivateElement(passwordPrompt);
+
+                            var responsePasswordPrompt = passwordPrompt.GetResponse();
+
+                            EmbedText embedResponsePasswordPrompt = new EmbedText(
+                                new List<string>()
+                                {
+                                    "You just wrote " + responsePasswordPrompt?.Value + "!"
+                                },
+                                $"Next ▶",
+                                TextAlignment.Center
+                            );
+                            Window.AddElement(embedResponsePasswordPrompt);
+                            Window.ActivateElement(embedResponsePasswordPrompt);
+
+                            Window.RemoveElement(passwordPrompt);
+                            Window.RemoveElement(embedResponsePasswordPrompt);
                             goto Menu;
 
                         case 2:
                             // A FloatSelector is also available depending on your needs
-                            var intSelector = new IntSelector("Select a number", 10, 100, 25, 5);
+                            IntSelector intSelector = new IntSelector(
+                                "Select a number",
+                                10,
+                                100,
+                                25,
+                                5
+                            );
                             intSelector.UpdateLeftSelector('▶');
                             intSelector.UpdateRightSelector('◀');
                             Window.AddElement(intSelector);
@@ -132,7 +164,7 @@ namespace example
                             Window.ActivateElement(intSelector);
                             var responseNumber = intSelector.GetResponse();
 
-                            var embedResponseNumber = new EmbedText(
+                            EmbedText embedResponseNumber = new EmbedText(
                                 new List<string>()
                                 {
                                     "Status: " + responseNumber?.Status.ToString(),
@@ -200,7 +232,7 @@ namespace example
                             List<List<int?>> data =
                                 new() { firstRow, secondRow, thirdRow, fourthRow };
 
-                            var matrix = new Matrix<int?>(data);
+                            Matrix<int?> matrix = new Matrix<int?>(data);
 
                             // Then we add the element to the window,
                             // You may update the matrix after adding it,
@@ -241,12 +273,11 @@ namespace example
                             List<string> student3 = new() { "03", "Maxime", "Physics", "92" };
                             List<string> student4 =
                                 new() { "04", "Charles", "Computer Science", "89" };
-                            TableView students =
-                                new(
-                                    "Students grades",
-                                    studentsHeaders,
-                                    new() { student1, student2, student3, student4 }
-                                );
+                            TableView students = new TableView(
+                                "Students grades",
+                                studentsHeaders,
+                                new() { student1, student2, student3, student4 }
+                            );
                             Window.AddElement(students);
 
                             Window.ActivateElement(students);
@@ -293,13 +324,16 @@ namespace example
                                     player7
                                 };
 
-                            TableSelector players =
-                                new("Great tennis players", playersHeaders, playersData);
+                            TableSelector players = new TableSelector(
+                                "Great tennis players",
+                                playersHeaders,
+                                playersData
+                            );
                             Window.AddElement(players);
 
                             Window.ActivateElement(players);
                             var responseTable = players.GetResponse();
-                            var embedResponseTable = new EmbedText(
+                            EmbedText embedResponseTable = new EmbedText(
                                 new List<string>()
                                 {
                                     "Status: " + responseTable?.Status.ToString(),
@@ -319,7 +353,7 @@ namespace example
                             // Contrary to the FakeLoadingBar, the LoadingBar
                             // corresponds to a real loading defined by a variable (here progress)
                             float progress = 0f;
-                            var loadingBar = new LoadingBar(
+                            LoadingBar loadingBar = new LoadingBar(
                                 "[ Loading ...]",
                                 // The variable must be passed by reference
                                 // so the updates on the variable are taken in account
@@ -356,7 +390,7 @@ namespace example
                         case 8:
                             // These following elements are for debugging purposes,
                             // they should not be used in a production state of a project
-                            var embedInfo = new EmbedText(
+                            EmbedText embedInfo = new EmbedText(
                                 new List<string>()
                                 {
                                     "The colors represented the space taken by the elements. Press [Enter] to continue..."
@@ -380,7 +414,7 @@ namespace example
                             // they should not be used in a production state of a software
 
                             // See all the elements in the window
-                            var dashboard = new ElementsDashboard();
+                            ElementsDashboard dashboard = new ElementsDashboard();
                             Window.AddElement(dashboard);
 
                             Window.Render(dashboard);
@@ -390,17 +424,17 @@ namespace example
                             Window.RemoveElement<ElementsDashboard>();
 
                             // See all the element types available
-                            var elementList = new ElementsList(
+                            ElementsList elementList = new ElementsList(
                                 ElementType.Default,
                                 Placement.TopCenter
                             );
                             // See all passive element types available
-                            var passiveList = new ElementsList(
+                            ElementsList passiveList = new ElementsList(
                                 ElementType.Passive,
                                 Placement.TopLeft
                             );
                             // See all the interactive element types available
-                            var interactiveList = new ElementsList(
+                            ElementsList interactiveList = new ElementsList(
                                 ElementType.Interactive,
                                 Placement.TopRight
                             );
@@ -470,7 +504,7 @@ namespace example
                         case 11:
                             // Custom element, see the PassiveDemo class
                             // in this project for more information
-                            var customPassiveElement = new PassiveDemo(
+                            PassiveDemo customPassiveElement = new PassiveDemo(
                                 "This element has been created in this project",
                                 "Its interest is for demonstration only",
                                 "The model in on the PassiveDemo.cs file",
@@ -486,7 +520,7 @@ namespace example
                             goto Menu;
 
                         case 12:
-                            var customInteractiveElement = new InteractiveDemo(
+                            InteractiveDemo customInteractiveElement = new InteractiveDemo(
                                 "This element is also custom for demo purposes, you may type something:"
                             );
                             Window.AddElement(customInteractiveElement);
@@ -503,7 +537,7 @@ namespace example
                     break;
 
                 case Status.Escaped:
-                    var exitText = new EmbedText(
+                    EmbedText exitText = new EmbedText(
                         new List<string>()
                         {
                             "You have selected to quit the app. Press [Enter] to continue..."
@@ -521,7 +555,7 @@ namespace example
                     break;
 
                 case Status.Deleted:
-                    var backspaceText = new EmbedText(
+                    EmbedText backspaceText = new EmbedText(
                         new List<string>()
                         {
                             "You have selected the backspace tile.",
