@@ -61,27 +61,27 @@ Window.Close();
 > - `Placement` - The position of the list on the window to place it at a convenient location. (see [Placement enum](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Enums.Placement.html) for more details)
 > - `RoundedCorners` - A boolean value that indicates if the list should have rounded corners. (purely aesthetic)
 
-### `Core.WriteDebugMark()`
+### `Core.WriteDebugMessage()`
 
-The `Core.WriteDebugMark()` method is a simple debugging tool that allows you to print a debug mark in the console. This mark overrides whatever is currently in the console and is useful when you want to display information without creating an `EmbedText` for example (it is also a quick alternative to the `Console.WriteLine()` method).
+The `Core.WriteDebugMessage()` method is a simple debugging tool that allows you to print a debug message in the console. This message overrides whatever is currently in the console and is useful when you want to display information without creating an `EmbedText` for example (it is also a quick alternative to the `Console.WriteLine()` method).
 
 ```csharp
 Window.Open();
 
 // Here the info are dummy but you may pass real elements or window variables
-Core.WriteDebugMark(Placement.TopRight, "h: 12", "w: 12", "x: 0", "y: 0");
+Core.WriteDebugMessage(Placement.TopRight, "h: 12", "w: 12", "x: 0", "y: 0");
 Window.Freeze();
 
 Window.Close();
 ```
 
-![DebugMark](../assets/img/jpg/debugging/debug_mark.jpg)
+![DebugMessage](../assets/img/jpg/debugging/debug_mark.jpg)
 
 > [!TIP]
-> The arguments available for the `Core.WriteDebugMark()` are:
+> The arguments available for the `Core.WriteDebugMessage()` are:
 >
-> - `Placement` - The position of the mark on the window to place it at a convenient location. (values can only be `TopLeft`, `TopCenter` or `TopRight`)
-> - `params string[]` - The information to display in the mark. (you can pass as many strings as you want) An empty string will be displayed as a blank space.
+> - `Placement` - The position of the message on the window to place it at a convenient location. (values can only be `TopLeft`, `TopCenter` or `TopRight`)
+> - `params string[]` - The information to display in the message. (you can pass as many strings as you want) An empty string will be displayed as a blank space.
 
 ## Issues
 

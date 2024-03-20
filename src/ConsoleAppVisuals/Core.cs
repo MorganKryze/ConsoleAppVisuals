@@ -565,7 +565,7 @@ public static class Core
     /// </list>
     /// </remarks>
     [Visual]
-    public static void WriteDebugMark(
+    public static void WriteDebugMessage(
         Placement placement = Placement.TopRight,
         params string[] lines
     )
