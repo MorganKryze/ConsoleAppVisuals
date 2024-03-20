@@ -20,16 +20,19 @@ public class Prompt : InteractiveElement<string>
     private string _question;
     private string _defaultValue;
     private Placement _placement;
-    private int _maxLength;
+    private int _maxInputLength;
     private int _printDuration;
     private char _selector = DEFAULT_CURSOR;
+
+    private string[]? _displayArray;
     #endregion
 
     #region Constants
     private const int DEFAULT_PROMPT_MAX_LENGTH = 10;
     private const int DEFAULT_PRINT_DURATION = 1500;
-    private const int PROMPT_HEIGHT = 3;
-    private const int PROMPT_LEFT_MARGIN = 3;
+    private const int PROMPT_HEIGHT = 4;
+    private const int MAX_LENGTH_LEFT_MARGIN = 2;
+    private const int LEFT_AND_RIGHT_MARGIN = 2;
     private const char DEFAULT_CURSOR = '>';
     #endregion
 
@@ -44,10 +47,12 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     public override int Height => PROMPT_HEIGHT;
 
+    private int MaxLength => Math.Max(_question.Length, _maxInputLength + MAX_LENGTH_LEFT_MARGIN);
+
     /// <summary>
     /// The width of the prompt element.
     /// </summary>
-    public override int Width => Math.Max(_question.Length + 1, PROMPT_LEFT_MARGIN + _maxLength);
+    public override int Width => LEFT_AND_RIGHT_MARGIN + MaxLength + LEFT_AND_RIGHT_MARGIN;
 
     /// <summary>
     /// The question of the prompt element.
@@ -62,7 +67,7 @@ public class Prompt : InteractiveElement<string>
     /// <summary>
     /// The maximum length of the response.
     /// </summary>
-    public int MaxLength => _maxLength;
+    public int MaxInputLength => _maxInputLength;
 
     /// <summary>
     /// The duration of the print animation of the question.
@@ -82,7 +87,7 @@ public class Prompt : InteractiveElement<string>
     /// <param name="question">The text on the left of the prompt element.</param>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
     /// <param name="placement">The placement of the prompt element.</param>
-    /// <param name="maxLength">The maximum length of the response.</param>
+    /// <param name="maxInputLength">The maximum length of the response.</param>
     /// <param name="printDuration">The duration of the print animation.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -95,15 +100,39 @@ public class Prompt : InteractiveElement<string>
         string question,
         string? defaultValue = null,
         Placement placement = Placement.TopCenter,
-        int maxLength = DEFAULT_PROMPT_MAX_LENGTH,
+        int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH,
         int printDuration = DEFAULT_PRINT_DURATION
     )
     {
         _question = question;
-        _defaultValue = defaultValue ?? string.Empty;
+        _maxInputLength = CheckMaxLength(maxInputLength);
+        _defaultValue = defaultValue is null ? string.Empty : CheckDefaultValue(defaultValue);
         _placement = placement;
-        _maxLength = maxLength;
         _printDuration = printDuration;
+    }
+
+    private int CheckMaxLength(int maxLength)
+    {
+        if (maxLength < 1 || maxLength >= Console.WindowWidth)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(maxLength),
+                "The maximum length of the response must be greater than 0 and less than the width of the console window."
+            );
+        }
+        return maxLength;
+    }
+
+    private string CheckDefaultValue(string defaultValue)
+    {
+        if (defaultValue.Length > _maxInputLength)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(defaultValue),
+                $"The default value must be less than or equal to the maximum input length of the response ({defaultValue.Length} > {MaxInputLength})."
+            );
+        }
+        return defaultValue;
     }
     #endregion
 
@@ -135,9 +164,9 @@ public class Prompt : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateDefaultValue(string defaultValue)
+    public void UpdateDefaultValue(string? defaultValue)
     {
-        _defaultValue = defaultValue;
+        _defaultValue = defaultValue is null ? string.Empty : CheckDefaultValue(defaultValue);
     }
 
     /// <summary>
@@ -170,12 +199,7 @@ public class Prompt : InteractiveElement<string>
     /// </remarks>
     public void UpdateMaxLength(int maxLength)
     {
-        if (maxLength < 1)
-            throw new ArgumentOutOfRangeException(
-                nameof(maxLength),
-                "The maximum length of the response must be greater than 0 and less than the width of the console window."
-            );
-        _maxLength = maxLength;
+        _maxInputLength = CheckMaxLength(maxLength);
     }
 
     /// <summary>
@@ -217,33 +241,37 @@ public class Prompt : InteractiveElement<string>
     {
         _selector = selector;
     }
+    #endregion
 
+    #region Render
     /// <summary>
     /// This method is used to render the prompt element on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
     {
-        Core.WriteContinuousString(
-            _question,
-            Line,
+        Build();
+        if (_displayArray is null)
+        {
+            throw new InvalidOperationException("The display array is null. The build has failed.");
+        }
+        Core.WriteMultiplePositionedLines(
             false,
-            1500,
-            50,
-            Width,
-            TextAlignment.Left,
-            _placement
+            TextAlignment.Center,
+            Placement,
+            false,
+            Line,
+            _displayArray
         );
-
         var field = new StringBuilder(_defaultValue);
         int fieldLine = Line + 2;
         int offset = _placement switch
         {
-            Placement.TopCenter => Console.WindowWidth / 2 - Width / 2,
-            Placement.TopCenterFullWidth => Console.WindowWidth / 2 - Width / 2,
-            Placement.BottomCenterFullWidth => Console.WindowWidth / 2 - Width / 2,
-            Placement.TopLeft => 0,
-            Placement.TopRight => Console.WindowWidth - Width,
+            Placement.TopCenter => Console.WindowWidth / 2 - Width / 2 + 2,
+            Placement.TopCenterFullWidth => Console.WindowWidth / 2 - Width / 2 + 2,
+            Placement.BottomCenterFullWidth => Console.WindowWidth / 2 - Width / 2 + 2,
+            Placement.TopLeft => 2,
+            Placement.TopRight => Console.WindowWidth - Width + 2,
             _ => 0
         };
 
@@ -252,7 +280,7 @@ public class Prompt : InteractiveElement<string>
         {
             Console.CursorVisible = false;
 
-            Core.WritePositionedString(GetRenderSpace()[0], _placement, false, fieldLine);
+            Core.WritePositionedString(_displayArray[2], Placement, false, fieldLine);
 
             Console.SetCursorPosition(offset, Console.CursorTop);
             Console.Write($"{_selector} {field}");
@@ -267,7 +295,7 @@ public class Prompt : InteractiveElement<string>
                 key.Key != ConsoleKey.Enter
                 && key.Key != ConsoleKey.Escape
                 && key.Key != ConsoleKey.Backspace
-                && field.Length < MaxLength
+                && field.Length < MaxInputLength
             )
             {
                 field.Append(key.KeyChar);
@@ -282,6 +310,22 @@ public class Prompt : InteractiveElement<string>
                 field.ToString()
             )
         );
+    }
+
+    [Visual]
+    private void Build()
+    {
+        string finalQuestion = _question.ResizeString(MaxLength, TextAlignment.Left);
+        string finalField = ($"{_selector} " + _defaultValue).ResizeString(
+            MaxLength,
+            TextAlignment.Left
+        );
+
+        _displayArray = new string[PROMPT_HEIGHT];
+        _displayArray[0] = "┌" + new string('─', Width - 2) + "┐";
+        _displayArray[1] = "│ " + finalQuestion + " │";
+        _displayArray[2] = "│ " + new string(' ', finalField.Length) + " │";
+        _displayArray[3] = "└" + new string('─', Width - 2) + "┘";
     }
     #endregion
 }
