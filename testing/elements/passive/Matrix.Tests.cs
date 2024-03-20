@@ -183,7 +183,6 @@ public class UnitTestMatrix
                     new() { "1", "2", "3" },
                     new() { "4", "5", "6" }
                 },
-                false,
                 Placement.TopRight
             );
 
@@ -206,7 +205,6 @@ public class UnitTestMatrix
                     new() { "1", "2", "3" },
                     new() { "4", "5", "6" }
                 },
-                false,
                 Placement.TopRight
             );
 
@@ -245,7 +243,6 @@ public class UnitTestMatrix
                     new() { "1", "2", "3" },
                     new() { "4", "5", "6" }
                 },
-                false,
                 Placement.TopRight
             );
 
@@ -285,8 +282,7 @@ public class UnitTestMatrix
                 {
                     new() { "1", "2", "3" },
                     new() { "4", "5", "6" }
-                },
-                false
+                }
             );
 
         // Act
@@ -294,29 +290,6 @@ public class UnitTestMatrix
 
         // Assert
         Assert.AreEqual(3, matrix.Count);
-    }
-    #endregion
-
-    #region RoundedCorners_SetRoundedCorners_ReturnsTrue
-    [TestMethod]
-    public void RoundedCorners_SetRoundedCorners_ReturnsTrue()
-    {
-        // Arrange
-        Matrix<string> matrix =
-            new(
-                new List<List<string?>>()
-                {
-                    new() { "1", "2", "3" },
-                    new() { "4", "5", "6" }
-                },
-                false
-            );
-
-        // Act
-        matrix.SetRoundedCorners(true);
-
-        // Assert
-        Assert.IsTrue(matrix.RoundedCorners);
     }
     #endregion
 
@@ -346,8 +319,7 @@ public class UnitTestMatrix
                 {
                     new() { "1", "2", "3" },
                     new() { "4", "5", "6" }
-                },
-                false
+                }
             );
 
         // Act
@@ -549,8 +521,7 @@ public class UnitTestMatrix
                 {
                     new() { "1", "2", "3" },
                     new() { "4", "5", "6" }
-                },
-                false
+                }
             );
 
         // Act
@@ -599,8 +570,7 @@ public class UnitTestMatrix
                 {
                     new() { "1", "2", "3" },
                     new() { "4", "5", "6" }
-                },
-                false
+                }
             );
 
         // Act
@@ -610,5 +580,29 @@ public class UnitTestMatrix
         Assert.AreEqual(placement, matrix.Placement);
     }
 
+    #endregion
+
+    #region UpdateBorderType
+
+    [TestMethod]
+    [DataRow(BorderType.ASCII)]
+    public void UpdateBorderType(BorderType borderType)
+    {
+        // Arrange
+        Matrix<string> matrix =
+            new(
+                new List<List<string?>>()
+                {
+                    new() { "1", "2", "3" },
+                    new() { "4", "5", "6" }
+                }
+            );
+
+        // Act
+        matrix.UpdateBorders(borderType);
+
+        // Assert
+        Assert.AreEqual(borderType, matrix.Borders.Type);
+    }
     #endregion
 }

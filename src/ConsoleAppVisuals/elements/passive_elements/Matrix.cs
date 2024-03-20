@@ -19,18 +19,11 @@ public class Matrix<T> : PassiveElement
     #region Fields: Lines, display array, rounded corners, placement, line
     private readonly List<List<T?>> _lines;
     private string[]? _displayArray;
-    private bool _roundedCorners;
     private Placement _placement;
+    private Borders _borders;
     #endregion
 
     #region Properties: GetCorners, Count, Placement, Height, Width, Line
-    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
-
-    /// <summary>
-    /// Gets the rounded corners boolean value of the matrix.
-    /// </summary>
-    public bool RoundedCorners => _roundedCorners;
-
     /// <summary>
     /// Gets the number of lines in the matrix.
     /// </summary>
@@ -52,9 +45,9 @@ public class Matrix<T> : PassiveElement
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
 
     /// <summary>
-    /// The maximum number of this element.
+    /// The border characters to use for the matrix.
     /// </summary>
-    public override int MaxNumberOfThisElement => 1;
+    public Borders Borders => _borders;
     #endregion
 
     #region Constructor
@@ -62,8 +55,8 @@ public class Matrix<T> : PassiveElement
     /// A <see cref="Matrix{T}"/> is a passive element that displays a matrix on the console.
     /// </summary>
     /// <param name="rawLines">The matrix to be used.</param>
-    /// <param name="roundedCorners">Whether the matrix should have rounded corners or not.</param>
     /// <param name="placement">The placement of the matrix.</param>
+    /// <param name="borderType">The type of border to use for the matrix.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -74,12 +67,12 @@ public class Matrix<T> : PassiveElement
     /// </remarks>
     public Matrix(
         List<List<T?>>? rawLines = null,
-        bool roundedCorners = false,
-        Placement placement = Placement.TopCenter
+        Placement placement = Placement.TopCenter,
+        BorderType borderType = BorderType.SingleStraight
     )
     {
-        _roundedCorners = roundedCorners;
         _placement = placement;
+        _borders = new Borders(borderType);
         if (rawLines is not null)
         {
             _lines = rawLines;
@@ -126,7 +119,7 @@ public class Matrix<T> : PassiveElement
         var separator = CreateSeparator(localMax);
         for (int i = 0; i < _lines.Count; i++)
         {
-            StringBuilder lineBuilder = new StringBuilder("│ ");
+            StringBuilder lineBuilder = new StringBuilder($"{Borders.Vertical} ");
             BuildLine(lineBuilder, localMax, i);
             stringList.Add(lineBuilder.ToString());
             if (i != _lines.Count - 1)
@@ -155,24 +148,27 @@ public class Matrix<T> : PassiveElement
 
     private string CreateBorder(int[] localMax)
     {
-        string border = GetCorners[0].ToString();
-        StringBuilder headerBuilder = new StringBuilder(border);
+        StringBuilder headerBuilder = new StringBuilder(Borders.TopLeft.ToString());
         for (int i = 0; i < _lines[0].Count; i++)
         {
-            headerBuilder.Append(new string('─', localMax[i] + 2));
-            headerBuilder.Append((i != _lines[0].Count - 1) ? "┬" : GetCorners[1].ToString());
+            headerBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+            headerBuilder.Append(
+                (i != _lines[0].Count - 1) ? Borders.Top.ToString() : Borders.TopRight.ToString()
+            );
         }
         return headerBuilder.ToString();
     }
 
     private string CreateSeparator(int[] localMax)
     {
-        var separator = "├";
+        var separator = Borders.Left.ToString();
         StringBuilder separatorBuilder = new StringBuilder(separator);
         for (int i = 0; i < _lines[0].Count; i++)
         {
-            separatorBuilder.Append(new string('─', localMax[i] + 2));
-            separatorBuilder.Append((i != _lines[0].Count - 1) ? "┼" : "┤");
+            separatorBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+            separatorBuilder.Append(
+                (i != _lines[0].Count - 1) ? Borders.Cross.ToString() : Borders.Right.ToString()
+            );
         }
         return separatorBuilder.ToString();
     }
@@ -185,20 +181,24 @@ public class Matrix<T> : PassiveElement
                 _lines[i][j]?.ToString()?.PadRight(localMax[j]) ?? " ".PadRight(localMax[j])
             );
             if (j != _lines[i].Count - 1)
-                lineBuilder.Append(" │ ");
+                lineBuilder.Append($" {Borders.Vertical} ");
             else
-                lineBuilder.Append(" │");
+                lineBuilder.Append($" {Borders.Vertical}");
         }
     }
 
     private string CreateFooter(int[] localMax)
     {
-        string border = GetCorners[2].ToString();
+        string border = Borders.BottomLeft.ToString();
         StringBuilder footerBuilder = new StringBuilder(border);
         for (int i = 0; i < _lines[0].Count; i++)
         {
-            footerBuilder.Append(new string('─', localMax[i] + 2));
-            footerBuilder.Append((i != _lines[0].Count - 1) ? "┴" : GetCorners[3].ToString());
+            footerBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+            footerBuilder.Append(
+                (i != _lines[0].Count - 1)
+                    ? Borders.Bottom.ToString()
+                    : Borders.BottomRight.ToString()
+            );
         }
         return footerBuilder.ToString();
     }
@@ -206,8 +206,9 @@ public class Matrix<T> : PassiveElement
 
     #region Methods
     /// <summary>
-    /// Toggles the rounded corners of the table.
+    /// This method is used to update the borders of the matrix.
     /// </summary>
+    /// <param name="borderType">The new border type of the matrix.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -215,13 +216,10 @@ public class Matrix<T> : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void SetRoundedCorners(bool value = true)
+    public void UpdateBorders(BorderType borderType)
     {
-        _roundedCorners = value;
-        if (CompatibilityCheck())
-        {
-            BuildMatrix();
-        }
+        _borders = new Borders(borderType);
+        BuildMatrix();
     }
 
     /// <summary>
