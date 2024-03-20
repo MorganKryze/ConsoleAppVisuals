@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// The <see cref="TableView"/> class contains the methods to create a table and display it.
+/// A <see cref="TableView"/> is a passive element that displays a table on the console.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -54,9 +54,9 @@ public class TableView : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The <see cref="TableView"/> class contains the methods to create a table and display it.
+    /// A <see cref="TableView"/> is a passive element that displays a table on the console.
     /// </summary>
-    /// <param name="title">The title of the table.</param>
+    /// <param name="title">The title of the table.</param>s
     /// <param name="headers">The headers of the table.</param>
     /// <param name="lines">The lines of the table.</param>
     /// <param name="roundedCorners">The rounded corners of the table.</param>

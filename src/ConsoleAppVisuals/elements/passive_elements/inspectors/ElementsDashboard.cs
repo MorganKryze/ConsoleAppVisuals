@@ -5,8 +5,15 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// This class is used to display a dashboard of all the elements in the window.
+/// A <see cref="ElementsDashboard"/> is a passive element that displays a dashboard of all the elements currently in the <see cref="Window"/> class.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class ElementsDashboard : PassiveElement
 {
     #region Fields: title, headers, lines, display array, rounded corners
@@ -78,10 +85,17 @@ public class ElementsDashboard : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// This constructor creates a new instance of the WindowElementsDashboard class.
+    /// A <see cref="ElementsDashboard"/> is a passive element that displays a dashboard of all the elements currently in the <see cref="Window"/> class.
     /// </summary>
     /// <param name="placement">The placement of the dashboard.</param>
     /// <param name="roundedCorners">If true, the corners of the dashboard will be rounded.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public ElementsDashboard(Placement placement = Placement.TopCenter, bool roundedCorners = false)
     {
         _lines = UpdateLines();

@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// Defines the prompt element of the console window.
+/// A <see cref="Prompt"/> is an interactive element that allows the user to input a string response.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -77,7 +77,7 @@ public class Prompt : InteractiveElement<string>
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the prompt element.
+    /// A <see cref="Prompt"/> is an interactive element that allows the user to input a string response.
     /// </summary>
     /// <param name="question">The text on the left of the prompt element.</param>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
@@ -246,8 +246,8 @@ public class Prompt : InteractiveElement<string>
             Placement.TopRight => Console.WindowWidth - Width,
             _ => 0
         };
-        ConsoleKeyInfo key;
 
+        ConsoleKeyInfo key;
         do
         {
             Console.CursorVisible = false;

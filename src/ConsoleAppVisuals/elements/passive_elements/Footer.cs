@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// Defines the footer of the console window.
+/// A <see cref="Footer"/> is a passive element that displays a footer on the console.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -55,7 +55,7 @@ public class Footer : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the footer.
+    /// A <see cref="Footer"/> is a passive element that displays a footer on the console.
     /// </summary>
     /// <param name="leftText">The text on the left of the footer.</param>
     /// <param name="centerText">The text in the center of the footer.</param>

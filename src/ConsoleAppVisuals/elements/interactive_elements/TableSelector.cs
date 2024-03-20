@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// The <see cref="TableSelector"/> class contains the methods to create an interactive table and display it.
+/// A <see cref="TableSelector"/> is an interactive element that displays a table with selectable elements.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -99,7 +99,7 @@ public class TableSelector : InteractiveElement<int>
 
     #region Constructor
     /// <summary>
-    /// The <see cref="TableSelector"/> class contains the methods to create an interactive table and display it.
+    /// A <see cref="TableSelector"/> is an interactive element that displays a table with selectable elements.
     /// </summary>
     /// <param name="title">The title of the table.</param>
     /// <param name="lines">The lines of the table.</param>

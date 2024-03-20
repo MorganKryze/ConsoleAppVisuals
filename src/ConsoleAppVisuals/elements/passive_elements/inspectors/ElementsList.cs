@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// The <see cref="ElementsList"/> class is used to display a list of all the elements in the window.
+/// A <see cref="ElementsList"/> is a passive element that displays a list of all the elements types available.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -93,7 +93,7 @@ public class ElementsList : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The <see cref="ElementsList"/> class is used to display a list of all the elements in the window.
+    /// A <see cref="ElementsList"/> is a passive element that displays a list of all the elements types available.
     /// </summary>
     /// <param name="elementTypeExpected">The type of element expected.</param>
     /// <param name="placement">The placement of the InteractiveList.</param>

@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// Defines the basic properties of an Embed text.
+/// A <see cref="EmbedText"/> is an interactive element that displays text in a box with an optional button.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -72,7 +72,7 @@ public class EmbedText : InteractiveElement<string>
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the Embed text.
+    /// A <see cref="EmbedText"/> is an interactive element that displays text in a box with an optional button.
     /// </summary>
     /// <param name="text">The text to display.</param>
     /// <param name="button">The text of the button. Null to not display a button.</param>

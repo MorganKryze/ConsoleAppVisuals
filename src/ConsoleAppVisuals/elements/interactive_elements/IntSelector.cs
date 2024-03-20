@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// Defines the number selector of the console window.
+/// A <see cref="IntSelector"/> is an interactive element that allows the user to select an integer value from a range of values.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -108,7 +108,7 @@ public class IntSelector : InteractiveElement<int>
 
     #region Constructor
     /// <summary>
-    /// The constructor of the intSelector class.
+    /// A <see cref="IntSelector"/> is an interactive element that allows the user to select an integer value from a range of values.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <param name="min">The minimum value of the selector.</param>
@@ -371,12 +371,7 @@ public class IntSelector : InteractiveElement<int>
     [Visual]
     void DisplayChoices(int lineSelector, int currentNumber)
     {
-        Core.WritePositionedString(
-            BuildLine(Direction.Up),
-            Placement,
-            false,
-            lineSelector - 2
-        );
+        Core.WritePositionedString(BuildLine(Direction.Up), Placement, false, lineSelector - 2);
         Core.WritePositionedString(
             BuildNumber(NextNumber(Direction.Up, currentNumber)),
             Placement,
@@ -395,12 +390,7 @@ public class IntSelector : InteractiveElement<int>
             false,
             lineSelector + 1
         );
-        Core.WritePositionedString(
-            BuildLine(Direction.Down),
-            Placement,
-            false,
-            lineSelector + 2
-        );
+        Core.WritePositionedString(BuildLine(Direction.Down), Placement, false, lineSelector + 2);
     }
 
     [Visual]
