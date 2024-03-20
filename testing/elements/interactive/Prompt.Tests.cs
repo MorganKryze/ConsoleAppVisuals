@@ -37,7 +37,7 @@ public class UnitTestPrompt
     public void Placement_Getter()
     {
         // Arrange
-        var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 20);
+        var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 10);
 
         // Act
         var actual = prompt.Placement;
@@ -97,11 +97,11 @@ public class UnitTestPrompt
     public void MaxLength_Getter()
     {
         // Arrange
-        var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 20);
+        var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 10);
 
         // Act
         var actual = prompt.MaxInputLength;
-        var expected = 20;
+        var expected = 10;
 
         // Assert
         Assert.AreEqual(expected, actual);
@@ -201,9 +201,9 @@ public class UnitTestPrompt
         var prompt = new Prompt("What is your name?", "John Doe");
 
         // Act
-        prompt.UpdateMaxLength(20);
+        prompt.UpdateMaxLength(10);
         var actual = prompt.MaxInputLength;
-        var expected = 20;
+        var expected = 10;
 
         // Assert
         Assert.AreEqual(expected, actual);
