@@ -21,10 +21,8 @@
       ]
     },
     "dotnet-reportgenerator-globaltool": {
-      "version": "5.2.2",
-      "commands": [
-        "reportgenerator"
-      ]
+      "version": "5.2.3",
+      "commands": ["reportgenerator"]
     },
     "dotnet-depends": {
       "version": "0.7.0",
