@@ -5,8 +5,15 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A matrix class for the console.
+/// A <see cref="Matrix{T}"/> is a passive element that displays a matrix on the console.
 /// </summary>
+/// <remarks>
+/// For more information, refer to the following resources:
+/// <list type="bullet">
+/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+/// </list>
+/// </remarks>
 public class Matrix<T> : PassiveElement
 {
     #region Fields: Lines, display array, rounded corners, placement, line
@@ -52,13 +59,19 @@ public class Matrix<T> : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the <see cref="Matrix{T}"/> class.
+    /// A <see cref="Matrix{T}"/> is a passive element that displays a matrix on the console.
     /// </summary>
     /// <param name="rawLines">The matrix to be used.</param>
     /// <param name="roundedCorners">Whether the matrix should have rounded corners or not.</param>
     /// <param name="placement">The placement of the matrix.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
-    /// <remarks>Refer to the example project to understand how to implement it available at https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/ </remarks>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
     public Matrix(
         List<List<T?>>? rawLines = null,
         bool roundedCorners = false,

@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// Defines the header of the console window.
+/// A <see cref="Header"/> is a passive element that displays a header on the console.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -59,7 +59,7 @@ public class Header : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the header.
+    /// A <see cref="Header"/> is a passive element that displays a header on the console.
     /// </summary>
     /// <param name="leftText">The text on the left of the header.</param>
     /// <param name="centerText">The text in the center of the header.</param>

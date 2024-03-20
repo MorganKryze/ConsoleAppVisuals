@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// Defines the banner of the console window.
+/// A <see cref="Banner"/> is a passive element that displays a banner on the console.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -58,7 +58,7 @@ public class Banner : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the banner.
+    /// A <see cref="Banner"/> is a passive element that displays a banner on the console.
     /// </summary>
     /// <param name="leftText">The text on the left of the banner.</param>
     /// <param name="centerText">The text in the center of the banner.</param>

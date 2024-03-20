@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A spacer is a passive element that is used to create space between other elements.
+/// A <see cref="HeightSpacer"/> is a passive element that displays a space between elements with a fixed height.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -35,7 +35,7 @@ public class HeightSpacer : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the spacer.
+    /// A <see cref="HeightSpacer"/> is a passive element that displays a space between elements with a fixed height.
     /// </summary>
     /// <param name="height">The height of the spacer.</param>
     /// <param name="placement">The placement of the spacer.</param>

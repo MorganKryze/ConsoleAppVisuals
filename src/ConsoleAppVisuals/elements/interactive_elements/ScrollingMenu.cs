@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// Defines the scrolling menu the console window.
+/// A <see cref="ScrollingMenu"/> is an interactive element that displays a question with multiple scrollable choices.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -75,7 +75,7 @@ public class ScrollingMenu : InteractiveElement<int>
 
     #region Constructor
     /// <summary>
-    /// The constructor of the ScrollingMenu class.
+    /// A <see cref="ScrollingMenu"/> is an interactive element that displays a question with multiple scrollable choices.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <param name="defaultIndex">The index of the default choice(initially 0).</param>
@@ -190,7 +190,16 @@ public class ScrollingMenu : InteractiveElement<int>
     protected override void RenderElementActions()
     {
         EqualizeChoicesLength(_choices);
-        Core.WriteContinuousString(_question, Line, false, 1500, 50, Width, TextAlignment.Center, _placement);
+        Core.WriteContinuousString(
+            _question,
+            Line,
+            false,
+            1500,
+            50,
+            Width,
+            TextAlignment.Center,
+            _placement
+        );
         int lineChoice = Line + 2;
         bool delay = true;
         bool loop = true;
@@ -257,12 +266,7 @@ public class ScrollingMenu : InteractiveElement<int>
         for (int i = 0; i < choices.Length; i++)
         {
             array[i] = (i == defaultIndex) ? $" {Selector} {choices[i]}  " : $"   {choices[i]}  ";
-            Core.WritePositionedString(
-                array[i],
-                placement,
-                i == defaultIndex,
-                lineChoice + i
-            );
+            Core.WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
             if (delay)
                 Thread.Sleep(30);
         }

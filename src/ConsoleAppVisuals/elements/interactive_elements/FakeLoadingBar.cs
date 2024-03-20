@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// Defines the loading bar of the console window.
+/// A <see cref="FakeLoadingBar"/> is an interactive element that simulates a loading bar with a fixed duration.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -63,7 +63,7 @@ public class FakeLoadingBar : InteractiveElement<string>
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the loading bar.
+    /// A <see cref="FakeLoadingBar"/> is an interactive element that simulates a loading bar with a fixed duration.
     /// </summary>
     /// <param name="text">The text of the loading bar.</param>
     /// <param name="placement">The placement of the loading bar.</param>

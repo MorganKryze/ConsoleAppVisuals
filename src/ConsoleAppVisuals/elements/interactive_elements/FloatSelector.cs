@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// Defines the number selector of the console window.
+/// A <see cref="FloatSelector"/> is an interactive element that allows the user to select a float value from a range of values.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -108,7 +108,7 @@ public class FloatSelector : InteractiveElement<float>
 
     #region Constructor
     /// <summary>
-    /// The constructor of the FloatSelector class.
+    /// A <see cref="FloatSelector"/> is an interactive element that allows the user to select a float value from a range of values.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <param name="min">The minimum value of the selector.</param>
@@ -376,12 +376,7 @@ public class FloatSelector : InteractiveElement<float>
     [Visual]
     void DisplayChoices(int lineSelector, float currentNumber)
     {
-        Core.WritePositionedString(
-            BuildLine(Direction.Up),
-            Placement,
-            false,
-            lineSelector - 2
-        );
+        Core.WritePositionedString(BuildLine(Direction.Up), Placement, false, lineSelector - 2);
         Core.WritePositionedString(
             BuildNumber((float)Math.Round(NextNumber(Direction.Up, currentNumber), 1)),
             Placement,
@@ -400,12 +395,7 @@ public class FloatSelector : InteractiveElement<float>
             false,
             lineSelector + 1
         );
-        Core.WritePositionedString(
-            BuildLine(Direction.Down),
-            Placement,
-            false,
-            lineSelector + 2
-        );
+        Core.WritePositionedString(BuildLine(Direction.Down), Placement, false, lineSelector + 2);
     }
 
     [Visual]

@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// Defines the loading bar of the console window.
+/// A <see cref="LoadingBar"/> is a passive element that displays a loading bar using a reference to a progress variable.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -70,7 +70,7 @@ public class LoadingBar : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The natural constructor of the loading bar.
+    /// A <see cref="LoadingBar"/> is a passive element that displays a loading bar using a reference to a progress variable.
     /// </summary>
     /// <param name="text">The text of the loading bar.</param>
     /// <param name="progress">The reference of the progress of the loading bar (that means that you should put a reference to a variable that will contain the percentage of progress of your process).</param>

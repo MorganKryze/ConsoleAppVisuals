@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// Defines the title of the console window.
+/// A <see cref="Title"/> is a passive element that displays a title on the console.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -63,7 +63,7 @@ public class Title : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The constructor of the title.
+    /// A <see cref="Title"/> is a passive element that displays a title on the console.
     /// </summary>
     /// <param name="text">The text of the title.</param>
     /// <param name="margin">The margin of the title.</param>
