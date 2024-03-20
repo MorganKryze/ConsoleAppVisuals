@@ -25,7 +25,7 @@ public class Borders
     private const string SINGLE_ROUNDED = "╭╮╰╯─│┬┴├┤┼";
     private const string SINGLE_BOLD = "┏┓┗┛━┃┳┻┣┫╋";
     private const string DOUBLE_STRAIGHT = "╔╗╚╝═║╦╩╠╣╬";
-    private const string ASCII = "++++-|--+++";
+    private const string ASCII = "++++-|+++++";
     #endregion
 
     #region Properties

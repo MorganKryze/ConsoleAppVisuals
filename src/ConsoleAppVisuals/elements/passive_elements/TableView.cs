@@ -21,8 +21,8 @@ public class TableView : PassiveElement
     private List<string>? _rawHeaders;
     private List<List<string>>? _rawLines;
     private string[]? _displayArray;
-    private bool _roundedCorners;
-    private readonly Placement _placement;
+    private Placement _placement;
+    private Borders _borders;
     #endregion
 
     #region Properties: get headers, get lines
@@ -50,6 +50,16 @@ public class TableView : PassiveElement
     /// This property returns the width of the table.
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
+
+    /// <summary>
+    /// This property returns the number of lines in the table.
+    /// </summary>
+    public int Count => _rawLines?.Count ?? 0;
+
+    /// <summary>
+    /// This property returns the borders of the table.
+    /// </summary>
+    public Borders Borders => _borders;
     #endregion
 
     #region Constructor
@@ -59,8 +69,8 @@ public class TableView : PassiveElement
     /// <param name="title">The title of the table.</param>s
     /// <param name="headers">The headers of the table.</param>
     /// <param name="lines">The lines of the table.</param>
-    /// <param name="roundedCorners">The rounded corners of the table.</param>
     /// <param name="placement">The placement of the table.</param>
+    /// <param name="borderType">The type of border to use for the table.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
     /// <remarks>
@@ -74,14 +84,14 @@ public class TableView : PassiveElement
         string? title = null,
         List<string>? headers = null,
         List<List<string>>? lines = null,
-        bool roundedCorners = false,
-        Placement placement = Placement.TopCenter
+        Placement placement = Placement.TopCenter,
+        BorderType borderType = BorderType.SingleStraight
     )
     {
         _title = title;
         _rawHeaders = headers;
         _rawLines = lines;
-        _roundedCorners = roundedCorners;
+        _borders = new Borders(borderType);
         _placement = placement;
         if (CompatibilityCheck())
         {
@@ -197,63 +207,65 @@ public class TableView : PassiveElement
                 }
             }
 
-            StringBuilder headerBuilder = new("│ ");
+            StringBuilder headerBuilder = new($"{Borders.Vertical} ");
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
                 if (i != _rawHeaders.Count - 1)
                 {
-                    headerBuilder.Append(" │ ");
+                    headerBuilder.Append($" {Borders.Vertical} ");
                 }
                 else
                 {
-                    headerBuilder.Append(" │");
+                    headerBuilder.Append($" {Borders.Vertical}");
                 }
             }
             stringList.Add(headerBuilder.ToString());
 
-            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                upperBorderBuilder.Append(new string('─', localMax[i] + 2));
+                upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : GetCorners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? Borders.Top.ToString() : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
 
-            StringBuilder intermediateBorderBuilder = new("├");
+            StringBuilder intermediateBorderBuilder = new($"{Borders.Left}");
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                intermediateBorderBuilder.Append(new string('─', localMax[i] + 2));
-                intermediateBorderBuilder.Append((i != _rawHeaders.Count - 1) ? "┼" : "┤");
+                intermediateBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                intermediateBorderBuilder.Append(
+                    (i != _rawHeaders.Count - 1) ? Borders.Cross : Borders.Right
+                );
             }
             stringList.Add(intermediateBorderBuilder.ToString());
 
             for (int i = 0; i < _rawLines.Count; i++)
             {
-                StringBuilder lineBuilder = new("│ ");
+                StringBuilder lineBuilder = new($"{Borders.Vertical} ");
                 for (int j = 0; j < _rawLines[i].Count; j++)
                 {
                     lineBuilder.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
                     if (j != _rawLines[i].Count - 1)
                     {
-                        lineBuilder.Append(" │ ");
+                        lineBuilder.Append($" {Borders.Vertical} ");
                     }
                     else
                     {
-                        lineBuilder.Append(" │");
+                        lineBuilder.Append($" {Borders.Vertical}");
                     }
                 }
                 stringList.Add(lineBuilder.ToString());
             }
 
-            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
+                lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : GetCorners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? Borders.Bottom.ToString() : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -276,35 +288,35 @@ public class TableView : PassiveElement
                     localMax[i] = _rawHeaders[i]?.Length ?? 0;
                 }
             }
-            StringBuilder headerBuilder = new("│ ");
+            StringBuilder headerBuilder = new($"{Borders.Vertical} ");
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
                 if (i != _rawHeaders.Count - 1)
                 {
-                    headerBuilder.Append(" │ ");
+                    headerBuilder.Append($" {Borders.Vertical} ");
                 }
                 else
                 {
-                    headerBuilder.Append(" │");
+                    headerBuilder.Append($" {Borders.Vertical}");
                 }
             }
             stringList.Add(headerBuilder.ToString());
-            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                upperBorderBuilder.Append(new string('─', localMax[i] + 2));
+                upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : GetCorners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? Borders.Top.ToString() : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
-                lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
+                lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : GetCorners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? Borders.Bottom.ToString() : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -331,36 +343,36 @@ public class TableView : PassiveElement
             }
             for (int i = 0; i < _rawLines.Count; i++)
             {
-                StringBuilder line = new("│ ");
+                StringBuilder line = new($"{Borders.Vertical} ");
                 for (int j = 0; j < _rawLines[i].Count; j++)
                 {
                     line.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
                     if (j != _rawLines[i].Count - 1)
                     {
-                        line.Append(" │ ");
+                        line.Append($" {Borders.Vertical} ");
                     }
                     else
                     {
-                        line.Append(" │");
+                        line.Append($" {Borders.Vertical}");
                     }
                 }
                 stringList.Add(line.ToString());
             }
-            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
             for (int i = 0; i < _rawLines.Count; i++)
             {
-                upperBorderBuilder.Append(new string('─', localMax[i] + 2));
+                upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? "┬" : GetCorners[1].ToString()
+                    (i != _rawLines.Count - 1) ? Borders.Top.ToString() : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
             for (int i = 0; i < _rawLines.Count; i++)
             {
-                lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
+                lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? "┴" : GetCorners[3].ToString()
+                    (i != _rawLines.Count - 1) ? Borders.Bottom.ToString(): Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -375,16 +387,16 @@ public class TableView : PassiveElement
         {
             var len = _displayArray![0].Length;
             var title = _title.ResizeString(len - 4);
-            title = $"│ {title} │";
-            var upperBorderBuilder = new StringBuilder(GetCorners[0].ToString());
-            upperBorderBuilder.Append(new string('─', len - 2));
-            upperBorderBuilder.Append(GetCorners[1].ToString());
+            title = $"{Borders.Vertical} {title} {Borders.Vertical}";
+            var upperBorderBuilder = new StringBuilder(Borders.TopLeft.ToString());
+            upperBorderBuilder.Append(new string(Borders.Horizontal, len - 2));
+            upperBorderBuilder.Append(Borders.TopRight.ToString());
             var display = _displayArray.ToList();
             display[0] = display[0]
                 .Remove(0, 1)
-                .Insert(0, "├")
+                .Insert(0, Borders.Left.ToString())
                 .Remove(display[1].Length - 1, 1)
-                .Insert(display[1].Length - 1, "┤");
+                .Insert(display[1].Length - 1, Borders.Right.ToString());
             display.Insert(0, title);
             display.Insert(0, upperBorderBuilder.ToString());
             _displayArray = display.ToArray();
@@ -392,20 +404,11 @@ public class TableView : PassiveElement
     }
     #endregion
 
-    #region Properties: GetCorners, Count
-    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
-
-    /// <summary>
-    /// This property returns the number of lines in the table.
-    /// </summary>
-    public int Count => _rawLines?.Count ?? 0;
-
-    #endregion
-
     #region Methods: Get, Add, Update, Remove, Clear
     /// <summary>
-    /// Toggles the rounded corners of the table.
+    /// Updates the placement of the table.
     /// </summary>
+    /// <param name="placement">The new placement of the table.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -413,9 +416,26 @@ public class TableView : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void SetRoundedCorners(bool rounded = true)
+    public void UpdatePlacement(Placement placement)
     {
-        _roundedCorners = rounded;
+        _placement = placement;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// This method updates the borders of the table.
+    /// </summary>
+    /// <param name="borderType">The type of border to use for the table.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateBorders(BorderType borderType)
+    {
+        _borders = new Borders(borderType);
         BuildTable();
     }
 
@@ -730,7 +750,7 @@ public class TableView : PassiveElement
     }
     #endregion
 
-    #region Display Methods
+    #region Render
     /// <summary>
     /// This method displays the table without interaction.
     /// </summary>
