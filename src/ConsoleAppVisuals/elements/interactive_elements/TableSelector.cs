@@ -63,7 +63,7 @@ public class TableSelector : InteractiveElement<int>
     /// <summary>
     /// This property returns the text of the footer.
     /// </summary>
-    public string FooterText => _footerText ?? "";
+    public string FooterText => _footerText ?? "New";
 
     /// <summary>
     /// This property returns if the corners are rounded.
@@ -844,19 +844,19 @@ public class TableSelector : InteractiveElement<int>
             for (int j = 0; j < _displayArray.Length; j++)
             {
                 array[j] = _displayArray[j];
-                Core.WritePositionedString(array[j], Placement, false, Line + j);
+
                 if (j == index)
                 {
                     Core.WritePositionedString(
-                        j == _displayArray.Length - 1
-                            ? array[j].InsertString($"┤ {_footerText} ├", TextAlignment.Center)[
-                                2..^2
-                            ]
-                            : array[j][1..^1],
+                        j == _displayArray.Length - 1 ? " " + FooterText + " " : array[j][1..^1],
                         Placement,
                         true,
                         Line + j
                     );
+                }
+                else
+                {
+                    Core.WritePositionedString(array[j], Placement, false, Line + j);
                 }
             }
             switch (Console.ReadKey(intercept: true).Key)
