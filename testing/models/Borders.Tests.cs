@@ -168,7 +168,7 @@ public class UnitTestsBorders
     [DataRow(BorderType.SingleRounded, '┬')]
     [DataRow(BorderType.SingleBold, '┳')]
     [DataRow(BorderType.DoubleStraight, '╦')]
-    [DataRow(BorderType.ASCII, '-')]
+    [DataRow(BorderType.ASCII, '+')]
     public void Borders_Top(BorderType type, char expected)
     {
         // Arrange

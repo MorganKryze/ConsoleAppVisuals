@@ -316,8 +316,7 @@ public class UnitTestTableView
     public void AddLine_ThrowsExceptionOnWrongLineWithHeaders()
     {
         // Arrange
-        TableView table =
-            new(null, new List<string>() { "header1", "header2", "header3" }, null);
+        TableView table = new(null, new List<string>() { "header1", "header2", "header3" }, null);
 
         // Assert
         Assert.ThrowsException<ArgumentException>(() =>
@@ -444,19 +443,10 @@ public class UnitTestTableView
 
     #region GeneralTests
     [TestMethod]
-    public void RoundedCorners_SetsRoundedCornersCorrectly()
+    public void UpdatePlacement_UpdatesPlacementCorrectly()
     {
         // Arrange
-        TableView table1 =
-            new(
-                "title",
-                new List<string>() { "header1", "header2", "header3" },
-                new List<List<string>>()
-                {
-                    new() { "1", "2", "3" }
-                }
-            );
-        TableView table2 =
+        TableView table =
             new(
                 "title",
                 new List<string>() { "header1", "header2", "header3" },
@@ -467,12 +457,31 @@ public class UnitTestTableView
             );
 
         // Act
-        table1.SetRoundedCorners(true);
-        table2.SetRoundedCorners(false);
+        table.UpdatePlacement(Placement.TopLeft);
 
         // Assert
-        Assert.AreNotEqual(table1.GetRawHeaders, table2.GetRawHeaders);
-        Assert.AreNotEqual(table1.GetRawLines, table2.GetRawLines);
+        Assert.AreEqual(Placement.TopLeft, table.Placement);
+    }
+
+    [TestMethod]
+    public void UpdateBorderType_UpdatesBorderTypeCorrectly()
+    {
+        // Arrange
+        TableView table =
+            new(
+                "title",
+                new List<string>() { "header1", "header2", "header3" },
+                new List<List<string>>()
+                {
+                    new() { "1", "2", "3" }
+                }
+            );
+
+        // Act
+        table.UpdateBorders(BorderType.SingleRounded);
+
+        // Assert
+        Assert.AreEqual(BorderType.SingleRounded, table.Borders.Type);
     }
 
     [TestMethod]
