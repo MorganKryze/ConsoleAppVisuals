@@ -213,7 +213,7 @@ public class Prompt : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateSelector(char selector)
+    public void UpdateSelector(char selector = '▶')
     {
         _selector = selector;
     }

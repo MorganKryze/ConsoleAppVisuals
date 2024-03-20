@@ -305,7 +305,7 @@ public class IntSelector : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateLeftSelector(char leftSelector)
+    public void UpdateLeftSelector(char leftSelector = '▶')
     {
         _selector.Item1 = leftSelector;
     }
@@ -321,7 +321,7 @@ public class IntSelector : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateRightSelector(char rightSelector)
+    public void UpdateRightSelector(char rightSelector = '◀')
     {
         _selector.Item2 = rightSelector;
     }
