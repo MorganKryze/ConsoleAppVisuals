@@ -599,7 +599,7 @@ public class UnitTestMatrix
             );
 
         // Act
-        matrix.UpdateBorders(borderType);
+        matrix.UpdateBorderType(borderType);
 
         // Assert
         Assert.AreEqual(borderType, matrix.Borders.Type);

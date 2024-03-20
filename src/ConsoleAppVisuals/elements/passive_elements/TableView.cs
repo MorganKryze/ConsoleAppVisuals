@@ -433,7 +433,7 @@ public class TableView : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorders(BorderType borderType)
+    public void UpdateBorderType(BorderType borderType)
     {
         _borders = new Borders(borderType);
         BuildTable();

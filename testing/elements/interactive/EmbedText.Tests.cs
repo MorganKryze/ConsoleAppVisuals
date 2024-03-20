@@ -428,31 +428,6 @@ public class UnitTestEmbedText
     }
     #endregion
 
-    #region RoundedCorners
-    [TestMethod]
-    [TestCategory("EmbedText")]
-    [DataRow(true)]
-    [DataRow(false)]
-    public void RoundedCorners_Getter(bool roundedCorners)
-    {
-        // Arrange
-        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter,
-            roundedCorners
-        );
-
-        // Act
-        var actual = EmbedText.RoundedCorners;
-
-        // Assert
-        Assert.AreEqual(roundedCorners, actual);
-    }
-    #endregion
-
     #region UpdateButtonText
     [TestMethod]
     [TestCategory("EmbedText")]
@@ -554,12 +529,12 @@ public class UnitTestEmbedText
 
     #endregion
 
-    #region SetRoundedCorners
+    #region UpdateBorderType
     [TestMethod]
     [TestCategory("EmbedText")]
-    [DataRow(true)]
-    [DataRow(false)]
-    public void SetRoundedCorners_SetsRoundedCornersCorrectly(bool roundedCorners)
+    [DataRow(BorderType.SingleBold)]
+    [DataRow(BorderType.DoubleStraight)]
+    public void UpdateBorderType_UpdatesBorderTypeCorrectly(BorderType newBorderType)
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
@@ -571,10 +546,10 @@ public class UnitTestEmbedText
         );
 
         // Act
-        EmbedText.SetRoundedCorners(roundedCorners);
+        EmbedText.UpdateBorderType(newBorderType);
 
         // Assert
-        Assert.AreEqual(roundedCorners, EmbedText.RoundedCorners);
+        Assert.AreEqual(newBorderType, EmbedText.Borders.Type);
     }
     #endregion
 }
