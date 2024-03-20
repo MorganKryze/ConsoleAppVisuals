@@ -456,7 +456,7 @@ public class UnitTestTableSelector
         var actualFooterText = tableSelector.FooterText;
 
         // Assert
-        Assert.AreEqual(string.Empty, actualFooterText);
+        Assert.AreEqual("New", actualFooterText);
     }
 
     [TestMethod]
