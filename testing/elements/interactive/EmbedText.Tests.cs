@@ -2,7 +2,7 @@
     GNU GPL License 2024 MorganKryze(Yann Vidamment)
     For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
 */
-namespace ConsoleAppVisuals;
+namespace testing;
 
 [TestClass]
 public class UnitTestEmbedText
@@ -267,7 +267,6 @@ public class UnitTestEmbedText
 
         // Assert
         Assert.IsNull(EmbedText.TextToDisplay);
-
     }
     #endregion
 
@@ -485,7 +484,12 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var newTextToDisplay = new List<string>() { "Test for the placement", "123was tested", "New line" };
+        var newTextToDisplay = new List<string>()
+        {
+            "Test for the placement",
+            "123was tested",
+            "New line"
+        };
         var EmbedText = new EmbedText(
             textToDisplay,
             "Button",
