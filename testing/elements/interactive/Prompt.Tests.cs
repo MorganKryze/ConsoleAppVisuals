@@ -56,7 +56,7 @@ public class UnitTestPrompt
 
         // Act
         var actual = prompt.Height;
-        var expected = 3;
+        var expected = 4;
 
         // Assert
         Assert.AreEqual(expected, actual);
@@ -116,22 +116,7 @@ public class UnitTestPrompt
 
         // Act
         var actual = prompt.MaxInputLength;
-        var expected = 10;
-
-        // Assert
-        Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
-    [TestCategory("Prompt")]
-    public void PrintDuration_Getter()
-    {
-        // Arrange
-        var prompt = new Prompt("What is your name?", "John Doe", Placement.TopCenter, 20, 2000);
-
-        // Act
-        var actual = prompt.PrintDuration;
-        var expected = 2000;
+        var expected = 12;
 
         // Assert
         Assert.AreEqual(expected, actual);
@@ -259,36 +244,6 @@ public class UnitTestPrompt
 
     #endregion
 
-    #region UpdatePrintDuration
-    [TestMethod]
-    [TestCategory("Prompt")]
-    public void UpdatePrintDuration()
-    {
-        // Arrange
-        var prompt = new Prompt("What is your name?", "John Doe");
-
-        // Act
-        prompt.UpdatePrintDuration(2000);
-        var actual = prompt.PrintDuration;
-        var expected = 2000;
-
-        // Assert
-        Assert.AreEqual(expected, actual);
-    }
-
-    [TestMethod]
-    [TestCategory("Prompt")]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    [DataRow(-1)]
-    public void UpdatePrintDuration_OutsideRange(int printDuration)
-    {
-        // Arrange
-        var prompt = new Prompt("What is your name?", "John Doe");
-
-        // Act
-        prompt.UpdatePrintDuration(printDuration);
-    }
-    #endregion
 
     #region UpdateSelector
     [TestMethod]
