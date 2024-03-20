@@ -518,7 +518,7 @@ public static class Core
             foreach (string str in text)
             {
                 WritePositionedString(str, placement, negative, line++);
-                if (line >= Console.WindowHeight - 1)
+                if (line > Console.WindowHeight - 1)
                     break;
             }
         }
