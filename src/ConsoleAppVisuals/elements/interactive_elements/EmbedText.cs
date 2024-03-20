@@ -19,9 +19,9 @@ public class EmbedText : InteractiveElement<string>
     #region Fields
     private List<string> _text;
     private string? _button;
-    private bool _roundedCorners;
     private TextAlignment _align;
     private Placement _placement;
+    private Borders _borders;
     private List<string>? _textToDisplay;
 
     #endregion
@@ -58,15 +58,14 @@ public class EmbedText : InteractiveElement<string>
     public string? ButtonText => _button;
 
     /// <summary>
+    /// The borders of the Embed text.
+    /// </summary>
+    public Borders Borders => _borders;
+
+    /// <summary>
     /// The text to display.
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
-
-    /// <summary>
-    /// Wether the corners are rounded or not.
-    /// </summary>
-    public bool RoundedCorners => _roundedCorners;
-    private string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
 
     #endregion
 
@@ -78,7 +77,7 @@ public class EmbedText : InteractiveElement<string>
     /// <param name="button">The text of the button. Null to not display a button.</param>
     /// <param name="align">The alignment of the Embed text.</param>
     /// <param name="placement">The placement of the Embed text element.</param>
-    /// <param name="roundedCorners">Wether the corners are rounded or not.</param>
+    /// <param name="borderType">The type of border to display.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -91,14 +90,14 @@ public class EmbedText : InteractiveElement<string>
         string? button = null,
         TextAlignment align = TextAlignment.Left,
         Placement placement = Placement.TopCenter,
-        bool roundedCorners = false
+        BorderType borderType = BorderType.SingleStraight
     )
     {
         _text = text;
         _button = button;
         _align = align;
         _placement = placement;
-        _roundedCorners = roundedCorners;
+        _borders = new Borders(borderType);
         if (CheckIntegrity())
             BuildText();
     }
@@ -187,9 +186,9 @@ public class EmbedText : InteractiveElement<string>
     }
 
     /// <summary>
-    /// This method updates the rounded corners of the Embed text.
+    /// This method updates the borders of the Embed text.
     /// </summary>
-    /// <param name="roundedCorners">Wether the corners are rounded or not.</param>
+    /// <param name="newBorderType">The new border type of the Embed text.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -197,9 +196,9 @@ public class EmbedText : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void SetRoundedCorners(bool roundedCorners = true)
+    public void UpdateBorderType(BorderType newBorderType)
     {
-        _roundedCorners = roundedCorners;
+        _borders = new Borders(newBorderType);
     }
 
     /// <summary>
@@ -295,17 +294,11 @@ public class EmbedText : InteractiveElement<string>
 
     private void BuildText()
     {
-        if (!CheckIntegrity())
-        {
-            throw new FormatException(
-                "Check that the text is not empty and that the button is not longer than the text."
-            );
-        }
         var maxLength = _text.Max((string s) => s.Length);
         _textToDisplay = new List<string>();
         foreach (var line in _text)
         {
-            var lineToDisplay = "│ ";
+            var lineToDisplay = $"{Borders.Vertical} ";
             switch (_align)
             {
                 case TextAlignment.Center:
@@ -320,25 +313,32 @@ public class EmbedText : InteractiveElement<string>
                     lineToDisplay += line.PadLeft(maxLength);
                     break;
             }
-            lineToDisplay += " │";
+            lineToDisplay += $" {Borders.Vertical}";
             _textToDisplay.Add(lineToDisplay);
         }
-        _textToDisplay.Insert(0, GetCorners[0] + new string('─', maxLength + 2) + GetCorners[1]);
+        _textToDisplay.Insert(
+            0,
+            Borders.TopLeft + new string(Borders.Horizontal, maxLength + 2) + Borders.TopRight
+        );
         if (_button is not null)
         {
-            _textToDisplay.Add("│ " + new string(' ', maxLength) + " │");
             _textToDisplay.Add(
-                "│ "
+                $"{Borders.Vertical} " + new string(' ', maxLength) + $" {Borders.Vertical}"
+            );
+            _textToDisplay.Add(
+                $"{Borders.Vertical} "
                     + "".PadRight(maxLength - _button.Length - 2)
                     + Core.NEGATIVE_ANCHOR
                     + " "
                     + _button
                     + " "
                     + Core.NEGATIVE_ANCHOR
-                    + " │"
+                    + $" {Borders.Vertical}"
             );
         }
-        _textToDisplay.Add(GetCorners[2] + new string('─', maxLength + 2) + GetCorners[3]);
+        _textToDisplay.Add(
+            Borders.BottomLeft + new string(Borders.Horizontal, maxLength + 2) + Borders.BottomRight
+        );
     }
     #endregion
 }

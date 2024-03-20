@@ -254,7 +254,7 @@ public class Prompt : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorders(BorderType borderType)
+    public void UpdateBorderType(BorderType borderType)
     {
         _borders.UpdateBorderType(borderType);
     }
