@@ -21,15 +21,12 @@ public class Prompt : InteractiveElement<string>
     private string _defaultValue;
     private Placement _placement;
     private int _maxInputLength;
-    private int _printDuration;
     private char _selector = DEFAULT_CURSOR;
-
     private string[]? _displayArray;
     #endregion
 
     #region Constants
-    private const int DEFAULT_PROMPT_MAX_LENGTH = 10;
-    private const int DEFAULT_PRINT_DURATION = 1500;
+    private const int DEFAULT_PROMPT_MAX_LENGTH = 12;
     private const int PROMPT_HEIGHT = 4;
     private const int MAX_LENGTH_LEFT_MARGIN = 2;
     private const int LEFT_AND_RIGHT_MARGIN = 2;
@@ -70,11 +67,6 @@ public class Prompt : InteractiveElement<string>
     public int MaxInputLength => _maxInputLength;
 
     /// <summary>
-    /// The duration of the print animation of the question.
-    /// </summary>
-    public int PrintDuration => _printDuration;
-
-    /// <summary>
     /// The selector of the prompt element.
     /// </summary>
     public char Selector => _selector;
@@ -88,7 +80,6 @@ public class Prompt : InteractiveElement<string>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
     /// <param name="placement">The placement of the prompt element.</param>
     /// <param name="maxInputLength">The maximum length of the response.</param>
-    /// <param name="printDuration">The duration of the print animation.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -100,15 +91,13 @@ public class Prompt : InteractiveElement<string>
         string question,
         string? defaultValue = null,
         Placement placement = Placement.TopCenter,
-        int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH,
-        int printDuration = DEFAULT_PRINT_DURATION
+        int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH
     )
     {
         _question = question;
         _maxInputLength = CheckMaxLength(maxInputLength);
         _defaultValue = defaultValue is null ? string.Empty : CheckDefaultValue(defaultValue);
         _placement = placement;
-        _printDuration = printDuration;
     }
 
     private int CheckMaxLength(int maxLength)
@@ -117,7 +106,7 @@ public class Prompt : InteractiveElement<string>
         {
             throw new ArgumentOutOfRangeException(
                 nameof(maxLength),
-                "The maximum length of the response must be greater than 0 and less than the width of the console window."
+                $"The maximum length of the response must be greater than 0 and less than the width of the console window.(1 <= {maxLength} < {Console.WindowWidth})"
             );
         }
         return maxLength;
@@ -200,30 +189,6 @@ public class Prompt : InteractiveElement<string>
     public void UpdateMaxLength(int maxLength)
     {
         _maxInputLength = CheckMaxLength(maxLength);
-    }
-
-    /// <summary>
-    /// This method is used to update the duration of the print animation.
-    /// </summary>
-    /// <param name="printDuration">The new duration of the print animation.</param>
-    /// <exception cref="ArgumentOutOfRangeException">The print duration must be greater than or equal to 0.</exception>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public void UpdatePrintDuration(int printDuration)
-    {
-        if (printDuration < 0)
-        {
-            throw new ArgumentOutOfRangeException(
-                nameof(printDuration),
-                "The print duration must be greater than or equal to 0."
-            );
-        }
-        _printDuration = printDuration;
     }
 
     /// <summary>
