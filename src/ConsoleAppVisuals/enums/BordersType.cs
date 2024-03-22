@@ -30,7 +30,7 @@ public enum BordersType
     /// <remarks>
     /// Not supported on PowerShell (Windows).
     /// </remarks>
-    SingleRounded,
+    SingleRound,
 
     /// <summary>
     /// Single line borders with bold lines (┏┓┗┛━┃┳┻┣┫╋)

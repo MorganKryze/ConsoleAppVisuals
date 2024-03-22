@@ -112,7 +112,7 @@ public class Borders
         if (
             type
             is BordersType.SingleStraight
-                or BordersType.SingleRounded
+                or BordersType.SingleRound
                 or BordersType.SingleBold
                 or BordersType.DoubleStraight
                 or BordersType.ASCII
@@ -150,7 +150,7 @@ public class Borders
         string border = _type switch
         {
             BordersType.SingleStraight => SINGLE_STRAIGHT,
-            BordersType.SingleRounded => SINGLE_ROUNDED,
+            BordersType.SingleRound => SINGLE_ROUNDED,
             BordersType.SingleBold => SINGLE_BOLD,
             BordersType.DoubleStraight => DOUBLE_STRAIGHT,
             BordersType.ASCII => ASCII,

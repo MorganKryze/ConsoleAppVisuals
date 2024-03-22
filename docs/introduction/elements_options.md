@@ -5,7 +5,7 @@ In this section, you will learn:
 - How to deactivate/ remove elements
 - How to use the `ElementsDashboard` inspector element
 - How to use the `HeightSpacer` element
-- Discover `Placement` and `TextAlignment` enumerations
+- Discover `Placement`, `TextAlignment` and `BordersType` enumerations
 - How to use the full potential of the element options
 
 ## Setup
@@ -146,7 +146,7 @@ Window.Close();
 
 In all the tutorials and the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) the elements definitions are simplified and do not declare all the arguments available. To see all the arguments available for each element, you can consult the [references documentation](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html).
 
-Most of them are specific with generic type (`string`, `int`, `bool`...) and are used to customize the element. But some of them are common to all elements and are used to place the element on the window. These are the `Placement` and `TextAlignment` enumerations.
+Most of them are specific with generic type (`string`, `int`, `bool`, `List`, ...) and are used to customize the element. But some of them are common to all elements and are used to place the element on the window. These are the `Placement` and `TextAlignment` enumerations.
 
 ### `Placement`
 
@@ -158,7 +158,7 @@ The available values are:
 
 ![TopLeft](../assets/img/jpg/elements_options/topleft.jpg)
 
-- `TopCenter`: x(line) = 0, y(char) = windowWidth / 2
+- `TopCenter`: (Default) x(line) = 0, y(char) = windowWidth / 2
 
 ![TopCenter](../assets/img/jpg/elements_options/topcenter.jpg)
 
@@ -178,7 +178,7 @@ The available values are:
 > To choose the placement of an element, you can either set it from the constructor or use the `UpdatePlacement()` method after creating the element.
 >
 > ```csharp
-> Prompt prompt = new Prompt("Enter your name", "Name", Placement.TopCenter);
+> Prompt prompt = new Prompt("Enter your name:", "John", Placement.TopCenter);
 > // or
 > prompt.UpdatePlacement(Placement.TopCenter);
 > ```
@@ -191,7 +191,7 @@ The `TextAlignment` enumeration is used to align the text in a string. It is use
 
 ![Left](../assets/img/jpg/elements_options/left.jpg)
 
-- `Center`: Align the text to the center
+- `Center`: (Default) Align the text to the center
 
 ![Center](../assets/img/jpg/elements_options/center.jpg)
 
@@ -206,6 +206,45 @@ The `TextAlignment` enumeration is used to align the text in a string. It is use
 > EmbedText embedText = new EmbedText(new List<string>(){"Demo", "This is a message"},"OK ▶",TextAlignment.Center);
 > // or
 > embedText.UpdateTextAlignment(TextAlignment.Center);
+> ```
+
+### `BordersType`
+
+The `BordersType` enumeration is used to set the borders of an element. It is used by the table and embed elements from the library. Here are the available values:
+
+- `SingleStraight`: (Default) Single lines with straight corners
+
+![SingleStraight](../assets/img/jpg/elements_options/straight.jpg)
+
+- `SingleRound`: Single lines with round corners
+
+![SingleRound](../assets/img/jpg/elements_options/round.jpg)
+
+- `SingleBold`: Single bold lines with straight corners
+
+![SingleBold](../assets/img/jpg/elements_options/bold.jpg)
+
+- `DoubleStraight`: Double lines with straight corners
+
+![DoubleStraight](../assets/img/jpg/elements_options/double.jpg)
+
+- `ASCII`: ASCII basic characters for the borders (`+`, `-`, `|` only)
+
+![ASCII](../assets/img/jpg/elements_options/ascii.jpg)
+
+> [!WARNING]
+> The following types are not available for Visual Studio or Windows Command Prompt:
+>
+> - `SingleRound`
+> - `SingleBold`
+
+> [!NOTE]
+> To choose the border type of an element, you can either set it from the constructor or use the `UpdateBordersType()` method after creating the element (some elements may not have this method if the border type is not used in it so refer to the references documentation to get that specific information).
+>
+> ```csharp
+> ElementsDashboard dashboard = new ElementsDashboard(Placement.TopCenter, BordersType.SingleStraight);
+> // or
+> dashboard.UpdateBordersType(BordersType.SingleStraight);
 > ```
 
 ## Conclusion
