@@ -156,7 +156,7 @@ The method that you can override are the same as the `Element` class at some exc
 
 The callable attributes and methods are **highlighted in yellow** here:
 
-[!code-csharp[](../assets/code/InteractiveElement.cs?highlight=23,28,62)]
+[!code-csharp[](../assets/code/InteractiveElement.cs?highlight=23,28,59)]
 
 Two new methods are available and cannot be modified:
 
