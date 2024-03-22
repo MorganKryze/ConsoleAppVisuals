@@ -36,7 +36,7 @@ public class UnitTestElementsDashboard
     public void Constructor_WithLine()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         // No additional action needed
@@ -50,27 +50,9 @@ public class UnitTestElementsDashboard
 
     #region GeneralTests
     [TestMethod]
-    public void RoundedCorners_SetsRoundedCornersCorrectly()
-    {
-        // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
-        var list2 = new ElementsDashboard(Placement.TopLeft, false);
-
-        // Act
-        list.SetRoundedCorners(false);
-        list2.SetRoundedCorners(true);
-
-        // Assert
-        Assert.AreNotEqual(list.RoundedCorners, list2.RoundedCorners);
-    }
-
-    [TestMethod]
     public void GetHeaders_ReturnsHeaders()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
-
-        // Act
         var headers = ElementsDashboard.Headers;
 
         // Assert
@@ -81,7 +63,7 @@ public class UnitTestElementsDashboard
     public void GetLines_ReturnsLines()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         var lines = list.Lines;
@@ -94,7 +76,7 @@ public class UnitTestElementsDashboard
     public void Placement_ReturnsPlacement()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         var placement = list.Placement;
@@ -104,23 +86,10 @@ public class UnitTestElementsDashboard
     }
 
     [TestMethod]
-    public void MaxNumberOfThisElement_ReturnsMaxNumberOfThisElement()
-    {
-        // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
-
-        // Act
-        var maxNumberOfThisElement = list.MaxNumberOfThisElement;
-
-        // Assert
-        Assert.AreEqual(1, maxNumberOfThisElement);
-    }
-
-    [TestMethod]
     public void Line_ReturnsLine()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         var line = list.Line;
@@ -133,7 +102,7 @@ public class UnitTestElementsDashboard
     public void Height_ReturnsHeight()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         var height = list.Height;
@@ -146,7 +115,7 @@ public class UnitTestElementsDashboard
     public void Width_ReturnsWidth()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         var width = list.Width;
@@ -159,7 +128,7 @@ public class UnitTestElementsDashboard
     public void Count_ReturnsCount()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         var count = list.Count;
@@ -168,7 +137,6 @@ public class UnitTestElementsDashboard
         Assert.IsNotNull(count);
     }
 
-
     #endregion
 
     #region UpdatePlacement
@@ -176,13 +144,28 @@ public class UnitTestElementsDashboard
     public void UpdatePlacement_HappyPath()
     {
         // Arrange
-        var list = new ElementsDashboard(Placement.TopLeft, true);
+        var list = new ElementsDashboard(Placement.TopLeft);
 
         // Act
         list.UpdatePlacement(Placement.TopCenter);
 
         // Assert
         Assert.AreEqual(Placement.TopCenter, list.Placement);
+    }
+    #endregion
+
+    #region UpdateBordersType
+    [TestMethod]
+    public void UpdateBordersType_HappyPath()
+    {
+        // Arrange
+        var list = new ElementsDashboard(Placement.TopLeft);
+
+        // Act
+        list.UpdateBordersType(BordersType.DoubleStraight);
+
+        // Assert
+        Assert.AreEqual(BordersType.DoubleStraight, list.BordersType);
     }
     #endregion
 }
