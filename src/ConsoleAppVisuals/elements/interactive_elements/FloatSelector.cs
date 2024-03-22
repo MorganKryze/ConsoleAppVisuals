@@ -23,7 +23,7 @@ public class FloatSelector : InteractiveElement<float>
     private float _startValue;
     private float _step;
     private Placement _placement;
-    private Borders _borders;
+    private readonly Borders _borders;
     private (char, char) _selector = (DEFAULT_SELECTOR_LEFT, DEFAULT_SELECTOR_RIGHT);
     #endregion
 

@@ -23,7 +23,7 @@ public class IntSelector : InteractiveElement<int>
     private int _startValue;
     private int _step;
     private Placement _placement;
-    private Borders _borders;
+    private readonly Borders _borders;
     private (char, char) _selector = (DEFAULT_SELECTOR_LEFT, DEFAULT_SELECTOR_RIGHT);
     #endregion
 

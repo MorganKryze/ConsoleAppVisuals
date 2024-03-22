@@ -549,7 +549,7 @@ public class UnitTestEmbedText
         EmbedText.UpdateBorderType(newBorderType);
 
         // Assert
-        Assert.AreEqual(newBorderType, EmbedText.Borders.Type);
+        Assert.AreEqual(newBorderType, EmbedText.BorderType);
     }
     #endregion
 }

@@ -312,11 +312,12 @@ public class UnitTestPrompt
 
         // Act
         prompt.UpdateBorderType(BorderType.SingleRounded);
-        var actual = prompt.Borders.Type;
+        var actual = prompt.BorderType;
         var expected = BorderType.SingleRounded;
 
         // Assert
         Assert.AreEqual(expected, actual);
+        Assert.AreEqual(expected, prompt.Borders.Type);
     }
     #endregion
 }

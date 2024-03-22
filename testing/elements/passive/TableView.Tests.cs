@@ -481,7 +481,7 @@ public class UnitTestTableView
         table.UpdateBorderType(BorderType.SingleRounded);
 
         // Assert
-        Assert.AreEqual(BorderType.SingleRounded, table.Borders.Type);
+        Assert.AreEqual(BorderType.SingleRounded, table.BorderType);
     }
 
     [TestMethod]
