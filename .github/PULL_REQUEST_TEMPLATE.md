@@ -25,16 +25,16 @@ Add here the related tickets and documents
 
 If needed, add here the screenshots or recordings of the changes
 
-## Documentation added? 📜
+## Documentation 📜
 
-- [ ] 📓 Docs
-- [ ] 📜 .github docs
-- [ ] 📕 Already in the code
-- [ ] 🙅 No documentation needed
+- [ ] ✅ Docs added
+- [ ] 🚧 Writing docs
+- [ ] ❌ No docs added
+- [ ] ⏩ No docs needed
 
-## Tests added? 🔍
+## Tests 🔍
 
 - [ ] ✅ Features totally covered
 - [ ] 🚧 Features tests incomplete
-- [ ] ❌ no tests added
-- [ ] ⏩ no tests needed
+- [ ] ❌ No tests added
+- [ ] ⏩ No tests needed
