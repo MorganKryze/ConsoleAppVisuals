@@ -28,14 +28,14 @@ public abstract class InteractiveElement<TResponse> : Element
     public sealed override int MaxNumberOfThisElement { get; } = 1;
 
     /// <summary>
-    ///
+    /// The event that is triggered when the user has interacted with the element.
     /// </summary>
     public event EventHandler<InteractionEventArgs<TResponse>>? EndOfInteractionEvent;
 
     /// <summary>
     /// The response of the user.
     /// </summary>
-    protected InteractionEventArgs<TResponse>? _interactionResponse;
+    protected List<InteractionEventArgs<TResponse>?> _interactionResponse = new();
     #endregion
 
     #region Methods
@@ -47,7 +47,7 @@ public abstract class InteractiveElement<TResponse> : Element
     [Visual]
     protected void SetInteractionResponse(object? sender, InteractionEventArgs<TResponse> e)
     {
-        _interactionResponse = e;
+        _interactionResponse.Add(e);
     }
 
     /// <summary>
@@ -78,6 +78,23 @@ public abstract class InteractiveElement<TResponse> : Element
     /// </remarks>
     [Visual]
     public InteractionEventArgs<TResponse>? GetResponse()
+    {
+        return _interactionResponse.LastOrDefault();
+    }
+
+    /// <summary>
+    /// Returns the history of the responses of the user after interactions.
+    /// </summary>
+    /// <returns>The history of the responses of the user after interactions.</returns>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    [Visual]
+    public List<InteractionEventArgs<TResponse>?> GetResponseHistory()
     {
         return _interactionResponse;
     }
