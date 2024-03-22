@@ -188,7 +188,7 @@ public class EmbedText : InteractiveElement<string>
     /// <summary>
     /// This method updates the borders of the Embed text.
     /// </summary>
-    /// <param name="newBorderType">The new border type of the Embed text.</param>
+    /// <param name="borderType">The new border type of the Embed text.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -196,9 +196,9 @@ public class EmbedText : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType newBorderType)
+    public void UpdateBorderType(BorderType borderType)
     {
-        _borders = new Borders(newBorderType);
+        _borders.UpdateBorderType(borderType);
     }
 
     /// <summary>
