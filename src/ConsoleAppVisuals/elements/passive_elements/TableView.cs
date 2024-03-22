@@ -22,7 +22,7 @@ public class TableView : PassiveElement
     private List<List<string>>? _rawLines;
     private string[]? _displayArray;
     private Placement _placement;
-    private Borders _borders;
+    private readonly Borders _borders;
     #endregion
 
     #region Properties: get headers, get lines
@@ -60,6 +60,11 @@ public class TableView : PassiveElement
     /// This property returns the borders of the table.
     /// </summary>
     public Borders Borders => _borders;
+
+    /// <summary>
+    /// The border type of the selector.
+    /// </summary>
+    public BorderType BorderType => _borders.Type;
     #endregion
 
     #region Constructor
@@ -227,7 +232,9 @@ public class TableView : PassiveElement
             {
                 upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? Borders.Top.ToString() : Borders.TopRight.ToString()
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Top.ToString()
+                        : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
@@ -265,7 +272,9 @@ public class TableView : PassiveElement
             {
                 lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? Borders.Bottom.ToString() : Borders.BottomRight.ToString()
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Bottom.ToString()
+                        : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -307,7 +316,9 @@ public class TableView : PassiveElement
             {
                 upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? Borders.Top.ToString() : Borders.TopRight.ToString()
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Top.ToString()
+                        : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
@@ -316,7 +327,9 @@ public class TableView : PassiveElement
             {
                 lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? Borders.Bottom.ToString() : Borders.BottomRight.ToString()
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Bottom.ToString()
+                        : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -363,7 +376,9 @@ public class TableView : PassiveElement
             {
                 upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? Borders.Top.ToString() : Borders.TopRight.ToString()
+                    (i != _rawLines.Count - 1)
+                        ? Borders.Top.ToString()
+                        : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
@@ -372,7 +387,9 @@ public class TableView : PassiveElement
             {
                 lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? Borders.Bottom.ToString(): Borders.BottomRight.ToString()
+                    (i != _rawLines.Count - 1)
+                        ? Borders.Bottom.ToString()
+                        : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());

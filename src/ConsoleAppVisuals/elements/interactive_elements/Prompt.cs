@@ -22,7 +22,7 @@ public class Prompt : InteractiveElement<string>
     private Placement _placement;
     private int _maxInputLength;
     private PromptInputStyle _style;
-    private Borders _borders;
+    private readonly Borders _borders;
     private char _selector = DEFAULT_CURSOR;
     private string[]? _displayArray;
     #endregion
@@ -72,6 +72,11 @@ public class Prompt : InteractiveElement<string>
     /// The borders of the prompt element.
     /// </summary>
     public Borders Borders => _borders;
+
+    /// <summary>
+    /// The border type of the selector.
+    /// </summary>
+    public BorderType BorderType => _borders.Type;
 
     /// <summary>
     /// The selector of the prompt element.

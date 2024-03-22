@@ -20,7 +20,7 @@ public class Matrix<T> : PassiveElement
     private readonly List<List<T?>> _lines;
     private string[]? _displayArray;
     private Placement _placement;
-    private Borders _borders;
+    private readonly Borders _borders;
     #endregion
 
     #region Properties: GetCorners, Count, Placement, Height, Width, Line
@@ -48,6 +48,11 @@ public class Matrix<T> : PassiveElement
     /// The border characters to use for the matrix.
     /// </summary>
     public Borders Borders => _borders;
+
+    /// <summary>
+    /// The border type of the selector.
+    /// </summary>
+    public BorderType BorderType => _borders.Type;
     #endregion
 
     #region Constructor

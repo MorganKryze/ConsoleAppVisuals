@@ -21,7 +21,7 @@ public class EmbedText : InteractiveElement<string>
     private string? _button;
     private TextAlignment _align;
     private Placement _placement;
-    private Borders _borders;
+    private readonly Borders _borders;
     private List<string>? _textToDisplay;
 
     #endregion
@@ -61,6 +61,11 @@ public class EmbedText : InteractiveElement<string>
     /// The borders of the Embed text.
     /// </summary>
     public Borders Borders => _borders;
+
+    /// <summary>
+    /// The border type of the selector.
+    /// </summary>
+    public BorderType BorderType => _borders.Type;
 
     /// <summary>
     /// The text to display.

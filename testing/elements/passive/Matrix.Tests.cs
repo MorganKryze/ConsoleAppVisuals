@@ -602,7 +602,7 @@ public class UnitTestMatrix
         matrix.UpdateBorderType(borderType);
 
         // Assert
-        Assert.AreEqual(borderType, matrix.Borders.Type);
+        Assert.AreEqual(borderType, matrix.BorderType);
     }
     #endregion
 }
