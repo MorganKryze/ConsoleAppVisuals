@@ -108,7 +108,7 @@ public class IntSelector : InteractiveElement<int>
     /// <summary>
     /// The border type of the selector.
     /// </summary>
-    public BorderType BorderType => _borders.Type;
+    public BordersType BordersType => _borders.Type;
     #endregion
 
     #region Constructor
@@ -121,7 +121,7 @@ public class IntSelector : InteractiveElement<int>
     /// <param name="start">The start value of the selector.</param>
     /// <param name="step">The step of the selector.</param>
     /// <param name="placement">The placement of the selector on the console.</param>
-    /// <param name="borderType">The border type of the selector.</param>
+    /// <param name="bordersType">The border type of the selector.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -136,7 +136,7 @@ public class IntSelector : InteractiveElement<int>
         int start = 0,
         int step = 100,
         Placement placement = Placement.TopCenter,
-        BorderType borderType = BorderType.SingleStraight
+        BordersType bordersType = BordersType.SingleStraight
     )
     {
         _question = question;
@@ -146,7 +146,7 @@ public class IntSelector : InteractiveElement<int>
         _startValue = CheckStart(start, _minimumValue, _maximumValue);
         _step = CheckStep(step, _minimumValue, _maximumValue);
         _placement = placement;
-        _borders = new Borders(borderType);
+        _borders = new Borders(bordersType);
     }
 
     private static void CheckMinNotHigherThanMax(int min, int max)
@@ -318,7 +318,7 @@ public class IntSelector : InteractiveElement<int>
     /// <summary>
     /// This method is used to update the border type of the selector.
     /// </summary>
-    /// <param name="borderType">The border type of the selector.</param>
+    /// <param name="bordersType">The border type of the selector.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -326,9 +326,9 @@ public class IntSelector : InteractiveElement<int>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType borderType)
+    public void UpdateBordersType(BordersType bordersType)
     {
-        _borders.UpdateBorderType(borderType);
+        _borders.UpdateBordersType(bordersType);
     }
 
     /// <summary>

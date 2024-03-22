@@ -76,7 +76,7 @@ public class Prompt : InteractiveElement<string>
     /// <summary>
     /// The border type of the selector.
     /// </summary>
-    public BorderType BorderType => _borders.Type;
+    public BordersType BordersType => _borders.Type;
 
     /// <summary>
     /// The selector of the prompt element.
@@ -112,7 +112,7 @@ public class Prompt : InteractiveElement<string>
         Placement placement = Placement.TopCenter,
         int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH,
         PromptInputStyle style = PromptInputStyle.Default,
-        BorderType borderType = BorderType.SingleStraight
+        BordersType borderType = BordersType.SingleStraight
     )
     {
         _question = question;
@@ -251,7 +251,7 @@ public class Prompt : InteractiveElement<string>
     /// <summary>
     /// This method is used to update the border type of the prompt element.
     /// </summary>
-    /// <param name="borderType">The new border type of the prompt element.</param>
+    /// <param name="bordersType">The new border type of the prompt element.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -259,9 +259,9 @@ public class Prompt : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType borderType)
+    public void UpdateBordersType(BordersType bordersType)
     {
-        _borders.UpdateBorderType(borderType);
+        _borders.UpdateBordersType(bordersType);
     }
     #endregion
 

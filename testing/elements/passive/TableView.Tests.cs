@@ -478,10 +478,10 @@ public class UnitTestTableView
             );
 
         // Act
-        table.UpdateBorderType(BorderType.SingleRounded);
+        table.UpdateBordersType(BordersType.SingleRounded);
 
         // Assert
-        Assert.AreEqual(BorderType.SingleRounded, table.BorderType);
+        Assert.AreEqual(BordersType.SingleRounded, table.BordersType);
     }
 
     [TestMethod]

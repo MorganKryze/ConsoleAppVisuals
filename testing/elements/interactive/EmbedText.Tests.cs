@@ -532,9 +532,9 @@ public class UnitTestEmbedText
     #region UpdateBorderType
     [TestMethod]
     [TestCategory("EmbedText")]
-    [DataRow(BorderType.SingleBold)]
-    [DataRow(BorderType.DoubleStraight)]
-    public void UpdateBorderType_UpdatesBorderTypeCorrectly(BorderType newBorderType)
+    [DataRow(BordersType.SingleBold)]
+    [DataRow(BordersType.DoubleStraight)]
+    public void UpdateBorderType_UpdatesBorderTypeCorrectly(BordersType newBorderType)
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
@@ -546,10 +546,10 @@ public class UnitTestEmbedText
         );
 
         // Act
-        EmbedText.UpdateBorderType(newBorderType);
+        EmbedText.UpdateBordersType(newBorderType);
 
         // Assert
-        Assert.AreEqual(newBorderType, EmbedText.BorderType);
+        Assert.AreEqual(newBorderType, EmbedText.BordersType);
     }
     #endregion
 }

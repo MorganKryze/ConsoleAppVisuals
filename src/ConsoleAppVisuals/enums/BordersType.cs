@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Enums;
 
 /// <summary>
-/// The <see cref="BorderType"/> enum defines the type of border to use for embed elements.
+/// The <see cref="BordersType"/> enum defines the type of border to use for embed elements.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.Enums;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public enum BorderType
+public enum BordersType
 {
     /// <summary>
     /// Single line borders with straight corners (┌┐└┘─│┬┴├┤┼)

@@ -585,8 +585,8 @@ public class UnitTestMatrix
     #region UpdateBorderType
 
     [TestMethod]
-    [DataRow(BorderType.ASCII)]
-    public void UpdateBorderType(BorderType borderType)
+    [DataRow(BordersType.ASCII)]
+    public void UpdateBorderType(BordersType borderType)
     {
         // Arrange
         Matrix<string> matrix =
@@ -599,10 +599,10 @@ public class UnitTestMatrix
             );
 
         // Act
-        matrix.UpdateBorderType(borderType);
+        matrix.UpdateBordersType(borderType);
 
         // Assert
-        Assert.AreEqual(borderType, matrix.BorderType);
+        Assert.AreEqual(borderType, matrix.BordersType);
     }
     #endregion
 }

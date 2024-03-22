@@ -143,7 +143,7 @@ public class UnitTestFloatSelector
         var step = 1.0f;
         var placement = Placement.TopCenter;
         var line = 0;
-        var borderType = BorderType.SingleStraight;
+        var borderType = BordersType.SingleStraight;
 
         // Act
         var floatSelector = new FloatSelector(
@@ -164,7 +164,7 @@ public class UnitTestFloatSelector
         Assert.AreEqual(step, floatSelector.Step);
         Assert.AreEqual(placement, floatSelector.Placement);
         Assert.AreEqual(line, floatSelector.Line);
-        Assert.AreEqual(borderType, floatSelector.BorderType);
+        Assert.AreEqual(borderType, floatSelector.BordersType);
     }
 
     [TestMethod]
@@ -414,9 +414,9 @@ public class UnitTestFloatSelector
     #region UpdateBorderType
     [TestMethod]
     [TestCategory("FloatSelector")]
-    [DataRow(BorderType.SingleStraight)]
-    [DataRow(BorderType.DoubleStraight)]
-    public void UpdateBorderType(BorderType borderType)
+    [DataRow(BordersType.SingleStraight)]
+    [DataRow(BordersType.DoubleStraight)]
+    public void UpdateBorderType(BordersType borderType)
     {
         // Arrange
         var floatSelector = new FloatSelector(
@@ -429,10 +429,10 @@ public class UnitTestFloatSelector
         );
 
         // Act
-        floatSelector.UpdateBorderType(borderType);
+        floatSelector.UpdateBordersType(borderType);
 
         // Assert
-        Assert.AreEqual(borderType, floatSelector.BorderType);
+        Assert.AreEqual(borderType, floatSelector.BordersType);
     }
     #endregion
 }
