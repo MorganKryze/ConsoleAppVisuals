@@ -64,7 +64,7 @@ public class TableView : PassiveElement
     /// <summary>
     /// The border type of the selector.
     /// </summary>
-    public BorderType BorderType => _borders.Type;
+    public BordersType BordersType => _borders.Type;
     #endregion
 
     #region Constructor
@@ -75,7 +75,7 @@ public class TableView : PassiveElement
     /// <param name="headers">The headers of the table.</param>
     /// <param name="lines">The lines of the table.</param>
     /// <param name="placement">The placement of the table.</param>
-    /// <param name="borderType">The type of border to use for the table.</param>
+    /// <param name="bordersType">The type of borders to use for the table.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
     /// <remarks>
@@ -90,13 +90,13 @@ public class TableView : PassiveElement
         List<string>? headers = null,
         List<List<string>>? lines = null,
         Placement placement = Placement.TopCenter,
-        BorderType borderType = BorderType.SingleStraight
+        BordersType bordersType = BordersType.SingleStraight
     )
     {
         _title = title;
         _rawHeaders = headers;
         _rawLines = lines;
-        _borders = new Borders(borderType);
+        _borders = new Borders(bordersType);
         _placement = placement;
         if (CompatibilityCheck())
         {
@@ -442,7 +442,7 @@ public class TableView : PassiveElement
     /// <summary>
     /// This method updates the borders of the table.
     /// </summary>
-    /// <param name="borderType">The type of border to use for the table.</param>
+    /// <param name="bordersType">The type of border to use for the table.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -450,9 +450,9 @@ public class TableView : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType borderType)
+    public void UpdateBordersType(BordersType bordersType)
     {
-        _borders.UpdateBorderType(borderType);
+        _borders.UpdateBordersType(bordersType);
         BuildTable();
     }
 

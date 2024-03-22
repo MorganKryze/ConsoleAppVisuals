@@ -65,7 +65,7 @@ public class EmbedText : InteractiveElement<string>
     /// <summary>
     /// The border type of the selector.
     /// </summary>
-    public BorderType BorderType => _borders.Type;
+    public BordersType BordersType => _borders.Type;
 
     /// <summary>
     /// The text to display.
@@ -82,7 +82,7 @@ public class EmbedText : InteractiveElement<string>
     /// <param name="button">The text of the button. Null to not display a button.</param>
     /// <param name="align">The alignment of the Embed text.</param>
     /// <param name="placement">The placement of the Embed text element.</param>
-    /// <param name="borderType">The type of border to display.</param>
+    /// <param name="bordersType">The type of border to display.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -95,14 +95,14 @@ public class EmbedText : InteractiveElement<string>
         string? button = null,
         TextAlignment align = TextAlignment.Left,
         Placement placement = Placement.TopCenter,
-        BorderType borderType = BorderType.SingleStraight
+        BordersType bordersType = BordersType.SingleStraight
     )
     {
         _text = text;
         _button = button;
         _align = align;
         _placement = placement;
-        _borders = new Borders(borderType);
+        _borders = new Borders(bordersType);
         if (CheckIntegrity())
             BuildText();
     }
@@ -193,7 +193,7 @@ public class EmbedText : InteractiveElement<string>
     /// <summary>
     /// This method updates the borders of the Embed text.
     /// </summary>
-    /// <param name="borderType">The new border type of the Embed text.</param>
+    /// <param name="bordersType">The new border type of the Embed text.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -201,9 +201,9 @@ public class EmbedText : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType borderType)
+    public void UpdateBordersType(BordersType bordersType)
     {
-        _borders.UpdateBorderType(borderType);
+        _borders.UpdateBordersType(bordersType);
     }
 
     /// <summary>

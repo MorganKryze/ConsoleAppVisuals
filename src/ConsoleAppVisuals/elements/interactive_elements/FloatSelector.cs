@@ -98,7 +98,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <summary>
     /// The type of the borders of the selector.
     /// </summary>
-    public BorderType BorderType => _borders.Type;
+    public BordersType BordersType => _borders.Type;
 
     /// <summary>
     /// The left selector of the selector.
@@ -121,7 +121,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <param name="start">The start value of the selector.</param>
     /// <param name="step">The step of the selector.</param>
     /// <param name="placement">The placement of the selector on the console.</param>
-    /// <param name="borderType">The type of the borders of the selector.</param>
+    /// <param name="bordersType">The type of the borders of the selector.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -136,7 +136,7 @@ public class FloatSelector : InteractiveElement<float>
         float start = 0,
         float step = 100,
         Placement placement = Placement.TopCenter,
-        BorderType borderType = BorderType.SingleStraight
+        BordersType bordersType = BordersType.SingleStraight
     )
     {
         _question = question;
@@ -146,7 +146,7 @@ public class FloatSelector : InteractiveElement<float>
         _startValue = CheckStart(start, _minimumValue, _maximumValue);
         _step = CheckStep(step, _minimumValue, _maximumValue);
         _placement = placement;
-        _borders = new Borders(borderType);
+        _borders = new Borders(bordersType);
     }
 
     private static void CheckMinNotHigherThanMax(float min, float max)
@@ -319,7 +319,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <summary>
     /// This method is used to update the type of the borders of the selector.
     /// </summary>
-    /// <param name="borderType">The new type of the borders of the selector.</param>
+    /// <param name="bordersType">The new type of the borders of the selector.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -327,9 +327,9 @@ public class FloatSelector : InteractiveElement<float>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType borderType)
+    public void UpdateBordersType(BordersType bordersType)
     {
-        _borders.UpdateBorderType(borderType);
+        _borders.UpdateBordersType(bordersType);
     }
 
     /// <summary>

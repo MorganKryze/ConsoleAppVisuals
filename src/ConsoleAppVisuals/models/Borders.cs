@@ -17,7 +17,7 @@ namespace ConsoleAppVisuals.Models;
 public class Borders
 {
     #region Fields
-    private BorderType _type;
+    private BordersType _type;
     #endregion
 
     #region Constants
@@ -32,7 +32,7 @@ public class Borders
     /// <summary>
     /// The type of border to use for the element.
     /// </summary>
-    public BorderType Type => _type;
+    public BordersType Type => _type;
 
     /// <summary>
     /// The top-left corner of the border. (┌)
@@ -102,20 +102,20 @@ public class Borders
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public Borders(BorderType type = BorderType.SingleStraight)
+    public Borders(BordersType type = BordersType.SingleStraight)
     {
         _type = CheckType(type);
     }
 
-    private static BorderType CheckType(BorderType type)
+    private static BordersType CheckType(BordersType type)
     {
         if (
             type
-            is BorderType.SingleStraight
-                or BorderType.SingleRounded
-                or BorderType.SingleBold
-                or BorderType.DoubleStraight
-                or BorderType.ASCII
+            is BordersType.SingleStraight
+                or BordersType.SingleRounded
+                or BordersType.SingleBold
+                or BordersType.DoubleStraight
+                or BordersType.ASCII
         )
         {
             return type;
@@ -149,11 +149,11 @@ public class Borders
         }
         string border = _type switch
         {
-            BorderType.SingleStraight => SINGLE_STRAIGHT,
-            BorderType.SingleRounded => SINGLE_ROUNDED,
-            BorderType.SingleBold => SINGLE_BOLD,
-            BorderType.DoubleStraight => DOUBLE_STRAIGHT,
-            BorderType.ASCII => ASCII,
+            BordersType.SingleStraight => SINGLE_STRAIGHT,
+            BordersType.SingleRounded => SINGLE_ROUNDED,
+            BordersType.SingleBold => SINGLE_BOLD,
+            BordersType.DoubleStraight => DOUBLE_STRAIGHT,
+            BordersType.ASCII => ASCII,
             _ => throw new ArgumentException($"Invalid border type. (actual: {_type})")
         };
         return border[index];
@@ -170,7 +170,7 @@ public class Borders
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType newType)
+    public void UpdateBordersType(BordersType newType)
     {
         _type = CheckType(newType);
     }

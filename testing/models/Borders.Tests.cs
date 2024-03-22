@@ -16,10 +16,10 @@ public class UnitTestsBorders
         Borders borders = new Borders();
 
         // Act
-        BorderType actual = borders.Type;
+        BordersType actual = borders.Type;
 
         // Assert
-        Assert.AreEqual(BorderType.SingleStraight, actual);
+        Assert.AreEqual(BordersType.SingleStraight, actual);
     }
 
     [TestMethod]
@@ -27,13 +27,13 @@ public class UnitTestsBorders
     public void Borders_Constructor_DoubleStraight()
     {
         // Arrange
-        Borders borders = new Borders(BorderType.DoubleStraight);
+        Borders borders = new Borders(BordersType.DoubleStraight);
 
         // Act
-        BorderType actual = borders.Type;
+        BordersType actual = borders.Type;
 
         // Assert
-        Assert.AreEqual(BorderType.DoubleStraight, actual);
+        Assert.AreEqual(BordersType.DoubleStraight, actual);
     }
 
     [TestMethod]
@@ -42,7 +42,7 @@ public class UnitTestsBorders
     public void Borders_Constructor_InvalidType()
     {
         // Arrange
-        new Borders((BorderType)99);
+        new Borders((BordersType)99);
     }
     #endregion
 
@@ -50,12 +50,12 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '┌')]
-    [DataRow(BorderType.SingleRounded, '╭')]
-    [DataRow(BorderType.SingleBold, '┏')]
-    [DataRow(BorderType.DoubleStraight, '╔')]
-    [DataRow(BorderType.ASCII, '+')]
-    public void Borders_TopLeft(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '┌')]
+    [DataRow(BordersType.SingleRounded, '╭')]
+    [DataRow(BordersType.SingleBold, '┏')]
+    [DataRow(BordersType.DoubleStraight, '╔')]
+    [DataRow(BordersType.ASCII, '+')]
+    public void Borders_TopLeft(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -69,12 +69,12 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '┐')]
-    [DataRow(BorderType.SingleRounded, '╮')]
-    [DataRow(BorderType.SingleBold, '┓')]
-    [DataRow(BorderType.DoubleStraight, '╗')]
-    [DataRow(BorderType.ASCII, '+')]
-    public void Borders_TopRight(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '┐')]
+    [DataRow(BordersType.SingleRounded, '╮')]
+    [DataRow(BordersType.SingleBold, '┓')]
+    [DataRow(BordersType.DoubleStraight, '╗')]
+    [DataRow(BordersType.ASCII, '+')]
+    public void Borders_TopRight(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -88,12 +88,12 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '└')]
-    [DataRow(BorderType.SingleRounded, '╰')]
-    [DataRow(BorderType.SingleBold, '┗')]
-    [DataRow(BorderType.DoubleStraight, '╚')]
-    [DataRow(BorderType.ASCII, '+')]
-    public void Borders_BottomLeft(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '└')]
+    [DataRow(BordersType.SingleRounded, '╰')]
+    [DataRow(BordersType.SingleBold, '┗')]
+    [DataRow(BordersType.DoubleStraight, '╚')]
+    [DataRow(BordersType.ASCII, '+')]
+    public void Borders_BottomLeft(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -107,12 +107,12 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '┘')]
-    [DataRow(BorderType.SingleRounded, '╯')]
-    [DataRow(BorderType.SingleBold, '┛')]
-    [DataRow(BorderType.DoubleStraight, '╝')]
-    [DataRow(BorderType.ASCII, '+')]
-    public void Borders_BottomRight(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '┘')]
+    [DataRow(BordersType.SingleRounded, '╯')]
+    [DataRow(BordersType.SingleBold, '┛')]
+    [DataRow(BordersType.DoubleStraight, '╝')]
+    [DataRow(BordersType.ASCII, '+')]
+    public void Borders_BottomRight(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -126,12 +126,12 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '─')]
-    [DataRow(BorderType.SingleRounded, '─')]
-    [DataRow(BorderType.SingleBold, '━')]
-    [DataRow(BorderType.DoubleStraight, '═')]
-    [DataRow(BorderType.ASCII, '-')]
-    public void Borders_Horizontal(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '─')]
+    [DataRow(BordersType.SingleRounded, '─')]
+    [DataRow(BordersType.SingleBold, '━')]
+    [DataRow(BordersType.DoubleStraight, '═')]
+    [DataRow(BordersType.ASCII, '-')]
+    public void Borders_Horizontal(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -145,12 +145,12 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '│')]
-    [DataRow(BorderType.SingleRounded, '│')]
-    [DataRow(BorderType.SingleBold, '┃')]
-    [DataRow(BorderType.DoubleStraight, '║')]
-    [DataRow(BorderType.ASCII, '|')]
-    public void Borders_Vertical(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '│')]
+    [DataRow(BordersType.SingleRounded, '│')]
+    [DataRow(BordersType.SingleBold, '┃')]
+    [DataRow(BordersType.DoubleStraight, '║')]
+    [DataRow(BordersType.ASCII, '|')]
+    public void Borders_Vertical(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -164,12 +164,12 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '┬')]
-    [DataRow(BorderType.SingleRounded, '┬')]
-    [DataRow(BorderType.SingleBold, '┳')]
-    [DataRow(BorderType.DoubleStraight, '╦')]
-    [DataRow(BorderType.ASCII, '+')]
-    public void Borders_Top(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '┬')]
+    [DataRow(BordersType.SingleRounded, '┬')]
+    [DataRow(BordersType.SingleBold, '┳')]
+    [DataRow(BordersType.DoubleStraight, '╦')]
+    [DataRow(BordersType.ASCII, '+')]
+    public void Borders_Top(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -183,10 +183,10 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '┴')]
-    [DataRow(BorderType.SingleRounded, '┴')]
-    [DataRow(BorderType.SingleBold, '┻')]
-    public void Borders_Bottom(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '┴')]
+    [DataRow(BordersType.SingleRounded, '┴')]
+    [DataRow(BordersType.SingleBold, '┻')]
+    public void Borders_Bottom(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -200,9 +200,9 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '├')]
-    [DataRow(BorderType.SingleRounded, '├')]
-    public void Borders_Left(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '├')]
+    [DataRow(BordersType.SingleRounded, '├')]
+    public void Borders_Left(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -216,9 +216,9 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '┤')]
-    [DataRow(BorderType.SingleRounded, '┤')]
-    public void Borders_Right(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '┤')]
+    [DataRow(BordersType.SingleRounded, '┤')]
+    public void Borders_Right(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -232,9 +232,9 @@ public class UnitTestsBorders
 
     [TestMethod]
     [TestCategory("Borders")]
-    [DataRow(BorderType.SingleStraight, '┼')]
-    [DataRow(BorderType.SingleRounded, '┼')]
-    public void Borders_Cross(BorderType type, char expected)
+    [DataRow(BordersType.SingleStraight, '┼')]
+    [DataRow(BordersType.SingleRounded, '┼')]
+    public void Borders_Cross(BordersType type, char expected)
     {
         // Arrange
         Borders borders = new Borders(type);
@@ -272,11 +272,11 @@ public class UnitTestsBorders
         Borders borders = new Borders();
 
         // Act
-        borders.UpdateBorderType(BorderType.SingleRounded);
-        BorderType actual = borders.Type;
+        borders.UpdateBordersType(BordersType.SingleRounded);
+        BordersType actual = borders.Type;
 
         // Assert
-        Assert.AreEqual(BorderType.SingleRounded, actual);
+        Assert.AreEqual(BordersType.SingleRounded, actual);
     }
     #endregion
 }

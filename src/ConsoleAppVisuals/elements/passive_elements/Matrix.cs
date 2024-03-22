@@ -52,7 +52,7 @@ public class Matrix<T> : PassiveElement
     /// <summary>
     /// The border type of the selector.
     /// </summary>
-    public BorderType BorderType => _borders.Type;
+    public BordersType BordersType => _borders.Type;
     #endregion
 
     #region Constructor
@@ -61,7 +61,7 @@ public class Matrix<T> : PassiveElement
     /// </summary>
     /// <param name="rawLines">The matrix to be used.</param>
     /// <param name="placement">The placement of the matrix.</param>
-    /// <param name="borderType">The type of border to use for the matrix.</param>
+    /// <param name="bordersType">The type of borders to use for the matrix.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
     /// <remarks>
     /// For more information, refer to the following resources:
@@ -73,11 +73,11 @@ public class Matrix<T> : PassiveElement
     public Matrix(
         List<List<T?>>? rawLines = null,
         Placement placement = Placement.TopCenter,
-        BorderType borderType = BorderType.SingleStraight
+        BordersType bordersType = BordersType.SingleStraight
     )
     {
         _placement = placement;
-        _borders = new Borders(borderType);
+        _borders = new Borders(bordersType);
         if (rawLines is not null)
         {
             _lines = rawLines;
@@ -213,7 +213,7 @@ public class Matrix<T> : PassiveElement
     /// <summary>
     /// This method is used to update the borders of the matrix.
     /// </summary>
-    /// <param name="borderType">The new border type of the matrix.</param>
+    /// <param name="bordersType">The new border type of the matrix.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -221,9 +221,9 @@ public class Matrix<T> : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateBorderType(BorderType borderType)
+    public void UpdateBordersType(BordersType bordersType)
     {
-        _borders.UpdateBorderType(borderType);
+        _borders.UpdateBordersType(bordersType);
         BuildMatrix();
     }
 

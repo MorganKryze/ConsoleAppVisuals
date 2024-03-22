@@ -115,7 +115,7 @@ public class UnitTestIntSelector
         var step = 1;
         var placement = Placement.TopCenter;
         var line = 0;
-        var borderType = BorderType.SingleBold;
+        var borderType = BordersType.SingleBold;
 
         // Act
         var intSelector = new IntSelector(question, min, max, start, step, placement, borderType);
@@ -128,7 +128,7 @@ public class UnitTestIntSelector
         Assert.AreEqual(step, intSelector.Step);
         Assert.AreEqual(placement, intSelector.Placement);
         Assert.AreEqual(line, intSelector.Line);
-        Assert.AreEqual(borderType, intSelector.BorderType);
+        Assert.AreEqual(borderType, intSelector.BordersType);
     }
 
     [TestMethod]
@@ -328,18 +328,18 @@ public class UnitTestIntSelector
     #region UpdateBorderType
     [TestMethod]
     [TestCategory("IntSelector")]
-    [DataRow(BorderType.SingleBold)]
-    [DataRow(BorderType.DoubleStraight)]
-    public void UpdateBorderType(BorderType borderType)
+    [DataRow(BordersType.SingleBold)]
+    [DataRow(BordersType.DoubleStraight)]
+    public void UpdateBorderType(BordersType borderType)
     {
         // Arrange
         var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
 
         // Act
-        intSelector.UpdateBorderType(borderType);
+        intSelector.UpdateBordersType(borderType);
 
         // Assert
-        Assert.AreEqual(borderType, intSelector.BorderType);
+        Assert.AreEqual(borderType, intSelector.BordersType);
     }
     #endregion
 }
