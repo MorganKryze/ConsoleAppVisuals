@@ -24,7 +24,7 @@ public class TableSelector : InteractiveElement<int>
     private bool _excludeFooter;
     private string? _footerText;
     private string[]? _displayArray;
-    private bool _roundedCorners = false;
+    private readonly Borders _borders;
     private Placement _placement;
 
     #endregion
@@ -66,14 +66,14 @@ public class TableSelector : InteractiveElement<int>
     public string FooterText => _footerText ?? "New";
 
     /// <summary>
-    /// This property returns if the corners are rounded.
+    /// This property returns the borders manager of the table.
     /// </summary>
-    public bool RoundedCorners => _roundedCorners;
+    public Borders Borders => _borders;
 
     /// <summary>
-    /// This property returns the corners of the table.
+    /// This property returns the type of the borders of the table.
     /// </summary>
-    public string GetCorners => _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
+    public BordersType BordersType => _borders.Type;
 
     /// <summary>
     /// This property returns the headers of the table.
@@ -108,6 +108,7 @@ public class TableSelector : InteractiveElement<int>
     /// <param name="excludeFooter">Whether to exclude the footer from selectable elements.</param>
     /// <param name="footerText">The text to display in the footer.</param>
     /// <param name="placement">The placement of the table.</param>
+    /// <param name="bordersType">The type of the borders of the table.</param>
     /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
     /// <remarks>
@@ -124,7 +125,8 @@ public class TableSelector : InteractiveElement<int>
         bool excludeHeader = true,
         bool excludeFooter = true,
         string? footerText = null,
-        Placement placement = Placement.TopCenter
+        Placement placement = Placement.TopCenter,
+        BordersType bordersType = BordersType.SingleStraight
     )
     {
         _title = title;
@@ -134,6 +136,7 @@ public class TableSelector : InteractiveElement<int>
         _excludeFooter = excludeFooter;
         _footerText = footerText;
         _placement = placement;
+        _borders = new Borders(bordersType);
         if (CompatibilityCheck())
         {
             BuildTable();
@@ -262,12 +265,12 @@ public class TableSelector : InteractiveElement<int>
             }
             stringList.Add(headerBuilder.ToString());
 
-            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : GetCorners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┬" : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
@@ -298,12 +301,12 @@ public class TableSelector : InteractiveElement<int>
                 stringList.Add(lineBuilder.ToString());
             }
 
-            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : GetCorners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┴" : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -340,21 +343,21 @@ public class TableSelector : InteractiveElement<int>
                 }
             }
             stringList.Add(headerBuilder.ToString());
-            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : GetCorners[1].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┬" : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
             for (int i = 0; i < _rawHeaders.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : GetCorners[3].ToString()
+                    (i != _rawHeaders.Count - 1) ? "┴" : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -396,21 +399,21 @@ public class TableSelector : InteractiveElement<int>
                 }
                 stringList.Add(line.ToString());
             }
-            StringBuilder upperBorderBuilder = new(GetCorners[0].ToString());
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
             for (int i = 0; i < _rawLines.Count; i++)
             {
                 upperBorderBuilder.Append(new string('─', localMax[i] + 2));
                 upperBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? "┬" : GetCorners[1].ToString()
+                    (i != _rawLines.Count - 1) ? "┬" : Borders.TopRight.ToString()
                 );
             }
             stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(GetCorners[2].ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
             for (int i = 0; i < _rawLines.Count; i++)
             {
                 lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
                 lowerBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? "┴" : GetCorners[3].ToString()
+                    (i != _rawLines.Count - 1) ? "┴" : Borders.BottomRight.ToString()
                 );
             }
             stringList.Add(lowerBorderBuilder.ToString());
@@ -426,9 +429,9 @@ public class TableSelector : InteractiveElement<int>
             var len = _displayArray![0].Length;
             var title = _title.ResizeString(len - 4);
             title = $"│ {title} │";
-            var upperBorderBuilder = new StringBuilder(GetCorners[0].ToString());
+            var upperBorderBuilder = new StringBuilder(Borders.TopLeft.ToString());
             upperBorderBuilder.Append(new string('─', len - 2));
-            upperBorderBuilder.Append(GetCorners[1].ToString());
+            upperBorderBuilder.Append(Borders.TopRight.ToString());
             var display = _displayArray.ToList();
             display[0] = display[0]
                 .Remove(0, 1)
@@ -457,6 +460,26 @@ public class TableSelector : InteractiveElement<int>
     public void UpdatePlacement(Placement placement)
     {
         _placement = placement;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+    }
+
+    /// <summary>
+    /// This method updates the type of the borders of the table.
+    /// </summary>
+    /// <param name="bordersType">The type of the borders of the table.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateBordersType(BordersType bordersType)
+    {
+        _borders.UpdateBordersType(bordersType);
         if (CompatibilityCheck())
         {
             BuildTable();
@@ -583,23 +606,6 @@ public class TableSelector : InteractiveElement<int>
     public void UpdateTitle(string title)
     {
         AddTitle(title);
-    }
-
-    /// <summary>
-    /// Toggles the rounded corners of the table.
-    /// </summary>
-    /// <param name="rounded">Whether to round the corners or not.</param>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public void SetRoundedCorners(bool rounded = true)
-    {
-        _roundedCorners = rounded;
-        BuildTable();
     }
 
     /// <summary>

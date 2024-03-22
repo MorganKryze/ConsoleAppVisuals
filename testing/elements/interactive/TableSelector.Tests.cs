@@ -103,11 +103,7 @@ public class UnitTestTableSelector
         List<List<string>> playersData =
             new() { player1, player2, player3, player4, player5, player6, player7 };
 
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            playersData
-        );
+        var tableSelector = new TableSelector("Great tennis players", playersHeaders, playersData);
 
         // Act
         var actualHeight = tableSelector.Height;
@@ -155,11 +151,7 @@ public class UnitTestTableSelector
         List<List<string>> playersData =
             new() { player1, player2, player3, player4, player5, player6, player7 };
 
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            playersData
-        );
+        var tableSelector = new TableSelector("Great tennis players", playersHeaders, playersData);
 
         // Act
         var actualWidth = tableSelector.Width;
@@ -207,11 +199,7 @@ public class UnitTestTableSelector
         List<List<string>> playersData =
             new() { player1, player2, player3, player4, player5, player6, player7 };
 
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            playersData
-        );
+        var tableSelector = new TableSelector("Great tennis players", playersHeaders, playersData);
 
         // Act
         var actualTitle = tableSelector.Title;
@@ -295,122 +283,6 @@ public class UnitTestTableSelector
 
         // Assert
         Assert.AreEqual(exclude, actualExcludeFooter);
-    }
-
-    [TestMethod]
-    [TestCategory("TableSelector")]
-    public void RoundedCorners_Getter()
-    {
-        // Arrange
-        List<string> playersHeaders =
-            new() { "id", "first name", "last name", "nationality", "slams" };
-        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
-        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
-        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
-
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            new List<List<string>> { player1, player2, player3 }
-        );
-
-        // Act
-        var actualRoundedCorners = tableSelector.RoundedCorners;
-
-        // Assert
-        Assert.AreEqual(false, actualRoundedCorners);
-    }
-
-    [TestMethod]
-    [TestCategory("TableSelector")]
-    public void RoundedCorners_Getter_RoundedCorners()
-    {
-        // Arrange
-        List<string> playersHeaders =
-            new() { "id", "first name", "last name", "nationality", "slams" };
-
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            new List<List<string>>()
-        );
-
-        // Act
-        var actualRoundedCorners = tableSelector.RoundedCorners;
-
-        // Assert
-        Assert.AreEqual(false, actualRoundedCorners);
-    }
-
-    [TestMethod]
-    [TestCategory("TableSelector")]
-    public void RoundedCorners_Getter_NullArray()
-    {
-        // Arrange
-        var tableSelector = new TableSelector(
-            default,
-            default,
-            default,
-            default,
-            default,
-            default,
-            default
-        );
-
-        // Act
-        var actualRoundedCorners = tableSelector.RoundedCorners;
-
-        // Assert
-        Assert.AreEqual(false, actualRoundedCorners);
-    }
-
-    [TestMethod]
-    [TestCategory("TableSelector")]
-    public void GetCorners_Getter()
-    {
-        // Arrange
-        List<string> playersHeaders =
-            new() { "id", "first name", "last name", "nationality", "slams" };
-        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
-        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
-        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
-
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            new List<List<string>> { player1, player2, player3 }
-        );
-
-        // Act
-        var actualCorners = tableSelector.GetCorners;
-
-        // Assert
-        Assert.AreEqual("┌┐└┘", actualCorners);
-    }
-
-    [TestMethod]
-    [TestCategory("TableSelector")]
-    public void GetCorners_Getter_False()
-    {
-        // Arrange
-        List<string> playersHeaders =
-            new() { "id", "first name", "last name", "nationality", "slams" };
-        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
-        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
-        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
-
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            new List<List<string>> { player1, player2, player3 }
-        );
-
-        // Act
-        tableSelector.SetRoundedCorners(false);
-        var actualCorners = tableSelector.GetCorners;
-
-        // Assert
-        Assert.AreEqual("┌┐└┘", actualCorners);
     }
 
     [TestMethod]
@@ -585,11 +457,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector(
-            "Great tennis players",
-            playersHeaders,
-            default
-        );
+        var tableSelector = new TableSelector("Great tennis players", playersHeaders, default);
 
         // Assert
         Assert.IsNull(tableSelector.GetRawLines);
@@ -1025,11 +893,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector(
-            default,
-            playersHeaders,
-            new List<List<string>>()
-        );
+        var tableSelector = new TableSelector(default, playersHeaders, new List<List<string>>());
 
         // Act
         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
@@ -1048,11 +912,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector(
-            default,
-            playersHeaders,
-            new List<List<string>>()
-        );
+        var tableSelector = new TableSelector(default, playersHeaders, new List<List<string>>());
 
         // Act & Assert
         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain" };
@@ -1115,11 +975,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector(
-            default,
-            playersHeaders,
-            new List<List<string>>()
-        );
+        var tableSelector = new TableSelector(default, playersHeaders, new List<List<string>>());
 
         // Act & Assert
         Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
@@ -1187,11 +1043,7 @@ public class UnitTestTableSelector
         List<string> playersHeaders =
             new() { "id", "first name", "last name", "national", "slams" };
 
-        var tableSelector = new TableSelector(
-            default,
-            playersHeaders,
-            new List<List<string>>()
-        );
+        var tableSelector = new TableSelector(default, playersHeaders, new List<List<string>>());
 
         // Act & Assert
         List<string> player5 = new() { "05", "Stefanos", "Tsitsipas", "Greece", "0" };
@@ -1510,4 +1362,55 @@ public class UnitTestTableSelector
     }
     #endregion
 
+    #region UpdateBordersType
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateBordersType_BordersTypeUpdated()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+
+        var tableSelector = new TableSelector(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>>()
+        );
+
+        // Act
+        tableSelector.UpdateBordersType(BordersType.DoubleStraight);
+        var actualBordersType = tableSelector.BordersType;
+
+        // Assert
+        Assert.AreEqual(BordersType.DoubleStraight, actualBordersType);
+        Assert.AreEqual(BordersType.DoubleStraight, tableSelector.Borders.Type);
+    }
+
+    [TestMethod]
+    [TestCategory("TableSelector")]
+    public void UpdateBordersType_BordersTypeUpdatedAndBuild()
+    {
+        // Arrange
+        List<string> playersHeaders =
+            new() { "id", "first name", "last name", "national", "slams" };
+        List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
+        List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
+        List<string> player3 = new() { "03", "Roger", "Federer", "Switzerland", "21" };
+
+        var tableSelector = new TableSelector(
+            "Great tennis players",
+            playersHeaders,
+            new List<List<string>> { player1, player2, player3 }
+        );
+
+        // Act
+        tableSelector.UpdateBordersType(BordersType.DoubleStraight);
+        var actualBordersType = tableSelector.BordersType;
+
+        // Assert
+        Assert.AreEqual(BordersType.DoubleStraight, actualBordersType);
+        Assert.AreEqual(BordersType.DoubleStraight, tableSelector.Borders.Type);
+    }
+    #endregion
 }
