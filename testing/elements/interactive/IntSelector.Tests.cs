@@ -115,9 +115,10 @@ public class UnitTestIntSelector
         var step = 1;
         var placement = Placement.TopCenter;
         var line = 0;
+        var borderType = BorderType.SingleBold;
 
         // Act
-        var intSelector = new IntSelector(question, min, max, start, step, placement);
+        var intSelector = new IntSelector(question, min, max, start, step, placement, borderType);
 
         // Assert
         Assert.AreEqual(question, intSelector.Question);
@@ -127,7 +128,7 @@ public class UnitTestIntSelector
         Assert.AreEqual(step, intSelector.Step);
         Assert.AreEqual(placement, intSelector.Placement);
         Assert.AreEqual(line, intSelector.Line);
-        Assert.AreEqual(false, intSelector.RoundedCorners);
+        Assert.AreEqual(borderType, intSelector.BorderType);
     }
 
     [TestMethod]
@@ -288,24 +289,6 @@ public class UnitTestIntSelector
     }
     #endregion
 
-    #region UpdateRoundedCorners
-    [TestMethod]
-    [TestCategory("IntSelector")]
-    [DataRow(true)]
-    [DataRow(false)]
-    public void UpdateRoundedCorners(bool roundedCorners)
-    {
-        // Arrange
-        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
-
-        // Act
-        intSelector.SetRoundedCorners(roundedCorners);
-
-        // Assert
-        Assert.AreEqual(roundedCorners, intSelector.RoundedCorners);
-    }
-    #endregion
-
     #region UpdateLeftSelector
     [TestMethod]
     [TestCategory("IntSelector")]
@@ -339,6 +322,24 @@ public class UnitTestIntSelector
 
         // Assert
         Assert.AreEqual(rightSelector, intSelector.RightSelector);
+    }
+    #endregion
+
+    #region UpdateBorderType
+    [TestMethod]
+    [TestCategory("IntSelector")]
+    [DataRow(BorderType.SingleBold)]
+    [DataRow(BorderType.DoubleStraight)]
+    public void UpdateBorderType(BorderType borderType)
+    {
+        // Arrange
+        var intSelector = new IntSelector("Question", 0, 10, 5, 1, Placement.TopCenter);
+
+        // Act
+        intSelector.UpdateBorderType(borderType);
+
+        // Assert
+        Assert.AreEqual(borderType, intSelector.BorderType);
     }
     #endregion
 }
