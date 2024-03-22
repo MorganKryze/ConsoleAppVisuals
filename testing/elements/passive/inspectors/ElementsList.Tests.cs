@@ -34,7 +34,7 @@ public class UnitTestElementsList
     public void Constructor_WithLine()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Interactive, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Interactive, Placement.TopLeft);
 
         // Act
         // No additional action needed
@@ -47,28 +47,11 @@ public class UnitTestElementsList
 
 
     #region GeneralTests
-    [TestMethod]
-    public void RoundedCorners_SetsRoundedCornersCorrectly()
-    {
-        // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
-        var list2 = new ElementsList(ElementType.Passive, Placement.TopLeft, false);
-
-        // Act
-        list.SetRoundedCorners(false);
-        list2.SetRoundedCorners(true);
-
-        // Assert
-        Assert.AreNotEqual(list.RoundedCorners, list2.RoundedCorners);
-    }
 
     [TestMethod]
     public void GetHeaders_ReturnsHeaders()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
-
-        // Act
         var headers = ElementsList.Headers;
 
         // Assert
@@ -79,7 +62,7 @@ public class UnitTestElementsList
     public void GetLines_ReturnsLines()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
 
         // Act
         var lines = list.Lines;
@@ -92,7 +75,7 @@ public class UnitTestElementsList
     public void Placement_ReturnsPlacement()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
 
         // Act
         var placement = list.Placement;
@@ -105,7 +88,7 @@ public class UnitTestElementsList
     public void Line_ReturnsLine()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
 
         // Act
         var line = list.Line;
@@ -118,7 +101,7 @@ public class UnitTestElementsList
     public void Height_ReturnsHeight()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
 
         // Act
         var height = list.Height;
@@ -131,7 +114,7 @@ public class UnitTestElementsList
     public void Width_ReturnsWidth()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
 
         // Act
         var width = list.Width;
@@ -144,7 +127,7 @@ public class UnitTestElementsList
     public void Count_ReturnsCount()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
 
         // Act
         var count = list.Count;
@@ -153,7 +136,6 @@ public class UnitTestElementsList
         Assert.IsNotNull(count);
     }
 
-
     #endregion
 
     #region UpdatePlacement
@@ -161,7 +143,7 @@ public class UnitTestElementsList
     public void UpdatePlacement_HappyPath()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Passive, Placement.TopLeft);
 
         // Act
         list.UpdatePlacement(Placement.TopCenter);
@@ -176,7 +158,7 @@ public class UnitTestElementsList
     public void UpdateElementsTypeExpected_HappyPath()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft, true);
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
 
         // Act
         list.UpdateElementsTypeExpected(ElementType.Interactive);
@@ -191,13 +173,29 @@ public class UnitTestElementsList
     public void GetTitle_Default()
     {
         // Arrange
-        var list = new ElementsList((ElementType)int.MaxValue, Placement.TopLeft, true);
+        var list = new ElementsList((ElementType)int.MaxValue, Placement.TopLeft);
 
         // Act
         var title = list.Title;
 
         // Assert
         Assert.AreEqual("Element types available", title);
+    }
+    #endregion
+
+    #region UpdateBordersType
+    [TestMethod]
+    public void UpdateBordersType_HappyPath()
+    {
+        // Arrange
+        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
+
+        // Act
+        list.UpdateBordersType(BordersType.DoubleStraight);
+
+        // Assert
+        Assert.AreEqual(BordersType.DoubleStraight, list.BordersType);
+        Assert.AreEqual(BordersType.DoubleStraight, list.Borders.Type);
     }
     #endregion
 }
