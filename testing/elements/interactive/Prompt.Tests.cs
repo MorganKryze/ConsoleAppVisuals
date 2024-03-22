@@ -311,9 +311,9 @@ public class UnitTestPrompt
         var prompt = new Prompt("What is your name?", "John Doe");
 
         // Act
-        prompt.UpdateBordersType(BordersType.SingleRounded);
+        prompt.UpdateBordersType(BordersType.SingleRound);
         var actual = prompt.BordersType;
-        var expected = BordersType.SingleRounded;
+        var expected = BordersType.SingleRound;
 
         // Assert
         Assert.AreEqual(expected, actual);
