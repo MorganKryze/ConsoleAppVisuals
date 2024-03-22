@@ -329,7 +329,7 @@ public class FloatSelector : InteractiveElement<float>
     /// </remarks>
     public void UpdateBorderType(BorderType borderType)
     {
-        _borders = new Borders(borderType);
+        _borders.UpdateBorderType(borderType);
     }
 
     /// <summary>

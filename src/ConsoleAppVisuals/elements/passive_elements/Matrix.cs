@@ -218,7 +218,7 @@ public class Matrix<T> : PassiveElement
     /// </remarks>
     public void UpdateBorderType(BorderType borderType)
     {
-        _borders = new Borders(borderType);
+        _borders.UpdateBorderType(borderType);
         BuildMatrix();
     }
 
