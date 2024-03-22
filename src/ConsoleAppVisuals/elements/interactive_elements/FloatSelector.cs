@@ -22,8 +22,8 @@ public class FloatSelector : InteractiveElement<float>
     private float _maximumValue;
     private float _startValue;
     private float _step;
-    private bool _roundedCorners;
     private Placement _placement;
+    private Borders _borders;
     private (char, char) _selector = (DEFAULT_SELECTOR_LEFT, DEFAULT_SELECTOR_RIGHT);
     #endregion
 
@@ -91,9 +91,14 @@ public class FloatSelector : InteractiveElement<float>
     public float Step => _step;
 
     /// <summary>
-    /// Whether the corners of the selector are rounded.
+    /// The borders manager of the selector.
     /// </summary>
-    public bool RoundedCorners => _roundedCorners;
+    public Borders Borders => _borders;
+
+    /// <summary>
+    /// The type of the borders of the selector.
+    /// </summary>
+    public BorderType BorderType => _borders.Type;
 
     /// <summary>
     /// The left selector of the selector.
@@ -116,7 +121,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <param name="start">The start value of the selector.</param>
     /// <param name="step">The step of the selector.</param>
     /// <param name="placement">The placement of the selector on the console.</param>
-    /// <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
+    /// <param name="borderType">The type of the borders of the selector.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -131,7 +136,7 @@ public class FloatSelector : InteractiveElement<float>
         float start = 0,
         float step = 100,
         Placement placement = Placement.TopCenter,
-        bool roundedCorners = false
+        BorderType borderType = BorderType.SingleStraight
     )
     {
         _question = question;
@@ -141,7 +146,7 @@ public class FloatSelector : InteractiveElement<float>
         _startValue = CheckStart(start, _minimumValue, _maximumValue);
         _step = CheckStep(step, _minimumValue, _maximumValue);
         _placement = placement;
-        _roundedCorners = roundedCorners;
+        _borders = new Borders(borderType);
     }
 
     private static void CheckMinNotHigherThanMax(float min, float max)
@@ -280,22 +285,6 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the rounded corners of the selector.
-    /// </summary>
-    /// <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public void SetRoundedCorners(bool roundedCorners = true)
-    {
-        _roundedCorners = roundedCorners;
-    }
-
-    /// <summary>
     /// This method is used to update the selector of the selector.
     /// </summary>
     /// <param name="leftSelector">The new left selector of the selector.</param>
@@ -325,6 +314,22 @@ public class FloatSelector : InteractiveElement<float>
     public void UpdateRightSelector(char rightSelector = '◀')
     {
         _selector.Item2 = rightSelector;
+    }
+
+    /// <summary>
+    /// This method is used to update the type of the borders of the selector.
+    /// </summary>
+    /// <param name="borderType">The new type of the borders of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateBorderType(BorderType borderType)
+    {
+        _borders = new Borders(borderType);
     }
 
     /// <summary>
@@ -421,25 +426,24 @@ public class FloatSelector : InteractiveElement<float>
     [Visual]
     string BuildLine(Direction direction)
     {
-        string corners = _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
         StringBuilder line = new();
         for (int i = 0; i < _maximumValue.ToString().Length + 2; i++)
-            line.Append('─');
+            line.Append(Borders.Horizontal, 1);
         if (direction == Direction.Up)
-            line.Insert(0, corners[0].ToString(), 1).Append(corners[1], 1);
+            line.Insert(0, Borders.TopLeft.ToString(), 1).Append(Borders.TopRight, 1);
         else
-            line.Insert(0, corners[2].ToString(), 1).Append(corners[3], 1);
+            line.Insert(0, Borders.BottomLeft.ToString(), 1).Append(Borders.BottomRight, 1);
         return line.ToString();
     }
 
     string BuildNumber(float number)
     {
         StringBuilder numberStr = new();
-        numberStr.Append("│ ");
+        numberStr.Append($"{Borders.Vertical} ");
         numberStr.Append(
             number.ToString().ResizeString(_maximumValue.ToString().Length, TextAlignment.Center)
         );
-        numberStr.Append(" │");
+        numberStr.Append($" {Borders.Vertical}");
         return numberStr.ToString();
     }
     #endregion

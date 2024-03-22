@@ -143,9 +143,18 @@ public class UnitTestFloatSelector
         var step = 1.0f;
         var placement = Placement.TopCenter;
         var line = 0;
+        var borderType = BorderType.SingleStraight;
 
         // Act
-        var floatSelector = new FloatSelector(question, min, max, start, step, placement);
+        var floatSelector = new FloatSelector(
+            question,
+            min,
+            max,
+            start,
+            step,
+            placement,
+            borderType
+        );
 
         // Assert
         Assert.AreEqual(question, floatSelector.Question);
@@ -155,7 +164,7 @@ public class UnitTestFloatSelector
         Assert.AreEqual(step, floatSelector.Step);
         Assert.AreEqual(placement, floatSelector.Placement);
         Assert.AreEqual(line, floatSelector.Line);
-        Assert.AreEqual(false, floatSelector.RoundedCorners);
+        Assert.AreEqual(borderType, floatSelector.BorderType);
     }
 
     [TestMethod]
@@ -356,31 +365,6 @@ public class UnitTestFloatSelector
     }
     #endregion
 
-    #region SetRoundedCorners
-    [TestMethod]
-    [TestCategory("FloatSelector")]
-    [DataRow(true)]
-    [DataRow(false)]
-    public void SetRoundedCorners(bool roundedCorners)
-    {
-        // Arrange
-        var floatSelector = new FloatSelector(
-            "Question",
-            0.0f,
-            10.0f,
-            5.0f,
-            1.0f,
-            Placement.TopCenter
-        );
-
-        // Act
-        floatSelector.SetRoundedCorners(roundedCorners);
-
-        // Assert
-        Assert.AreEqual(roundedCorners, floatSelector.RoundedCorners);
-    }
-    #endregion
-
     #region UpdateLeftSelector
     [TestMethod]
     [TestCategory("FloatSelector")]
@@ -424,6 +408,31 @@ public class UnitTestFloatSelector
 
         // Assert
         Assert.AreEqual('B', floatSelector.RightSelector);
+    }
+    #endregion
+
+    #region UpdateBorderType
+    [TestMethod]
+    [TestCategory("FloatSelector")]
+    [DataRow(BorderType.SingleStraight)]
+    [DataRow(BorderType.DoubleStraight)]
+    public void UpdateBorderType(BorderType borderType)
+    {
+        // Arrange
+        var floatSelector = new FloatSelector(
+            "Question",
+            0.0f,
+            10.0f,
+            5.0f,
+            1.0f,
+            Placement.TopCenter
+        );
+
+        // Act
+        floatSelector.UpdateBorderType(borderType);
+
+        // Assert
+        Assert.AreEqual(borderType, floatSelector.BorderType);
     }
     #endregion
 }
