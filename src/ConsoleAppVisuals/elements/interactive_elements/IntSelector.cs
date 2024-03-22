@@ -22,8 +22,8 @@ public class IntSelector : InteractiveElement<int>
     private int _maximumValue;
     private int _startValue;
     private int _step;
-    private bool _roundedCorners;
     private Placement _placement;
+    private Borders _borders;
     private (char, char) _selector = (DEFAULT_SELECTOR_LEFT, DEFAULT_SELECTOR_RIGHT);
     #endregion
 
@@ -91,11 +91,6 @@ public class IntSelector : InteractiveElement<int>
     public int Step => _step;
 
     /// <summary>
-    /// Whether the corners of the selector are rounded.
-    /// </summary>
-    public bool RoundedCorners => _roundedCorners;
-
-    /// <summary>
     /// The left selector of the selector.
     /// </summary>
     public char LeftSelector => _selector.Item1;
@@ -104,6 +99,16 @@ public class IntSelector : InteractiveElement<int>
     /// The right selector of the selector.
     /// </summary>
     public char RightSelector => _selector.Item2;
+
+    /// <summary>
+    /// The borders manager of the selector.
+    /// </summary>
+    public Borders Borders => _borders;
+
+    /// <summary>
+    /// The border type of the selector.
+    /// </summary>
+    public BorderType BorderType => _borders.Type;
     #endregion
 
     #region Constructor
@@ -116,7 +121,7 @@ public class IntSelector : InteractiveElement<int>
     /// <param name="start">The start value of the selector.</param>
     /// <param name="step">The step of the selector.</param>
     /// <param name="placement">The placement of the selector on the console.</param>
-    /// <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
+    /// <param name="borderType">The border type of the selector.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -131,7 +136,7 @@ public class IntSelector : InteractiveElement<int>
         int start = 0,
         int step = 100,
         Placement placement = Placement.TopCenter,
-        bool roundedCorners = false
+        BorderType borderType = BorderType.SingleStraight
     )
     {
         _question = question;
@@ -141,7 +146,7 @@ public class IntSelector : InteractiveElement<int>
         _startValue = CheckStart(start, _minimumValue, _maximumValue);
         _step = CheckStep(step, _minimumValue, _maximumValue);
         _placement = placement;
-        _roundedCorners = roundedCorners;
+        _borders = new Borders(borderType);
     }
 
     private static void CheckMinNotHigherThanMax(int min, int max)
@@ -279,22 +284,6 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the rounded corners of the selector.
-    /// </summary>
-    /// <param name="roundedCorners">Whether the corners of the selector are rounded.</param>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public void SetRoundedCorners(bool roundedCorners = true)
-    {
-        _roundedCorners = roundedCorners;
-    }
-
-    /// <summary>
     /// This method is used to update the selector of the selector.
     /// </summary>
     /// <param name="leftSelector">The new left selector of the selector.</param>
@@ -324,6 +313,22 @@ public class IntSelector : InteractiveElement<int>
     public void UpdateRightSelector(char rightSelector = '◀')
     {
         _selector.Item2 = rightSelector;
+    }
+
+    /// <summary>
+    /// This method is used to update the border type of the selector.
+    /// </summary>
+    /// <param name="borderType">The border type of the selector.</param>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateBorderType(BorderType borderType)
+    {
+        _borders.UpdateBorderType(borderType);
     }
 
     /// <summary>
@@ -416,25 +421,24 @@ public class IntSelector : InteractiveElement<int>
     [Visual]
     string BuildLine(Direction direction)
     {
-        string corners = _roundedCorners ? "╭╮╰╯" : "┌┐└┘";
         StringBuilder line = new();
         for (int i = 0; i < _maximumValue.ToString().Length + 2; i++)
             line.Append('─');
         if (direction == Direction.Up)
-            line.Insert(0, corners[0].ToString(), 1).Append(corners[1], 1);
+            line.Insert(0, Borders.TopLeft.ToString(), 1).Append(Borders.TopRight, 1);
         else
-            line.Insert(0, corners[2].ToString(), 1).Append(corners[3], 1);
+            line.Insert(0, Borders.BottomLeft.ToString(), 1).Append(Borders.BottomRight, 1);
         return line.ToString();
     }
 
     string BuildNumber(int number)
     {
         StringBuilder numberStr = new();
-        numberStr.Append("│ ");
+        numberStr.Append($"{Borders.Vertical} ");
         numberStr.Append(
             number.ToString().ResizeString(_maximumValue.ToString().Length, TextAlignment.Center)
         );
-        numberStr.Append(" │");
+        numberStr.Append($" {Borders.Vertical}");
         return numberStr.ToString();
     }
     #endregion
