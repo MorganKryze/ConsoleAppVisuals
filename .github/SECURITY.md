@@ -4,17 +4,12 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 3.4.x   | :white_check_mark: |
 | 3.3.x   | :white_check_mark: |
 | 3.2.x   | :white_check_mark: |
 | 3.1.x   | :warning:          |
 | 3.0.x   | :warning:          |
-| 2.7.x   | :white_check_mark: |
-| 2.6.x   | :white_check_mark: |
-| 2.5.x   | :white_check_mark: |
-| 2.4.x   | :white_check_mark: |
-| 2.3.x   | :white_check_mark: |
-| 2.2.x   | :white_check_mark: |
-| 2.1.x   | :white_check_mark: |
+| 2.x.x   | :white_check_mark: |
 | < 2.1.0 | :x:                |
 
 3.0.x and 3.1.x were the pre-versions of the v3 update. They were not fully tested yet and may contain some bugs (some fixed since 3.2.0). We recommend to use the latest version of the library.
