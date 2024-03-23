@@ -1,0 +1,1549 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Window | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Window | ConsoleAppVisuals ">
+      
+      <meta name="description" content="The Window class manages the elements that are to be displayed on the console.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.Window">
+
+
+
+  <h1 id="ConsoleAppVisuals_Window" data-uid="ConsoleAppVisuals.Window" class="text-break">
+Class Window  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The Window class manages the elements that are to be displayed on the console.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Window</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Window</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_Window_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="ConsoleAppVisuals_Window_DEFAULT_ELEMENT_VISIBILITY" data-uid="ConsoleAppVisuals.Window.DEFAULT_ELEMENT_VISIBILITY">
+  DEFAULT_ELEMENT_VISIBILITY
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The default visibility of the elements when they are added to the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const bool DEFAULT_ELEMENT_VISIBILITY = false</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_DEFAULT_ELEMENT_VISIBILITY_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This value should not be changed.
+Each time the user adds an element to the window, it will try to toggle the visibility of the element.</p>
+</div>
+
+
+
+
+
+  <h3 id="ConsoleAppVisuals_Window_INTERVAL_BETWEEN_READS" data-uid="ConsoleAppVisuals.Window.INTERVAL_BETWEEN_READS">
+  INTERVAL_BETWEEN_READS
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines the interval of milliseconds between different read key of the console (used in the <a class="xref" href="ConsoleAppVisuals.Window.html#ConsoleAppVisuals_Window_Freeze_System_ConsoleKey_">Freeze(ConsoleKey)</a> method).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int INTERVAL_BETWEEN_READS = 10</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_Window_CountElements_" data-uid="ConsoleAppVisuals.Window.CountElements*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_CountElements" data-uid="ConsoleAppVisuals.Window.CountElements">
+  CountElements
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gives the number of elements in the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int CountElements { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_Elements_" data-uid="ConsoleAppVisuals.Window.Elements*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_Elements" data-uid="ConsoleAppVisuals.Window.Elements">
+  Elements
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gives the list of elements in the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Element&gt; Elements { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_NextId_" data-uid="ConsoleAppVisuals.Window.NextId*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_NextId" data-uid="ConsoleAppVisuals.Window.NextId">
+  NextId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gives the next id number each time a new element is added to the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int NextId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_Window_ActivateAllElements_" data-uid="ConsoleAppVisuals.Window.ActivateAllElements*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_ActivateAllElements" data-uid="ConsoleAppVisuals.Window.ActivateAllElements">
+  ActivateAllElements()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method attempts to activate the visibility of all elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ActivateAllElements()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_ActivateAllElements_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_ActivateElement_" data-uid="ConsoleAppVisuals.Window.ActivateElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_ActivateElement_ConsoleAppVisuals_Models_Element_System_Boolean_" data-uid="ConsoleAppVisuals.Window.ActivateElement(ConsoleAppVisuals.Models.Element,System.Boolean)">
+  ActivateElement(Element, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method attempts to activate the visibility of the given element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void ActivateElement(Element element, bool render = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>element</code> <a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></dt>
+    <dd><p>The element to be activated.</p>
+</dd>
+    <dt><code>render</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the element will be rendered.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.ElementNotFoundException.html">ElementNotFoundException</a></dt>
+    <dd><p>Thrown when the element is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_ActivateElement_" data-uid="ConsoleAppVisuals.Window.ActivateElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_ActivateElement_System_Int32_System_Boolean_" data-uid="ConsoleAppVisuals.Window.ActivateElement(System.Int32,System.Boolean)">
+  ActivateElement(int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method attempts to activate the visibility of the element with the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void ActivateElement(int id, bool render = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The id of the element.</p>
+</dd>
+    <dt><code>render</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the element will be rendered.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_ActivateElement_System_Int32_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when the id is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_ActivateElement_" data-uid="ConsoleAppVisuals.Window.ActivateElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_ActivateElement__1_System_Boolean_" data-uid="ConsoleAppVisuals.Window.ActivateElement``1(System.Boolean)">
+  ActivateElement&lt;T&gt;(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method attempts to activate the visibility of the first element of the given type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void ActivateElement&lt;T&gt;(bool render = true) where T : Element</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>render</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the element will be rendered.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_ActivateElement__1_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.ElementNotFoundException.html">ElementNotFoundException</a></dt>
+    <dd><p>Thrown when the element is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_AddElement_" data-uid="ConsoleAppVisuals.Window.AddElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_AddElement_ConsoleAppVisuals_Models_Element___" data-uid="ConsoleAppVisuals.Window.AddElement(ConsoleAppVisuals.Models.Element[])">
+  AddElement(params Element[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method adds elements to the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddElement(params Element[] elements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elements</code> <a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a>[]</dt>
+    <dd><p>The elements to be added.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_AddElement_ConsoleAppVisuals_Models_Element____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when no elements are provided.</p>
+</dd>
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.DuplicateElementException.html">DuplicateElementException</a></dt>
+    <dd><p>Thrown when the element is already present in the window.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_AllowVisibilityToggle_" data-uid="ConsoleAppVisuals.Window.AllowVisibilityToggle*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_AllowVisibilityToggle_System_Int32_" data-uid="ConsoleAppVisuals.Window.AllowVisibilityToggle(System.Int32)">
+  AllowVisibilityToggle(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method checks if the element can be toggled to visible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool AllowVisibilityToggle(int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The id of the element.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the element can be toggled to visible, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_CheckLine_" data-uid="ConsoleAppVisuals.Window.CheckLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_CheckLine_System_Nullable_System_Int32__" data-uid="ConsoleAppVisuals.Window.CheckLine(System.Nullable{System.Int32})">
+  CheckLine(int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method checks if the line is valid under the console constraints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int? CheckLine(int? line)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The line to be checked.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The line if it is valid.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_CheckLine_System_Nullable_System_Int32___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.LineOutOfConsoleException.html">LineOutOfConsoleException</a></dt>
+    <dd><p>Thrown when the line is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_Clear_" data-uid="ConsoleAppVisuals.Window.Clear*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_Clear_System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32_" data-uid="ConsoleAppVisuals.Window.Clear(System.Boolean,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Int32)">
+  Clear(bool, int?, int?, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method clears the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static bool Clear(bool continuous = false, int? startLine = null, int? length = null, int step = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>continuous</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the window will be cleared continuously.</p>
+</dd>
+    <dt><code>startLine</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The start line of the window to be cleared.</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The number of lines to be cleared.</p>
+</dd>
+    <dt><code>step</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The step of the window to be cleared.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the window is successfully cleared, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_Clear_System_Boolean_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_Close_" data-uid="ConsoleAppVisuals.Window.Close*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_Close" data-uid="ConsoleAppVisuals.Window.Close">
+  Close()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method clears the window and exit the program.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void Close()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_Close_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_DeactivateAllElements_" data-uid="ConsoleAppVisuals.Window.DeactivateAllElements*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_DeactivateAllElements" data-uid="ConsoleAppVisuals.Window.DeactivateAllElements">
+  DeactivateAllElements()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method deactivate the visibility of all elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeactivateAllElements()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_DeactivateAllElements_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_DeactivateElement_" data-uid="ConsoleAppVisuals.Window.DeactivateElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_DeactivateElement_ConsoleAppVisuals_Models_Element_System_Boolean_" data-uid="ConsoleAppVisuals.Window.DeactivateElement(ConsoleAppVisuals.Models.Element,System.Boolean)">
+  DeactivateElement(Element, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method deactivate the visibility of the element with the given type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeactivateElement(Element element, bool clear = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>element</code> <a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></dt>
+    <dd><p>The element to be deactivated.</p>
+</dd>
+    <dt><code>clear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the element will be cleared from the console.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_DeactivateElement_ConsoleAppVisuals_Models_Element_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.ElementNotFoundException.html">ElementNotFoundException</a></dt>
+    <dd><p>Thrown when the element is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_DeactivateElement_" data-uid="ConsoleAppVisuals.Window.DeactivateElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_DeactivateElement_System_Int32_System_Boolean_" data-uid="ConsoleAppVisuals.Window.DeactivateElement(System.Int32,System.Boolean)">
+  DeactivateElement(int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method to deactivate the visibility of the element with the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeactivateElement(int id, bool clear = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The id of the element.</p>
+</dd>
+    <dt><code>clear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the element will be cleared from the console.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_DeactivateElement_System_Int32_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when the id is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_DeactivateElement_" data-uid="ConsoleAppVisuals.Window.DeactivateElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_DeactivateElement__1_System_Boolean_" data-uid="ConsoleAppVisuals.Window.DeactivateElement``1(System.Boolean)">
+  DeactivateElement&lt;T&gt;(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method deactivate the visibility of the first element with the given type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeactivateElement&lt;T&gt;(bool clear = true) where T : Element</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clear</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the element will be cleared.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_DeactivateElement__1_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.ElementNotFoundException.html">ElementNotFoundException</a></dt>
+    <dd><p>Thrown when the element is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_Freeze_" data-uid="ConsoleAppVisuals.Window.Freeze*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_Freeze_System_ConsoleKey_" data-uid="ConsoleAppVisuals.Window.Freeze(System.ConsoleKey)">
+  Freeze(ConsoleKey)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method stops the execution of the program until a key is pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void Freeze(ConsoleKey key = ConsoleKey.Enter)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolekey">ConsoleKey</a></dt>
+    <dd><p>The key to be pressed to continue the execution.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_Freeze_System_ConsoleKey__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_GetElement_" data-uid="ConsoleAppVisuals.Window.GetElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_GetElement__1" data-uid="ConsoleAppVisuals.Window.GetElement``1">
+  GetElement&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method returns the first element of the given type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T? GetElement&lt;T&gt;() where T : Element</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The element with the given type if it exists, null otherwise.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_GetElement__1_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_GetElement_" data-uid="ConsoleAppVisuals.Window.GetElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_GetElement__1_System_Int32_" data-uid="ConsoleAppVisuals.Window.GetElement``1(System.Int32)">
+  GetElement&lt;T&gt;(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method returns the first element of the given type and id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T? GetElement&lt;T&gt;(int id) where T : Element</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The id of the element.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The element with the given id if it exists, null otherwise.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_GetElement__1_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when the id is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_GetLineAvailable_" data-uid="ConsoleAppVisuals.Window.GetLineAvailable*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_GetLineAvailable_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.Window.GetLineAvailable(ConsoleAppVisuals.Enums.Placement)">
+  GetLineAvailable(Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method gets the last line available to draw an element on the console from a placement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetLineAvailable(Placement placement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the element.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The last line available to draw an element on the console from a placement.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_GetLineAvailable_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when the placement is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_GetRange_" data-uid="ConsoleAppVisuals.Window.GetRange*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_GetRange_System_Int32_System_Int32_" data-uid="ConsoleAppVisuals.Window.GetRange(System.Int32,System.Int32)">
+  GetRange(int, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method returns a range of elements given a start and end ids.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static List&lt;Element&gt; GetRange(int start, int end)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>start</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The start id of the range.</p>
+</dd>
+    <dt><code>end</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The end id of the range.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a>&gt;</dt>
+    <dd><p>The range of elements from the start to the end id.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_GetVisibleElement_" data-uid="ConsoleAppVisuals.Window.GetVisibleElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_GetVisibleElement__1" data-uid="ConsoleAppVisuals.Window.GetVisibleElement``1">
+  GetVisibleElement&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method returns the first visible element with the given type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T? GetVisibleElement&lt;T&gt;() where T : Element</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>The visible element with the given type if it exists, null otherwise.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_GetVisibleElement__1_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_InsertElement_" data-uid="ConsoleAppVisuals.Window.InsertElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_InsertElement_ConsoleAppVisuals_Models_Element_System_Int32_" data-uid="ConsoleAppVisuals.Window.InsertElement(ConsoleAppVisuals.Models.Element,System.Int32)">
+  InsertElement(Element, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method inserts an element to the window at the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void InsertElement(Element element, int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>element</code> <a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></dt>
+    <dd><p>The element to be inserted.</p>
+</dd>
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The id of the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_InsertElement_ConsoleAppVisuals_Models_Element_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when the id is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_Open_" data-uid="ConsoleAppVisuals.Window.Open*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_Open" data-uid="ConsoleAppVisuals.Window.Open">
+  Open()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method &quot;opens&quot; the window (clears the console and hides the cursor).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void Open()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_RemoveAllElements_" data-uid="ConsoleAppVisuals.Window.RemoveAllElements*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_RemoveAllElements" data-uid="ConsoleAppVisuals.Window.RemoveAllElements">
+  RemoveAllElements()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method removes all elements from the window.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveAllElements()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_RemoveAllElements_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_RemoveElement_" data-uid="ConsoleAppVisuals.Window.RemoveElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_RemoveElement_ConsoleAppVisuals_Models_Element___" data-uid="ConsoleAppVisuals.Window.RemoveElement(ConsoleAppVisuals.Models.Element[])">
+  RemoveElement(params Element[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method removes the given element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool RemoveElement(params Element[] elements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elements</code> <a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a>[]</dt>
+    <dd><p>The elements to be removed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the element is successfully removed, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_RemoveElement_ConsoleAppVisuals_Models_Element____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.ElementNotFoundException.html">ElementNotFoundException</a></dt>
+    <dd><p>Thrown when the element is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_RemoveElement_" data-uid="ConsoleAppVisuals.Window.RemoveElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_RemoveElement_System_Int32_" data-uid="ConsoleAppVisuals.Window.RemoveElement(System.Int32)">
+  RemoveElement(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method removes the element with the given id.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RemoveElement(int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The id of the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_RemoveElement_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when the id is out of range.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_RemoveElement_" data-uid="ConsoleAppVisuals.Window.RemoveElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_RemoveElement__1" data-uid="ConsoleAppVisuals.Window.RemoveElement``1">
+  RemoveElement&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method removes the first element with the given type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool RemoveElement&lt;T&gt;() where T : Element</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the element is successfully removed, false otherwise.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_RemoveElement__1_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.ElementNotFoundException.html">ElementNotFoundException</a></dt>
+    <dd><p>Thrown when the element is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_Render_" data-uid="ConsoleAppVisuals.Window.Render*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_Render" data-uid="ConsoleAppVisuals.Window.Render">
+  Render()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method draws all visible elements of the window on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void Render()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_Render_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Window_Render_" data-uid="ConsoleAppVisuals.Window.Render*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_Render_ConsoleAppVisuals_Models_Element___" data-uid="ConsoleAppVisuals.Window.Render(ConsoleAppVisuals.Models.Element[])">
+  Render(params Element[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method draws all given visible elements of the window on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void Render(params Element[] elements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elements</code> <a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a>[]</dt>
+    <dd><p>The elements to be drawn.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_Render_ConsoleAppVisuals_Models_Element____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Errors.ElementNotFoundException.html">ElementNotFoundException</a></dt>
+    <dd><p>Thrown when the element is not found in the window.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Window_RenderElementsSpace_" data-uid="ConsoleAppVisuals.Window.RenderElementsSpace*"></a>
+
+  <h3 id="ConsoleAppVisuals_Window_RenderElementsSpace_System_Boolean_" data-uid="ConsoleAppVisuals.Window.RenderElementsSpace(System.Boolean)">
+  RenderElementsSpace(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/Window.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method draws all the space of the visible elements of the window on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static bool RenderElementsSpace(bool ignoreVisibility = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ignoreVisibility</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the space of the hidden elements will be drawn.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the space of the elements is successfully drawn, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Window_RenderElementsSpace_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024  MorganKryze (Yann Vidamment)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

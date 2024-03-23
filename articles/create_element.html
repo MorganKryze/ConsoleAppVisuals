@@ -1,0 +1,698 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Create your own elements | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Create your own elements | ConsoleAppVisuals ">
+      
+      
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/docs/articles/create_element.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="create-your-own-elements">Create your own elements</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>This article will guide you through the process of creating custom visual elements using the library. This will enable you to create passive elements as well as interactive elements that can be used in your applications.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>.NET framework 6 or later</li>
+<li>ConsoleAppVisuals library: 3.0.0 or later</li>
+<li>Having looked at the project from the <a href="https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html">Introduction section</a></li>
+</ul>
+<h2 id="setup-workspace">Setup workspace</h2>
+<p>We will take the example project of the <a href="https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html">Introduction section</a>.</p>
+<p>As a reminder, here is the file structure of the project:</p>
+<pre><code class="lang-bash">Example_project  &lt;-- root
+└───MyApp
+    ├───bin
+    ├───MyApp.csproj
+    └───Program.cs
+</code></pre>
+<h2 id="passive-elements">Passive elements</h2>
+<p>Passive elements are visual elements that do not have any interactive behavior. They are used to display information to the user. They can be updated and change display properties.</p>
+<h3 id="setup-of-a-passive-element">Setup of a passive element</h3>
+<p>Start by creating a new file in your project and name it <code>PassiveExample.cs</code>. Then, add the following code to the file (see real example in the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/PassiveDemo.cs">example project</a>):</p>
+<pre><code class="lang-csharp">using ConsoleAppVisuals;
+
+namespace MyApp
+{
+    public class PassiveExample : PassiveElement
+    {
+        #region Fields
+        // Add your custom fields here.
+        #endregion
+
+        #region Properties
+        // Add overridden properties here.
+        // You may also add your custom properties here.
+        #endregion
+
+        #region Constructor
+        /// &lt;summary&gt;
+        /// The natural constructor of the PassiveExample element.
+        /// &lt;/summary&gt;
+        public PassiveExample(){}
+        #endregion
+
+        #region Methods
+        // Add your custom methods here.
+        #endregion
+
+        #region Rendering
+        /// &lt;summary&gt;
+        /// Renders the PassiveExample element.
+        /// &lt;/summary&gt;
+        protected override void RenderElementActions()
+        {
+            // This method is mandatory to render correctly your element. If not, an error will be thrown.
+            // Add what the display code here.
+        }
+        #endregion
+    }
+}
+</code></pre>
+<h3 id="customize-your-new-passive-element">Customize your new passive element</h3>
+<p>Now let's look at the <code>Element</code> class. This class is the base class for all visual elements. It contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element (the <code>PassiveElement</code> class inherits from all the <code>Element</code> class attributes, so you can take the <code>Element</code> class as a model to create <code>PassiveElements</code>).</p>
+<p>The method that you can override are highlighted in yellow here:</p>
+<pre><code class="lang-csharp" highlight-lines="36,42,54,113,119,125,178,187,193,230">/*
+    GNU GPL License 2024 MorganKryze(Yann Vidamment)
+    For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
+*/
+namespace ConsoleAppVisuals.Models;
+
+/// &lt;summary&gt;
+/// Defines the basic properties of an console element.
+/// &lt;/summary&gt;
+/// &lt;remarks&gt;
+/// For more information, refer to the following resources:
+/// &lt;list type=&quot;bullet&quot;&gt;
+/// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://morgankryze.github.io/ConsoleAppVisuals/&quot;&gt;Documentation&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+/// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/&quot;&gt;Example Project&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+/// &lt;/list&gt;
+/// &lt;/remarks&gt;
+public abstract class Element
+{
+    #region Properties
+    /// &lt;summary&gt;
+    /// The id number of the element.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This property is sealed. The ID of an element is automatically generated and managed by the &lt;see cref=&quot;Window&quot;/&gt; class.&lt;/remarks&gt;
+    public int Id { get; set; }
+
+    /// &lt;summary&gt;
+    /// The visibility of the element.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This property is sealed. The visibility of an element is managed by the &lt;see cref=&quot;ToggleVisibility&quot;/&gt; method.&lt;/remarks&gt;
+    public bool Visibility { get; private set; } = Window.DEFAULT_ELEMENT_VISIBILITY;
+
+    /// &lt;summary&gt;
+    /// The placement of the element.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.&lt;/remarks&gt;
+    public virtual Placement Placement { get; set; }
+
+    /// &lt;summary&gt;
+    /// The text alignment of the text of the element.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.&lt;/remarks&gt;
+    public virtual TextAlignment TextAlignment { get; set; }
+
+    /// &lt;summary&gt;
+    /// Whether the element is executable or not.
+    /// &lt;/summary&gt;
+    [Visual]
+    public virtual bool IsInteractive { get; }
+
+    /// &lt;summary&gt;
+    /// The line of the element in the console.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;ATTENTION: This property is not marked as virtual. Override this property only to give it a constant value.&lt;/remarks&gt;
+    public virtual int Line
+    {
+        get
+        {
+            var elements = Window.GetRange(0, Id);
+            return Placement switch
+            {
+                Placement.TopCenterFullWidth
+                    =&gt; elements
+                        .Where(e =&gt; e.Placement == Placement.TopCenterFullWidth &amp;&amp; e.Visibility)
+                        .Sum(e =&gt; e.Height)
+                        + elements
+                            .Where(e =&gt; e.Placement == Placement.TopCenter &amp;&amp; e.Visibility)
+                            .Sum(e =&gt; e.Height)
+                        + elements
+                            .Where(e =&gt; e.Placement == Placement.TopLeft &amp;&amp; e.Visibility)
+                            .Sum(e =&gt; e.Height)
+                        + elements
+                            .Where(e =&gt; e.Placement == Placement.TopRight &amp;&amp; e.Visibility)
+                            .Sum(e =&gt; e.Height),
+                Placement.TopCenter
+                    =&gt; elements
+                        .Where(e =&gt; e.Placement == Placement.TopCenterFullWidth &amp;&amp; e.Visibility)
+                        .Sum(e =&gt; e.Height)
+                        + elements
+                            .Where(e =&gt; e.Placement == Placement.TopCenter &amp;&amp; e.Visibility)
+                            .Sum(e =&gt; e.Height),
+                Placement.TopLeft
+                    =&gt; elements
+                        .Where(e =&gt; e.Placement == Placement.TopCenterFullWidth &amp;&amp; e.Visibility)
+                        .Sum(e =&gt; e.Height)
+                        + elements
+                            .Where(e =&gt; e.Placement == Placement.TopLeft &amp;&amp; e.Visibility)
+                            .Sum(e =&gt; e.Height),
+
+                Placement.TopRight
+                    =&gt; elements
+                        .Where(e =&gt; e.Placement == Placement.TopCenterFullWidth &amp;&amp; e.Visibility)
+                        .Sum(e =&gt; e.Height)
+                        + elements
+                            .Where(e =&gt; e.Placement == Placement.TopRight &amp;&amp; e.Visibility)
+                            .Sum(e =&gt; e.Height),
+                Placement.BottomCenterFullWidth
+                    =&gt; (Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1)
+                        - (this.Height - 1)
+                        - elements
+                            .Where(e =&gt;
+                                e.Placement == Placement.BottomCenterFullWidth &amp;&amp; e.Visibility
+                            )
+                            .Sum(e =&gt; e.Height),
+                _ =&gt; throw new ArgumentOutOfRangeException(nameof(Placement), &quot;Invalid placement.&quot;)
+            };
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// The height of the element.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.&lt;/remarks&gt;
+    public virtual int Height { get; } = 0;
+
+    /// &lt;summary&gt;
+    /// The width of the element.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.&lt;/remarks&gt;
+    public virtual int Width { get; } = 0;
+
+    /// &lt;summary&gt;
+    /// The maximum number of this element that can be drawn on the console.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.&lt;/remarks&gt;
+    public virtual int MaxNumberOfThisElement { get; } = int.MaxValue;
+    #endregion
+
+    #region Methods
+    /// &lt;summary&gt;
+    /// This method is used to toggle the visibility of the element.This method is used to toggle the visibility of the element. If the maximum number of this element is reached, an exception is thrown.
+    /// &lt;/summary&gt;
+    /// &lt;exception cref=&quot;InvalidOperationException&quot;&gt;Thrown when the maximum number of this element is reached.&lt;/exception&gt;
+    /// &lt;remarks&gt;This method is effectively sealed. The only way to change the visibility of an element is to use this method.&lt;/remarks&gt;
+    public void ToggleVisibility()
+    {
+        if (Visibility)
+        {
+            Visibility = false;
+        }
+        else if (Window.AllowVisibilityToggle(Id))
+        {
+            Visibility = true;
+        }
+        else
+        {
+            throw new InvalidOperationException(
+                $&quot;Operation not allowed, too many elements of {GetType()} already toggled from the maximum of {MaxNumberOfThisElement}. Consider turning off one element of this type.&quot;
+            );
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// This method is used to draw the element on the console.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;
+    /// For more information, refer to the following resources:
+    /// &lt;list type=&quot;bullet&quot;&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://morgankryze.github.io/ConsoleAppVisuals/&quot;&gt;Documentation&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/&quot;&gt;Example Project&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;/list&gt;
+    /// &lt;/remarks&gt;
+    [Visual]
+    public void RenderElement()
+    {
+        if (Visibility)
+        {
+            RenderOptionsBeforeHand();
+            RenderElementActions();
+            RenderOptionsAfterHand();
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// This method is used to define the actions to perform when the element is drawn on the console.
+    /// &lt;/summary&gt;
+    /// &lt;remarks&gt;This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.&lt;/remarks&gt;
+    [Visual]
+    protected virtual void RenderElementActions()
+    {
+        throw new NotImplementedException(&quot;Consider overriding this method in the derived class.&quot;);
+    }
+
+    /// &lt;summary&gt;
+    /// This method is used to set options before drawing the element on the console.
+    /// &lt;/summary&gt;
+    [Visual]
+    protected virtual void RenderOptionsBeforeHand() { }
+
+    /// &lt;summary&gt;
+    /// This method is used to set options after drawing the element on the console.
+    /// &lt;/summary&gt;
+    [Visual]
+    protected virtual void RenderOptionsAfterHand() { }
+
+    /// &lt;summary&gt;
+    /// This method is used to draw the space taken by the element on the console.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;ignoreVisibility&quot;&gt;Whether to ignore the visibility of the element or not.&lt;/param&gt;
+    /// &lt;remarks&gt;
+    /// For more information, refer to the following resources:
+    /// &lt;list type=&quot;bullet&quot;&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://morgankryze.github.io/ConsoleAppVisuals/&quot;&gt;Documentation&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/&quot;&gt;Example Project&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;/list&gt;
+    /// &lt;/remarks&gt;
+    [Visual]
+    public void RenderElementSpace(bool ignoreVisibility = false)
+    {
+        if (Visibility || ignoreVisibility)
+        {
+            Core.SaveColorPanel();
+            Core.SetForegroundColor(Core.GetRandomColor());
+            Core.WriteMultiplePositionedLines(
+                false,
+                Placement.ToTextAlignment(),
+                true,
+                Line,
+                GetRenderSpace()
+            );
+            Core.LoadSavedColorPanel();
+        }
+    }
+
+    /// &lt;summary&gt;
+    /// This method is used to simulate the drawing space of the element on the console.
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;The space taken by the element.&lt;/returns&gt;
+    /// &lt;remarks&gt;This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.&lt;/remarks&gt;
+    [Visual]
+    protected virtual string[] GetRenderSpace()
+    {
+        var space = new string[Height];
+        for (int i = 0; i &lt; space.Length; i++)
+        {
+            space[i] = new string(' ', Width);
+        }
+        return space;
+    }
+
+    /// &lt;summary&gt;
+    /// This method is used to clear the space taken by the element on the console.
+    /// &lt;/summary&gt;
+    [Visual]
+    public void Clear()
+    {
+        Core.ClearMultiplePositionedLines(Placement, Line, GetRenderSpace());
+    }
+    #endregion
+}
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Depending on the element you want to create, you may not need to override all of these methods. You can override only the ones that are necessary for your element. However I highly recommend to override these:</p>
+<ul>
+<li><code>MaxNumberOfThisElement</code>: Define the maximum number of this element that can be displayed on the screen simultaneously.</li>
+<li><code>RenderElementActions()</code>: Describe how the element should be displayed.</li>
+<li><code>Height</code> and <code>Width</code>: Depending on the element, you may want to override these properties to define the size of your element.</li>
+</ul>
+</div>
+<p>Once your customization is done, you may use your element in your application just like a default element.</p>
+<h2 id="interactive-elements">Interactive elements</h2>
+<p>Interactive elements are visual elements that have interactive behavior. They can be used to create buttons, prompts, menus, and other interactive elements. They can be updated and change display properties. But they also always give a response that the user can catch. The type of the response depends on the element.</p>
+<h3 id="setup-of-an-interactive-element">Setup of an interactive element</h3>
+<p>Similar to the passive elements, you can create interactive elements but this time they inherit from the <code>InteractiveElement</code> class. This class contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.</p>
+<p>Start by creating a new file in your project and name it <code>InteractiveExample.cs</code>. Then, create your new element following this template (see real example in the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs">example project</a>):</p>
+<pre><code class="lang-csharp">using ConsoleAppVisuals;
+
+namespace MyApp
+{
+    public class InteractiveExample : InteractiveElement&lt;T&gt;
+    {
+        #region Fields
+        // Add your custom fields here.
+        #endregion
+
+        #region Properties
+        // Add overridden properties here.
+        // You may also add your custom properties here.
+        #endregion
+
+        #region Constructor
+        /// &lt;summary&gt;
+        /// The natural constructor of the InteractiveExample element.
+        /// &lt;/summary&gt;
+        public InteractiveExample(){}
+        #endregion
+
+        #region Methods
+        // Add your custom methods here.
+        #endregion
+
+        #region Rendering
+        /// &lt;summary&gt;
+        /// Renders the InteractiveExample element.
+        /// &lt;/summary&gt;
+        protected override void RenderElementActions()
+        {
+            // This method is mandatory to render correctly your element. If not, an error will be thrown.
+            // Add what the display code here.
+        }
+        #endregion
+    }
+}
+</code></pre>
+<h3 id="customize-your-new-interactive-element">Customize your new interactive element</h3>
+<p>Now let's look at the <code>InteractiveElement</code> class. This class inherits from the <code>Element</code> class and contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>To define a new interactive element, you must define the type of the response that the element will give. This type can be pretty much everything, but a classic type like <code>int</code>, <code>string</code>, ... is to prefer. In the example above, the type <code>T</code> is used. You can replace it with the type you want to use.</p>
+</div>
+<p>The method that you can override are the same as the <code>Element</code> class at some exceptions:</p>
+<ul>
+<li><code>IsInteractive</code>: is set to true.</li>
+<li><code>MaxNumberOfThisElement</code>: is set to one.</li>
+<li><code>RenderOptionsBeforeHand</code> &amp; <code>RenderOptionsBeforeHand</code>: cannot be modified.</li>
+</ul>
+<p>The callable attributes and methods are <strong>highlighted in yellow</strong> here:</p>
+<pre><code class="lang-csharp" highlight-lines="23,28,59">/*
+    GNU GPL License 2024 MorganKryze(Yann Vidamment)
+    For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
+*/
+namespace ConsoleAppVisuals.Models;
+
+/// &lt;summary&gt;
+/// Defines the basic properties of an console element.
+/// &lt;/summary&gt;
+/// &lt;remarks&gt;
+/// For more information, refer to the following resources:
+/// &lt;list type=&quot;bullet&quot;&gt;
+/// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://morgankryze.github.io/ConsoleAppVisuals/&quot;&gt;Documentation&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+/// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/&quot;&gt;Example Project&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+/// &lt;/list&gt;
+/// &lt;/remarks&gt;
+public abstract class InteractiveElement&lt;TResponse&gt; : Element
+{
+    #region Properties
+    /// &lt;summary&gt;
+    /// Whether the element is interactive or not.
+    /// &lt;/summary&gt;
+    public sealed override bool IsInteractive { get; } = true;
+
+    /// &lt;summary&gt;
+    /// The maximum number of this element that can be drawn on the console. As an interactive element, the value is 1.
+    /// &lt;/summary&gt;
+    public sealed override int MaxNumberOfThisElement { get; } = 1;
+
+    /// &lt;summary&gt;
+    /// The event that is triggered when the user has interacted with the element.
+    /// &lt;/summary&gt;
+    public event EventHandler&lt;InteractionEventArgs&lt;TResponse&gt;&gt;? EndOfInteractionEvent;
+
+    /// &lt;summary&gt;
+    /// The response of the user.
+    /// &lt;/summary&gt;
+    protected List&lt;InteractionEventArgs&lt;TResponse&gt;?&gt; _interactionResponse = new();
+    #endregion
+
+    #region Methods
+    /// &lt;summary&gt;
+    /// Sets the response of the user in the attribute field.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;sender&quot;&gt;The sender of the event.&lt;/param&gt;
+    /// &lt;param name=&quot;e&quot;&gt;The response of the user.&lt;/param&gt;
+    [Visual]
+    protected void SetInteractionResponse(object? sender, InteractionEventArgs&lt;TResponse&gt; e)
+    {
+        _interactionResponse.Add(e);
+    }
+
+    /// &lt;summary&gt;
+    /// Triggers the EndOfInteractionEvent event.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;sender&quot;&gt;The sender of the event.&lt;/param&gt;
+    /// &lt;param name=&quot;e&quot;&gt;The response of the user.&lt;/param&gt;
+    [Visual]
+    protected void SendResponse(object? sender, InteractionEventArgs&lt;TResponse&gt; e)
+    {
+        EndOfInteractionEvent?.Invoke(sender, e);
+    }
+
+    /// &lt;summary&gt;
+    /// Returns the response of the user after an interaction.
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;Null if the user has not interacted with the element, otherwise the response of the user.&lt;/returns&gt;
+    /// &lt;remarks&gt;
+    /// This sample shows how to use the &lt;see cref=&quot;GetResponse&quot;/&gt; method using the var keyword:
+    /// &lt;code&gt;
+    /// var response = element.GetResponse();
+    /// &lt;/code&gt;
+    /// For more information, refer to the following resources:
+    /// &lt;list type=&quot;bullet&quot;&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://morgankryze.github.io/ConsoleAppVisuals/&quot;&gt;Documentation&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/&quot;&gt;Example Project&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;/list&gt;
+    /// &lt;/remarks&gt;
+    [Visual]
+    public InteractionEventArgs&lt;TResponse&gt;? GetResponse()
+    {
+        return _interactionResponse.LastOrDefault();
+    }
+
+    /// &lt;summary&gt;
+    /// Returns the history of the responses of the user after interactions.
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;The history of the responses of the user after interactions.&lt;/returns&gt;
+    /// &lt;remarks&gt;
+    /// For more information, refer to the following resources:
+    /// &lt;list type=&quot;bullet&quot;&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://morgankryze.github.io/ConsoleAppVisuals/&quot;&gt;Documentation&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/&quot;&gt;Example Project&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+    /// &lt;/list&gt;
+    /// &lt;/remarks&gt;
+    [Visual]
+    public List&lt;InteractionEventArgs&lt;TResponse&gt;?&gt; GetResponseHistory()
+    {
+        return _interactionResponse;
+    }
+
+    /// &lt;summary&gt;
+    /// This method is used to set options before drawing the element on the console.
+    /// &lt;/summary&gt;
+    [Visual]
+    protected sealed override void RenderOptionsBeforeHand()
+    {
+        EndOfInteractionEvent += SetInteractionResponse;
+    }
+
+    /// &lt;summary&gt;
+    /// This method is used to set options after drawing the element on the console.
+    /// &lt;/summary&gt;
+    [Visual]
+    protected sealed override void RenderOptionsAfterHand()
+    {
+        EndOfInteractionEvent -= SetInteractionResponse;
+        Window.DeactivateElement(this);
+    }
+    #endregion
+}
+</code></pre>
+<p>Two new methods are available and cannot be modified:</p>
+<ul>
+<li><code>SendResponse()</code>: This method is called when the user interacts with the element. It is used to send a response to the window (highly recommended to see the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs">example project</a> ot understand its implementation).</li>
+<li><code>GetResponse()</code>: This method is called when the user has interacted with the element. It is used to get the response from the user (defined in the <code>Window</code> class).</li>
+</ul>
+<p>To understand how is defined the interaction response, I highlighted the two attributes that are used to define the response:</p>
+<pre><code class="lang-csharp" highlight-lines="23,28">/*
+    GNU GPL License 2024 MorganKryze(Yann Vidamment)
+    For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
+*/
+namespace ConsoleAppVisuals;
+
+/// &lt;summary&gt;
+/// This class contains the arguments of the ScrollingMenuSelected event.
+/// &lt;/summary&gt;
+/// &lt;remarks&gt;
+/// For more information, refer to the following resources:
+/// &lt;list type=&quot;bullet&quot;&gt;
+/// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://morgankryze.github.io/ConsoleAppVisuals/&quot;&gt;Documentation&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+/// &lt;item&gt;&lt;description&gt;&lt;a href=&quot;https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs&quot;&gt;Example Project&lt;/a&gt;&lt;/description&gt;&lt;/item&gt;
+/// &lt;/list&gt;
+/// &lt;/remarks&gt;
+public class InteractionEventArgs&lt;T&gt; : EventArgs
+{
+    /// &lt;summary&gt;
+    /// The state of the exit from the menu.
+    /// &lt;/summary&gt;
+    /// &lt;value&gt;Status.Exit : pressed escape, Status.Delete : pressed backspace, Status.Select : pressed enter&lt;/value&gt;
+    public Status State { get; set; }
+
+    /// &lt;summary&gt;
+    /// The index of the choice of the user among the different choices.
+    /// &lt;/summary&gt;
+    public T Info { get; set; }
+
+    /// &lt;summary&gt;
+    /// This constructor initializes the ScrollingMenuEventArgs class.
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;state&quot;&gt;The state of the exit from the menu.&lt;/param&gt;
+    /// &lt;param name=&quot;info&quot;&gt;The index of the choice of the user among the different choices.&lt;/param&gt;
+    public InteractionEventArgs(Status state, T info)
+    {
+        State = state;
+        Info = info;
+    }
+}
+</code></pre>
+<p>Where <code>State</code> depends on the values of the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/enums/Status.cs"><code>Status</code> enum</a> and <code>Info</code> depends on the <code>T</code> type of the <code>InteractiveElement</code> you created.</p>
+<p>Once your customization is done, you may use your element in your application just like a default element.</p>
+<h2 id="visualize-all-elements-available">Visualize all elements available</h2>
+<p>Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library (available in the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs">example project</a>). Here is an example of how to do it:</p>
+<pre><code class="lang-csharp">Window.Open();
+
+ElementsList passiveList = new ElementsList(ElementType.Passive);
+Window.AddElement(passiveList);
+
+
+Window.Render(passiveList);
+Window.Freeze();
+
+Window.DeactivateElement(passiveList);
+Window.RemoveElement(passiveList);
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/create_element/passive.jpg" alt="Passive elements list"></p>
+<p>Or target only interactive elements:</p>
+<pre><code class="lang-csharp">Window.Open();
+
+ElementsList interactiveList = new ElementsList(ElementType.Interactive);
+Window.AddElement(interactiveList);
+
+Window.Render(interactiveList);
+Window.Freeze();
+
+Window.DeactivateElement(interactiveList);
+Window.RemoveElement(interactiveList);
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/create_element/interactive.jpg" alt="Interactive elements list"></p>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024  MorganKryze (Yann Vidamment)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

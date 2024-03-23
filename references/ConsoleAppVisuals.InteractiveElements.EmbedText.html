@@ -1,0 +1,947 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class EmbedText | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EmbedText | ConsoleAppVisuals ">
+      
+      <meta name="description" content="A  is an interactive element that displays text in a box with an optional button.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText">
+
+
+
+  <h1 id="ConsoleAppVisuals_InteractiveElements_EmbedText" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText" class="text-break">
+Class EmbedText  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a>.<a class="xref" href="ConsoleAppVisuals.InteractiveElements.html">InteractiveElements</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>A <a class="xref" href="ConsoleAppVisuals.InteractiveElements.EmbedText.html">EmbedText</a> is an interactive element that displays text in a box with an optional button.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EmbedText : InteractiveElement&lt;string&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html">InteractiveElement</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+      <div><span class="xref">EmbedText</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1__interactionResponse">InteractiveElement&lt;string&gt;._interactionResponse</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SetInteractionResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;string&gt;.SetInteractionResponse(object, InteractionEventArgs&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SendResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;string&gt;.SendResponse(object, InteractionEventArgs&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponse">InteractiveElement&lt;string&gt;.GetResponse()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponseHistory">InteractiveElement&lt;string&gt;.GetResponseHistory()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsBeforeHand">InteractiveElement&lt;string&gt;.RenderOptionsBeforeHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsAfterHand">InteractiveElement&lt;string&gt;.RenderOptionsAfterHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_IsInteractive">InteractiveElement&lt;string&gt;.IsInteractive</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_MaxNumberOfThisElement">InteractiveElement&lt;string&gt;.MaxNumberOfThisElement</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_EndOfInteractionEvent">InteractiveElement&lt;string&gt;.EndOfInteractionEvent</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_ToggleVisibility">Element.ToggleVisibility()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElement">Element.RenderElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElementSpace_System_Boolean_">Element.RenderElementSpace(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_GetRenderSpace">Element.GetRenderSpace()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Clear">Element.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Id">Element.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Visibility">Element.Visibility</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Line">Element.Line</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_InteractiveElements_EmbedText_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText__ctor_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.#ctor*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText__ctor_System_Collections_Generic_List_System_String__System_String_ConsoleAppVisuals_Enums_TextAlignment_ConsoleAppVisuals_Enums_Placement_ConsoleAppVisuals_Enums_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.#ctor(System.Collections.Generic.List{System.String},System.String,ConsoleAppVisuals.Enums.TextAlignment,ConsoleAppVisuals.Enums.Placement,ConsoleAppVisuals.Enums.BordersType)">
+  EmbedText(List&lt;string&gt;, string?, TextAlignment, Placement, BordersType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>A <a class="xref" href="ConsoleAppVisuals.InteractiveElements.EmbedText.html">EmbedText</a> is an interactive element that displays text in a box with an optional button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EmbedText(List&lt;string&gt; text, string? button = null, TextAlignment align = TextAlignment.Left, Placement placement = Placement.TopCenter, BordersType bordersType = BordersType.SingleStraight)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The text to display.</p>
+</dd>
+    <dt><code>button</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text of the button. Null to not display a button.</p>
+</dd>
+    <dt><code>align</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The alignment of the Embed text.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the Embed text element.</p>
+</dd>
+    <dt><code>bordersType</code> <a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd><p>The type of border to display.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText__ctor_System_Collections_Generic_List_System_String__System_String_ConsoleAppVisuals_Enums_TextAlignment_ConsoleAppVisuals_Enums_Placement_ConsoleAppVisuals_Enums_BordersType__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_Borders_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Borders*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_Borders" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Borders">
+  Borders
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The borders of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Borders Borders { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Models.Borders.html">Borders</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.BordersType*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_BordersType" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.BordersType">
+  BordersType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The border type of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BordersType BordersType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_ButtonText_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.ButtonText*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_ButtonText" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.ButtonText">
+  ButtonText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The text of the button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? ButtonText { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_Height_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Height*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_Height" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The height of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Placement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_Placement" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Placement">
+  Placement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The position of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Placement Placement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_Text_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Text*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_Text" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Text">
+  Text
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The text of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Text { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_TextAlignment_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.TextAlignment*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_TextAlignment" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.TextAlignment">
+  TextAlignment
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The alignment of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override TextAlignment TextAlignment { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_TextToDisplay_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.TextToDisplay*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_TextToDisplay" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.TextToDisplay">
+  TextToDisplay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The text to display.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt;? TextToDisplay { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_Width_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Width*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_Width" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The width of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_AddLine_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.AddLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_AddLine_System_String_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.AddLine(System.String)">
+  AddLine(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a line to the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddLine(string line)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The line to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_AddLine_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_InsertLine_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.InsertLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_InsertLine_System_String_System_Int32_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.InsertLine(System.String,System.Int32)">
+  InsertLine(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Inserts a line to the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InsertLine(string line, int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The line to insert.</p>
+</dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index where to insert the line.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_InsertLine_System_String_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_RemoveLine_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.RemoveLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_RemoveLine_System_Int32_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.RemoveLine(System.Int32)">
+  RemoveLine(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes a line from the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveLine(int index)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the line to remove.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_RemoveLine_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_RemoveLine_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.RemoveLine*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_RemoveLine_System_String_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.RemoveLine(System.String)">
+  RemoveLine(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes a line from the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveLine(string line)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The line to remove.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_RemoveLine_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_RenderElementActions_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.RenderElementActions*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_RenderElementActions" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.RenderElementActions">
+  RenderElementActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Renders the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected override void RenderElementActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateBordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateBordersType*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateBordersType_ConsoleAppVisuals_Enums_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateBordersType(ConsoleAppVisuals.Enums.BordersType)">
+  UpdateBordersType(BordersType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates the borders of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateBordersType(BordersType bordersType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bordersType</code> <a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd><p>The new border type of the Embed text.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateBordersType_ConsoleAppVisuals_Enums_BordersType__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateButtonText_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateButtonText*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateButtonText_System_String_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateButtonText(System.String)">
+  UpdateButtonText(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates the text of the button.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateButtonText(string? newButton)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newButton</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new text of the button.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateButtonText_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdatePlacement_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdatePlacement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdatePlacement_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+  UpdatePlacement(Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates the placement of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePlacement(Placement newPlacement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newPlacement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The new placement of the Embed text.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdatePlacement_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateText_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateText*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateText_System_Collections_Generic_List_System_String__" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateText(System.Collections.Generic.List{System.String})">
+  UpdateText(List&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates the text of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateText(List&lt;string&gt; newText)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The new text of the Embed text.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateText_System_Collections_Generic_List_System_String___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateTextAlignment_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateTextAlignment*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateTextAlignment_ConsoleAppVisuals_Enums_TextAlignment_" data-uid="ConsoleAppVisuals.InteractiveElements.EmbedText.UpdateTextAlignment(ConsoleAppVisuals.Enums.TextAlignment)">
+  UpdateTextAlignment(TextAlignment)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/dev/src/ConsoleAppVisuals/elements/interactive_elements/EmbedText.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>This method updates the alignment of the Embed text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateTextAlignment(TextAlignment newAlignment)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>newAlignment</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The new alignment of the Embed text.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_EmbedText_UpdateTextAlignment_ConsoleAppVisuals_Enums_TextAlignment__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, refer to the following resources:</p>
+<ul><li><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></li><li><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></li></ul>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024  MorganKryze (Yann Vidamment)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
