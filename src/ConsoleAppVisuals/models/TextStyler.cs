@@ -36,7 +36,6 @@ public class TextStyler
     private readonly string _supportedAlphabet;
     private readonly string _supportedNumbers;
     private readonly string _supportedSymbols;
-    private readonly string _author;
     #endregion
 
     #region Properties: Dictionary
@@ -103,7 +102,7 @@ public class TextStyler
                 nameof(fontPath),
                 "A Custom font path implies a non-null value for fontPath."
             );
-        } 
+        }
         else if (source is not Font.Custom && fontPath is not null)
         {
             throw new ArgumentException(
@@ -137,14 +136,14 @@ public class TextStyler
             );
         }
 
-        (_config, _supportedAlphabet, _supportedNumbers, _supportedSymbols, _author) = ParseYaml(
+        (_config, _supportedAlphabet, _supportedNumbers, _supportedSymbols) = ParseYaml(
             yamlContent
         );
 
         BuildDictionary();
     }
 
-    private (FontYamlFile, string, string, string, string) ParseYaml(string yamlContent)
+    private (FontYamlFile, string, string, string) ParseYaml(string yamlContent)
     {
         FontYamlFile config;
         string alphabet;
@@ -228,7 +227,7 @@ public class TextStyler
             symbols = config.Chars["symbols"];
         }
 
-        return (config, alphabet, numbers, symbols, config.Author);
+        return (config, alphabet, numbers, symbols);
     }
 
     private void ValidateTextFile(string filePath, int expectedHeight)
