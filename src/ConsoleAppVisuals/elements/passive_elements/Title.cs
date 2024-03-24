@@ -59,6 +59,11 @@ public class Title : PassiveElement
     /// The text styler of the title.
     /// </summary>
     public TextStyler Styler => _styler;
+
+    /// <summary>
+    /// The font of the title.
+    /// </summary>
+    public Font Font => _styler.Font;
     #endregion
 
     #region Constructor
