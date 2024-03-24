@@ -2,8 +2,9 @@ using ConsoleAppVisuals;
 using ConsoleAppVisuals.Enums;
 using ConsoleAppVisuals.Models;
 
-namespace example
+namespace CustomElement
 {
+
     // This object is a slight modification of the Banner object for the demo (here not interactive).
     public class PassiveDemo : PassiveElement
     {
@@ -170,30 +171,12 @@ namespace example
         {
             for (int i = 0; i < UpperMargin; i++)
             {
-                Core.WritePositionedString(
-                    string.Empty,
-                    Placement,
-                    true,
-                    Line + i,
-                    false
-                );
+                Core.WritePositionedString(string.Empty, Placement, true, Line + i, false);
             }
-            Core.WritePositionedString(
-                Text.BannerToString(),
-                Placement,
-                true,
-                Line,
-                false
-            );
+            Core.WritePositionedString(Text.BannerToString(), Placement, true, Line, false);
             for (int i = 0; i < LowerMargin; i++)
             {
-                Core.WritePositionedString(
-                    string.Empty,
-                    Placement,
-                    true,
-                    Line + Height - 1 - i,
-                    false
-                );
+                Core.WritePositionedString(string.Empty, Placement, true, Line + Height - 1 - i, false);
             }
         }
         #endregion
