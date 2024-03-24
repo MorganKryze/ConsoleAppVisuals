@@ -53,7 +53,7 @@ public class UnitTestTitle
     {
         // Arrange
         Title title1 = new("Hello World!", 2);
-        
+
         // Act
         title1.UpdateMargin(100);
     }
@@ -86,6 +86,7 @@ public class UnitTestTitle
         title1.UpdateFont(Font.Ghost);
 
         // Assert
+        Assert.AreEqual(Font.Ghost, title1.Font);
         Assert.AreEqual(Font.Ghost, title1.Styler.Font);
     }
     #endregion
