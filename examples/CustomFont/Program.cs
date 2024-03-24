@@ -68,6 +68,7 @@ while (true)
 
             Window.RemoveElement(embedText);
             break;
+
         case Status.Escaped:
         case Status.Deleted:
             Window.Close();

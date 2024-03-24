@@ -1,11 +1,12 @@
 using System.Text;
 using ConsoleAppVisuals;
+using ConsoleAppVisuals.Attributes;
 using ConsoleAppVisuals.Enums;
 using ConsoleAppVisuals.Models;
-using ConsoleAppVisuals.Attributes;
 
-namespace example
+namespace CustomElement
 {
+
     // This object is a commented copy of the Prompt object for the demo.
     public class InteractiveDemo : InteractiveElement<string>
     {
@@ -38,8 +39,7 @@ namespace example
         /// <summary>
         /// The width of the prompt element.
         /// </summary>
-        public override int Width =>
-            Math.Max(_question.Length + 1, PROMPT_LEFT_MARGIN + _maxLength);
+        public override int Width => Math.Max(_question.Length + 1, PROMPT_LEFT_MARGIN + _maxLength);
 
         /// <summary>
         /// The question of the prompt element.
@@ -61,7 +61,7 @@ namespace example
         /// </summary>
         public int PrintDuration => _printDuration;
 
-        // Here the MaxNumberOfThisElement property cannot be overridden, so the default value is 1. 
+        // Here the MaxNumberOfThisElement property cannot be overridden, so the default value is 1.
         // You may not change this value for an interactive element.
         #endregion
 
