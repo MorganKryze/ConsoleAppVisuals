@@ -48,7 +48,7 @@ jobs:
       - name: Build
         run: dotnet build -c Release --verbosity quiet
       - name: Generate test results using coverlet
-        run: coverlet testing/bin/Release/net8.0/testing.dll --target "dotnet" --targetargs "test -c Release --no-build --verbosity quiet" --format opencover --exclude-by-attribute 'Visual' --exclude-by-attribute 'Obsolete'
+        run: coverlet tests/bin/Release/net8.0/tests.dll --target "dotnet" --targetargs "test -c Release --no-build --verbosity quiet" --format opencover --exclude-by-attribute 'Visual' --exclude-by-attribute 'Obsolete'
       - name: Convert coverage report to lcov format
         run: reportgenerator "-reports:./coverage.opencover.xml" "-targetdir:coverage" "-reporttypes:lcov"
       - name: Coveralls upload
