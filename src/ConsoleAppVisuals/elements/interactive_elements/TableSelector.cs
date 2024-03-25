@@ -850,7 +850,7 @@ public class TableSelector : InteractiveElement<int>
             for (int j = 0; j < _displayArray.Length; j++)
             {
                 array[j] = _displayArray[j];
-
+                Core.WritePositionedString(array[j], Placement, false, Line + j);
                 if (j == index)
                 {
                     Core.WritePositionedString(
@@ -859,10 +859,6 @@ public class TableSelector : InteractiveElement<int>
                         true,
                         Line + j
                     );
-                }
-                else
-                {
-                    Core.WritePositionedString(array[j], Placement, false, Line + j);
                 }
             }
             switch (Console.ReadKey(intercept: true).Key)
