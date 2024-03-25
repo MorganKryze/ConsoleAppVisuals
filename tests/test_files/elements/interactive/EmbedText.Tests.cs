@@ -122,7 +122,7 @@ public class UnitTestEmbedText
         );
 
         // Act
-        var actual = EmbedText.Text;
+        var actual = EmbedText.Lines;
 
         // Assert
         Assert.AreEqual(textToDisplay, actual);
@@ -346,7 +346,7 @@ public class UnitTestEmbedText
         EmbedText.RemoveLine(0);
 
         // Assert
-        Assert.AreEqual(textToDisplayUnchanged.Count - 1, EmbedText.Text!.Count);
+        Assert.AreEqual(textToDisplayUnchanged.Count - 1, EmbedText.Lines!.Count);
     }
 
     [TestMethod]
@@ -405,7 +405,7 @@ public class UnitTestEmbedText
         EmbedText.RemoveLine("Test for the placement");
 
         // Assert
-        Assert.AreEqual(textToDisplayUnchanged.Count - 1, EmbedText.Text!.Count);
+        Assert.AreEqual(textToDisplayUnchanged.Count - 1, EmbedText.Lines!.Count);
     }
 
     [TestMethod]
@@ -473,10 +473,10 @@ public class UnitTestEmbedText
         );
 
         // Act
-        EmbedText.UpdateText(newTextToDisplay);
+        EmbedText.UpdateLines(newTextToDisplay);
 
         // Assert
-        Assert.AreEqual(newTextToDisplay, EmbedText.Text);
+        Assert.AreEqual(newTextToDisplay, EmbedText.Lines);
     }
     #endregion
 
