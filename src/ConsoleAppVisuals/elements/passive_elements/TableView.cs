@@ -774,6 +774,7 @@ public class TableView : PassiveElement
     [Visual]
     protected override void RenderElementActions()
     {
+        BuildTable();
         string[] array = new string[_displayArray!.Length];
         for (int j = 0; j < _displayArray.Length; j++)
         {
