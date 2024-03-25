@@ -11,9 +11,6 @@ class Program
     private static void Main()
     {
         Window.Open();
-        Dialog dialog = new Dialog(["Welcome to the ConsoleAppVisuals presentation! Yesssss"], "Press [Enter] to continue...");
-        Window.AddElement(dialog);
-        Window.ActivateElement(dialog);
 
         // Create the title element
         var title = new Title("Example project");
