@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This directory contains example projects that demonstrate how to use the `ConsoleAppVisuals` library. Each example is a self-contained project that can be run independently. Here is a list of the examples and their descriptions:
+This directory contains example projects that demonstrate how to use the `ConsoleAppVisuals` library. Each example is a self-contained project that can be run _independently_. Here is a list of the examples and their descriptions:
 
 - **Presentation**: A complete example that demonstrates how to use the `ConsoleAppVisuals` library. It tackles all the major features of the library. It is a good starting point for learning how to use the library. (Used to generate the presentation video in the docs)
 - **PasswordManager**: A simple example using the `Prompt`, `ScrollingMenu`, `TableView` and `TableSelector` classes to create a decent password manager (non-secure project).
@@ -11,7 +11,7 @@ This directory contains example projects that demonstrate how to use the `Consol
 
 ## How to run an example
 
-To run an example, you need to have the `ConsoleAppVisuals` library installed. You can install it by downloading the zip file or by using the following command:
+To run an example, you need to have the `ConsoleAppVisuals` library installed. You can install it by **downloading the zip** file or by **using the following command**:
 
 ```bash
 git clone https://github.com/MorganKryze/ConsoleAppVisuals.git
