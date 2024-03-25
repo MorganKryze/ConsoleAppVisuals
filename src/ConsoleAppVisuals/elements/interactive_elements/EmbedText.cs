@@ -17,7 +17,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 public class EmbedText : InteractiveElement<string>
 {
     #region Fields
-    private List<string> _text;
+    private List<string> _lines;
     private string? _button;
     private TextAlignment _align;
     private Placement _placement;
@@ -48,9 +48,9 @@ public class EmbedText : InteractiveElement<string>
     public override int Width => _textToDisplay!.Max((string s) => s.Length);
 
     /// <summary>
-    /// The text of the Embed text.
+    /// The rows of the Embed text.
     /// </summary>
-    public List<string> Text => _text;
+    public List<string> Lines => _lines;
 
     /// <summary>
     /// The text of the button.
@@ -98,7 +98,7 @@ public class EmbedText : InteractiveElement<string>
         BordersType bordersType = BordersType.SingleStraight
     )
     {
-        _text = text;
+        _lines = text;
         _button = button;
         _align = align;
         _placement = placement;
@@ -111,13 +111,13 @@ public class EmbedText : InteractiveElement<string>
     #region Methods
     private bool CheckIntegrity()
     {
-        if (_text.Count == 0)
+        if (_lines.Count == 0)
         {
             return false;
         }
         if (_button is not null)
         {
-            if (_text.Max((string s) => s.Length) < _button.Length)
+            if (_lines.Max((string s) => s.Length) < _button.Length)
             {
                 return false;
             }
@@ -152,10 +152,10 @@ public class EmbedText : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateText(List<string> newText)
+    public void UpdateLines(List<string> newText)
     {
-        _text.Clear();
-        _text = newText;
+        _lines.Clear();
+        _lines = newText;
     }
 
     /// <summary>
@@ -219,7 +219,7 @@ public class EmbedText : InteractiveElement<string>
     /// </remarks>
     public void AddLine(string line)
     {
-        _text.Add(line);
+        _lines.Add(line);
     }
 
     /// <summary>
@@ -236,7 +236,7 @@ public class EmbedText : InteractiveElement<string>
     /// </remarks>
     public void InsertLine(string line, int index)
     {
-        _text.Insert(index, line);
+        _lines.Insert(index, line);
     }
 
     /// <summary>
@@ -252,11 +252,11 @@ public class EmbedText : InteractiveElement<string>
     /// </remarks>
     public void RemoveLine(string line)
     {
-        if (!_text.Contains(line))
+        if (!_lines.Contains(line))
         {
             throw new ArgumentException("The line is not in the text.");
         }
-        _text.Remove(line);
+        _lines.Remove(line);
     }
 
     /// <summary>
@@ -272,11 +272,11 @@ public class EmbedText : InteractiveElement<string>
     /// </remarks>
     public void RemoveLine(int index)
     {
-        if (index < 0 || index >= _text.Count)
+        if (index < 0 || index >= _lines.Count)
         {
             throw new ArgumentOutOfRangeException("The index is out of range.");
         }
-        _text.RemoveAt(index);
+        _lines.RemoveAt(index);
     }
 
     /// <summary>
@@ -299,9 +299,9 @@ public class EmbedText : InteractiveElement<string>
 
     private void BuildText()
     {
-        var maxLength = _text.Max((string s) => s.Length);
+        var maxLength = _lines.Max((string s) => s.Length);
         _textToDisplay = new List<string>();
-        foreach (var line in _text)
+        foreach (var line in _lines)
         {
             var lineToDisplay = $"{Borders.Vertical} ";
             switch (_align)
