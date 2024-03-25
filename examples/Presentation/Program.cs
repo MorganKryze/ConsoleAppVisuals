@@ -10,10 +10,10 @@ class Program
 {
     private static void Main()
     {
-        // Empty, do not mind, just for debugging purposes
-        Debugging();
-
         Window.Open();
+        Dialog dialog = new Dialog(["Welcome to the ConsoleAppVisuals presentation! Yesssss"], "Press [Enter] to continue...");
+        Window.AddElement(dialog);
+        Window.ActivateElement(dialog);
 
         // Create the title element
         var title = new Title("Example project");
@@ -68,7 +68,7 @@ class Program
 
         // Check the response state (escape, enter or backspace)
         // see the Output enum for more details
-        switch (response?.Status)
+        switch (response!.Status)
         {
             case Status.Selected:
                 // Check the response info (the index of the selected item).
@@ -105,7 +105,7 @@ class Program
 
                         // We create an EmbedText to display the response
                         EmbedText embedResponsePrompt = new EmbedText(
-                            new List<string>() { "You just wrote " + responsePrompt?.Value + "!" },
+                            new List<string>() { "You just wrote " + responsePrompt!.Value + "!" },
                             $"Next ▶",
                             TextAlignment.Center
                         );
@@ -131,7 +131,7 @@ class Program
                         EmbedText embedResponsePasswordPrompt = new EmbedText(
                             new List<string>()
                             {
-                                "You just wrote " + responsePasswordPrompt?.Value + "!"
+                                "You just wrote " + responsePasswordPrompt!.Value + "!"
                             },
                             $"Next ▶",
                             TextAlignment.Center
@@ -162,8 +162,8 @@ class Program
                         EmbedText embedResponseNumber = new EmbedText(
                             new List<string>()
                             {
-                                "Status: " + responseNumber?.Status.ToString(),
-                                "Selected the number " + (responseNumber?.Value) + "!"
+                                "Status: " + responseNumber!.Status.ToString(),
+                                "Selected the number " + (responseNumber!.Value) + "!"
                             }
                         );
                         Window.AddElement(embedResponseNumber);
@@ -191,7 +191,7 @@ class Program
                         Window.ActivateElement(fontMenu);
                         var responseFont = fontMenu.GetResponse();
 
-                        switch (responseFont?.Value)
+                        switch (responseFont!.Value)
                         {
                             case 0:
                                 title.UpdateFont(Font.Lil_Devil);
@@ -314,10 +314,8 @@ class Program
                         EmbedText embedResponseTable = new EmbedText(
                             new List<string>()
                             {
-                                "Status: " + responseTable?.Status.ToString(),
-                                "Selected the player "
-                                    + playersData[responseTable?.Value ?? 0][2]
-                                    + "!"
+                                "Status: " + responseTable!.Status.ToString(),
+                                "Selected the player " + playersData[responseTable!.Value][2] + "!"
                             }
                         );
                         Window.AddElement(embedResponseTable);
@@ -447,7 +445,7 @@ class Program
                         Window.ActivateElement(5);
                         var responseColor = colorMenu.GetResponse();
 
-                        switch (responseColor?.Value)
+                        switch (responseColor!.Value)
                         {
                             case 0:
                                 Core.SetForegroundColor(ConsoleColor.White);
@@ -521,10 +519,5 @@ class Program
             default:
                 break;
         }
-    }
-
-    public static void Debugging()
-    {
-        // Debug code placeholder
     }
 }
