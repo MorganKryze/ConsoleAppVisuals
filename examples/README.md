@@ -11,7 +11,7 @@ This directory contains example projects that demonstrate how to use the `Consol
 
 ## How to run an example
 
-To run an example, you need to have the `ConsoleAppVisuals` library installed. You can install it by **downloading the zip** file or by **using the following command**:
+To run an example, you need to have the `ConsoleAppVisuals` library installed. You can install it by **downloading the zip file** or by **using the following command**:
 
 ```bash
 git clone https://github.com/MorganKryze/ConsoleAppVisuals.git
