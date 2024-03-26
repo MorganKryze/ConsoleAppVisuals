@@ -374,6 +374,7 @@ public class Dialog : InteractiveElement<DialogOption>
                 + Borders.BottomRight
         );
 
+        [Visual]
         void AddOptions()
         {
             _textToDisplay!.Add(
@@ -456,6 +457,8 @@ public class Dialog : InteractiveElement<DialogOption>
                     break;
             }
         }
+
+        [Visual]
         DialogOption SetDefaultValue()
         {
             if (_leftOption is null && _rightOption is null)
@@ -473,6 +476,8 @@ public class Dialog : InteractiveElement<DialogOption>
 
             return DialogOption.Left;
         }
+
+        [Visual]
         void SwitchOptions()
         {
             if (_leftOption is not null && _rightOption is not null)
@@ -483,6 +488,8 @@ public class Dialog : InteractiveElement<DialogOption>
                         : DialogOption.Left;
             }
         }
+
+        [Visual]
         void UpdateOptionSelected()
         {
             if (_leftOption is not null || _rightOption is not null)

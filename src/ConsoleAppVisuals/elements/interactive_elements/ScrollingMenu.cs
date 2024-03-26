@@ -241,34 +241,35 @@ public class ScrollingMenu : InteractiveElement<int>
                     break;
             }
         }
-    }
 
-    [Visual]
-    private static void EqualizeChoicesLength(string[] choices)
-    {
-        int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
-        for (int i = 0; i < choices.Length; i++)
+        [Visual]
+        void EqualizeChoicesLength(string[] choices)
         {
-            choices[i] = choices[i].PadRight(totalWidth);
+            int totalWidth = (choices.Length != 0) ? choices.Max((string s) => s.Length) : 0;
+            for (int i = 0; i < choices.Length; i++)
+            {
+                choices[i] = choices[i].PadRight(totalWidth);
+            }
         }
-    }
 
-    [Visual]
-    private void DisplayChoices(
-        int defaultIndex,
-        Placement placement,
-        string[] choices,
-        int lineChoice,
-        bool delay = false
-    )
-    {
-        string[] array = new string[choices.Length];
-        for (int i = 0; i < choices.Length; i++)
+        [Visual]
+        void DisplayChoices(
+            int defaultIndex,
+            Placement placement,
+            string[] choices,
+            int lineChoice,
+            bool delay = false
+        )
         {
-            array[i] = (i == defaultIndex) ? $" {Selector} {choices[i]}  " : $"   {choices[i]}  ";
-            Core.WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
-            if (delay)
-                Thread.Sleep(30);
+            string[] array = new string[choices.Length];
+            for (int i = 0; i < choices.Length; i++)
+            {
+                array[i] =
+                    (i == defaultIndex) ? $" {Selector} {choices[i]}  " : $"   {choices[i]}  ";
+                Core.WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
+                if (delay)
+                    Thread.Sleep(30);
+            }
         }
     }
     #endregion
