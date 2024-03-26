@@ -65,7 +65,6 @@ public class EmbedText : PassiveElement
     /// The text to display.
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
-
     #endregion
 
     #region Constructor
@@ -239,24 +238,9 @@ public class EmbedText : PassiveElement
         }
         _lines.RemoveAt(index);
     }
+    #endregion
 
-    /// <summary>
-    /// Renders the Embed text.
-    /// </summary>
-    [Visual]
-    protected override void RenderElementActions()
-    {
-        Build();
-        Core.WriteMultiplePositionedLines(
-            false,
-            TextAlignment,
-            Placement,
-            false,
-            Line,
-            _textToDisplay!.ToArray()
-        );
-    }
-
+    #region Rendering
     private void Build()
     {
         var maxLength = _lines.Max((string s) => s.Length);
@@ -287,6 +271,23 @@ public class EmbedText : PassiveElement
         );
         _textToDisplay.Add(
             Borders.BottomLeft + new string(Borders.Horizontal, maxLength + 2) + Borders.BottomRight
+        );
+    }
+
+    /// <summary>
+    /// Renders the Embed text.
+    /// </summary>
+    [Visual]
+    protected override void RenderElementActions()
+    {
+        Build();
+        Core.WriteMultiplePositionedLines(
+            false,
+            TextAlignment,
+            Placement,
+            false,
+            Line,
+            _textToDisplay!.ToArray()
         );
     }
     #endregion

@@ -213,24 +213,10 @@ public class Text : PassiveElement
         }
         _lines.RemoveAt(index);
     }
+    #endregion
 
-    /// <summary>
-    /// Renders the Text element.
-    /// </summary>
+    #region Rendering
     [Visual]
-    protected override void RenderElementActions()
-    {
-        Build();
-        Core.WriteMultiplePositionedLines(
-            false,
-            TextAlignment,
-            Placement,
-            false,
-            Line,
-            _textToDisplay!.ToArray()
-        );
-    }
-
     private void Build()
     {
         if (_lines.Count == 0)
@@ -264,5 +250,23 @@ public class Text : PassiveElement
             _textToDisplay.Add(lineToDisplay);
         }
     }
+
+    /// <summary>
+    /// Renders the Text element.
+    /// </summary>
+    [Visual]
+    protected override void RenderElementActions()
+    {
+        Build();
+        Core.WriteMultiplePositionedLines(
+            false,
+            TextAlignment,
+            Placement,
+            false,
+            Line,
+            _textToDisplay!.ToArray()
+        );
+    }
+
     #endregion
 }
