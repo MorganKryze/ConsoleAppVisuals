@@ -102,7 +102,7 @@ class Program
                 }
                 else
                 {
-                    EmbedText error = new(["Incorrect password. Please try again."], "Retry");
+                    EmbedText error = new(["Incorrect password. Please try again."]);
                     Window.AddElement(error);
 
                     Window.ActivateElement(error);
@@ -253,7 +253,7 @@ class Program
                 || responseNotes?.Status == Status.Escaped
             )
             {
-                EmbedText error = new(["Password not saved."], "Home");
+                EmbedText error = new(["Password not saved."]);
                 Window.AddElement(error);
                 Window.ActivateElement(error);
 

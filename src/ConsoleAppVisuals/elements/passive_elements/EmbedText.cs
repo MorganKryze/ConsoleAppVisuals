@@ -14,11 +14,10 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class EmbedText : InteractiveElement<string>
+public class EmbedText : PassiveElement
 {
     #region Fields
     private List<string> _lines;
-    private string? _button;
     private TextAlignment _align;
     private Placement _placement;
     private readonly Borders _borders;
@@ -53,11 +52,6 @@ public class EmbedText : InteractiveElement<string>
     public List<string> Lines => _lines;
 
     /// <summary>
-    /// The text of the button.
-    /// </summary>
-    public string? ButtonText => _button;
-
-    /// <summary>
     /// The borders of the Embed text.
     /// </summary>
     public Borders Borders => _borders;
@@ -79,7 +73,6 @@ public class EmbedText : InteractiveElement<string>
     /// A <see cref="EmbedText"/> is an interactive element that displays text in a box with an optional button.
     /// </summary>
     /// <param name="text">The text to display.</param>
-    /// <param name="button">The text of the button. Null to not display a button.</param>
     /// <param name="align">The alignment of the Embed text.</param>
     /// <param name="placement">The placement of the Embed text element.</param>
     /// <param name="bordersType">The type of border to display.</param>
@@ -92,54 +85,22 @@ public class EmbedText : InteractiveElement<string>
     /// </remarks>
     public EmbedText(
         List<string> text,
-        string? button = null,
         TextAlignment align = TextAlignment.Left,
         Placement placement = Placement.TopCenter,
         BordersType bordersType = BordersType.SingleStraight
     )
     {
         _lines = text;
-        _button = button;
         _align = align;
         _placement = placement;
         _borders = new Borders(bordersType);
-        if (CheckIntegrity())
-            BuildText();
+        if (IsLinesNotEmpty())
+            Build();
     }
     #endregion
 
     #region Methods
-    private bool CheckIntegrity()
-    {
-        if (_lines.Count == 0)
-        {
-            return false;
-        }
-        if (_button is not null)
-        {
-            if (_lines.Max((string s) => s.Length) < _button.Length)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /// <summary>
-    /// This method updates the text of the button.
-    /// </summary>
-    /// <param name="newButton">The new text of the button.</param>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
-    public void UpdateButtonText(string? newButton)
-    {
-        _button = newButton;
-    }
+    private bool IsLinesNotEmpty() => _lines.Count > 0;
 
     /// <summary>
     /// This method updates the text of the Embed text.
@@ -285,7 +246,7 @@ public class EmbedText : InteractiveElement<string>
     [Visual]
     protected override void RenderElementActions()
     {
-        BuildText();
+        Build();
         Core.WriteMultiplePositionedLines(
             false,
             TextAlignment,
@@ -294,10 +255,9 @@ public class EmbedText : InteractiveElement<string>
             Line,
             _textToDisplay!.ToArray()
         );
-        Window.Freeze();
     }
 
-    private void BuildText()
+    private void Build()
     {
         var maxLength = _lines.Max((string s) => s.Length);
         _textToDisplay = new List<string>();
@@ -325,22 +285,6 @@ public class EmbedText : InteractiveElement<string>
             0,
             Borders.TopLeft + new string(Borders.Horizontal, maxLength + 2) + Borders.TopRight
         );
-        if (_button is not null)
-        {
-            _textToDisplay.Add(
-                $"{Borders.Vertical} " + new string(' ', maxLength) + $" {Borders.Vertical}"
-            );
-            _textToDisplay.Add(
-                $"{Borders.Vertical} "
-                    + "".PadRight(maxLength - _button.Length - 2)
-                    + Core.NEGATIVE_ANCHOR
-                    + " "
-                    + _button
-                    + " "
-                    + Core.NEGATIVE_ANCHOR
-                    + $" {Borders.Vertical}"
-            );
-        }
         _textToDisplay.Add(
             Borders.BottomLeft + new string(Borders.Horizontal, maxLength + 2) + Borders.BottomRight
         );

@@ -27,7 +27,6 @@ public class UnitTestEmbedText
         // Arrange
         var EmbedText = new EmbedText(
             new List<string>() { "Test for the placement", "123was tested" },
-            "Button",
             TextAlignment.Left,
             placement
         );
@@ -48,7 +47,6 @@ public class UnitTestEmbedText
         // Arrange
         var EmbedText = new EmbedText(
             new List<string>() { "Test for the placement", "123was tested" },
-            "Button",
             TextAlignment.Left,
             Placement.TopCenter
         );
@@ -68,12 +66,7 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         var actual = EmbedText.Height;
@@ -91,12 +84,7 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         var actual = EmbedText.Width;
@@ -114,42 +102,13 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         var actual = EmbedText.Lines;
 
         // Assert
         Assert.AreEqual(textToDisplay, actual);
-    }
-    #endregion
-
-    #region ButtonText
-    [TestMethod]
-    [TestCategory("EmbedText")]
-    [DataRow("Button")]
-    [DataRow("Button2")]
-    public void ButtonText_Getter(string buttonText)
-    {
-        // Arrange
-        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            buttonText,
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
-
-        // Act
-        var actual = EmbedText.ButtonText;
-
-        // Assert
-        Assert.AreEqual(buttonText, actual);
     }
     #endregion
 
@@ -165,7 +124,7 @@ public class UnitTestEmbedText
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var EmbedText = new EmbedText(textToDisplay, "Button", align, Placement.TopCenter);
+        var EmbedText = new EmbedText(textToDisplay, align, Placement.TopCenter);
 
         // Assert
         Assert.IsNotNull(EmbedText.TextToDisplay);
@@ -181,12 +140,7 @@ public class UnitTestEmbedText
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Assert
         Assert.IsNotNull(EmbedText);
@@ -200,12 +154,7 @@ public class UnitTestEmbedText
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
 
         // Act
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Assert
         Assert.IsNotNull(EmbedText);
@@ -219,54 +168,10 @@ public class UnitTestEmbedText
         var textToDisplay = new List<string>();
 
         // Act
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Assert
         Assert.IsNotNull(EmbedText);
-    }
-
-    [TestMethod]
-    [TestCategory("EmbedText")]
-    public void Constructor_EmptyButtonTextBuilds()
-    {
-        // Arrange
-        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-
-        // Act
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            default,
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
-
-        // Assert
-        Assert.IsNotNull(EmbedText);
-    }
-
-    [TestMethod]
-    [TestCategory("EmbedText")]
-    public void Constructor_ButtonTooBigForText()
-    {
-        // Arrange
-        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var buttonText = "ButtonTooBigForText1234567890";
-
-        //Act
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            buttonText,
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
-
-        // Assert
-        Assert.IsNull(EmbedText.TextToDisplay);
     }
     #endregion
 
@@ -277,19 +182,14 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
         var marginValue = 2;
 
         // Act
         EmbedText.AddLine("New line");
 
         // Assert
-        Assert.AreEqual(textToDisplay.Count + marginValue + 1, EmbedText.TextToDisplay!.Count);
+        Assert.AreEqual(textToDisplay.Count + marginValue, EmbedText.TextToDisplay!.Count + 1);
     }
     #endregion
 
@@ -300,19 +200,14 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
         var marginValue = 2;
 
         // Act
         EmbedText.InsertLine("New line", 1);
 
         // Assert
-        Assert.AreEqual(textToDisplay.Count + marginValue + 1, EmbedText.TextToDisplay!.Count);
+        Assert.AreEqual(textToDisplay.Count + marginValue, EmbedText.TextToDisplay!.Count + 1);
     }
     #endregion
 
@@ -335,12 +230,7 @@ public class UnitTestEmbedText
             "3456 TEst"
         };
 
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         EmbedText.RemoveLine(0);
@@ -355,12 +245,7 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => EmbedText.RemoveLine(-1));
@@ -372,12 +257,7 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         Assert.ThrowsException<ArgumentOutOfRangeException>(() => EmbedText.RemoveLine(3));
@@ -394,12 +274,7 @@ public class UnitTestEmbedText
             "Test for the placement",
             "123was tested"
         };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         EmbedText.RemoveLine("Test for the placement");
@@ -414,41 +289,12 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         Assert.ThrowsException<ArgumentException>(
             () => EmbedText.RemoveLine("Test for the placement2")
         );
-    }
-    #endregion
-
-    #region UpdateButtonText
-    [TestMethod]
-    [TestCategory("EmbedText")]
-    [DataRow("Button")]
-    [DataRow(null)]
-    public void UpdateButtonText_UpdatesButtonTextCorrectly(string? newButtonText)
-    {
-        // Arrange
-        var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
-
-        // Act
-        EmbedText.UpdateButtonText(newButtonText);
-
-        // Assert
-        Assert.AreEqual(newButtonText, EmbedText.ButtonText);
     }
     #endregion
 
@@ -465,12 +311,7 @@ public class UnitTestEmbedText
             "123was tested",
             "New line"
         };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         EmbedText.UpdateLines(newTextToDisplay);
@@ -489,12 +330,7 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         EmbedText.UpdatePlacement(newPlacement);
@@ -513,12 +349,7 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         EmbedText.UpdateTextAlignment(newTextAlignment);
@@ -538,12 +369,7 @@ public class UnitTestEmbedText
     {
         // Arrange
         var textToDisplay = new List<string>() { "Test for the placement", "123was tested" };
-        var EmbedText = new EmbedText(
-            textToDisplay,
-            "Button",
-            TextAlignment.Left,
-            Placement.TopCenter
-        );
+        var EmbedText = new EmbedText(textToDisplay, TextAlignment.Left, Placement.TopCenter);
 
         // Act
         EmbedText.UpdateBordersType(newBorderType);

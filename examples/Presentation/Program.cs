@@ -79,9 +79,8 @@ class Program
                                 "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,",
                                 "lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),",
                                 "and component-oriented programming disciplines.",
-                                ""
-                            },
-                            "Press [Enter] to continue..."
+                                "Press [Enter] to continue..."
+                            }
                         );
                         Window.AddElement(text);
 
@@ -102,8 +101,11 @@ class Program
 
                         // We create an EmbedText to display the response
                         EmbedText embedResponsePrompt = new EmbedText(
-                            new List<string>() { "You just wrote " + responsePrompt!.Value + "!" },
-                            $"Next ▶",
+                            new List<string>()
+                            {
+                                "You just wrote " + responsePrompt!.Value + "!",
+                                "Next ▶"
+                            },
                             TextAlignment.Center
                         );
                         Window.AddElement(embedResponsePrompt);
@@ -128,9 +130,9 @@ class Program
                         EmbedText embedResponsePasswordPrompt = new EmbedText(
                             new List<string>()
                             {
-                                "You just wrote " + responsePasswordPrompt!.Value + "!"
+                                "You just wrote " + responsePasswordPrompt!.Value + "!",
+                                $"Next ▶"
                             },
-                            $"Next ▶",
                             TextAlignment.Center
                         );
                         Window.AddElement(embedResponsePasswordPrompt);
@@ -484,9 +486,9 @@ class Program
                 EmbedText exitText = new EmbedText(
                     new List<string>()
                     {
-                        "You have selected to quit the app. Press [Enter] to continue..."
+                        "You have selected to quit the app. Press [Enter] to continue...",
+                        $"Next ▶",
                     },
-                    $"Next ▶",
                     TextAlignment.Left
                 );
                 Window.AddElement(exitText);
