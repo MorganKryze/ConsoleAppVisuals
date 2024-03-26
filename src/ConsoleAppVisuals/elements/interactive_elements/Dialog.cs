@@ -6,6 +6,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
 /// A <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
+/// See <see cref="DialogOption"/> for the possible outputs of a dialog.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -14,7 +15,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class Dialog : InteractiveElement<int>
+public class Dialog : InteractiveElement<DialogOption>
 {
     #region Fields
     private List<string> _lines;
@@ -33,7 +34,7 @@ public class Dialog : InteractiveElement<int>
     /// The width ratio between the two options of the Dialog.
     /// It ensures that the options are not too close to each other.
     /// </summary>
-    private const double WIDTH_RATIO = 1.1;
+    private const double WIDTH_RATIO = 1.2;
     #endregion
 
     #region Properties
@@ -97,6 +98,7 @@ public class Dialog : InteractiveElement<int>
     #region Constructor
     /// <summary>
     /// A <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
+    /// '0' index represents the left option and '1' index represents the right option.
     /// </summary>
     /// <param name="lines">The text to display.</param>
     /// <param name="leftOption">The text of the left option. Null for no button.</param>
@@ -314,31 +316,15 @@ public class Dialog : InteractiveElement<int>
     {
         if (index < 0 || index >= _lines.Count)
         {
-            throw new ArgumentOutOfRangeException("The index is out of range.");
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
         }
         _lines.RemoveAt(index);
         Build();
     }
+    #endregion
 
-    /// <summary>
-    /// Renders the Dialog.
-    /// </summary>
+    #region Rendering
     [Visual]
-    protected override void RenderElementActions()
-    {
-        // TODO: UPDATE Code to implement new feature
-        Build();
-        Core.WriteMultiplePositionedLines(
-            false,
-            TextAlignment,
-            Placement,
-            false,
-            Line,
-            _textToDisplay!.ToArray()
-        );
-        Window.Freeze();
-    }
-
     private void Build()
     {
         if (!CheckIntegrity())
@@ -387,31 +373,159 @@ public class Dialog : InteractiveElement<int>
                 + new string(Borders.Horizontal, MaxLineLength + EMBED_MARGIN)
                 + Borders.BottomRight
         );
+
+        void AddOptions()
+        {
+            _textToDisplay!.Add(
+                $"{Borders.Vertical} " + new string(' ', MaxLineLength) + $" {Borders.Vertical}"
+            );
+
+            string optionLine =
+                $"{Borders.Vertical} " + new string(' ', MaxLineLength) + $" {Borders.Vertical}";
+
+            if (_leftOption is not null)
+            {
+                optionLine = optionLine.Remove(2, _leftOption.Length);
+                optionLine = optionLine.Insert(2, _leftOption);
+            }
+
+            if (_rightOption is not null)
+            {
+                int insertPosition = optionLine.Length - _rightOption.Length - 2;
+                optionLine = optionLine.Remove(insertPosition, _rightOption.Length);
+                optionLine = optionLine.Insert(insertPosition, _rightOption);
+            }
+
+            _textToDisplay.Add(optionLine);
+        }
     }
 
-    private void AddOptions()
+    /// <summary>
+    /// Renders the Dialog.
+    /// </summary>
+    [Visual]
+    protected override void RenderElementActions()
     {
-        _textToDisplay!.Add(
-            $"{Borders.Vertical} " + new string(' ', MaxLineLength) + $" {Borders.Vertical}"
-        );
+        Build();
 
-        string optionLine =
-            $"{Borders.Vertical} " + new string(' ', MaxLineLength) + $" {Borders.Vertical}";
+        DialogOption optionSelectedIndex = SetDefaultValue();
 
-        if (_leftOption is not null)
+        bool loop = true;
+        while (loop)
         {
-            optionLine = optionLine.Remove(2, _leftOption.Length);
-            optionLine = optionLine.Insert(2, _leftOption);
-        }
+            UpdateOptionSelected();
+            Core.WriteMultiplePositionedLines(
+                false,
+                TextAlignment,
+                Placement,
+                false,
+                Line,
+                _textToDisplay!.ToArray()
+            );
 
-        if (_rightOption is not null)
+            switch (Console.ReadKey(true).Key)
+            {
+                case ConsoleKey.Enter:
+                    SendResponse(
+                        this,
+                        new InteractionEventArgs<DialogOption>(Status.Selected, optionSelectedIndex)
+                    );
+                    loop = false;
+                    break;
+
+                case ConsoleKey.Escape:
+                    SendResponse(
+                        this,
+                        new InteractionEventArgs<DialogOption>(Status.Escaped, DialogOption.None)
+                    );
+                    loop = false;
+                    break;
+
+                case ConsoleKey.Q:
+                case ConsoleKey.LeftArrow:
+                    SwitchOptions();
+                    break;
+
+                case ConsoleKey.D:
+                case ConsoleKey.RightArrow:
+                    SwitchOptions();
+                    break;
+
+                case ConsoleKey.Tab:
+                    SwitchOptions();
+                    break;
+            }
+        }
+        DialogOption SetDefaultValue()
         {
-            int insertPosition = optionLine.Length - _rightOption.Length - 2;
-            optionLine = optionLine.Remove(insertPosition, _rightOption.Length);
-            optionLine = optionLine.Insert(insertPosition, _rightOption);
-        }
+            if (_leftOption is null && _rightOption is null)
+            {
+                return DialogOption.None;
+            }
+            else if (_leftOption is not null && _rightOption is null)
+            {
+                return DialogOption.Left;
+            }
+            else if (_leftOption is null && _rightOption is not null)
+            {
+                return DialogOption.Right;
+            }
 
-        _textToDisplay.Add(optionLine);
+            return DialogOption.Left;
+        }
+        void SwitchOptions()
+        {
+            if (_leftOption is not null && _rightOption is not null)
+            {
+                optionSelectedIndex =
+                    optionSelectedIndex == DialogOption.Left
+                        ? DialogOption.Right
+                        : DialogOption.Left;
+            }
+        }
+        void UpdateOptionSelected()
+        {
+            if (_leftOption is not null || _rightOption is not null)
+            {
+                string optionLine =
+                    $"{Borders.Vertical} "
+                    + new string(' ', MaxLineLength)
+                    + $" {Borders.Vertical}";
+
+                if (_rightOption is not null && optionSelectedIndex == DialogOption.Right)
+                {
+                    int insertPosition = optionLine.Length - 1 - _rightOption.Length - 1 - 2;
+                    optionLine = optionLine.Remove(insertPosition, _rightOption.Length + 2);
+                    optionLine = optionLine.Insert(
+                        insertPosition,
+                        Core.NEGATIVE_ANCHOR + " " + _rightOption + " " + Core.NEGATIVE_ANCHOR
+                    );
+                }
+                else if (_rightOption is not null && optionSelectedIndex == DialogOption.Left)
+                {
+                    int insertPosition = optionLine.Length - 1 - _rightOption.Length - 1 - 2;
+                    optionLine = optionLine.Remove(insertPosition, _rightOption.Length + 2);
+                    optionLine = optionLine.Insert(insertPosition, " " + _rightOption + " ");
+                }
+
+                if (_leftOption is not null && optionSelectedIndex == DialogOption.Left)
+                {
+                    optionLine = optionLine.Remove(2, _leftOption.Length + 2);
+                    optionLine = optionLine.Insert(
+                        2,
+                        Core.NEGATIVE_ANCHOR + " " + _leftOption + " " + Core.NEGATIVE_ANCHOR
+                    );
+                }
+                else if (_leftOption is not null && optionSelectedIndex == DialogOption.Right)
+                {
+                    optionLine = optionLine.Remove(2, _leftOption.Length + 2);
+                    optionLine = optionLine.Insert(2, " " + _leftOption + " ");
+                }
+
+                _textToDisplay![^2] = optionLine;
+            }
+        }
     }
+
     #endregion
 }
