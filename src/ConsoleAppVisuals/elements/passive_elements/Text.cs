@@ -21,7 +21,6 @@ public class Text : PassiveElement
     private TextAlignment _align;
     private Placement _placement;
     private List<string>? _textToDisplay;
-
     #endregion
 
     #region Properties
@@ -54,7 +53,6 @@ public class Text : PassiveElement
     /// The text to display.
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
-
     #endregion
 
     #region Constructor
@@ -189,7 +187,7 @@ public class Text : PassiveElement
     {
         if (!_lines.Contains(line))
         {
-            throw new ArgumentException("The line is not in the text.");
+            throw new ArgumentException("The line is not in the text.", nameof(line));
         }
         _lines.Remove(line);
     }
@@ -209,7 +207,7 @@ public class Text : PassiveElement
     {
         if (index < 0 || index >= _lines.Count)
         {
-            throw new ArgumentOutOfRangeException("The index is out of range.");
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
         }
         _lines.RemoveAt(index);
     }
