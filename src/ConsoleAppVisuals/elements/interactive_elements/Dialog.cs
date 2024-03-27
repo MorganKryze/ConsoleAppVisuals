@@ -37,7 +37,7 @@ public class Dialog : InteractiveElement<DialogOption>
     private const double WIDTH_RATIO = 1.2;
     #endregion
 
-    #region Properties
+    #region Default Properties
     /// <summary>
     /// The position of the Dialog.
     /// </summary>
@@ -57,7 +57,9 @@ public class Dialog : InteractiveElement<DialogOption>
     /// The width of the Dialog.
     /// </summary>
     public override int Width => _textToDisplay!.Max(s => s.Length);
+    #endregion
 
+    #region Properties
     /// <summary>
     /// The rows of the Dialog.
     /// </summary>
@@ -98,7 +100,7 @@ public class Dialog : InteractiveElement<DialogOption>
     #region Constructor
     /// <summary>
     /// A <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
-    /// '0' index represents the left option and '1' index represents the right option.
+    /// See <see cref="DialogOption"/> for the possible outputs of a dialog.
     /// </summary>
     /// <param name="lines">The text to display.</param>
     /// <param name="leftOption">The text of the left option. Null for no button.</param>
@@ -128,21 +130,12 @@ public class Dialog : InteractiveElement<DialogOption>
         _align = align;
         _placement = placement;
         _borders = new Borders(bordersType);
-        if (CheckIntegrity())
+        if (_lines.Count != 0)
             Build();
     }
     #endregion
 
-    #region Methods
-    private bool CheckIntegrity()
-    {
-        if (_lines.Count == 0)
-        {
-            return false;
-        }
-        return true;
-    }
-
+    #region Update Methods
     /// <summary>
     /// This method updates the text of the first option.
     /// </summary>
@@ -244,7 +237,9 @@ public class Dialog : InteractiveElement<DialogOption>
         _borders.UpdateBordersType(bordersType);
         Build();
     }
+    #endregion
 
+    #region Manipulation Methods
     /// <summary>
     /// Adds a line to the Dialog.
     /// </summary>
@@ -265,8 +260,8 @@ public class Dialog : InteractiveElement<DialogOption>
     /// <summary>
     /// Inserts a line to the Dialog.
     /// </summary>
-    /// <param name="line">The line to insert.</param>
     /// <param name="index">The index where to insert the line.</param>
+    /// <param name="line">The line to insert.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -274,8 +269,12 @@ public class Dialog : InteractiveElement<DialogOption>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void InsertLine(string line, int index)
+    public void InsertLine(int index, string line)
     {
+        if (index < 0 || index >= _lines.Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
+        }
         _lines.Insert(index, line);
         Build();
     }
@@ -327,7 +326,7 @@ public class Dialog : InteractiveElement<DialogOption>
     [Visual]
     private void Build()
     {
-        if (!CheckIntegrity())
+        if (_lines.Count == 0)
         {
             throw new InvalidOperationException(
                 "The lines are empty. You must provide at least one line to display in the Dialog"
