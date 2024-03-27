@@ -16,7 +16,7 @@ namespace ConsoleAppVisuals.Models;
 /// </remarks>
 public abstract class PassiveElement : Element
 {
-    #region Properties
+    #region Sealed Properties
     /// <summary>
     /// Whether the element is executable or not.
     /// </summary>

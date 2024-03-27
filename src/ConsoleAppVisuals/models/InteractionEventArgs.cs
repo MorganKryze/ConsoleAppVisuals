@@ -16,6 +16,7 @@ namespace ConsoleAppVisuals.Models;
 /// </remarks>
 public class InteractionEventArgs<T> : EventArgs
 {
+    #region Fields
     /// <summary>
     /// The status after exiting the interactive element.
     /// </summary>
@@ -26,7 +27,9 @@ public class InteractionEventArgs<T> : EventArgs
     /// The value of the response after exiting the interactive element.
     /// </summary>
     public T Value { get; set; }
+    #endregion
 
+    #region Constructor
     /// <summary>
     /// This constructor initializes the InteractionEventArgs class.
     /// </summary>
@@ -37,4 +40,5 @@ public class InteractionEventArgs<T> : EventArgs
         Status = status;
         Value = value;
     }
+    #endregion
 }

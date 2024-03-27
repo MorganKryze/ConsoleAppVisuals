@@ -16,7 +16,7 @@ namespace ConsoleAppVisuals.Models;
 /// </remarks>
 public struct Position : IEquatable<Position>
 {
-    #region Attributes
+    #region Fields
     /// <summary>
     /// The x coordinate of the position.
     /// </summary>

@@ -16,27 +16,18 @@ namespace ConsoleAppVisuals;
 /// </remarks>
 public static class Window
 {
-    #region Fields: s_elements
-    private static readonly List<Element> s_elements = new();
-    #endregion
-
-    #region Constants: DefaultVisibility
-    /// <summary>
-    /// The default visibility of the elements when they are added to the window.
-    /// </summary>
-    /// <remarks>
-    /// This value should not be changed.
-    /// Each time the user adds an element to the window, it will try to toggle the visibility of the element.
-    /// </remarks>
-    public const bool DEFAULT_ELEMENT_VISIBILITY = false;
-
+    #region Constants
     /// <summary>
     /// Defines the interval of milliseconds between different read key of the console (used in the <see cref="Freeze"/> method).
     /// </summary>
     public const int INTERVAL_BETWEEN_READS = 10;
     #endregion
 
-    #region Properties: NextId, NumberOfElements, Elements
+    #region Fields
+    private static readonly List<Element> s_elements = new();
+    #endregion
+
+    #region Properties
     /// <summary>
     /// Gives the next id number each time a new element is added to the window.
     /// </summary>
@@ -53,7 +44,7 @@ public static class Window
     public static List<Element> Elements => s_elements;
     #endregion
 
-    #region Managing Methods: Get, Add, Insert, Remove, RemoveAll
+    #region Managing Methods
 
     /// <summary>
     /// This method returns a range of elements given a start and end ids.
@@ -278,7 +269,7 @@ public static class Window
     }
     #endregion
 
-    #region Visibility Methods: ActivateElement, ActivateAllElements, DeactivateElement, DeactivateAllElements
+    #region Visibility Methods
     /// <summary>
     /// This method attempts to activate the visibility of the element with the given id.
     /// </summary>
@@ -493,7 +484,7 @@ public static class Window
     }
     #endregion
 
-    #region Utility Methods: AllowVisibilityToggle, GetLineAvailable, Clear, StopExecution, Refresh
+    #region Utility Methods
     private static void UpdateIDs()
     {
         for (int i = 0; i < s_elements.Count; i++)
