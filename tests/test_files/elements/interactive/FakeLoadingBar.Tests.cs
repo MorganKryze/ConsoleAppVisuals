@@ -54,7 +54,7 @@ public class UnitTestFakeLoadingBar
     #region UpdateText
     [TestMethod]
     [DataRow("hello world")]
-    [DataRow("")]
+    [DataRow("h")]
     public void UpdateText_ModifyText_TextUpdated(string text)
     {
         // Arrange
@@ -66,12 +66,23 @@ public class UnitTestFakeLoadingBar
         // Assert
         Assert.AreEqual(fakeLoadingBar.Text, text);
     }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void UpdateText_ModifyTextWithEmptyString_TextNotUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+
+        // Act
+        fakeLoadingBar.UpdateText("");
+    }
     #endregion
 
     #region Text
     [TestMethod]
     [DataRow("hello world")]
-    [DataRow("")]
+    [DataRow("h")]
     public void Text_SetText_TextSet(string text)
     {
         // Arrange
@@ -213,6 +224,32 @@ public class UnitTestFakeLoadingBar
 
         // Act
         fakeLoadingBar.UpdateAdditionalDuration(-2000);
+    }
+    #endregion
+
+    #region UpdateProcessDuration
+    [TestMethod]
+    public void UpdateProcessDuration_UpdateProcessDuration_ProcessDurationUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+
+        // Act
+        fakeLoadingBar.UpdateProcessDuration(2000);
+
+        // Assert
+        Assert.AreEqual(2000, fakeLoadingBar.ProcessDuration);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void UpdateProcessDuration_UpdateProcessDurationWithNegativeValue_ProcessDurationNotUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+
+        // Act
+        fakeLoadingBar.UpdateProcessDuration(-2000);
     }
     #endregion
 }
