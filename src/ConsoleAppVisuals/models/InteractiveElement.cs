@@ -16,7 +16,7 @@ namespace ConsoleAppVisuals.Models;
 /// </remarks>
 public abstract class InteractiveElement<TResponse> : Element
 {
-    #region Properties
+    #region Sealed Properties
     /// <summary>
     /// Whether the element is interactive or not.
     /// </summary>
