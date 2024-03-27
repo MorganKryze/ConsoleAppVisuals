@@ -157,8 +157,8 @@ public class Text : PassiveElement
     /// <summary>
     /// Inserts a line to the Text element.
     /// </summary>
-    /// <param name="line">The line to insert.</param>
     /// <param name="index">The index where to insert the line.</param>
+    /// <param name="line">The line to insert.</param>
     /// <remarks>
     /// For more information, refer to the following resources:
     /// <list type="bullet">
@@ -166,7 +166,7 @@ public class Text : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void InsertLine(string line, int index)
+    public void InsertLine(int index, string line)
     {
         _lines.Insert(index, line);
         Build();
