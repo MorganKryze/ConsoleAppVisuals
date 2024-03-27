@@ -292,7 +292,7 @@ the "copyright" line and a pointer to where the full notice is found.
 
     ConsoleAppVisuals is a User-friendly .NET visuals library
     designed for console applications.
-    Copyright (C) 2024  MorganKryze (Yann M. Vidamment)
+    Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -313,7 +313,7 @@ Also add information on how to contact you by electronic and paper mail.
 If the program is interactive, make it output a short notice like this
 when it starts in an interactive mode:
 
-    ConsoleAppVisuals, Copyright (C) 2024  MorganKryze (Yann M. Vidamment)
+    ConsoleAppVisuals, Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
     This is free software, and you are welcome to redistribute it
     under certain conditions; type `show c' for details.

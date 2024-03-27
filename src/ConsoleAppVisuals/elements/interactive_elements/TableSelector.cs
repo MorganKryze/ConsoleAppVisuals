@@ -1,6 +1,6 @@
 /*
-    GNU GPL License 2024 MorganKryze(Yann Vidamment)
-    For full license information, please visit: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE
+    Copyright (c) 2024 Yann M. Vidamment (MorganKryze)
+    Licensed under GNU GPL v2.0. See full license at: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md
 */
 namespace ConsoleAppVisuals.InteractiveElements;
 
