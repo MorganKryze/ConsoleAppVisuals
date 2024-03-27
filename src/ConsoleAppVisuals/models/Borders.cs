@@ -16,16 +16,18 @@ namespace ConsoleAppVisuals.Models;
 /// </remarks>
 public class Borders
 {
-    #region Fields
-    private BordersType _type;
-    #endregion
-
     #region Constants
     private const string SINGLE_STRAIGHT = "┌┐└┘─│┬┴├┤┼";
     private const string SINGLE_ROUNDED = "╭╮╰╯─│┬┴├┤┼";
     private const string SINGLE_BOLD = "┏┓┗┛━┃┳┻┣┫╋";
     private const string DOUBLE_STRAIGHT = "╔╗╚╝═║╦╩╠╣╬";
     private const string ASCII = "++++-|+++++";
+    private const int DEFAULT_MINIMUM_INDEX = 0;
+    private const int DEFAULT_MAXIMUM_INDEX = 11;
+    #endregion
+
+    #region Fields
+    private BordersType _type;
     #endregion
 
     #region Properties
@@ -141,10 +143,10 @@ public class Borders
     /// </remarks>
     public char GetBorderChar(int index)
     {
-        if (index < 0 || index >= 12)
+        if (index < DEFAULT_MINIMUM_INDEX || index >= DEFAULT_MAXIMUM_INDEX)
         {
             throw new ArgumentOutOfRangeException(
-                $"Invalid border index. Index must be between 0 and 11. (actual: {index})"
+                $"Invalid border index. Index must be between 0 and 10. (actual: {index})"
             );
         }
         string border = SINGLE_STRAIGHT;
