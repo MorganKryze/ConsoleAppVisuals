@@ -5,19 +5,19 @@
 namespace tests;
 
 [TestClass]
-public class UnitTestPassiveElement
+public class UnitTestAnimatedElement
 {
-    #region Type is Passive
+    #region Type is Animated
     [TestMethod]
     public void IsInteractive_IsFalse()
     {
         // Arrange
-        var element = new TestElement2();
+        var element = new TestElement3();
 
         // Assert
-        Assert.AreEqual(ElementType.Passive, element.Type);
+        Assert.AreEqual(ElementType.Animated, element.Type);
     }
     #endregion
 }
 
-public class TestElement2 : PassiveElement { }
+public class TestElement3 : AnimatedElement { }

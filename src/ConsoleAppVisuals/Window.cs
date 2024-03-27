@@ -148,7 +148,7 @@ public static class Window
 
             element.Id = NextId;
             s_elements.Add(element);
-            if (!element.IsInteractive && AllowVisibilityToggle(element.Id))
+            if (element.Type is ElementType.Passive && AllowVisibilityToggle(element.Id))
             {
                 element.ToggleVisibility();
             }
@@ -500,10 +500,11 @@ public static class Window
     /// <returns>True if the element can be toggled to visible, false otherwise.</returns>
     public static bool AllowVisibilityToggle(int id)
     {
-        if (s_elements[id].IsInteractive)
+        if (s_elements[id].Type is ElementType.Interactive or ElementType.Animated)
         {
             int numberOfVisibleInteractiveElements = s_elements.Count(element =>
-                element.IsInteractive && element.Visibility
+                element.Type is ElementType.Interactive or ElementType.Animated
+                && element.Visibility
             );
             return numberOfVisibleInteractiveElements == 0;
         }

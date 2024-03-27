@@ -18,9 +18,9 @@ public abstract class InteractiveElement<TResponse> : Element
 {
     #region Sealed Properties
     /// <summary>
-    /// Whether the element is interactive or not.
+    /// The type of the element.
     /// </summary>
-    public sealed override bool IsInteractive { get; } = true;
+    public sealed override ElementType Type => ElementType.Interactive;
 
     /// <summary>
     /// The maximum number of this element that can be drawn on the console. As an interactive element, the value is 1.

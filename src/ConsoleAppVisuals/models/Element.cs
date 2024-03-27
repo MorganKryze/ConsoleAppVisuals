@@ -52,7 +52,7 @@ public abstract class Element
     /// Whether the element is executable or not.
     /// </summary>
     [Visual]
-    public virtual bool IsInteractive { get; }
+    public virtual ElementType Type { get; }
 
     /// <summary>
     /// The height of the element.

@@ -224,6 +224,16 @@ public class ElementsList : PassiveElement
                         );
                         break;
 
+                    case ElementType.Animated:
+                        types.AddRange(
+                            assembly
+                                .GetTypes()
+                                .Where(t =>
+                                    t.BaseType != null && t.IsSubclassOf(typeof(AnimatedElement))
+                                )
+                        );
+                        break;
+
                     default:
                         types.AddRange(
                             assembly

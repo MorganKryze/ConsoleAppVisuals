@@ -42,7 +42,7 @@ public class ElementsDashboard : PassiveElement
             "Width",
             "Line",
             "Placement",
-            "IsInteractive"
+            "Type"
         };
 
     /// <summary>
@@ -157,7 +157,7 @@ public class ElementsDashboard : PassiveElement
                     element.Width.ToString(),
                     element.Line.ToString(),
                     element.Placement.ToString(),
-                    element.IsInteractive.ToString()
+                    element.Type.ToString()
                 }
             );
         }

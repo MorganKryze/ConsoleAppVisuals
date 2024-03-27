@@ -6,6 +6,7 @@ global using YamlDotNet.Serialization;
 global using YamlDotNet.Serialization.NamingConventions;
 
 global using ConsoleAppVisuals.InteractiveElements;
+global using ConsoleAppVisuals.AnimatedElements;
 global using ConsoleAppVisuals.PassiveElements;
 global using ConsoleAppVisuals.Enums;
 global using ConsoleAppVisuals.Models;

@@ -14,7 +14,7 @@ public class UnitTestInteractiveElement
         var element = new TestInteractiveElement();
 
         // Act & Assert
-        Assert.IsTrue(element.IsInteractive);
+        Assert.AreEqual(ElementType.Interactive, element.Type);
     }
 
     [TestMethod]

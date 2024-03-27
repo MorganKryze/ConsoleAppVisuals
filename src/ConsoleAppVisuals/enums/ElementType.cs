@@ -29,5 +29,10 @@ public enum ElementType
     /// <summary>
     /// The interactive element type.
     /// </summary>
-    Interactive
+    Interactive,
+
+    /// <summary>
+    /// The animated element type.
+    /// </summary>
+    Animated
 }
