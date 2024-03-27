@@ -92,7 +92,7 @@ public abstract class Element
     {
         get
         {
-            var elements = Window.GetRange(0, Id);
+            var elements = Window.Range(0, Id);
             return Placement switch
             {
                 Placement.TopCenterFullWidth
@@ -156,7 +156,7 @@ public abstract class Element
         {
             Visibility = false;
         }
-        else if (Window.AllowVisibilityToggle(Id))
+        else if (Window.IsElementActivatable(Id))
         {
             Visibility = true;
         }
