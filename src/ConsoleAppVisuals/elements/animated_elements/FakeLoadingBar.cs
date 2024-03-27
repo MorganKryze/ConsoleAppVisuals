@@ -2,10 +2,10 @@
     Copyright (c) 2024 Yann M. Vidamment (MorganKryze)
     Licensed under GNU GPL v2.0. See full license at: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md
 */
-namespace ConsoleAppVisuals.InteractiveElements;
+namespace ConsoleAppVisuals.AnimatedElements;
 
 /// <summary>
-/// A <see cref="FakeLoadingBar"/> is an interactive element that simulates a loading bar with a fixed duration.
+/// A <see cref="FakeLoadingBar"/> is an animated element that simulates a loading bar with a fixed duration.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -14,7 +14,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
 /// </list>
 /// </remarks>
-public class FakeLoadingBar : InteractiveElement<string>
+public class FakeLoadingBar : AnimatedElement
 {
     #region Constants
     private const char LOADING_BAR_CHAR = '█';
@@ -69,7 +69,7 @@ public class FakeLoadingBar : InteractiveElement<string>
 
     #region Constructor
     /// <summary>
-    /// A <see cref="FakeLoadingBar"/> is an interactive element that simulates a loading bar with a fixed duration.
+    /// A <see cref="FakeLoadingBar"/> is an animated element that simulates a loading bar with a fixed duration.
     /// </summary>
     /// <param name="text">The text of the loading bar.</param>
     /// <param name="placement">The placement of the loading bar.</param>
@@ -211,7 +211,6 @@ public class FakeLoadingBar : InteractiveElement<string>
             Width,
             _placement.ToTextAlignment()
         );
-        Window.DeactivateElement(this);
     }
     #endregion
 }
