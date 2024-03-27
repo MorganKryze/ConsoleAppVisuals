@@ -17,16 +17,6 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// </remarks>
 public class Dialog : InteractiveElement<DialogOption>
 {
-    #region Fields
-    private List<string> _lines;
-    private string? _leftOption;
-    private string? _rightOption;
-    private TextAlignment _align;
-    private Placement _placement;
-    private readonly Borders _borders;
-    private List<string>? _textToDisplay;
-    #endregion
-
     #region Constants
     private const int EMBED_MARGIN = 2;
 
@@ -35,6 +25,16 @@ public class Dialog : InteractiveElement<DialogOption>
     /// It ensures that the options are not too close to each other.
     /// </summary>
     private const double WIDTH_RATIO = 1.2;
+    #endregion
+
+    #region Fields
+    private List<string> _lines;
+    private string? _leftOption;
+    private string? _rightOption;
+    private TextAlignment _align;
+    private Placement _placement;
+    private readonly Borders _borders;
+    private List<string>? _textToDisplay;
     #endregion
 
     #region Default Properties
@@ -131,7 +131,9 @@ public class Dialog : InteractiveElement<DialogOption>
         _placement = placement;
         _borders = new Borders(bordersType);
         if (_lines.Count != 0)
+        {
             Build();
+        }
     }
     #endregion
 
