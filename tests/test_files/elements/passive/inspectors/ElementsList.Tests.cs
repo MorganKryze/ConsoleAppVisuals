@@ -75,7 +75,7 @@ public class UnitTestElementsList
     public void Placement_ReturnsPlacement()
     {
         // Arrange
-        var list = new ElementsList(ElementType.Default, Placement.TopLeft);
+        var list = new ElementsList(ElementType.Animated, Placement.TopLeft);
 
         // Act
         var placement = list.Placement;

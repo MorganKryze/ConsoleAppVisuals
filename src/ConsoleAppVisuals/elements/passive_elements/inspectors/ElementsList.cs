@@ -196,6 +196,7 @@ public class ElementsList : PassiveElement
                                     t.BaseType != null
                                     && t.IsSubclassOf(typeof(Element))
                                     && t != typeof(PassiveElement)
+                                    && t != typeof(AnimatedElement)
                                     && t != typeof(InteractiveElement<>)
                                 )
                         );
