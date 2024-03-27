@@ -147,15 +147,24 @@ public class Borders
                 $"Invalid border index. Index must be between 0 and 11. (actual: {index})"
             );
         }
-        string border = _type switch
+        string border = SINGLE_STRAIGHT;
+        switch (_type)
         {
-            BordersType.SingleStraight => SINGLE_STRAIGHT,
-            BordersType.SingleRound => SINGLE_ROUNDED,
-            BordersType.SingleBold => SINGLE_BOLD,
-            BordersType.DoubleStraight => DOUBLE_STRAIGHT,
-            BordersType.ASCII => ASCII,
-            _ => throw new ArgumentException($"Invalid border type. (actual: {_type})")
-        };
+            case BordersType.SingleRound:
+                border = SINGLE_ROUNDED;
+                break;
+            case BordersType.SingleBold:
+                border = SINGLE_BOLD;
+                break;
+            case BordersType.DoubleStraight:
+
+                border = DOUBLE_STRAIGHT;
+                break;
+            case BordersType.ASCII:
+                border = ASCII;
+                break;
+        }
+
         return border[index];
     }
 
