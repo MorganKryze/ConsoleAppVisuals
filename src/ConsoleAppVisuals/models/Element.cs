@@ -16,7 +16,24 @@ namespace ConsoleAppVisuals.Models;
 /// </remarks>
 public abstract class Element
 {
-    #region Properties
+    #region Constants
+    /// <summary>
+    /// The default visibility of the elements when they are added to the window.
+    /// </summary>
+    /// <remarks>
+    /// This value should not be changed.
+    /// Each time the user adds an element to the window, it will try to toggle the visibility of the element.
+    /// </remarks>
+    private const bool DEFAULT_VISIBILITY = false;
+
+    private const int DEFAULT_HEIGHT = 0;
+
+    private const int DEFAULT_WIDTH = 0;
+
+    private const int DEFAULT_MAX_NUMBER_OF_THIS_ELEMENT = int.MaxValue;
+    #endregion
+
+    #region Sealed Properties
     /// <summary>
     /// The id number of the element.
     /// </summary>
@@ -27,7 +44,27 @@ public abstract class Element
     /// The visibility of the element.
     /// </summary>
     /// <remarks>This property is sealed. The visibility of an element is managed by the <see cref="ToggleVisibility"/> method.</remarks>
-    public bool Visibility { get; private set; } = Window.DEFAULT_ELEMENT_VISIBILITY;
+    public bool Visibility { get; private set; } = DEFAULT_VISIBILITY;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Whether the element is executable or not.
+    /// </summary>
+    [Visual]
+    public virtual bool IsInteractive { get; }
+
+    /// <summary>
+    /// The height of the element.
+    /// </summary>
+    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
+    public virtual int Height { get; } = DEFAULT_HEIGHT;
+
+    /// <summary>
+    /// The width of the element.
+    /// </summary>
+    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
+    public virtual int Width { get; } = DEFAULT_WIDTH;
 
     /// <summary>
     /// The placement of the element.
@@ -42,10 +79,10 @@ public abstract class Element
     public virtual TextAlignment TextAlignment { get; set; }
 
     /// <summary>
-    /// Whether the element is executable or not.
+    /// The maximum number of this element that can be drawn on the console.
     /// </summary>
-    [Visual]
-    public virtual bool IsInteractive { get; }
+    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
+    public virtual int MaxNumberOfThisElement { get; } = DEFAULT_MAX_NUMBER_OF_THIS_ELEMENT;
 
     /// <summary>
     /// The line of the element in the console.
@@ -105,24 +142,6 @@ public abstract class Element
             };
         }
     }
-
-    /// <summary>
-    /// The height of the element.
-    /// </summary>
-    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual int Height { get; } = 0;
-
-    /// <summary>
-    /// The width of the element.
-    /// </summary>
-    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual int Width { get; } = 0;
-
-    /// <summary>
-    /// The maximum number of this element that can be drawn on the console.
-    /// </summary>
-    /// <remarks>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</remarks>
-    public virtual int MaxNumberOfThisElement { get; } = int.MaxValue;
     #endregion
 
     #region Methods
@@ -148,7 +167,9 @@ public abstract class Element
             );
         }
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
     /// This method is used to draw the element on the console.
     /// </summary>
