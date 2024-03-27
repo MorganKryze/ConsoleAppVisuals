@@ -16,7 +16,7 @@ namespace ConsoleAppVisuals.Models;
 /// </remarks>
 public class TextStyler
 {
-    #region Constants: Paths, supported characters
+    #region Constants
     private const string DEFAULT_FONT_PATH = "ConsoleAppVisuals.fonts.";
     private const string DEFAULT_CONFIG_PATH = ".config.yml";
     private const string DEFAULT_ALPHABET_PATH = ".data.alphabet.txt";
@@ -26,9 +26,10 @@ public class TextStyler
     private const string ALPHABET_PATH = "data/alphabet.txt";
     private const string NUMBERS_PATH = "data/numbers.txt";
     private const string SYMBOLS_PATH = "data/symbols.txt";
+    private const int DEFAULT_MAX_DISPLAY_LENGTH_ERRORS = 10;
     #endregion
 
-    #region Fields: Font path, config, dictionary
+    #region Fields
     private readonly Font _font;
     private readonly string? _fontPath;
     private readonly FontYamlFile _config;
@@ -38,7 +39,7 @@ public class TextStyler
     private readonly string _supportedSymbols;
     #endregion
 
-    #region Properties: Dictionary
+    #region Properties
     /// <summary>
     /// The dictionary that stores the characters and their styled equivalent.
     /// </summary>
@@ -106,8 +107,8 @@ public class TextStyler
         else if (source is not Font.Custom && fontPath is not null)
         {
             throw new ArgumentException(
-                nameof(fontPath),
-                "A non-Custom font implies a null value for fontPath."
+                "A non-Custom font implies a null value for fontPath.",
+                nameof(fontPath)
             );
         }
         _font = source;
@@ -131,8 +132,8 @@ public class TextStyler
         else
         {
             throw new ArgumentException(
-                nameof(source),
-                "Font not recognized. Use Font.Custom for custom fonts."
+                "Font not recognized. Use Font.Custom for custom fonts.",
+                nameof(source)
             );
         }
 
@@ -142,7 +143,9 @@ public class TextStyler
 
         BuildDictionary();
     }
+    #endregion
 
+    #region Parsing
     private (FontYamlFile, string, string, string) ParseYaml(string yamlContent)
     {
         FontYamlFile config;
@@ -262,7 +265,10 @@ public class TextStyler
                 var line = lines[i].TrimEnd('\r', '\n');
                 if (!line.EndsWith("@@"))
                 {
-                    var endOfLine = line.Length > 10 ? line.Substring(line.Length - 10) : line;
+                    var endOfLine =
+                        line.Length > DEFAULT_MAX_DISPLAY_LENGTH_ERRORS
+                            ? line.Substring(line.Length - DEFAULT_MAX_DISPLAY_LENGTH_ERRORS)
+                            : line;
                     throw new FormatException(
                         $"Character end line not ending with @@. Error in file: {filePath}, Line: {index}, End of line: {endOfLine}"
                     );
@@ -273,7 +279,10 @@ public class TextStyler
                 var line = lines[i].TrimEnd('\r', '\n');
                 if (!line.EndsWith("@"))
                 {
-                    var endOfLine = line.Length > 10 ? line.Substring(line.Length - 10) : line;
+                    var endOfLine =
+                        line.Length > DEFAULT_MAX_DISPLAY_LENGTH_ERRORS
+                            ? line.Substring(line.Length - DEFAULT_MAX_DISPLAY_LENGTH_ERRORS)
+                            : line;
                     throw new FormatException(
                         $"Character line not ending with @. Error in file: {filePath}, Line: {index}, End of line: {endOfLine}"
                     );
@@ -281,7 +290,9 @@ public class TextStyler
             }
         }
     }
+    #endregion
 
+    #region Build
     private void BuildDictionary()
     {
         if (_supportedAlphabet != "")
@@ -399,7 +410,7 @@ public class TextStyler
     }
     #endregion
 
-    #region Methods: Style text
+    #region Methods
     /// <summary>
     /// Styles the given text with the font files.
     /// </summary>
