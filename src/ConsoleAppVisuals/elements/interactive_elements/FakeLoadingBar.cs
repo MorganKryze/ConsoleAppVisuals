@@ -16,23 +16,28 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// </remarks>
 public class FakeLoadingBar : InteractiveElement<string>
 {
+    #region Constants
+    private const char LOADING_BAR_CHAR = '█';
+    private const int DEFAULT_HEIGHT = 3;
+    private const string DEFAULT_TEXT = "[ Loading ...]";
+    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    private const int DEFAULT_PROCESS_DURATION = 2000;
+    private const int DEFAULT_ADDITIONAL_DURATION = 1000;
+    #endregion
+
     #region Fields
     private string _text;
     private Placement _placement;
-    private readonly int _processDuration;
+    private int _processDuration;
     private int _additionalDuration;
     #endregion
 
-    #region Constants
-    private const char LOADING_BAR_CHAR = '█';
-    #endregion
-
-    #region Properties
+    #region Default Properties
     /// <summary>
     /// The height of the loading bar.
     /// </summary>
     /// <remarks>One line for the text,one line for the space between and one line for the progress.</remarks>
-    public override int Height => 3;
+    public override int Height => DEFAULT_HEIGHT;
 
     /// <summary>
     /// The width of the loading bar.
@@ -40,14 +45,16 @@ public class FakeLoadingBar : InteractiveElement<string>
     public override int Width => _text.Length;
 
     /// <summary>
-    /// The text of the loading bar.
-    /// </summary>
-    public string Text => _text;
-
-    /// <summary>
     /// The placement of the loading bar.
     /// </summary>
     public override Placement Placement => _placement;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// The text of the loading bar.
+    /// </summary>
+    public string Text => _text;
 
     /// <summary>
     /// Getter of the duration of the loading bar.
@@ -58,7 +65,6 @@ public class FakeLoadingBar : InteractiveElement<string>
     /// Getter of the additional duration of the loading bar at the end.
     /// </summary>
     public int AdditionalDuration => _additionalDuration;
-
     #endregion
 
     #region Constructor
@@ -77,10 +83,10 @@ public class FakeLoadingBar : InteractiveElement<string>
     /// </list>
     /// </remarks>
     public FakeLoadingBar(
-        string text = "[ Loading ...]",
-        Placement placement = Placement.TopCenter,
-        int processDuration = 2000,
-        int additionalDuration = 1000
+        string text = DEFAULT_TEXT,
+        Placement placement = DEFAULT_PLACEMENT,
+        int processDuration = DEFAULT_PROCESS_DURATION,
+        int additionalDuration = DEFAULT_ADDITIONAL_DURATION
     )
     {
         if (Console.WindowWidth - 1 >= 0)
@@ -97,7 +103,7 @@ public class FakeLoadingBar : InteractiveElement<string>
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
     /// This method is used to update the text of the loading bar.
     /// </summary>
@@ -111,6 +117,10 @@ public class FakeLoadingBar : InteractiveElement<string>
     /// </remarks>
     public void UpdateText(string text)
     {
+        if (text.Length == 0)
+        {
+            throw new ArgumentException("The text cannot be empty.", nameof(text));
+        }
         _text = text;
     }
 
@@ -128,6 +138,30 @@ public class FakeLoadingBar : InteractiveElement<string>
     public void UpdatePlacement(Placement placement)
     {
         _placement = placement;
+    }
+
+    /// <summary>
+    /// This method is used to update the duration of the loading bar.
+    /// </summary>
+    /// <param name="processDuration">The new duration of the loading bar.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Throw when the process duration is negative.</exception>
+    /// <remarks>
+    /// For more information, refer to the following resources:
+    /// <list type="bullet">
+    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
+    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
+    /// </list>
+    /// </remarks>
+    public void UpdateProcessDuration(int processDuration)
+    {
+        if (processDuration < 0)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(processDuration),
+                "The process duration must be greater than or equal to 0."
+            );
+        }
+        _processDuration = processDuration;
     }
 
     /// <summary>
@@ -153,11 +187,12 @@ public class FakeLoadingBar : InteractiveElement<string>
         }
         _additionalDuration = additionalDuration;
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
     /// This method is used to draw the loading bar on the console.
     /// </summary>
-
     [Visual]
     protected override void RenderElementActions()
     {
