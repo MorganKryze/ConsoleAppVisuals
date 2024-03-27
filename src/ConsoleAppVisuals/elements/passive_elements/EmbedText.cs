@@ -194,7 +194,7 @@ public class EmbedText : PassiveElement
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void InsertLine(string line, int index)
+    public void InsertLine(int index, string line)
     {
         _lines.Insert(index, line);
     }

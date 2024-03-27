@@ -204,7 +204,7 @@ public class UnitTestEmbedText
         var marginValue = 2;
 
         // Act
-        EmbedText.InsertLine("New line", 1);
+        EmbedText.InsertLine(1, "New line");
 
         // Assert
         Assert.AreEqual(textToDisplay.Count + marginValue, EmbedText.TextToDisplay!.Count + 1);

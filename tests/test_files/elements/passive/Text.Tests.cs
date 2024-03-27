@@ -216,7 +216,7 @@ public class UnitTestText
         string newLine = "Goodbye, World!";
 
         // Act
-        text.InsertLine(newLine, 0);
+        text.InsertLine(0, newLine);
         var actual = text.TextToDisplay;
 
         // Assert

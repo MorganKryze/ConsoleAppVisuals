@@ -6,7 +6,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
 /// A <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
-/// See <see cref="DialogOption"/> for the possible outputs of a dialog.
+/// See <see cref="DialogOption"/> enum for the possible outputs of a dialog.
 /// </summary>
 /// <remarks>
 /// For more information, refer to the following resources:
@@ -100,7 +100,7 @@ public class Dialog : InteractiveElement<DialogOption>
     #region Constructor
     /// <summary>
     /// A <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
-    /// See <see cref="DialogOption"/> for the possible outputs of a dialog.
+    /// See <see cref="DialogOption"/> enum for the possible outputs of a dialog.
     /// </summary>
     /// <param name="lines">The text to display.</param>
     /// <param name="leftOption">The text of the left option. Null for no button.</param>
