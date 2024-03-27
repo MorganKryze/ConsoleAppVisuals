@@ -381,7 +381,7 @@ public class UnitTestWindow
 
         // Act
         Window.ActivateAllElements();
-        Window.DeactivateAllElements();
+        Window.DeactivateAllElements(false);
 
         // Assert
         Assert.IsFalse(prompt.Visibility);
