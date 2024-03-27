@@ -16,13 +16,6 @@ namespace ConsoleAppVisuals;
 /// </remarks>
 public static class Core
 {
-    #region Constants
-    /// <summary>
-    /// This constant is used to define the negative anchor to put inside a string to be recognized as negative.
-    /// </summary>
-    public const string NEGATIVE_ANCHOR = "/neg";
-    #endregion
-
     #region Fields
     [Visual]
     private static int s_previousWindowWidth = Console.WindowWidth;
@@ -46,6 +39,13 @@ public static class Core
     private static (ConsoleColor, ConsoleColor) s_savedColorPanel;
 
     private static readonly Random s_rnd = new();
+    #endregion
+
+    #region Constants
+    /// <summary>
+    /// This constant is used to define the negative anchor to put inside a string to be recognized as negative.
+    /// </summary>
+    public const string NEGATIVE_ANCHOR = "/neg";
     #endregion
 
     #region Properties
