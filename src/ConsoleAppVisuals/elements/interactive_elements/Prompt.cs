@@ -16,6 +16,20 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// </remarks>
 public class Prompt : InteractiveElement<string>
 {
+    #region Constants
+    private const int PROMPT_HEIGHT = 5;
+    private const int MAX_LENGTH_LEFT_MARGIN = 2;
+    private const int LEFT_AND_RIGHT_MARGIN = 2;
+    private const char DEFAULT_CURSOR = '>';
+    private const char DEFAULT_UPDATED_CURSOR = '▶';
+    private const char SECRET_CHAR = '*';
+    private const char FILL_CHAR = '-';
+    private const int DEFAULT_PROMPT_MAX_LENGTH = 12;
+    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    private const PromptInputStyle DEFAULT_STYLE = PromptInputStyle.Default;
+    private const BordersType DEFAULT_BORDER_TYPE = BordersType.SingleStraight;
+    #endregion
+
     #region Fields
     private string _question;
     private string _defaultValue;
@@ -27,15 +41,7 @@ public class Prompt : InteractiveElement<string>
     private string[]? _displayArray;
     #endregion
 
-    #region Constants
-    private const int DEFAULT_PROMPT_MAX_LENGTH = 12;
-    private const int PROMPT_HEIGHT = 5;
-    private const int MAX_LENGTH_LEFT_MARGIN = 2;
-    private const int LEFT_AND_RIGHT_MARGIN = 2;
-    private const char DEFAULT_CURSOR = '>';
-    #endregion
-
-    #region Properties
+    #region Default Properties
     /// <summary>
     /// The placement of the prompt element.
     /// </summary>
@@ -46,12 +52,14 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     public override int Height => PROMPT_HEIGHT;
 
-    private int MaxLength => Math.Max(_question.Length, _maxInputLength + MAX_LENGTH_LEFT_MARGIN);
-
     /// <summary>
     /// The width of the prompt element.
     /// </summary>
     public override int Width => LEFT_AND_RIGHT_MARGIN + MaxLength + LEFT_AND_RIGHT_MARGIN;
+    #endregion
+
+    #region Properties
+    private int MaxLength => Math.Max(_question.Length, _maxInputLength + MAX_LENGTH_LEFT_MARGIN);
 
     /// <summary>
     /// The question of the prompt element.
@@ -69,6 +77,11 @@ public class Prompt : InteractiveElement<string>
     public int MaxInputLength => _maxInputLength;
 
     /// <summary>
+    /// The style of the prompt input.
+    /// </summary>
+    public PromptInputStyle Style => _style;
+
+    /// <summary>
     /// The borders of the prompt element.
     /// </summary>
     public Borders Borders => _borders;
@@ -82,11 +95,6 @@ public class Prompt : InteractiveElement<string>
     /// The selector of the prompt element.
     /// </summary>
     public char Selector => _selector;
-
-    /// <summary>
-    /// The style of the prompt input.
-    /// </summary>
-    public PromptInputStyle Style => _style;
     #endregion
 
     #region Constructor
@@ -109,10 +117,10 @@ public class Prompt : InteractiveElement<string>
     public Prompt(
         string question,
         string? defaultValue = null,
-        Placement placement = Placement.TopCenter,
+        Placement placement = DEFAULT_PLACEMENT,
         int maxInputLength = DEFAULT_PROMPT_MAX_LENGTH,
-        PromptInputStyle style = PromptInputStyle.Default,
-        BordersType borderType = BordersType.SingleStraight
+        PromptInputStyle style = DEFAULT_STYLE,
+        BordersType borderType = DEFAULT_BORDER_TYPE
     )
     {
         _question = question;
@@ -150,7 +158,7 @@ public class Prompt : InteractiveElement<string>
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
     /// This method is used to update the question of the prompt element.
     /// </summary>
@@ -227,7 +235,7 @@ public class Prompt : InteractiveElement<string>
     /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
     /// </list>
     /// </remarks>
-    public void UpdateSelector(char selector = '▶')
+    public void UpdateSelector(char selector = DEFAULT_UPDATED_CURSOR)
     {
         _selector = selector;
     }
@@ -265,7 +273,45 @@ public class Prompt : InteractiveElement<string>
     }
     #endregion
 
-    #region Render
+    #region Rendering
+    [Visual]
+    private void Build()
+    {
+        string finalQuestion = _question.ResizeString(MaxLength, TextAlignment.Left);
+        string finalField = ($"{_selector} " + _defaultValue).ResizeString(
+            MaxLength,
+            TextAlignment.Left
+        );
+
+        _displayArray = new string[PROMPT_HEIGHT];
+        _displayArray[0] =
+            Borders.TopLeft.ToString()
+            + new string(Borders.Horizontal, Width - 2)
+            + Borders.TopRight.ToString();
+        _displayArray[1] = $"{Borders.Vertical} " + finalQuestion + $" {Borders.Vertical}";
+        _displayArray[2] =
+            $"{Borders.Vertical} " + new string(' ', MaxLength) + $" {Borders.Vertical}";
+        if (_style == PromptInputStyle.Fill)
+        {
+            _displayArray[3] =
+                $"{Borders.Vertical} {_selector} "
+                + new string(FILL_CHAR, MaxInputLength)
+                + new string(' ', MaxLength - MaxInputLength - 2)
+                + $" {Borders.Vertical}";
+        }
+        else
+        {
+            _displayArray[3] =
+                $"{Borders.Vertical} "
+                + new string(' ', finalField.Length)
+                + $" {Borders.Vertical}";
+        }
+        _displayArray[4] =
+            Borders.BottomLeft.ToString()
+            + new string(Borders.Horizontal, Width - 2)
+            + Borders.BottomRight.ToString();
+    }
+
     /// <summary>
     /// This method is used to render the prompt element on the console.
     /// </summary>
@@ -273,17 +319,13 @@ public class Prompt : InteractiveElement<string>
     protected override void RenderElementActions()
     {
         Build();
-        if (_displayArray is null)
-        {
-            throw new InvalidOperationException("The display array is null. The build has failed.");
-        }
         Core.WriteMultiplePositionedLines(
             false,
             TextAlignment.Center,
             Placement,
             false,
             Line,
-            _displayArray
+            _displayArray!
         );
         var field = new StringBuilder(_defaultValue);
         int fieldLine = Line + 3;
@@ -302,12 +344,12 @@ public class Prompt : InteractiveElement<string>
         {
             Console.CursorVisible = false;
 
-            Core.WritePositionedString(_displayArray[2], Placement, false, fieldLine);
+            Core.WritePositionedString(_displayArray![2], Placement, false, fieldLine);
 
             Console.SetCursorPosition(offset, Console.CursorTop);
             if (_style == PromptInputStyle.Secret)
             {
-                Console.Write($"{_selector} {new string('*', field.Length)}");
+                Console.Write($"{_selector} {new string(SECRET_CHAR, field.Length)}");
             }
             else
             {
@@ -339,44 +381,6 @@ public class Prompt : InteractiveElement<string>
                 field.ToString()
             )
         );
-    }
-
-    [Visual]
-    private void Build()
-    {
-        string finalQuestion = _question.ResizeString(MaxLength, TextAlignment.Left);
-        string finalField = ($"{_selector} " + _defaultValue).ResizeString(
-            MaxLength,
-            TextAlignment.Left
-        );
-
-        _displayArray = new string[PROMPT_HEIGHT];
-        _displayArray[0] =
-            Borders.TopLeft.ToString()
-            + new string(Borders.Horizontal, Width - 2)
-            + Borders.TopRight.ToString();
-        _displayArray[1] = $"{Borders.Vertical} " + finalQuestion + $" {Borders.Vertical}";
-        _displayArray[2] =
-            $"{Borders.Vertical} " + new string(' ', MaxLength) + $" {Borders.Vertical}";
-        if (_style == PromptInputStyle.Fill)
-        {
-            _displayArray[3] =
-                $"{Borders.Vertical} {_selector} "
-                + new string('-', MaxInputLength)
-                + new string(' ', MaxLength - MaxInputLength - 2)
-                + $" {Borders.Vertical}";
-        }
-        else
-        {
-            _displayArray[3] =
-                $"{Borders.Vertical} "
-                + new string(' ', finalField.Length)
-                + $" {Borders.Vertical}";
-        }
-        _displayArray[4] =
-            Borders.BottomLeft.ToString()
-            + new string(Borders.Horizontal, Width - 2)
-            + Borders.BottomRight.ToString();
     }
     #endregion
 }
