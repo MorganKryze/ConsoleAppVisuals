@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="Prompt"/> is an interactive element that allows the user to input a string response.
+/// The <see cref="Prompt"/> is an interactive element that allows the user to input a string response.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -39,17 +39,17 @@ public class Prompt : InteractiveElement<string>
 
     #region Default Properties
     /// <summary>
-    /// The placement of the prompt element.
+    /// Gets the placement of the prompt element.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The height of the prompt element.
+    /// Gets the height of the prompt element.
     /// </summary>
     public override int Height => PROMPT_HEIGHT;
 
     /// <summary>
-    /// The width of the prompt element.
+    /// Gets the width of the prompt element.
     /// </summary>
     public override int Width => LEFT_AND_RIGHT_MARGIN + MaxLength + LEFT_AND_RIGHT_MARGIN;
     #endregion
@@ -58,44 +58,44 @@ public class Prompt : InteractiveElement<string>
     private int MaxLength => Math.Max(_question.Length, _maxInputLength + MAX_LENGTH_LEFT_MARGIN);
 
     /// <summary>
-    /// The question of the prompt element.
+    /// Gets the question of the prompt element.
     /// </summary>
     public string Question => _question;
 
     /// <summary>
-    /// The default value of the response.
+    /// Gets the default value of the response.
     /// </summary>
     public string DefaultValue => _defaultValue;
 
     /// <summary>
-    /// The maximum length of the response.
+    /// Gets the maximum length of the response.
     /// </summary>
     public int MaxInputLength => _maxInputLength;
 
     /// <summary>
-    /// The style of the prompt input.
+    /// Gets the style of the prompt input.
     /// </summary>
     public PromptInputStyle Style => _style;
 
     /// <summary>
-    /// The borders of the prompt element.
+    /// Gets the borders of the prompt element.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// The border type of the selector.
+    /// Gets the border type of the selector.
     /// </summary>
     public BordersType BordersType => _borders.Type;
 
     /// <summary>
-    /// The selector of the prompt element.
+    /// Gets the selector of the prompt element.
     /// </summary>
     public char Selector => _selector;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="Prompt"/> is an interactive element that allows the user to input a string response.
+    /// The <see cref="Prompt"/> is an interactive element that allows the user to input a string response.
     /// </summary>
     /// <param name="question">The text on the left of the prompt element.</param>
     /// <param name="defaultValue">The text in the center of the prompt element.</param>
@@ -116,14 +116,14 @@ public class Prompt : InteractiveElement<string>
     )
     {
         _question = question;
-        _maxInputLength = CheckMaxLength(maxInputLength);
+        _maxInputLength = Prompt.CheckMaxLength(maxInputLength);
         _defaultValue = defaultValue is null ? string.Empty : CheckDefaultValue(defaultValue);
         _placement = placement;
         _style = style;
         _borders = new Borders(borderType);
     }
 
-    private int CheckMaxLength(int maxLength)
+    private static int CheckMaxLength(int maxLength)
     {
         int windowWidth =
             Console.WindowWidth == 0 ? DEFAULT_PROMPT_MAX_LENGTH + 1 : Console.WindowWidth;
@@ -152,7 +152,7 @@ public class Prompt : InteractiveElement<string>
 
     #region Update Methods
     /// <summary>
-    /// This method is used to update the question of the prompt element.
+    /// Updates the question of the prompt element.
     /// </summary>
     /// <param name="question">The new question of the prompt element.</param>
     /// <remarks>
@@ -164,7 +164,7 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
-    /// This method is used to update the default value of the prompt element.
+    /// Updates the default value of the prompt element.
     /// </summary>
     /// <param name="defaultValue">The new default value of the prompt element.</param>
     /// <remarks>
@@ -176,7 +176,7 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
-    /// This method is used to update the placement of the prompt element.
+    /// Updates the placement of the prompt element.
     /// </summary>
     /// <param name="placement">The new placement of the prompt element.</param>
     /// <remarks>
@@ -188,7 +188,7 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
-    /// This method is used to update the maximum length of the response.
+    /// Updates the maximum length of the response.
     /// </summary>
     /// <param name="maxLength">The new maximum length of the response.</param>
     /// <exception cref="ArgumentOutOfRangeException">The maximum length of the response must be greater than 0 and less than the width of the console window.</exception>
@@ -197,11 +197,11 @@ public class Prompt : InteractiveElement<string>
     /// </remarks>
     public void UpdateMaxLength(int maxLength)
     {
-        _maxInputLength = CheckMaxLength(maxLength);
+        _maxInputLength = Prompt.CheckMaxLength(maxLength);
     }
 
     /// <summary>
-    /// This method is used to update the selector of the prompt element.
+    /// Updates the selector of the prompt element.
     /// </summary>
     /// <param name="selector">The new selector of the prompt element.</param>
     /// <remarks>
@@ -213,7 +213,7 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
-    /// This method is used to update the style of the prompt input.
+    /// Updates the style of the prompt input.
     /// </summary>
     /// <param name="style">The new style of the prompt input.</param>
     /// <remarks>
@@ -225,7 +225,7 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
-    /// This method is used to update the border type of the prompt element.
+    /// Updates the border type of the prompt element.
     /// </summary>
     /// <param name="bordersType">The new border type of the prompt element.</param>
     /// <remarks>
@@ -277,7 +277,7 @@ public class Prompt : InteractiveElement<string>
     }
 
     /// <summary>
-    /// This method is used to render the prompt element on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

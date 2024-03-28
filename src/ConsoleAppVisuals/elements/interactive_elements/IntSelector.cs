@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="IntSelector"/> is an interactive element that allows the user to select an integer value from a range of values.
+/// The <see cref="IntSelector"/> is an interactive element that allows the user to select an integer value from a range of values.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -24,92 +24,81 @@ public class IntSelector : InteractiveElement<int>
     #endregion
 
     #region Constants
-    /// <summary>
-    /// The default left selector of the number selector.
-    /// </summary>
-    /// <remarks>
-    /// Can be updated with the <see cref="UpdateLeftSelector(char)"/> method.
-    /// </remarks>
-    public const char DEFAULT_SELECTOR_LEFT = '>';
-
-    /// <summary>
-    /// The default right selector of the number selector.
-    /// </summary>
-    /// <remarks>
-    /// Can be updated with the <see cref="UpdateRightSelector(char)"/> method.
-    /// </remarks>
-    public const char DEFAULT_SELECTOR_RIGHT = '<';
+    private const char DEFAULT_SELECTOR_LEFT = '>';
+    private const char DEFAULT_SELECTOR_RIGHT = '<';
     #endregion
 
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// The placement of the selector on the console.
+    /// Gets the placement of the selector on the console.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The height of the selector.
+    /// Gets the height of the selector.
     /// </summary>
     public override int Height => 7;
 
     /// <summary>
-    /// The width of the selector.
+    /// Gets the width of the selector.
     /// </summary>
     public override int Width =>
         Math.Max(
             _question.Length,
             $" {LeftSelector} {BuildNumber(_maximumValue)} {RightSelector} ".Length
         );
+    #endregion
 
+    #region Properties
     /// <summary>
-    /// The question to ask the user.
+    /// Gets the question to ask the user.
     /// </summary>
     public string Question => _question;
 
     /// <summary>
-    /// The minimum value of the selector.
+    /// Gets the minimum value of the selector.
     /// </summary>
     public int Min => _minimumValue;
 
     /// <summary>
-    /// The maximum value of the selector.
+    /// Gets the maximum value of the selector.
     /// </summary>
     public int Max => _maximumValue;
 
     /// <summary>
-    /// The start value of the selector.
+    /// Gets the start value of the selector.
     /// </summary>
     public int Start => _startValue;
 
     /// <summary>
-    /// The step of the selector.
+    /// Gets the step of the selector.
     /// </summary>
     public int Step => _step;
 
     /// <summary>
-    /// The left selector of the selector.
+    /// Gets the left selector of the selector.
     /// </summary>
     public char LeftSelector => _selector.Item1;
 
     /// <summary>
-    /// The right selector of the selector.
+    /// Gets the right selector of the selector.
     /// </summary>
     public char RightSelector => _selector.Item2;
 
     /// <summary>
-    /// The borders manager of the selector.
+    /// Gets the borders manager of the selector.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// The border type of the selector.
+    /// Gets the border type of the selector.
     /// </summary>
     public BordersType BordersType => _borders.Type;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="IntSelector"/> is an interactive element that allows the user to select an integer value from a range of values.
+    /// The <see cref="IntSelector"/> is an interactive element that allows the user to select an integer value from a range of values.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <param name="min">The minimum value of the selector.</param>
@@ -172,9 +161,9 @@ public class IntSelector : InteractiveElement<int>
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method is used to update the question of the selector.
+    /// Updates the question of the selector.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <remarks>
@@ -186,7 +175,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the minimum value of the selector.
+    /// Updates the minimum value of the selector.
     /// </summary>
     /// <param name="min">The minimum value of the selector.</param>
     /// <remarks>
@@ -201,7 +190,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the maximum value of the selector.
+    /// Updates the maximum value of the selector.
     /// </summary>
     /// <param name="max">The maximum value of the selector.</param>
     /// <remarks>
@@ -216,7 +205,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the start value of the selector.
+    /// Updates the start value of the selector.
     /// </summary>
     /// <param name="start">The start value of the selector.</param>
     /// <remarks>
@@ -228,7 +217,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the step of the selector.
+    /// Updates the step of the selector.
     /// </summary>
     /// <param name="step">The step of the selector.</param>
     /// <remarks>
@@ -240,7 +229,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the placement of the selector.
+    /// Updates the placement of the selector.
     /// </summary>
     /// <param name="placement">The placement of the selector on the console.</param>
     /// <remarks>
@@ -252,7 +241,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the selector of the selector.
+    /// Updates the selector of the selector.
     /// </summary>
     /// <param name="leftSelector">The new left selector of the selector.</param>
     /// <remarks>
@@ -264,7 +253,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the selector of the selector.
+    /// Updates the selector of the selector.
     /// </summary>
     /// <param name="rightSelector">The new right selector of the selector.</param>
     /// <remarks>
@@ -276,7 +265,7 @@ public class IntSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the border type of the selector.
+    /// Updates the border type of the selector.
     /// </summary>
     /// <param name="bordersType">The border type of the selector.</param>
     /// <remarks>
@@ -286,9 +275,11 @@ public class IntSelector : InteractiveElement<int>
     {
         _borders.UpdateBordersType(bordersType);
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
-    /// This method is used to draw the selector on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
@@ -327,67 +318,73 @@ public class IntSelector : InteractiveElement<int>
             }
             Thread.Sleep(1);
         }
-    }
 
-    [Visual]
-    void DisplayChoices(int lineSelector, int currentNumber)
-    {
-        Core.WritePositionedString(BuildLine(Direction.Up), Placement, false, lineSelector - 2);
-        Core.WritePositionedString(
-            BuildNumber(NextNumber(Direction.Up, currentNumber)),
-            Placement,
-            false,
-            lineSelector - 1
-        );
-        Core.WritePositionedString(
-            $" {LeftSelector} {BuildNumber(currentNumber)} {RightSelector} ",
-            Placement,
-            true,
-            lineSelector
-        );
-        Core.WritePositionedString(
-            BuildNumber(NextNumber(Direction.Down, currentNumber)),
-            Placement,
-            false,
-            lineSelector + 1
-        );
-        Core.WritePositionedString(BuildLine(Direction.Down), Placement, false, lineSelector + 2);
-    }
-
-    [Visual]
-    int NextNumber(Direction direction, int currentNumber)
-    {
-        if (direction == Direction.Up)
+        [Visual]
+        void DisplayChoices(int lineSelector, int currentNumber)
         {
-            if (currentNumber + _step <= _maximumValue)
-                return currentNumber + _step;
-            else if (currentNumber + _step > _maximumValue)
-                return _minimumValue;
+            Core.WritePositionedString(BuildLine(Direction.Up), Placement, false, lineSelector - 2);
+            Core.WritePositionedString(
+                BuildNumber(NextNumber(Direction.Up, currentNumber)),
+                Placement,
+                false,
+                lineSelector - 1
+            );
+            Core.WritePositionedString(
+                $" {LeftSelector} {BuildNumber(currentNumber)} {RightSelector} ",
+                Placement,
+                true,
+                lineSelector
+            );
+            Core.WritePositionedString(
+                BuildNumber(NextNumber(Direction.Down, currentNumber)),
+                Placement,
+                false,
+                lineSelector + 1
+            );
+            Core.WritePositionedString(
+                BuildLine(Direction.Down),
+                Placement,
+                false,
+                lineSelector + 2
+            );
         }
-        else
+
+        [Visual]
+        int NextNumber(Direction direction, int currentNumber)
         {
-            if (currentNumber - _step >= _minimumValue)
-                return currentNumber - _step;
-            else if (currentNumber - _step < _minimumValue)
-                return _maximumValue;
+            if (direction == Direction.Up)
+            {
+                if (currentNumber + _step <= _maximumValue)
+                    return currentNumber + _step;
+                else if (currentNumber + _step > _maximumValue)
+                    return _minimumValue;
+            }
+            else
+            {
+                if (currentNumber - _step >= _minimumValue)
+                    return currentNumber - _step;
+                else if (currentNumber - _step < _minimumValue)
+                    return _maximumValue;
+            }
+            return currentNumber;
         }
-        return currentNumber;
+
+        [Visual]
+        string BuildLine(Direction direction)
+        {
+            StringBuilder line = new();
+            for (int i = 0; i < _maximumValue.ToString().Length + 2; i++)
+                line.Append('─');
+            if (direction == Direction.Up)
+                line.Insert(0, Borders.TopLeft.ToString(), 1).Append(Borders.TopRight, 1);
+            else
+                line.Insert(0, Borders.BottomLeft.ToString(), 1).Append(Borders.BottomRight, 1);
+            return line.ToString();
+        }
     }
 
     [Visual]
-    string BuildLine(Direction direction)
-    {
-        StringBuilder line = new();
-        for (int i = 0; i < _maximumValue.ToString().Length + 2; i++)
-            line.Append('─');
-        if (direction == Direction.Up)
-            line.Insert(0, Borders.TopLeft.ToString(), 1).Append(Borders.TopRight, 1);
-        else
-            line.Insert(0, Borders.BottomLeft.ToString(), 1).Append(Borders.BottomRight, 1);
-        return line.ToString();
-    }
-
-    string BuildNumber(int number)
+    private string BuildNumber(int number)
     {
         StringBuilder numberStr = new();
         numberStr.Append($"{Borders.Vertical} ");

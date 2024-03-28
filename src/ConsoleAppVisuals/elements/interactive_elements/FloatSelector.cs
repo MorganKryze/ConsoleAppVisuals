@@ -13,21 +13,8 @@ namespace ConsoleAppVisuals.InteractiveElements;
 public class FloatSelector : InteractiveElement<float>
 {
     #region Constants
-    /// <summary>
-    /// The default left selector of the number selector.
-    /// </summary>
-    /// <remarks>
-    /// Can be updated with the <see cref="UpdateLeftSelector(char)"/> method.
-    /// </remarks>
-    public const char DEFAULT_SELECTOR_LEFT = '>';
-
-    /// <summary>
-    /// The default right selector of the number selector.
-    /// </summary>
-    /// <remarks>
-    /// Can be updated with the <see cref="UpdateRightSelector(char)"/> method.
-    /// </remarks>
-    public const char DEFAULT_SELECTOR_RIGHT = '<';
+    private const char DEFAULT_SELECTOR_LEFT = '>';
+    private const char DEFAULT_SELECTOR_RIGHT = '<';
     #endregion
 
     #region Fields
@@ -43,75 +30,74 @@ public class FloatSelector : InteractiveElement<float>
 
     #region Default Properties
     /// <summary>
-    /// The placement of the selector on the console.
+    /// Gets the placement of the selector on the console.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The height of the selector.
+    /// Gets the height of the selector.
     /// </summary>
     public override int Height => 7;
-    #endregion
-
-    #region Properties
     /// <summary>
-    /// The width of the selector.
+    /// Gets the width of the selector.
     /// </summary>
     public override int Width =>
         Math.Max(
             _question.Length,
             $" {LeftSelector} {BuildNumber((float)Math.Round(_maximumValue, 1))} {RightSelector} ".Length
         );
+    #endregion
 
+    #region Properties
     /// <summary>
-    /// The question to ask the user.
+    /// Gets the question to ask the user.
     /// </summary>
     public string Question => _question;
 
     /// <summary>
-    /// The minimum value of the selector.
+    /// Gets the minimum value of the selector.
     /// </summary>
     public float Min => _minimumValue;
 
     /// <summary>
-    /// The maximum value of the selector.
+    /// Gets the maximum value of the selector.
     /// </summary>
     public float Max => _maximumValue;
 
     /// <summary>
-    /// The start value of the selector.
+    /// Gets the start value of the selector.
     /// </summary>
     public float Start => _startValue;
 
     /// <summary>
-    /// The step of the selector.
+    /// Gets the step of the selector.
     /// </summary>
     public float Step => _step;
 
     /// <summary>
-    /// The borders manager of the selector.
+    /// Gets the borders manager of the selector.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// The type of the borders of the selector.
+    /// Gets the type of the borders of the selector.
     /// </summary>
     public BordersType BordersType => _borders.Type;
 
     /// <summary>
-    /// The left selector of the selector.
+    /// Gets the left selector of the selector.
     /// </summary>
     public char LeftSelector => _selector.Item1;
 
     /// <summary>
-    /// The right selector of the selector.
+    /// Gets the right selector of the selector.
     /// </summary>
     public char RightSelector => _selector.Item2;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="FloatSelector"/> is an interactive element that allows the user to select a float value from a range of values.
+    /// The <see cref="FloatSelector"/> is an interactive element that allows the user to select a float value from a range of values.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <param name="min">The minimum value of the selector.</param>
@@ -174,10 +160,9 @@ public class FloatSelector : InteractiveElement<float>
     }
     #endregion
 
-    #region Methods
-
+    #region Update Methods
     /// <summary>
-    /// This method is used to update the question of the selector.
+    /// Updates the question of the selector.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <remarks>
@@ -189,7 +174,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the minimum value of the selector.
+    /// Updates the minimum value of the selector.
     /// </summary>
     /// <param name="min">The minimum value of the selector.</param>
     /// <remarks>
@@ -204,7 +189,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the maximum value of the selector.
+    /// Updates the maximum value of the selector.
     /// </summary>
     /// <param name="max">The maximum value of the selector.</param>
     /// <remarks>
@@ -219,7 +204,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the start value of the selector.
+    /// Updates the start value of the selector.
     /// </summary>
     /// <param name="start">The start value of the selector.</param>
     /// <remarks>
@@ -231,7 +216,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the step of the selector.
+    /// Updates the step of the selector.
     /// </summary>
     /// <param name="step">The step of the selector.</param>
     /// <remarks>
@@ -243,7 +228,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the placement of the selector.
+    /// Updates the placement of the selector.
     /// </summary>
     /// <param name="placement">The placement of the selector on the console.</param>
     /// <remarks>
@@ -255,7 +240,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the selector of the selector.
+    /// Updates the selector of the selector.
     /// </summary>
     /// <param name="leftSelector">The new left selector of the selector.</param>
     /// <remarks>
@@ -267,7 +252,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the selector of the selector.
+    /// Updates the selector of the selector.
     /// </summary>
     /// <param name="rightSelector">The new right selector of the selector.</param>
     /// <remarks>
@@ -279,7 +264,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to update the type of the borders of the selector.
+    /// Updates the type of the borders of the selector.
     /// </summary>
     /// <param name="bordersType">The new type of the borders of the selector.</param>
     /// <remarks>
@@ -305,7 +290,7 @@ public class FloatSelector : InteractiveElement<float>
     }
 
     /// <summary>
-    /// This method is used to draw the selector on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
@@ -411,6 +396,5 @@ public class FloatSelector : InteractiveElement<float>
             return line.ToString();
         }
     }
-
     #endregion
 }

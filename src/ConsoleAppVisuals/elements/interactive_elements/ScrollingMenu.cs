@@ -5,13 +5,17 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="ScrollingMenu"/> is an interactive element that displays a question with multiple scrollable choices.
+/// The <see cref="ScrollingMenu"/> is an interactive element that displays a question with multiple scrollable choices.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class ScrollingMenu : InteractiveElement<int>
 {
+    #region Constants
+    private const char DEFAULT_CURSOR = '>';
+    #endregion
+
     #region Fields
     private string _question;
     private string[] _choices;
@@ -20,50 +24,42 @@ public class ScrollingMenu : InteractiveElement<int>
     private char _selector = DEFAULT_CURSOR;
     #endregion
 
-    #region Constants
+    #region Default Properties
     /// <summary>
-    /// The default cursor of the menu.
-    /// </summary>
-    /// <remarks>
-    /// Can be updated with the <see cref="UpdateSelector(char)"/> method.
-    /// </remarks>
-    public const char DEFAULT_CURSOR = '>';
-    #endregion
-
-    #region Properties
-    /// <summary>
-    /// The placement of the menu on the console.
+    /// Gets the placement of the menu on the console.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The height of the menu.
+    /// Gets the height of the menu.
     /// </summary>
     public override int Height => _choices.Length + 2;
 
     /// <summary>
-    /// The width of the menu.
+    /// Gets the width of the menu.
     /// </summary>
     public override int Width =>
         Math.Max(_question.Length + 1, _choices.Max((string s) => s.Length) + 5);
+    #endregion
 
+    #region Properties
     /// <summary>
-    /// The question to ask the user.
+    /// Gets the question to ask the user.
     /// </summary>
     public string Question => _question;
 
     /// <summary>
-    /// The different choices of the menu.
+    /// Gets the different choices of the menu.
     /// </summary>
     public string[] Choices => _choices;
 
     /// <summary>
-    /// The index of the default choice(initially 0).
+    /// Gets the index of the default choice(initially 0).
     /// </summary>
     public int DefaultIndex => _defaultIndex;
 
     /// <summary>
-    /// The selector char of the menu.
+    /// Gets the selector char of the menu.
     /// </summary>
     public char Selector => _selector;
 
@@ -71,7 +67,7 @@ public class ScrollingMenu : InteractiveElement<int>
 
     #region Constructor
     /// <summary>
-    /// A <see cref="ScrollingMenu"/> is an interactive element that displays a question with multiple scrollable choices.
+    /// The <see cref="ScrollingMenu"/> is an interactive element that displays a question with multiple scrollable choices.
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <param name="defaultIndex">The index of the default choice(initially 0).</param>
@@ -94,9 +90,9 @@ public class ScrollingMenu : InteractiveElement<int>
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method is used to update the question of the menu.
+    /// Updates the question of the menu.
     /// </summary>
     /// <param name="question">The new question of the menu.</param>
     /// <remarks>
@@ -108,7 +104,7 @@ public class ScrollingMenu : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the choices of the menu.
+    /// Updates the choices of the menu.
     /// </summary>
     /// <param name="choices">The new choices of the menu.</param>
     /// <remarks>
@@ -120,7 +116,7 @@ public class ScrollingMenu : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the default index of the menu.
+    /// Updates the default index of the menu.
     /// </summary>
     /// <param name="defaultIndex">The new default index of the menu.</param>
     /// <remarks>
@@ -132,7 +128,7 @@ public class ScrollingMenu : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the placement of the menu.
+    /// Updates the placement of the menu.
     /// </summary>
     /// <param name="placement">The new placement of the menu.</param>
     /// <remarks>
@@ -144,7 +140,7 @@ public class ScrollingMenu : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to update the selector of the menu.
+    /// Updates the selector of the menu.
     /// </summary>
     /// <param name="selector">The new selector of the menu.</param>
     /// <remarks>
@@ -154,9 +150,11 @@ public class ScrollingMenu : InteractiveElement<int>
     {
         _selector = selector;
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
-    /// This method is used to draw the menu on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
