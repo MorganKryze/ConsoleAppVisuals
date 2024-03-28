@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.AnimatedElements;
 
 /// <summary>
-/// A <see cref="FakeLoadingBar"/> is an animated element that simulates a loading bar with a fixed duration.
+/// The <see cref="FakeLoadingBar"/> is an animated element that simulates a loading bar with a fixed duration.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -30,41 +30,41 @@ public class FakeLoadingBar : AnimatedElement
 
     #region Default Properties
     /// <summary>
-    /// The height of the loading bar.
+    /// Gets the height of the loading bar.
     /// </summary>
     public override int Height => DEFAULT_HEIGHT;
 
     /// <summary>
-    /// The width of the loading bar.
+    /// Gets the width of the loading bar.
     /// </summary>
     public override int Width => _text.Length;
 
     /// <summary>
-    /// The placement of the loading bar.
+    /// Gets the placement of the loading bar.
     /// </summary>
     public override Placement Placement => _placement;
     #endregion
 
     #region Properties
     /// <summary>
-    /// The text of the loading bar.
+    /// Gets the text of the loading bar.
     /// </summary>
     public string Text => _text;
 
     /// <summary>
-    /// Getter of the duration of the loading bar.
+    /// Gets the duration of the loading bar.
     /// </summary>
     public int ProcessDuration => _processDuration;
 
     /// <summary>
-    /// Getter of the additional duration of the loading bar at the end.
+    /// Gets the additional duration of the loading bar at the end.
     /// </summary>
     public int AdditionalDuration => _additionalDuration;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="FakeLoadingBar"/> is an animated element that simulates a loading bar with a fixed duration.
+    /// The <see cref="FakeLoadingBar"/> is an animated element that simulates a loading bar with a fixed duration.
     /// </summary>
     /// <param name="text">The text of the loading bar.</param>
     /// <param name="placement">The placement of the loading bar.</param>
@@ -96,7 +96,7 @@ public class FakeLoadingBar : AnimatedElement
 
     #region Update Methods
     /// <summary>
-    /// This method is used to update the text of the loading bar.
+    /// Updates the text of the loading bar.
     /// </summary>
     /// <param name="text">The new text of the loading bar.</param>
     /// <remarks>
@@ -112,7 +112,7 @@ public class FakeLoadingBar : AnimatedElement
     }
 
     /// <summary>
-    /// This method is used to update the placement of the loading bar.
+    /// Updates the placement of the loading bar.
     /// </summary>
     /// <param name="placement">The new placement of the loading bar.</param>
     /// <remarks>
@@ -124,7 +124,7 @@ public class FakeLoadingBar : AnimatedElement
     }
 
     /// <summary>
-    /// This method is used to update the duration of the loading bar.
+    /// Updates the duration of the loading bar.
     /// </summary>
     /// <param name="processDuration">The new duration of the loading bar.</param>
     /// <exception cref="ArgumentOutOfRangeException">Throw when the process duration is negative.</exception>
@@ -144,11 +144,10 @@ public class FakeLoadingBar : AnimatedElement
     }
 
     /// <summary>
-    /// This method is used to update the additional duration of the loading bar.
+    /// Updates the additional duration of the loading bar.
     /// </summary>
     /// <param name="additionalDuration">The new additional duration of the loading bar.</param>
     /// <exception cref="ArgumentOutOfRangeException">The additional duration of the loading bar cannot be negative.</exception>
-
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -167,7 +166,7 @@ public class FakeLoadingBar : AnimatedElement
 
     #region Rendering
     /// <summary>
-    /// This method is used to draw the loading bar on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
