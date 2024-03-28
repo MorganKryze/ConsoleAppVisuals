@@ -14,6 +14,15 @@ public class ScrollingMenu : InteractiveElement<int>
 {
     #region Constants
     private const char DEFAULT_CURSOR = '>';
+    private const char DEFAULT_UPDATED_CURSOR = '▶';
+    private const int QUESTION_AND_MARGIN_HEIGHT = 2;
+    private const int SELECTION_MARGIN_WIDTH = 5;
+    private const int DEFAULT_INDEX = 0;
+    private const int DEFAULT_PRINT_DURATION = 1500;
+    private const int DEFAULT_PRINT_ADDITIONAL_DURATION = 50;
+    private const int DEFAULT_PRINT_DELAY = 30;
+    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    private const TextAlignment DEFAULT_TEXT_ALIGNMENT = TextAlignment.Center;
     #endregion
 
     #region Fields
@@ -33,13 +42,16 @@ public class ScrollingMenu : InteractiveElement<int>
     /// <summary>
     /// Gets the height of the menu.
     /// </summary>
-    public override int Height => _choices.Length + 2;
+    public override int Height => _choices.Length + QUESTION_AND_MARGIN_HEIGHT;
 
     /// <summary>
     /// Gets the width of the menu.
     /// </summary>
     public override int Width =>
-        Math.Max(_question.Length + 1, _choices.Max((string s) => s.Length) + 5);
+        Math.Max(
+            _question.Length + 1,
+            _choices.Max((string s) => s.Length) + SELECTION_MARGIN_WIDTH
+        );
     #endregion
 
     #region Properties
@@ -54,7 +66,7 @@ public class ScrollingMenu : InteractiveElement<int>
     public string[] Choices => _choices;
 
     /// <summary>
-    /// Gets the index of the default choice(initially 0).
+    /// Gets the index of the default choice.
     /// </summary>
     public int DefaultIndex => _defaultIndex;
 
@@ -78,8 +90,8 @@ public class ScrollingMenu : InteractiveElement<int>
     /// </remarks>
     public ScrollingMenu(
         string question,
-        int defaultIndex = 0,
-        Placement placement = Placement.TopCenter,
+        int defaultIndex = DEFAULT_INDEX,
+        Placement placement = DEFAULT_PLACEMENT,
         params string[] choices
     )
     {
@@ -146,7 +158,7 @@ public class ScrollingMenu : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void UpdateSelector(char selector = '▶')
+    public void UpdateSelector(char selector = DEFAULT_UPDATED_CURSOR)
     {
         _selector = selector;
     }
@@ -164,10 +176,10 @@ public class ScrollingMenu : InteractiveElement<int>
             _question,
             Line,
             false,
-            1500,
-            50,
+            DEFAULT_PRINT_DURATION,
+            DEFAULT_PRINT_ADDITIONAL_DURATION,
             Width,
-            TextAlignment.Center,
+            DEFAULT_TEXT_ALIGNMENT,
             _placement
         );
         int lineChoice = Line + 2;
@@ -238,7 +250,7 @@ public class ScrollingMenu : InteractiveElement<int>
                     (i == defaultIndex) ? $" {Selector} {choices[i]}  " : $"   {choices[i]}  ";
                 Core.WritePositionedString(array[i], placement, i == defaultIndex, lineChoice + i);
                 if (delay)
-                    Thread.Sleep(30);
+                    Thread.Sleep(DEFAULT_PRINT_DELAY);
             }
         }
     }
