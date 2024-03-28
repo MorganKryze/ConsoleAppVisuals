@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// A <see cref="IntSelector"/> is an interactive element that allows the user to select an integer value from a range of values.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class IntSelector : InteractiveElement<int>
 {
@@ -123,11 +119,7 @@ public class IntSelector : InteractiveElement<int>
     /// <param name="placement">The placement of the selector on the console.</param>
     /// <param name="bordersType">The border type of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public IntSelector(
         string question,
@@ -186,11 +178,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="question">The question to ask the user.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateQuestion(string question)
     {
@@ -202,11 +190,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="min">The minimum value of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateMin(int min)
     {
@@ -221,11 +205,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="max">The maximum value of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateMax(int max)
     {
@@ -240,11 +220,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="start">The start value of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateStart(int start)
     {
@@ -256,11 +232,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="step">The step of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateStep(int step)
     {
@@ -272,11 +244,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="placement">The placement of the selector on the console.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdatePlacement(Placement placement)
     {
@@ -288,11 +256,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="leftSelector">The new left selector of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateLeftSelector(char leftSelector = '▶')
     {
@@ -304,11 +268,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="rightSelector">The new right selector of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateRightSelector(char rightSelector = '◀')
     {
@@ -320,11 +280,7 @@ public class IntSelector : InteractiveElement<int>
     /// </summary>
     /// <param name="bordersType">The border type of the selector.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateBordersType(BordersType bordersType)
     {

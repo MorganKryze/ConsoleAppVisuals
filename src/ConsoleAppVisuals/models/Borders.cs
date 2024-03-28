@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.Models;
 /// The <see cref="Borders"/> class defines the border characters to use for embed elements.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Borders
 {
@@ -98,11 +94,7 @@ public class Borders
     /// </summary>
     /// <param name="type">The type of border to use for the element.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public Borders(BordersType type = BordersType.SingleStraight)
     {
@@ -135,11 +127,7 @@ public class Borders
     /// <exception cref="ArgumentException">Thrown when the border type is invalid.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public char GetBorderChar(int index)
     {
@@ -175,11 +163,7 @@ public class Borders
     /// </summary>
     /// <param name="newType">The new border type to use.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateBordersType(BordersType newType)
     {

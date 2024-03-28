@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.Enums;
 /// The <see cref="BordersType"/> enum defines the type of border to use for embed elements.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public enum BordersType
 {

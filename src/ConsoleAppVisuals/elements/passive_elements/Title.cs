@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// A <see cref="Title"/> is a passive element that displays a title on the console.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Title : PassiveElement
 {
@@ -26,7 +22,7 @@ public class Title : PassiveElement
 
     #region Properties
     /// <summary>
-    ///
+    /// The styled text of the title.
     /// </summary>
     public string[] StyledText => _styler.Style(_text);
 
@@ -76,11 +72,7 @@ public class Title : PassiveElement
     /// <param name="font">The font of the title.</param>
     /// <param name="fontPath">ATTENTION: fill this parameter only if you want to use a custom font (Font.Custom).</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public Title(
         string text,
@@ -103,11 +95,7 @@ public class Title : PassiveElement
     /// </summary>
     /// <param name="text">The new text of the title.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateText(string text)
     {
@@ -120,11 +108,7 @@ public class Title : PassiveElement
     /// <param name="margin">The new margin of the title.</param>
     /// <exception cref="ArgumentOutOfRangeException">The margin must be between 0 and the half of the console height.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateMargin(int margin)
     {
@@ -143,11 +127,7 @@ public class Title : PassiveElement
     /// </summary>
     /// <param name="align">The new alignment of the title.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateAlignment(TextAlignment align)
     {
@@ -159,6 +139,9 @@ public class Title : PassiveElement
     /// </summary>
     /// <param name="font">The new font of the title.</param>
     /// <param name="fontPath">ATTENTION: fill this parameter only if you want to use a custom font (Font.Custom).</param>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
     public void UpdateFont(Font font, string? fontPath = null)
     {
         _styler = new TextStyler(font, fontPath);

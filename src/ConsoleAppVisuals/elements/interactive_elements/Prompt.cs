@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// A <see cref="Prompt"/> is an interactive element that allows the user to input a string response.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Prompt : InteractiveElement<string>
 {
@@ -108,11 +104,7 @@ public class Prompt : InteractiveElement<string>
     /// <param name="style">The style of the prompt input.</param>
     /// <param name="borderType">The type of border to use for the element.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public Prompt(
         string question,
@@ -164,11 +156,7 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     /// <param name="question">The new question of the prompt element.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateQuestion(string question)
     {
@@ -180,11 +168,7 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     /// <param name="defaultValue">The new default value of the prompt element.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateDefaultValue(string? defaultValue)
     {
@@ -196,11 +180,7 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     /// <param name="placement">The new placement of the prompt element.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdatePlacement(Placement placement)
     {
@@ -213,11 +193,7 @@ public class Prompt : InteractiveElement<string>
     /// <param name="maxLength">The new maximum length of the response.</param>
     /// <exception cref="ArgumentOutOfRangeException">The maximum length of the response must be greater than 0 and less than the width of the console window.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateMaxLength(int maxLength)
     {
@@ -229,11 +205,7 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     /// <param name="selector">The new selector of the prompt element.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateSelector(char selector = DEFAULT_UPDATED_CURSOR)
     {
@@ -245,11 +217,7 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     /// <param name="style">The new style of the prompt input.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateStyle(PromptInputStyle style)
     {
@@ -261,11 +229,7 @@ public class Prompt : InteractiveElement<string>
     /// </summary>
     /// <param name="bordersType">The new border type of the prompt element.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateBordersType(BordersType bordersType)
     {

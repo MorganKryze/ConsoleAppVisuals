@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// A <see cref="ElementsList"/> is a passive element that displays a list of all the elements types available.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class ElementsList : PassiveElement
 {
@@ -99,11 +95,7 @@ public class ElementsList : PassiveElement
     /// <param name="placement">The placement of the InteractiveList.</param>
     /// <param name="bordersType">The type of borders of the InteractiveList.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public ElementsList(
         ElementType elementTypeExpected = ElementType.Default,
@@ -126,11 +118,7 @@ public class ElementsList : PassiveElement
     /// </summary>
     /// <param name="placement">The new placement of the InteractiveList.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdatePlacement(Placement placement)
     {
@@ -143,11 +131,7 @@ public class ElementsList : PassiveElement
     /// </summary>
     /// <param name="bordersType">The new type of borders of the InteractiveList.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateBordersType(BordersType bordersType)
     {
@@ -160,11 +144,7 @@ public class ElementsList : PassiveElement
     /// </summary>
     /// <param name="elementsTypeExpected">The new type of element expected.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateElementsTypeExpected(ElementType elementsTypeExpected)
     {

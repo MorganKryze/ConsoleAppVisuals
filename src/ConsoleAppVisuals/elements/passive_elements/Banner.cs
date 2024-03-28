@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// A <see cref="Banner"/> is a passive element that displays a banner on the console.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Banner : PassiveElement
 {
@@ -67,11 +63,7 @@ public class Banner : PassiveElement
     /// <param name="lowerMargin">The lower margin of the banner.</param>
     /// <param name="placement">The placement of the banner.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public Banner(
         string leftText = "Banner Left",
@@ -108,11 +100,7 @@ public class Banner : PassiveElement
     /// </summary>
     /// <param name="leftText">The new text on the left of the banner.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateLeftText(string leftText)
     {
@@ -124,11 +112,7 @@ public class Banner : PassiveElement
     /// </summary>
     /// <param name="centerText">The new text in the center of the banner.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateCenterText(string centerText)
     {
@@ -140,11 +124,7 @@ public class Banner : PassiveElement
     /// </summary>
     /// <param name="rightText">The new text on the right of the banner.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateRightText(string rightText)
     {
@@ -156,11 +136,7 @@ public class Banner : PassiveElement
     /// </summary>
     /// <param name="placement">The new placement of the banner.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdatePlacement(Placement placement)
     {
@@ -173,11 +149,7 @@ public class Banner : PassiveElement
     /// <param name="upperMargin">The new upper margin of the banner.</param>
     /// <exception cref="ArgumentOutOfRangeException">The upper margin of the banner must be between 0 and the height of the console window.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateUpperMargin(int upperMargin)
     {
@@ -198,11 +170,7 @@ public class Banner : PassiveElement
     /// <param name="lowerMargin">The new lower margin of the banner.</param>
     /// <exception cref="ArgumentOutOfRangeException">The lower margin of the banner must be between 0 and the height of the console window.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateLowerMargin(int lowerMargin)
     {
@@ -230,13 +198,7 @@ public class Banner : PassiveElement
         Core.WritePositionedString(Text.BannerToString(), Placement, true, Line, false);
         for (int i = 0; i < LowerMargin; i++)
         {
-            Core.WritePositionedString(
-                string.Empty,
-                Placement,
-                true,
-                Line + Height - 1 - i,
-                false
-            );
+            Core.WritePositionedString(string.Empty, Placement, true, Line + Height - 1 - i, false);
         }
     }
     #endregion

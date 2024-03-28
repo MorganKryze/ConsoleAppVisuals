@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// A <see cref="ElementsDashboard"/> is a passive element that displays a dashboard of all the elements currently in the <see cref="Window"/> class.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class ElementsDashboard : PassiveElement
 {
@@ -33,17 +29,7 @@ public class ElementsDashboard : PassiveElement
     /// This property returns the headers of the dashboard.
     /// </summary>
     public static List<string> Headers =>
-        new()
-        {
-            "Id",
-            "Type",
-            "Visibility",
-            "Height",
-            "Width",
-            "Line",
-            "Placement",
-            "Type"
-        };
+        new() { "Id", "Type", "Visibility", "Height", "Width", "Line", "Placement", "Type" };
 
     /// <summary>
     /// This property returns the lines of the dashboard.
@@ -88,11 +74,7 @@ public class ElementsDashboard : PassiveElement
     /// <param name="placement">The placement of the dashboard.</param>
     /// <param name="bordersType">The type of borders to be used in the dashboard.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public ElementsDashboard(
         Placement placement = Placement.TopCenter,
@@ -113,11 +95,7 @@ public class ElementsDashboard : PassiveElement
     /// </summary>
     /// <param name="placement">The new placement of the dashboard.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdatePlacement(Placement placement)
     {
@@ -130,11 +108,7 @@ public class ElementsDashboard : PassiveElement
     /// </summary>
     /// <param name="bordersType">The new type of borders to be used in the dashboard.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateBordersType(BordersType bordersType)
     {

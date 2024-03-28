@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// A <see cref="Matrix{T}"/> is a passive element that displays a matrix on the console.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Matrix<T> : PassiveElement
 {
@@ -64,11 +60,7 @@ public class Matrix<T> : PassiveElement
     /// <param name="bordersType">The type of borders to use for the matrix.</param>
     /// <exception cref="ArgumentException">Thrown when the matrix is empty or not compatible (lines are not of the same length).</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public Matrix(
         List<List<T?>>? rawLines = null,
@@ -215,11 +207,7 @@ public class Matrix<T> : PassiveElement
     /// </summary>
     /// <param name="bordersType">The new border type of the matrix.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateBordersType(BordersType bordersType)
     {
@@ -232,11 +220,7 @@ public class Matrix<T> : PassiveElement
     /// </summary>
     /// <param name="placement">The new placement of the matrix.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdatePlacement(Placement placement)
     {
@@ -250,12 +234,8 @@ public class Matrix<T> : PassiveElement
     /// <returns>The element at the specified position.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>ss
     public T? GetItem(Position position)
     {
         if (position.X >= _lines.Count || position.Y >= _lines[position.X].Count)
@@ -272,11 +252,7 @@ public class Matrix<T> : PassiveElement
     /// <returns>True if the line has been added successfully, false otherwise.</returns>
     /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public bool AddLine(List<T?> line)
     {
@@ -307,11 +283,7 @@ public class Matrix<T> : PassiveElement
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public bool InsertLine(int index, List<T?> line)
     {
@@ -339,11 +311,7 @@ public class Matrix<T> : PassiveElement
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <exception cref="ArgumentException">Thrown when the line is not of the same length as the other lines.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public bool UpdateLine(int index, List<T?> line)
     {
@@ -370,11 +338,7 @@ public class Matrix<T> : PassiveElement
     /// <returns>True if the element has been updated successfully, false otherwise.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public bool UpdateItem(Position position, T item)
     {
@@ -394,11 +358,7 @@ public class Matrix<T> : PassiveElement
     /// <returns>True if the line has been removed successfully, false otherwise.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public bool RemoveLine(int index)
     {
@@ -418,11 +378,7 @@ public class Matrix<T> : PassiveElement
     /// <returns>True if the element has been removed successfully, false otherwise.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when the position is out of range.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public bool RemoveItem(Position position)
     {
@@ -440,13 +396,6 @@ public class Matrix<T> : PassiveElement
     /// <summary>
     /// Writes the matrix instance to the console.
     /// </summary>
-    /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
-    /// </remarks>
     [Visual]
     protected override void RenderElementActions()
     {
