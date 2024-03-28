@@ -16,7 +16,7 @@ public class InteractionEventArgs<T> : EventArgs
     /// <summary>
     /// Gets the status after exiting the interactive element. See the <see cref="Status"/> enumeration to know the possible values.
     /// </summary>
-    /// <value>Status.Escaped : pressed escape, Status.Deleted : pressed backspace, Status.Selected : pressed enter, Status.None : default value</value>
+    /// <value>Status.Escaped : pressed escape, Status.Deleted : pressed backspace, Status.Selected : pressed enter</value>
     public Status Status { get; set; }
 
     /// <summary>

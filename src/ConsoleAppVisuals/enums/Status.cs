@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Enums;
 
 /// <summary>
-/// Enum for the status of any interactive element.
+/// The <see cref="Status"/> enum represents the exit status of an interaction.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -13,22 +13,17 @@ namespace ConsoleAppVisuals.Enums;
 public enum Status
 {
     /// <summary>
-    /// Default value.
-    /// </summary>
-    None,
-
-    /// <summary>
-    /// Chose to validate the input.
+    /// Pressed the enter key.
     /// </summary>
     Selected,
 
     /// <summary>
-    /// Chose to delete an item.
+    /// Pressed the delete key.
     /// </summary>
     Deleted,
 
     /// <summary>
-    /// Chose to exit the menu.
+    /// Pressed the escape key.
     /// </summary>
     Escaped
 }
