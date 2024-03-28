@@ -17,7 +17,7 @@ public class UnitTestCore
 
         // Act
         Core.SetForegroundColor(color);
-        var colorPanel = Core.GetColorPanel;
+        var colorPanel = Core.ColorPanel;
 
         // Assert
         Assert.AreEqual(color, colorPanel.Item1);
@@ -29,13 +29,13 @@ public class UnitTestCore
     public void LoadTerminalColorPanel()
     {
         // Arrange
-        var initialColorPanel = Core.GetColorPanel;
+        var initialColorPanel = Core.ColorPanel;
 
         // Act
         Core.LoadTerminalColorPanel();
 
         // Assert
-        Assert.AreNotEqual(initialColorPanel, Core.GetColorPanel);
+        Assert.AreNotEqual(initialColorPanel, Core.ColorPanel);
     }
     #endregion
 
@@ -44,7 +44,7 @@ public class UnitTestCore
     public void GetInitialColorPanel()
     {
         // Assert
-        Assert.AreEqual((ConsoleColor.White, ConsoleColor.Black), Core.GetInitialColorPanel);
+        Assert.AreEqual((ConsoleColor.White, ConsoleColor.Black), Core.InitialColorPanel);
     }
 
     #endregion
