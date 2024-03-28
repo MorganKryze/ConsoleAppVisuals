@@ -9,6 +9,8 @@ ms.topic: article
 ms.service: ConsoleAppVisuals
 ---
 
+<!--  TODO : add: https://learn.microsoft.com/en-us/contribute/content/metadata -->
+
 # Create your project documentation
 
 ## Introduction
