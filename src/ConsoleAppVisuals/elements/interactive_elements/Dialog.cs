@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
+/// The <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
 /// See <see cref="DialogOption"/> enum for the possible outputs of a dialog.
 /// </summary>
 /// <remarks>
@@ -35,54 +35,54 @@ public class Dialog : InteractiveElement<DialogOption>
 
     #region Default Properties
     /// <summary>
-    /// The position of the Dialog.
+    /// Gets the position of the Dialog.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The alignment of the Dialog.
+    /// Gets the alignment of the Dialog.
     /// </summary>
     public override TextAlignment TextAlignment => _align;
 
     /// <summary>
-    /// The height of the Dialog.
+    /// Gets the height of the Dialog.
     /// </summary>
     public override int Height => _textToDisplay!.Count;
 
     /// <summary>
-    /// The width of the Dialog.
+    /// Gets the width of the Dialog.
     /// </summary>
     public override int Width => _textToDisplay!.Max(s => s.Length);
     #endregion
 
     #region Properties
     /// <summary>
-    /// The rows of the Dialog.
+    /// Gets the rows of the Dialog.
     /// </summary>
     public List<string> Lines => _lines;
 
     /// <summary>
-    /// The text of the left option.
+    /// Gets the text of the left option.
     /// </summary>
     public string? LeftOption => _leftOption;
 
     /// <summary>
-    /// The text of the right option.
+    /// Gets the text of the right option.
     /// </summary>
     public string? RightOption => _rightOption;
 
     /// <summary>
-    /// The borders of the Dialog.
+    /// Gets the borders of the Dialog.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// The border type of the selector.
+    /// Gets the border type of the selector.
     /// </summary>
     public BordersType BordersType => _borders.Type;
 
     /// <summary>
-    /// The text to display.
+    /// Gets the text to display.
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
 
@@ -95,7 +95,7 @@ public class Dialog : InteractiveElement<DialogOption>
 
     #region Constructor
     /// <summary>
-    /// A <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
+    /// The <see cref="Dialog"/> is an interactive element that displays a dialog bow with one or two choices.
     /// See <see cref="DialogOption"/> enum for the possible outputs of a dialog.
     /// </summary>
     /// <param name="lines">The text to display.</param>
@@ -131,7 +131,7 @@ public class Dialog : InteractiveElement<DialogOption>
 
     #region Update Methods
     /// <summary>
-    /// This method updates the text of the first option.
+    /// Updates the text of the first option.
     /// </summary>
     /// <param name="text">The new text of the first option.</param>
     /// <remarks>
@@ -144,7 +144,7 @@ public class Dialog : InteractiveElement<DialogOption>
     }
 
     /// <summary>
-    /// This method updates the text of the second option.
+    /// Updates the text of the second option.
     /// </summary>
     /// <param name="text">The new text of the second option.</param>
     /// <remarks>
@@ -157,7 +157,7 @@ public class Dialog : InteractiveElement<DialogOption>
     }
 
     /// <summary>
-    /// This method updates the text of the Dialog.
+    /// Updates the text of the Dialog.
     /// </summary>
     /// <param name="lines">The new text of the Dialog.</param>
     /// <remarks>
@@ -171,7 +171,7 @@ public class Dialog : InteractiveElement<DialogOption>
     }
 
     /// <summary>
-    /// This method updates the placement of the Dialog.
+    /// Updates the placement of the Dialog.
     /// </summary>
     /// <param name="placement">The new placement of the Dialog.</param>
     /// <remarks>
@@ -183,7 +183,7 @@ public class Dialog : InteractiveElement<DialogOption>
     }
 
     /// <summary>
-    /// This method updates the alignment of the Dialog.
+    /// Updates the alignment of the Dialog.
     /// </summary>
     /// <param name="align">The new alignment of the Dialog.</param>
     /// <remarks>
@@ -196,7 +196,7 @@ public class Dialog : InteractiveElement<DialogOption>
     }
 
     /// <summary>
-    /// This method updates the borders of the Dialog.
+    /// Updates the borders of the Dialog.
     /// </summary>
     /// <param name="bordersType">The new border type of the Dialog.</param>
     /// <remarks>

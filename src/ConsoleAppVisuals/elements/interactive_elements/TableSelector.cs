@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="TableSelector"/> is an interactive element that displays a table with selectable elements.
+/// The <see cref="TableSelector"/> is an interactive element that displays a table with selectable elements.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -25,77 +25,78 @@ public class TableSelector : InteractiveElement<int>
 
     #endregion
 
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// This property returns the title of the table.
+    /// Gets the placement of the table on the console.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// This property returns the height of the table.
+    /// Gets the height of the table.
     /// </summary>
     public override int Height => _displayArray?.Length ?? 0;
 
     /// <summary>
-    /// This property returns the width of the table.
+    /// Gets the width of the table.
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
+    #endregion
 
+    #region Properties
     /// <summary>
-    /// This property returns the title of the table.
+    /// Gets the title of the table.
     /// </summary>
     public string Title => _title ?? "";
 
     /// <summary>
-    /// This property returns if the header is excluded.
+    /// Gets if the header is excluded.
     /// </summary>
     public bool ExcludeHeader => _excludeHeader;
 
     /// <summary>
-    /// This property returns if the footer is excluded.
+    /// Gets if the footer is excluded.
     /// </summary>
     public bool ExcludeFooter => _excludeFooter;
 
     /// <summary>
-    /// This property returns the text of the footer.
+    /// Gets the text of the footer.
     /// </summary>
     public string FooterText => _footerText ?? "New";
 
     /// <summary>
-    /// This property returns the borders manager of the table.
+    /// Gets the borders manager of the table.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// This property returns the type of the borders of the table.
+    /// Gets the type of the borders of the table.
     /// </summary>
     public BordersType BordersType => _borders.Type;
 
     /// <summary>
-    /// This property returns the headers of the table.
+    /// Gets the headers of the table.
     /// </summary>
     public List<string>? GetRawHeaders => _rawHeaders;
 
     /// <summary>
-    /// This property returns the lines of the table.
+    /// Gets the lines of the table.
     /// </summary>
     public List<List<string>>? GetRawLines => _rawLines;
 
     /// <summary>
-    /// This property returns the number of lines in the table.
+    /// Gets the number of lines in the table.
     /// </summary>
     public int Count => _rawLines?.Count ?? 0;
 
     /// <summary>
-    /// This property returns the display array of the table.
+    /// Gets the display array of the table.
     /// </summary>
     public string[]? DisplayArray => _displayArray;
-
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="TableSelector"/> is an interactive element that displays a table with selectable elements.
+    /// The <see cref="TableSelector"/> is an interactive element that displays a table with selectable elements.
     /// </summary>
     /// <param name="title">The title of the table.</param>
     /// <param name="lines">The lines of the table.</param>
@@ -105,8 +106,8 @@ public class TableSelector : InteractiveElement<int>
     /// <param name="footerText">The text to display in the footer.</param>
     /// <param name="placement">The placement of the table.</param>
     /// <param name="bordersType">The type of the borders of the table.</param>
-    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <exception cref="NullReferenceException">Is thrown when no body lines were provided.</exception>
+    /// <exception cref="ArgumentException">Thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <exception cref="NullReferenceException">Thrown when no body lines were provided.</exception>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -437,9 +438,9 @@ public class TableSelector : InteractiveElement<int>
     }
     #endregion
 
-    #region Methods: Get, Add, Update, Remove, Clear
+    #region Update Methods
     /// <summary>
-    /// This method updates the placement of the table.
+    /// Updates the placement of the table.
     /// </summary>
     /// <param name="placement">The placement of the table.</param>
     /// <remarks>
@@ -455,7 +456,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method updates the type of the borders of the table.
+    /// Updates the type of the borders of the table.
     /// </summary>
     /// <param name="bordersType">The type of the borders of the table.</param>
     /// <remarks>
@@ -471,7 +472,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method updates the text of the footer.
+    /// Updates the text of the footer.
     /// </summary>
     /// <param name="footerText">The text of the footer.</param>
     /// <remarks>
@@ -487,7 +488,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method sets the table to exclude the header.
+    /// Sets the table to exclude the header.
     /// </summary>
     /// <param name="excludeHeader">Whether to exclude the header or not.</param>
     /// <remarks>
@@ -503,7 +504,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method sets the table to exclude the footer.
+    /// Sets the table to exclude the footer.
     /// </summary>
     /// <param name="excludeFooter">Whether to exclude the footer or not.</param>
     /// <remarks>
@@ -519,7 +520,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method adds headers to the table.
+    /// Adds headers to the table.
     /// </summary>
     /// <param name="headers">The headers to add.</param>
     /// <remarks>
@@ -535,7 +536,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method updates the headers of the table.
+    /// Updates the headers of the table.
     /// </summary>
     /// <param name="headers">The headers to update.</param>
     /// <remarks>
@@ -547,7 +548,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method adds a title to the table.
+    /// Adds a title to the table.
     /// </summary>
     /// <param name="title">The title to add.</param>
     /// <remarks>
@@ -560,7 +561,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method updates the title of the table.
+    /// Updates the title of the table.
     /// </summary>
     /// <param name="title">The title to update.</param>
     /// <remarks>
@@ -570,13 +571,15 @@ public class TableSelector : InteractiveElement<int>
     {
         AddTitle(title);
     }
+    #endregion
 
+    #region Manipulation Methods
     /// <summary>
-    /// This property returns the specified line in the table.
+    /// Gets the specified line in the table.
     /// </summary>
     /// <param name="index">The index of the line to return.</param>
     /// <returns>The line at the specified index.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -590,11 +593,11 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to get all the elements from a column given its index.
+    /// Gets all the elements from a column given its index.
     /// </summary>
     /// <param name="index">The index of the column.</param>
     /// <returns>The elements of the column.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -619,11 +622,11 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method is used to get all the elements from a column given its header.
+    /// Gets all the elements from a column given its header.
     /// </summary>
     /// <param name="header">The header of the column.</param>
     /// <returns>The elements of the column.</returns>
-    /// <exception cref="ArgumentException">Is thrown when the header is invalid.</exception>
+    /// <exception cref="ArgumentException">Thrown when the header is invalid.</exception>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -646,10 +649,10 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method adds a line to the table.
+    /// Adds a line to the table.
     /// </summary>
     /// <param name="line">The line to add.</param>
-    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <exception cref="ArgumentException">Thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -673,10 +676,10 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method removes a line from the table.
+    /// Removes a line from the table given its index.
     /// </summary>
     /// <param name="index">The index of the line to remove.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -692,12 +695,12 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method updates a line in the table.
+    /// Updates a line in the table.
     /// </summary>
     /// <param name="index">The index of the line to update.</param>
     /// <param name="line">The new line.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentException">Thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
@@ -722,7 +725,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method clears the headers of the table.
+    /// Clears the headers of the table.
     /// </summary>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -734,7 +737,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method clears the lines of the table.
+    /// Clears the lines of the table.
     /// </summary>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -746,7 +749,7 @@ public class TableSelector : InteractiveElement<int>
     }
 
     /// <summary>
-    /// This method clears the table.
+    /// Clears the table.
     /// </summary>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -762,7 +765,7 @@ public class TableSelector : InteractiveElement<int>
 
     #region Display Methods
     /// <summary>
-    /// This method displays the table without interaction.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
@@ -815,59 +818,60 @@ public class TableSelector : InteractiveElement<int>
                     return;
             }
         }
+
+        [Visual]
+        int ReturnIndex(int index)
+        {
+            return index - GetMinIndex(_excludeHeader);
+        }
+
+        [Visual]
+        int GetMinIndex(bool excludeHeader)
+        {
+            if (excludeHeader)
+            {
+                return _rawHeaders is null ? 3 : 5;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        [Visual]
+        int GetMaxIndex(bool excludeFooter)
+        {
+            return excludeFooter ? _displayArray!.Length - 2 : _displayArray!.Length - 1;
+        }
+
+        [Visual]
+        static int HandleUpArrowKey(int index, int minIndex, int maxIndex)
+        {
+            if (index == minIndex)
+            {
+                return maxIndex;
+            }
+            else if (index > minIndex)
+            {
+                return index - 1;
+            }
+            return index;
+        }
+
+        [Visual]
+        static int HandleDownArrowKey(int index, int minIndex, int maxIndex)
+        {
+            if (index == maxIndex)
+            {
+                return minIndex;
+            }
+            else if (index < maxIndex)
+            {
+                return index + 1;
+            }
+            return index;
+        }
     }
 
-    [Visual]
-    int ReturnIndex(int index)
-    {
-        return index - GetMinIndex(_excludeHeader);
-    }
-
-    [Visual]
-    int GetMinIndex(bool excludeHeader)
-    {
-        if (excludeHeader)
-        {
-            return _rawHeaders is null ? 3 : 5;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    [Visual]
-    int GetMaxIndex(bool excludeFooter)
-    {
-        return excludeFooter ? _displayArray!.Length - 2 : _displayArray!.Length - 1;
-    }
-
-    [Visual]
-    static int HandleUpArrowKey(int index, int minIndex, int maxIndex)
-    {
-        if (index == minIndex)
-        {
-            return maxIndex;
-        }
-        else if (index > minIndex)
-        {
-            return index - 1;
-        }
-        return index;
-    }
-
-    [Visual]
-    static int HandleDownArrowKey(int index, int minIndex, int maxIndex)
-    {
-        if (index == maxIndex)
-        {
-            return minIndex;
-        }
-        else if (index < maxIndex)
-        {
-            return index + 1;
-        }
-        return index;
-    }
     #endregion
 }
