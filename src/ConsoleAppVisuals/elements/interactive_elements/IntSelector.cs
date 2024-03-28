@@ -12,6 +12,19 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// </remarks>
 public class IntSelector : InteractiveElement<int>
 {
+    #region Constants
+    private const char DEFAULT_SELECTOR_LEFT = '>';
+    private const char DEFAULT_SELECTOR_RIGHT = '<';
+    private const char DEFAULT_UPDATED_SELECTOR_LEFT = '▶';
+    private const char DEFAULT_UPDATED_SELECTOR_RIGHT = '◀';
+    private const int DEFAULT_HEIGHT = 7;
+    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    private const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    private const TextAlignment DEFAULT_TEXT_ALIGNMENT = TextAlignment.Center;
+    private const int DEFAULT_PRINT_DURATION = 1500;
+    private const int DEFAULT_PRINT_ADDITIONAL_DURATION = 50;
+    #endregion
+
     #region Fields
     private string _question;
     private int _minimumValue;
@@ -23,11 +36,6 @@ public class IntSelector : InteractiveElement<int>
     private (char, char) _selector = (DEFAULT_SELECTOR_LEFT, DEFAULT_SELECTOR_RIGHT);
     #endregion
 
-    #region Constants
-    private const char DEFAULT_SELECTOR_LEFT = '>';
-    private const char DEFAULT_SELECTOR_RIGHT = '<';
-    #endregion
-
     #region Default Properties
     /// <summary>
     /// Gets the placement of the selector on the console.
@@ -37,7 +45,7 @@ public class IntSelector : InteractiveElement<int>
     /// <summary>
     /// Gets the height of the selector.
     /// </summary>
-    public override int Height => 7;
+    public override int Height => DEFAULT_HEIGHT;
 
     /// <summary>
     /// Gets the width of the selector.
@@ -114,10 +122,10 @@ public class IntSelector : InteractiveElement<int>
         string question,
         int min,
         int max,
-        int start = 0,
-        int step = 100,
-        Placement placement = Placement.TopCenter,
-        BordersType bordersType = BordersType.SingleStraight
+        int start,
+        int step,
+        Placement placement = DEFAULT_PLACEMENT,
+        BordersType bordersType = DEFAULT_BORDERS_TYPE
     )
     {
         _question = question;
@@ -247,7 +255,7 @@ public class IntSelector : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void UpdateLeftSelector(char leftSelector = '▶')
+    public void UpdateLeftSelector(char leftSelector = DEFAULT_UPDATED_SELECTOR_LEFT)
     {
         _selector.Item1 = leftSelector;
     }
@@ -259,7 +267,7 @@ public class IntSelector : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void UpdateRightSelector(char rightSelector = '◀')
+    public void UpdateRightSelector(char rightSelector = DEFAULT_UPDATED_SELECTOR_RIGHT)
     {
         _selector.Item2 = rightSelector;
     }
@@ -278,13 +286,31 @@ public class IntSelector : InteractiveElement<int>
     #endregion
 
     #region Rendering
+    [Visual]
+    private string BuildNumber(int number)
+    {
+        StringBuilder numberStr = new();
+        numberStr.Append($"{Borders.Vertical} ");
+        numberStr.Append(
+            number.ToString().ResizeString(_maximumValue.ToString().Length, DEFAULT_TEXT_ALIGNMENT)
+        );
+        numberStr.Append($" {Borders.Vertical}");
+        return numberStr.ToString();
+    }
+
     /// <summary>
     /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
     {
-        Core.WriteContinuousString(_question, Line, default, 1500, 50);
+        Core.WriteContinuousString(
+            _question,
+            Line,
+            false,
+            DEFAULT_PRINT_DURATION,
+            DEFAULT_PRINT_ADDITIONAL_DURATION
+        );
         int currentNumber = _startValue;
         int lineSelector = Line + 4;
         while (true)
@@ -374,25 +400,13 @@ public class IntSelector : InteractiveElement<int>
         {
             StringBuilder line = new();
             for (int i = 0; i < _maximumValue.ToString().Length + 2; i++)
-                line.Append('─');
+                line.Append(Borders.Horizontal, 1);
             if (direction == Direction.Up)
                 line.Insert(0, Borders.TopLeft.ToString(), 1).Append(Borders.TopRight, 1);
             else
                 line.Insert(0, Borders.BottomLeft.ToString(), 1).Append(Borders.BottomRight, 1);
             return line.ToString();
         }
-    }
-
-    [Visual]
-    private string BuildNumber(int number)
-    {
-        StringBuilder numberStr = new();
-        numberStr.Append($"{Borders.Vertical} ");
-        numberStr.Append(
-            number.ToString().ResizeString(_maximumValue.ToString().Length, TextAlignment.Center)
-        );
-        numberStr.Append($" {Borders.Vertical}");
-        return numberStr.ToString();
     }
     #endregion
 }
