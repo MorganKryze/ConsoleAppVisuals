@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="FloatSelector"/> is an interactive element that allows the user to select a float value from a range of values.
+/// The <see cref="FloatSelector"/> is an interactive element that allows the user to select a float value from a range of values.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -15,6 +15,14 @@ public class FloatSelector : InteractiveElement<float>
     #region Constants
     private const char DEFAULT_SELECTOR_LEFT = '>';
     private const char DEFAULT_SELECTOR_RIGHT = '<';
+    private const char DEFAULT_UPDATED_SELECTOR_LEFT = '▶';
+    private const char DEFAULT_UPDATED_SELECTOR_RIGHT = '◀';
+    private const int DEFAULT_HEIGHT = 7;
+    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    private const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    private const TextAlignment DEFAULT_TEXT_ALIGNMENT = TextAlignment.Center;
+    private const int DEFAULT_PRINT_DURATION = 1500;
+    private const int DEFAULT_PRINT_ADDITIONAL_DURATION = 50;
     #endregion
 
     #region Fields
@@ -37,7 +45,8 @@ public class FloatSelector : InteractiveElement<float>
     /// <summary>
     /// Gets the height of the selector.
     /// </summary>
-    public override int Height => 7;
+    public override int Height => DEFAULT_HEIGHT;
+
     /// <summary>
     /// Gets the width of the selector.
     /// </summary>
@@ -113,10 +122,10 @@ public class FloatSelector : InteractiveElement<float>
         string question,
         float min,
         float max,
-        float start = 0,
-        float step = 100,
-        Placement placement = Placement.TopCenter,
-        BordersType bordersType = BordersType.SingleStraight
+        float start,
+        float step,
+        Placement placement = DEFAULT_PLACEMENT,
+        BordersType bordersType = DEFAULT_BORDERS_TYPE
     )
     {
         _question = question;
@@ -246,7 +255,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void UpdateLeftSelector(char leftSelector = '▶')
+    public void UpdateLeftSelector(char leftSelector = DEFAULT_UPDATED_SELECTOR_LEFT)
     {
         _selector.Item1 = leftSelector;
     }
@@ -258,7 +267,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void UpdateRightSelector(char rightSelector = '◀')
+    public void UpdateRightSelector(char rightSelector = DEFAULT_UPDATED_SELECTOR_RIGHT)
     {
         _selector.Item2 = rightSelector;
     }
@@ -283,7 +292,7 @@ public class FloatSelector : InteractiveElement<float>
         StringBuilder numberStr = new();
         numberStr.Append($"{Borders.Vertical} ");
         numberStr.Append(
-            number.ToString().ResizeString(_maximumValue.ToString().Length, TextAlignment.Center)
+            number.ToString().ResizeString(_maximumValue.ToString().Length, DEFAULT_TEXT_ALIGNMENT)
         );
         numberStr.Append($" {Borders.Vertical}");
         return numberStr.ToString();
@@ -295,7 +304,13 @@ public class FloatSelector : InteractiveElement<float>
     [Visual]
     protected override void RenderElementActions()
     {
-        Core.WriteContinuousString(_question, Line, default, 1500, 50);
+        Core.WriteContinuousString(
+            _question,
+            Line,
+            false,
+            DEFAULT_PRINT_DURATION,
+            DEFAULT_PRINT_ADDITIONAL_DURATION
+        );
         float currentNumber = _startValue;
         int lineSelector = Line + 4;
         bool loop = true;
