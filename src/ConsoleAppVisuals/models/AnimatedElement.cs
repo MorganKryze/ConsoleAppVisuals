@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Models;
 
 /// <summary>
-/// Defines the basic properties of an animated element.
+/// The <see cref="AnimatedElement"/> class is an abstract class that represents an element that can be rendered on the console and animated.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -14,19 +14,19 @@ public abstract class AnimatedElement : Element
 {
     #region Sealed Properties
     /// <summary>
-    /// The type of the element.
+    /// Gets the type of the element.
     /// </summary>
     public sealed override ElementType Type => ElementType.Animated;
 
     /// <summary>
-    /// The maximum number of this element that can be drawn on the console. As an animated element, the value is 1.
+    /// Gets the maximum number of this element that can be displayed on the console simultaneously.
     /// </summary>
     public sealed override int MaxNumberOfThisElement { get; } = 1;
     #endregion
 
     #region Methods
     /// <summary>
-    /// This method is used to set options after drawing the element on the console.
+    /// Deactivates the element after having been rendered.
     /// </summary>
     [Visual]
     protected sealed override void RenderOptionsAfterHand()

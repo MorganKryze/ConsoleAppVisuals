@@ -28,62 +28,62 @@ public class Borders
 
     #region Properties
     /// <summary>
-    /// The type of border to use for the element.
+    /// Gets the type of border to use for the element.
     /// </summary>
     public BordersType Type => _type;
 
     /// <summary>
-    /// The top-left corner of the border. (┌)
+    /// Gets the top-left corner of the border. (┌)
     /// </summary>
     public char TopLeft => GetBorderChar(0);
 
     /// <summary>
-    /// The top-right corner of the border. (┐)
+    /// Gets the top-right corner of the border. (┐)
     /// </summary>
     public char TopRight => GetBorderChar(1);
 
     /// <summary>
-    /// The bottom-left corner of the border. (└)
+    /// Gets the bottom-left corner of the border. (└)
     /// </summary>
     public char BottomLeft => GetBorderChar(2);
 
     /// <summary>
-    /// The bottom-right corner of the border. (┘)
+    /// Gets the bottom-right corner of the border. (┘)
     /// </summary>
     public char BottomRight => GetBorderChar(3);
 
     /// <summary>
-    /// The horizontal line of the border. (─)
+    /// Gets the horizontal line of the border. (─)
     /// </summary>
     public char Horizontal => GetBorderChar(4);
 
     /// <summary>
-    /// The vertical line of the border. (│)
+    /// Gets the vertical line of the border. (│)
     /// </summary>
     public char Vertical => GetBorderChar(5);
 
     /// <summary>
-    /// The top line of the border. (┬)
+    /// Gets the top line of the border. (┬)
     /// </summary>
     public char Top => GetBorderChar(6);
 
     /// <summary>
-    /// The bottom line of the border. (┴)
+    /// Gets the bottom line of the border. (┴)
     /// </summary>
     public char Bottom => GetBorderChar(7);
 
     /// <summary>
-    /// The left line of the border. (├)
+    /// Gets the left line of the border. (├)
     /// </summary>
     public char Left => GetBorderChar(8);
 
     /// <summary>
-    /// The right line of the border. (┤)
+    /// Gets the right line of the border. (┤)
     /// </summary>
     public char Right => GetBorderChar(9);
 
     /// <summary>
-    /// The cross of the border. (┼)
+    /// Gets the cross of the border. (┼)
     /// </summary>
     public char Cross => GetBorderChar(10);
     #endregion
