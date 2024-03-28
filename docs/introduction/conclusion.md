@@ -1,3 +1,14 @@
+---
+title: Next steps
+author: Yann M. Vidamment (MorganKryze)
+description: Final page of the documentation. Here you will find all the resources available to go further with the library.
+keywords: c#, documentation, next steps
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: overview
+ms.service: ConsoleAppVisuals
+---
+
 # Next steps
 
 ![Congrats](../assets/img/jpg/conclusion/congrats.jpg)

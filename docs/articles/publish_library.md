@@ -1,3 +1,14 @@
+---
+title: Publish your library
+author: Yann M. Vidamment (MorganKryze)
+description: This article will guide you through the process of publishing a package on NuGet.org and GitHub packages using GitHub actions. This will enable you to share your library with the world.
+keywords: c#, documentation, publish, library, nuget, github, actions
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: article
+ms.service: ConsoleAppVisuals
+---
+
 # Publish your library
 
 ## Introduction

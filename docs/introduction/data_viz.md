@@ -1,3 +1,14 @@
+---
+title: Data visualization
+author: Yann M. Vidamment (MorganKryze)
+description: In this section, you will discover data visualization with TableView, TableSelector and Matrix elements.
+keywords: c#, documentation, data visualization, TableView, TableSelector, Matrix
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Data visualization
 
 In this section, you will:

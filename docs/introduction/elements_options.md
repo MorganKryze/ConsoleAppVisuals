@@ -1,3 +1,14 @@
+---
+title: Elements options
+author: Yann M. Vidamment (MorganKryze)
+description: In this section, you will learn how to deactivate/ remove elements, use the ElementsDashboard inspector element, the HeightSpacer element, discover Placement, TextAlignment and BordersType enumerations and use the full potential of the element options.
+keywords: c#, documentation, elements, options, Placement, TextAlignment, BordersType
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Elements options
 
 In this section, you will learn:

@@ -1,3 +1,14 @@
+---
+title: Menus management
+author: Yann M. Vidamment (MorganKryze)
+description: In this section, you will learn how to create a menu using the ScrollingMenu element, collect & manage their output and navigate in an application.
+keywords: c#, documentation, menus, ScrollingMenu, navigation
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Menus management
 
 In this section, you will learn:

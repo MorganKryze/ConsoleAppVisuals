@@ -1,3 +1,14 @@
+---
+title: C# for Visual Studio Code
+author: Yann M. Vidamment (MorganKryze)
+description: This guide will help you set up your development environment for C# using Visual Studio Code. It will guide you through the installation of the .NET SDK, Visual Studio Code, and the C# extension for a complete setup.
+keywords: c#, documentation, visual studio code, vscode, setup
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: article
+ms.service: ConsoleAppVisuals
+---
+
 # C# for Visual Studio Code
 
 ## Introduction

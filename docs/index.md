@@ -1,3 +1,14 @@
+---
+title: Welcome to the docs
+author: Yann M. Vidamment (MorganKryze)
+description: Welcome to the documentation of the ConsoleAppVisuals library. This is a simple and easy-to-use library that allows you to create visual elements in the console. Here are all the resources available.
+keywords: c#, documentation, welcome, introduction, index
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: quickstart
+ms.service: ConsoleAppVisuals
+---
+
 # Welcome to the docs
 
 [![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![License: GNU GPL](https://img.shields.io/badge/License-GPL_v2.0-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md)

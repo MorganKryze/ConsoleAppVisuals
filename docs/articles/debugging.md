@@ -1,3 +1,14 @@
+---
+title: Debugging in ConsoleAppVisuals
+author: Yann M. Vidamment (MorganKryze)
+description: This article will guide you through the debugging tools and resources available in ConsoleAppVisuals to help you overcome your challenges.
+keywords: c#, documentation, debugging
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: article
+ms.service: ConsoleAppVisuals
+---
+
 # Debugging in ConsoleAppVisuals
 
 ## Introduction

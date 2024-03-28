@@ -1,3 +1,14 @@
+---
+title: Presentation
+author: Yann M. Vidamment (MorganKryze)
+description: On this section, you will find articles related to the use of the ConsoleAppVisuals library and general articles for C# projects.
+keywords: c#, documentation, presentation
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: quickstart
+ms.service: ConsoleAppVisuals
+---
+
 # Presentation
 
 On this section, you will find articles related to the use of the ConsoleAppVisuals library and general articles for C# projects.

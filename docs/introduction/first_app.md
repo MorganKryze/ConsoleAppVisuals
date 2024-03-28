@@ -1,3 +1,14 @@
+---
+title: First app
+author: Yann M. Vidamment (MorganKryze)
+description: This tutorial will show you how to create a simple console application using the ConsoleAppVisuals package. You will learn how to add elements, discover Title, Header, Footer, FakeLoadingBar, Prompt and finally EmbedText elements, how to get the response from the user and how to exit the application.
+keywords: c#, documentation, first app, introduction
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # First app
 
 This tutorial will show you how to create a simple console application using the `ConsoleAppVisuals` package. You will learn:

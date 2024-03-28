@@ -1,3 +1,14 @@
+---
+title: Basic concepts
+author: Yann M. Vidamment (MorganKryze)
+description: This section is made for you to understand what is ConsoleAppVisuals, its purpose and use flow. We will guide you later on into the creation of your first project until the advanced use of the library with data visualization and menus management.
+keywords: c#, documentation, basic concepts
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Basic concepts
 
 This section is made for you to understand what is **ConsoleAppVisuals**, its purpose and use flow. We will guide you later on into the creation of your first project until the advanced use of the library with data visualization and menus management.
