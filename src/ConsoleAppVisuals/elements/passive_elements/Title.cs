@@ -5,66 +5,76 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="Title"/> is a passive element that displays a title on the console.
+/// The <see cref="Title"/> is a passive element that displays a title on the console.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Title : PassiveElement
 {
+    #region Constants
+    const int DEFAULT_MARGIN = 1;
+    const TextAlignment DEFAULT_ALIGN = TextAlignment.Center;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenterFullWidth;
+    const int DEFAULT_LINE = 0;
+    const Font DEFAULT_FONT = Font.ANSI_Shadow;
+    const string DEFAULT_FONT_PATH = null;
+    #endregion
+
     #region Fields
     private string _text;
     private int _margin;
     private TextAlignment _align;
     private TextStyler _styler;
-
     #endregion
 
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// The styled text of the title.
-    /// </summary>
-    public string[] StyledText => _styler.Style(_text);
-
-    /// <summary>
-    /// The placement of the title.
-    /// </summary>
-    public override Placement Placement => Placement.TopCenterFullWidth;
-
-    /// <summary>
-    /// The height of the title.
+    /// Gets the height of the title.
     /// </summary>
     public override int Height => StyledText.Length + _margin * 2;
 
     /// <summary>
-    /// The width of the title.
+    /// Gets the width of the title.
     /// </summary>
     public override int Width => Console.WindowWidth;
 
     /// <summary>
-    /// The line of the title.
+    /// Gets the placement of the title.
     /// </summary>
-    public override int Line => 0;
+    public override Placement Placement => DEFAULT_PLACEMENT;
 
     /// <summary>
-    /// The maximum number of this element.
+    /// Gets the line of the title.
+    /// </summary>
+    public override int Line => DEFAULT_LINE;
+
+    /// <summary>
+    /// Gets the maximum number of this element.
     /// </summary>
     public override int MaxNumberOfThisElement => 1;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Gets the styled text of the title.
+    /// </summary>
+    public string[] StyledText => _styler.Style(_text);
 
     /// <summary>
-    /// The text styler of the title.
+    /// Gets the text styler of the title.
     /// </summary>
     public TextStyler Styler => _styler;
 
     /// <summary>
-    /// The font of the title.
+    /// Gets the font of the title.
     /// </summary>
     public Font Font => _styler.Font;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="Title"/> is a passive element that displays a title on the console.
+    /// The <see cref="Title"/> is a passive element that displays a title on the console.
     /// </summary>
     /// <param name="text">The text of the title.</param>
     /// <param name="margin">The margin of the title.</param>
@@ -76,10 +86,10 @@ public class Title : PassiveElement
     /// </remarks>
     public Title(
         string text,
-        int margin = 1,
-        TextAlignment align = TextAlignment.Center,
-        Font font = Font.ANSI_Shadow,
-        string? fontPath = null
+        int margin = DEFAULT_MARGIN,
+        TextAlignment align = DEFAULT_ALIGN,
+        Font font = DEFAULT_FONT,
+        string? fontPath = DEFAULT_FONT_PATH
     )
     {
         _text = text;
@@ -89,9 +99,9 @@ public class Title : PassiveElement
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method updates the text of the title.
+    /// Updates the text of the title.
     /// </summary>
     /// <param name="text">The new text of the title.</param>
     /// <remarks>
@@ -103,7 +113,7 @@ public class Title : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the margin of the title.
+    /// Updates the margin of the title.
     /// </summary>
     /// <param name="margin">The new margin of the title.</param>
     /// <exception cref="ArgumentOutOfRangeException">The margin must be between 0 and the half of the console height.</exception>
@@ -123,7 +133,7 @@ public class Title : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the alignment of the title.
+    /// Updates the alignment of the title.
     /// </summary>
     /// <param name="align">The new alignment of the title.</param>
     /// <remarks>
@@ -135,20 +145,22 @@ public class Title : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the font of the title.
+    /// Updates the font of the title.
     /// </summary>
     /// <param name="font">The new font of the title.</param>
     /// <param name="fontPath">ATTENTION: fill this parameter only if you want to use a custom font (Font.Custom).</param>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void UpdateFont(Font font, string? fontPath = null)
+    public void UpdateFont(Font font, string? fontPath = DEFAULT_FONT_PATH)
     {
         _styler = new TextStyler(font, fontPath);
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
-    /// This method is used to draw the title on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

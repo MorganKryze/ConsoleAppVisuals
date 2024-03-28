@@ -5,13 +5,22 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="Banner"/> is a passive element that displays a banner on the console.
+/// The <see cref="Banner"/> is a passive element that displays a banner on the console.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Banner : PassiveElement
 {
+    #region Constants
+    const int INNER_BANNER_HEIGHT = 1;
+    const string DEFAULT_BANNER_LEFT = "Banner Left";
+    const string DEFAULT_BANNER_CENTER = "Banner Center";
+    const string DEFAULT_BANNER_RIGHT = "Banner Right";
+    const int DEFAULT_MARGIN = 0;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenterFullWidth;
+    #endregion
+
     #region Fields
     private (string, string, string) _text;
     private int _upperMargin;
@@ -19,42 +28,43 @@ public class Banner : PassiveElement
     private Placement _placement;
     #endregion
 
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// The placement of the banner.
+    /// Gets the placement of the banner.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The height of the banner.
+    /// Gets the height of the banner.
     /// </summary>
-    public override int Height => UpperMargin + 1 + LowerMargin;
+    public override int Height => UpperMargin + INNER_BANNER_HEIGHT + LowerMargin;
 
     /// <summary>
-    /// The width of the banner.
+    /// Gets the width of the banner.
     /// </summary>
     public override int Width => Console.WindowWidth;
+    #endregion
 
+    #region Properties
     /// <summary>
-    /// The text of the banner.
+    /// Gets the text of the banner.
     /// </summary>
     public (string, string, string) Text => _text;
 
     /// <summary>
-    /// The upper margin of the banner.
+    /// Gets the upper margin of the banner.
     /// </summary>
     public int UpperMargin => _upperMargin;
 
     /// <summary>
-    /// The lower margin of the banner.
+    /// Gets the lower margin of the banner.
     /// </summary>
     public int LowerMargin => _lowerMargin;
     #endregion
 
-
     #region Constructor
     /// <summary>
-    /// A <see cref="Banner"/> is a passive element that displays a banner on the console.
+    /// The <see cref="Banner"/> is a passive element that displays a banner on the console.
     /// </summary>
     /// <param name="leftText">The text on the left of the banner.</param>
     /// <param name="centerText">The text in the center of the banner.</param>
@@ -66,12 +76,12 @@ public class Banner : PassiveElement
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public Banner(
-        string leftText = "Banner Left",
-        string centerText = "Banner Center",
-        string rightText = "Banner Right",
-        int upperMargin = 0,
-        int lowerMargin = 0,
-        Placement placement = Placement.TopCenterFullWidth
+        string leftText = DEFAULT_BANNER_LEFT,
+        string centerText = DEFAULT_BANNER_CENTER,
+        string rightText = DEFAULT_BANNER_RIGHT,
+        int upperMargin = DEFAULT_MARGIN,
+        int lowerMargin = DEFAULT_MARGIN,
+        Placement placement = DEFAULT_PLACEMENT
     )
     {
         _text.Item1 = leftText;
@@ -94,9 +104,9 @@ public class Banner : PassiveElement
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method is used to update the text on the left of the banner.
+    /// Updates the text on the left of the banner.
     /// </summary>
     /// <param name="leftText">The new text on the left of the banner.</param>
     /// <remarks>
@@ -108,7 +118,7 @@ public class Banner : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the text in the center of the banner.
+    /// Updates the text in the center of the banner.
     /// </summary>
     /// <param name="centerText">The new text in the center of the banner.</param>
     /// <remarks>
@@ -120,7 +130,7 @@ public class Banner : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the text on the right of the banner.
+    /// Updates the text on the right of the banner.
     /// </summary>
     /// <param name="rightText">The new text on the right of the banner.</param>
     /// <remarks>
@@ -132,7 +142,7 @@ public class Banner : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the placement of the banner.
+    /// Updates the placement of the banner.
     /// </summary>
     /// <param name="placement">The new placement of the banner.</param>
     /// <remarks>
@@ -144,7 +154,7 @@ public class Banner : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the upper margin of the banner.
+    /// Updates the upper margin of the banner.
     /// </summary>
     /// <param name="upperMargin">The new upper margin of the banner.</param>
     /// <exception cref="ArgumentOutOfRangeException">The upper margin of the banner must be between 0 and the height of the console window.</exception>
@@ -165,7 +175,7 @@ public class Banner : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the lower margin of the banner.
+    /// Updates the lower margin of the banner.
     /// </summary>
     /// <param name="lowerMargin">The new lower margin of the banner.</param>
     /// <exception cref="ArgumentOutOfRangeException">The lower margin of the banner must be between 0 and the height of the console window.</exception>
@@ -184,9 +194,11 @@ public class Banner : PassiveElement
         }
         _lowerMargin = lowerMargin;
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
-    /// This method is used to render the banner on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

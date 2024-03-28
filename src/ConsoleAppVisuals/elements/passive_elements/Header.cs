@@ -5,57 +5,64 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="Header"/> is a passive element that displays a header on the console.
+/// The <see cref="Header"/> is a passive element that displays a header on the console.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Header : PassiveElement
 {
+    #region Constants
+    const int TEXT_HEIGHT = 1;
+    const string DEFAULT_HEADER_LEFT = "Header Left";
+    const string DEFAULT_HEADER_CENTER = "Header Center";
+    const string DEFAULT_HEADER_RIGHT = "Header Right";
+    const int DEFAULT_MARGIN = 1;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenterFullWidth;
+    #endregion
+
     #region Fields
     private (string, string, string) _text;
     private int _margin;
     #endregion
 
-    #region Constants
-    private const int TEXT_HEIGHT = 1;
-    #endregion
-
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// The placement of the header.
-    /// </summary>
-    public override Placement Placement => Placement.TopCenterFullWidth;
-
-    /// <summary>
-    /// The height of the header.
+    /// Gets the height of the header.
     /// </summary>
     public override int Height => TEXT_HEIGHT + _margin;
 
     /// <summary>
-    /// The width of the header.
+    /// Gets the width of the header.
     /// </summary>
     public override int Width => Console.WindowWidth;
 
     /// <summary>
-    /// The text of the header.
+    /// Gets the placement of the header.
     /// </summary>
-    public (string, string, string) Text => _text;
+    public override Placement Placement => DEFAULT_PLACEMENT;
 
     /// <summary>
-    /// The margin of the header.
-    /// </summary>
-    public int Margin => _margin;
-
-    /// <summary>
-    /// The maximum number of this element.
+    /// Gets the maximum number of this element.
     /// </summary>
     public override int MaxNumberOfThisElement => 1;
     #endregion
 
+    #region Properties
+    /// <summary>
+    /// Gets the text of the header.
+    /// </summary>
+    public (string, string, string) Text => _text;
+
+    /// <summary>
+    /// Gets the margin of the header.
+    /// </summary>
+    public int Margin => _margin;
+    #endregion
+
     #region Constructor
     /// <summary>
-    /// A <see cref="Header"/> is a passive element that displays a header on the console.
+    /// The <see cref="Header"/> is a passive element that displays a header on the console.
     /// </summary>
     /// <param name="leftText">The text on the left of the header.</param>
     /// <param name="centerText">The text in the center of the header.</param>
@@ -65,10 +72,10 @@ public class Header : PassiveElement
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public Header(
-        string leftText = "Header Left",
-        string centerText = "Header Center",
-        string rightText = "Header Right",
-        int margin = 1
+        string leftText = DEFAULT_HEADER_LEFT,
+        string centerText = DEFAULT_HEADER_CENTER,
+        string rightText = DEFAULT_HEADER_RIGHT,
+        int margin = DEFAULT_MARGIN
     )
     {
         _text.Item1 = leftText;
@@ -78,9 +85,9 @@ public class Header : PassiveElement
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method is used to update the text on the left of the header.
+    /// Updates the text on the left of the header.
     /// </summary>
     /// <param name="leftText">The new text on the left of the header.</param>
     /// <remarks>
@@ -92,7 +99,7 @@ public class Header : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the text in the center of the header.
+    /// Updates the text in the center of the header.
     /// </summary>
     /// <param name="centerText">The new text in the center of the header.</param>
     /// <remarks>
@@ -104,7 +111,7 @@ public class Header : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the text on the right of the header.
+    /// Updates the text on the right of the header.
     /// </summary>
     /// <param name="rightText">The new text on the right of the header.</param>
     /// <remarks>
@@ -116,7 +123,7 @@ public class Header : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the margin of the header.
+    /// Updates the margin of the header.
     /// </summary>
     /// <param name="margin">The new margin of the header.</param>
     /// <remarks>
@@ -126,9 +133,11 @@ public class Header : PassiveElement
     {
         _margin = margin;
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
-    /// This method is used to render the header on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

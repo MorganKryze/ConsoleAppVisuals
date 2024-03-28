@@ -5,40 +5,45 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="HeightSpacer"/> is a passive element that displays a space between elements with a fixed height.
+/// The <see cref="HeightSpacer"/> is a passive element that displays a space between elements with a fixed height.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class HeightSpacer : PassiveElement
 {
+    #region Constants
+    const int DEFAULT_HEIGHT = 1;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    #endregion
+
     #region Fields
     private int _height;
     private Placement _placement;
     #endregion
 
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// The height of the spacer.
+    /// Gets the height of the spacer.
     /// </summary>
     public override int Height => _height;
 
     /// <summary>
-    /// The placement of the spacer.
+    /// Gets the placement of the spacer.
     /// </summary>
     public override Placement Placement => _placement;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="HeightSpacer"/> is a passive element that displays a space between elements with a fixed height.
+    /// The <see cref="HeightSpacer"/> is a passive element that displays a space between elements with a fixed height.
     /// </summary>
     /// <param name="height">The height of the spacer.</param>
     /// <param name="placement">The placement of the spacer.</param>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public HeightSpacer(int height = 1, Placement placement = Placement.TopCenter)
+    public HeightSpacer(int height = DEFAULT_HEIGHT, Placement placement = DEFAULT_PLACEMENT)
     {
         int windowHeightMax = Console.WindowHeight == 0 ? 0 : Console.WindowHeight - 1;
         if (height < 0 || height > windowHeightMax)
@@ -84,9 +89,11 @@ public class HeightSpacer : PassiveElement
     {
         _placement = newPlacement;
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
-    /// This method is used to render the footer on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

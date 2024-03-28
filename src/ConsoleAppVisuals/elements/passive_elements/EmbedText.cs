@@ -5,67 +5,76 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="EmbedText"/> is an interactive element that displays text in a box with an optional button.
+/// The <see cref="EmbedText"/> is an interactive element that displays text in a box with an optional button.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class EmbedText : PassiveElement
 {
+    #region Constants
+    const TextAlignment DEFAULT_ALIGN = TextAlignment.Left;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    #endregion
+
     #region Fields
     private List<string> _lines;
     private TextAlignment _align;
     private Placement _placement;
     private readonly Borders _borders;
     private List<string>? _textToDisplay;
+    #endregion
+
+    #region Default Properties
 
     #endregion
 
     #region Properties
     /// <summary>
-    /// The position of the Embed text.
+    /// Gets the position of the Embed text.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The alignment of the Embed text.
+    /// Gets the alignment of the Embed text.
     /// </summary>
     public override TextAlignment TextAlignment => _align;
 
     /// <summary>
-    /// The height of the Embed text.
+    /// Gets the height of the Embed text.
     /// </summary>
     public override int Height => _textToDisplay!.Count;
 
     /// <summary>
-    /// The width of the Embed text.
+    /// Gets the width of the Embed text.
     /// </summary>
     public override int Width => _textToDisplay!.Max((string s) => s.Length);
 
     /// <summary>
-    /// The rows of the Embed text.
+    /// Gets the rows of the Embed text.
     /// </summary>
     public List<string> Lines => _lines;
 
     /// <summary>
-    /// The borders of the Embed text.
+    /// Gets the borders of the Embed text.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// The border type of the selector.
+    /// Gets the border type of the selector.
     /// </summary>
     public BordersType BordersType => _borders.Type;
 
     /// <summary>
-    /// The text to display.
+    /// Gets the text to display.
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="EmbedText"/> is an interactive element that displays text in a box with an optional button.
+    /// The <see cref="EmbedText"/> is an interactive element that displays text in a box with an optional button.
     /// </summary>
     /// <param name="text">The text to display.</param>
     /// <param name="align">The alignment of the Embed text.</param>
@@ -76,9 +85,9 @@ public class EmbedText : PassiveElement
     /// </remarks>
     public EmbedText(
         List<string> text,
-        TextAlignment align = TextAlignment.Left,
-        Placement placement = Placement.TopCenter,
-        BordersType bordersType = BordersType.SingleStraight
+        TextAlignment align = DEFAULT_ALIGN,
+        Placement placement = DEFAULT_PLACEMENT,
+        BordersType bordersType = DEFAULT_BORDERS_TYPE
     )
     {
         _lines = text;
@@ -88,13 +97,13 @@ public class EmbedText : PassiveElement
         if (IsLinesNotEmpty())
             Build();
     }
+
+    private bool IsLinesNotEmpty() => _lines.Count > 0;
     #endregion
 
-    #region Methods
-    private bool IsLinesNotEmpty() => _lines.Count > 0;
-
+    #region Update Methods
     /// <summary>
-    /// This method updates the text of the Embed text.
+    /// Updates the text of the Embed text.
     /// </summary>
     /// <param name="newText">The new text of the Embed text.</param>
     /// <remarks>
@@ -107,7 +116,7 @@ public class EmbedText : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the placement of the Embed text.
+    /// Updates the placement of the Embed text.
     /// </summary>
     /// <param name="newPlacement">The new placement of the Embed text.</param>
     /// <remarks>
@@ -119,7 +128,7 @@ public class EmbedText : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the alignment of the Embed text.
+    /// Updates the alignment of the Embed text.
     /// </summary>
     /// <param name="newAlignment">The new alignment of the Embed text.</param>
     /// <remarks>
@@ -131,7 +140,7 @@ public class EmbedText : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the borders of the Embed text.
+    /// Updates the borders of the Embed text.
     /// </summary>
     /// <param name="bordersType">The new border type of the Embed text.</param>
     /// <remarks>
@@ -235,7 +244,7 @@ public class EmbedText : PassiveElement
     }
 
     /// <summary>
-    /// Renders the Embed text.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

@@ -5,13 +5,22 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="LoadingBar"/> is a passive element that displays a loading bar using a reference to a progress variable.
+/// The <see cref="LoadingBar"/> is a passive element that displays a loading bar using a reference to a progress variable.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class LoadingBar : PassiveElement
 {
+    #region Constants
+    const char LOADING_BAR_CHAR = '█';
+    const float MIN_PROGRESS = 0f;
+    const float MAX_PROGRESS = 1f;
+    const int DEFAULT_HEIGHT = 3;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const int DEFAULT_ADDITIONAL_DURATION = 1000;
+    #endregion
+
     #region Fields
     private string _text;
     private Placement _placement;
@@ -19,54 +28,49 @@ public class LoadingBar : PassiveElement
     private int _additionalDuration;
     #endregion
 
-    #region Constants
-    private const char LOADING_BAR_CHAR = '█';
-    private const float MIN_PROGRESS = 0f;
-    private const float MAX_PROGRESS = 1f;
-
-    #endregion
-
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// The height of the loading bar.
+    /// Gets the height of the loading bar.
     /// </summary>
     /// <remarks>One line for the text,one line for the space between and one line for the progress.</remarks>
-    public override int Height => 3;
+    public override int Height => DEFAULT_HEIGHT;
 
     /// <summary>
-    /// The width of the loading bar.
+    /// Gets the width of the loading bar.
     /// </summary>
     public override int Width => _text.Length;
 
     /// <summary>
-    /// The placement of the loading bar.
+    /// Gets the placement of the loading bar.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The maximum number of this element.
+    /// Gets the maximum number of this element.
     /// </summary>
     public override int MaxNumberOfThisElement => 1;
+    #endregion
 
+    #region Properties
     /// <summary>
-    /// Getters and setters of the text of the loading bar.
+    /// Gets the text of the loading bar.
     /// </summary>
     public string Text => _text;
 
     /// <summary>
-    /// Getters and setters of the progress of the loading bar.
+    /// Gets the progress of the loading bar.
     /// </summary>
     public float Progress => _progress;
 
     /// <summary>
-    /// Getters of the additional duration of the loading bar at the end.
+    /// Gets the additional duration of the loading bar at the end.
     /// </summary>
     public int AdditionalDuration => _additionalDuration;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="LoadingBar"/> is a passive element that displays a loading bar using a reference to a progress variable.
+    /// The <see cref="LoadingBar"/> is a passive element that displays a loading bar using a reference to a progress variable.
     /// </summary>
     /// <param name="text">The text of the loading bar.</param>
     /// <param name="progress">The reference of the progress of the loading bar (that means that you should put a reference to a variable that will contain the percentage of progress of your process).</param>
@@ -78,8 +82,8 @@ public class LoadingBar : PassiveElement
     public LoadingBar(
         string text,
         ref float progress,
-        Placement placement = Placement.TopCenter,
-        int additionalDuration = 1000
+        Placement placement = DEFAULT_PLACEMENT,
+        int additionalDuration = DEFAULT_ADDITIONAL_DURATION
     )
     {
         if (Console.WindowWidth - 1 < 0)
@@ -96,9 +100,9 @@ public class LoadingBar : PassiveElement
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method is used to update the text of the loading bar.
+    /// Updates the text of the loading bar.
     /// </summary>
     /// <param name="text">The new text of the loading bar.</param>
     /// <remarks>
@@ -110,7 +114,7 @@ public class LoadingBar : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the placement of the loading bar.
+    /// Updates the placement of the loading bar.
     /// </summary>
     /// <param name="placement">The new placement of the loading bar.</param>
     /// <remarks>
@@ -122,7 +126,7 @@ public class LoadingBar : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the additional duration of the loading bar.
+    /// Updates the additional duration of the loading bar.
     /// </summary>
     /// <param name="additionalDuration">The new additional duration of the loading bar.</param>
     /// <exception cref="ArgumentException">The additional duration of the loading bar cannot be negative.</exception>
@@ -141,7 +145,7 @@ public class LoadingBar : PassiveElement
     }
 
     /// <summary>
-    /// This method is used to update the progress of the loading bar.
+    /// Updates the progress of the loading bar.
     /// </summary>
     /// <param name="progress">The new progress of the loading bar.</param>
     /// <remarks>
@@ -151,9 +155,11 @@ public class LoadingBar : PassiveElement
     {
         _progress = progress;
     }
+    #endregion
 
+    #region Rendering
     /// <summary>
-    /// This method is used to draw the loading bar on the console.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
