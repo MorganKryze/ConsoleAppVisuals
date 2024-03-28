@@ -31,15 +31,14 @@ public class UnitTestFooter
     }
     #endregion
 
-    #region Line
+    #region Margin
     [TestMethod]
-    public void Line_Getter()
+    public void Margin_Getter()
     {
         //Arrange
         Footer footer = new Footer();
-
         //Assert
-        Assert.AreEqual(footer.Line, Window.GetLineAvailable(footer.Placement));
+        Assert.AreEqual(0, footer.UpperMargin);
     }
     #endregion
 
@@ -137,6 +136,33 @@ public class UnitTestFooter
         footer.UpdateRightText(right);
         //Assert
         Assert.AreEqual(right, footer.Text.Item3);
+    }
+    #endregion
+
+    #region UpdateUpperMargin
+    [TestMethod]
+    [DataRow(0)]
+    [DataRow(1)]
+    [DataRow(2)]
+    public void UpdateUpperMargin_HappyPath(int margin)
+    {
+        //Arrange
+        Footer footer = new Footer();
+        //Act
+        footer.UpdateUpperMargin(margin);
+        //Assert
+        Assert.AreEqual(margin, footer.UpperMargin);
+    }
+
+    [TestMethod]
+    [DataRow(-1)]
+    [DataRow(int.MaxValue)]
+    public void UpdateUpperMargin_ThrowsArgumentOutOfRangeException(int margin)
+    {
+        //Arrange
+        Footer footer = new Footer();
+        //Assert
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => footer.UpdateUpperMargin(margin));
     }
     #endregion
 }
