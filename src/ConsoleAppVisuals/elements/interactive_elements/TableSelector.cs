@@ -12,6 +12,17 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// </remarks>
 public class TableSelector : InteractiveElement<int>
 {
+    #region Constants
+    const int DEFAULT_DIMENSIONS = 0;
+    const string DEFAULT_FOOTER_TEXT = "New";
+    const string DEFAULT_TITLE = null;
+    const string DEFAULT_FOOTER = null;
+    const bool DEFAULT_EXCLUDE_HEADER = true;
+    const bool DEFAULT_EXCLUDE_FOOTER = true;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    #endregion
+
     #region Fields
     private string? _title;
     private List<string>? _rawHeaders;
@@ -22,7 +33,6 @@ public class TableSelector : InteractiveElement<int>
     private string[]? _displayArray;
     private readonly Borders _borders;
     private Placement _placement;
-
     #endregion
 
     #region Default Properties
@@ -34,19 +44,19 @@ public class TableSelector : InteractiveElement<int>
     /// <summary>
     /// Gets the height of the table.
     /// </summary>
-    public override int Height => _displayArray?.Length ?? 0;
+    public override int Height => _displayArray?.Length ?? DEFAULT_DIMENSIONS;
 
     /// <summary>
     /// Gets the width of the table.
     /// </summary>
-    public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
+    public override int Width => _displayArray?.Max(x => x.Length) ?? DEFAULT_DIMENSIONS;
     #endregion
 
     #region Properties
     /// <summary>
     /// Gets the title of the table.
     /// </summary>
-    public string Title => _title ?? "";
+    public string? Title => _title;
 
     /// <summary>
     /// Gets if the header is excluded.
@@ -61,7 +71,7 @@ public class TableSelector : InteractiveElement<int>
     /// <summary>
     /// Gets the text of the footer.
     /// </summary>
-    public string FooterText => _footerText ?? "New";
+    public string FooterText => _footerText ?? DEFAULT_FOOTER_TEXT;
 
     /// <summary>
     /// Gets the borders manager of the table.
@@ -112,14 +122,14 @@ public class TableSelector : InteractiveElement<int>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public TableSelector(
-        string? title = null,
+        string? title = DEFAULT_TITLE,
         List<string>? headers = null,
         List<List<string>>? lines = null,
-        bool excludeHeader = true,
-        bool excludeFooter = true,
-        string? footerText = null,
-        Placement placement = Placement.TopCenter,
-        BordersType bordersType = BordersType.SingleStraight
+        bool excludeHeader = DEFAULT_EXCLUDE_HEADER,
+        bool excludeFooter = DEFAULT_EXCLUDE_FOOTER,
+        string? footerText = DEFAULT_FOOTER,
+        Placement placement = DEFAULT_PLACEMENT,
+        BordersType bordersType = DEFAULT_BORDERS_TYPE
     )
     {
         _title = title;
@@ -195,249 +205,6 @@ public class TableSelector : InteractiveElement<int>
     }
     #endregion
 
-    #region Build Methods
-    private void BuildTable()
-    {
-        if (_rawHeaders is null)
-        {
-            if (_rawLines is not null)
-            {
-                BuildLines();
-            }
-        }
-        else
-        {
-            if (_rawLines is null)
-            {
-                BuildHeaders();
-            }
-            else
-            {
-                BuildHeadersAndLines();
-            }
-        }
-    }
-
-    private void BuildHeadersAndLines()
-    {
-        if (_rawHeaders is not null && _rawLines is not null)
-        {
-            var stringList = new List<string>();
-            var localMax = new int[_rawHeaders.Count];
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                if (_rawHeaders[i]?.Length > localMax[i])
-                {
-                    localMax[i] = _rawHeaders[i]?.Length ?? 0;
-                }
-            }
-
-            for (int i = 0; i < _rawLines.Count; i++)
-            {
-                for (int j = 0; j < _rawLines[i].Count; j++)
-                {
-                    if (_rawLines[i][j]?.ToString()?.Length > localMax[j])
-                    {
-                        localMax[j] = _rawLines[i][j]?.ToString()?.Length ?? 0;
-                    }
-                }
-            }
-
-            StringBuilder headerBuilder = new("│ ");
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
-                if (i != _rawHeaders.Count - 1)
-                {
-                    headerBuilder.Append(" │ ");
-                }
-                else
-                {
-                    headerBuilder.Append(" │");
-                }
-            }
-            stringList.Add(headerBuilder.ToString());
-
-            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-                upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : Borders.TopRight.ToString()
-                );
-            }
-            stringList.Insert(0, upperBorderBuilder.ToString());
-
-            StringBuilder intermediateBorderBuilder = new("├");
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                intermediateBorderBuilder.Append(new string('─', localMax[i] + 2));
-                intermediateBorderBuilder.Append((i != _rawHeaders.Count - 1) ? "┼" : "┤");
-            }
-            stringList.Add(intermediateBorderBuilder.ToString());
-
-            for (int i = 0; i < _rawLines.Count; i++)
-            {
-                StringBuilder lineBuilder = new("│ ");
-                for (int j = 0; j < _rawLines[i].Count; j++)
-                {
-                    lineBuilder.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
-                    if (j != _rawLines[i].Count - 1)
-                    {
-                        lineBuilder.Append(" │ ");
-                    }
-                    else
-                    {
-                        lineBuilder.Append(" │");
-                    }
-                }
-                stringList.Add(lineBuilder.ToString());
-            }
-
-            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-                lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : Borders.BottomRight.ToString()
-                );
-            }
-            stringList.Add(lowerBorderBuilder.ToString());
-
-            _displayArray = stringList.ToArray();
-            BuildTitle();
-        }
-    }
-
-    private void BuildHeaders()
-    {
-        if (_rawHeaders is not null)
-        {
-            var stringList = new List<string>();
-            var localMax = new int[_rawHeaders.Count];
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                if (_rawHeaders[i]?.Length > localMax[i])
-                {
-                    localMax[i] = _rawHeaders[i]?.Length ?? 0;
-                }
-            }
-            StringBuilder headerBuilder = new("│ ");
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
-                if (i != _rawHeaders.Count - 1)
-                {
-                    headerBuilder.Append(" │ ");
-                }
-                else
-                {
-                    headerBuilder.Append(" │");
-                }
-            }
-            stringList.Add(headerBuilder.ToString());
-            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-                upperBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┬" : Borders.TopRight.ToString()
-                );
-            }
-            stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
-            for (int i = 0; i < _rawHeaders.Count; i++)
-            {
-                lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-                lowerBorderBuilder.Append(
-                    (i != _rawHeaders.Count - 1) ? "┴" : Borders.BottomRight.ToString()
-                );
-            }
-            stringList.Add(lowerBorderBuilder.ToString());
-            _displayArray = stringList.ToArray();
-            BuildTitle();
-        }
-    }
-
-    private void BuildLines()
-    {
-        if (_rawLines is not null)
-        {
-            var stringList = new List<string>();
-            var localMax = new int[_rawLines[0].Count];
-            for (int i = 0; i < _rawLines.Count; i++)
-            {
-                for (int j = 0; j < _rawLines[i].Count; j++)
-                {
-                    if (_rawLines[i][j]?.ToString()?.Length > localMax[j])
-                    {
-                        localMax[j] = _rawLines[i][j]?.ToString()?.Length ?? 0;
-                    }
-                }
-            }
-            for (int i = 0; i < _rawLines.Count; i++)
-            {
-                StringBuilder line = new("│ ");
-                for (int j = 0; j < _rawLines[i].Count; j++)
-                {
-                    line.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
-                    if (j != _rawLines[i].Count - 1)
-                    {
-                        line.Append(" │ ");
-                    }
-                    else
-                    {
-                        line.Append(" │");
-                    }
-                }
-                stringList.Add(line.ToString());
-            }
-            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
-            for (int i = 0; i < _rawLines.Count; i++)
-            {
-                upperBorderBuilder.Append(new string('─', localMax[i] + 2));
-                upperBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? "┬" : Borders.TopRight.ToString()
-                );
-            }
-            stringList.Insert(0, upperBorderBuilder.ToString());
-            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
-            for (int i = 0; i < _rawLines.Count; i++)
-            {
-                lowerBorderBuilder.Append(new string('─', localMax[i] + 2));
-                lowerBorderBuilder.Append(
-                    (i != _rawLines.Count - 1) ? "┴" : Borders.BottomRight.ToString()
-                );
-            }
-            stringList.Add(lowerBorderBuilder.ToString());
-            _displayArray = stringList.ToArray();
-            BuildTitle();
-        }
-    }
-
-    private void BuildTitle()
-    {
-        if (_title is not null)
-        {
-            var len = _displayArray![0].Length;
-            var title = _title.ResizeString(len - 4);
-            title = $"│ {title} │";
-            var upperBorderBuilder = new StringBuilder(Borders.TopLeft.ToString());
-            upperBorderBuilder.Append(new string('─', len - 2));
-            upperBorderBuilder.Append(Borders.TopRight.ToString());
-            var display = _displayArray.ToList();
-            display[0] = display[0]
-                .Remove(0, 1)
-                .Insert(0, "├")
-                .Remove(display[1].Length - 1, 1)
-                .Insert(display[1].Length - 1, "┤");
-            display.Insert(0, title);
-            display.Insert(0, upperBorderBuilder.ToString());
-            _displayArray = display.ToArray();
-        }
-    }
-    #endregion
-
     #region Update Methods
     /// <summary>
     /// Updates the placement of the table.
@@ -494,7 +261,7 @@ public class TableSelector : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void SetExcludeHeader(bool excludeHeader = true)
+    public void SetExcludeHeader(bool excludeHeader = DEFAULT_EXCLUDE_HEADER)
     {
         _excludeHeader = excludeHeader;
         if (CompatibilityCheck())
@@ -510,7 +277,7 @@ public class TableSelector : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
-    public void SetExcludeFooter(bool excludeFooter = true)
+    public void SetExcludeFooter(bool excludeFooter = DEFAULT_EXCLUDE_FOOTER)
     {
         _excludeFooter = excludeFooter;
         if (CompatibilityCheck())
@@ -763,7 +530,268 @@ public class TableSelector : InteractiveElement<int>
     }
     #endregion
 
-    #region Display Methods
+
+    #region Rendering
+
+    #region Build Methods
+    private void BuildTable()
+    {
+        if (_rawHeaders is null)
+        {
+            if (_rawLines is not null)
+            {
+                BuildLines();
+            }
+        }
+        else
+        {
+            if (_rawLines is null)
+            {
+                BuildHeaders();
+            }
+            else
+            {
+                BuildHeadersAndLines();
+            }
+        }
+    }
+
+    private void BuildHeadersAndLines()
+    {
+        if (_rawHeaders is not null && _rawLines is not null)
+        {
+            var stringList = new List<string>();
+            var localMax = new int[_rawHeaders.Count];
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                if (_rawHeaders[i]?.Length > localMax[i])
+                {
+                    localMax[i] = _rawHeaders[i]?.Length ?? 0;
+                }
+            }
+
+            for (int i = 0; i < _rawLines.Count; i++)
+            {
+                for (int j = 0; j < _rawLines[i].Count; j++)
+                {
+                    if (_rawLines[i][j]?.ToString()?.Length > localMax[j])
+                    {
+                        localMax[j] = _rawLines[i][j]?.ToString()?.Length ?? 0;
+                    }
+                }
+            }
+
+            StringBuilder headerBuilder = new($"{Borders.Vertical} ");
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
+                if (i != _rawHeaders.Count - 1)
+                {
+                    headerBuilder.Append($" {Borders.Vertical} ");
+                }
+                else
+                {
+                    headerBuilder.Append($" {Borders.Vertical}");
+                }
+            }
+            stringList.Add(headerBuilder.ToString());
+
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                upperBorderBuilder.Append(
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Top.ToString()
+                        : Borders.TopRight.ToString()
+                );
+            }
+            stringList.Insert(0, upperBorderBuilder.ToString());
+
+            StringBuilder intermediateBorderBuilder = new(Borders.Left.ToString());
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                intermediateBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                intermediateBorderBuilder.Append(
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Cross.ToString()
+                        : Borders.Right.ToString()
+                );
+            }
+            stringList.Add(intermediateBorderBuilder.ToString());
+
+            for (int i = 0; i < _rawLines.Count; i++)
+            {
+                StringBuilder lineBuilder = new($"{Borders.Vertical} ");
+                for (int j = 0; j < _rawLines[i].Count; j++)
+                {
+                    lineBuilder.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
+                    if (j != _rawLines[i].Count - 1)
+                    {
+                        lineBuilder.Append($" {Borders.Vertical} ");
+                    }
+                    else
+                    {
+                        lineBuilder.Append($" {Borders.Vertical}");
+                    }
+                }
+                stringList.Add(lineBuilder.ToString());
+            }
+
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                lowerBorderBuilder.Append(
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Bottom.ToString()
+                        : Borders.BottomRight.ToString()
+                );
+            }
+            stringList.Add(lowerBorderBuilder.ToString());
+
+            _displayArray = stringList.ToArray();
+            BuildTitle();
+        }
+    }
+
+    private void BuildHeaders()
+    {
+        if (_rawHeaders is not null)
+        {
+            var stringList = new List<string>();
+            var localMax = new int[_rawHeaders.Count];
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                if (_rawHeaders[i]?.Length > localMax[i])
+                {
+                    localMax[i] = _rawHeaders[i]?.Length ?? 0;
+                }
+            }
+            StringBuilder headerBuilder = new($"{Borders.Vertical} ");
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                headerBuilder.Append(_rawHeaders[i]?.PadRight(localMax[i]) ?? "");
+                if (i != _rawHeaders.Count - 1)
+                {
+                    headerBuilder.Append($" {Borders.Vertical} ");
+                }
+                else
+                {
+                    headerBuilder.Append($" {Borders.Vertical}");
+                }
+            }
+            stringList.Add(headerBuilder.ToString());
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                upperBorderBuilder.Append(
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Top.ToString()
+                        : Borders.TopRight.ToString()
+                );
+            }
+            stringList.Insert(0, upperBorderBuilder.ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
+            for (int i = 0; i < _rawHeaders.Count; i++)
+            {
+                lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                lowerBorderBuilder.Append(
+                    (i != _rawHeaders.Count - 1)
+                        ? Borders.Bottom.ToString()
+                        : Borders.BottomRight.ToString()
+                );
+            }
+            stringList.Add(lowerBorderBuilder.ToString());
+            _displayArray = stringList.ToArray();
+            BuildTitle();
+        }
+    }
+
+    private void BuildLines()
+    {
+        if (_rawLines is not null)
+        {
+            var stringList = new List<string>();
+            var localMax = new int[_rawLines[0].Count];
+            for (int i = 0; i < _rawLines.Count; i++)
+            {
+                for (int j = 0; j < _rawLines[i].Count; j++)
+                {
+                    if (_rawLines[i][j]?.ToString()?.Length > localMax[j])
+                    {
+                        localMax[j] = _rawLines[i][j]?.ToString()?.Length ?? 0;
+                    }
+                }
+            }
+            for (int i = 0; i < _rawLines.Count; i++)
+            {
+                StringBuilder line = new($"{Borders.Vertical} ");
+                for (int j = 0; j < _rawLines[i].Count; j++)
+                {
+                    line.Append(_rawLines[i][j]?.ToString()?.PadRight(localMax[j]) ?? "");
+                    if (j != _rawLines[i].Count - 1)
+                    {
+                        line.Append($" {Borders.Vertical} ");
+                    }
+                    else
+                    {
+                        line.Append($" {Borders.Vertical}");
+                    }
+                }
+                stringList.Add(line.ToString());
+            }
+            StringBuilder upperBorderBuilder = new(Borders.TopLeft.ToString());
+            for (int i = 0; i < _rawLines.Count; i++)
+            {
+                upperBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                upperBorderBuilder.Append(
+                    (i != _rawLines.Count - 1)
+                        ? Borders.Top.ToString()
+                        : Borders.TopRight.ToString()
+                );
+            }
+            stringList.Insert(0, upperBorderBuilder.ToString());
+            StringBuilder lowerBorderBuilder = new(Borders.BottomLeft.ToString());
+            for (int i = 0; i < _rawLines.Count; i++)
+            {
+                lowerBorderBuilder.Append(new string(Borders.Horizontal, localMax[i] + 2));
+                lowerBorderBuilder.Append(
+                    (i != _rawLines.Count - 1)
+                        ? Borders.Bottom.ToString()
+                        : Borders.BottomRight.ToString()
+                );
+            }
+            stringList.Add(lowerBorderBuilder.ToString());
+            _displayArray = stringList.ToArray();
+            BuildTitle();
+        }
+    }
+
+    private void BuildTitle()
+    {
+        if (_title is not null)
+        {
+            var len = _displayArray![0].Length;
+            var title = _title.ResizeString(len - 4);
+            title = $"{Borders.Vertical} {title} {Borders.Vertical}";
+            var upperBorderBuilder = new StringBuilder(Borders.TopLeft.ToString());
+            upperBorderBuilder.Append(new string(Borders.Horizontal, len - 2));
+            upperBorderBuilder.Append(Borders.TopRight.ToString());
+            var display = _displayArray.ToList();
+            display[0] = display[0]
+                .Remove(0, 1)
+                .Insert(0, Borders.Left.ToString())
+                .Remove(display[1].Length - 1, 1)
+                .Insert(display[1].Length - 1, Borders.Right.ToString());
+            display.Insert(0, title);
+            display.Insert(0, upperBorderBuilder.ToString());
+            _displayArray = display.ToArray();
+        }
+    }
+    #endregion
+
     /// <summary>
     /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
