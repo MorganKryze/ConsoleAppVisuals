@@ -5,14 +5,24 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="ElementsList"/> is a passive element that displays a list of all the elements types available.
+/// The <see cref="ElementsList"/> is a passive element that displays a list of all the elements types available.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class ElementsList : PassiveElement
 {
-    #region Fields: title, headers, lines, display array, rounded corners
+    #region Constants
+    const string ELEMENTS_TITLE = "Element types available";
+    const string PASSIVE_ELEMENTS_TITLE = "Passive element types available";
+    const string INTERACTIVE_ELEMENTS_TITLE = "Interactive element types available";
+    const ElementType DEFAULT_ELEMENTS_TYPE_EXPECTED = ElementType.Default;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    const string UNDEFINED = "Unknown";
+    #endregion
+
+    #region Fields
     private ElementType _elementsTypeExpected;
     private List<List<string>> _lines;
     private string[] _displayArray;
@@ -20,16 +30,26 @@ public class ElementsList : PassiveElement
     private Placement _placement;
     #endregion
 
-    #region Constants
-    private const string ELEMENTS_TITLE = "Element types available";
-    private const string PASSIVE_ELEMENTS_TITLE = "Passive element types available";
-    private const string INTERACTIVE_ELEMENTS_TITLE = "Interactive element types available";
-    #endregion
-
-    #region Properties: get headers, get lines
+    #region Default Properties
+    /// <summary>
+    /// Gets the height of the InteractiveList.
+    /// </summary>
+    public override int Height => _displayArray.Length;
 
     /// <summary>
-    /// This property returns the title of the InteractiveList.
+    /// Gets the width of the InteractiveList.
+    /// </summary>
+    public override int Width => _displayArray.Max(x => x.Length);
+
+    /// <summary>
+    /// Gets the title of the InteractiveList.
+    /// </summary>
+    public override Placement Placement => _placement;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Gets the title of the InteractiveList.
     /// </summary>
     public string Title =>
         _elementsTypeExpected switch
@@ -41,47 +61,32 @@ public class ElementsList : PassiveElement
         };
 
     /// <summary>
-    /// This property returns the headers of the dashboard.
+    /// Gets the headers of the dashboard.
     /// </summary>
     public static List<string> Headers => new() { "Id", "Type", "Project" };
 
     /// <summary>
-    /// This property returns the lines of the InteractiveList.
+    /// Gets the lines of the InteractiveList.
     /// </summary>
     public List<List<string>> Lines => _lines;
 
     /// <summary>
-    /// This property returns the title of the InteractiveList.
-    /// </summary>
-    public override Placement Placement => _placement;
-
-    /// <summary>
-    /// This property returns the borders of the InteractiveList.
+    /// Gets the borders of the InteractiveList.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// This property returns the type of borders of the InteractiveList.
+    /// Gets the type of borders of the InteractiveList.
     /// </summary>
     public BordersType BordersType => _borders.Type;
 
     /// <summary>
-    /// This property returns the height of the InteractiveList.
-    /// </summary>
-    public override int Height => _displayArray.Length;
-
-    /// <summary>
-    /// This property returns the width of the InteractiveList.
-    /// </summary>
-    public override int Width => _displayArray.Max(x => x.Length);
-
-    /// <summary>
-    /// This property returns the number of lines in the InteractiveList.
+    /// Gets the number of lines in the InteractiveList.
     /// </summary>
     public int Count => _lines.Count;
 
     /// <summary>
-    /// This property returns the type of element expected.
+    /// Gets the type of element expected.
     /// </summary>
     public ElementType ElementsTypeExpected => _elementsTypeExpected;
 
@@ -89,7 +94,7 @@ public class ElementsList : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// A <see cref="ElementsList"/> is a passive element that displays a list of all the elements types available.
+    /// The <see cref="ElementsList"/> is a passive element that displays a list of all the elements types available.
     /// </summary>
     /// <param name="elementTypeExpected">The type of element expected.</param>
     /// <param name="placement">The placement of the InteractiveList.</param>
@@ -98,9 +103,9 @@ public class ElementsList : PassiveElement
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public ElementsList(
-        ElementType elementTypeExpected = ElementType.Default,
-        Placement placement = Placement.TopCenter,
-        BordersType bordersType = BordersType.SingleStraight
+        ElementType elementTypeExpected = DEFAULT_ELEMENTS_TYPE_EXPECTED,
+        Placement placement = DEFAULT_PLACEMENT,
+        BordersType bordersType = DEFAULT_BORDERS_TYPE
     )
     {
         _elementsTypeExpected = elementTypeExpected;
@@ -112,9 +117,9 @@ public class ElementsList : PassiveElement
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method updates the placement of the InteractiveList.
+    /// Updates the placement of the InteractiveList.
     /// </summary>
     /// <param name="placement">The new placement of the InteractiveList.</param>
     /// <remarks>
@@ -127,7 +132,7 @@ public class ElementsList : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the type of borders of the InteractiveList.
+    /// Updates the type of borders of the InteractiveList.
     /// </summary>
     /// <param name="bordersType">The new type of borders of the InteractiveList.</param>
     /// <remarks>
@@ -140,7 +145,7 @@ public class ElementsList : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the type of element expected.
+    /// Updates the type of element expected.
     /// </summary>
     /// <param name="elementsTypeExpected">The new type of element expected.</param>
     /// <remarks>
@@ -229,13 +234,17 @@ public class ElementsList : PassiveElement
         foreach (var type in types)
         {
             elements.Add(
-                new List<string> { $"{id}", type.Name, type.Assembly.GetName().Name ?? "Unknown" }
+                new List<string> { $"{id}", type.Name, type.Assembly.GetName().Name ?? UNDEFINED }
             );
             id += 1;
         }
         return elements;
     }
+    #endregion
 
+    #region Rendering
+
+    #region Build Methods
     [Visual]
     private void BuildDisplay()
     {
@@ -347,9 +356,10 @@ public class ElementsList : PassiveElement
         display.Insert(0, upperBorderBuilder.ToString());
         _displayArray = display.ToArray();
     }
+    #endregion
 
     /// <summary>
-    /// This method displays the InteractiveList.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

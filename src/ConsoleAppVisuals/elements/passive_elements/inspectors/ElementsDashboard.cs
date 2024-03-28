@@ -5,42 +5,27 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="ElementsDashboard"/> is a passive element that displays a dashboard of all the elements currently in the <see cref="Window"/> class.
+/// The <see cref="ElementsDashboard"/> is a passive element that displays a dashboard of all the elements currently in the <see cref="Window"/> class.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class ElementsDashboard : PassiveElement
 {
-    #region Fields: title, headers, lines, display array, rounded corners
+    #region Constants
+    const string TITLE = "Window Elements Dashboard";
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    #endregion
+
+    #region Fields
     private List<List<string>> _lines;
     private string[] _displayArray;
     private Placement _placement;
     private readonly Borders _borders;
     #endregion
 
-    #region Properties: get headers, get lines
-    /// <summary>
-    /// This property returns the title of the dashboard.
-    /// </summary>
-    public static string Title => "Window Elements Dashboard";
-
-    /// <summary>
-    /// This property returns the headers of the dashboard.
-    /// </summary>
-    public static List<string> Headers =>
-        new() { "Id", "Type", "Visibility", "Height", "Width", "Line", "Placement", "Type" };
-
-    /// <summary>
-    /// This property returns the lines of the dashboard.
-    /// </summary>
-    public List<List<string>> Lines => _lines;
-
-    /// <summary>
-    /// This property returns the title of the dashboard.
-    /// </summary>
-    public override Placement Placement => _placement;
-
+    #region Default Properties
     /// <summary>
     /// This property returns the height of the dashboard.
     /// </summary>
@@ -52,24 +37,47 @@ public class ElementsDashboard : PassiveElement
     public override int Width => _displayArray.Max(x => x.Length);
 
     /// <summary>
-    /// This property returns the number of lines in the dashboard.
+    /// Gets the title of the dashboard.
+    /// </summary>
+    public override Placement Placement => _placement;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Gets the title of the dashboard.
+    /// </summary>
+    public static string Title => TITLE;
+
+    /// <summary>
+    /// Gets the headers of the dashboard.
+    /// </summary>
+    public static List<string> Headers =>
+        new() { "Id", "Type", "Visibility", "Height", "Width", "Line", "Placement", "Type" };
+
+    /// <summary>
+    /// Gets the lines of the dashboard.
+    /// </summary>
+    public List<List<string>> Lines => _lines;
+
+    /// <summary>
+    /// Gets the number of lines in the dashboard.
     /// </summary>
     public int Count => _lines.Count;
 
     /// <summary>
-    /// This property returns the border manager of the dashboard.
+    /// Gets the border manager of the dashboard.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// This property returns the type of borders to be used in the dashboard.
+    /// Gets the type of borders to be used in the dashboard.
     /// </summary>
     public BordersType BordersType => _borders.Type;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="ElementsDashboard"/> is a passive element that displays a dashboard of all the elements currently in the <see cref="Window"/> class.
+    /// The <see cref="ElementsDashboard"/> is a passive element that displays a dashboard of all the elements currently in the <see cref="Window"/> class.
     /// </summary>
     /// <param name="placement">The placement of the dashboard.</param>
     /// <param name="bordersType">The type of borders to be used in the dashboard.</param>
@@ -77,8 +85,8 @@ public class ElementsDashboard : PassiveElement
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public ElementsDashboard(
-        Placement placement = Placement.TopCenter,
-        BordersType bordersType = BordersType.SingleStraight
+        Placement placement = DEFAULT_PLACEMENT,
+        BordersType bordersType = DEFAULT_BORDERS_TYPE
     )
     {
         _lines = UpdateLines();
@@ -89,9 +97,9 @@ public class ElementsDashboard : PassiveElement
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     /// <summary>
-    /// This method updates the placement of the dashboard.
+    /// Updates the placement of the dashboard.
     /// </summary>
     /// <param name="placement">The new placement of the dashboard.</param>
     /// <remarks>
@@ -104,7 +112,7 @@ public class ElementsDashboard : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the type of borders to be used in the dashboard.
+    /// Updates the type of borders to be used in the dashboard.
     /// </summary>
     /// <param name="bordersType">The new type of borders to be used in the dashboard.</param>
     /// <remarks>
@@ -137,7 +145,11 @@ public class ElementsDashboard : PassiveElement
         }
         return elements;
     }
+    #endregion
 
+    #region Rendering
+
+    #region Build Methods
     private void BuildDisplay()
     {
         var stringList = new List<string>();
@@ -248,9 +260,10 @@ public class ElementsDashboard : PassiveElement
         display.Insert(0, upperBorderBuilder.ToString());
         _displayArray = display.ToArray();
     }
+    #endregion
 
     /// <summary>
-    /// This method displays the dashboard.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()
