@@ -5,14 +5,11 @@
 namespace ConsoleAppVisuals;
 
 /// <summary>
-/// The <see cref="Core"/> class contains all the interactions between the application and the console.
+/// The <see cref="Core"/> class is a collection of low-level methods responsible of all the interactions
+/// between the library and the console (e.g. changing colors, writing text, etc.).
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public static class Core
 {
@@ -43,34 +40,32 @@ public static class Core
 
     #region Constants
     /// <summary>
-    /// This constant is used to define the negative anchor to put inside a string to be recognized as negative.
+    /// Defines the negative anchor to put inside a string to be recognized as negative.
+    /// <para>The following line will put " negative " in negative on the screen and not print the "/neg" anchors.</para>
+    /// <code>string str = "This is a /neg negative /neg string";</code>
     /// </summary>
     public const string NEGATIVE_ANCHOR = "/neg";
     #endregion
 
     #region Properties
     /// <summary>
-    /// This property is used to get the colors of the console.
+    /// Gets the current color panel used in the console.
     /// </summary>
-    public static (ConsoleColor, ConsoleColor) GetColorPanel => s_colorPanel;
+    public static (ConsoleColor, ConsoleColor) ColorPanel => s_colorPanel;
 
     /// <summary>
-    /// This property is used to get the initial colors of the console.
+    /// Gets the initial color panel of the console.
     /// </summary>
-    public static (ConsoleColor, ConsoleColor) GetInitialColorPanel => s_initialColorPanel;
+    public static (ConsoleColor, ConsoleColor) InitialColorPanel => s_initialColorPanel;
     #endregion
 
     #region Low abstraction level methods
     /// <summary>
-    /// This method is used to check if the screen has been updated.
+    /// Checks if the screen has been updated (colors or dimensions have changed)
     /// </summary>
     /// <returns>True if the screen has been updated, false otherwise.</returns>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static bool IsScreenUpdated()
@@ -88,15 +83,11 @@ public static class Core
     }
 
     /// <summary>
-    /// This method changes the font color of the console.
+    /// Changes the foreground color of the console.
     /// </summary>
-    /// <param name="color">The new font color.</param>
+    /// <param name="color">The new color.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void SetForegroundColor(ConsoleColor color)
@@ -106,15 +97,11 @@ public static class Core
     }
 
     /// <summary>
-    /// This method changes the background color of the console.
+    /// Changes the background color of the console.
     /// </summary>
     /// <param name="color">The new background color.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void SetBackgroundColor(ConsoleColor color)
@@ -124,53 +111,38 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to save the current color panel.
+    /// Saves the current color panel in a variable.
     /// </summary>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void SaveColorPanel() => s_savedColorPanel = s_colorPanel;
 
     /// <summary>
-    /// This method is used to load the saved color panel.
+    /// Loads the saved color panel (consider saving it beforehand)
     /// </summary>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void LoadSavedColorPanel() => s_colorPanel = s_savedColorPanel;
 
     /// <summary>
-    /// This method is used to load the terminal color panel.
+    /// Loads the terminal color panel.
     /// </summary>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void LoadTerminalColorPanel() => s_colorPanel = s_terminalColorPanel;
 
     /// <summary>
-    /// This method is used to set the dimensions of the console to the Core variables associated. This does not change the actual dimensions of the console.
+    /// Set the dimensions of the console to the Core variables associated.
+    /// It does not change the actual dimensions of the console.
     /// </summary>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void SetConsoleDimensions()
@@ -180,14 +152,11 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to set the console colors to the Core variables associated. This does not change the actual colors of the console.
+    /// Set the console colors to the Core variables associated.
+    /// It does not change the actual colors of the console.
     /// </summary>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void SetConsoleColors()
@@ -196,15 +165,11 @@ public static class Core
     }
 
     /// <summary>
-    /// This methods is used to get a random color from a selection.
+    /// Gets a random color from a list of predefined colors (the default ones).
     /// </summary>
     /// <returns>A random color.</returns>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public static ConsoleColor GetRandomColor()
     {
@@ -221,14 +186,10 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to restore the default colors of the console.
+    /// Restores the default colors of the console with the initial color panel.
     /// </summary>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void RestoreColorPanel()
@@ -239,16 +200,12 @@ public static class Core
     }
 
     /// <summary>
-    /// This method changes the font and background colors of the console in order to apply
-    /// a negative to highlight the text or not.
+    /// Switches the font and background colors of the console in order to apply
+    /// a negative to highlight the text.
     /// </summary>
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void ApplyNegative(bool negative = false)
@@ -261,7 +218,7 @@ public static class Core
 
     #region Middle abstraction level methods
     /// <summary>
-    /// This method is used to write a string positioned in the console.
+    /// Writes a string in the console given a certain placement and line.
     /// </summary>
     /// <param name="str">The string to write.</param>
     /// <param name="placement">The placement of the string in the console.</param>
@@ -269,11 +226,7 @@ public static class Core
     /// <param name="line">The line where the string is written in the console. If null, will be written where the cursor is.</param>
     /// <param name="writeLine">If true, the string is written with a line break.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void WritePositionedString(
@@ -345,7 +298,7 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to write a string continuously in the console.
+    /// Writes a string continuously in the console.
     /// The string is written letter by letter on the console.
     /// </summary>
     /// <param name="str">The string to write.</param>
@@ -357,11 +310,7 @@ public static class Core
     /// <param name="align">The alignment of the string.</param>
     /// <param name="placement">The placement of the string.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void WriteContinuousString(
@@ -409,7 +358,8 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to write a styled string in the console.
+    /// Writes a styled text in the console.
+    /// The height will depend on the font used. <see cref="Font"/> enum for details.
     /// </summary>
     /// <param name="text">The styled string to write.</param>
     /// <param name="line">The line where the string is written in the console. If null, will be written from the ContentHeight.</param>
@@ -418,11 +368,7 @@ public static class Core
     /// <param name="align">The alignment of the string.</param>
     /// <param name="negative">If true, the text is highlighted.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void WritePositionedStyledText(
@@ -471,21 +417,16 @@ public static class Core
     }
 
     /// <summary>
-    /// This method prints a paragraph in the console.
+    /// Writes multiple lines in the console given a certain placement and line.
     /// </summary>
     /// <param name="equalizeLengths">Whether or not the lines of the paragraph should be equalized to the same length.</param>
-
     /// <param name="align">The alignment of the paragraph.</param>
     /// <param name="placement">The placement of the paragraph.</param>
     /// <param name="negative">If true, the paragraph is printed in the negative colors.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void WriteMultiplePositionedLines(
@@ -525,17 +466,13 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to clear a paragraph in the console.
+    /// Clears a multiple lines in the console given a certain starting line.
     /// </summary>
     /// <param name="placement">The placement of the paragraph.</param>
     /// <param name="line">The height of the paragraph.</param>
     /// <param name="text">The lines of the paragraph.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void ClearMultiplePositionedLines(
@@ -553,16 +490,12 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used for debug purposes. It overwrites any text in the console at a specified placement.
+    /// [Debugging purposes] It overwrites any text in the console at a specified placement to display a debug message.
     /// </summary>
-    /// <param name="placement">The placement of the debug mark.</param>
-    /// <param name="lines">The lines of the debug mark.</param>
+    /// <param name="placement">The placement of the debug message.</param>
+    /// <param name="lines">The text to display.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static void WriteDebugMessage(
@@ -630,7 +563,7 @@ public static class Core
 
     #region Extensions
     /// <summary>
-    /// This method builds a string with a specific size and a specific placement.
+    /// Builds a new string with a specific size and a specific placement.
     /// </summary>
     /// <param name="str">The string to build.</param>
     /// <param name="size">The size of the string.</param>
@@ -638,11 +571,7 @@ public static class Core
     /// <param name="truncate">If true, the string is truncated if it is too long.</param>
     /// <returns>The built string.</returns>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public static string ResizeString(
         this string str,
@@ -677,18 +606,14 @@ public static class Core
     }
 
     /// <summary>
-    /// Insert a specified string into another string, at a specified position.
+    /// Inserts a specified string into another string, at a specified position.
     /// </summary>
     /// <param name="inserted">The string that receives the other.</param>
     /// <param name="toInsert">The string to insert.</param>
     /// <param name="align">The alignment of the string to insert.</param>
     /// <returns>The final string after computing.</returns>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public static string InsertString(
         this string inserted,
@@ -720,16 +645,12 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to convert the banner tuple into a string.
+    /// Converts a banner tuple into a string.
     /// </summary>
     /// <param name="banner">The banner tuple.</param>
     /// <returns>Converts the banner to a string.</returns>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public static string BannerToString(this (string, string, string) banner)
@@ -749,16 +670,12 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to get the range of a negative sequence in a string and remove the negative anchors.
+    /// Gets the range of a negative sequence in a string and remove the negative anchors.
     /// </summary>
     /// <param name="str">The string to check.</param>
     /// <returns>The string without the negative anchors and the range of the negative sequence.</returns>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public static (string, (int, int)?) GetRangeAndRemoveNegativeAnchors(this string str)
     {
@@ -773,17 +690,13 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to convert a Placement into a TextAlignment.
+    /// Converts a Placement into a TextAlignment.
     /// </summary>
     /// <param name="placement">The placement to convert.</param>
     /// <returns>The converted placement.</returns>
     /// <exception cref="ArgumentException">Thrown when the placement is not valid.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public static TextAlignment ToTextAlignment(this Placement placement)
     {
@@ -799,17 +712,13 @@ public static class Core
     }
 
     /// <summary>
-    /// This method is used to convert a TextAlignment into a Placement.
+    /// Converts a TextAlignment into a Placement.
     /// </summary>
     /// <param name="align">The alignment to convert.</param>
     /// <returns>The converted alignment.</returns>
     /// <exception cref="ArgumentException">Thrown when the alignment is not valid.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public static Placement ToPlacement(this TextAlignment align)
     {
