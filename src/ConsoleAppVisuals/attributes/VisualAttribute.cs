@@ -11,11 +11,6 @@ namespace ConsoleAppVisuals.Attributes;
 /// </summary>
 /// <remarks>
 /// [ WARNING ] This element cannot be tested.
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
 /// </remarks>
 [AttributeUsage(AttributeTargets.All, Inherited = false)]
 public sealed class VisualAttribute : Attribute

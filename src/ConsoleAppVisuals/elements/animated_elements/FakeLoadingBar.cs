@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.AnimatedElements;
 /// A <see cref="FakeLoadingBar"/> is an animated element that simulates a loading bar with a fixed duration.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class FakeLoadingBar : AnimatedElement
 {
@@ -36,7 +32,6 @@ public class FakeLoadingBar : AnimatedElement
     /// <summary>
     /// The height of the loading bar.
     /// </summary>
-    /// <remarks>One line for the text,one line for the space between and one line for the progress.</remarks>
     public override int Height => DEFAULT_HEIGHT;
 
     /// <summary>
@@ -76,11 +71,7 @@ public class FakeLoadingBar : AnimatedElement
     /// <param name="processDuration">The duration of the loading bar.</param>
     /// <param name="additionalDuration">The additional duration of the loading bar at the end.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public FakeLoadingBar(
         string text = DEFAULT_TEXT,
@@ -109,11 +100,7 @@ public class FakeLoadingBar : AnimatedElement
     /// </summary>
     /// <param name="text">The new text of the loading bar.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateText(string text)
     {
@@ -129,11 +116,7 @@ public class FakeLoadingBar : AnimatedElement
     /// </summary>
     /// <param name="placement">The new placement of the loading bar.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdatePlacement(Placement placement)
     {
@@ -146,11 +129,7 @@ public class FakeLoadingBar : AnimatedElement
     /// <param name="processDuration">The new duration of the loading bar.</param>
     /// <exception cref="ArgumentOutOfRangeException">Throw when the process duration is negative.</exception>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateProcessDuration(int processDuration)
     {
@@ -169,12 +148,9 @@ public class FakeLoadingBar : AnimatedElement
     /// </summary>
     /// <param name="additionalDuration">The new additional duration of the loading bar.</param>
     /// <exception cref="ArgumentOutOfRangeException">The additional duration of the loading bar cannot be negative.</exception>
+
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public void UpdateAdditionalDuration(int additionalDuration)
     {

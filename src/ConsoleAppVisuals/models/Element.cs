@@ -8,11 +8,7 @@ namespace ConsoleAppVisuals.Models;
 /// Defines the basic properties of an console element.
 /// </summary>
 /// <remarks>
-/// For more information, refer to the following resources:
-/// <list type="bullet">
-/// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-/// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-/// </list>
+/// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public abstract class Element
 {
@@ -21,8 +17,7 @@ public abstract class Element
     /// The default visibility of the elements when they are added to the window.
     /// </summary>
     /// <remarks>
-    /// This value should not be changed.
-    /// Each time the user adds an element to the window, it will try to toggle the visibility of the element.
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     private const bool DEFAULT_VISIBILITY = false;
 
@@ -174,11 +169,7 @@ public abstract class Element
     /// This method is used to draw the element on the console.
     /// </summary>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public void RenderElement()
@@ -218,11 +209,7 @@ public abstract class Element
     /// </summary>
     /// <param name="ignoreVisibility">Whether to ignore the visibility of the element or not.</param>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public void RenderElementSpace(bool ignoreVisibility = false)
@@ -262,6 +249,9 @@ public abstract class Element
     /// <summary>
     /// This method is used to clear the space taken by the element on the console.
     /// </summary>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
     [Visual]
     public void Clear()
     {
