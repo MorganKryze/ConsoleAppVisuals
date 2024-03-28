@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Models;
 
 /// <summary>
-/// This class contains the arguments of the ScrollingMenuSelected event.
+/// The <c>InteractionEventArgs</c> class is a generic class that represents the event arguments for the interactive elements.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -14,20 +14,20 @@ public class InteractionEventArgs<T> : EventArgs
 {
     #region Fields
     /// <summary>
-    /// The status after exiting the interactive element.
+    /// Gets the status after exiting the interactive element. See the <see cref="Status"/> enumeration to know the possible values.
     /// </summary>
-    /// <value>Output.Escaped : pressed escape, Output.Deleted : pressed backspace, Output.Selected : pressed enter, Output.None : default value</value>
+    /// <value>Status.Escaped : pressed escape, Status.Deleted : pressed backspace, Status.Selected : pressed enter, Status.None : default value</value>
     public Status Status { get; set; }
 
     /// <summary>
-    /// The value of the response after exiting the interactive element.
+    /// Gets the <typeparamref name="T"/> value of the response after exiting the interactive element.
     /// </summary>
     public T Value { get; set; }
     #endregion
 
     #region Constructor
     /// <summary>
-    /// This constructor initializes the InteractionEventArgs class.
+    /// The <c>InteractionEventArgs</c> class is a generic class that represents the event arguments for the interactive elements.
     /// </summary>
     /// <param name="status">The status of the exit from the menu.</param>
     /// <param name="value">The value of the response after exiting the interactive element.</param>

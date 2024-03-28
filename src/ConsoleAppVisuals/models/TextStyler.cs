@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Models;
 
 /// <summary>
-/// The class that styles any text with specified font files.
+/// The <see cref="TextStyler"/> class is a class that styles text with the font files.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -37,44 +37,44 @@ public class TextStyler
 
     #region Properties
     /// <summary>
-    /// The dictionary that stores the characters and their styled equivalent.
+    /// Gets the dictionary that stores the characters and their styled equivalent.
     /// </summary>
     public Dictionary<char, string> Dictionary => _dictionary;
 
     /// <summary>
-    /// The font to use. Font.Custom if you want to use your own font.
+    /// Gets the font to use. Font.Custom if you want to use your own font.
     /// </summary>
     public Font Font => _font;
 
     /// <summary>
-    /// The path to the font files. Null if the font is not custom.
+    /// Gets the path to the font files. Null if the font is not custom.
     /// </summary>
     public string? FontPath => _fontPath;
 
     /// <summary>
-    /// The supported alphabet by the font.
+    /// Gets the supported alphabet by the font.
     /// </summary>
     public string SupportedAlphabet => _supportedAlphabet;
 
     /// <summary>
-    /// The supported numbers by the font.
+    /// Gets the supported numbers by the font.
     /// </summary>
     public string SupportedNumbers => _supportedNumbers;
 
     /// <summary>
-    /// The supported symbols by the font.
+    /// Gets the supported symbols by the font.
     /// </summary>
     public string SupportedSymbols => _supportedSymbols;
 
     /// <summary>
-    /// All the supported characters by the font.
+    /// Gets all the supported characters by the font.
     /// </summary>
     public string SupportedChars => _supportedAlphabet + _supportedNumbers + _supportedSymbols;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// The constructor of the TextStyler class.
+    /// The <see cref="TextStyler"/> class is a class that styles text with the font files.
     /// </summary>
     /// <param name="source">The font to use. Font.Custom if you want to use your own font.</param>
     /// <param name="fontPath">ATTENTION: only use the path to the font files for custom fonts.</param>
@@ -439,7 +439,7 @@ public class TextStyler
     }
 
     /// <summary>
-    /// Get the info of the actual style (from the config.yml file).
+    /// Gets the info of the actual style (from the config.yml file).
     /// </summary>
     /// <returns>A string compiling these pieces of information.</returns>
     /// <exception cref="EmptyFileException">Thrown when the config.yml file is empty.</exception>

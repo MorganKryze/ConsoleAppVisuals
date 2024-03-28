@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Models;
 
 /// <summary>
-/// Defines the basic properties of an console element.
+/// The <c>InteractiveElement</c> class is an abstract class that represents the interactive elements.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -14,12 +14,12 @@ public abstract class InteractiveElement<TResponse> : Element
 {
     #region Sealed Properties
     /// <summary>
-    /// The type of the element.
+    /// Gets the type of the element.
     /// </summary>
     public sealed override ElementType Type => ElementType.Interactive;
 
     /// <summary>
-    /// The maximum number of this element that can be drawn on the console. As an interactive element, the value is 1.
+    /// Gets the maximum number of this element that can be drawn on the console. As an interactive element, the value is 1.
     /// </summary>
     public sealed override int MaxNumberOfThisElement { get; } = 1;
 
@@ -58,7 +58,7 @@ public abstract class InteractiveElement<TResponse> : Element
     }
 
     /// <summary>
-    /// Returns the response of the user after an interaction.
+    /// Gets the response of the user after an interaction.
     /// </summary>
     /// <returns>Null if the user has not interacted with the element, otherwise the response of the user.</returns>
     /// <remarks>
@@ -75,15 +75,11 @@ public abstract class InteractiveElement<TResponse> : Element
     }
 
     /// <summary>
-    /// Returns the history of the responses of the user after interactions.
+    /// Gets the history of the responses of the user after interactions.
     /// </summary>
     /// <returns>The history of the responses of the user after interactions.</returns>
     /// <remarks>
-    /// For more information, refer to the following resources:
-    /// <list type="bullet">
-    /// <item><description><a href="https://morgankryze.github.io/ConsoleAppVisuals/">Documentation</a></description></item>
-    /// <item><description><a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">Example Project</a></description></item>
-    /// </list>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     [Visual]
     public List<InteractionEventArgs<TResponse>?> GetResponseHistory()
@@ -92,8 +88,11 @@ public abstract class InteractiveElement<TResponse> : Element
     }
 
     /// <summary>
-    /// This method is used to set options before drawing the element on the console.
+    /// Listens to the user's interactions with the element.
     /// </summary>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
     [Visual]
     protected sealed override void RenderOptionsBeforeHand()
     {
@@ -101,8 +100,11 @@ public abstract class InteractiveElement<TResponse> : Element
     }
 
     /// <summary>
-    /// This method is used to set options after drawing the element on the console.
+    /// Stops listening to the user's interactions with the element.
     /// </summary>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
     [Visual]
     protected sealed override void RenderOptionsAfterHand()
     {

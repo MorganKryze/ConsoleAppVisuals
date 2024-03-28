@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Models;
 
 /// <summary>
-/// A class that stores the position into X and Y parameters of a position.
+/// The <c>Position</c> struct represents a position in the console with a line and a column.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -14,12 +14,12 @@ public struct Position : IEquatable<Position>
 {
     #region Fields
     /// <summary>
-    /// The x coordinate of the position.
+    /// Gets the x coordinate of the position.
     /// </summary>
     public int X { get; set; }
 
     /// <summary>
-    /// The y coordinate of the position.
+    /// Gets the y coordinate of the position.
     /// </summary>
     public int Y { get; set; }
     #endregion
@@ -55,7 +55,7 @@ public struct Position : IEquatable<Position>
 
     #region Methods
     /// <summary>
-    /// This method is used to convert the position to a string.
+    /// Converts the position to a string.
     /// </summary>
     /// <returns>The position as a string.</returns>
     /// <remarks>
@@ -64,7 +64,7 @@ public struct Position : IEquatable<Position>
     public override readonly string ToString() => $"Line : {X} ; Column : {Y}";
 
     /// <summary>
-    /// This method is used to check if the position is equal to another position.
+    /// Compares the position to another position.
     /// </summary>
     /// <param name="obj">The position to compare to.</param>
     /// <returns>True if the positions are equal, false otherwise.</returns>
@@ -75,7 +75,7 @@ public struct Position : IEquatable<Position>
         obj is Position position && X == position.X && Y == position.Y;
 
     /// <summary>
-    /// Implementation of the IEquatable interface.
+    /// Gets the hash code of the position.
     /// </summary>
     /// <returns>An integer representing the hash code of the position.</returns>
     /// <remarks>
@@ -84,14 +84,14 @@ public struct Position : IEquatable<Position>
     public override readonly int GetHashCode() => HashCode.Combine(X, Y);
 
     /// <summary>
-    /// Implementation of the IEquatable interface.
+    /// Compares the position to another position.
     /// </summary>
     /// <param name="other">The position to compare to.</param>
     /// <returns>True if the positions are equal, false otherwise.</returns>
     readonly bool IEquatable<Position>.Equals(Position other) => Equals(other);
 
     /// <summary>
-    /// This operator is used to check if the position is equal to another position.
+    /// Implements the operator to check if the position is equal to another position.
     /// </summary>
     /// <param name="left">The first position to compare.</param>
     /// <param name="right">The second position to compare.</param>
@@ -102,7 +102,7 @@ public struct Position : IEquatable<Position>
     }
 
     /// <summary>
-    /// This operator is used to check if the position is not equal to another position.
+    /// Implements the operator to check if the position is not equal to another position.
     /// </summary>
     /// <param name="left">The first position to compare.</param>
     /// <param name="right">The second position to compare.</param>

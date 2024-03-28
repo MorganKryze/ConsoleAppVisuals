@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.Models;
 
 /// <summary>
-/// Defines the basic properties of a passive element.
+/// The <c>PassiveElement</c> class is an abstract class that represents the passive elements.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -14,7 +14,7 @@ public abstract class PassiveElement : Element
 {
     #region Sealed Properties
     /// <summary>
-    /// The type of the element.
+    /// Gets the type of the element.
     /// </summary>
     public sealed override ElementType Type => ElementType.Passive;
     #endregion
