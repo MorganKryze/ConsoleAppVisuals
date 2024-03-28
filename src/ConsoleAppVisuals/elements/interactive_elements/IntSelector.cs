@@ -13,16 +13,16 @@ namespace ConsoleAppVisuals.InteractiveElements;
 public class IntSelector : InteractiveElement<int>
 {
     #region Constants
-    private const char DEFAULT_SELECTOR_LEFT = '>';
-    private const char DEFAULT_SELECTOR_RIGHT = '<';
-    private const char DEFAULT_UPDATED_SELECTOR_LEFT = '▶';
-    private const char DEFAULT_UPDATED_SELECTOR_RIGHT = '◀';
-    private const int DEFAULT_HEIGHT = 7;
-    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
-    private const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
-    private const TextAlignment DEFAULT_TEXT_ALIGNMENT = TextAlignment.Center;
-    private const int DEFAULT_PRINT_DURATION = 1500;
-    private const int DEFAULT_PRINT_ADDITIONAL_DURATION = 50;
+    const char DEFAULT_SELECTOR_LEFT = '>';
+    const char DEFAULT_SELECTOR_RIGHT = '<';
+    const char DEFAULT_UPDATED_SELECTOR_LEFT = '▶';
+    const char DEFAULT_UPDATED_SELECTOR_RIGHT = '◀';
+    const int DEFAULT_HEIGHT = 7;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    const TextAlignment DEFAULT_TEXT_ALIGNMENT = TextAlignment.Center;
+    const int DEFAULT_PRINT_DURATION = 1500;
+    const int DEFAULT_PRINT_ADDITIONAL_DURATION = 50;
     #endregion
 
     #region Fields

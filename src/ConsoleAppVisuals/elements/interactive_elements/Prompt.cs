@@ -13,17 +13,17 @@ namespace ConsoleAppVisuals.InteractiveElements;
 public class Prompt : InteractiveElement<string>
 {
     #region Constants
-    private const int PROMPT_HEIGHT = 5;
-    private const int MAX_LENGTH_LEFT_MARGIN = 2;
-    private const int LEFT_AND_RIGHT_MARGIN = 2;
-    private const char DEFAULT_CURSOR = '>';
-    private const char DEFAULT_UPDATED_CURSOR = '▶';
-    private const char SECRET_CHAR = '*';
-    private const char FILL_CHAR = '-';
-    private const int DEFAULT_PROMPT_MAX_LENGTH = 12;
-    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
-    private const PromptInputStyle DEFAULT_STYLE = PromptInputStyle.Default;
-    private const BordersType DEFAULT_BORDER_TYPE = BordersType.SingleStraight;
+    const int PROMPT_HEIGHT = 5;
+    const int MAX_LENGTH_LEFT_MARGIN = 2;
+    const int LEFT_AND_RIGHT_MARGIN = 2;
+    const char DEFAULT_CURSOR = '>';
+    const char DEFAULT_UPDATED_CURSOR = '▶';
+    const char SECRET_CHAR = '*';
+    const char FILL_CHAR = '-';
+    const int DEFAULT_PROMPT_MAX_LENGTH = 12;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const PromptInputStyle DEFAULT_STYLE = PromptInputStyle.Default;
+    const BordersType DEFAULT_BORDER_TYPE = BordersType.SingleStraight;
     #endregion
 
     #region Fields

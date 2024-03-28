@@ -13,16 +13,16 @@ namespace ConsoleAppVisuals.InteractiveElements;
 public class ScrollingMenu : InteractiveElement<int>
 {
     #region Constants
-    private const char DEFAULT_CURSOR = '>';
-    private const char DEFAULT_UPDATED_CURSOR = '▶';
-    private const int QUESTION_AND_MARGIN_HEIGHT = 2;
-    private const int SELECTION_MARGIN_WIDTH = 5;
-    private const int DEFAULT_INDEX = 0;
-    private const int DEFAULT_PRINT_DURATION = 1500;
-    private const int DEFAULT_PRINT_ADDITIONAL_DURATION = 50;
-    private const int DEFAULT_PRINT_DELAY = 30;
-    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
-    private const TextAlignment DEFAULT_TEXT_ALIGNMENT = TextAlignment.Center;
+    const char DEFAULT_CURSOR = '>';
+    const char DEFAULT_UPDATED_CURSOR = '▶';
+    const int QUESTION_AND_MARGIN_HEIGHT = 2;
+    const int SELECTION_MARGIN_WIDTH = 5;
+    const int DEFAULT_INDEX = 0;
+    const int DEFAULT_PRINT_DURATION = 1500;
+    const int DEFAULT_PRINT_ADDITIONAL_DURATION = 50;
+    const int DEFAULT_PRINT_DELAY = 30;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const TextAlignment DEFAULT_TEXT_ALIGNMENT = TextAlignment.Center;
     #endregion
 
     #region Fields

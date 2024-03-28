@@ -14,13 +14,13 @@ namespace ConsoleAppVisuals.InteractiveElements;
 public class Dialog : InteractiveElement<DialogOption>
 {
     #region Constants
-    private const int EMBED_MARGIN = 2;
+    const int EMBED_MARGIN = 2;
 
     /// <summary>
     /// The width ratio between the two options of the Dialog.
     /// It ensures that the options are not too close to each other.
     /// </summary>
-    private const double WIDTH_RATIO = 1.2;
+    const double WIDTH_RATIO = 1.2;
     #endregion
 
     #region Fields

@@ -13,12 +13,12 @@ namespace ConsoleAppVisuals.AnimatedElements;
 public class FakeLoadingBar : AnimatedElement
 {
     #region Constants
-    private const char LOADING_BAR_CHAR = '█';
-    private const int DEFAULT_HEIGHT = 3;
-    private const string DEFAULT_TEXT = "[ Loading ...]";
-    private const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
-    private const int DEFAULT_PROCESS_DURATION = 2000;
-    private const int DEFAULT_ADDITIONAL_DURATION = 1000;
+    const char LOADING_BAR_CHAR = '█';
+    const int DEFAULT_HEIGHT = 3;
+    const string DEFAULT_TEXT = "[ Loading ...]";
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const int DEFAULT_PROCESS_DURATION = 2000;
+    const int DEFAULT_ADDITIONAL_DURATION = 1000;
     #endregion
 
     #region Fields

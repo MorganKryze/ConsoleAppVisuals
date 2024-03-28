@@ -227,7 +227,7 @@ public class UnitTestTableSelector
         var actualTitle = tableSelector.Title;
 
         // Assert
-        Assert.AreEqual(string.Empty, actualTitle);
+        Assert.IsNull(actualTitle);
     }
 
     [TestMethod]
@@ -1179,7 +1179,7 @@ public class UnitTestTableSelector
         var actualLines = tableSelector.GetRawLines;
 
         // Assert
-        Assert.AreEqual(string.Empty, actualTitle);
+        Assert.IsNull(actualTitle);
         Assert.AreEqual(0, actualHeaders?.Count);
         Assert.AreEqual(0, actualLines?.Count);
         Assert.IsNull(tableSelector.DisplayArray);
