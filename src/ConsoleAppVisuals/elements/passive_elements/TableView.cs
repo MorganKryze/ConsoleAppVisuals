@@ -5,14 +5,20 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// A <see cref="TableView"/> is a passive element that displays a table on the console.
+/// The <see cref="TableView"/> is a passive element that displays a table on the console.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class TableView : PassiveElement
 {
-    #region Fields: title, headers, lines, display array, rounded corners
+    #region Constants
+    const string DEFAULT_TITLE = null;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+    const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
+    #endregion
+
+    #region Fields
     private string? _title;
     private List<string>? _rawHeaders;
     private List<List<string>>? _rawLines;
@@ -21,51 +27,53 @@ public class TableView : PassiveElement
     private readonly Borders _borders;
     #endregion
 
-    #region Properties: get headers, get lines
+    #region Default Properties
     /// <summary>
-    /// This property returns the headers of the table.
-    /// </summary>
-    public List<string>? GetRawHeaders => _rawHeaders;
-
-    /// <summary>
-    /// This property returns the lines of the table.
-    /// </summary>
-    public List<List<string>>? GetRawLines => _rawLines;
-
-    /// <summary>
-    /// This property returns the title of the table.
-    /// </summary>
-    public override Placement Placement => _placement;
-
-    /// <summary>
-    /// This property returns the height of the table.
+    /// Gets the height of the table.
     /// </summary>
     public override int Height => _displayArray?.Length ?? 0;
 
     /// <summary>
-    /// This property returns the width of the table.
+    /// Gets the width of the table.
     /// </summary>
     public override int Width => _displayArray?.Max(x => x.Length) ?? 0;
 
     /// <summary>
-    /// This property returns the number of lines in the table.
+    /// Gets the title of the table.
+    /// </summary>
+    public override Placement Placement => _placement;
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Gets the headers of the table.
+    /// </summary>
+    public List<string>? GetRawHeaders => _rawHeaders;
+
+    /// <summary>
+    /// Gets the lines of the table.
+    /// </summary>
+    public List<List<string>>? GetRawLines => _rawLines;
+
+    /// <summary>
+    /// Gets the number of lines in the table.
     /// </summary>
     public int Count => _rawLines?.Count ?? 0;
 
     /// <summary>
-    /// This property returns the borders of the table.
+    /// Gets the borders of the table.
     /// </summary>
     public Borders Borders => _borders;
 
     /// <summary>
-    /// The border type of the selector.
+    /// Gets the border type of the selector.
     /// </summary>
     public BordersType BordersType => _borders.Type;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="TableView"/> is a passive element that displays a table on the console.
+    /// The <see cref="TableView"/> is a passive element that displays a table on the console.
     /// </summary>
     /// <param name="title">The title of the table.</param>s
     /// <param name="headers">The headers of the table.</param>
@@ -78,11 +86,11 @@ public class TableView : PassiveElement
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
     public TableView(
-        string? title = null,
+        string? title = DEFAULT_TITLE,
         List<string>? headers = null,
         List<List<string>>? lines = null,
-        Placement placement = Placement.TopCenter,
-        BordersType bordersType = BordersType.SingleStraight
+        Placement placement = DEFAULT_PLACEMENT,
+        BordersType bordersType = DEFAULT_BORDERS_TYPE
     )
     {
         _title = title;
@@ -155,6 +163,292 @@ public class TableView : PassiveElement
         return true;
     }
     #endregion
+
+    #region Update Methods
+    /// <summary>
+    /// Updates the placement of the table.
+    /// </summary>
+    /// <param name="placement">The new placement of the table.</param>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void UpdatePlacement(Placement placement)
+    {
+        _placement = placement;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Updates the borders of the table.
+    /// </summary>
+    /// <param name="bordersType">The type of border to use for the table.</param>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void UpdateBordersType(BordersType bordersType)
+    {
+        _borders.UpdateBordersType(bordersType);
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Adds a title to the table.
+    /// </summary>
+    /// <param name="title">The title to add.</param>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void AddTitle(string title)
+    {
+        _title = title;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Updates the title of the table.
+    /// </summary>
+    /// <param name="title">The title to update.</param>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void UpdateTitle(string title)
+    {
+        AddTitle(title);
+    }
+
+    /// <summary>
+    /// Clears the title of the table.
+    /// </summary>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void ClearTitle()
+    {
+        _title = null;
+        BuildTable();
+    }
+    #endregion
+
+    #region Manipulation Methods
+    /// <summary>
+    /// Adds headers to the table.
+    /// </summary>
+    /// <param name="headers">The headers to add.</param>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void AddHeaders(List<string> headers)
+    {
+        _rawHeaders = headers;
+        if (CompatibilityCheck())
+        {
+            BuildTable();
+        }
+    }
+
+    /// <summary>
+    /// Updates the headers of the table.
+    /// </summary>
+    /// <param name="headers">The headers to update.</param>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void UpdateHeaders(List<string> headers)
+    {
+        AddHeaders(headers);
+    }
+
+    /// <summary>
+    /// Clears the headers of the table.
+    /// </summary>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void ClearHeaders()
+    {
+        _rawHeaders = null;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Adds a line to the table.
+    /// </summary>
+    /// <param name="line">The line to add.</param>
+    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void AddLine(List<string> line)
+    {
+        if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
+        {
+            throw new ArgumentException(
+                "The number of columns in the table is not consistent with other lines."
+            );
+        }
+        if (_rawHeaders is not null && line.Count != _rawHeaders.Count)
+        {
+            throw new ArgumentException(
+                "The number of columns in the table is not consistent with the headers."
+            );
+        }
+        _rawLines ??= new List<List<string>>();
+        _rawLines.Add(line);
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Updates a line in the table.
+    /// </summary>
+    /// <param name="index">The index of the line to update.</param>
+    /// <param name="line">The new line.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void UpdateLine(int index, List<string> line)
+    {
+        if (_rawLines?.Count > 0)
+        {
+            if (index < 0 || index >= _rawLines.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
+            }
+
+            if (line.Count != _rawHeaders?.Count)
+            {
+                throw new ArgumentException(
+                    "The number of columns in the table is not consistent."
+                );
+            }
+        }
+        _rawLines![index] = line;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Removes a line from the table.
+    /// </summary>
+    /// <param name="index">The index of the line to remove.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void RemoveLine(int index)
+    {
+        if (_rawLines?.Count > 0 && (index < 0 || index >= _rawLines.Count))
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
+        }
+
+        _rawLines?.RemoveAt(index);
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Clears the lines of the table.
+    /// </summary>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void ClearLines()
+    {
+        _rawLines = null;
+        BuildTable();
+    }
+
+    /// <summary>
+    /// Gets the specified line in the table.
+    /// </summary>
+    /// <param name="index">The index of the line to return.</param>
+    /// <returns>The line at the specified index.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public List<string> GetLine(int index)
+    {
+        if (index < 0 || index >= _rawLines?.Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
+        }
+        return _rawLines![index];
+    }
+
+    /// <summary>
+    /// Gets all the elements from a column given its index.
+    /// </summary>
+    /// <param name="index">The index of the column.</param>
+    /// <returns>The elements of the column.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public List<string>? GetColumnData(int index)
+    {
+        if (_rawLines is null)
+        {
+            return null;
+        }
+
+        if (index < 0 || index >= _rawLines[0].Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index), "Invalid column index.");
+        }
+
+        List<string>? list = new();
+        for (int i = 0; i < _rawLines.Count; i++)
+        {
+            list.Add(_rawLines[i][index]);
+        }
+        return list;
+    }
+
+    /// <summary>
+    /// Gets all the elements from a column given its header.
+    /// </summary>
+    /// <param name="header">The header of the column.</param>
+    /// <returns>The elements of the column.</returns>
+    /// <exception cref="InvalidOperationException">Is thrown when the table is empty.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public List<string>? GetColumnData(string header)
+    {
+        if (_rawHeaders is null)
+        {
+            throw new InvalidOperationException("The headers are null.");
+        }
+        else if (_rawLines is null)
+        {
+            return null;
+        }
+        if (!_rawHeaders.Contains(header))
+        {
+            throw new ArgumentOutOfRangeException(nameof(header), "Invalid column header.");
+        }
+
+        return GetColumnData(_rawHeaders.IndexOf(header));
+    }
+
+    /// <summary>
+    /// Clears the table.
+    /// </summary>
+    /// <remarks>
+    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
+    /// </remarks>
+    public void Reset()
+    {
+        _title = null;
+        _rawHeaders?.Clear();
+        _rawLines?.Clear();
+        _displayArray = null;
+    }
+    #endregion
+
+    #region Rendering
 
     #region Build Methods
     private void BuildTable()
@@ -413,291 +707,8 @@ public class TableView : PassiveElement
     }
     #endregion
 
-    #region Methods: Get, Add, Update, Remove, Clear
     /// <summary>
-    /// Updates the placement of the table.
-    /// </summary>
-    /// <param name="placement">The new placement of the table.</param>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void UpdatePlacement(Placement placement)
-    {
-        _placement = placement;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method updates the borders of the table.
-    /// </summary>
-    /// <param name="bordersType">The type of border to use for the table.</param>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void UpdateBordersType(BordersType bordersType)
-    {
-        _borders.UpdateBordersType(bordersType);
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method adds a title to the table.
-    /// </summary>
-    /// <param name="title">The title to add.</param>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void AddTitle(string title)
-    {
-        _title = title;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method updates the title of the table.
-    /// </summary>
-    /// <param name="title">The title to update.</param>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void UpdateTitle(string title)
-    {
-        AddTitle(title);
-    }
-
-    /// <summary>
-    /// This method clears the title of the table.
-    /// </summary>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void ClearTitle()
-    {
-        _title = null;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method adds headers to the table.
-    /// </summary>
-    /// <param name="headers">The headers to add.</param>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void AddHeaders(List<string> headers)
-    {
-        _rawHeaders = headers;
-        if (CompatibilityCheck())
-        {
-            BuildTable();
-        }
-    }
-
-    /// <summary>
-    /// This method updates the headers of the table.
-    /// </summary>
-    /// <param name="headers">The headers to update.</param>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void UpdateHeaders(List<string> headers)
-    {
-        AddHeaders(headers);
-    }
-
-    /// <summary>
-    /// This method clears the headers of the table.
-    /// </summary>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void ClearHeaders()
-    {
-        _rawHeaders = null;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method adds a line to the table.
-    /// </summary>
-    /// <param name="line">The line to add.</param>
-    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void AddLine(List<string> line)
-    {
-        if (_rawLines?.Count > 0 && line.Count != _rawLines[0].Count)
-        {
-            throw new ArgumentException(
-                "The number of columns in the table is not consistent with other lines."
-            );
-        }
-        if (_rawHeaders is not null && line.Count != _rawHeaders.Count)
-        {
-            throw new ArgumentException(
-                "The number of columns in the table is not consistent with the headers."
-            );
-        }
-        _rawLines ??= new List<List<string>>();
-        _rawLines.Add(line);
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method updates a line in the table.
-    /// </summary>
-    /// <param name="index">The index of the line to update.</param>
-    /// <param name="line">The new line.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <exception cref="ArgumentException">Is thrown when the number of columns in the table is not consistent with itself or with the headers.</exception>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void UpdateLine(int index, List<string> line)
-    {
-        if (_rawLines?.Count > 0)
-        {
-            if (index < 0 || index >= _rawLines.Count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
-            }
-
-            if (line.Count != _rawHeaders?.Count)
-            {
-                throw new ArgumentException(
-                    "The number of columns in the table is not consistent."
-                );
-            }
-        }
-        _rawLines![index] = line;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method removes a line from the table.
-    /// </summary>
-    /// <param name="index">The index of the line to remove.</param>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void RemoveLine(int index)
-    {
-        if (_rawLines?.Count > 0 && (index < 0 || index >= _rawLines.Count))
-        {
-            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
-        }
-
-        _rawLines?.RemoveAt(index);
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This method clears the lines of the table.
-    /// </summary>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void ClearLines()
-    {
-        _rawLines = null;
-        BuildTable();
-    }
-
-    /// <summary>
-    /// This property returns the specified line in the table.
-    /// </summary>
-    /// <param name="index">The index of the line to return.</param>
-    /// <returns>The line at the specified index.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public List<string> GetLine(int index)
-    {
-        if (index < 0 || index >= _rawLines?.Count)
-        {
-            throw new ArgumentOutOfRangeException(nameof(index), "The index is out of range.");
-        }
-        return _rawLines![index];
-    }
-
-    /// <summary>
-    /// This method is used to get all the elements from a column given its index.
-    /// </summary>
-    /// <param name="index">The index of the column.</param>
-    /// <returns>The elements of the column.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the index is out of range.</exception>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public List<string>? GetColumnData(int index)
-    {
-        if (_rawLines is null)
-        {
-            return null;
-        }
-
-        if (index < 0 || index >= _rawLines[0].Count)
-        {
-            throw new ArgumentOutOfRangeException(nameof(index), "Invalid column index.");
-        }
-
-        List<string>? list = new();
-        for (int i = 0; i < _rawLines.Count; i++)
-        {
-            list.Add(_rawLines[i][index]);
-        }
-        return list;
-    }
-
-    /// <summary>
-    /// This method is used to get all the elements from a column given its header.
-    /// </summary>
-    /// <param name="header">The header of the column.</param>
-    /// <returns>The elements of the column.</returns>
-    /// <exception cref="InvalidOperationException">Is thrown when the table is empty.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Is thrown when the header is invalid.</exception>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public List<string>? GetColumnData(string header)
-    {
-        if (_rawHeaders is null)
-        {
-            throw new InvalidOperationException("The headers are null.");
-        }
-        else if (_rawLines is null)
-        {
-            return null;
-        }
-        if (!_rawHeaders.Contains(header))
-        {
-            throw new ArgumentOutOfRangeException(nameof(header), "Invalid column header.");
-        }
-
-        return GetColumnData(_rawHeaders.IndexOf(header));
-    }
-
-    /// <summary>
-    /// This method clears the table.
-    /// </summary>
-    /// <remarks>
-    /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
-    /// </remarks>
-    public void Reset()
-    {
-        _title = null;
-        _rawHeaders?.Clear();
-        _rawLines?.Clear();
-        _displayArray = null;
-    }
-    #endregion
-
-    #region Render
-    /// <summary>
-    /// This method displays the table without interaction.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

@@ -5,13 +5,19 @@
 namespace ConsoleAppVisuals.InteractiveElements;
 
 /// <summary>
-/// A <see cref="Text"/> is an passive element that displays one or multiple lines of text.
+/// The <see cref="Text"/> is an passive element that displays one or multiple lines of text.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
 public class Text : PassiveElement
 {
+    #region Constants
+    const TextAlignment DEFAULT_ALIGN = TextAlignment.Left;
+    const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
+
+    #endregion
+
     #region Fields
     private List<string> _lines;
     private TextAlignment _align;
@@ -19,41 +25,43 @@ public class Text : PassiveElement
     private List<string>? _textToDisplay;
     #endregion
 
-    #region Properties
+    #region Default Properties
     /// <summary>
-    /// The position of the Text element.
+    /// Gets the position of the Text element.
     /// </summary>
     public override Placement Placement => _placement;
 
     /// <summary>
-    /// The alignment of the Text element.
+    /// Gets the alignment of the Text element.
     /// </summary>
     public override TextAlignment TextAlignment => _align;
 
     /// <summary>
-    /// The height of the Text element.
+    /// Gets the height of the Text element.
     /// </summary>
     public override int Height => _textToDisplay!.Count;
 
     /// <summary>
-    /// The width of the Text element.
+    /// Gets the width of the Text element.
     /// </summary>
     public override int Width => _textToDisplay!.Max(s => s.Length);
+    #endregion
 
+    #region Properties
     /// <summary>
-    /// The text of the Text element.
+    /// Gets the text of the Text element.
     /// </summary>
     public List<string> Lines => _lines;
 
     /// <summary>
-    /// The text to display.
+    /// Gets the text to display.
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
     #endregion
 
     #region Constructor
     /// <summary>
-    /// A <see cref="Text"/> is an passive element that displays one or multiple lines of text.
+    /// The <see cref="Text"/> is an passive element that displays one or multiple lines of text.
     /// </summary>
     /// <param name="lines">The text to display.</param>
     /// <param name="align">The alignment of the Text element.</param>
@@ -63,8 +71,8 @@ public class Text : PassiveElement
     /// </remarks>
     public Text(
         List<string> lines,
-        TextAlignment align = TextAlignment.Left,
-        Placement placement = Placement.TopCenter
+        TextAlignment align = DEFAULT_ALIGN,
+        Placement placement = DEFAULT_PLACEMENT
     )
     {
         _lines = lines;
@@ -75,11 +83,11 @@ public class Text : PassiveElement
     }
     #endregion
 
-    #region Methods
+    #region Update Methods
     private bool CheckIntegrity() => _lines.Count != 0;
 
     /// <summary>
-    /// This method updates the lines of the Text element.
+    /// Updates the lines of the Text element.
     /// </summary>
     /// <param name="lines">The new text of the Text element.</param>
     /// <remarks>
@@ -93,7 +101,7 @@ public class Text : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the placement of the Text element.
+    /// Updates the placement of the Text element.
     /// </summary>
     /// <param name="newPlacement">The new placement of the Text element.</param>
     /// <remarks>
@@ -105,7 +113,7 @@ public class Text : PassiveElement
     }
 
     /// <summary>
-    /// This method updates the alignment of the Text element.
+    /// Updates the alignment of the Text element.
     /// </summary>
     /// <param name="newAlignment">The new alignment of the Text element.</param>
     /// <remarks>
@@ -116,7 +124,9 @@ public class Text : PassiveElement
         _align = newAlignment;
         Build();
     }
+    #endregion
 
+    #region Manipulating Methods
     /// <summary>
     /// Adds a line to the Text element.
     /// </summary>
@@ -214,7 +224,7 @@ public class Text : PassiveElement
     }
 
     /// <summary>
-    /// Renders the Text element.
+    /// Defines the actions to perform when the element is called to be rendered on the console.
     /// </summary>
     [Visual]
     protected override void RenderElementActions()

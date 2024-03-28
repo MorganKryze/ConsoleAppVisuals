@@ -17,7 +17,7 @@ public class Footer : PassiveElement
     const string DEFAULT_FOOTER_LEFT = "Footer Left";
     const string DEFAULT_FOOTER_CENTER = "Footer Center";
     const string DEFAULT_FOOTER_RIGHT = "Footer Right";
-    const int DEFAULT_MARGIN = 0;
+    const int DEFAULT_MARGIN = 1;
     const Placement DEFAULT_PLACEMENT = Placement.BottomCenterFullWidth;
     #endregion
 
@@ -30,7 +30,7 @@ public class Footer : PassiveElement
     /// <summary>
     /// Gets the height of the footer.
     /// </summary>
-    public override int Height => TEXT_HEIGHT;
+    public override int Height => UpperMargin + TEXT_HEIGHT;
 
     /// <summary>
     /// Gets the width of the footer.

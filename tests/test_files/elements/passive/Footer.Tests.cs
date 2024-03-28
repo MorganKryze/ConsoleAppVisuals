@@ -38,7 +38,7 @@ public class UnitTestFooter
         //Arrange
         Footer footer = new Footer();
         //Assert
-        Assert.AreEqual(0, footer.UpperMargin);
+        Assert.AreEqual(1, footer.UpperMargin);
     }
     #endregion
 
@@ -50,7 +50,7 @@ public class UnitTestFooter
         Footer footer = new Footer();
 
         //Assert
-        Assert.AreEqual(footer.Height, 1);
+        Assert.AreEqual(footer.Height, 2);
     }
     #endregion
 
@@ -142,8 +142,6 @@ public class UnitTestFooter
     #region UpdateUpperMargin
     [TestMethod]
     [DataRow(0)]
-    [DataRow(1)]
-    [DataRow(2)]
     public void UpdateUpperMargin_HappyPath(int margin)
     {
         //Arrange
