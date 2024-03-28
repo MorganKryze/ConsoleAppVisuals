@@ -1,3 +1,14 @@
+---
+title: Getting started
+author: Yann M. Vidamment (MorganKryze)
+description: This section describes all references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.
+keywords: c#, documentation, getting started
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: quickstart
+ms.service: ConsoleAppVisuals
+---
+
 # Getting started
 
 This section describes all references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.

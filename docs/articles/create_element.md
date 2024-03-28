@@ -1,3 +1,14 @@
+---
+title: Create your own elements
+author: Yann M. Vidamment (MorganKryze)
+description: This article will guide you through the process of creating custom visual elements using the library. This will enable you to create passive elements as well as interactive elements that can be used in your applications.
+keywords: c#, documentation, elements
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: article
+ms.service: ConsoleAppVisuals
+---
+
 # Create your own elements
 
 ## Introduction

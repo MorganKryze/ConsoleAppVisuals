@@ -1,3 +1,14 @@
+---
+title: Create and use fonts
+author: Yann M. Vidamment (MorganKryze)
+description: This article will guide you through the process of creating your own font using the Font enum.
+keywords: c#, documentation, fonts
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: article
+ms.service: ConsoleAppVisuals
+---
+
 # Create and use fonts
 
 ## Introduction

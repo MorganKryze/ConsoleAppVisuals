@@ -1,3 +1,14 @@
+---
+title: Create your project documentation
+author: Yann M. Vidamment (MorganKryze)
+description: This article will guide you through the process of creating a documentation for your C# project using the tool DocFX. Documentation is key to help user understand how to use the tools you create. It is also a good way to show the quality of your work.
+keywords: c#, docfx, documentation, project, publish, github pages
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/28/2024
+ms.topic: article
+ms.service: ConsoleAppVisuals
+---
+
 # Create your project documentation
 
 ## Introduction
