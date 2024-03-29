@@ -15,8 +15,6 @@ Feel free to check out the following resources to help you get started:
 
 ## First steps into the library
 
-> If you have been using the library before v3, please note that the library has been completely rewritten. The old version is not compatible with the new one. Please take the time to explore our documentation to update your code.
-
 ### Principle
 
 The library is designed to be user-friendly and easy to use. It is based on the concept of "visuals" which are elements that can be displayed in the console. There are two types of visuals:
@@ -38,19 +36,14 @@ dotnet add package ConsoleAppVisuals
 
 Install the library for Visual Studio users, go through [this tutorial](https://www.youtube.com/watch?v=IprbRazS3b8).
 
-Or Enter the following command in the Package Manager Console in Visual Studio:
-
-```bash
-Install-Package ConsoleAppVisuals
-```
-
 ### Use flow
 
-After installing the library, do not forget to add the following statement at the beginning of your file:
+After installing the library, start by adding the following statement at the beginning of your file:
 
 ```csharp
 using ConsoleAppVisuals;
-using ConsoleAppVisuals.Elements;
+using ConsoleAppVisuals.PassiveElement;
+using ConsoleAppVisuals.InteractiveElement;
 ```
 
 And then, add the following line to your `Main` method to set up the console:
@@ -59,7 +52,7 @@ And then, add the following line to your `Main` method to set up the console:
 Window.Open();
 ```
 
-#### Work with static elements
+#### Passive elements
 
 The first step is to create an element to display. For example, let's create a `Title` element:
 
@@ -76,24 +69,12 @@ Window.AddElement(exampleTitle);
 Finally, you can display the `Window`:
 
 ```csharp
-Window.Render();
+Window.Render(exampleTitle);
 ```
 
-Now at each refresh, the `Title` element will appear on screen. To disable it, you can use:
+#### Interactive elements
 
-```csharp
-Window.DeactivateElement(exampleTitle);
-```
-
-Or simply remove it from the list:
-
-```csharp
-Window.RemoveElement(exampleTitle);
-```
-
-#### Work with interactive elements
-
-The process is similar to the static elements. The difference is that you can get a response from your interaction with these elements. Let's create a `Prompt` element:
+The process is similar to the passive elements. The difference is that you can get a response from your interaction with these elements. Let's create a `Prompt` element:
 
 ```csharp
 Prompt examplePrompt = new Prompt("What is your name?");
@@ -105,12 +86,9 @@ Then, you can add it to `Window`:
 Window.AddElement(examplePrompt);
 ```
 
-Finally, you can display the `Window`, remember that interactive element are disabled by default:
+Finally, you can display the `Window`, note that interactive element are disabled by default:
 
 ```csharp
-// Add this line if you have static elements to display
-Window.Render();
-
 Window.ActivateElement(examplePrompt);
 ```
 
@@ -124,18 +102,10 @@ Access to the response data using:
 
 ```csharp
 // Get the state of the response : Enter, Escape, or Backspace
-Console.WriteLine(responsePrompt?.State);
+Console.WriteLine(responsePrompt!.Status);
 
 // Get the response data, here a Prompt always return a string
-Console.WriteLine(responsePrompt?.Info);
-```
-
-> The `InteractiveElement` object deactivate themselves after their execution.
-
-You may now remove the element from the list if you want to:
-
-```csharp
-Window.RemoveElement(examplePrompt);
+Console.WriteLine(responsePrompt!.Value);
 ```
 
 #### Exit the program
@@ -158,11 +128,6 @@ Window.Close();
 ## Security Policy
 
 Consider reading our [SECURITY](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/SECURITY.md) policy to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
-
-## Development team
-
-- [MorganKryze](https://github.com/MorganKryze) - creator and maintainer
-- [Robin L'hyver](https://github.com/robinmoon2) - contributor
 
 ## Acknowledgments
 
