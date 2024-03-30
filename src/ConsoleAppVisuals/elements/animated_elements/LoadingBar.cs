@@ -2,7 +2,7 @@
     Copyright (c) 2024 Yann M. Vidamment (MorganKryze)
     Licensed under GNU GPL v2.0. See full license at: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md
 */
-namespace ConsoleAppVisuals.PassiveElements;
+namespace ConsoleAppVisuals.AnimatedElements;
 
 /// <summary>
 /// The <see cref="LoadingBar"/> is a passive element that displays a loading bar using a reference to a progress variable.
@@ -10,7 +10,7 @@ namespace ConsoleAppVisuals.PassiveElements;
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
-public class LoadingBar : PassiveElement
+public class LoadingBar : AnimatedElement
 {
     #region Constants
     const char LOADING_BAR_CHAR = '█';
@@ -44,11 +44,6 @@ public class LoadingBar : PassiveElement
     /// Gets the placement of the loading bar.
     /// </summary>
     public override Placement Placement => _placement;
-
-    /// <summary>
-    /// Gets the maximum number of this element.
-    /// </summary>
-    public override int MaxNumberOfThisElement => 1;
     #endregion
 
     #region Properties
