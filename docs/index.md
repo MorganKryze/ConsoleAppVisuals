@@ -11,7 +11,7 @@ ms.service: ConsoleAppVisuals
 
 # Welcome to the docs
 
-[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![License: GNU GPL](https://img.shields.io/badge/License-GPL_v2.0-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md)
+[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![downloads](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![stars](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![coverage](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![license](https://img.shields.io/badge/License-GPL_v2.0-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md)
 
 ![presentation](assets/vid/gif/presentation.gif)
 
@@ -19,10 +19,10 @@ ms.service: ConsoleAppVisuals
 
 Welcome to the documentation of the `ConsoleAppVisuals` library. This is a simple and easy-to-use library that allows you to create visual elements in the console. Here are all the resources available:
 
-- [Introduction](/ConsoleAppVisuals/introduction/basic_concepts.html): find the basic concepts and the first steps into the library.
-- [References](/ConsoleAppVisuals/references/index.html): find all methods, properties and classes with their description and all arguments available.
-- [Articles](/ConsoleAppVisuals/articles/index.html): find some additional library-related articles.
-- [Legacy](/ConsoleAppVisuals/legacy/index.html): find the outdated documentation of the library for the versions 2.x.x and below.
+- [Introduction](/ConsoleAppVisuals/1-introduction/basic_concepts.html): find the basic concepts and the first steps into the library.
+- [References](/ConsoleAppVisuals/4-references/index.html): find all methods, properties and classes with their description and all arguments available.
+- [Articles](/ConsoleAppVisuals/5-articles/index.html): find some additional library-related articles.
+- [Legacy](/ConsoleAppVisuals/6-legacy/index.html): find the outdated documentation of the library for the versions 2.x.x and below.
 
 Finally, a commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to see how to use the library in a real project.
 

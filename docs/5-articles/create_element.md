@@ -19,11 +19,11 @@ This article will guide you through the process of creating custom visual elemen
 
 - .NET framework 6 or later
 - ConsoleAppVisuals library: 3.0.0 or later
-- Having looked at the project from the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html)
+- Having looked at the project from the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html)
 
 ## Setup workspace
 
-We will take the example project of the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html).
+We will take the example project of the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html).
 
 As a reminder, here is the file structure of the project:
 
@@ -41,7 +41,7 @@ Passive elements are visual elements that do not have any interactive behavior. 
 
 ### Setup of a passive element
 
-Start by creating a new file in your project and name it `PassiveExample.cs`. Then, add the following code to the file (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/PassiveDemo.cs)):
+Start by creating a new file in your project and name it `PassiveExample.cs`. Then, add the following code to the file (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement/PassiveElement.cs)):
 
 ```csharp
 using ConsoleAppVisuals;
@@ -109,7 +109,7 @@ Interactive elements are visual elements that have interactive behavior. They ca
 
 Similar to the passive elements, you can create interactive elements but this time they inherit from the `InteractiveElement` class. This class contains all the properties and methods that are necessary for the rendering of the elements. You can override some of these properties and methods to customize the behavior of your element.
 
-Start by creating a new file in your project and name it `InteractiveExample.cs`. Then, create your new element following this template (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)):
+Start by creating a new file in your project and name it `InteractiveExample.cs`. Then, create your new element following this template (see real example in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement/InteractiveDemo.cs)):
 
 ```csharp
 using ConsoleAppVisuals;
@@ -171,7 +171,7 @@ The callable attributes and methods are **highlighted in yellow** here:
 
 Two new methods are available and cannot be modified:
 
-- `SendResponse()`: This method is called when the user interacts with the element. It is used to send a response to the window (highly recommended to see the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs) ot understand its implementation).
+- `SendResponse()`: This method is called when the user interacts with the element. It is used to send a response to the window (highly recommended to see the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement/InteractiveDemo.cs) ot understand its implementation).
 - `GetResponse()`: This method is called when the user has interacted with the element. It is used to get the response from the user (defined in the `Window` class).
 
 To understand how is defined the interaction response, I highlighted the two attributes that are used to define the response:
@@ -184,7 +184,7 @@ Once your customization is done, you may use your element in your application ju
 
 ## Visualize all elements available
 
-Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library (available in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/InteractiveDemo.cs)). Here is an example of how to do it:
+Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library (available in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement/InteractiveDemo.cs)). Here is an example of how to do it:
 
 ```csharp
 Window.Open();

@@ -19,7 +19,7 @@ This tutorial will show you how to create a simple console application using the
 - How to exit the application
 
 > [!TIP]
-> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) of dive into the [references section](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html) if you go into any trouble.
+> Do not forget to give a look at the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/Program.cs) of dive into the [references section](https://morgankryze.github.io/ConsoleAppVisuals/3-references/index.html) if you go into any trouble.
 
 ## Setup
 
@@ -118,7 +118,7 @@ Let's try to run the app by clicking on the green arrow at the top of the window
 > using ConsoleAppVisuals.InteractiveElements;
 > ```
 >
-> Sometimes, you will need to add more statements. All available namespaces are available in the [references](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html) section.
+> Sometimes, you will need to add more statements. All available namespaces are available in the [references](https://morgankryze.github.io/ConsoleAppVisuals/3-references/index.html) section.
 
 Let's start by removing `Console.WriteLine("Hello World!");` instruction and adding the following line to your `Main` method to set up the console (clear and set the cursor invisible):
 
@@ -147,7 +147,7 @@ Window.Render(title);
 ![Title](../assets/img/jpg/first_app/title.jpg)
 
 > [!TIP]
-> You may update the style of the `Title` element like the one below by giving a look at this article: [create and use fonts](https://morgankryze.github.io/ConsoleAppVisuals/articles/create_font.html).
+> You may update the style of the `Title` element like the one below by giving a look at this article: [create and use fonts](https://morgankryze.github.io/ConsoleAppVisuals/5-articles/create_font.html).
 >
 > ![Lil_Devil](../assets/img/jpg/create_font/Lil_Devil.jpg)
 
@@ -210,7 +210,7 @@ Window.ActivateElement(loadingBar);
 
 ### `Prompt`
 
-Now let's add a `Prompt` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.Prompt.html)
+Now let's add a `Prompt` _interactive_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.Prompt.html)
 
 ```csharp
 Prompt prompt = new Prompt("What's your name?");
@@ -244,7 +244,7 @@ The previous line will retrieve a response object that has the following propert
 > - If `response` is `null`, `response?.Status` will return `null`.
 > - If `response` is not `null`, `response?.Status` will return `response.Status`.
 
-Finally, let's add a `EmbedText` _interactive_ element to display the user's response on the console (as said earlier, the `EmbedText` is _interactive_ but does not return any response, `text.GetResponse()` will always return `null`). [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.EmbedText.html)
+Finally, let's add a `EmbedText` _interactive_ element to display the user's response on the console (as said earlier, the `EmbedText` is _interactive_ but does not return any response, `text.GetResponse()` will always return `null`). [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.EmbedText.html)
 
 ```csharp
 EmbedText text = new EmbedText(

@@ -20,7 +20,7 @@ In this section, you will:
 
 ## The `TableView` element
 
-The `TableView` element is used to display data in a table format. It is useful when you want to display a list of items with multiple columns. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.PassiveElements.TableView.html)
+The `TableView` element is used to display data in a table format. It is useful when you want to display a list of items with multiple columns. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.PassiveElements.TableView.html)
 
 Let's create a `TableView` element and add it to the window.
 
@@ -61,7 +61,7 @@ Window.Close();
 
 ## The `TableSelector` element
 
-The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table. You may use the `Up` and `Down` arrows or the `Z` and `S` keys to move int the selector. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.TableSelector.html)
+The `TableSelector` element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table. You may use the `Up` and `Down` arrows or the `Z` and `S` keys to move int the selector. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.TableSelector.html)
 
 Here is an example of how to use it:
 
@@ -134,7 +134,7 @@ Window.Close();
 
 ## The `Matrix` element
 
-The `Matrix` element is used to display data in a matrix format. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.PassiveElements.Matrix-1.html)
+The `Matrix` element is used to display data in a matrix format. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.PassiveElements.Matrix-1.html)
 
 ```csharp
 Window.Open();

@@ -80,7 +80,7 @@ This namespace contains all the custom exceptions of the library. They are used 
 
 ### Bonus: `Usings.cs`
 
-This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library. I recommend you to do the same in your projects. [See file](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Usings.cs)
+This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library. I recommend you to do the same in your projects. [See file](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/GlobalUsings.cs)
 
 ## Structure
 

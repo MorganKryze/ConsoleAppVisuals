@@ -22,7 +22,7 @@ In this section, you will learn:
 
 ## The `ScrollingMenu` element
 
-The `ScrollingMenu` element is an historic element of the library. Some features about it changed but the principle remains the same. It is used to display a list of items and allow the user to select one or several items. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.InteractiveElements.ScrollingMenu.html)
+The `ScrollingMenu` element is an historic element of the library. Some features about it changed but the principle remains the same. It is used to display a list of items and allow the user to select one or several items. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.ScrollingMenu.html)
 
 Here is a minimal example of how to use it:
 

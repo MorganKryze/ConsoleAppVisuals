@@ -7,7 +7,7 @@
           "src": "../src/ConsoleAppVisuals/"
         }
       ],
-      "dest": "references",
+      "dest": "3-references",
       "properties": {
         "TargetFramework": "net8.0"
       }
