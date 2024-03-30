@@ -297,7 +297,10 @@ class Program
                 Window.ActivateElement(confirmation);
 
                 var responseConfirmation = confirmation.GetResponse();
-                if (responseConfirmation!.Status == Status.Selected)
+                if (
+                    responseConfirmation!.Status == Status.Selected
+                    && responseConfirmation.Value == DialogOption.Right
+                )
                 {
                     s_rows.RemoveAt(responseSelector.Value);
                 }
