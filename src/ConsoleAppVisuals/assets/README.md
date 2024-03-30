@@ -2,16 +2,13 @@
 
 > User-friendly .NET visuals library designed for console apps.
 
-[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![NuGet](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![GitHub](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![Coverage Status](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?branch=main)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![License: GNU GPL](https://img.shields.io/badge/License-GPL_v2.0-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md)
+[![version](https://img.shields.io/nuget/v/ConsoleAppVisuals.svg?label=version)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![downloads](https://img.shields.io/nuget/dt/ConsoleAppVisuals.svg)](https://www.nuget.org/packages/ConsoleAppVisuals/) [![stars](https://img.shields.io/github/stars/MorganKryze/consoleappvisuals.svg?style=flat&logo=github&colorB=yellow&label=stars)](https://github.com/MorganKryze/ConsoleAppVisuals) [![coverage](https://coveralls.io/repos/github/MorganKryze/ConsoleAppVisuals/badge.svg?)](https://coveralls.io/github/MorganKryze/ConsoleAppVisuals?branch=main) [![license](https://img.shields.io/badge/License-GPL_v2.0-orange.svg)](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md)
 
-![title](https://raw.githubusercontent.com/MorganKryze/ConsoleAppVisuals/main/docs/assets/vid/gif/presentation.gif)
+[![title](https://raw.githubusercontent.com/MorganKryze/ConsoleAppVisuals/main/docs/assets/vid/gif/presentation.gif)](https://morgankryze.github.io/ConsoleAppVisuals/)
 
 ## Documentation
 
-Feel free to check out the following resources to help you get started:
-
-- A guided [documentation](https://morgankryze.github.io/ConsoleAppVisuals/).
-- An [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to understand how to implement the library in your own project.
+We **highly recommend** you to read the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/) to get started with the library. It contains a detailed guide on how to use the library, its features, and additional articles for the curious ones.
 
 ## First steps into the library
 
@@ -52,63 +49,23 @@ And then, add the following line to your `Main` method to set up the console:
 Window.Open();
 ```
 
-#### Passive elements
-
 The first step is to create an element to display. For example, let's create a `Title` element:
 
 ```csharp
-Title exampleTitle = new Title("Hello world!");
+Title example = new Title("Hello world!");
 ```
 
 Then, you can add it to `Window`:
 
 ```csharp
-Window.AddElement(exampleTitle);
+Window.AddElement(example);
 ```
 
 Finally, you can display the `Window`:
 
 ```csharp
-Window.Render(exampleTitle);
+Window.Render(example);
 ```
-
-#### Interactive elements
-
-The process is similar to the passive elements. The difference is that you can get a response from your interaction with these elements. Let's create a `Prompt` element:
-
-```csharp
-Prompt examplePrompt = new Prompt("What is your name?");
-```
-
-Then, you can add it to `Window`:
-
-```csharp
-Window.AddElement(examplePrompt);
-```
-
-Finally, you can display the `Window`, note that interactive element are disabled by default:
-
-```csharp
-Window.ActivateElement(examplePrompt);
-```
-
-To get the response simply add:
-
-```csharp
-var responsePrompt = examplePrompt.GetResponse();
-```
-
-Access to the response data using:
-
-```csharp
-// Get the state of the response : Enter, Escape, or Backspace
-Console.WriteLine(responsePrompt!.Status);
-
-// Get the response data, here a Prompt always return a string
-Console.WriteLine(responsePrompt!.Value);
-```
-
-#### Exit the program
 
 Do not forget to close the `Window` at the end of your program:
 
@@ -118,12 +75,16 @@ Window.Close();
 
 ## Supported .NET versions
 
-| Version  | Supported          |
-| -------- | ------------------ |
-| net8.x   | :white_check_mark: |
-| net7.x   | :white_check_mark: |
-| net6.x   | :white_check_mark: |
-| < net6.x | :x:                |
+| Version                                         | Supported          |
+| ----------------------------------------------- | ------------------ |
+| [net8.x](https://dotnet.microsoft.com/download) | :white_check_mark: |
+| net7.x                                          | :white_check_mark: |
+| net6.x                                          | :white_check_mark: |
+| < net6.x                                        | :x:                |
+
+## Roadmap
+
+The library is still in active development. The next feature and bug resolutions are listed in the [Project](https://github.com/users/MorganKryze/projects/3/views/2) section of the GitHub repository.
 
 ## Security Policy
 
@@ -131,7 +92,7 @@ Consider reading our [SECURITY](https://github.com/MorganKryze/ConsoleAppVisuals
 
 ## Acknowledgments
 
-Consider reading the [ACKNOWlEDGMENTS](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
+Consider reading the [ACKNOWLEDGMENTS](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/ACKNOWLEDGMENTS.md) file. It's a testament to the collaborative effort that has gone into improving and refining our library. We're deeply grateful to all our contributors for their invaluable input and the significant difference they've made to the project.
 
 It also lists the open source projects that have been used to build this library until now.
 

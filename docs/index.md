@@ -32,21 +32,16 @@ The library is still in active development. The next feature and bug resolutions
 
 ## Supported .NET versions
 
-| Version  | Supported          |
-| -------- | ------------------ |
-| net8.x   | :white_check_mark: |
-| net7.x   | :white_check_mark: |
-| net6.x   | :white_check_mark: |
-| < net6.x | :x:                |
+| Version                                         | Supported          |
+| ----------------------------------------------- | ------------------ |
+| [net8.x](https://dotnet.microsoft.com/download) | :white_check_mark: |
+| net7.x                                          | :white_check_mark: |
+| net6.x                                          | :white_check_mark: |
+| < net6.x                                        | :x:                |
 
 ## Security Policy
 
-Consider reading our [SECURITY](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/SECURITY) policy to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
-
-## Development team
-
-- [MorganKryze](https://github.com/MorganKryze) - creator and maintainer
-- [Robin L'hyver](https://github.com/robinmoon2) - contributor
+Consider reading our [SECURITY](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/SECURITY.md) policy to know more about how we handle security issues and how to report them. You will also find the stable versions of the project.
 
 ## Acknowledgments
 
@@ -56,12 +51,8 @@ It also lists the open source projects that have been used to build this library
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/CONTRIBUTING) file.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**. To do so, follow the steps described in the [CONTRIBUTING](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/CONTRIBUTING.md) file.
 
 We are always open for feedback and discussions. If you are using our library and want to share your use case, or if you have any suggestions for improvement, please feel free to [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) or [open a discussion](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) on our GitHub repository. Your input helps us understand possible use cases and make necessary improvements.
 
 Do not hesitate to **star** and **share** the project if you like it!
-
-## License
-
-Distributed under the GNU GPL v2.0 License. See [LICENSE](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md) for more information.
