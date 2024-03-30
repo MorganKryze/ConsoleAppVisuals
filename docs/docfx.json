@@ -32,7 +32,9 @@
       "_appLogoPath": "assets/img/svg/book.svg",
       "_appFaviconPath": "assets/img/svg/book.svg",
       "_enableSearch": true,
+      "_enableNewTab": true,
       "_disableContribution": true,
+      "_disableBreadcrumb": false,
       "pdf": true
     }
   }
