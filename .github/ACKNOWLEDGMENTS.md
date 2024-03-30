@@ -16,6 +16,8 @@ We would like to express our gratitude to the following individuals for their co
 - **[NotHilal](https://github.com/NotHilal)**: Provided valuable interactive feedbacks over an intuitive and entertaining guide.
 - **[V-SENAUX](https://github.com/V-SENAUX)**: Provided simple and stylish feedbacks (without any chichi).
 - **[floshv1](https://github.com/floshv1)**: Provided very helpful feedbacks and deep suggestions.
+- **[UrbsKali](https://github.com/UrbsKali)**: Provided very alive feedbacks and linked suggestions.
+- **[Maxence-Van-Laere](https://github.com/Maxence-Van-Laere)**: Provided curious and motivated feedbacks.
 
 We also want to thank all the users and supporters of ConsoleAppVisuals for using the library. Your input helps us understand possible use cases and make necessary improvements.
 
