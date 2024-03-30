@@ -61,7 +61,7 @@ while (true)
             }
             Window.Render();
 
-            EmbedText embedText = new(text: ["Font changed to: " + title.Font.ToString()]);
+            Dialog embedText = new(["Font changed to: " + title.Font.ToString()]);
             Window.AddElement(embedText);
 
             Window.ActivateElement(embedText);

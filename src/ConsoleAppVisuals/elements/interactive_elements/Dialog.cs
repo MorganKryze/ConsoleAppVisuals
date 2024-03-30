@@ -427,7 +427,7 @@ public class Dialog : InteractiveElement<DialogOption>
                 return DialogOption.Right;
             }
 
-            return DialogOption.Left;
+            return DialogOption.Right;
         }
 
         [Visual]
