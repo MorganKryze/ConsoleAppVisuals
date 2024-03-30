@@ -19,7 +19,7 @@ This article will guide you through the process of creating a documentation for 
 
 ## Prerequisites
 
-- Having looked at the project from the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html)
+- Having looked at the project from the [Introduction section](https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html)
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later
 
 ## Install DocFX

@@ -19,7 +19,7 @@ NuGet is a package manager for .NET that allows you to share your code with the 
 
 ## Prerequisites
 
-- Having looked at the project from the [Introduction section](/introduction/index.html)
+- Having looked at the project from the [Introduction section](/1-introduction/index.html)
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later
 - [NuGet account](https://www.nuget.org/users/account/LogOn?returnUrl=%2F), preferably for you on an outlook email address
 - [Github account](https://github.com/login)
@@ -27,7 +27,7 @@ NuGet is a package manager for .NET that allows you to share your code with the 
 
 ## Setup workspace
 
-We will take the example project of the [Introduction section](/introduction/index.html) and we will publish it on NuGet.org and GitHub packages as an example.
+We will take the example project of the [Introduction section](/1-introduction/index.html) and we will publish it on NuGet.org and GitHub packages as an example.
 
 As a reminder, here is the file structure of the project:
 

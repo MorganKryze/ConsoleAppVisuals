@@ -44,7 +44,7 @@ Window.Close();
 > [!TIP]
 > The arguments available for the `ElementsDashboard` are:
 >
-> - `Placement` - The position of the dashboard on the window to place it at a convenient location. (see [Placement enum](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Enums.Placement.html) for more details)
+> - `Placement` - The position of the dashboard on the window to place it at a convenient location. (see [Placement enum](https://morgankryze.github.io/ConsoleAppVisuals/4-references/ConsoleAppVisuals.Enums.Placement.html) for more details)
 > - `RoundedCorners` - A boolean value that indicates if the dashboard should have rounded corners. (purely aesthetic)
 
 ### `ElementsList`
@@ -69,7 +69,7 @@ Window.Close();
 > The arguments available for the `ElementsList` are:
 >
 > - `ElementType` - The type of elements to display in the list. (see [ElementType enum](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Enums.ElementType.html) for more details)
-> - `Placement` - The position of the list on the window to place it at a convenient location. (see [Placement enum](https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Enums.Placement.html) for more details)
+> - `Placement` - The position of the list on the window to place it at a convenient location. (see [Placement enum](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.Enums.Placement.html) for more details)
 > - `RoundedCorners` - A boolean value that indicates if the list should have rounded corners. (purely aesthetic)
 
 ### `Core.WriteDebugMessage()`
@@ -103,9 +103,9 @@ Before getting crazy over your code, try to find a related issue in the library 
 
 ## References
 
-If you struggle with the behavior of a specific class or method, you can refer to the [detailed documentation](https://morgankryze.github.io/ConsoleAppVisuals/references/index.html) to find the information you need. The documentation is updated regularly and contains all the information you need to use the library.
+If you struggle with the behavior of a specific class or method, you can refer to the [detailed documentation](https://morgankryze.github.io/ConsoleAppVisuals/3-references/index.html) to find the information you need. The documentation is updated regularly and contains all the information you need to use the library.
 
-Or simply redo the [tutorials](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html) to get a better understanding of the library.
+Or simply redo the [tutorials](https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html) to get a better understanding of the library.
 
 ## Source code
 
