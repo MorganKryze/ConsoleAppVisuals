@@ -421,15 +421,24 @@ class Program
                             ElementType.Interactive,
                             Placement.TopRight
                         );
-                        Window.AddElement(elementList, passiveList, interactiveList);
+                        // Seel all the animated element types available
+                        ElementsList animatedList = new ElementsList(
+                            ElementType.Animated,
+                            Placement.TopRight
+                        );
+                        Window.AddElement(elementList, passiveList, interactiveList, animatedList);
 
-                        Window.Render(passiveList, interactiveList, elementList);
+                        Window.Render(passiveList, interactiveList, elementList, animatedList);
                         Window.Freeze();
 
-                        Window.DeactivateElement(elementList);
-                        Window.DeactivateElement(passiveList);
-                        Window.DeactivateElement(interactiveList);
-                        Window.RemoveElement(elementList, passiveList, interactiveList);
+                        Window.Clear();
+                        Window.RemoveElement(
+                            elementList,
+                            passiveList,
+                            interactiveList,
+                            animatedList
+                        );
+                        Window.Render();
                         goto Menu;
 
                     case 10:

@@ -16,6 +16,7 @@ public class ElementsList : PassiveElement
     const string ELEMENTS_TITLE = "Element types available";
     const string PASSIVE_ELEMENTS_TITLE = "Passive element types available";
     const string INTERACTIVE_ELEMENTS_TITLE = "Interactive element types available";
+    const string ANIMATED_ELEMENTS_TITLE = "Animated element types available";
     const ElementType DEFAULT_ELEMENTS_TYPE_EXPECTED = ElementType.Default;
     const Placement DEFAULT_PLACEMENT = Placement.TopCenter;
     const BordersType DEFAULT_BORDERS_TYPE = BordersType.SingleStraight;
@@ -57,6 +58,7 @@ public class ElementsList : PassiveElement
             ElementType.Default => ELEMENTS_TITLE,
             ElementType.Passive => PASSIVE_ELEMENTS_TITLE,
             ElementType.Interactive => INTERACTIVE_ELEMENTS_TITLE,
+            ElementType.Animated => ANIMATED_ELEMENTS_TITLE,
             _ => ELEMENTS_TITLE
         };
 
