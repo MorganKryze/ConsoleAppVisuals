@@ -102,7 +102,7 @@ class Program
                 }
                 else
                 {
-                    EmbedText error = new(["Incorrect password. Please try again."]);
+                    Dialog error = new(["Incorrect password. Please try again."]);
                     Window.AddElement(error);
 
                     Window.ActivateElement(error);
@@ -253,7 +253,7 @@ class Program
                 || responseNotes?.Status == Status.Escaped
             )
             {
-                EmbedText error = new(["Password not saved."]);
+                Dialog error = new(["Password not saved."]);
                 Window.AddElement(error);
                 Window.ActivateElement(error);
 
@@ -281,7 +281,7 @@ class Program
         Window.ActivateElement(passwordSelector);
 
         var responseSelector = passwordSelector.GetResponse();
-        switch (responseSelector?.Status)
+        switch (responseSelector!.Status)
         {
             case Status.Selected:
                 var toUpdate = s_rows[responseSelector.Value];
@@ -292,8 +292,16 @@ class Program
                 }
                 break;
             case Status.Deleted:
-                // TODO: Work in progress, need the dialog element.
-                // EmbedText confirmation = new(["You chose to delete an item.", "Press [ESC] to abort, [Enter] to confirm"]);
+                Dialog confirmation = new(["You chose to delete an item."], "Abort", "Confirm");
+                Window.AddElement(confirmation);
+                Window.ActivateElement(confirmation);
+
+                var responseConfirmation = confirmation.GetResponse();
+                if (responseConfirmation!.Status == Status.Selected)
+                {
+                    s_rows.RemoveAt(responseSelector.Value);
+                }
+
                 break;
             case Status.Escaped:
                 Window.RemoveElement(passwordSelector);
