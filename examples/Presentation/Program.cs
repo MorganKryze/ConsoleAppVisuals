@@ -37,7 +37,7 @@ class Program
             "What will be your next action?",
             0,
             Placement.TopCenter,
-            "Display embed paragraph",
+            "Display dialog",
             "Answer a prompt",
             "Select a number",
             "Change title style",
@@ -74,23 +74,24 @@ class Program
                 switch (response.Value)
                 {
                     case 0:
-                        EmbedText text = new EmbedText(
+                        Dialog dialog = new Dialog(
                             new List<string>()
                             {
                                 "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,",
                                 "lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),",
-                                "and component-oriented programming disciplines.",
-                                "Press [Enter] to continue..."
-                            }
+                                "and component-oriented programming disciplines."
+                            },
+                            "Whatever...",
+                            "OK"
                         );
-                        Window.AddElement(text);
+                        Window.AddElement(dialog);
 
-                        // Activate the element to display it on the console
-                        Window.ActivateElement(text);
+                        // Activate the element to display it on the console (interactive)
+                        Window.ActivateElement(dialog);
 
                         // Removing the elements from the window after their use is not mandatory
                         // but it is recommended to keep the list clean
-                        Window.RemoveElement(text);
+                        Window.RemoveElement(dialog);
                         goto Menu;
 
                     case 1:
@@ -100,13 +101,11 @@ class Program
 
                         var responsePrompt = prompt.GetResponse();
 
-                        // We create an EmbedText to display the response
-                        EmbedText embedResponsePrompt = new EmbedText(
-                            new List<string>()
-                            {
-                                "You just wrote " + responsePrompt!.Value + "!",
-                                "Next ▶"
-                            },
+                        // We create a Dialog to display the response
+                        Dialog embedResponsePrompt = new Dialog(
+                            new List<string>() { "You just wrote " + responsePrompt!.Value + "!" },
+                            null,
+                            "Next",
                             TextAlignment.Center
                         );
                         Window.AddElement(embedResponsePrompt);
@@ -117,7 +116,7 @@ class Program
 
                         Prompt passwordPrompt = new Prompt(
                             "What is your password?",
-                            "azerty",
+                            null,
                             Placement.TopCenter,
                             20,
                             PromptInputStyle.Secret
@@ -128,12 +127,13 @@ class Program
 
                         var responsePasswordPrompt = passwordPrompt.GetResponse();
 
-                        EmbedText embedResponsePasswordPrompt = new EmbedText(
+                        Dialog embedResponsePasswordPrompt = new Dialog(
                             new List<string>()
                             {
-                                "You just wrote " + responsePasswordPrompt!.Value + "!",
-                                $"Next ▶"
+                                "You just wrote " + responsePasswordPrompt!.Value + "!"
                             },
+                            null,
+                            "Next",
                             TextAlignment.Center
                         );
                         Window.AddElement(embedResponsePasswordPrompt);
@@ -159,12 +159,14 @@ class Program
                         Window.ActivateElement(intSelector);
                         var responseNumber = intSelector.GetResponse();
 
-                        EmbedText embedResponseNumber = new EmbedText(
+                        Dialog embedResponseNumber = new Dialog(
                             new List<string>()
                             {
                                 "Status: " + responseNumber!.Status.ToString(),
-                                "Selected the number " + (responseNumber!.Value) + "!"
-                            }
+                                "Selected the number " + responseNumber!.Value + "!"
+                            },
+                            null,
+                            "OK"
                         );
                         Window.AddElement(embedResponseNumber);
                         Window.ActivateElement(embedResponseNumber);
@@ -311,12 +313,14 @@ class Program
 
                         Window.ActivateElement(players);
                         var responseTable = players.GetResponse();
-                        EmbedText embedResponseTable = new EmbedText(
+                        Dialog embedResponseTable = new Dialog(
                             new List<string>()
                             {
                                 "Status: " + responseTable!.Status.ToString(),
                                 "Selected the player " + playersData[responseTable!.Value][2] + "!"
-                            }
+                            },
+                            null,
+                            "OK"
                         );
                         Window.AddElement(embedResponseTable);
                         Window.ActivateElement(embedResponseTable);
@@ -366,11 +370,14 @@ class Program
                     case 8:
                         // These following elements are for debugging purposes,
                         // they should not be used in a production state of a project
-                        EmbedText embedInfo = new EmbedText(
+                        Dialog embedInfo = new Dialog(
                             new List<string>()
                             {
-                                "The colors represented the space taken by the elements. Press [Enter] to continue..."
-                            }
+                                "The colors represented the space taken by the elements.",
+                                "Press [Enter] to continue..."
+                            },
+                            null,
+                            "See preview"
                         );
                         Window.AddElement(embedInfo);
                         Window.ActivateElement(embedInfo);
@@ -484,13 +491,13 @@ class Program
                 break;
 
             case Status.Escaped:
-                EmbedText exitText = new EmbedText(
+                Dialog exitText = new Dialog(
                     new List<string>()
                     {
-                        "You have selected to quit the app. Press [Enter] to continue...",
-                        $"Next ▶",
+                        "You have selected to quit the app. Press [Enter] to continue..."
                     },
-                    TextAlignment.Left
+                    null,
+                    "Quit"
                 );
                 Window.AddElement(exitText);
                 Window.ActivateElement(exitText);
@@ -502,13 +509,15 @@ class Program
                 break;
 
             case Status.Deleted:
-                EmbedText backspaceText = new EmbedText(
+                Dialog backspaceText = new Dialog(
                     new List<string>()
                     {
                         "You have selected the backspace tile.",
                         "You will be redirected to the main menu.",
                         "Press [Enter] to continue..."
-                    }
+                    },
+                    null,
+                    "Back to menu"
                 );
                 Window.AddElement(backspaceText);
                 Window.ActivateElement(backspaceText);
