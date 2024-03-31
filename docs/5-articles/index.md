@@ -9,7 +9,7 @@ ms.topic: quickstart
 ms.service: ConsoleAppVisuals
 ---
 
-# Presentation
+# Table of content
 
 On this section, you will find articles related to the use of the ConsoleAppVisuals library and general articles for C# projects.
 
