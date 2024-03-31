@@ -17,13 +17,7 @@ This section is made for you to understand what is **ConsoleAppVisuals**, its pu
 
 The ambition of ConsoleAppVisuals is to provide the best compromise between an **easy-to-use library** and a **complex tool** to create console applications with visual elements. The library is designed to be simple to use and to provide a wide range of visual elements to make your console application more stylish and useful.
 
-```mermaid
-flowchart LR
-    A[Visual elements] -->|Stored in| B[Element List]
-    B -->|From| D[Window Class]
-    D -->|Rendered using| E[Core Class]
-    E -->|Displayed on| F[Console]
-```
+## Working principle
 
 It is relies on the concept of "visuals" which are elements that can be displayed in the console. There are two types of visuals:
 
@@ -33,6 +27,14 @@ It is relies on the concept of "visuals" which are elements that can be displaye
 These visuals are stored in `Window` as a list. From this class, you can display the visuals, add, remove, or update them. Each one of the visual element has its rendering method that will be called from the `Window` class.
 
 The basics of the interaction between the library and the console are defined in the `Core` class.
+
+```mermaid
+flowchart LR
+    A[Visual elements] -->|Stored in| B[Element List]
+    B -->|From| D[Window Class]
+    D -->|Rendered using| E[Core Class]
+    E -->|Displayed on| F[Console]
+```
 
 ## Use flow
 
