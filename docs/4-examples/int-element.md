@@ -1,3 +1,14 @@
+---
+title: CustomElement
+author: Yann M. Vidamment (MorganKryze)
+description: The CustomElement example demonstrates the use of the library to create a custom element (Passive or Interactive) that can be used in a Console application.
+keywords: c#, documentation, element, custom, passive, interactive
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/31/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Custom Element
 
 |                    Author                     | Size  | Library version |                                       Source files                                        |

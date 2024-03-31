@@ -1,3 +1,14 @@
+---
+title: Password Manager
+author: Yann M. Vidamment (MorganKryze)
+description: The PasswordManager example is a simple console application that allows the user to manage a list of passwords (non-secure). The user can add, remove, and update passwords. The application uses the `Prompt` element to hide the password characters when the user enters them.
+keywords: c#, documentation, password, manager
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/31/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Password Manager
 
 |                    Author                     |  Size  | Library version |                                        Source files                                         |

@@ -1,3 +1,14 @@
+---
+title: BankingExplorer
+author: Yann M. Vidamment (MorganKryze)
+description: BankingExplorer is a simple console application that demonstrates the use of the library to create a banking assistant. You may store expenses and incomes, archive your data and view different accounts.
+keywords: c#, documentation, banking
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/31/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # BankingExplorer
 
 |                    Author                     |  Size  | Library version |                      Source files                      |

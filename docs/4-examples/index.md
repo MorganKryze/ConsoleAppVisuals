@@ -1,3 +1,14 @@
+---
+title: Table of content
+author: Yann M. Vidamment (MorganKryze)
+description: In this section, you will find internal and external example projects that use the ConsoleAppVisuals library. Feel free to explore them as you like and use them as a reference for your own projects.
+keywords: c#, documentation, examples, projects, toc
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/31/2024
+ms.topic: quickstart
+ms.service: ConsoleAppVisuals
+---
+
 # Table of content
 
 ## Introduction
