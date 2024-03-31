@@ -11,7 +11,7 @@ ms.service: ConsoleAppVisuals
 
 # Animated
 
-| Screenshot                                                    | Description                                                                                                                                      | Documentation                                                                                                                   |
+| Visual                                                        | Description                                                                                                                                      | Documentation                                                                                                                   |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
 | ![FakeLoadingBar](../assets/img/jpg/elements/loading_bar.jpg) | The `FakeLoadingBar` is used to create a static loading bar with a defined duration.                                                             | [Read more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.AnimatedElement.FakeLoadingBar.html) |
 | ![LoadingBar](../assets/img/jpg/elements/loading_bar.jpg)     | The `LoadingBar` class is used to create a dynamic loading bar. It is a simple animated element that you may use to show the progress of a task. | [Read more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.AnimatedElement.LoadingBar.html)     |
