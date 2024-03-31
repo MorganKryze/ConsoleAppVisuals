@@ -1,8 +1,8 @@
 # Presentation
 
-|                    Author                     |  Size  | Lib version |                                       Source files                                       |
-| :-------------------------------------------: | :----: | :---------: | :--------------------------------------------------------------------------------------: |
-| [MorganKryze](https://github.com/MorganKryze) | medium |   latest    | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/Presentation) |
+|                    Author                     |  Size  | Library version |                                       Source files                                       |
+| :-------------------------------------------: | :----: | :-------------: | :--------------------------------------------------------------------------------------: |
+| [MorganKryze](https://github.com/MorganKryze) | medium |     latest      | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/Presentation) |
 
 ## Introduction
 

@@ -1,8 +1,8 @@
 # Custom Element
 
-|                    Author                     | Size  | Lib version |                                       Source files                                        |
-| :-------------------------------------------: | :---: | :---------: | :---------------------------------------------------------------------------------------: |
-| [MorganKryze](https://github.com/MorganKryze) | small |   latest    | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement) |
+|                    Author                     | Size  | Library version |                                       Source files                                        |
+| :-------------------------------------------: | :---: | :-------------: | :---------------------------------------------------------------------------------------: |
+| [MorganKryze](https://github.com/MorganKryze) | small |     latest      | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement) |
 
 ## Introduction
 

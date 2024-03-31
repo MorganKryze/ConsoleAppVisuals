@@ -1,8 +1,8 @@
 # Custom Font
 
-|                    Author                     | Size  | Lib version |                                      Source files                                      |
-| :-------------------------------------------: | :---: | :---------: | :------------------------------------------------------------------------------------: |
-| [MorganKryze](https://github.com/MorganKryze) | small |   latest    | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomFont) |
+|                    Author                     | Size  | Library version |                                      Source files                                      |
+| :-------------------------------------------: | :---: | :-------------: | :------------------------------------------------------------------------------------: |
+| [MorganKryze](https://github.com/MorganKryze) | small |     latest      | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomFont) |
 
 ## Introduction
 
