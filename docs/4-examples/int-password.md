@@ -6,7 +6,7 @@
 
 ## Introduction
 
-The Presentation project serves the purpose to demonstrate the capabilities of the library gathering the major features in a single application.
+The PasswordManager example is a simple console application that allows the user to manage a list of passwords (non-secure). The user can add, remove, and update passwords. The application uses the `Prompt` element to hide the password characters when the user enters them.
 
 ![Demo](../assets/vid/gif/examples/password_manager.gif)
 
