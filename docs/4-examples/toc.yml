@@ -1,2 +1,11 @@
 - name: Getting Started
 - href: index.md
+
+- name: Internal
+- href: int-presentation.md
+- href: int-password.md
+- href: int-element.md
+- href: int-font.md
+
+- name: External
+- href: ext-banking.md
