@@ -11,7 +11,7 @@ ms.service: ConsoleAppVisuals
 
 # Getting started
 
-This section describes all references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.
+This section describes all references of the library. You will find all arguments, method signatures, classes, and enums that are available for the user.
 
 Access to the namespaces classes and functions at the left side of this page.
 
