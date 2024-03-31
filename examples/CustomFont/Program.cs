@@ -32,7 +32,7 @@ ScrollingMenu menu =
         question: "Please select the next font of the title:",
         defaultIndex: 0,
         placement: Placement.TopCenter,
-        choices: ["ANSI Shadow", "Bloody", "Stop"]
+        choices: ["Default: ANSI Shadow", "Built-in: Bloody", "Custom: Stop", "Quit"]
     );
 Window.AddElement(menu);
 
@@ -58,10 +58,13 @@ while (true)
                 case 2:
                     title.UpdateFont(font: Font.Custom, fontPath: "./Stop/");
                     break;
+                case 3:
+                    Window.Close();
+                    return;
             }
             Window.Render();
 
-            Dialog embedText = new(["Font changed to: " + title.Font.ToString()]);
+            Dialog embedText = new(["Font changed to: " + title.Font.ToString()], null, "OK");
             Window.AddElement(embedText);
 
             Window.ActivateElement(embedText);
