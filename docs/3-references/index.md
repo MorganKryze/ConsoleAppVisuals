@@ -89,20 +89,22 @@ Here is the detailed file structure of the library:
 ```bash
 ConsoleAppVisuals
 ├───elements
+│   ├───animated
+│   │   ├───FakeLoadingBar.cs
+│   │   └───LoadingBar.cs
 │   ├───interactive
-│   │   ├───EmbedText.cs
 │   │   ├───FloatSelector.cs
 │   │   ├───IntSelector.cs
 │   │   ├───Prompt.cs
+│   │   ├───Dialog.cs
 │   │   ├───ScrollingMenu.cs
-│   │   ├───FakeLoadingBar.cs
 │   │   └───TableSelector.cs
 │   └───passive
 │       ├───inspectors
-│       │   ├───ElementList.cs
-│       │   ├───InteractiveList.cs
+│       │   ├───ElementsList.cs
 │       │   └───ElementsDashboard.cs
-│       ├───LoadingBar.cs
+│       ├───EmbedText.cs
+│       ├───Text.cs
 │       ├───Matrix.cs
 │       ├───TableView.cs
 │       ├───Banner.cs
@@ -112,16 +114,26 @@ ConsoleAppVisuals
 ├───attributes
 │   └───VisualAttribute.cs
 ├───enums
+│   ├───BordersType.cs
+│   ├───DialogOption.cs
 │   ├───Direction.cs
-│   ├───Output.cs
+│   ├───ElementType.cs
+│   ├───Font.cs
 │   ├───Placement.cs
+│   ├───PromptInputStyle.cs
+│   ├───Status.cs
 │   └───TextAlignment.cs
 ├───errors
 │   ├───EmptyFileException.cs
+│   ├───LineOutOfConsoleException.cs
+│   ├───DuplicateElementException.cs
 │   ├───ElementNotFoundException.cs
 │   └───NotSupportedCharException.cs
 ├───models
 │   ├───Element.cs
+│   ├───AnimatedElement.cs
+│   ├───PassiveElement.cs
+│   ├───Borders.cs
 │   ├───InteractiveElement.cs
 │   ├───InteractionEventArgs.cs
 │   ├───Position.cs
@@ -129,7 +141,7 @@ ConsoleAppVisuals
 │   └───FontYamlFile.cs
 ├───Core.cs
 ├───Window.cs
-└───Usings.cs
+└───GlobalUsings.cs
 ```
 
 ---
