@@ -17,7 +17,7 @@ Any error messages or screenshots if applicable
 
 If you have ideas for enhancements or new features, we'd love to hear them! You can submit your suggestions by opening a new issue in the [Issues section](https://github.com/MorganKryze/ConsoleAppVisuals/issues) of our repository. Please provide a clear description of the enhancement and why you think it would be beneficial.
 
-### Contributing Code
+### Contributing to code
 
 We welcome contributions in the form of code changes! If you'd like to contribute code, please follow these steps:
 
@@ -32,7 +32,7 @@ Before submitting your pull request, please ensure that you have:
 - Provided a detailed description of the changes made.
 - Mentioned any related issues or pull requests.
 
-### Versioning conventions
+#### Versioning conventions
 
 We use the [Semantic Versioning](https://semver.org/) convention for versioning. The version number is composed of three parts: Major, Minor, and Patch. We also use a suffix to denote pre-release versions (vX.Y.Z-PreRelease):
 
@@ -49,7 +49,7 @@ For the pre-release suffix, we use the following conventions:
 
 Example: v1.0.0-alpha < v1.0.0-alpha.1 < v1.0.0-beta < v1.0.0-beta.2 < v1.0.0-beta.11 < v1.0.0-rc.1 < v1.0.0
 
-### Testing Conventions
+#### Testing Conventions
 
 For testing, we use the following conventions:
 
@@ -62,7 +62,7 @@ For testing, we use the following conventions:
 - Tests should have the `TestCategory("ClassToTest")` attribute.
 - Tests content should follow the `Arrange`, `Act`, `Assert` pattern.
 
-### Commit names conventions
+#### Commit names conventions
 
 For commit names, we use the github hooks:
 
@@ -95,7 +95,13 @@ Here are the steps to follow:
 
 After these steps, your font will be reviewed and merged into the library to be available for everyone.
 
-### Reviewing Pull Requests
+### Submitting example project
+
+If you want to contribute to the library by adding an example project, you can do so by following [this template](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/.github/example_template.md) and the guidelines given in the Examples section of the [documentation](https://morgankryze.github.io/ConsoleAppVisuals/examples).
+
+Finally, submit a pull request to the dev branch of the repository or reach us at [morgan@kodelab.fr](mailto:morgan@kodelab.fr).
+
+## Reviewing Pull Requests
 
 All pull requests will be reviewed by members of the project maintainers team. Please be patient while we review your contribution. We may provide feedback or request changes before merging your pull request.
 

@@ -19,7 +19,7 @@ Each one will guide you through the setup and execution of the project, as well 
 
 ## Contributing
 
-If you use the ConsoleAppVisuals library in your project and would like to share it with the community, feel free to contact us at [morgan@kodelab.fr](mailto:morgan@kodelab.fr).
+If you use the ConsoleAppVisuals library in your project and would like to share it with the community, feel free to reach us at [morgan@kodelab.fr](mailto:morgan@kodelab.fr).
 
 Before you do, make sure to do the following:
 
