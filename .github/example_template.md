@@ -1,8 +1,8 @@
 # Presentation
 
-|     Author     | Last Update | Version |     Source files     |
-| :------------: | :---------: | :-----: | :------------------: |
-| [author](link) |     ---     |   ---   | [link](link_to_repo) |
+|     Author     | Size | Lib version |     Source files     |
+| :------------: | :--: | :---------: | :------------------: |
+| [author](link) | ---  |     ---     | [link](link_to_repo) |
 
 ## Introduction
 
