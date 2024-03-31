@@ -1,3 +1,7 @@
 - name: Getting Started
 - href: index.md
 
+- name: Categories
+- href: passive.md
+- href: interactive.md
+- href: animated.md
