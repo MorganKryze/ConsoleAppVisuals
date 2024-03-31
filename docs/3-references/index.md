@@ -78,7 +78,7 @@ using ConsoleAppVisuals.Errors;
 
 This namespace contains all the custom exceptions of the library. They are used to handle specific errors that may occur during the execution of the library.
 
-### Bonus: `Usings.cs`
+### Bonus: `GlobalUsings.cs`
 
 This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library. I recommend you to do the same in your projects. [See file](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/GlobalUsings.cs)
 
