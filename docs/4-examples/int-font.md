@@ -1,3 +1,14 @@
+---
+title: CustomFont
+author: Yann M. Vidamment (MorganKryze)
+description: The CustomFont example demonstrates the use of the library to create a custom font that can be used in a Console application.
+keywords: c#, documentation, font, custom
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/31/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Custom Font
 
 |                    Author                     | Size  | Library version |                                      Source files                                      |

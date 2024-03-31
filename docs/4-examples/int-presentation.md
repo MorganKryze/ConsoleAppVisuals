@@ -1,3 +1,14 @@
+---
+title: Presentation
+author: Yann M. Vidamment (MorganKryze)
+description: The Presentation project serves the purpose to demonstrate the capabilities of the library gathering the major features in a single application.
+keywords: c#, documentation, presentation
+ms.author: Yann M. Vidamment (MorganKryze)
+ms.date: 03/31/2024
+ms.topic: tutorial
+ms.service: ConsoleAppVisuals
+---
+
 # Presentation
 
 |                    Author                     |  Size  | Library version |                                       Source files                                       |
