@@ -1,8 +1,8 @@
 # BankingExplorer
 
-|                    Author                     |  Size  | Lib version |                      Source files                      |
-| :-------------------------------------------: | :----: | :---------: | :----------------------------------------------------: |
-| [MorganKryze](https://github.com/MorganKryze) | medium |    3.3.0    | [link](https://github.com/MorganKryze/BankingExplorer) |
+|                    Author                     |  Size  | Library version |                      Source files                      |
+| :-------------------------------------------: | :----: | :-------------: | :----------------------------------------------------: |
+| [MorganKryze](https://github.com/MorganKryze) | medium |      3.3.0      | [link](https://github.com/MorganKryze/BankingExplorer) |
 
 ## Introduction
 

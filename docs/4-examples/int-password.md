@@ -1,8 +1,8 @@
 # Password Manager
 
-|                    Author                     |  Size  | Lib version |                                        Source files                                         |
-| :-------------------------------------------: | :----: | :---------: | :-----------------------------------------------------------------------------------------: |
-| [MorganKryze](https://github.com/MorganKryze) | medium |   latest    | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/PasswordManager) |
+|                    Author                     |  Size  | Library version |                                        Source files                                         |
+| :-------------------------------------------: | :----: | :-------------: | :-----------------------------------------------------------------------------------------: |
+| [MorganKryze](https://github.com/MorganKryze) | medium |     latest      | [link](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/PasswordManager) |
 
 ## Introduction
 
