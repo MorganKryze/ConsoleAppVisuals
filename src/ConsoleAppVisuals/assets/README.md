@@ -18,6 +18,7 @@ The library is designed to be user-friendly and easy to use. It is based on the 
 
 - **Passive visuals**: elements that do not change by themselves, you may display several from the same type at the same time
 - **Interactive visuals**: elements that can be updated and create a response that can be collected, you may display only one at a time
+- **Animated visuals**: in-between passive and interactive visuals, they provide an interaction to stop them but do not require a response, you may display only one at a time.
 
 These visuals are stored in `Window` as a list. From this class, you can display the visuals, add, remove, or update them. Each one of the visual element has its rendering method that lets the `Window` display it.
 
