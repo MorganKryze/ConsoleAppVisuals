@@ -19,12 +19,12 @@ ms.service: ConsoleAppVisuals
 
 Welcome to the documentation of the `ConsoleAppVisuals` library. This is a simple and easy-to-use library that allows you to create visual elements in the console. Here are all the resources available:
 
-- [Introduction](/ConsoleAppVisuals/1-introduction/basic_concepts.html): find the basic concepts and the first steps into the library.
-- [References](/ConsoleAppVisuals/4-references/index.html): find all methods, properties and classes with their description and all arguments available.
+- [Introduction](/ConsoleAppVisuals/1-introduction/basic_concepts.html): find the basic concepts and the first steps into the library to learn how to use it.
+- [Elements](/ConsoleAppVisuals/2-elements/index.html): find all the visual elements available in the library with their description.
+- [References](/ConsoleAppVisuals/3-references/index.html): find all methods, properties and classes with their description and all arguments available.
+- [Examples](/ConsoleAppVisuals/4-examples/index.html): find some examples to learn how to use the library in concrete use cases.
 - [Articles](/ConsoleAppVisuals/5-articles/index.html): find some additional library-related articles.
 - [Legacy](/ConsoleAppVisuals/6-legacy/index.html): find the outdated documentation of the library for the versions 2.x.x and below.
-
-Finally, a commented [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/) to see how to use the library in a real project.
 
 ## Roadmap
 
