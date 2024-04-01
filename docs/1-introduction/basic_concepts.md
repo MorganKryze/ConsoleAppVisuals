@@ -11,7 +11,7 @@ ms.service: ConsoleAppVisuals
 
 # Basic concepts
 
-This section is made for you to understand what is **ConsoleAppVisuals**, its purpose and use flow. We will guide you later on into the creation of your first project until the advanced use of the library with data visualization and menus management.
+This section is made for you to understand what is **ConsoleAppVisuals**, its purpose and use flow. We will also guide you into the creation of your first project until the advanced use of the library with data visualization and menus management.
 
 ## What is ConsoleAppVisuals?
 
@@ -23,8 +23,9 @@ It is relies on the concept of "visuals" which are elements that can be displaye
 
 - **Passive visuals**: elements that do not provide any interaction, you may display several from the same type at the same time
 - **Interactive visuals**: elements that provide an explicit interaction and create a response that can be collected, you may display only one at a time
+- **Animated visuals**: in-between passive and interactive visuals, they provide an interaction to stop them but do not require a response, you may display only one at a time.
 
-These visuals are stored in `Window` as a list. From this class, you can display the visuals, add, remove, or update them. Each one of the visual element has its rendering method that will be called from the `Window` class.
+These visuals are stored in `Window` as a list. From this class, you can display, add, remove, or update the visuals. Each one of the visual element has its rendering method that will be called from the `Window` class.
 
 The basics of the interaction between the library and the console are defined in the `Core` class.
 
@@ -38,7 +39,7 @@ flowchart LR
 
 ## Use flow
 
-Here is the basic visualization of the use flow of the library:
+When you want to create an element and display it, here is the basic visualization of the use flow of the library:
 
 ```mermaid
 sequenceDiagram
@@ -73,7 +74,7 @@ Window.Render(exampleTitle);
 
 ## First steps
 
-Now that you have the basic concepts, let's dive into this guided path to know how to use the library:
+Now that you have the basic concepts, let's dive into this guided path to learn how to use the library:
 
 1. [Create a simple console application](/ConsoleAppVisuals/1-introduction/first_app.html)
 2. [Explore element options](/ConsoleAppVisuals/1-introduction/elements_options.html)
