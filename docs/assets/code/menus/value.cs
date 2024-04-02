@@ -13,13 +13,13 @@ Window.AddElement(menu);
 Window.ActivateElement(menu);
 
 var response = menu.GetResponse();
-switch (response?.Status)
+switch (response!.Status)
 {
     case Status.Selected:
         switch (response.Value)
         {
             case 0:
-                EmbedText play = new EmbedText(
+                Dialog play = new Dialog(
                     new List<string>() { "Playing..." }
                 );
                 Window.AddElement(play);
@@ -28,7 +28,7 @@ switch (response?.Status)
                 Window.RemoveElement(play);
                 break;
             case 1:
-                EmbedText settings = new EmbedText(
+                Dialog settings = new Dialog(
                     new List<string>() { "Consulting the settings..." }
                 );
                 Window.AddElement(settings);

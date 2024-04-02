@@ -12,10 +12,10 @@ Window.AddElement(menu);
 Window.ActivateElement(menu);
 
 var response = menu.GetResponse();
-switch (response?.Status)
+switch (response!.Status)
 {
     case Status.Selected:
-        EmbedText embedSelected = new EmbedText(
+        Dialog embedSelected = new Dialog(
             new List<string>()
             {
                 "The user pressed the Enter key",
@@ -27,7 +27,7 @@ switch (response?.Status)
         Window.RemoveElement(embedSelected);
         break;
     case Status.Escaped:
-        EmbedText embedEscaped = new EmbedText(
+        Dialog embedEscaped = new Dialog(
             new List<string>()
             {
                 "The user pressed the Escape key",
@@ -39,7 +39,7 @@ switch (response?.Status)
         Window.RemoveElement(embedEscaped);
         break;
     case Status.Deleted:
-        EmbedText embedDeleted = new EmbedText(
+        Dialog embedDeleted = new Dialog(
             new List<string>()
             {
                 "The user pressed the Delete key",
