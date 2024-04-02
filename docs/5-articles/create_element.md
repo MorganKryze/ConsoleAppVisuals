@@ -90,7 +90,7 @@ Now let's look at the `Element` class. This class is the base class for all visu
 
 The method that you can override are highlighted in yellow here:
 
-[!code-csharp[](../assets/code/Element.cs?highlight=36,42,54,113,119,125,178,187,193,230)]
+[!code-csharp[](../assets/code/Element.cs?highlight=57,63,69,75,81,88,192,201,207,241)]
 
 > [!TIP]
 > Depending on the element you want to create, you may not need to override all of these methods. You can override only the ones that are necessary for your element. However I highly recommend to override these:
@@ -159,32 +159,27 @@ Now let's look at the `InteractiveElement` class. This class inherits from the `
 > [!IMPORTANT]
 > To define a new interactive element, you must define the type of the response that the element will give. This type can be pretty much everything, but a classic type like `int`, `string`, ... is to prefer. In the example above, the type `T` is used. You can replace it with the type you want to use.
 
-The method that you can override are the same as the `Element` class at some exceptions:
+The method and properties that you can override are the same as the `PassiveElement` class at some exceptions:
 
-- `IsInteractive`: is set to true.
 - `MaxNumberOfThisElement`: is set to one.
 - `RenderOptionsBeforeHand` & `RenderOptionsBeforeHand`: cannot be modified.
-
-The callable attributes and methods are **highlighted in yellow** here:
-
-[!code-csharp[](../assets/code/InteractiveElement.cs?highlight=23,28,59)]
 
 Two new methods are available and cannot be modified:
 
 - `SendResponse()`: This method is called when the user interacts with the element. It is used to send a response to the window (highly recommended to see the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement/InteractiveDemo.cs) ot understand its implementation).
-- `GetResponse()`: This method is called when the user has interacted with the element. It is used to get the response from the user (defined in the `Window` class).
+- `GetResponse()`: This method is called when the user has interacted with the element. It is used to get the response from the user (you also have `GetResponseHistory()` to get the history of the responses).
 
 To understand how is defined the interaction response, I highlighted the two attributes that are used to define the response:
 
-[!code-csharp[](../assets/code/InteractionEventArgs.cs?highlight=23,28)]
+[!code-csharp[](../assets/code/InteractionEventArgs.cs?highlight=20,25)]
 
-Where `State` depends on the values of the [`Status` enum](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/enums/Status.cs) and `Info` depends on the `T` type of the `InteractiveElement` you created.
+Where `Status` depends on the values of the [`Status` enum](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/enums/Status.cs) and `Value` depends on the `T` type of the `InteractiveElement` you created.
 
 Once your customization is done, you may use your element in your application just like a default element.
 
 ## Visualize all elements available
 
-Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library (available in the [example project](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/examples/CustomElement/InteractiveDemo.cs)). Here is an example of how to do it:
+Now that you know how to create your own elements, you can check if they are available in the library. To do so, you can use built-in elements to display all the elements available in the library.
 
 ```csharp
 Window.Open();
@@ -222,6 +217,10 @@ Window.Close();
 ```
 
 ![Interactive elements list](../assets/img/jpg/create_element/interactive.jpg)
+
+> [!NOTE]
+> You may repeat the same process for the `ElementType.Default` and `ElementType.Animated` to see all the elements available in the library.
+> Note also that creating an `AnimatedElement` is just like creating a `InteractiveElement` but without sending a response. You may add a way for the user to press a key to skip the animation or to stop it. [see the loading bars](https://github.com/MorganKryze/ConsoleAppVisuals/tree/main/src/ConsoleAppVisuals/elements/animated_elements)
 
 ---
 
