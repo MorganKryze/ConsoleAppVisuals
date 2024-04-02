@@ -107,6 +107,10 @@ If you struggle with the behavior of a specific class or method, you can refer t
 
 Or simply redo the [tutorials](https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html) to get a better understanding of the library.
 
+## Examples
+
+If you are looking for concrete examples to help you understand how to use the library in real use cases, you can refer to the [examples](https://morgankryze.github.io/ConsoleAppVisuals/4-examples/index.html) section. The examples are updated regularly and cover a wide range of use cases.
+
 ## Source code
 
 Finally, if none of the above solutions work, or if you are just curious, you can always refer to the [source code](https://github.com/MorganKryze/ConsoleAppVisuals/tree/main/src/ConsoleAppVisuals).
