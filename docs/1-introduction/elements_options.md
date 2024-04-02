@@ -214,9 +214,9 @@ The `TextAlignment` enumeration is used to align the text in a string. It is use
 > To choose the text alignment of an element, you can either set it from the constructor or use the `UpdateTextAlignment()` method after creating the element (some elements may not have this method if the text alignment is not used in it so refer to the references documentation to get that specific information).
 >
 > ```csharp
-> EmbedText embedText = new EmbedText(new List<string>(){"Demo", "This is a message"},"OK ▶",TextAlignment.Center);
+> Dialog dialog = new Dialog(new List<string>(){"Demo", "This is a message"}, null, "OK ▶", TextAlignment.Center);
 > // or
-> embedText.UpdateTextAlignment(TextAlignment.Center);
+> dialog.UpdateTextAlignment(TextAlignment.Center);
 > ```
 
 ### `BordersType`
@@ -244,7 +244,7 @@ The `BordersType` enumeration is used to set the borders of an element. It is us
 ![ASCII](../assets/img/jpg/elements_options/ascii.jpg)
 
 > [!WARNING]
-> The following types are not available for Visual Studio or Windows Command Prompt:
+> The following types may not work on Visual Studio or Windows Command Prompt:
 >
 > - `SingleRound`
 > - `SingleBold`
