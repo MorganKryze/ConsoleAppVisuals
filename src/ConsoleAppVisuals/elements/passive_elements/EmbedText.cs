@@ -5,7 +5,7 @@
 namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
-/// The <see cref="EmbedText"/> is an passive element that displays text in a box.
+/// The <see cref="EmbedText"/> is a passive element that displays text in a box.
 /// </summary>
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
@@ -74,7 +74,7 @@ public class EmbedText : PassiveElement
 
     #region Constructor
     /// <summary>
-    /// The <see cref="EmbedText"/> is an passive element that displays text in a box.
+    /// The <see cref="EmbedText"/> is a passive element that displays text in a box.
     /// </summary>
     /// <param name="text">The text to display.</param>
     /// <param name="align">The alignment of the Embed text.</param>
