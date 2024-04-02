@@ -90,7 +90,7 @@ Removing an element is useful when you don't want to use it anymore. To do so, l
 ```csharp
 Window.Open();
 
-Title title = new Title("Elements options");
+Title title = new Title("Disabling");
 Window.AddElement(title);
 
 Window.RemoveElement(title);
@@ -105,7 +105,7 @@ Let's see how to perceive the effect of removing an element. Update your code to
 ```csharp
 Window.Open();
 
-Title title = new Title("Elements options");
+Title title = new Title("Disabling");
 Window.AddElement(title);
 
 ElementsDashboard dashboard = new ElementsDashboard();
