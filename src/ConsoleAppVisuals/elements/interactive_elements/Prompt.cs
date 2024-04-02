@@ -10,6 +10,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
+/// <value><see cref="Prompt"/> response type is: <see cref="string"/></value>
 public class Prompt : InteractiveElement<string>
 {
     #region Constants
@@ -106,6 +107,7 @@ public class Prompt : InteractiveElement<string>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
+    /// <value><see cref="Prompt"/> response type is: <see cref="string"/></value>
     public Prompt(
         string question,
         string? defaultValue = null,

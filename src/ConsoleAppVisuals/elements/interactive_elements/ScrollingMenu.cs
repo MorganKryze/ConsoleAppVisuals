@@ -10,6 +10,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
+/// <value><see cref="ScrollingMenu"/> response type is: <see cref="int"/></value>
 public class ScrollingMenu : InteractiveElement<int>
 {
     #region Constants
@@ -88,6 +89,7 @@ public class ScrollingMenu : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
+    /// <value><see cref="ScrollingMenu"/> response type is: <see cref="int"/></value>
     public ScrollingMenu(
         string question,
         int defaultIndex = DEFAULT_INDEX,

@@ -10,6 +10,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
+/// <value><see cref="IntSelector"/> response type is: <see cref="int"/></value>
 public class IntSelector : InteractiveElement<int>
 {
     #region Constants
@@ -118,6 +119,7 @@ public class IntSelector : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
+    /// <value><see cref="IntSelector"/> response type is: <see cref="int"/></value>
     public IntSelector(
         string question,
         int min,
