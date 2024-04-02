@@ -24,7 +24,7 @@ public enum BordersType
     /// Single line borders with rounded corners (╭╮╰╯─│┬┴├┤┼)
     /// </summary>
     /// <remarks>
-    /// Not supported on PowerShell (Windows).
+    /// May not be supported on PowerShell (Windows).
     /// </remarks>
     SingleRound,
 
@@ -32,7 +32,7 @@ public enum BordersType
     /// Single line borders with bold lines (┏┓┗┛━┃┳┻┣┫╋)
     /// </summary>
     /// <remarks>
-    /// Not supported on PowerShell (Windows).
+    /// May not be supported on PowerShell (Windows).
     /// </remarks>
     SingleBold,
 
