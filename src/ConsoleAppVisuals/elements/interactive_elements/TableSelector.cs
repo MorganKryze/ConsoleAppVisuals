@@ -10,6 +10,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
+/// <value><see cref="TableSelector"/> response type is: <see cref="int"/></value>
 public class TableSelector : InteractiveElement<int>
 {
     #region Constants
@@ -121,6 +122,7 @@ public class TableSelector : InteractiveElement<int>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
+    /// <value><see cref="TableSelector"/> response type is: <see cref="int"/></value>
     public TableSelector(
         string? title = DEFAULT_TITLE,
         List<string>? headers = null,
@@ -529,7 +531,6 @@ public class TableSelector : InteractiveElement<int>
         _displayArray = null;
     }
     #endregion
-
 
     #region Rendering
 

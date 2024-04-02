@@ -11,6 +11,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
+/// <value><see cref="Dialog"/> response type is: <see cref="DialogOption"/></value>
 public class Dialog : InteractiveElement<DialogOption>
 {
     #region Constants
@@ -107,6 +108,7 @@ public class Dialog : InteractiveElement<DialogOption>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
+    /// <value><see cref="Dialog"/> response type is: <see cref="DialogOption"/></value>
     public Dialog(
         List<string> lines,
         string? leftOption = null,

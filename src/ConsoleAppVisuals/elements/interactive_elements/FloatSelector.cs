@@ -10,6 +10,7 @@ namespace ConsoleAppVisuals.InteractiveElements;
 /// <remarks>
 /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
 /// </remarks>
+/// <value><see cref="FloatSelector"/> response type is: <see cref="float"/></value>
 public class FloatSelector : InteractiveElement<float>
 {
     #region Constants
@@ -118,6 +119,7 @@ public class FloatSelector : InteractiveElement<float>
     /// <remarks>
     /// For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.
     /// </remarks>
+    /// <value><see cref="FloatSelector"/> response type is: <see cref="float"/></value>
     public FloatSelector(
         string question,
         float min,
