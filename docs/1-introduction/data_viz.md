@@ -110,13 +110,13 @@ Now let's collect the user interaction response by adding the following code:
 ```csharp
 var response = players.GetResponse();
 
-EmbedText playersEmbedResponse =
-    new EmbedText(
+Dialog playersEmbedResponse =
+    new Dialog(
         new List<string>()
         {
-            "Status: " + response?.Status,
+            "Status: " + response!.Status,
             "You selected the player "
-                + playersData[response?.Value ?? 0][2]
+                + playersData[response!.Value][2]
                 + "!"
         }
     );
@@ -128,9 +128,6 @@ Window.Close();
 ```
 
 ![Embed response](../assets/vid/gif/data_viz/embed.gif)
-
-> [!NOTE]
-> Here the `??` operator is used to provide a default value if the response is `null`. In this case, if the response is `null`, the default value is `0`.
 
 ## The `Matrix` element
 
