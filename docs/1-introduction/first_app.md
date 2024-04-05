@@ -171,7 +171,7 @@ Instead of rendering each element separately, we rendered the `Title`, `Header` 
 
 ### `FakeLoadingBar`
 
-Now let's add a `FakeLoadingBar` _animated_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.FakeLoadingBar.html)
+Now let's add a `FakeLoadingBar` _animated_ element to your previous code and run it. [Learn more](https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.AnimatedElements.FakeLoadingBar.html)
 
 ```csharp
 FakeLoadingBar loadingBar = new FakeLoadingBar();
