@@ -2,7 +2,7 @@
     Copyright (c) 2024 Yann M. Vidamment (MorganKryze)
     Licensed under GNU GPL v2.0. See full license at: https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md
 */
-namespace ConsoleAppVisuals.InteractiveElements;
+namespace ConsoleAppVisuals.PassiveElements;
 
 /// <summary>
 /// The <see cref="Text"/> is an passive element that displays one or multiple lines of text.
