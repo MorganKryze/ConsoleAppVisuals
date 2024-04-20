@@ -19,7 +19,7 @@ Now, you can go further and explore the library by yourself. Here are the resour
 - The [examples](https://morgankryze.github.io/ConsoleAppVisuals/4-examples/index.html) section where you can find some concrete examples to help you understand how to use the library in real use cases.
 - The [articles](https://morgankryze.github.io/ConsoleAppVisuals/5-articles/index.html) section where you can find some additional articles (create your element, use fonts, create your documentation, etc.).
 
-Stay tuned! The [release notes](https://github.com/MorganKryze/ConsoleAppVisuals/releases) of the latest version are updated regularly. Consider checking it to see if there are any new features or bug fixes to stay up to date. Updating instructions are available [here](https://morgankryze.github.io/ConsoleAppVisuals/introduction/first_app.html).
+Stay tuned! The [release notes](https://github.com/MorganKryze/ConsoleAppVisuals/releases) of the latest version are updated regularly. Consider checking it to see if there are any new features or bug fixes to stay up to date. Updating instructions are available [here](https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html?tabs=cli#setup).
 
 If you have any questions, feel free to ask them in the [discussions](https://github.com/MorganKryze/ConsoleAppVisuals/discussions) section or [open an issue](https://github.com/MorganKryze/ConsoleAppVisuals/issues) (templates are available to help you).
 
