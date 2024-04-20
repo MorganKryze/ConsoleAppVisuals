@@ -20,7 +20,7 @@ They are divided into three categories:
 - [Animated](/ConsoleAppVisuals/2-elements/animated.html): elements that are animated, like a progress bar.
 
 > [!NOTE]
-> An article is available to help you create your own elements. You can find it [here](/ConsoleAppVisuals/articles/create_element.html).
+> An article is available to help you create your own elements. You can find it [here](/ConsoleAppVisuals/5-articles/create_element.html).
 
 ---
 
