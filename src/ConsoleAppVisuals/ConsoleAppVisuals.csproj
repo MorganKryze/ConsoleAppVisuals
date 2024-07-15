@@ -61,6 +61,6 @@
 
   <ItemGroup>
     <!-- Dependencies -->
-    <PackageReference Include="yamldotnet" Version="15.1.4" />
+    <PackageReference Include="yamldotnet" Version="16.0.0" />
   </ItemGroup>
 </Project>
