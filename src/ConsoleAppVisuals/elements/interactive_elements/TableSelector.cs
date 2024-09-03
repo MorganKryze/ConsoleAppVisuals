@@ -857,13 +857,21 @@ public class TableSelector : InteractiveElement<int>
         [Visual]
         int GetMinIndex(bool excludeHeader)
         {
-            if (excludeHeader)
+            if (_rawHeaders is not null && Title is not null)
             {
-                return _rawHeaders is null ? 3 : 5;
+                return excludeHeader ? 5 : 3;
+            }
+            else if (_rawHeaders is not null && Title is null)
+            {
+                return excludeHeader ? 3 : 1;
+            }
+            else if (_rawHeaders is null && Title is not null)
+            {
+                return 3;
             }
             else
             {
-                return 0;
+                return 1;
             }
         }
 
