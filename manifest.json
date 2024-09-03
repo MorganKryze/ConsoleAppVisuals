@@ -1,0 +1,1770 @@
+{
+  "source_base_path": "/home/runner/work/ConsoleAppVisuals/ConsoleAppVisuals/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "1-introduction/basic_concepts.md",
+      "output": {
+        ".html": {
+          "relative_path": "1-introduction/basic_concepts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "1-introduction/conclusion.md",
+      "output": {
+        ".html": {
+          "relative_path": "1-introduction/conclusion.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "1-introduction/data_viz.md",
+      "output": {
+        ".html": {
+          "relative_path": "1-introduction/data_viz.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "1-introduction/elements_options.md",
+      "output": {
+        ".html": {
+          "relative_path": "1-introduction/elements_options.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "1-introduction/first_app.md",
+      "output": {
+        ".html": {
+          "relative_path": "1-introduction/first_app.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "1-introduction/menus_management.md",
+      "output": {
+        ".html": {
+          "relative_path": "1-introduction/menus_management.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "1-introduction/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "1-introduction/toc.json"
+        },
+        ".html": {
+          "relative_path": "1-introduction/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "2-elements/animated.md",
+      "output": {
+        ".html": {
+          "relative_path": "2-elements/animated.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "2-elements/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "2-elements/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "2-elements/interactive.md",
+      "output": {
+        ".html": {
+          "relative_path": "2-elements/interactive.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "2-elements/passive.md",
+      "output": {
+        ".html": {
+          "relative_path": "2-elements/passive.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "2-elements/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "2-elements/toc.json"
+        },
+        ".html": {
+          "relative_path": "2-elements/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.AnimatedElements.FakeLoadingBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.AnimatedElements.FakeLoadingBar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.AnimatedElements.LoadingBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.AnimatedElements.LoadingBar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.AnimatedElements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.AnimatedElements.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Attributes.VisualAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Attributes.VisualAttribute.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Attributes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Core.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.BordersType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.BordersType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.DialogOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.DialogOption.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.Direction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.Direction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.ElementType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.ElementType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.Font.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.Font.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.Placement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.Placement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.PromptInputStyle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.PromptInputStyle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.Status.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.Status.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.TextAlignment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.TextAlignment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Errors.DuplicateElementException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Errors.DuplicateElementException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Errors.ElementNotFoundException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Errors.ElementNotFoundException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Errors.EmptyFileException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Errors.EmptyFileException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Errors.LineOutOfConsoleException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Errors.LineOutOfConsoleException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Errors.NotSupportedCharException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Errors.NotSupportedCharException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Errors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Errors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.Dialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.Dialog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.FloatSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.FloatSelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.IntSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.IntSelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.Prompt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.Prompt.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.ScrollingMenu.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.ScrollingMenu.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.TableSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.TableSelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.InteractiveElements.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.AnimatedElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.AnimatedElement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.Borders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.Borders.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.Element.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.Element.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.FontYamlFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.FontYamlFile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.InteractionEventArgs-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.InteractionEventArgs-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.InteractiveElement-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.InteractiveElement-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.PassiveElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.PassiveElement.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.Position.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.Position.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.TextStyler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.TextStyler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Banner.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Banner.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.ElementsDashboard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.ElementsDashboard.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.ElementsList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.ElementsList.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.EmbedText.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.EmbedText.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Footer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Footer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Header.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Header.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.HeightSpacer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.HeightSpacer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Matrix-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Matrix-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.TableView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.TableView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Text.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Text.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Title.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.Title.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.PassiveElements.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.PassiveElements.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.Window.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.Window.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "3-references/ConsoleAppVisuals.yml",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/ConsoleAppVisuals.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "3-references/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "3-references/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "3-references/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "3-references/toc.json"
+        },
+        ".html": {
+          "relative_path": "3-references/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "4-examples/ext-banking.md",
+      "output": {
+        ".html": {
+          "relative_path": "4-examples/ext-banking.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "4-examples/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "4-examples/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "4-examples/int-element.md",
+      "output": {
+        ".html": {
+          "relative_path": "4-examples/int-element.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "4-examples/int-font.md",
+      "output": {
+        ".html": {
+          "relative_path": "4-examples/int-font.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "4-examples/int-password.md",
+      "output": {
+        ".html": {
+          "relative_path": "4-examples/int-password.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "4-examples/int-presentation.md",
+      "output": {
+        ".html": {
+          "relative_path": "4-examples/int-presentation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "4-examples/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "4-examples/toc.json"
+        },
+        ".html": {
+          "relative_path": "4-examples/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "5-articles/create_docs.md",
+      "output": {
+        ".html": {
+          "relative_path": "5-articles/create_docs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "5-articles/create_element.md",
+      "output": {
+        ".html": {
+          "relative_path": "5-articles/create_element.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "5-articles/create_font.md",
+      "output": {
+        ".html": {
+          "relative_path": "5-articles/create_font.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "5-articles/csharp_for_vscode.md",
+      "output": {
+        ".html": {
+          "relative_path": "5-articles/csharp_for_vscode.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "5-articles/debugging.md",
+      "output": {
+        ".html": {
+          "relative_path": "5-articles/debugging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "5-articles/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "5-articles/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "5-articles/publish_library.md",
+      "output": {
+        ".html": {
+          "relative_path": "5-articles/publish_library.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "5-articles/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "5-articles/toc.json"
+        },
+        ".html": {
+          "relative_path": "5-articles/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "6-legacy/homescreen.md",
+      "output": {
+        ".html": {
+          "relative_path": "6-legacy/homescreen.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "6-legacy/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "6-legacy/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "6-legacy/specific.md",
+      "output": {
+        ".html": {
+          "relative_path": "6-legacy/specific.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "6-legacy/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "6-legacy/toc.json"
+        },
+        ".html": {
+          "relative_path": "6-legacy/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "6-legacy/write.md",
+      "output": {
+        ".html": {
+          "relative_path": "6-legacy/write.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/code/Element.cs",
+      "output": {
+        "resource": {
+          "relative_path": "assets/code/Element.cs"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/code/InteractionEventArgs.cs",
+      "output": {
+        "resource": {
+          "relative_path": "assets/code/InteractionEventArgs.cs"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/code/ProgramDemo.cs",
+      "output": {
+        "resource": {
+          "relative_path": "assets/code/ProgramDemo.cs"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/code/menus/status.cs",
+      "output": {
+        "resource": {
+          "relative_path": "assets/code/menus/status.cs"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/code/menus/value.cs",
+      "output": {
+        "resource": {
+          "relative_path": "assets/code/menus/value.cs"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/conclusion/congrats.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/conclusion/congrats.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/create_element/interactive.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/create_element/interactive.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/create_element/passive.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/create_element/passive.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/create_font/ANSI_Shadow.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/create_font/ANSI_Shadow.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/create_font/Lil_Devil.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/create_font/Lil_Devil.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/create_font/Merlin.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/create_font/Merlin.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/data_viz/matrix.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/data_viz/matrix.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/data_viz/table_view.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/data_viz/table_view.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/debugging/dashboard.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/debugging/dashboard.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/debugging/debug_mark.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/debugging/debug_mark.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/debugging/list.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/debugging/list.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/banner.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/banner.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/dashboard.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/dashboard.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/dialog.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/dialog.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/elements_list.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/elements_list.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/embed_text.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/embed_text.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/height_spacer.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/height_spacer.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/loading_bar.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/loading_bar.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/matrix.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/matrix.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/number_selector.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/number_selector.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/prompt.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/prompt.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/scrolling_menu.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/scrolling_menu.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/table_selector.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/table_selector.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/table_view.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/table_view.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/text.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/text.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements/title.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements/title.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/ascii.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/ascii.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/bold.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/bold.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/bottomcenter.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/bottomcenter.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/center.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/center.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/double.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/double.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/left.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/left.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/right.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/right.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/round.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/round.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/spacer.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/spacer.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/straight.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/straight.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/topcenter.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/topcenter.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/topleft.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/topleft.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/elements_options/topright.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/elements_options/topright.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/first_app/header_footer.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/first_app/header_footer.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/first_app/title.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/first_app/title.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/vscode/extensions.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/vscode/extensions.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/vscode/keybindings.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/vscode/keybindings.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/jpg/vscode/shortcuts.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/jpg/vscode/shortcuts.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/first_app/run.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/first_app/run.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/banner.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/banner.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/banner_customize.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/banner_customize.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/color.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/color.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/lawful_loading.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/lawful_loading.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/loading.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/loading.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/matrix.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/matrix.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/number.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/number.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/paragraph.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/paragraph.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/position.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/position.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/prompt.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/prompt.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/style.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/style.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/table.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/table.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/legacy/title.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/legacy/title.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/png/vscode/open_with_code.png",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/png/vscode/open_with_code.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/img/svg/book.svg",
+      "output": {
+        "resource": {
+          "relative_path": "assets/img/svg/book.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/data_viz/embed.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/data_viz/embed.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/data_viz/table_selector.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/data_viz/table_selector.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/elements_options/deactivate.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/elements_options/deactivate.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/elements_options/remove.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/elements_options/remove.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/examples/banking.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/examples/banking.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/examples/custom_element.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/examples/custom_element.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/examples/custom_font.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/examples/custom_font.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/examples/password_manager.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/examples/password_manager.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/first_app/close.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/first_app/close.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/first_app/dialog.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/first_app/dialog.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/first_app/loading.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/first_app/loading.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/first_app/prompt.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/first_app/prompt.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/legacy/continuous.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/legacy/continuous.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/legacy/exit.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/legacy/exit.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/legacy/menu.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/legacy/menu.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/menus_management/scrolling_menu.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/menus_management/scrolling_menu.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/menus_management/status.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/menus_management/status.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/menus_management/value.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/menus_management/value.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "assets/vid/gif/presentation.gif",
+      "output": {
+        "resource": {
+          "relative_path": "assets/vid/gif/presentation.gif"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
