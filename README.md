@@ -44,3 +44,13 @@ Do not hesitate to **star** and **share** the project if you like it!
 ## License
 
 Distributed under the GNU GPL v2.0 License. See [LICENSE](https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/LICENSE.md) for more information.
+
+## Star History
+
+<a href="https://star-history.com/#MorganKryze/ConsoleAppVisuals&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=MorganKryze/ConsoleAppVisuals&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=MorganKryze/ConsoleAppVisuals&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=MorganKryze/ConsoleAppVisuals&type=Date" />
+ </picture>
+</a>
