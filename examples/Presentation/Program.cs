@@ -48,6 +48,7 @@ class Program
             "Display elements space",
             "Display dashboards",
             "Change the console color",
+            "Display Ascii artworks",
             "Quit the app"
         );
         // Update the selector from '>' to '▶'
@@ -79,7 +80,7 @@ class Program
                             {
                                 "C# is a general-purpose, multi-paradigm programming language encompassing strong typing,",
                                 "lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),",
-                                "and component-oriented programming disciplines."
+                                "and component-oriented programming disciplines.",
                             },
                             "Whatever...",
                             "OK"
@@ -130,7 +131,7 @@ class Program
                         Dialog embedResponsePasswordPrompt = new Dialog(
                             new List<string>()
                             {
-                                "You just wrote " + responsePasswordPrompt!.Value + "!"
+                                "You just wrote " + responsePasswordPrompt!.Value + "!",
                             },
                             null,
                             "Next",
@@ -163,7 +164,7 @@ class Program
                             new List<string>()
                             {
                                 "Status: " + responseNumber!.Status.ToString(),
-                                "Selected the number " + responseNumber!.Value + "!"
+                                "Selected the number " + responseNumber!.Value + "!",
                             },
                             null,
                             "OK"
@@ -176,17 +177,16 @@ class Program
                         goto Menu;
 
                     case 3:
-                        ScrollingMenu fontMenu =
-                            new(
-                                "What font do you want to use?",
-                                0,
-                                Placement.TopCenter,
-                                "Lil_Devil",
-                                "Bloody",
-                                "Big",
-                                "Merlin",
-                                "ANSI_Shadow"
-                            );
+                        ScrollingMenu fontMenu = new(
+                            "What font do you want to use?",
+                            0,
+                            Placement.TopCenter,
+                            "Lil_Devil",
+                            "Bloody",
+                            "Big",
+                            "Merlin",
+                            "ANSI_Shadow"
+                        );
                         fontMenu.UpdateSelector('▶');
                         Window.AddElement(fontMenu);
 
@@ -290,19 +290,45 @@ class Program
                         goto Menu;
 
                     case 6:
-                        List<string> playersHeaders =
-                            new() { "id", "first name", "last name", "nationality", "slams" };
+                        List<string> playersHeaders = new()
+                        {
+                            "id",
+                            "first name",
+                            "last name",
+                            "nationality",
+                            "slams",
+                        };
                         List<string> player1 = new() { "01", "Novak", "Djokovic", "Serbia", "24" };
                         List<string> player2 = new() { "02", "Carlos", "Alkaraz", "Spain", "2" };
-                        List<string> player3 =
-                            new() { "03", "Roger", "Federer", "Switzerland", "21" };
+                        List<string> player3 = new()
+                        {
+                            "03",
+                            "Roger",
+                            "Federer",
+                            "Switzerland",
+                            "21",
+                        };
                         List<string> player4 = new() { "04", "Rafael", "Nadal", "Spain", "23" };
                         List<string> player5 = new() { "05", "Andy", "Murray", "England", "3" };
                         List<string> player6 = new() { "06", "Daniil", "Medvedev", "Russia", "1" };
-                        List<string> player7 =
-                            new() { "07", "Stan", "Wawrinka", "Switzerland", "2" };
-                        List<List<string>> playersData =
-                            new() { player1, player2, player3, player4, player5, player6, player7 };
+                        List<string> player7 = new()
+                        {
+                            "07",
+                            "Stan",
+                            "Wawrinka",
+                            "Switzerland",
+                            "2",
+                        };
+                        List<List<string>> playersData = new()
+                        {
+                            player1,
+                            player2,
+                            player3,
+                            player4,
+                            player5,
+                            player6,
+                            player7,
+                        };
 
                         TableSelector players = new TableSelector(
                             "Great tennis players",
@@ -317,7 +343,7 @@ class Program
                             new List<string>()
                             {
                                 "Status: " + responseTable!.Status.ToString(),
-                                "Selected the player " + playersData[responseTable!.Value][2] + "!"
+                                "Selected the player " + playersData[responseTable!.Value][2] + "!",
                             },
                             null,
                             "OK"
@@ -346,16 +372,15 @@ class Program
                         // We create a thread to simulate a process
                         // that will update the progress variable while
                         // we display the loading bar in the main thread
-                        Thread thread =
-                            new(() =>
+                        Thread thread = new(() =>
+                        {
+                            for (progress = 0f; progress <= 100f; progress++)
                             {
-                                for (progress = 0f; progress <= 100f; progress++)
-                                {
-                                    loadingBar.UpdateProgress(progress / 100);
-                                    Thread.Sleep(30);
-                                }
-                                loadingBar.UpdateProgress(1f);
-                            });
+                                loadingBar.UpdateProgress(progress / 100);
+                                Thread.Sleep(30);
+                            }
+                            loadingBar.UpdateProgress(1f);
+                        });
 
                         // Start the process
                         thread.Start();
@@ -374,7 +399,7 @@ class Program
                             new List<string>()
                             {
                                 "The colors represented the space taken by the elements.",
-                                "Press [Enter] to continue..."
+                                "Press [Enter] to continue...",
                             },
                             null,
                             "See preview"
@@ -493,6 +518,31 @@ class Program
                         Window.RemoveElement(5);
                         goto Menu;
 
+                    case 11:
+
+                        var asciiDialog = new Dialog(
+                            new List<string>()
+                            {
+                                "You can display ASCII art from a file or a string.",
+                                "Press [Enter] to continue...",
+                            },
+                            null,
+                            "See preview"
+                        );
+
+                        Window.AddElement(asciiDialog);
+                        Window.ActivateElement(asciiDialog);
+
+                        var asciiArt = new ASCIIArt("ascii-art.txt", Placement.TopCenter);
+                        Window.AddElement(asciiArt);
+                        Window.Render(asciiArt);
+
+                        Window.Freeze();
+                        Window.DeactivateElement(asciiArt);
+                        Window.RemoveElement(asciiArt);
+                        Window.RemoveElement(asciiDialog);
+                        goto Menu;
+
                     default:
                         Window.Close();
                         break;
@@ -503,7 +553,7 @@ class Program
                 Dialog exitText = new Dialog(
                     new List<string>()
                     {
-                        "You have selected to quit the app. Press [Enter] to continue..."
+                        "You have selected to quit the app. Press [Enter] to continue...",
                     },
                     null,
                     "Quit"
@@ -523,7 +573,7 @@ class Program
                     {
                         "You have selected the backspace tile.",
                         "You will be redirected to the main menu.",
-                        "Press [Enter] to continue..."
+                        "Press [Enter] to continue...",
                     },
                     null,
                     "Back to menu"
