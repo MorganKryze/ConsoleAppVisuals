@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ScrollingMenu | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ScrollingMenu | ConsoleAppVisuals ">
+      
+      <meta name="description" content="The  is an interactive element that displays a question with multiple scrollable choices.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu">
+
+
+
+  <h1 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu" class="text-break">
+Class ScrollingMenu  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a>.<a class="xref" href="ConsoleAppVisuals.InteractiveElements.html">InteractiveElements</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The <a class="xref" href="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.html">ScrollingMenu</a> is an interactive element that displays a question with multiple scrollable choices.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ScrollingMenu : InteractiveElement&lt;int&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html">InteractiveElement</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</div>
+      <div><span class="xref">ScrollingMenu</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1__interactionResponse">InteractiveElement&lt;int&gt;._interactionResponse</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SetInteractionResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;int&gt;.SetInteractionResponse(object, InteractionEventArgs&lt;int&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SendResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;int&gt;.SendResponse(object, InteractionEventArgs&lt;int&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponse">InteractiveElement&lt;int&gt;.GetResponse()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponseHistory">InteractiveElement&lt;int&gt;.GetResponseHistory()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsBeforeHand">InteractiveElement&lt;int&gt;.RenderOptionsBeforeHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsAfterHand">InteractiveElement&lt;int&gt;.RenderOptionsAfterHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_Type">InteractiveElement&lt;int&gt;.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_MaxNumberOfThisElement">InteractiveElement&lt;int&gt;.MaxNumberOfThisElement</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_EndOfInteractionEvent">InteractiveElement&lt;int&gt;.EndOfInteractionEvent</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_ToggleVisibility">Element.ToggleVisibility()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElement">Element.RenderElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElementSpace_System_Boolean_">Element.RenderElementSpace(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_GetRenderSpace">Element.GetRenderSpace()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Clear">Element.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Id">Element.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Visibility">Element.Visibility</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_TextAlignment">Element.TextAlignment</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Line">Element.Line</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu__ctor_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.#ctor*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu__ctor_System_String_System_Int32_ConsoleAppVisuals_Enums_Placement_System_String___" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.#ctor(System.String,System.Int32,ConsoleAppVisuals.Enums.Placement,System.String[])">
+  ScrollingMenu(string, int, Placement, params string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.html">ScrollingMenu</a> is an interactive element that displays a question with multiple scrollable choices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ScrollingMenu(string question, int defaultIndex = 0, Placement placement = Placement.TopCenter, params string[] choices)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>question</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The question to ask the user.</p>
+</dd>
+    <dt><code>defaultIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of the default choice(initially 0).</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the menu on the console.</p>
+</dd>
+    <dt><code>choices</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The different choices of the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu__ctor_System_String_System_Int32_ConsoleAppVisuals_Enums_Placement_System_String____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Choices_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Choices*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Choices" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Choices">
+  Choices
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the different choices of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] Choices { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_DefaultIndex_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.DefaultIndex*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_DefaultIndex" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.DefaultIndex">
+  DefaultIndex
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the index of the default choice.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int DefaultIndex { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Height_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Height*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Height" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the height of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Placement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Placement" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Placement">
+  Placement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the placement of the menu on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Placement Placement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Question_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Question*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Question" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Question">
+  Question
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the question to ask the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Question { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Selector_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Selector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Selector" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Selector">
+  Selector
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the selector char of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char Selector { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Width_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Width*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_Width" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the width of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_RenderElementActions_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.RenderElementActions*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_RenderElementActions" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.RenderElementActions">
+  RenderElementActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines the actions to perform when the element is called to be rendered on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected override void RenderElementActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateChoices_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateChoices*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateChoices_System_String___" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateChoices(System.String[])">
+  UpdateChoices(params string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the choices of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateChoices(params string[] choices)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>choices</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The new choices of the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateChoices_System_String____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateDefaultIndex_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateDefaultIndex*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateDefaultIndex_System_Int32_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateDefaultIndex(System.Int32)">
+  UpdateDefaultIndex(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the default index of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateDefaultIndex(int defaultIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The new default index of the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateDefaultIndex_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdatePlacement_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdatePlacement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdatePlacement_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+  UpdatePlacement(Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the placement of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePlacement(Placement placement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The new placement of the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdatePlacement_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateQuestion_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateQuestion*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateQuestion_System_String_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateQuestion(System.String)">
+  UpdateQuestion(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the question of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateQuestion(string question)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>question</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new question of the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateQuestion_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateSelector_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateSelector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateSelector_System_Char_" data-uid="ConsoleAppVisuals.InteractiveElements.ScrollingMenu.UpdateSelector(System.Char)">
+  UpdateSelector(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/ScrollingMenu.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the selector of the menu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateSelector(char selector = &#39;▶&#39;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selector</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>The new selector of the menu.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_ScrollingMenu_UpdateSelector_System_Char__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

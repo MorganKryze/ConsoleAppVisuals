@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Publish your library | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Publish your library | ConsoleAppVisuals ">
+      
+      <meta name="description" content="This article will guide you through the process of publishing a package on NuGet.org and GitHub packages using GitHub actions. This will enable you to share your library with the world.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/5-articles/publish_library.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="publish-your-library">Publish your library</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>This article will guide you through the process of publishing a package on NuGet.org and GitHub packages using GitHub actions. This will enable you to share your library with the world.</p>
+<p>NuGet is a package manager for .NET that allows you to share your code with the world. It is a great way to share your library with the community and to make it easy for others to use your code.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Having looked at the project from the <a href="/1-introduction/index.html">Introduction section</a></li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/6.0">.NET 6.0</a> or later</li>
+<li><a href="https://www.nuget.org/users/account/LogOn?returnUrl=%2F">NuGet account</a>, preferably for you on an outlook email address</li>
+<li><a href="https://github.com/login">Github account</a></li>
+<li>Put your project on GitHub to be able to use GitHub actions</li>
+</ul>
+<h2 id="setup-workspace">Setup workspace</h2>
+<p>We will take the example project of the <a href="/1-introduction/index.html">Introduction section</a> and we will publish it on NuGet.org and GitHub packages as an example.</p>
+<p>As a reminder, here is the file structure of the project:</p>
+<pre><code class="lang-bash">Example_project  &lt;-- root
+└───MyApp
+    ├───bin
+    ├───MyApp.csproj
+    └───Program.cs
+</code></pre>
+<h3 id="readmemd--license"><code>README.md</code> &amp; <code>LICENSE</code></h3>
+<p>This part is not mandatory but highly recommended.</p>
+<p>Readme files are a great way to introduce your project to the world. It is the first thing people will see when they visit your repository. It is a good practice to include a README file in your project. <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes">Learn more</a></p>
+<p>The license file is also important. It is a way to tell people what they can and cannot do with your project. The default license is the MIT license that let the user a lot a freedom with your code. <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">Learn more</a></p>
+<p>Here is an example of a README file:</p>
+<pre><code class="lang-markdown"># MyApp
+
+&gt; A simple console app for demonstration purposes
+
+## Installation
+
+Describe how to install your project
+
+## Usage
+
+Describe how to use your project
+
+## Contributing
+
+Describe how to contribute to your project
+
+## License
+
+MIT
+</code></pre>
+<p>And here is an example of a LICENSE file:</p>
+<pre><code class="lang-markdown">MIT License
+
+Copyright (c) 2024 YourName
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+</code></pre>
+<h3 id="myappcsproj"><code>MyApp.csproj</code></h3>
+<p>C# project files (<code>.csproj</code>) are the files that contain all the information about your project. It is where you define the target framework, the dependencies, the version of your project, and much more. <a href="https://docs.microsoft.com/dotnet/core/tools/csproj">Learn more</a></p>
+<p>Here is a template for a <code>.csproj</code> file made for publishing a package:</p>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+    &lt;PropertyGroup&gt;
+    &lt;!-- Project Info--&gt;
+    &lt;TargetFrameworks&gt;net8.0&lt;/TargetFrameworks&gt;
+    &lt;ImplicitUsings&gt;enable&lt;/ImplicitUsings&gt;
+    &lt;Nullable&gt;enable&lt;/Nullable&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;Title&gt;MyApp&lt;/Title&gt;
+    &lt;!-- Change this by the name of your package, it must be unique --&gt;
+    &lt;PackageId&gt;MyFirstApp1234&lt;/PackageId&gt;
+    &lt;!-- Change this by the name of the publisher on nuget.org --&gt;
+    &lt;Authors&gt;YourNugetAccountName&lt;/Authors&gt;
+    &lt;!-- Change this by the description of your package --&gt;
+    &lt;Description&gt;Descriptive description to describe the package use&lt;/Description&gt;
+    &lt;PackageLicenseExpression&gt;MIT&lt;/PackageLicenseExpression&gt;
+    &lt;!-- Change this by the tags of your package --&gt;
+    &lt;PackageTags&gt;Test, Discovery&lt;/PackageTags&gt;
+    &lt;!-- Change this by the url of your repository on GitHub --&gt;
+    &lt;RepositoryUrl&gt;https://github.com/MorganKryze/ConsoleAppVisuals&lt;/RepositoryUrl&gt;
+    &lt;RepositoryType&gt;git&lt;/RepositoryType&gt;
+    &lt;PackageReadmeFile&gt;README.md&lt;/PackageReadmeFile&gt;
+    &lt;PackageLicenseFile&gt;LICENSE&lt;/PackageLicenseFile&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;!-- NuGet Package Explorer health standards --&gt;
+    &lt;EmbedUntrackedSources&gt;true&lt;/EmbedUntrackedSources&gt;
+    &lt;PublishRepositoryUrl&gt;true&lt;/PublishRepositoryUrl&gt;
+    &lt;IncludeSymbols&gt;true&lt;/IncludeSymbols&gt;
+    &lt;SymbolPackageFormat&gt;snupkg&lt;/SymbolPackageFormat&gt;
+  &lt;/PropertyGroup&gt;
+
+    &lt;!-- This condition let you build locally, and on a test github action without issue. Only the action CD.yml (see later) will enable this condition. this is part of the package health standards for deterministic build. --&gt;
+  &lt;PropertyGroup
+    Condition=&quot;'$(GITHUB_ACTIONS)' == 'true' AND '$(GITHUB_ACTION)' == 'publish'&quot;&gt;
+    &lt;ContinuousIntegrationBuild&gt;true&lt;/ContinuousIntegrationBuild&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;PropertyGroup&gt;
+    &lt;!-- Publishing Settings --&gt;
+    &lt;GenerateDocumentationFile&gt;true&lt;/GenerateDocumentationFile&gt;
+    &lt;PublishRelease&gt;true&lt;/PublishRelease&gt;
+    &lt;PackRelease&gt;true&lt;/PackRelease&gt;
+  &lt;/PropertyGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;!-- Assets load--&gt;
+    &lt;!-- MANDATORY: give the filepath to the files declared --&gt;
+    &lt;!-- OPTIONAL: give a custom path to store them inside your package --&gt;
+    &lt;None Include=&quot;..\README.md&quot; Pack=&quot;true&quot; PackagePath=&quot;&quot;/&gt;
+    &lt;None Include=&quot;..\LICENSE&quot; Pack=&quot;true&quot; PackagePath=&quot;&quot;/&gt;
+  &lt;/ItemGroup&gt;
+
+  &lt;ItemGroup&gt;
+    &lt;!-- Dependencies if you have--&gt;
+    &lt;PackageReference Include=&quot;yamldotnet&quot; Version=&quot;15.1.2&quot; /&gt;
+  &lt;/ItemGroup&gt;
+&lt;/Project&gt;
+</code></pre>
+<p>Consider checking that the filepaths are accurate. Here is the file structure of the project updated:</p>
+<pre><code class="lang-bash">Example_project  &lt;-- root
+├───MyApp
+│   ├───bin
+│   ├───MyApp.csproj
+│   └───Program.cs
+├───LICENSE
+└───README.md
+</code></pre>
+<p><a href="https://github.com/clairernovotny/DeterministicBuilds">Learn more</a> about making your project deterministic.</p>
+<h3 id="build-the-project">Build the project</h3>
+<p>Now we will be able to build your project including the metadata for the package.</p>
+<pre><code class="lang-bash">cd MyApp
+</code></pre>
+<pre><code class="lang-bash">dotnet build -c Release
+</code></pre>
+<p>Optional: You can also run the tests to make sure everything is working as expected by creating a local package:</p>
+<pre><code class="lang-bash">dotnet pack -c Release
+</code></pre>
+<p>You will then find the NuGet package in the <code>bin/Release</code> folder of your project.</p>
+<h2 id="publish-your-package">Publish your package</h2>
+<h3 id="api-keys">API keys</h3>
+<p>API keys are a way to authenticate yourself to a service. Using those keys will enable you to create automation to deploy and publish packages for example. You will need to create an API key for NuGet and GitHub.</p>
+<p>Go to <a href="https://www.nuget.org">Nuget.org</a> and sign in. Then jump to the <a href="https://www.nuget.org/account/apikeys">API keys page</a> and create a new API key. Copy it to your clipboard (I recommend you to store it somewhere safe afterward like in a password manager).</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Set your API key as a secret of your repository on GitHub and name it <code>NUGET_API_KEY</code>. Paste your API key in the value field.</p>
+</div>
+<p>To create a GitHub personal API key, go to <a href="https://github.com/settings/tokens">this page</a> and create a classic token. You will need to check the &quot;write:packages&quot; scope. Copy it to your clipboard (I recommend you to store it somewhere safe afterward like in a password manager).</p>
+<h3 id="automation">Automation</h3>
+<p>Now we will set up a github action to automate the process of publishing your package.</p>
+<p>Create two folders in the root of your project: <code>.github</code> then <code>workflows</code> inside.</p>
+<p>Create a new file in the <code>.github/workflows</code> folder and name it <code>CD.yml</code>.</p>
+<pre><code class="lang-yml">name: Publish package
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Verify commit exists in origin/main
+        run: git branch --remote --contains | grep origin/main
+      - name: Extract release notes
+        run: |
+          git log --pretty=format:'%d %s' ${GITHUB_REF} | perl -pe 's| \(.*tag: v(\d+.\d+.\d+(-preview\d{3})?)(, .*?)*\)|\n## \1\n|g' &gt; RELEASE-NOTES
+      - name: Set VERSION variable from tag
+        run: echo &quot;VERSION=${GITHUB_REF/refs\/tags\/v/}&quot; &gt;&gt; $GITHUB_ENV
+      - name: Pack library
+      run: dotnet pack &lt;your_path_from_your_project_file.csproj&gt; /p:Version=${VERSION} /p:ContinuousIntegrationBuild=true --output .
+      env:
+        GITHUB_ACTIONS: true
+        GITHUB_ACTION: 'publish'
+      - name: Push to GitHub Packages
+      run: dotnet nuget push &lt;name_of_your_app&gt;.${VERSION}.nupkg --source https://nuget.pkg.github.com/&lt;nuget_username&gt;/index.json --api-key ${GITHUB_TOKEN}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push to NuGet.org
+      run: dotnet nuget push &lt;name_of_your_app&gt;.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+</code></pre>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>Check that you updated:</p>
+<ul>
+<li><code>&lt;your_path_from_your_project_file.csproj&gt;</code> by the path to your <code>.csproj</code> file</li>
+<li><code>&lt;name_of_your_app&gt;</code> by the name of your app</li>
+<li><code>&lt;nuget_username&gt;</code> by your NuGet username (on the same line as the <code>dotnet nuget push</code> command)</li>
+</ul>
+</div>
+<p>Then, commit your changes and push them to your repository.</p>
+<p>Finally, create a new release and add a tag to it as follow &quot;vX.X.X&quot; where X is a number representing the version of your package. <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">Learn more</a></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Wait a few minutes and you will find your package on NuGet.org and GitHub packages, you will be notified by email.</p>
+</div>
+<h3 id="clean-up">Clean up</h3>
+<p>If that project was indeed for you for demo purposes, you cannot delete it from NuGet.org, but you can hide it by unlisting it: Go to Manage Packages &gt; select the package &gt; click on the Edit button &gt; Listing category &gt; unchecked the &quot;List in search results&quot; checkbox &gt; Save.</p>
+<h3 id="bonus-prefix-id">Bonus: Prefix ID</h3>
+<p>To protect the uniqueness of your package name, you can reserve a prefix for your package. This will prevent someone else from using the same name as your package. That way, I reserved &quot;ConsoleAppVisuals&quot; and &quot;ConsoleAppVisuals.*&quot; (meaning that &quot;ConsoleAppVisuals&quot; and &quot;ConsoleAppVisuals.MyApp&quot; will be reserved for example).</p>
+<p>To do so, you only need to send an email to <code>account@nuget.org</code> with the subject &quot;Package ID prefix reservation&quot; and give your NuGet username (or organization, or other name of collaborators) and the prefixes you want to reserve. The criteria are given in this <a href="https://learn.microsoft.com/nuget/nuget-org/id-prefix-reservation#id-prefix-reservation-criteria">page</a>.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/nuget/quickstart/create-and-publish-a-package-using-the-dotnet-cli">Official NuGet documentation</a></li>
+<li><a href="https://acraven.medium.com/a-nuget-package-workflow-using-github-actions-7da8c6557863">Main Source</a></li>
+<li><a href="https://levelup.gitconnected.com/publish-to-nuget-with-github-actions-4e1486e7c19f">Recap</a></li>
+<li><a href="https://github.com/clairernovotny/DeterministicBuilds">Deterministic Builds</a></li>
+<li><a href="https://learn.microsoft.com/nuget/nuget-org/id-prefix-reservation">Package ID</a></li>
+</ul>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
