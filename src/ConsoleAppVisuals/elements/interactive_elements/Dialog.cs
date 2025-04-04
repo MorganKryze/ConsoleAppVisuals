@@ -87,11 +87,24 @@ public class Dialog : InteractiveElement<DialogOption>
     /// </summary>
     public List<string>? TextToDisplay => _textToDisplay;
 
-    private int MaxLineLength =>
-        Math.Max(
-            _lines.Max(s => s.Length),
-            (int)((_rightOption?.Length ?? 0) + (_leftOption?.Length ?? 0) * WIDTH_RATIO)
-        );
+    private int MaxLineLength => Math.Max(_lines.Max(s => s.Length), CalculateMinWidthForOptions());
+
+    private int CalculateMinWidthForOptions()
+    {
+        int DIALOG_MARGIN = 4;
+        if (_leftOption == null && _rightOption == null)
+            return 0;
+
+        if (_leftOption == null)
+            return _rightOption!.Length;
+        if (_rightOption == null)
+            return _leftOption.Length;
+
+        return _leftOption.Length
+            + _rightOption.Length
+            + DIALOG_MARGIN
+            + (int)(_leftOption.Length * (WIDTH_RATIO - 1));
+    }
     #endregion
 
     #region Constructor
