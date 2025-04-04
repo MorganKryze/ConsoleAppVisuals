@@ -49,7 +49,7 @@ Or alternatively, download the project as a zip file from the [repository](https
 
 The project is built with the latest version of the library.
 
-The project is built with the `net8.0` target framework. Some changes should be applied to the project to make it compatible with the `net6.0` or `net7.0` target frameworks.
+The project is built with the `net9.0` and `net8.0` target framework. Some changes should be applied to the project to make it compatible with the `net6.0` or `net7.0` target frameworks.
 
 Check your local .NET SDK version by running the following command:
 
