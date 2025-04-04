@@ -14,7 +14,8 @@ We **highly recommend** you to read the [documentation](https://morgankryze.gith
 
 | Version                                         | Supported          |
 | ----------------------------------------------- | ------------------ |
-| [net8.x](https://dotnet.microsoft.com/download) | :white_check_mark: |
+| [net9.x](https://dotnet.microsoft.com/download) | :white_check_mark: |
+| net8.x                                          | :white_check_mark: |
 | net7.x                                          | :white_check_mark: |
 | net6.x                                          | :white_check_mark: |
 | < net6.x                                        | :x:                |

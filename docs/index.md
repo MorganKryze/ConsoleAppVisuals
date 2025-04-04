@@ -34,7 +34,8 @@ The library is still in active development. The next feature and bug resolutions
 
 | Version                                         | Supported          |
 | ----------------------------------------------- | ------------------ |
-| [net8.x](https://dotnet.microsoft.com/download) | :white_check_mark: |
+| [net9.x](https://dotnet.microsoft.com/download) | :white_check_mark: |
+| net8.x                                          | :white_check_mark: |
 | net7.x                                          | :white_check_mark: |
 | net6.x                                          | :white_check_mark: |
 | < net6.x                                        | :x:                |
