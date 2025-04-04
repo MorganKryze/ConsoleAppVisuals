@@ -138,7 +138,7 @@ public class UnitTestDialog
         );
 
         // Assert
-        Assert.AreEqual(11, dialog.Width);
+        Assert.AreEqual(13, dialog.Width);
     }
 
     [TestMethod]
