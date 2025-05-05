@@ -87,7 +87,11 @@ public class ASCIIArt : PassiveElement
     #region Update Methods
     private void CheckIntegrity()
     {
-        if (_artLines.Count == 0)
+        if (
+            _artLines.Count == 0
+            || _artLines.All(string.IsNullOrWhiteSpace)
+            || _artLines.All(string.IsNullOrEmpty)
+        )
         {
             throw new ArgumentException("The ASCII art is empty.");
         }
