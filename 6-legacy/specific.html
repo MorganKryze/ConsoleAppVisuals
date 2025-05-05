@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Specific methods | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Specific methods | ConsoleAppVisuals ">
+      
+      
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/6-legacy/specific.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="specific-methods">Specific methods</h1>
+
+<h2 id="scrolling-menu">Scrolling menu</h2>
+<p>The <code>ScrollingMenuSelector</code> is a special block that allows you to display a menu with a scrolling effect. You may specify the question and the different choices.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;, true);
+
+Core.ScrollingMenuSelector(&quot;New question asked ?&quot;, 0, Placement.Center, null, &quot;Option 1&quot;, &quot;Option 2&quot;, &quot;Option 3&quot;);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/vid/gif/legacy/menu.gif" alt="menu">
+<em>Demo with scrolling menu</em></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>To get the selected option and the key input, refer to the example project.</p>
+</div>
+<h2 id="number-selector">Number selector</h2>
+<p>The <code>ScrollingNumberSelector</code> is a special block that allows you to display a scrolling element with a number. You may define the minimum and maximum values, the step and the initial value.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;, true);
+
+Core.ScrollingNumberSelector(&quot;Please choose a number&quot;, 10, 50, 25, 5);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/number.png" alt="number">
+<em>Demo with number selector</em></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>To get the selected option and the key input, refer to the example project.</p>
+</div>
+<h2 id="prompt">Prompt</h2>
+<p>The <code>WritePrompt</code> let you ask a prompt to the user and get the input. You may define the question and the default value.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;, true);
+
+Core.WritePrompt(&quot;Is your name John Doe ?&quot;, &quot;John Doe&quot;);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/prompt.png" alt="prompt">
+<em>Demo with prompt</em></p>
+<h2 id="table-selector">Table selector</h2>
+<p>First, you need to create a <code>Table</code> object giving the lines and optionally the headers just as in the example below.</p>
+<pre><code class="lang-csharp">List&lt;string&gt; headers = new () {&quot;id&quot;, &quot;name&quot;, &quot;major&quot;, &quot;grades&quot;};
+List&lt;string&gt; student1 = new () {&quot;01&quot;, &quot;Theo&quot;, &quot;Technology&quot;, &quot;97&quot;};
+List&lt;string&gt; student2 = new () {&quot;02&quot;, &quot;Paul&quot;, &quot;Mathematics&quot;, &quot;86&quot;};
+List&lt;string&gt; student3 = new () {&quot;03&quot;, &quot;Maxime&quot;, &quot;Physics&quot;, &quot;92&quot;};
+List&lt;string&gt; student4 = new () {&quot;04&quot;, &quot;Charles&quot;, &quot;Computer Science&quot;, &quot;100&quot;};
+Table&lt;string&gt; students = new (headers, new () {student1, student2, student3, student4});
+</code></pre>
+<p>The <code>ScrollingTableSelector</code> is a special block that allows you to display the table with a selector.</p>
+<pre><code class="lang-csharp">students.ScrollingTableSelector(true, false, &quot;Add student&quot;);
+</code></pre>
+<p><img src="../assets/img/png/legacy/table.png" alt="table">
+<em>Demo with table selector</em></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Once you created the table, you can add, remove or update the data using the methods provided by the <code>Table</code> class (<code>AddLine</code>, <code>RemoveLine</code>, <code>UpdateLine</code>).</p>
+</div>
+<p>Here is an example of a table of how to use them:</p>
+<pre><code class="lang-csharp">students.AddLine(new () {&quot;05&quot;, &quot;John&quot;, &quot;Biology&quot;, &quot;95&quot;});
+students.RemoveLine(4);
+students.UpdateLine(3, new () {&quot;04&quot;, &quot;Charles&quot;, &quot;Computer Science&quot;, &quot;55&quot;});
+
+students.Count
+</code></pre>
+<p>You may also use the <code>SetRoundedCorners</code> method to set the rounded corners to true or false for the tables.</p>
+<pre><code class="lang-csharp">students.SetRoundedCorners(true);
+</code></pre>
+<h2 id="matrix-display">Matrix display</h2>
+<p>First, you need to create a <code>Matrix</code> object giving the data just as in the example below.</p>
+<pre><code class="lang-csharp">List&lt;int?&gt; firstRow = new() { 1, null, 2, 7, 9, 3 };
+List&lt;int?&gt; secondRow = new() { 4, 5, 6, 8, null, 2 };
+List&lt;int?&gt; thirdRow = new() { 7, 8, null, 3, 4, 5 };
+List&lt;int?&gt; fourthRow = new() { null, 2, 3, 4, 5, 6 };
+List&lt;List&lt;int?&gt;&gt; data = new() { firstRow, secondRow, thirdRow, fourthRow };
+Matrix&lt;int?&gt; matrix = new(data);
+</code></pre>
+<p>The <code>WriteMatrix</code> is a special block that allows you to display the matrix. This is only visual, you can't select any element.</p>
+<pre><code class="lang-csharp">matrix.WriteMatrix(Placement.Center);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/matrix.png" alt="matrix"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Once you created the matrix, you can add, remove or update the lines using the methods provided by the <code>Matrix</code> class (<code>AddLine</code>, <code>RemoveLine</code>, <code>UpdateLine</code>) but also the elements using the <code>RemoveElement</code> and <code>UpdateElement</code> methods.</p>
+</div>
+<p>Here is an example of a matrix of how to use them:</p>
+<pre><code class="lang-csharp">matrix.AddLine(new () {2, 5, 7, 9, 3, 6});
+matrix.RemoveLine(3);
+matrix.UpdateLine(2, new () {3, 6, 8, 9, null, 2});
+matrix.RemoveElement(new Position(2, 2));
+matrix.UpdateElement(new Position(3,1), 7);
+matrix.GetElement(new Position(2,1));
+
+matrix.Count
+</code></pre>
+<p>You may also use the <code>SetRoundedCorners</code> method to set the rounded corners to true or false for the matrix.</p>
+<pre><code class="lang-csharp">matrix.SetRoundedCorners(true);
+</code></pre>
+<h2 id="loading-bar">Loading bar</h2>
+<p>The <code>LoadingBar</code> is a special block that allows you to display a loading bar. You may define the text to display while loading.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;, true);
+
+Core.LoadingBar();
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/loading.png" alt="loading">
+<em>Demo with loading bar</em></p>
+<h2 id="lawful-loading-bar">Lawful loading bar</h2>
+<p>The <code>ProcessLoadingBar</code> is a special block that allows you to display a loading bar with a text and a <em>true</em> loading bar. You may define the text to display while loading.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;, true);
+
+var percentage = 0f;
+var t_Loading = new Thread(() =&gt; Core.ProcessLoadingBar(&quot;[Lawful loading...]&quot;,ref percentage)); // Create a Thread to run the loading bar on the console
+t_Loading.Start(); 
+while (percentage &lt;= 1f)
+{
+    Thread.Sleep(100);
+    percentage += 0.1f; // Simulate a loading process
+}
+t_Loading.Join(); // Wait for the Thread to finish
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/lawful_loading.png" alt="lawful">
+<em>Demo with lawful loading bar</em></p>
+<h2 id="exit">Exit</h2>
+<p>Last but no least, to exit the application, you can use the <code>ExitProgram</code> method. It will display a message and exit the application.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;, true);
+
+Core.ExitProgram();
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/vid/gif/legacy/exit.gif" alt="exit">
+<em>Demo with exit message</em></p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
