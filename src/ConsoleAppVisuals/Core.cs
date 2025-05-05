@@ -180,7 +180,7 @@ public static class Core
             ConsoleColor.Blue,
             ConsoleColor.Yellow,
             ConsoleColor.Magenta,
-            ConsoleColor.Cyan
+            ConsoleColor.Cyan,
         };
         return colors[s_rnd.Next(colors.Count)];
     }
@@ -508,7 +508,7 @@ public static class Core
             Placement.TopLeft => Placement.TopLeft,
             Placement.TopCenter => Placement.TopCenter,
             Placement.TopRight => Placement.TopRight,
-            _ => Placement.TopRight
+            _ => Placement.TopRight,
         };
 
         (int, int) cursorPosition = (Console.CursorLeft, Console.CursorTop);
