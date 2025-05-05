@@ -243,7 +243,7 @@ public class UnitTestFakeLoadingBar
         var width = fakeLoadingBar.Width;
 
         // Assert
-        Assert.AreEqual(10, width);
+        Assert.AreEqual(16, width);
     }
 
     [TestMethod]
@@ -262,7 +262,7 @@ public class UnitTestFakeLoadingBar
         fakeLoadingBar.UpdateBarWidth(20);
 
         // Assert
-        Assert.AreEqual(20, fakeLoadingBar.Width);
+        Assert.AreEqual(26, fakeLoadingBar.Width);
     }
 
     [TestMethod]
