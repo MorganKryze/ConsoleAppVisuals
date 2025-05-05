@@ -90,9 +90,9 @@ public class UnitTestElement
         var title = new Title("Title");
         var header = new Header();
         var footer = new Footer();
-        var loadingBarLeft = new FakeLoadingBar("LoadingBarLeft", Placement.TopLeft);
-        var loadingBarRight = new FakeLoadingBar("LoadingBarRight", Placement.TopRight);
-        var loadingBarCenter = new FakeLoadingBar("LoadingBarCenter", Placement.TopCenter);
+        var loadingBarLeft = new FakeLoadingBar("LoadingBarLeft", 10, Placement.TopLeft);
+        var loadingBarRight = new FakeLoadingBar("LoadingBarRight", 10, Placement.TopRight);
+        var loadingBarCenter = new FakeLoadingBar("LoadingBarCenter", 10, Placement.TopCenter);
 
         // Act
         Window.AddElement(title, header, footer, loadingBarLeft, loadingBarRight, loadingBarCenter);
@@ -115,16 +115,15 @@ public class UnitTestElement
     public void InvalidPlacement_ThrowsArgumentException()
     {
         // Arrange
-        Matrix<string> matrix =
-            new(
-                new List<List<string?>>()
-                {
-                    new() { "1", "2", "3" },
-                    new() { "4", "5", "6" }
-                },
-                (Placement)int.MaxValue
-            );
-        
+        Matrix<string> matrix = new(
+            new List<List<string?>>()
+            {
+                new() { "1", "2", "3" },
+                new() { "4", "5", "6" },
+            },
+            (Placement)int.MaxValue
+        );
+
         Window.AddElement(matrix);
 
         // Act & Assert

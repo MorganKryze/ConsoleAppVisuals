@@ -414,9 +414,9 @@ public class UnitTestWindow
         var title = new Title("Title");
         var header = new Header();
         var footer = new Footer();
-        var loadingBarLeft = new FakeLoadingBar("LoadingBarLeft", Placement.TopLeft);
-        var loadingBarRight = new FakeLoadingBar("LoadingBarRight", Placement.TopRight);
-        var loadingBarCenter = new FakeLoadingBar("LoadingBarCenter", Placement.TopCenter);
+        var loadingBarLeft = new FakeLoadingBar("LoadingBarLeft", 10, Placement.TopLeft);
+        var loadingBarRight = new FakeLoadingBar("LoadingBarRight", 10, Placement.TopRight);
+        var loadingBarCenter = new FakeLoadingBar("LoadingBarCenter", 10, Placement.TopCenter);
 
         // Act
         Window.AddElement(title, header, footer, loadingBarLeft, loadingBarRight, loadingBarCenter);
