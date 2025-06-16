@@ -3,13 +3,13 @@
   "isRoot": true,
   "tools": {
     "csharpier": {
-      "version": "0.30.6",
+      "version": "1.0.2",
       "commands": [
         "dotnet-csharpier"
       ]
     },
     "docfx": {
-      "version": "2.78.2",
+      "version": "2.78.3",
       "commands": [
         "docfx"
       ]
@@ -21,7 +21,7 @@
       ]
     },
     "dotnet-reportgenerator-globaltool": {
-      "version": "5.3.11",
+      "version": "5.4.8",
       "commands": [
         "reportgenerator"
       ]
