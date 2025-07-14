@@ -53,21 +53,21 @@ class Program
             "https://www.amazon.com",
             "john.doe@example.com",
             "password123",
-            "entertainment"
+            "entertainment",
         ];
         List<string> secondRow =
         [
             "https://www.slack.com",
             "john.doe@example.com",
             "secure-password",
-            "work"
+            "work",
         ];
         List<string> thirdRow =
         [
             "https://www.facebook.com",
             "john.doe@example.com",
             "cyp3rs3cur1ty",
-            "social"
+            "social",
         ];
 
         s_rows.Add(firstRow);
@@ -77,14 +77,13 @@ class Program
 
     static void Authenticate()
     {
-        Prompt authentication =
-            new(
-                question: "Enter your master password to unlock your vault:",
-                defaultValue: null,
-                placement: Placement.TopCenter,
-                maxInputLength: 15,
-                style: PromptInputStyle.Secret
-            );
+        Prompt authentication = new(
+            question: "Enter your master password to unlock your vault:",
+            defaultValue: null,
+            placement: Placement.TopCenter,
+            maxInputLength: 15,
+            style: PromptInputStyle.Secret
+        );
         Window.AddElement(authentication);
 
         bool authorized = false;
@@ -120,22 +119,20 @@ class Program
 
     static void Home()
     {
-        ScrollingMenu homeMenu =
-            new(
-                question: "What will you do next? ",
-                defaultIndex: 0,
-                placement: Placement.TopLeft,
-                choices: ["Add new password", "Edit password", "Quit"]
-            );
+        ScrollingMenu homeMenu = new(
+            question: "What will you do next? ",
+            defaultIndex: 0,
+            placement: Placement.TopLeft,
+            choices: ["Add new password", "Edit password", "Quit"]
+        );
         Window.AddElement(homeMenu);
 
-        TableView passwordTable =
-            new(
-                title: "John Doe passwords",
-                headers: s_headers,
-                lines: s_rows,
-                placement: Placement.TopCenter
-            );
+        TableView passwordTable = new(
+            title: "John Doe passwords",
+            headers: s_headers,
+            lines: s_rows,
+            placement: Placement.TopCenter
+        );
         Window.AddElement(passwordTable);
 
         while (true)
@@ -174,41 +171,37 @@ class Program
     static bool AddPassword(List<string>? row = null)
     {
         List<string> newRow = row ?? [];
-        Prompt urlPrompt =
-            new(
-                question: "Enter the URL: ",
-                defaultValue: newRow.Count > 0 ? newRow[0] : null,
-                placement: Placement.TopCenter,
-                maxInputLength: 30
-            );
+        Prompt urlPrompt = new(
+            question: "Enter the URL: ",
+            defaultValue: newRow.Count > 0 ? newRow[0] : null,
+            placement: Placement.TopCenter,
+            maxInputLength: 30
+        );
         Window.AddElement(urlPrompt);
 
-        Prompt usernamePrompt =
-            new(
-                question: "Enter the username: ",
-                defaultValue: newRow.Count > 1 ? newRow[1] : null,
-                placement: Placement.TopCenter,
-                maxInputLength: 25
-            );
+        Prompt usernamePrompt = new(
+            question: "Enter the username: ",
+            defaultValue: newRow.Count > 1 ? newRow[1] : null,
+            placement: Placement.TopCenter,
+            maxInputLength: 25
+        );
         Window.AddElement(usernamePrompt);
 
-        Prompt passwordPrompt =
-            new(
-                question: "Enter the password: ",
-                defaultValue: newRow.Count > 2 ? newRow[2] : null,
-                placement: Placement.TopCenter,
-                maxInputLength: 40,
-                style: PromptInputStyle.Secret
-            );
+        Prompt passwordPrompt = new(
+            question: "Enter the password: ",
+            defaultValue: newRow.Count > 2 ? newRow[2] : null,
+            placement: Placement.TopCenter,
+            maxInputLength: 40,
+            style: PromptInputStyle.Secret
+        );
         Window.AddElement(passwordPrompt);
 
-        Prompt notesPrompt =
-            new(
-                question: "Enter any notes: ",
-                defaultValue: newRow.Count > 3 ? newRow[3] : null,
-                placement: Placement.TopCenter,
-                maxInputLength: 20
-            );
+        Prompt notesPrompt = new(
+            question: "Enter any notes: ",
+            defaultValue: newRow.Count > 3 ? newRow[3] : null,
+            placement: Placement.TopCenter,
+            maxInputLength: 20
+        );
         Window.AddElement(notesPrompt);
 
         while (true)
@@ -235,7 +228,7 @@ class Program
                     responseUrl.Value,
                     responseUsername.Value,
                     responsePassword.Value,
-                    responseNotes.Value
+                    responseNotes.Value,
                 ];
                 s_rows.Add(newRow);
 
@@ -270,13 +263,12 @@ class Program
 
     static void EditPassword()
     {
-        TableSelector passwordSelector =
-            new(
-                title: "Select a password to edit: ",
-                headers: s_headers,
-                lines: s_rows,
-                placement: Placement.TopCenter
-            );
+        TableSelector passwordSelector = new(
+            title: "Select a password to edit: ",
+            headers: s_headers,
+            lines: s_rows,
+            placement: Placement.TopCenter
+        );
         Window.AddElement(passwordSelector);
         Window.ActivateElement(passwordSelector);
 

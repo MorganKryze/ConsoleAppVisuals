@@ -1,3 +1,5 @@
+.PHONY: install coverage docs
+
 install:
 	@echo "\n --- Verifying dotnet installation --- \n"
 	dotnet --version

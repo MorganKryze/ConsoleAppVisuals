@@ -18,10 +18,11 @@ public class UnitTestFakeLoadingBar
 
     #region Constructor
     [TestMethod]
-    [DataRow("Test", Placement.TopCenterFullWidth, 1000, 1000)]
-    [DataRow("Test", Placement.TopCenterFullWidth, 1000, 1000)]
+    [DataRow("Test", 10, Placement.TopCenterFullWidth, 1000, 1000)]
+    [DataRow("Test", 10, Placement.TopCenterFullWidth, 1000, 1000)]
     public void Constructor_Initialization(
         string text,
+        int width,
         Placement placement,
         int processDuration,
         int additionalDuration
@@ -30,7 +31,13 @@ public class UnitTestFakeLoadingBar
         // Arrange
 
         // Act
-        var loadingBar = new FakeLoadingBar(text, placement, processDuration, additionalDuration);
+        var loadingBar = new FakeLoadingBar(
+            text,
+            width,
+            placement,
+            processDuration,
+            additionalDuration
+        );
 
         // Assert
         Assert.IsNotNull(loadingBar);
@@ -41,7 +48,7 @@ public class UnitTestFakeLoadingBar
     {
         // Arrange
         var line = 0;
-        var loadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var loadingBar = new FakeLoadingBar("Test", 10, Placement.TopCenterFullWidth, 1000, 1000);
 
         // Act
         var lineAvailable = loadingBar.Line;
@@ -58,7 +65,13 @@ public class UnitTestFakeLoadingBar
     public void UpdateText_ModifyText_TextUpdated(string text)
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdateText(text);
@@ -72,7 +85,13 @@ public class UnitTestFakeLoadingBar
     public void UpdateText_ModifyTextWithEmptyString_TextNotUpdated()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdateText("");
@@ -86,7 +105,13 @@ public class UnitTestFakeLoadingBar
     public void Text_SetText_TextSet(string text)
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdateText(text);
@@ -101,7 +126,13 @@ public class UnitTestFakeLoadingBar
     public void Placement_GetPlacement_PlacementReturned()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         var placement = fakeLoadingBar.Placement;
@@ -116,7 +147,13 @@ public class UnitTestFakeLoadingBar
     public void Line_GetLine_LineReturned()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         var line = fakeLoadingBar.Line;
@@ -131,7 +168,13 @@ public class UnitTestFakeLoadingBar
     public void ProcessDuration_GetProcessDuration_ProcessDurationReturned()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         var processDuration = fakeLoadingBar.ProcessDuration;
@@ -146,7 +189,13 @@ public class UnitTestFakeLoadingBar
     public void AdditionalDuration_GetAdditionalDuration_AdditionalDurationReturned()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         var additionalDuration = fakeLoadingBar.AdditionalDuration;
@@ -161,7 +210,13 @@ public class UnitTestFakeLoadingBar
     public void Height_GetHeight_HeightReturned()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         var height = fakeLoadingBar.Height;
@@ -176,13 +231,55 @@ public class UnitTestFakeLoadingBar
     public void Width_GetWidth_WidthReturned()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         var width = fakeLoadingBar.Width;
 
         // Assert
-        // No assertion provided as width is not settable
+        Assert.AreEqual(16, width);
+    }
+
+    [TestMethod]
+    public void UpdateBarWidth_UpdateBarWidth_BarWidthUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
+
+        // Act
+        fakeLoadingBar.UpdateBarWidth(20);
+
+        // Assert
+        Assert.AreEqual(26, fakeLoadingBar.Width);
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void UpdateBarWidth_UpdateBarWidthWithNegativeValue_BarWidthNotUpdated()
+    {
+        // Arrange
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
+
+        // Act
+        fakeLoadingBar.UpdateBarWidth(-20);
     }
     #endregion
 
@@ -191,7 +288,13 @@ public class UnitTestFakeLoadingBar
     public void UpdatePlacement_UpdatePlacement_PlacementUpdated()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdatePlacement(Placement.BottomCenterFullWidth);
@@ -206,7 +309,13 @@ public class UnitTestFakeLoadingBar
     public void UpdateAdditionalDuration_UpdateAdditionalDuration_AdditionalDurationUpdated()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdateAdditionalDuration(2000);
@@ -220,7 +329,13 @@ public class UnitTestFakeLoadingBar
     public void UpdateAdditionalDuration_UpdateAdditionalDurationWithNegativeValue_AdditionalDurationNotUpdated()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdateAdditionalDuration(-2000);
@@ -232,7 +347,13 @@ public class UnitTestFakeLoadingBar
     public void UpdateProcessDuration_UpdateProcessDuration_ProcessDurationUpdated()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdateProcessDuration(2000);
@@ -246,7 +367,13 @@ public class UnitTestFakeLoadingBar
     public void UpdateProcessDuration_UpdateProcessDurationWithNegativeValue_ProcessDurationNotUpdated()
     {
         // Arrange
-        var fakeLoadingBar = new FakeLoadingBar("Test", Placement.TopCenterFullWidth, 1000, 1000);
+        var fakeLoadingBar = new FakeLoadingBar(
+            "Test",
+            10,
+            Placement.TopCenterFullWidth,
+            1000,
+            1000
+        );
 
         // Act
         fakeLoadingBar.UpdateProcessDuration(-2000);
