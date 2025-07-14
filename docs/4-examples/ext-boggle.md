@@ -1,9 +1,9 @@
 ---
 title: Boggle, a word game
-author: Eliott Roussille (austin)
+author: Eliott A. Roussille
 description: Boggle is a word game where players try to find as many words as possible from a grid of letters.
 keywords: c#, documentation, wordgame, boggle
-ms.author: Eliott Roussille (austin)
+ms.author: Eliott A. Roussille
 ms.date: 20/04/2025
 ms.topic: tutorial
 ms.service: ConsoleAppVisuals
@@ -13,7 +13,7 @@ ms.service: ConsoleAppVisuals
 
 |                  Author                  | Size  | Library version |                  Source files                   |
 | :--------------------------------------: | :---: | :-------------: | :---------------------------------------------: |
-| [austin](https://github.com/Captainbleu) |  big  |     v3.5.4      | [Boggle](https://github.com/Captainbleu/Boggle) |
+| [Eliott A. Roussille](https://github.com/aust-1) |  big  |     v3.5.4      | [Boggle](https://github.com/aust-1/Boggle) |
 
 ## Introduction
 
@@ -36,10 +36,10 @@ The project covers the following features:
 To clone the project, run the following command:
 
 ```bash
-git clone https://github.com/Captainbleu/Boggle.git
+git clone https://github.com/aust-1/Boggle.git
 ```
 
-Or alternatively, download the project as a zip file from the [repository](https://github.com/Captainbleu/Boggle).
+Or alternatively, download the project as a zip file from the [repository](https://github.com/aust-1/Boggle).
 
 ### Setup
 
