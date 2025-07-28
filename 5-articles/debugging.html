@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Debugging in ConsoleAppVisuals | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Debugging in ConsoleAppVisuals | ConsoleAppVisuals ">
+      
+      <meta name="description" content="This article will guide you through the debugging tools and resources available in ConsoleAppVisuals to help you overcome your challenges.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/5-articles/debugging.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="debugging-in-consoleappvisuals">Debugging in ConsoleAppVisuals</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>Debugging is a crucial part of software development. It is the process of identifying and removing errors from a computer program. We put a lot of effort into making debugging easier and more efficient in ConsoleAppVisuals. This article will guide you through the debugging tools and resources available in ConsoleAppVisuals to help you overcome your challenges.</p>
+<h2 id="pre-requisites">Pre-requisites</h2>
+<ul>
+<li>Basic knowledge of C# programming language</li>
+<li>A code editor (Visual Studio, Visual Studio Code, etc.)</li>
+<li>ConsoleAppVisuals library installed (v3.3.0 or later)</li>
+</ul>
+<h2 id="in-code-tools">In-code tools</h2>
+<h3 id="elementsdashboard"><code>ElementsDashboard</code></h3>
+<p>The first tool that we will discuss is the <code>ElementsDashboard</code>. It is a debugging tool that allows you to visualize the elements added to the Window. they are presented like a list of elements with their properties. This tool is very useful when you want to see the updates of the elements properties in real-time after activating, deactivating or modifying them.</p>
+<pre><code class="lang-csharp">Window.Open();
+
+ElementsDashboard dashboard = new ElementsDashboard(Placement.TopCenter, false);
+Window.AddElement(dashboard);
+
+Window.Render(dashboard);
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/debugging/dashboard.jpg" alt="ElementsDashboard"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The arguments available for the <code>ElementsDashboard</code> are:</p>
+<ul>
+<li><code>Placement</code> - The position of the dashboard on the window to place it at a convenient location. (see <a href="https://morgankryze.github.io/ConsoleAppVisuals/4-references/ConsoleAppVisuals.Enums.Placement.html">Placement enum</a> for more details)</li>
+<li><code>RoundedCorners</code> - A boolean value that indicates if the dashboard should have rounded corners. (purely aesthetic)</li>
+</ul>
+</div>
+<h3 id="elementslist"><code>ElementsList</code></h3>
+<p>The <code>ElementsList</code> is another debugging tool that allows you to visualize the elements inherited from the <code>Element</code>, <code>PassiveElement</code> or <code>InteractiveElement</code> classes. It lets you see their type and project location (library or your own). This tool is very useful when you want to add your custom element and see if they are recognized by the library.</p>
+<pre><code class="lang-csharp">Window.Open();
+
+ElementsList list = new ElementsList(ElementType.Default, Placement.TopCenter, false);
+Window.AddElement(list);
+
+Window.Render(list);
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/debugging/list.jpg" alt="ElementsList"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The arguments available for the <code>ElementsList</code> are:</p>
+<ul>
+<li><code>ElementType</code> - The type of elements to display in the list. (see <a href="https://morgankryze.github.io/ConsoleAppVisuals/references/ConsoleAppVisuals.Enums.ElementType.html">ElementType enum</a> for more details)</li>
+<li><code>Placement</code> - The position of the list on the window to place it at a convenient location. (see <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.Enums.Placement.html">Placement enum</a> for more details)</li>
+<li><code>RoundedCorners</code> - A boolean value that indicates if the list should have rounded corners. (purely aesthetic)</li>
+</ul>
+</div>
+<h3 id="corewritedebugmessage"><code>Core.WriteDebugMessage()</code></h3>
+<p>The <code>Core.WriteDebugMessage()</code> method is a simple debugging tool that allows you to print a debug message in the console. This message overrides whatever is currently in the console and is useful when you want to display information without creating an <code>EmbedText</code> for example (it is also a quick alternative to the <code>Console.WriteLine()</code> method).</p>
+<pre><code class="lang-csharp">Window.Open();
+
+// Here the info are dummy but you may pass real elements or window variables
+Core.WriteDebugMessage(Placement.TopRight, &quot;h: 12&quot;, &quot;w: 12&quot;, &quot;x: 0&quot;, &quot;y: 0&quot;);
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/debugging/debug_mark.jpg" alt="DebugMessage"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The arguments available for the <code>Core.WriteDebugMessage()</code> are:</p>
+<ul>
+<li><code>Placement</code> - The position of the message on the window to place it at a convenient location. (values can only be <code>TopLeft</code>, <code>TopCenter</code> or <code>TopRight</code>)</li>
+<li><code>params string[]</code> - The information to display in the message. (you can pass as many strings as you want) An empty string will be displayed as a blank space.</li>
+</ul>
+</div>
+<h2 id="issues">Issues</h2>
+<p>Before getting crazy over your code, try to find a related issue in the library that tackles the subject you are struggling with. If you can't find any, feel free to open an issue on the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">GitHub repository</a> and we will be happy to help you.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>As the v3 of the project is still in development, no issues have been reported yet. Be the first!</p>
+</div>
+<h2 id="references">References</h2>
+<p>If you struggle with the behavior of a specific class or method, you can refer to the <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/index.html">detailed documentation</a> to find the information you need. The documentation is updated regularly and contains all the information you need to use the library.</p>
+<p>Or simply redo the <a href="https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html">tutorials</a> to get a better understanding of the library.</p>
+<h2 id="examples">Examples</h2>
+<p>If you are looking for concrete examples to help you understand how to use the library in real use cases, you can refer to the <a href="https://morgankryze.github.io/ConsoleAppVisuals/4-examples/index.html">examples</a> section. The examples are updated regularly and cover a wide range of use cases.</p>
+<h2 id="source-code">Source code</h2>
+<p>Finally, if none of the above solutions work, or if you are just curious, you can always refer to the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/tree/main/src/ConsoleAppVisuals">source code</a>.</p>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

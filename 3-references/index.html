@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Getting started | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Getting started | ConsoleAppVisuals ">
+      
+      <meta name="description" content="This section describes all references of the library. you will find all arguments, method signatures, classes, and enums that are available for the user.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/3-references/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="getting-started">Getting started</h1>
+
+<p>This section describes all references of the library. You will find all arguments, method signatures, classes, and enums that are available for the user.</p>
+<p>Access to the namespaces classes and functions at the left side of this page.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Adding <code>using ConsoleAppVisuals;</code> at the beginning of your C# file is necessary but not sufficient to use the full potential of the library. Refer to the descriptions below to discover which namespaces to add to your project and the Introduction section to see how they are used.</p>
+</div>
+<h2 id="namespace-descriptions">Namespace descriptions</h2>
+<p>Namespaces are used to organize the classes and interfaces of the library. They are used to avoid naming conflicts and to group the classes that are related to each other. Here are the different namespaces of the library:</p>
+<h3 id="consoleappvisuals"><code>ConsoleAppVisuals</code></h3>
+<pre><code class="lang-csharp">using ConsoleAppVisuals.Elements;
+</code></pre>
+<p>This is the main namespace of the library. It contains the <code>Core</code> and <code>Window</code> classes. The <code>Core</code> class is the core of the library interaction with the console. It contains the methods to interact with the console on a low level basis. The <code>Window</code> class is used to manage visual elements. You may use it to add, remove, update and display elements on the console.</p>
+<h3 id="passiveelements"><code>PassiveElements</code></h3>
+<pre><code class="lang-csharp">using ConsoleAppVisuals.PassiveElements;
+</code></pre>
+<p>This namespace contains all the passive elements of the library. You may find the elements that do not provide interaction with the user and that you may display several from the same type at the same time. They share common characteristics and methods defined in the <code>models/Element.cs</code> class.</p>
+<h3 id="interactiveelements"><code>InteractiveElements</code></h3>
+<pre><code class="lang-csharp">using ConsoleAppVisuals.InteractiveElements;
+</code></pre>
+<p>This namespace contains all the interactive elements of the library. You may find the elements that provide interaction with the user and that you may display only one at a time. They share common characteristics and methods defined in the <code>models/InteractiveElement.cs</code> class.</p>
+<h3 id="enums"><code>Enums</code></h3>
+<pre><code class="lang-csharp">using ConsoleAppVisuals.Enums;
+</code></pre>
+<p>This namespace contains all the enumerations used in the library. They are used to define the behaviors, position, response of the elements in the console.</p>
+<h3 id="models"><code>Models</code></h3>
+<pre><code class="lang-csharp">using ConsoleAppVisuals.Models;
+</code></pre>
+<p>This namespace contains all the models of the library. They are used to define the characteristics of the elements and the interactions. You may find the <code>Element</code>, <code>InteractiveElement</code> classes for example.</p>
+<h3 id="attributes"><code>Attributes</code></h3>
+<pre><code class="lang-csharp">using ConsoleAppVisuals.Attributes;
+</code></pre>
+<p>This namespace contains the <code>VisualAttribute</code> class. This attribute is used to ignore the element when calculating coverage since untestable.</p>
+<h3 id="errors"><code>Errors</code></h3>
+<pre><code class="lang-csharp">using ConsoleAppVisuals.Errors;
+</code></pre>
+<p>This namespace contains all the custom exceptions of the library. They are used to handle specific errors that may occur during the execution of the library.</p>
+<h3 id="bonus-globalusingscs">Bonus: <code>GlobalUsings.cs</code></h3>
+<p>This file contains the different usings of the library. It is used to import the different classes of the library and enable them globally in the library. I recommend you to do the same in your projects. <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/GlobalUsings.cs">See file</a></p>
+<h2 id="structure">Structure</h2>
+<p>Here is the detailed file structure of the library:</p>
+<pre><code class="lang-bash">ConsoleAppVisuals
+├───elements
+│   ├───animated
+│   │   ├───FakeLoadingBar.cs
+│   │   └───LoadingBar.cs
+│   ├───interactive
+│   │   ├───FloatSelector.cs
+│   │   ├───IntSelector.cs
+│   │   ├───Prompt.cs
+│   │   ├───Dialog.cs
+│   │   ├───ScrollingMenu.cs
+│   │   └───TableSelector.cs
+│   └───passive
+│       ├───inspectors
+│       │   ├───ElementsList.cs
+│       │   └───ElementsDashboard.cs
+│       ├───EmbedText.cs
+│       ├───Text.cs
+│       ├───Matrix.cs
+│       ├───TableView.cs
+│       ├───Banner.cs
+│       ├───Header.cs
+│       ├───Footer.cs
+│       └───Title.cs
+├───attributes
+│   └───VisualAttribute.cs
+├───enums
+│   ├───BordersType.cs
+│   ├───DialogOption.cs
+│   ├───Direction.cs
+│   ├───ElementType.cs
+│   ├───Font.cs
+│   ├───Placement.cs
+│   ├───PromptInputStyle.cs
+│   ├───Status.cs
+│   └───TextAlignment.cs
+├───errors
+│   ├───EmptyFileException.cs
+│   ├───LineOutOfConsoleException.cs
+│   ├───DuplicateElementException.cs
+│   ├───ElementNotFoundException.cs
+│   └───NotSupportedCharException.cs
+├───models
+│   ├───Element.cs
+│   ├───AnimatedElement.cs
+│   ├───PassiveElement.cs
+│   ├───Borders.cs
+│   ├───InteractiveElement.cs
+│   ├───InteractionEventArgs.cs
+│   ├───Position.cs
+│   ├───TextStyler.cs
+│   └───FontYamlFile.cs
+├───Core.cs
+├───Window.cs
+└───GlobalUsings.cs
+</code></pre>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

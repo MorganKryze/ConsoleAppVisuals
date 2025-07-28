@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Banner | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Banner | ConsoleAppVisuals ">
+      
+      <meta name="description" content="The  is a passive element that displays a banner on the console.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.PassiveElements.Banner">
+
+
+
+  <h1 id="ConsoleAppVisuals_PassiveElements_Banner" data-uid="ConsoleAppVisuals.PassiveElements.Banner" class="text-break">
+Class Banner  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a>.<a class="xref" href="ConsoleAppVisuals.PassiveElements.html">PassiveElements</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The <a class="xref" href="ConsoleAppVisuals.PassiveElements.Banner.html">Banner</a> is a passive element that displays a banner on the console.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Banner : PassiveElement</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.PassiveElement.html">PassiveElement</a></div>
+      <div><span class="xref">Banner</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.PassiveElement.html#ConsoleAppVisuals_Models_PassiveElement_Type">PassiveElement.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_ToggleVisibility">Element.ToggleVisibility()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElement">Element.RenderElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderOptionsBeforeHand">Element.RenderOptionsBeforeHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderOptionsAfterHand">Element.RenderOptionsAfterHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElementSpace_System_Boolean_">Element.RenderElementSpace(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_GetRenderSpace">Element.GetRenderSpace()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Clear">Element.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Id">Element.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Visibility">Element.Visibility</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_TextAlignment">Element.TextAlignment</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_MaxNumberOfThisElement">Element.MaxNumberOfThisElement</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Line">Element.Line</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_PassiveElements_Banner_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner__ctor_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.#ctor*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner__ctor_System_String_System_String_System_String_System_Int32_System_Int32_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.#ctor(System.String,System.String,System.String,System.Int32,System.Int32,ConsoleAppVisuals.Enums.Placement)">
+  Banner(string, string, string, int, int, Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="ConsoleAppVisuals.PassiveElements.Banner.html">Banner</a> is a passive element that displays a banner on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Banner(string leftText = &quot;Banner Left&quot;, string centerText = &quot;Banner Center&quot;, string rightText = &quot;Banner Right&quot;, int upperMargin = 0, int lowerMargin = 0, Placement placement = Placement.TopCenterFullWidth)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>leftText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text on the left of the banner.</p>
+</dd>
+    <dt><code>centerText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text in the center of the banner.</p>
+</dd>
+    <dt><code>rightText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text on the right of the banner.</p>
+</dd>
+    <dt><code>upperMargin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The upper margin of the banner.</p>
+</dd>
+    <dt><code>lowerMargin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The lower margin of the banner.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the banner.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_PassiveElements_Banner__ctor_System_String_System_String_System_String_System_Int32_System_Int32_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_Height_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Height*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_Height" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the height of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_LowerMargin_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.LowerMargin*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_LowerMargin" data-uid="ConsoleAppVisuals.PassiveElements.Banner.LowerMargin">
+  LowerMargin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the lower margin of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LowerMargin { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_Placement_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Placement*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_Placement" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Placement">
+  Placement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the placement of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Placement Placement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_Text_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Text*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_Text" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Text">
+  Text
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the text of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public (string, string, string) Text { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>)</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_UpperMargin_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpperMargin*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_UpperMargin" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpperMargin">
+  UpperMargin
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the upper margin of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UpperMargin { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_Width_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Width*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_Width" data-uid="ConsoleAppVisuals.PassiveElements.Banner.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the width of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_RenderElementActions_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.RenderElementActions*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_RenderElementActions" data-uid="ConsoleAppVisuals.PassiveElements.Banner.RenderElementActions">
+  RenderElementActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines the actions to perform when the element is called to be rendered on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected override void RenderElementActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_UpdateCenterText_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateCenterText*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_UpdateCenterText_System_String_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateCenterText(System.String)">
+  UpdateCenterText(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the text in the center of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateCenterText(string centerText)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>centerText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new text in the center of the banner.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_PassiveElements_Banner_UpdateCenterText_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_UpdateLeftText_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateLeftText*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_UpdateLeftText_System_String_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateLeftText(System.String)">
+  UpdateLeftText(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the text on the left of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateLeftText(string leftText)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>leftText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new text on the left of the banner.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_PassiveElements_Banner_UpdateLeftText_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_UpdateLowerMargin_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateLowerMargin*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_UpdateLowerMargin_System_Int32_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateLowerMargin(System.Int32)">
+  UpdateLowerMargin(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the lower margin of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateLowerMargin(int lowerMargin)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lowerMargin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The new lower margin of the banner.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_PassiveElements_Banner_UpdateLowerMargin_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>The lower margin of the banner must be between 0 and the height of the console window.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_UpdatePlacement_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdatePlacement*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_UpdatePlacement_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+  UpdatePlacement(Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the placement of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePlacement(Placement placement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The new placement of the banner.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_PassiveElements_Banner_UpdatePlacement_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_UpdateRightText_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateRightText*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_UpdateRightText_System_String_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateRightText(System.String)">
+  UpdateRightText(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the text on the right of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateRightText(string rightText)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rightText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new text on the right of the banner.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_PassiveElements_Banner_UpdateRightText_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_PassiveElements_Banner_UpdateUpperMargin_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateUpperMargin*"></a>
+
+  <h3 id="ConsoleAppVisuals_PassiveElements_Banner_UpdateUpperMargin_System_Int32_" data-uid="ConsoleAppVisuals.PassiveElements.Banner.UpdateUpperMargin(System.Int32)">
+  UpdateUpperMargin(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/passive_elements/Banner.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the upper margin of the banner.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateUpperMargin(int upperMargin)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>upperMargin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The new upper margin of the banner.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_PassiveElements_Banner_UpdateUpperMargin_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>The upper margin of the banner must be between 0 and the height of the console window.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

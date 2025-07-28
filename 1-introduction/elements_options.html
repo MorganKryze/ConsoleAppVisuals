@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Elements options | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Elements options | ConsoleAppVisuals ">
+      
+      <meta name="description" content="In this section, you will learn how to deactivate/ remove elements, use the ElementsDashboard inspector element, the HeightSpacer element, discover Placement, TextAlignment and BordersType enumerations and use the full potential of the element options.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/1-introduction/elements_options.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="elements-options">Elements options</h1>
+
+<p>In this section, you will learn:</p>
+<ul>
+<li>How to deactivate/ remove elements</li>
+<li>How to use the <code>ElementsDashboard</code> inspector element</li>
+<li>How to use the <code>HeightSpacer</code> element</li>
+<li>Discover <code>Placement</code>, <code>TextAlignment</code> and <code>BordersType</code> enumerations</li>
+<li>How to use the full potential of the element options</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>We will add <code>using ConsoleAppVisuals.Enums;</code> to the using statements to use the <code>Placement</code> and <code>TextAlignment</code> enumerations.</p>
+</div>
+<p>And your cleaned <code>Program.cs</code> file should look like this:</p>
+<pre><code class="lang-csharp" highlight-lines="4">using ConsoleAppVisuals;
+using ConsoleAppVisuals.PassiveElements;
+using ConsoleAppVisuals.InteractiveElements;
+using ConsoleAppVisuals.Enums;
+
+namespace MyApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Window.Open();
+        }
+    }
+}
+</code></pre><h2 id="disabling-elements">Disabling elements</h2>
+<p>We tackled adding elements to the window. Now, let's see how to do the opposite.</p>
+<p>To disable element rendering, you have two options:</p>
+<ul>
+<li>Deactivate the element</li>
+<li>Remove the element</li>
+</ul>
+<h3 id="deactivating">Deactivating</h3>
+<p>Deactivating an element can be useful for it to be used later. To do so, let's create a <code>Title</code> element and deactivate it. Nothing will be rendered on the screen.</p>
+<pre><code class="lang-csharp">Window.Open();
+
+Title title = new Title(&quot;Elements options&quot;);
+Window.AddElement(title);
+
+Window.DeactivateElement(title);
+
+Window.Render();
+
+Window.Close();
+</code></pre>
+<p>Let's see how to perceive the effect of deactivating an element. Update your code to add a <code>ElementsDashboard</code> <em>passive</em> element and deactivate the title. The dashboard will be rendered, but not the title:</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The method <code>Window.Freeze()</code> is used to stop the execution by waiting the user to press a key (Enter by default) to see the window content without exiting the application when the window only contains <em>passive</em> elements.</p>
+</div>
+<pre><code class="lang-csharp">Window.Open();
+
+Title title = new Title(&quot;Elements options&quot;);
+Window.AddElement(title);
+
+ElementsDashboard dashboard = new ElementsDashboard();
+Window.AddElement(dashboard);
+
+Window.Render();
+Window.Freeze();
+
+Window.DeactivateElement(title);
+
+Window.Render();
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/vid/gif/elements_options/deactivate.gif" alt="DashBoard"></p>
+<p>As you noticed, the title is not rendered on the screen because its <code>Visibility</code> property has been set to false.</p>
+<h3 id="removing">Removing</h3>
+<p>Removing an element is useful when you don't want to use it anymore. To do so, let's create a <code>Title</code> element and remove it. Nothing will be rendered on the screen.</p>
+<pre><code class="lang-csharp">Window.Open();
+
+Title title = new Title(&quot;Disabling&quot;);
+Window.AddElement(title);
+
+Window.RemoveElement(title);
+
+Window.Render();
+
+Window.Close();
+</code></pre>
+<p>Let's see how to perceive the effect of removing an element. Update your code to the following:</p>
+<pre><code class="lang-csharp">Window.Open();
+
+Title title = new Title(&quot;Disabling&quot;);
+Window.AddElement(title);
+
+ElementsDashboard dashboard = new ElementsDashboard();
+Window.AddElement(dashboard);
+
+Window.Render();
+Window.Freeze();
+
+Window.RemoveElement(title);
+
+Window.Render();
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/vid/gif/elements_options/remove.gif" alt="DashBoard"></p>
+<h2 id="setting-a-height-spacer-between-elements">Setting a height spacer between elements</h2>
+<p>Sometimes, you may want to add a space between elements. To do so, you can use the <code>HeightSpacer</code> element. It is a <em>passive</em> element that will only render a space of a specific height between elements.</p>
+<p>Here is a concrete example between two banners:</p>
+<pre><code class="lang-csharp">Window.Open();
+
+Title title = new Title(&quot;Elements options&quot;);
+Window.AddElement(title);
+
+Banner banner1 = new Banner();
+HeightSpacer spacer = new HeightSpacer(5);
+Banner banner2 = new Banner();
+
+Window.AddElement(banner1, spacer, banner2);
+
+Window.Render();
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/elements_options/spacer.jpg" alt="HeightSpacer"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>You may update afterward the <code>Placement</code> and <code>Height</code> of the <code>HeightSpacer</code> element using the <code>UpdatePlacement()</code> and <code>UpdateHeight()</code> methods.</p>
+</div>
+<h2 id="access-and-update-elements-parameters">Access and update elements parameters</h2>
+<p>In all the tutorials and the <a href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/example/">example project</a> the elements definitions are simplified and do not declare all the arguments available. To see all the arguments available for each element, you can consult the <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/index.html">references documentation</a>.</p>
+<p>Most of them are specific with generic type (<code>string</code>, <code>int</code>, <code>bool</code>, <code>List</code>, ...) and are used to customize the element. But some of them are common to all elements and are used to place the element on the window. These are the <code>Placement</code> and <code>TextAlignment</code> enumerations.</p>
+<h3 id="placement"><code>Placement</code></h3>
+<p>The <code>Placement</code> enumeration is used to place elements at a convenient location on the window. It is used by every element from the library that can be placed on the window. According to the placement, the element position and line will be calculated and rendered.</p>
+<p>The available values are:</p>
+<ul>
+<li><code>TopLeft</code>: x(line) = 0, y(char) = 0</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/topleft.jpg" alt="TopLeft"></p>
+<ul>
+<li><code>TopCenter</code>: (Default) x(line) = 0, y(char) = windowWidth / 2</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/topcenter.jpg" alt="TopCenter"></p>
+<ul>
+<li><code>TopRight</code>: x(line) = 0, y(char) = windowWidth</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/topright.jpg" alt="TopRight"></p>
+<ul>
+<li><code>TopCenterFullWidth</code>: x(line) = 0, y(char) = 0 (In fact, it is the same as <code>TopLeft</code> but we know that the element will be rendered with the full width of the window, following top elements will be placed below it)</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/topcenter.jpg" alt="TopCenter"></p>
+<ul>
+<li><code>BottomCenterFullWidth</code>: x(line) = windowHeight, y(char) = 0 (In preview for now as not fully implemented)</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/bottomcenter.jpg" alt="BottomCenterFullWidth"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>To choose the placement of an element, you can either set it from the constructor or use the <code>UpdatePlacement()</code> method after creating the element.</p>
+<pre><code class="lang-csharp">Prompt prompt = new Prompt(&quot;Enter your name:&quot;, &quot;John&quot;, Placement.TopCenter);
+// or
+prompt.UpdatePlacement(Placement.TopCenter);
+</code></pre>
+</div>
+<h3 id="textalignment"><code>TextAlignment</code></h3>
+<p>The <code>TextAlignment</code> enumeration is used to align the text in a string. It is used by some elements from the library. Here are the available values:</p>
+<ul>
+<li><code>Left</code>: Align the text to the left</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/left.jpg" alt="Left"></p>
+<ul>
+<li><code>Center</code>: (Default) Align the text to the center</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/center.jpg" alt="Center"></p>
+<ul>
+<li><code>Right</code>: Align the text to the right</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/right.jpg" alt="Right"></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>To choose the text alignment of an element, you can either set it from the constructor or use the <code>UpdateTextAlignment()</code> method after creating the element (some elements may not have this method if the text alignment is not used in it so refer to the references documentation to get that specific information).</p>
+<pre><code class="lang-csharp">Dialog dialog = new Dialog(new List&lt;string&gt;(){&quot;Demo&quot;, &quot;This is a message&quot;}, null, &quot;OK ▶&quot;, TextAlignment.Center);
+// or
+dialog.UpdateTextAlignment(TextAlignment.Center);
+</code></pre>
+</div>
+<h3 id="borderstype"><code>BordersType</code></h3>
+<p>The <code>BordersType</code> enumeration is used to set the borders of an element. It is used by the table and embed elements from the library. Here are the available values:</p>
+<ul>
+<li><code>SingleStraight</code>: (Default) Single lines with straight corners</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/straight.jpg" alt="SingleStraight"></p>
+<ul>
+<li><code>SingleRound</code>: Single lines with round corners</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/round.jpg" alt="SingleRound"></p>
+<ul>
+<li><code>SingleBold</code>: Single bold lines with straight corners</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/bold.jpg" alt="SingleBold"></p>
+<ul>
+<li><code>DoubleStraight</code>: Double lines with straight corners</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/double.jpg" alt="DoubleStraight"></p>
+<ul>
+<li><code>ASCII</code>: ASCII basic characters for the borders (<code>+</code>, <code>-</code>, <code>|</code> only)</li>
+</ul>
+<p><img src="../assets/img/jpg/elements_options/ascii.jpg" alt="ASCII"></p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The following types may not work on Visual Studio or Windows Command Prompt:</p>
+<ul>
+<li><code>SingleRound</code></li>
+<li><code>SingleBold</code></li>
+</ul>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>To choose the border type of an element, you can either set it from the constructor or use the <code>UpdateBordersType()</code> method after creating the element (some elements may not have this method if the border type is not used in it so refer to the references documentation to get that specific information).</p>
+<pre><code class="lang-csharp">ElementsDashboard dashboard = new ElementsDashboard(Placement.TopCenter, BordersType.SingleStraight);
+// or
+dashboard.UpdateBordersType(BordersType.SingleStraight);
+</code></pre>
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this section, you learned how to deactivate and remove elements from the window. You also discovered the <code>Placement</code> and <code>TextAlignment</code> enumerations and how to use the full potential of the element options by knowing all the arguments available. You may now be able to use more complex elements and place them at your desired location.</p>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

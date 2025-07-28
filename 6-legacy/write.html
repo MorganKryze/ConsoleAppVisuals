@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Writing on the console | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Writing on the console | ConsoleAppVisuals ">
+      
+      
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/6-legacy/write.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="writing-on-the-console">Writing on the console</h1>
+
+<h2 id="write-a-text-in-the-console-using-placement">Write a text in the console using placement</h2>
+<p>The <code>WritePositionedString</code> method is the most basic method of the library. It allows you to write a string in the console, with the possibility to specify the placement of the string within the width of the console.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;);
+
+Core.WritePositionedString(&quot;On the left&quot;, Placement.Left, default, 9, default);
+Core.WritePositionedString(&quot;Centered&quot;, Placement.Center, default, 10, default);
+Core.WritePositionedString(&quot;On the right&quot;, Placement.Right, default, 11, default);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/position.png" alt="position">
+<em>Demo with placed strings</em></p>
+<h2 id="including-continuous-printing">Including continuous printing</h2>
+<p>In addition to the placement, you can also specify if you want to print the string continuously or not. If you do, the string will be printed character by character, with a delay between each character. You may also interrupt the printing by pressing any key.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;);
+
+Core.WriteContinuousString(&quot;Hello World! Welcome to this beautiful app.&quot;, 10);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/vid/gif/legacy/continuous.gif" alt="continuous">
+<em>Demo with continuous printing</em></p>
+<h2 id="including-multiple-lines">Including Multiple Lines</h2>
+<p>If you want to write a text with multiple lines, you can use the <code>WriteParagraph</code> method like this:</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;);
+
+Core.WriteParagraph(default, default, &quot;C# is a general-purpose, multi-paradigm programming language encompassing strong typing,&quot;,&quot;lexically scoped, imperative, declarative, functional, generic, object-oriented (class-based),&quot;,&quot; and component-oriented programming disciplines.&quot;, &quot;&quot;, &quot;Press [Enter] to continue...&quot;);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/paragraph.png" alt="paragraph">
+<em>Demo with paragraph</em></p>
+<h2 id="include-styled-text">Include Styled Text</h2>
+<p>You can also use the <code>WritePositionedStyledText</code> method to write a styled text in the console. You may specify the placement, the color, the background color and the font of the text. The <code>StyleText</code> method allows you to style a string according to the font selected.</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;);
+
+Core.WritePositionedStyledText(Core.StyleText(&quot;Hello World!&quot;));
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/style.png" alt="style"></p>
+<h2 id="including-color">Including color</h2>
+<p>You can also specify the color of the elements and choose to apply the negative color to the text. Here are two example :</p>
+<pre><code class="lang-csharp">Core.WriteFullScreen(&quot;Example&quot;);
+
+Core.ChangeForeground(ConsoleColor.Green);
+Core.WritePositionedString(&quot;Hello World! Welcome to this beautiful app.&quot;, Placement.Center, false, 10);
+
+Core.ApplyNegative(true);
+Core.WritePositionedString(&quot;Press any key to exit.&quot;, Placement.Center, true, 12);
+Core.ApplyNegative(false);
+
+Console.ReadKey();
+</code></pre>
+<p><img src="../assets/img/png/legacy/color.png" alt="color">
+<em>Demo with color</em></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>You may use the <code>ChangeBackground</code> method to change the background color as well.</p>
+</div>
+<h2 id="clear-lines">Clear lines</h2>
+<p>Based on a line index and a number, you can clean several lines of your console. This is useful if you want to clean a specific part of your console. This way, you can choose to clean only the lines you want, and not the entire console.</p>
+<pre><code class="lang-csharp">Core.ClearLine(10); // Clears the line 10
+Core.ClearMultipleLines(10, 2); // Clears the lines 10 and 11
+Core.ClearContent(); // Clears the space between the two banners, header and footer
+Core.ClearWindow(); // Clears the whole window with a continuous effect
+</code></pre>
+<h2 id="some-properties">Some properties</h2>
+<h3 id="heights">Heights</h3>
+<p>You may access to some useful properties concerning the heights of the visuals as:</p>
+<pre><code class="lang-csharp">Core.TitleHeight; // The height in the console of the title
+Core.HeaderHeight; // The height of the header
+Core.FooterHeight; // The height of the footer
+Core.ContentHeight; // The height of the content
+</code></pre>
+<h3 id="catch-updates">Catch updates</h3>
+<p>You will be able to catch if the screen has been resized with the <code>UpdateScreen</code> property. It will return a boolean indicating if the screen has been resized or not, or if the colors of the console has been updated.</p>
+<p>Then you may use the UpdateScreen method to update the screen to the new values and reload the page.</p>
+<pre><code class="lang-csharp">if (IsScreenUpdated)
+{
+    UpdateScreen();
+}
+</code></pre>
+<h3 id="selection-cursor">Selection cursor</h3>
+<p>You can also change the cursor character for every menu with the <code>SetCursor</code> method by precising the onward and backward characters.</p>
+<pre><code class="lang-csharp">Core.SetCursor('&gt;', '&lt;');
+</code></pre>
+<h3 id="own-font">Own font</h3>
+<p>You may create your own font by creating a font file following the format specified in the <a href="https://github.com/MorganKryze/ConsoleAppVisuals">source code</a> (it includes, the three .txt files and the .yaml file). Then, you can use the <code>SetFont</code> method to globally set the font of your project.</p>
+<pre><code class="lang-csharp">Core.SetFont(&quot;/path/to/your/font/folder/&quot;);
+</code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>By default, the font is only used for the title. If you want other text to use the font, you have to do it manually using the <code>WritePositionedStyledText</code> method (for an array) or a simple <code>Console.WriteLine</code> is enough for a styled string.</p>
+</div>
+<h3 id="color-panel">Color panel</h3>
+<p>Finally, you may use the <code>GetColorPanel</code> property to get the color panel of the console.</p>
+<pre><code class="lang-csharp">var foregroundColor = Core.GetColorPanel.Item1;
+</code></pre>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

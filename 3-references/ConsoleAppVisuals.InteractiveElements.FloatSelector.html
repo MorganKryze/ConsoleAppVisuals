@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class FloatSelector | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class FloatSelector | ConsoleAppVisuals ">
+      
+      <meta name="description" content="The  is an interactive element that allows the user to select a float value from a range of values.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector">
+
+
+
+  <h1 id="ConsoleAppVisuals_InteractiveElements_FloatSelector" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector" class="text-break">
+Class FloatSelector  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a>.<a class="xref" href="ConsoleAppVisuals.InteractiveElements.html">InteractiveElements</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The <a class="xref" href="ConsoleAppVisuals.InteractiveElements.FloatSelector.html">FloatSelector</a> is an interactive element that allows the user to select a float value from a range of values.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FloatSelector : InteractiveElement&lt;float&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html">InteractiveElement</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</div>
+      <div><span class="xref">FloatSelector</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1__interactionResponse">InteractiveElement&lt;float&gt;._interactionResponse</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SetInteractionResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;float&gt;.SetInteractionResponse(object, InteractionEventArgs&lt;float&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SendResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;float&gt;.SendResponse(object, InteractionEventArgs&lt;float&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponse">InteractiveElement&lt;float&gt;.GetResponse()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponseHistory">InteractiveElement&lt;float&gt;.GetResponseHistory()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsBeforeHand">InteractiveElement&lt;float&gt;.RenderOptionsBeforeHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsAfterHand">InteractiveElement&lt;float&gt;.RenderOptionsAfterHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_Type">InteractiveElement&lt;float&gt;.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_MaxNumberOfThisElement">InteractiveElement&lt;float&gt;.MaxNumberOfThisElement</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_EndOfInteractionEvent">InteractiveElement&lt;float&gt;.EndOfInteractionEvent</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_ToggleVisibility">Element.ToggleVisibility()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElement">Element.RenderElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElementSpace_System_Boolean_">Element.RenderElementSpace(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_GetRenderSpace">Element.GetRenderSpace()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Clear">Element.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Id">Element.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Visibility">Element.Visibility</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_TextAlignment">Element.TextAlignment</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Line">Element.Line</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector__ctor_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.#ctor*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector__ctor_System_String_System_Single_System_Single_System_Single_System_Single_ConsoleAppVisuals_Enums_Placement_ConsoleAppVisuals_Enums_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.#ctor(System.String,System.Single,System.Single,System.Single,System.Single,ConsoleAppVisuals.Enums.Placement,ConsoleAppVisuals.Enums.BordersType)">
+  FloatSelector(string, float, float, float, float, Placement, BordersType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="ConsoleAppVisuals.InteractiveElements.FloatSelector.html">FloatSelector</a> is an interactive element that allows the user to select a float value from a range of values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FloatSelector(string question, float min, float max, float start, float step, Placement placement = Placement.TopCenter, BordersType bordersType = BordersType.SingleStraight)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>question</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The question to ask the user.</p>
+</dd>
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The minimum value of the selector.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The maximum value of the selector.</p>
+</dd>
+    <dt><code>start</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The start value of the selector.</p>
+</dd>
+    <dt><code>step</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The step of the selector.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the selector on the console.</p>
+</dd>
+    <dt><code>bordersType</code> <a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd><p>The type of the borders of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector__ctor_System_String_System_Single_System_Single_System_Single_System_Single_ConsoleAppVisuals_Enums_Placement_ConsoleAppVisuals_Enums_BordersType__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Borders_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Borders*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Borders" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Borders">
+  Borders
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the borders manager of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Borders Borders { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Models.Borders.html">Borders</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.BordersType*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_BordersType" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.BordersType">
+  BordersType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the type of the borders of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BordersType BordersType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Height_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Height*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Height" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the height of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_LeftSelector_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.LeftSelector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_LeftSelector" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.LeftSelector">
+  LeftSelector
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the left selector of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char LeftSelector { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Max_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Max*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Max" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Max">
+  Max
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the maximum value of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Max { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Min_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Min*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Min" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Min">
+  Min
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the minimum value of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Min { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Placement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Placement" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Placement">
+  Placement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the placement of the selector on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Placement Placement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Question_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Question*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Question" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Question">
+  Question
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the question to ask the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Question { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_RightSelector_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.RightSelector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_RightSelector" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.RightSelector">
+  RightSelector
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the right selector of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char RightSelector { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Start_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Start*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Start" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Start">
+  Start
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the start value of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Start { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Step_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Step*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Step" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Step">
+  Step
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the step of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Step { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Width_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Width*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_Width" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the width of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_RenderElementActions_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.RenderElementActions*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_RenderElementActions" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.RenderElementActions">
+  RenderElementActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines the actions to perform when the element is called to be rendered on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected override void RenderElementActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateBordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateBordersType*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateBordersType_ConsoleAppVisuals_Enums_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateBordersType(ConsoleAppVisuals.Enums.BordersType)">
+  UpdateBordersType(BordersType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the type of the borders of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateBordersType(BordersType bordersType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bordersType</code> <a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd><p>The new type of the borders of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateBordersType_ConsoleAppVisuals_Enums_BordersType__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateLeftSelector_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateLeftSelector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateLeftSelector_System_Char_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateLeftSelector(System.Char)">
+  UpdateLeftSelector(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the selector of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateLeftSelector(char leftSelector = &#39;▶&#39;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>leftSelector</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>The new left selector of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateLeftSelector_System_Char__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateMax_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateMax*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateMax_System_Single_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateMax(System.Single)">
+  UpdateMax(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the maximum value of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateMax(float max)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The maximum value of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateMax_System_Single__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateMin_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateMin*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateMin_System_Single_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateMin(System.Single)">
+  UpdateMin(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the minimum value of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateMin(float min)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The minimum value of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateMin_System_Single__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdatePlacement_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdatePlacement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdatePlacement_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+  UpdatePlacement(Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the placement of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePlacement(Placement placement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the selector on the console.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdatePlacement_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateQuestion_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateQuestion*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateQuestion_System_String_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateQuestion(System.String)">
+  UpdateQuestion(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the question of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateQuestion(string question)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>question</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The question to ask the user.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateQuestion_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateRightSelector_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateRightSelector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateRightSelector_System_Char_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateRightSelector(System.Char)">
+  UpdateRightSelector(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the selector of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateRightSelector(char rightSelector = &#39;◀&#39;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rightSelector</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>The new right selector of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateRightSelector_System_Char__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateStart_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateStart*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateStart_System_Single_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateStart(System.Single)">
+  UpdateStart(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the start value of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateStart(float start)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>start</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The start value of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateStart_System_Single__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateStep_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateStep*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateStep_System_Single_" data-uid="ConsoleAppVisuals.InteractiveElements.FloatSelector.UpdateStep(System.Single)">
+  UpdateStep(float)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/FloatSelector.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the step of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateStep(float step)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>step</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The step of the selector.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_FloatSelector_UpdateStep_System_Single__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

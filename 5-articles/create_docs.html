@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Create your project documentation | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Create your project documentation | ConsoleAppVisuals ">
+      
+      <meta name="description" content="This article will guide you through the process of creating a documentation for your C# project using the tool DocFX. Documentation is key to help user understand how to use the tools you create. It is also a good way to show the quality of your work.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/5-articles/create_docs.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="create-your-project-documentation">Create your project documentation</h1>
+<!--  TODO : add: https://learn.microsoft.com/en-us/contribute/content/metadata -->
+
+<h2 id="introduction">Introduction</h2>
+<p>This article will guide you through the process of creating a documentation for your C# project using the tool <a href="https://dotnet.github.io/docfx/">DocFX</a>. Documentation is key to help user understand how to use the tools you create. It is also a good way to show the quality of your work.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Having looked at the project from the <a href="https://morgankryze.github.io/ConsoleAppVisuals/1-introduction/first_app.html">Introduction section</a></li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/6.0">.NET 6.0</a> or later</li>
+</ul>
+<h2 id="install-docfx">Install DocFX</h2>
+<p>Ensure that you have dotnet (C#) installed by running:</p>
+<pre><code class="lang-bash">dotnet --version
+</code></pre>
+<p>To install docfx, or update it, open any terminal and run the following command:</p>
+<pre><code class="lang-bash">dotnet tool update -g docfx
+</code></pre>
+<h2 id="setup-workspace">Setup workspace</h2>
+<p>As we are taking back the <code>Introduction project</code> to set the example, here is the file structure before generating the documentation:</p>
+<pre><code class="lang-bash">Example_project  &lt;-- root
+└───MyApp
+    ├───bin
+    ├───MyApp.csproj
+    └───Program.cs
+</code></pre>
+<p>Open a terminal to the root of the project(the end of your path should be <code>Example_project/</code>), and run the following command:</p>
+<pre><code class="lang-bash">docfx init -y -o  documentation
+</code></pre>
+<p>Now you should have a new folder called &quot;documentation&quot; in the root of your project. Your folder structure should look like this (files are specified with the dots):</p>
+<pre><code class="lang-bash">Example_project  &lt;-- root
+├───documentation
+│   ├───docs
+│   │   ├───getting-started.md
+│   │   ├───introduction.md
+│   │   └───toc.yml
+│   ├───docfx.json
+│   ├───index.md
+│   └───toc.yml
+└───MyApp
+    ├───bin
+    ├───MyApp.csproj
+    └───Program.cs
+</code></pre>
+<p>Here should be the default content of <code>docfx.json</code>:</p>
+<pre><code class="lang-json">{
+  &quot;metadata&quot;: [
+    {
+      &quot;src&quot;: [
+        {
+          &quot;src&quot;: &quot;../src&quot;,
+          &quot;files&quot;: [&quot;**/*.csproj&quot;]
+        }
+      ],
+      &quot;dest&quot;: &quot;api&quot;
+    }
+  ],
+  &quot;build&quot;: {
+    &quot;content&quot;: [
+      {
+        &quot;files&quot;: [&quot;**/*.{md,yml}&quot;],
+        &quot;exclude&quot;: [&quot;_site/**&quot;]
+      }
+    ],
+    &quot;resource&quot;: [
+      {
+        &quot;files&quot;: [&quot;img/**&quot;]
+      }
+    ],
+    &quot;output&quot;: &quot;_site&quot;,
+    &quot;template&quot;: [&quot;default&quot;, &quot;modern&quot;],
+    &quot;globalMetadata&quot;: {
+      &quot;_appName&quot;: &quot;&quot;,
+      &quot;_appTitle&quot;: &quot;&quot;,
+      &quot;_enableSearch&quot;: true,
+      &quot;pdf&quot;: true
+    }
+  }
+}
+</code></pre>
+<p>For a more convenient display, features and to target to the project, I recommend you to update the file to the version below. For more information, see the <a href="https://dotnet.github.io/docfx/reference/docfx-json-reference.html">official documentation</a> of the references tags.</p>
+<pre><code class="lang-json">{
+  &quot;metadata&quot;: [
+    {
+      &quot;src&quot;: [
+        {
+          &quot;src&quot;: &quot;../MyApp&quot;,
+          &quot;files&quot;: [&quot;**/*.csproj&quot;]
+        }
+      ],
+      &quot;dest&quot;: &quot;api&quot;
+    }
+  ],
+  &quot;build&quot;: {
+    &quot;content&quot;: [
+      {
+        &quot;files&quot;: [&quot;**/*.{md,yml}&quot;],
+        &quot;exclude&quot;: [&quot;_site/**&quot;]
+      }
+    ],
+    &quot;output&quot;: &quot;_site&quot;,
+    &quot;resource&quot;: [&quot;assets/**&quot;],
+    &quot;template&quot;: [&quot;default&quot;, &quot;modern&quot;],
+    &quot;keepFileLink&quot;: false,
+    &quot;disableGitFeatures&quot;: false,
+    &quot;globalMetadata&quot;: {
+      &quot;_appName&quot;: &quot;MyApp&quot;,
+      &quot;_appTitle&quot;: &quot;MyApp&quot;,
+      &quot;_appFooter&quot;: &quot;Copyright (C) 2024  Your Name&quot;,
+      &quot;_enableSearch&quot;: true,
+      &quot;_disableContribution&quot;: true,
+      &quot;pdf&quot;: true
+    }
+  }
+}
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>You may want to select the channel of the documentation you want to generate. For example, if you want to generate the documentation for the Debug or Release version only. Feel free to update <code>files</code> to Debug or Release and <code>TargetFramework</code> to your dotnet version(available in the <code>MyApp.csproj</code>).</p>
+</div>
+<pre><code class="lang-json">...
+&quot;metadata&quot;: [
+    {
+      &quot;src&quot;: [
+        {
+          &quot;src&quot;: &quot;../MyApp&quot;,
+          &quot;files&quot;: [&quot;**/bin/Debug/**.dll&quot;]
+        }
+      ],
+      &quot;dest&quot;: &quot;api&quot;,
+        &quot;properties&quot;: {
+          &quot;TargetFramework&quot;: &quot;net8.0&quot;
+        }
+    }
+  ],
+...
+</code></pre>
+<p>Do not forget to update your compiled files using the <code>dotnet build</code> command:</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_debug" role="tab" aria-controls="tabpanel_1_debug" data-tab="debug" tabindex="0" aria-selected="true">Debug</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_release" role="tab" aria-controls="tabpanel_1_release" data-tab="release" tabindex="-1">Release</a>
+</li>
+</ul>
+<section id="tabpanel_1_debug" role="tabpanel" data-tab="debug">
+
+<pre><code class="lang-bash">dotnet build -c Debug
+</code></pre>
+</section>
+<section id="tabpanel_1_release" role="tabpanel" data-tab="release" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-bash">dotnet build -c Release
+</code></pre>
+</section>
+</div>
+<h2 id="preview-your-doc">Preview your doc</h2>
+<p>Now, back on your terminal from the root, run the following command:</p>
+<pre><code class="lang-bash">docfx build documentation/docfx.json --serve
+</code></pre>
+<p>The output should end like this:</p>
+<pre><code class="lang-bash">...
+Serving &quot;.../MyApp/documentation/_site&quot; on http://localhost:8080. Press Ctrl+C to shut down.
+</code></pre>
+<p>Your documentation is now available on <a href="http://localhost:8080">http://localhost:8080</a> if you want to see the preview on localhost.</p>
+<h2 id="customize-your-doc">Customize your doc</h2>
+<h3 id="add-sections">Add sections</h3>
+<p>By default, the only sections available are <code>Docs</code> and <code>Api Documentation</code>. You may want to add more sections to your documentation. To do so, you will have to do fe steps:</p>
+<ol>
+<li>Add a new folder in the <code>documentation</code> folder. For example, <code>articles</code>.</li>
+<li>Inside <code>articles</code>, add a <code>index.md</code> file and a <code>toc.yml</code> file.</li>
+</ol>
+<p>Here is an example of the <code>index.md</code> file:</p>
+<pre><code class="lang-markdown"># Articles
+
+This is the articles section. You can add articles to explain how to use your library.
+</code></pre>
+<p>Here is an example of the <code>toc.yml</code> file:</p>
+<pre><code class="lang-yml">items:
+  - name: Articles
+    href: index.md
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>We added the <code>items</code> tag to the <code>toc.yml</code> file. This is the root of the table of contents and will remove the error <code>Incorrect Type. Expected &quot;TOC&quot;</code>.</p>
+</div>
+<ol start="3">
+<li>Now, we need to update the <code>toc.yml</code> file in the <code>documentation</code> folder to add the new section. I recommend adding a homepage mention (will be the landing page when the section is clicked). Here is an example of the <code>toc.yml</code> file:</li>
+</ol>
+<pre><code class="lang-yml">items:
+  - name: Docs
+    href: docs/
+  - name: API
+    href: api/
+  - name: Articles
+    href: articles/
+    homepage: articles/index.md
+</code></pre>
+<h3 id="add-pages">Add pages</h3>
+<p>Now that you know how to create new sections, to add pages you may just add markdown files to the sections folder, and add them to the <code>toc.yml</code> file. Here is an example of the <code>toc.yml</code> file:</p>
+<pre><code class="lang-yml">items:
+  - name: Getting Started
+    href: index.md
+  - name: How to use the library
+    href: how_to_use.md
+  - name: How to publish your work
+    href: how_to_publish.md
+</code></pre>
+<p>However you may also be able to create collapsible menu in the <code>toc.yml</code> file. Here is an example of the <code>toc.yml</code> file:</p>
+<pre><code class="lang-yml">items:
+  - name: Getting Started
+    href: index.md
+  - name: Advanced
+    items:
+      - name: How to use the library
+        href: how_to_use.md
+      - name: How to publish your work
+        href: how_to_publish.md
+</code></pre>
+<p>Or use another style and display the category name, and the pages without being collapsible:</p>
+<pre><code class="lang-yml">items:
+  - name: Getting Started
+    href: index.md
+  - name: Other pages
+    href: how_to_use.md
+    href: how_to_publish.md
+</code></pre>
+<h3 id="markdown-features-support">Markdown features support</h3>
+<p>DocFX supports a lot of markdown features. All of them are listed in the <a href="https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html">official documentation</a>.</p>
+<h3 id="logo--favicon">Logo &amp; favicon</h3>
+<p>To add a logo or favicon to your documentation, start by adding them into the assets folder (if you have not, create it in the <code>documentation</code> folder). Then, update the <code>docfx.json</code> file to add the <code>logo</code> and <code>favicon</code> tags. Here is an example:</p>
+<pre><code class="lang-json">...
+&quot;build&quot;: {
+    ...
+    &quot;resource&quot;: [&quot;assets/**&quot;],
+    &quot;globalMetadata&quot;: {
+      ...
+      &quot;_appLogoPath&quot;: &quot;assets/logo.jpg&quot;,
+      &quot;_appFaviconPath&quot;: &quot;assets/favicon.ico&quot;,
+      ...
+    }
+    ...
+  }
+</code></pre>
+<p>For both I recommend you using svg files so that the logo and favicon are scalable and will not lose quality.</p>
+<h3 id="code-documentation">Code documentation</h3>
+<p>Coding in C#, you may be aware of the use of the <code>///</code> comments to document your code. This is a good practice to help other developers understand your code. DocFX will take these comments into account to generate accurate documentation. Please refer to the <a href="https://docs.microsoft.com/dotnet/csharp/programming-guide/xmldoc/xml-documentation-comments">official documentation</a> for more information.</p>
+<p>For docfx to support these metadata, ensure that a documentation file is generated correctly. Add this line to your &quot;**.csproj&quot; file, inside the &quot;PropertyGroup&quot; tag:</p>
+<pre><code class="lang-xml">&lt;GenerateDocumentationFile&gt;true&lt;/GenerateDocumentationFile&gt;
+</code></pre>
+<p>Here is a little troubleshooting if you have an error while building the documentation:</p>
+<ul>
+<li>Check the version of your dotnet.</li>
+<li>Update docfx.</li>
+<li>Check the <code>docfx.json</code> path to your project (e.g. <code>../MyApp</code>).</li>
+<li>Check if you have well put a <code>namespace</code> in your file.</li>
+<li>Your <code>program.cs</code> will not be used in the documentation, so you will need to have at least on more class. Here is a quick example to copy/paste in a new file:</li>
+</ul>
+<pre><code class="lang-csharp">namespace MyApp;
+
+/// &lt;summary&gt;
+/// Class &lt;c&gt;Point&lt;/c&gt; models a point in a two-dimensional plane.
+/// &lt;/summary&gt;
+public class Point
+{
+    private int x;
+    private int y;
+
+    /// &lt;summary&gt;
+    /// Initializes a new instance of the &lt;c&gt;Point&lt;/c&gt; class.
+    /// &lt;/summary&gt;
+    public Point(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    /// &lt;summary&gt;
+    /// Gets the x-coordinate of the point.
+    /// &lt;/summary&gt;
+    public int X
+    {
+        get { return x; }
+    }
+
+    /// &lt;summary&gt;
+    /// Gets the y-coordinate of the point.
+    /// &lt;/summary&gt;
+    public int Y
+    {
+        get { return y; }
+    }
+
+    /// &lt;summary&gt;
+    /// Returns a string that represents the current object.
+    /// &lt;/summary&gt;
+    public override string ToString()
+    {
+        return $&quot;({x}, {y})&quot;;
+    }
+}
+</code></pre>
+<p>Now your documentation is ready to be generated in the section <code>API</code> in the generated site (you may change all sections names in your <code>toc.yml</code> file at the root of your documentation folder).</p>
+<h2 id="deploy-the-doc">Deploy the doc</h2>
+<h3 id="github-pages">GitHub Pages</h3>
+<p>GitHub provides a service called GitHub Pages that allows you to host static websites directly from your repository. We will need to setup few things before deploying the documentation.</p>
+<p>First of all, go to your repository settings, then to the &quot;Pages&quot; section. Select &quot;Deploy from branch&quot;, then select the branch &quot;gh-pages&quot; branch and the root folder. Then click on &quot;Save&quot;. If you do not have a &quot;gh-pages&quot; branch, you will have to create one (it is better if it is empty at the beginning but it is not mandatory).</p>
+<h3 id="deployment">Deployment</h3>
+<p>Then, you will have to create a new folder called <code>.github</code> at the root of your project. Inside this folder, create a new folder called <code>workflows</code>. Inside this folder, create a new file called <code>deploy_docs.yml</code>. This file will contain the workflow to generate and deploy the documentation on GitHub Pages.</p>
+<p>Here is an example of the <code>deploy_docs.yml</code> file:</p>
+<pre><code class="lang-yml">name: Deploy docs
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.x
+
+      - run: dotnet tool update -g docfx
+      - run: docfx documentation/docfx.json
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_site
+</code></pre>
+<p>Push the changes and go to the &quot;Actions&quot; section of your repository. You should see a new workflow called &quot;Deploy docs&quot;. Click on it to see the logs. If everything went well, you should see a &quot;Deployed&quot; message at the end of the logs.</p>
+<p>Now, on every push on the main branch, the documentation will be generated and deployed on GitHub Pages.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>In your github repository description, click on &quot;Edit&quot; then for the url select the &quot;GitHub Pages&quot; url option. So that your documentation is directly accessible from your repository.</p>
+</div>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://dotnet.github.io/docfx/index.html">DocFX documentation</a></li>
+<li><a href="https://tehgm.net/blog/docfx-github-actions/">Useful but not official documentation</a></li>
+<li><a href="https://docs.microsoft.com/dotnet/csharp/programming-guide/xmldoc/xml-documentation-comments">C# documentation comments</a></li>
+<li><a href="https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html">DocFX markdown support</a></li>
+</ul>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
