@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Menus management | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Menus management | ConsoleAppVisuals ">
+      
+      <meta name="description" content="In this section, you will learn how to create a menu using the ScrollingMenu element, collect &amp; manage their output and navigate in an application.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/1-introduction/menus_management.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="menus-management">Menus management</h1>
+
+<p>In this section, you will learn:</p>
+<ul>
+<li>How to create a menu using the <code>ScrollingMenu</code> element</li>
+<li>Collect &amp; manage their output</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Each subsection is independent. I recommend you to overwrite the <code>Program.cs</code> file with the code of each section to avoid any confusion.</p>
+</div>
+<h2 id="the-scrollingmenu-element">The <code>ScrollingMenu</code> element</h2>
+<p>The <code>ScrollingMenu</code> <em>interactive</em> element is an historic element of the library. Some features about it changed over time but the principle has remain the same for a year. It is used to display a list of items and allow the user to select one or several items. <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.ScrollingMenu.html">Learn more</a></p>
+<p>Here is a minimal example of how to use it:</p>
+<pre><code class="lang-csharp">Window.Open();
+
+string[] options = new string[] { &quot;Option 0&quot;, &quot;Option 1&quot;, &quot;Option 2&quot; };
+ScrollingMenu menu = new ScrollingMenu(
+    &quot;Please choose an option among those below.&quot;,
+    0,
+    Placement.TopCenter,
+    options
+);
+
+Window.AddElement(menu);
+// the ScrollingMenu is an interactive element, so we need to activate it
+Window.ActivateElement(menu);
+
+// The ScrollingMenu will return an int as a value (represents the index of the selected item)
+var responseMenu = menu.GetResponse();
+Dialog embedResponse = new Dialog(
+    new List&lt;string&gt;()
+    {
+        $&quot;The user: {responseMenu!.Status}&quot;,
+        $&quot;Index: {responseMenu!.Value}&quot;,
+        // We find the option selected by the user from the index
+        $&quot;Which corresponds to: {options[responseMenu!.Value]}&quot;
+    }
+);
+
+Window.AddElement(embedResponse);
+Window.ActivateElement(embedResponse);
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/vid/gif/menus_management/scrolling_menu.gif" alt="ScrollingMenu"></p>
+<h2 id="manage-menu-status">Manage menu status</h2>
+<p>The most practical way to manage actions according the the outcome of the <code>ScrollingMenu</code> is a switch-case statement. <a href="https://www.w3schools.com/cs/cs_switch.php">Learn more</a></p>
+<p>Here is a basic example where we display a custom message according to the user's action (pressing Enter, Escape or Delete):</p>
+<pre><code class="lang-csharp" highlight-lines="15,17,29,41">Window.Open();
+
+string[] options = new string[] { &quot;Option 0&quot;, &quot;Option 1&quot;, &quot;Option 2&quot; };
+ScrollingMenu menu = new ScrollingMenu(
+    &quot;Please choose an option among those below.&quot;,
+    0,
+    Placement.TopCenter,
+    options
+);
+
+Window.AddElement(menu);
+Window.ActivateElement(menu);
+
+var response = menu.GetResponse();
+switch (response!.Status)
+{
+    case Status.Selected:
+        Dialog embedSelected = new Dialog(
+            new List&lt;string&gt;()
+            {
+                &quot;The user pressed the Enter key&quot;,
+            }
+        );
+        Window.AddElement(embedSelected);
+        Window.ActivateElement(embedSelected);
+
+        Window.RemoveElement(embedSelected);
+        break;
+    case Status.Escaped:
+        Dialog embedEscaped = new Dialog(
+            new List&lt;string&gt;()
+            {
+                &quot;The user pressed the Escape key&quot;,
+            }
+        );
+        Window.AddElement(embedEscaped);
+        Window.ActivateElement(embedEscaped);
+
+        Window.RemoveElement(embedEscaped);
+        break;
+    case Status.Deleted:
+        Dialog embedDeleted = new Dialog(
+            new List&lt;string&gt;()
+            {
+                &quot;The user pressed the Delete key&quot;,
+            }
+        );
+        Window.AddElement(embedDeleted);
+        Window.ActivateElement(embedDeleted);
+
+        Window.RemoveElement(embedDeleted);
+        break;
+}
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/vid/gif/menus_management/status.gif" alt="Using Status"></p>
+<h2 id="manage-menu-value">Manage menu value</h2>
+<p>As we mentioned earlier, the <code>ScrollingMenu</code> returns an <code>int</code> as a value. This value represents the index of the selected item. You may use it to act differently according to the selected item. Here we decide to act differently when the user selects an item and quit the app otherwise:</p>
+<pre><code class="lang-csharp" highlight-lines="19,21,30,39">Window.Open();
+
+string[] options = new string[] { &quot;Play&quot;, &quot;Settings&quot;, &quot;Quit&quot; };
+
+ScrollingMenu menu = new ScrollingMenu(
+    &quot;Please choose an option among those below.&quot;,
+    0,
+    Placement.TopCenter,
+    options
+);
+
+Window.AddElement(menu);
+Window.ActivateElement(menu);
+
+var response = menu.GetResponse();
+switch (response!.Status)
+{
+    case Status.Selected:
+        switch (response.Value)
+        {
+            case 0:
+                Dialog play = new Dialog(
+                    new List&lt;string&gt;() { &quot;Playing...&quot; }
+                );
+                Window.AddElement(play);
+                Window.ActivateElement(play);
+
+                Window.RemoveElement(play);
+                break;
+            case 1:
+                Dialog settings = new Dialog(
+                    new List&lt;string&gt;() { &quot;Consulting the settings...&quot; }
+                );
+                Window.AddElement(settings);
+                Window.ActivateElement(settings);
+
+                Window.RemoveElement(settings);
+                break;
+            case 2:
+                // Quit the app
+                Window.Close();
+                break;
+        }
+        break;
+    case Status.Escaped:
+    case Status.Deleted:
+        // Quit the app anyway
+        Window.Close();
+        break;
+}
+Window.Close();
+</code></pre>
+<p><img src="../assets/vid/gif/menus_management/value.gif" alt="Using Value"></p>
+<p>That way, you may act differently depending on the selected item and create useful menu without too much effort.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this section, you learned how to create a menu using the <code>ScrollingMenu</code> element, collect and manage their output. Now let's jump to the final section!</p>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

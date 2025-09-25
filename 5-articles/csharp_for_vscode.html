@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>C# for Visual Studio Code | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="C# for Visual Studio Code | ConsoleAppVisuals ">
+      
+      <meta name="description" content="This guide will help you set up your development environment for C# using Visual Studio Code. It will guide you through the installation of the .NET SDK, Visual Studio Code, and the C# extension for a complete setup.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/5-articles/csharp_for_vscode.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="c-for-visual-studio-code">C# for Visual Studio Code</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>This guide will help you set up your development environment for C# using Visual Studio Code. It will guide you through the installation of the .NET SDK, Visual Studio Code, and the C# extension for a complete setup.</p>
+<h2 id="install-net-sdk">Install .NET SDK</h2>
+<p>The .NET SDK is a free, open-source development platform for building many different types of applications. It includes the C# compiler, the .NET runtime, and the ASP.NET Core runtime.</p>
+<ol>
+<li>Download the .NET SDK installer from the <a href="https://dotnet.microsoft.com/download">official website</a>.</li>
+<li>Run the installer and follow the instructions.</li>
+<li>Once installed, open a new terminal and run the following command to verify the installation:</li>
+</ol>
+<pre><code class="lang-bash">dotnet --version
+</code></pre>
+<h2 id="install-visual-studio-code">Install Visual Studio Code</h2>
+<p>Visual Studio Code is a free source code editor developed by Microsoft for Windows, Linux and macOS. It includes support for debugging, embedded Git control, syntax highlighting, intelligent code completion, snippets, and code refactoring.</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_windows" role="tab" aria-controls="tabpanel_1_windows" data-tab="windows" tabindex="0" aria-selected="true">Windows</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_macos" role="tab" aria-controls="tabpanel_1_macos" data-tab="macos" tabindex="-1">MacOS</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_linux" role="tab" aria-controls="tabpanel_1_linux" data-tab="linux" tabindex="-1">Linux</a>
+</li>
+</ul>
+<section id="tabpanel_1_windows" role="tabpanel" data-tab="windows">
+
+<ol>
+<li><p>Download the Visual Studio Code installer from the <a href="https://code.visualstudio.com/">official website</a>.</p>
+</li>
+<li><p>Run the installer and follow the instructions (Consider adding <code>Open with Code</code> action to Windows Explorer context menu).</p>
+</li>
+</ol>
+<p><img src="../assets/img/png/vscode/open_with_code.png" alt="Open With Code"></p>
+<ol start="3">
+<li><p>Once installed, open Visual Studio Code.</p>
+</li>
+<li><p>Click on <code>File</code> &gt; <code>Auto Save</code> to enable the auto-save feature.</p>
+</li>
+</ol>
+</section>
+<section id="tabpanel_1_macos" role="tabpanel" data-tab="macos" aria-hidden="true" hidden="hidden">
+
+<ol>
+<li>Download the Visual Studio Code installer from the <a href="https://code.visualstudio.com/">official website</a> or use the following command in the terminal:</li>
+</ol>
+<pre><code class="lang-bash">brew install --cask visual-studio-code
+</code></pre>
+<ol start="2">
+<li><p>(Skip if used brew) Open the downloaded file and drag the Visual Studio Code icon to the Applications folder.</p>
+</li>
+<li><p>Once installed, open Visual Studio Code.</p>
+</li>
+<li><p>Open the Command Palette (<code>Ctrl+Shift+P</code>) and type <code>shell command</code> to find the <code>Shell Command: Install 'code' command in PATH</code> command.</p>
+</li>
+<li><p>Click on <code>File</code> &gt; <code>Auto Save</code> to enable the auto-save feature.</p>
+</li>
+</ol>
+</section>
+<section id="tabpanel_1_linux" role="tabpanel" data-tab="linux" aria-hidden="true" hidden="hidden">
+
+<ol>
+<li><p>Download the Visual Studio Code installer from the <a href="https://code.visualstudio.com/download">official website</a> (available as <code>.deb</code> or <code>.rpm</code>). Or check the <a href="https://code.visualstudio.com/insiders/">Visual Studio Code Insiders</a> version for more availability.</p>
+</li>
+<li><p>Run the installer and follow the instructions.</p>
+</li>
+<li><p>Once installed, open Visual Studio Code.</p>
+</li>
+<li><p>Open the Command Palette (<code>Ctrl+Shift+P</code>) and type <code>shell command</code> to find the <code>Shell Command: Install 'code' command in PATH</code> command.</p>
+</li>
+<li><p>Click on <code>File</code> &gt; <code>Auto Save</code> to enable the auto-save feature.</p>
+</li>
+</ol>
+</section>
+</div>
+<h2 id="install-the-c-extension">Install the C# extension</h2>
+<p>The C# extension for Visual Studio Code adds support for C# to Visual Studio Code, including features such as syntax highlighting, IntelliSense (code completion), and debugging.</p>
+<p>Find them here:</p>
+<p><img src="../assets/img/jpg/vscode/extensions.jpg" alt="C# Extension"></p>
+<p>The extensions to install are:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp">C#</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=jchannon.csharpextensions">C# Extensions</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit">C# Dev Kit</a></li>
+</ul>
+<h2 id="bonus-developer-tools">Bonus: Developer Tools</h2>
+<p>The following extensions are not required but can be useful:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=csharpier.csharpier-vscode">CSharpier</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Avetis.tokyo-night">tokyo-night</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=natqe.reload">Reload</a></li>
+</ul>
+<p>Open a terminal and run the following command to install CSharpier (code formatter):</p>
+<pre><code class="lang-bash">dotnet tool install --global csharpier
+</code></pre>
+<p>Then, open KeyboardShortcuts:</p>
+<p><img src="../assets/img/jpg/vscode/shortcuts.jpg" alt="Keyboard Shortcuts"></p>
+<p>Search for <code>Format Document</code> and set the keybinding to <code>Ctrl+S</code> (or <code>Cmd+S</code> on MacOS)</p>
+<p><img src="../assets/img/jpg/vscode/keybindings.jpg" alt="Format Document"></p>
+<p>Finally, open a C# file and press <code>Ctrl+S</code> (<code>Cmd+S</code> on MacOS) to format the document.</p>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://code.visualstudio.com/Docs/languages/csharp">To go further</a></li>
+</ul>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

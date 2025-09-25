@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Data visualization | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Data visualization | ConsoleAppVisuals ">
+      
+      <meta name="description" content="In this section, you will discover data visualization with TableView, TableSelector and Matrix elements.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/1-introduction/data_viz.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="data-visualization">Data visualization</h1>
+
+<p>In this section, you will:</p>
+<ul>
+<li>Discover data visualization with <code>TableView</code>, <code>TableSelector</code> and <code>Matrix</code> elements</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Each subsection is independent. I recommend you to overwrite the <code>Program.cs</code> file with the code of each section to avoid any confusion.</p>
+</div>
+<h2 id="the-tableview-element">The <code>TableView</code> element</h2>
+<p>The <code>TableView</code> element is used to display data in a table format. It is useful when you want to display a list of items with multiple columns. <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.PassiveElements.TableView.html">Learn more</a></p>
+<p>Let's create a <code>TableView</code> element and add it to the window.</p>
+<pre><code class="lang-csharp">Window.Open();
+
+List&lt;string&gt; studentsHeaders = new List&lt;string&gt;() { &quot;id&quot;, &quot;name&quot;, &quot;major&quot;, &quot;grades&quot; };
+
+List&lt;string&gt; student1 = new List&lt;string&gt;() { &quot;01&quot;, &quot;Theo&quot;, &quot;Technology&quot;, &quot;97&quot; };
+List&lt;string&gt; student2 = new List&lt;string&gt;() { &quot;02&quot;, &quot;Paul&quot;, &quot;Mathematics&quot;, &quot;86&quot; };
+List&lt;string&gt; student3 = new List&lt;string&gt;() { &quot;03&quot;, &quot;Maxime&quot;, &quot;Physics&quot;, &quot;92&quot; };
+List&lt;string&gt; student4 = new List&lt;string&gt;() { &quot;04&quot;, &quot;Charles&quot;, &quot;Computer Science&quot;, &quot;100&quot; };
+
+List&lt;List&lt;string&gt;&gt; studentsData =
+    new List&lt;List&lt;string&gt;&gt;()
+    {
+        student1,
+        student2,
+        student3,
+        student4
+    };
+
+TableView students =
+    new TableView(
+        &quot;Students grades&quot;,
+        studentsHeaders,
+        studentsData
+    );
+
+Window.AddElement(students);
+Window.Render(students);
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/data_viz/table_view.jpg" alt="TableView"></p>
+<h2 id="the-tableselector-element">The <code>TableSelector</code> element</h2>
+<p>The <code>TableSelector</code> element is used to display data in a table format and allow the user to select a row. It is useful when you want to be able to interact with a table. You may use the <code>Up</code> and <code>Down</code> arrows or the <code>Z</code> and <code>S</code> keys to move int the selector. <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.TableSelector.html">Learn more</a></p>
+<p>Here is an example of how to use it:</p>
+<pre><code class="lang-csharp">Window.Open();
+
+List&lt;string&gt; playersHeaders = new List&lt;string&gt;() { &quot;id&quot;, &quot;first name&quot;, &quot;last name&quot;, &quot;nationality&quot;, &quot;slams&quot; };
+
+List&lt;string&gt; player1 = new List&lt;string&gt;() { &quot;01&quot;, &quot;Novak&quot;, &quot;Djokovic&quot;, &quot;Serbia&quot;, &quot;24&quot; };
+List&lt;string&gt; player2 = new List&lt;string&gt;() { &quot;02&quot;, &quot;Carlos&quot;, &quot;Alkaraz&quot;, &quot;Spain&quot;, &quot;2&quot; };
+List&lt;string&gt; player3 = new List&lt;string&gt;() { &quot;03&quot;, &quot;Roger&quot;, &quot;Federer&quot;, &quot;Switzerland&quot;, &quot;21&quot; };
+List&lt;string&gt; player4 = new List&lt;string&gt;() { &quot;04&quot;, &quot;Rafael&quot;, &quot;Nadal&quot;, &quot;Spain&quot;, &quot;23&quot; };
+List&lt;string&gt; player5 = new List&lt;string&gt;() { &quot;05&quot;, &quot;Andy&quot;, &quot;Murray&quot;, &quot;England&quot;, &quot;3&quot; };
+List&lt;string&gt; player6 = new List&lt;string&gt;() { &quot;06&quot;, &quot;Daniil&quot;, &quot;Medvedev&quot;, &quot;Russia&quot;, &quot;1&quot; };
+List&lt;string&gt; player7 = new List&lt;string&gt;() { &quot;07&quot;, &quot;Stan&quot;, &quot;Wawrinka&quot;, &quot;Switzerland&quot;, &quot;2&quot; };
+
+List&lt;List&lt;string&gt;&gt; playersData =
+    new List&lt;List&lt;string&gt;&gt; ()
+    {
+        player1,
+        player2,
+        player3,
+        player4,
+        player5,
+        player6,
+        player7
+    };
+
+TableSelector players =
+    new TableSelector(
+        &quot;Great tennis players&quot;,
+         playersHeaders,
+         playersData
+    );
+
+Window.AddElement(players);
+// Contrary to the TableView, the TableSelector is interactive,
+// so we do not have to stop the execution to see it, but to activate it
+Window.ActivateElement(players);
+</code></pre>
+<p><img src="../assets/vid/gif/data_viz/table_selector.gif" alt="TableSelector"></p>
+<p>Now let's collect the user interaction response by adding the following code:</p>
+<pre><code class="lang-csharp">var response = players.GetResponse();
+
+Dialog playersEmbedResponse =
+    new Dialog(
+        new List&lt;string&gt;()
+        {
+            &quot;Status: &quot; + response!.Status,
+            &quot;You selected the player &quot;
+                + playersData[response!.Value][2]
+                + &quot;!&quot;
+        }
+    );
+
+Window.AddElement(playersEmbedResponse);
+Window.ActivateElement(playersEmbedResponse);
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/vid/gif/data_viz/embed.gif" alt="Embed response"></p>
+<h2 id="the-matrix-element">The <code>Matrix</code> element</h2>
+<p>The <code>Matrix</code> element is used to display data in a matrix format. <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.PassiveElements.Matrix-1.html">Learn more</a></p>
+<pre><code class="lang-csharp">Window.Open();
+
+List&lt;int?&gt; firstRow = new List&lt;int?&gt;() { 1, null, 2, 7, 9, 3 };
+List&lt;int?&gt; secondRow = new List&lt;int?&gt;() { 4, 5, 6, 8, null, 2 };
+List&lt;int?&gt; thirdRow = new List&lt;int?&gt;() { 7, 8, null, 3, 4, 5 };
+List&lt;int?&gt; fourthRow = new List&lt;int?&gt;() { null, 2, 3, 4, 5, 6 };
+
+List&lt;List&lt;int?&gt;&gt; data =
+    new List&lt;List&lt;int?&gt;&gt;() {
+    firstRow,
+    secondRow,
+    thirdRow,
+    fourthRow
+};
+
+Matrix&lt;int?&gt; matrix = new Matrix&lt;int?&gt;(data);
+
+Window.AddElement(matrix);
+
+Window.Render(matrix);
+Window.Freeze();
+
+Window.Close();
+</code></pre>
+<p><img src="../assets/img/jpg/data_viz/matrix.jpg" alt="Matrix"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, you learned how to use the <code>TableView</code>, <code>TableSelector</code> and <code>Matrix</code> elements. You are now ready to start the menus management tutorial.</p>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

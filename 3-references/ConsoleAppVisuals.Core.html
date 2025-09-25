@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Core | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Core | ConsoleAppVisuals ">
+      
+      <meta name="description" content="The  class is a collection of low-level methods responsible of all the interactions between the library and the console (e.g. changing colors, writing text, etc.).">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.Core">
+
+
+
+  <h1 id="ConsoleAppVisuals_Core" data-uid="ConsoleAppVisuals.Core" class="text-break">
+Class Core  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The <a class="xref" href="ConsoleAppVisuals.Core.html">Core</a> class is a collection of low-level methods responsible of all the interactions
+between the library and the console (e.g. changing colors, writing text, etc.).</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Core</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Core</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_Core_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="ConsoleAppVisuals_Core_NEGATIVE_ANCHOR" data-uid="ConsoleAppVisuals.Core.NEGATIVE_ANCHOR">
+  NEGATIVE_ANCHOR
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines the negative anchor to put inside a string to be recognized as negative.</p>
+<p>The following line will put " negative " in negative on the screen and not print the "/neg" anchors.</p>
+<pre><code class="lang-csharp">string str = "This is a /neg negative /neg string";</code></pre>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string NEGATIVE_ANCHOR = &quot;/neg&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_Core_ColorPanel_" data-uid="ConsoleAppVisuals.Core.ColorPanel*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_ColorPanel" data-uid="ConsoleAppVisuals.Core.ColorPanel">
+  ColorPanel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current color panel used in the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static (ConsoleColor, ConsoleColor) ColorPanel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolecolor">ConsoleColor</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolecolor">ConsoleColor</a>)</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_InitialColorPanel_" data-uid="ConsoleAppVisuals.Core.InitialColorPanel*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_InitialColorPanel" data-uid="ConsoleAppVisuals.Core.InitialColorPanel">
+  InitialColorPanel
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the initial color panel of the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static (ConsoleColor, ConsoleColor) InitialColorPanel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolecolor">ConsoleColor</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolecolor">ConsoleColor</a>)</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_Core_ApplyNegative_" data-uid="ConsoleAppVisuals.Core.ApplyNegative*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_ApplyNegative_System_Boolean_" data-uid="ConsoleAppVisuals.Core.ApplyNegative(System.Boolean)">
+  ApplyNegative(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Switches the font and background colors of the console in order to apply
+a negative to highlight the text.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void ApplyNegative(bool negative = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>negative</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the text is highlighted.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_ApplyNegative_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_BannerToString_" data-uid="ConsoleAppVisuals.Core.BannerToString*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_BannerToString_System_ValueTuple_System_String_System_String_System_String__" data-uid="ConsoleAppVisuals.Core.BannerToString(System.ValueTuple{System.String,System.String,System.String})">
+  BannerToString((string, string, string))
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts a banner tuple into a string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static string BannerToString(this (string, string, string) banner)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>banner</code> (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>)</dt>
+    <dd><p>The banner tuple.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Converts the banner to a string.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_BannerToString_System_ValueTuple_System_String_System_String_System_String___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_ClearMultiplePositionedLines_" data-uid="ConsoleAppVisuals.Core.ClearMultiplePositionedLines*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_ClearMultiplePositionedLines_ConsoleAppVisuals_Enums_Placement_System_Int32_System_String___" data-uid="ConsoleAppVisuals.Core.ClearMultiplePositionedLines(ConsoleAppVisuals.Enums.Placement,System.Int32,System.String[])">
+  ClearMultiplePositionedLines(Placement, int, params string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears a multiple lines in the console given a certain starting line.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void ClearMultiplePositionedLines(Placement placement, int line, params string[] text)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the paragraph.</p>
+</dd>
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The height of the paragraph.</p>
+</dd>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The lines of the paragraph.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_ClearMultiplePositionedLines_ConsoleAppVisuals_Enums_Placement_System_Int32_System_String____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_GetRandomColor_" data-uid="ConsoleAppVisuals.Core.GetRandomColor*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_GetRandomColor" data-uid="ConsoleAppVisuals.Core.GetRandomColor">
+  GetRandomColor()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a random color from a list of predefined colors (the default ones).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConsoleColor GetRandomColor()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolecolor">ConsoleColor</a></dt>
+    <dd><p>A random color.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_GetRandomColor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_GetRangeAndRemoveNegativeAnchors_" data-uid="ConsoleAppVisuals.Core.GetRangeAndRemoveNegativeAnchors*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_GetRangeAndRemoveNegativeAnchors_System_String_" data-uid="ConsoleAppVisuals.Core.GetRangeAndRemoveNegativeAnchors(System.String)">
+  GetRangeAndRemoveNegativeAnchors(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the range of a negative sequence in a string and remove the negative anchors.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static (string, (int, int)?) GetRangeAndRemoveNegativeAnchors(this string str)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string to check.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>)?)</dt>
+    <dd><p>The string without the negative anchors and the range of the negative sequence.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_GetRangeAndRemoveNegativeAnchors_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_InsertString_" data-uid="ConsoleAppVisuals.Core.InsertString*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_InsertString_System_String_System_String_ConsoleAppVisuals_Enums_TextAlignment_" data-uid="ConsoleAppVisuals.Core.InsertString(System.String,System.String,ConsoleAppVisuals.Enums.TextAlignment)">
+  InsertString(string, string, TextAlignment)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Inserts a specified string into another string, at a specified position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string InsertString(this string inserted, string toInsert, TextAlignment align = TextAlignment.Center)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inserted</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string that receives the other.</p>
+</dd>
+    <dt><code>toInsert</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string to insert.</p>
+</dd>
+    <dt><code>align</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The alignment of the string to insert.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The final string after computing.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_InsertString_System_String_System_String_ConsoleAppVisuals_Enums_TextAlignment__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_IsScreenUpdated_" data-uid="ConsoleAppVisuals.Core.IsScreenUpdated*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_IsScreenUpdated" data-uid="ConsoleAppVisuals.Core.IsScreenUpdated">
+  IsScreenUpdated()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks if the screen has been updated (colors or dimensions have changed)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static bool IsScreenUpdated()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the screen has been updated, false otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_IsScreenUpdated_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_LoadSavedColorPanel_" data-uid="ConsoleAppVisuals.Core.LoadSavedColorPanel*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_LoadSavedColorPanel" data-uid="ConsoleAppVisuals.Core.LoadSavedColorPanel">
+  LoadSavedColorPanel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loads the saved color panel (consider saving it beforehand)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void LoadSavedColorPanel()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_LoadSavedColorPanel_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_LoadTerminalColorPanel_" data-uid="ConsoleAppVisuals.Core.LoadTerminalColorPanel*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_LoadTerminalColorPanel" data-uid="ConsoleAppVisuals.Core.LoadTerminalColorPanel">
+  LoadTerminalColorPanel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loads the terminal color panel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void LoadTerminalColorPanel()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_LoadTerminalColorPanel_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_ResizeString_" data-uid="ConsoleAppVisuals.Core.ResizeString*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_ResizeString_System_String_System_Int32_ConsoleAppVisuals_Enums_TextAlignment_System_Boolean_" data-uid="ConsoleAppVisuals.Core.ResizeString(System.String,System.Int32,ConsoleAppVisuals.Enums.TextAlignment,System.Boolean)">
+  ResizeString(string, int, TextAlignment, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds a new string with a specific size and a specific placement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ResizeString(this string str, int size, TextAlignment align = TextAlignment.Center, bool truncate = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string to build.</p>
+</dd>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The size of the string.</p>
+</dd>
+    <dt><code>align</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The alignment of the string.</p>
+</dd>
+    <dt><code>truncate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the string is truncated if it is too long.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The built string.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_ResizeString_System_String_System_Int32_ConsoleAppVisuals_Enums_TextAlignment_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_RestoreColorPanel_" data-uid="ConsoleAppVisuals.Core.RestoreColorPanel*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_RestoreColorPanel" data-uid="ConsoleAppVisuals.Core.RestoreColorPanel">
+  RestoreColorPanel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Restores the default colors of the console with the initial color panel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void RestoreColorPanel()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_RestoreColorPanel_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_SaveColorPanel_" data-uid="ConsoleAppVisuals.Core.SaveColorPanel*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_SaveColorPanel" data-uid="ConsoleAppVisuals.Core.SaveColorPanel">
+  SaveColorPanel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Saves the current color panel in a variable.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void SaveColorPanel()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_SaveColorPanel_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_SetBackgroundColor_" data-uid="ConsoleAppVisuals.Core.SetBackgroundColor*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_SetBackgroundColor_System_ConsoleColor_" data-uid="ConsoleAppVisuals.Core.SetBackgroundColor(System.ConsoleColor)">
+  SetBackgroundColor(ConsoleColor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes the background color of the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void SetBackgroundColor(ConsoleColor color)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>color</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolecolor">ConsoleColor</a></dt>
+    <dd><p>The new background color.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_SetBackgroundColor_System_ConsoleColor__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_SetConsoleColors_" data-uid="ConsoleAppVisuals.Core.SetConsoleColors*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_SetConsoleColors" data-uid="ConsoleAppVisuals.Core.SetConsoleColors">
+  SetConsoleColors()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the console colors to the Core variables associated.
+It does not change the actual colors of the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void SetConsoleColors()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_SetConsoleColors_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_SetConsoleDimensions_" data-uid="ConsoleAppVisuals.Core.SetConsoleDimensions*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_SetConsoleDimensions" data-uid="ConsoleAppVisuals.Core.SetConsoleDimensions">
+  SetConsoleDimensions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the dimensions of the console to the Core variables associated.
+It does not change the actual dimensions of the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void SetConsoleDimensions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_SetConsoleDimensions_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_SetForegroundColor_" data-uid="ConsoleAppVisuals.Core.SetForegroundColor*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_SetForegroundColor_System_ConsoleColor_" data-uid="ConsoleAppVisuals.Core.SetForegroundColor(System.ConsoleColor)">
+  SetForegroundColor(ConsoleColor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Changes the foreground color of the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void SetForegroundColor(ConsoleColor color)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>color</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.consolecolor">ConsoleColor</a></dt>
+    <dd><p>The new color.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_SetForegroundColor_System_ConsoleColor__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_ToPlacement_" data-uid="ConsoleAppVisuals.Core.ToPlacement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_ToPlacement_ConsoleAppVisuals_Enums_TextAlignment_" data-uid="ConsoleAppVisuals.Core.ToPlacement(ConsoleAppVisuals.Enums.TextAlignment)">
+  ToPlacement(TextAlignment)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts a TextAlignment into a Placement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Placement ToPlacement(this TextAlignment align)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>align</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The alignment to convert.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The converted alignment.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_ToPlacement_ConsoleAppVisuals_Enums_TextAlignment__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when the alignment is not valid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Core_ToTextAlignment_" data-uid="ConsoleAppVisuals.Core.ToTextAlignment*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_ToTextAlignment_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.Core.ToTextAlignment(ConsoleAppVisuals.Enums.Placement)">
+  ToTextAlignment(Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts a Placement into a TextAlignment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TextAlignment ToTextAlignment(this Placement placement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement to convert.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The converted placement.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_ToTextAlignment_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when the placement is not valid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Core_WriteContinuousString_" data-uid="ConsoleAppVisuals.Core.WriteContinuousString*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_WriteContinuousString_System_String_System_Nullable_System_Int32__System_Boolean_System_Int32_System_Int32_System_Nullable_System_Int32__ConsoleAppVisuals_Enums_TextAlignment_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.Core.WriteContinuousString(System.String,System.Nullable{System.Int32},System.Boolean,System.Int32,System.Int32,System.Nullable{System.Int32},ConsoleAppVisuals.Enums.TextAlignment,ConsoleAppVisuals.Enums.Placement)">
+  WriteContinuousString(string, int?, bool, int, int, int?, TextAlignment, Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a string continuously in the console.
+The string is written letter by letter on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void WriteContinuousString(string str, int? line, bool negative = false, int printTime = 2000, int additionalTime = 1000, int? length = null, TextAlignment align = TextAlignment.Center, Placement placement = Placement.TopCenter)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string to write.</p>
+</dd>
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The line where the string is written in the console. If null, will be written where the cursor is.</p>
+</dd>
+    <dt><code>negative</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the text is highlighted.</p>
+</dd>
+    <dt><code>printTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The total time to write the string in ms.</p>
+</dd>
+    <dt><code>additionalTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The additional time to wait after the string is written in ms.</p>
+</dd>
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The length of the string. If null, the length is the window width.</p>
+</dd>
+    <dt><code>align</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The alignment of the string.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the string.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_WriteContinuousString_System_String_System_Nullable_System_Int32__System_Boolean_System_Int32_System_Int32_System_Nullable_System_Int32__ConsoleAppVisuals_Enums_TextAlignment_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_WriteDebugMessage_" data-uid="ConsoleAppVisuals.Core.WriteDebugMessage*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_WriteDebugMessage_ConsoleAppVisuals_Enums_Placement_System_String___" data-uid="ConsoleAppVisuals.Core.WriteDebugMessage(ConsoleAppVisuals.Enums.Placement,System.String[])">
+  WriteDebugMessage(Placement, params string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>[Debugging purposes] It overwrites any text in the console at a specified placement to display a debug message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void WriteDebugMessage(Placement placement = Placement.TopRight, params string[] lines)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the debug message.</p>
+</dd>
+    <dt><code>lines</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The text to display.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_WriteDebugMessage_ConsoleAppVisuals_Enums_Placement_System_String____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_WriteMultiplePositionedLines_" data-uid="ConsoleAppVisuals.Core.WriteMultiplePositionedLines*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_WriteMultiplePositionedLines_System_Boolean_ConsoleAppVisuals_Enums_TextAlignment_ConsoleAppVisuals_Enums_Placement_System_Boolean_System_Nullable_System_Int32__System_String___" data-uid="ConsoleAppVisuals.Core.WriteMultiplePositionedLines(System.Boolean,ConsoleAppVisuals.Enums.TextAlignment,ConsoleAppVisuals.Enums.Placement,System.Boolean,System.Nullable{System.Int32},System.String[])">
+  WriteMultiplePositionedLines(bool, TextAlignment, Placement, bool, int?, params string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes multiple lines in the console given a certain placement and line.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void WriteMultiplePositionedLines(bool equalizeLengths = true, TextAlignment align = TextAlignment.Center, Placement placement = Placement.TopCenter, bool negative = false, int? line = null, params string[] text)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>equalizeLengths</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether or not the lines of the paragraph should be equalized to the same length.</p>
+</dd>
+    <dt><code>align</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The alignment of the paragraph.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the paragraph.</p>
+</dd>
+    <dt><code>negative</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the paragraph is printed in the negative colors.</p>
+</dd>
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The height of the paragraph.</p>
+</dd>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The lines of the paragraph.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_WriteMultiplePositionedLines_System_Boolean_ConsoleAppVisuals_Enums_TextAlignment_ConsoleAppVisuals_Enums_Placement_System_Boolean_System_Nullable_System_Int32__System_String____remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_WritePositionedString_" data-uid="ConsoleAppVisuals.Core.WritePositionedString*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_WritePositionedString_System_String_ConsoleAppVisuals_Enums_Placement_System_Boolean_System_Nullable_System_Int32__System_Boolean_" data-uid="ConsoleAppVisuals.Core.WritePositionedString(System.String,ConsoleAppVisuals.Enums.Placement,System.Boolean,System.Nullable{System.Int32},System.Boolean)">
+  WritePositionedString(string, Placement, bool, int?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a string in the console given a certain placement and line.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void WritePositionedString(string str, Placement placement = Placement.TopCenter, bool negative = false, int? line = null, bool writeLine = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>str</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The string to write.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the string in the console.</p>
+</dd>
+    <dt><code>negative</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the text is highlighted.</p>
+</dd>
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The line where the string is written in the console. If null, will be written where the cursor is.</p>
+</dd>
+    <dt><code>writeLine</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the string is written with a line break.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_WritePositionedString_System_String_ConsoleAppVisuals_Enums_Placement_System_Boolean_System_Nullable_System_Int32__System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Core_WritePositionedStyledText_" data-uid="ConsoleAppVisuals.Core.WritePositionedStyledText*"></a>
+
+  <h3 id="ConsoleAppVisuals_Core_WritePositionedStyledText_System_String___System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__ConsoleAppVisuals_Enums_TextAlignment_System_Boolean_" data-uid="ConsoleAppVisuals.Core.WritePositionedStyledText(System.String[],System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},ConsoleAppVisuals.Enums.TextAlignment,System.Boolean)">
+  WritePositionedStyledText(string[]?, int?, int?, int?, TextAlignment, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/Core.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a styled text in the console.
+The height will depend on the font used. <a class="xref" href="ConsoleAppVisuals.Enums.Font.html">Font</a> enum for details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public static void WritePositionedStyledText(string[]? text = null, int? line = null, int? width = null, int? margin = null, TextAlignment align = TextAlignment.Center, bool negative = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The styled string to write.</p>
+</dd>
+    <dt><code>line</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The line where the string is written in the console. If null, will be written from the ContentHeight.</p>
+</dd>
+    <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The width of the string. If null, the width is the window width.</p>
+</dd>
+    <dt><code>margin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd><p>The upper and lower margin.</p>
+</dd>
+    <dt><code>align</code> <a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd><p>The alignment of the string.</p>
+</dd>
+    <dt><code>negative</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If true, the text is highlighted.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Core_WritePositionedStyledText_System_String___System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Int32__ConsoleAppVisuals_Enums_TextAlignment_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

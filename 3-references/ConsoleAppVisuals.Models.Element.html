@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Element | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Element | ConsoleAppVisuals ">
+      
+      <meta name="description" content="The  class is an abstract class that represents an element that can be rendered on the console.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.Models.Element">
+
+
+
+  <h1 id="ConsoleAppVisuals_Models_Element" data-uid="ConsoleAppVisuals.Models.Element" class="text-break">
+Class Element  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a>.<a class="xref" href="ConsoleAppVisuals.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The <a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a> class is an abstract class that represents an element that can be rendered on the console.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class Element</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Element</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.AnimatedElement.html">AnimatedElement</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html">InteractiveElement&lt;TResponse&gt;</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.PassiveElement.html">PassiveElement</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_Models_Element_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ConsoleAppVisuals_Models_Element__ctor_" data-uid="ConsoleAppVisuals.Models.Element.#ctor*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element__ctor" data-uid="ConsoleAppVisuals.Models.Element.#ctor">
+  Element()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Element()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Height_" data-uid="ConsoleAppVisuals.Models.Element.Height*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Height" data-uid="ConsoleAppVisuals.Models.Element.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the height of the element, the vertical number of lines taken in the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_Height_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Id_" data-uid="ConsoleAppVisuals.Models.Element.Id*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Id" data-uid="ConsoleAppVisuals.Models.Element.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the id number of the element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Id { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_Id_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is sealed. The ID of an element is automatically generated and managed by the <a class="xref" href="ConsoleAppVisuals.Window.html">Window</a> class.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Line_" data-uid="ConsoleAppVisuals.Models.Element.Line*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Line" data-uid="ConsoleAppVisuals.Models.Element.Line">
+  Line
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a line to place the element in the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int Line { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_Line_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>ATTENTION: This property is not marked as virtual. Override this property only to give it a constant value.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>Thrown when the placement of the element is invalid.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_MaxNumberOfThisElement_" data-uid="ConsoleAppVisuals.Models.Element.MaxNumberOfThisElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_MaxNumberOfThisElement" data-uid="ConsoleAppVisuals.Models.Element.MaxNumberOfThisElement">
+  MaxNumberOfThisElement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the maximum number of this element that can be drawn on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int MaxNumberOfThisElement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_MaxNumberOfThisElement_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Placement_" data-uid="ConsoleAppVisuals.Models.Element.Placement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Placement" data-uid="ConsoleAppVisuals.Models.Element.Placement">
+  Placement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the placement of the element int the console. See the <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Placement">Placement</a> enum to know the possible values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Placement Placement { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_Placement_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_TextAlignment_" data-uid="ConsoleAppVisuals.Models.Element.TextAlignment*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_TextAlignment" data-uid="ConsoleAppVisuals.Models.Element.TextAlignment">
+  TextAlignment
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the text alignment of the text of the element. See the <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_TextAlignment">TextAlignment</a> enum to know the possible values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TextAlignment TextAlignment { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.TextAlignment.html">TextAlignment</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_TextAlignment_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Type_" data-uid="ConsoleAppVisuals.Models.Element.Type*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Type" data-uid="ConsoleAppVisuals.Models.Element.Type">
+  Type
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the type of the element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public virtual ElementType Type { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.ElementType.html">ElementType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Visibility_" data-uid="ConsoleAppVisuals.Models.Element.Visibility*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Visibility" data-uid="ConsoleAppVisuals.Models.Element.Visibility">
+  Visibility
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the visibility of the element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Visibility { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_Visibility_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is sealed. The visibility of an element is managed by the <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_ToggleVisibility">ToggleVisibility()</a> method.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Width_" data-uid="ConsoleAppVisuals.Models.Element.Width*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Width" data-uid="ConsoleAppVisuals.Models.Element.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the width of the element, the horizontal number of lines taken in the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_Width_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This property is marked as virtual. It is recommended to override this property in derived classes to make it more specific.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_Models_Element_Clear_" data-uid="ConsoleAppVisuals.Models.Element.Clear*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_Clear" data-uid="ConsoleAppVisuals.Models.Element.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears the space taken by the element on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_Clear_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_GetRenderSpace_" data-uid="ConsoleAppVisuals.Models.Element.GetRenderSpace*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_GetRenderSpace" data-uid="ConsoleAppVisuals.Models.Element.GetRenderSpace">
+  GetRenderSpace()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the space taken by the element on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected virtual string[] GetRenderSpace()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The space taken by the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_GetRenderSpace_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_RenderElement_" data-uid="ConsoleAppVisuals.Models.Element.RenderElement*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_RenderElement" data-uid="ConsoleAppVisuals.Models.Element.RenderElement">
+  RenderElement()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Renders the element on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public void RenderElement()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_RenderElement_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_RenderElementActions_" data-uid="ConsoleAppVisuals.Models.Element.RenderElementActions*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_RenderElementActions" data-uid="ConsoleAppVisuals.Models.Element.RenderElementActions">
+  RenderElementActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines the actions to perform when the element is called to be rendered on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected virtual void RenderElementActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_RenderElementActions_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is marked as virtual. It is recommended to override this method in derived classes to make it more specific.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_RenderElementSpace_" data-uid="ConsoleAppVisuals.Models.Element.RenderElementSpace*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_RenderElementSpace_System_Boolean_" data-uid="ConsoleAppVisuals.Models.Element.RenderElementSpace(System.Boolean)">
+  RenderElementSpace(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Renders the space taken by the element on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+public void RenderElementSpace(bool ignoreVisibility = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ignoreVisibility</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether to ignore the visibility of the element or not.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_RenderElementSpace_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_RenderOptionsAfterHand_" data-uid="ConsoleAppVisuals.Models.Element.RenderOptionsAfterHand*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_RenderOptionsAfterHand" data-uid="ConsoleAppVisuals.Models.Element.RenderOptionsAfterHand">
+  RenderOptionsAfterHand()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines actions to perform after rendering the element on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected virtual void RenderOptionsAfterHand()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_RenderOptionsBeforeHand_" data-uid="ConsoleAppVisuals.Models.Element.RenderOptionsBeforeHand*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_RenderOptionsBeforeHand" data-uid="ConsoleAppVisuals.Models.Element.RenderOptionsBeforeHand">
+  RenderOptionsBeforeHand()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines actions to perform before rendering the element on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected virtual void RenderOptionsBeforeHand()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_Models_Element_ToggleVisibility_" data-uid="ConsoleAppVisuals.Models.Element.ToggleVisibility*"></a>
+
+  <h3 id="ConsoleAppVisuals_Models_Element_ToggleVisibility" data-uid="ConsoleAppVisuals.Models.Element.ToggleVisibility">
+  ToggleVisibility()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/models/Element.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Toggles the visibility of the element. If the maximum number of this element is reached, an exception is thrown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToggleVisibility()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_Models_Element_ToggleVisibility_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is effectively sealed. The only way to change the visibility of an element is to use this method.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.invalidoperationexception">InvalidOperationException</a></dt>
+    <dd><p>Thrown when the maximum number of this element is reached.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

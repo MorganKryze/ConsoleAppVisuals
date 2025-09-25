@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Basic concepts | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Basic concepts | ConsoleAppVisuals ">
+      
+      <meta name="description" content="This section is made for you to understand what is ConsoleAppVisuals, its purpose and use flow. We will guide you later on into the creation of your first project until the advanced use of the library with data visualization and menus management.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/1-introduction/basic_concepts.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="basic-concepts">Basic concepts</h1>
+
+<p>This section is made for you to understand what is <strong>ConsoleAppVisuals</strong>, its purpose and use flow. We will also guide you into the creation of your first project until the advanced use of the library with data visualization and menus management.</p>
+<h2 id="what-is-consoleappvisuals">What is ConsoleAppVisuals?</h2>
+<p>The ambition of ConsoleAppVisuals is to provide the best compromise between an <strong>easy-to-use library</strong> and a <strong>complex tool</strong> to create console applications with visual elements. The library is designed to be simple to use and to provide a wide range of visual elements to make your console application more stylish and useful.</p>
+<h2 id="working-principle">Working principle</h2>
+<p>It is relies on the concept of &quot;visuals&quot; which are elements that can be displayed in the console. There are two types of visuals:</p>
+<ul>
+<li><strong>Passive visuals</strong>: elements that do not provide any interaction, you may display several from the same type at the same time</li>
+<li><strong>Interactive visuals</strong>: elements that provide an explicit interaction and create a response that can be collected, you may display only one at a time</li>
+<li><strong>Animated visuals</strong>: in-between passive and interactive visuals, they provide an interaction to stop them but do not require a response, you may display only one at a time.</li>
+</ul>
+<p>These visuals are stored in <code>Window</code> as a list. From this class, you can display, add, remove, or update the visuals. Each one of the visual element has its rendering method that will be called from the <code>Window</code> class.</p>
+<p>The basics of the interaction between the library and the console are defined in the <code>Core</code> class.</p>
+<pre><code class="lang-mermaid">flowchart LR
+    A[Visual elements] --&gt;|Stored in| B[Element List]
+    B --&gt;|From| D[Window Class]
+    D --&gt;|Rendered using| E[Core Class]
+    E --&gt;|Displayed on| F[Console]
+</code></pre>
+<h2 id="use-flow">Use flow</h2>
+<p>When you want to create an element and display it, here is the basic visualization of the use flow of the library:</p>
+<pre><code class="lang-mermaid">sequenceDiagram
+    participant User
+    participant Element
+    participant Window
+    User-&gt;&gt;Element: Creates an Element
+    User-&gt;&gt;Window: Adds the Element to the Window
+    User-&gt;&gt;Window: Tells the Window to Render the Element
+    Window-&gt;&gt;Element: Calls the Element's Render Function
+</code></pre>
+<p>In C# terms, the use flow can be interpreted like this:</p>
+<ol>
+<li>Creating an element:</li>
+</ol>
+<pre><code class="lang-csharp">Title exampleTitle = new Title(&quot;Hello world!&quot;);
+</code></pre>
+<ol start="2">
+<li>Adding it to the <code>Window</code>:</li>
+</ol>
+<pre><code class="lang-csharp">Window.AddElement(exampleTitle);
+</code></pre>
+<ol start="3">
+<li>Rendering the element:</li>
+</ol>
+<pre><code class="lang-csharp">Window.Render(exampleTitle);
+</code></pre>
+<h2 id="first-steps">First steps</h2>
+<p>Now that you have the basic concepts, let's dive into this guided path to learn how to use the library:</p>
+<ol>
+<li><a href="/ConsoleAppVisuals/1-introduction/first_app.html">Create a simple console application</a></li>
+<li><a href="/ConsoleAppVisuals/1-introduction/elements_options.html">Explore element options</a></li>
+<li><a href="/ConsoleAppVisuals/1-introduction/data_viz.html">Discover data visualization</a></li>
+<li><a href="/ConsoleAppVisuals/1-introduction/menus_management.html">Manage multiple menus</a></li>
+</ol>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

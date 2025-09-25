@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Prompt | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Prompt | ConsoleAppVisuals ">
+      
+      <meta name="description" content="The  is an interactive element that allows the user to input a string response.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="ConsoleAppVisuals.InteractiveElements.Prompt">
+
+
+
+  <h1 id="ConsoleAppVisuals_InteractiveElements_Prompt" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt" class="text-break">
+Class Prompt  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="ConsoleAppVisuals.html">ConsoleAppVisuals</a>.<a class="xref" href="ConsoleAppVisuals.InteractiveElements.html">InteractiveElements</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>ConsoleAppVisuals.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The <a class="xref" href="ConsoleAppVisuals.InteractiveElements.Prompt.html">Prompt</a> is an interactive element that allows the user to input a string response.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Prompt : InteractiveElement&lt;string&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.Element.html">Element</a></div>
+      <div><a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html">InteractiveElement</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</div>
+      <div><span class="xref">Prompt</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1__interactionResponse">InteractiveElement&lt;string&gt;._interactionResponse</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SetInteractionResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;string&gt;.SetInteractionResponse(object, InteractionEventArgs&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_SendResponse_System_Object_ConsoleAppVisuals_Models_InteractionEventArgs__0__">InteractiveElement&lt;string&gt;.SendResponse(object, InteractionEventArgs&lt;string&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponse">InteractiveElement&lt;string&gt;.GetResponse()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_GetResponseHistory">InteractiveElement&lt;string&gt;.GetResponseHistory()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsBeforeHand">InteractiveElement&lt;string&gt;.RenderOptionsBeforeHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_RenderOptionsAfterHand">InteractiveElement&lt;string&gt;.RenderOptionsAfterHand()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_Type">InteractiveElement&lt;string&gt;.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_MaxNumberOfThisElement">InteractiveElement&lt;string&gt;.MaxNumberOfThisElement</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.InteractiveElement-1.html#ConsoleAppVisuals_Models_InteractiveElement_1_EndOfInteractionEvent">InteractiveElement&lt;string&gt;.EndOfInteractionEvent</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_ToggleVisibility">Element.ToggleVisibility()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElement">Element.RenderElement()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_RenderElementSpace_System_Boolean_">Element.RenderElementSpace(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_GetRenderSpace">Element.GetRenderSpace()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Clear">Element.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Id">Element.Id</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Visibility">Element.Visibility</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_TextAlignment">Element.TextAlignment</a>
+    </div>
+    <div>
+      <a class="xref" href="ConsoleAppVisuals.Models.Element.html#ConsoleAppVisuals_Models_Element_Line">Element.Line</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="ConsoleAppVisuals_InteractiveElements_Prompt_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt__ctor_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.#ctor*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt__ctor_System_String_System_String_ConsoleAppVisuals_Enums_Placement_System_Int32_ConsoleAppVisuals_Enums_PromptInputStyle_ConsoleAppVisuals_Enums_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.#ctor(System.String,System.String,ConsoleAppVisuals.Enums.Placement,System.Int32,ConsoleAppVisuals.Enums.PromptInputStyle,ConsoleAppVisuals.Enums.BordersType)">
+  Prompt(string, string?, Placement, int, PromptInputStyle, BordersType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="ConsoleAppVisuals.InteractiveElements.Prompt.html">Prompt</a> is an interactive element that allows the user to input a string response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Prompt(string question, string? defaultValue = null, Placement placement = Placement.TopCenter, int maxInputLength = 12, PromptInputStyle style = PromptInputStyle.Default, BordersType borderType = BordersType.SingleStraight)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>question</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text on the left of the prompt element.</p>
+</dd>
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text in the center of the prompt element.</p>
+</dd>
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The placement of the prompt element.</p>
+</dd>
+    <dt><code>maxInputLength</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The maximum length of the response.</p>
+</dd>
+    <dt><code>style</code> <a class="xref" href="ConsoleAppVisuals.Enums.PromptInputStyle.html">PromptInputStyle</a></dt>
+    <dd><p>The style of the prompt input.</p>
+</dd>
+    <dt><code>borderType</code> <a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd><p>The type of border to use for the element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt__ctor_System_String_System_String_ConsoleAppVisuals_Enums_Placement_System_Int32_ConsoleAppVisuals_Enums_PromptInputStyle_ConsoleAppVisuals_Enums_BordersType__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_Borders_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Borders*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_Borders" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Borders">
+  Borders
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the borders of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Borders Borders { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Models.Borders.html">Borders</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.BordersType*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_BordersType" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.BordersType">
+  BordersType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the border type of the selector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BordersType BordersType { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_DefaultValue_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.DefaultValue*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_DefaultValue" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.DefaultValue">
+  DefaultValue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the default value of the response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultValue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_Height_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Height*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_Height" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Height">
+  Height
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the height of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Height { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_MaxInputLength_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.MaxInputLength*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_MaxInputLength" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.MaxInputLength">
+  MaxInputLength
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the maximum length of the response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxInputLength { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Placement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_Placement" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Placement">
+  Placement
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the placement of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Placement Placement { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_Question_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Question*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_Question" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Question">
+  Question
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the question of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Question { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_Selector_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Selector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_Selector" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Selector">
+  Selector
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the selector of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char Selector { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_Style_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Style*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_Style" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Style">
+  Style
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the style of the prompt input.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PromptInputStyle Style { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="ConsoleAppVisuals.Enums.PromptInputStyle.html">PromptInputStyle</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_Width_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Width*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_Width" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.Width">
+  Width
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the width of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Width { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_RenderElementActions_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.RenderElementActions*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_RenderElementActions" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.RenderElementActions">
+  RenderElementActions()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defines the actions to perform when the element is called to be rendered on the console.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Visual]
+protected override void RenderElementActions()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateBordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateBordersType*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateBordersType_ConsoleAppVisuals_Enums_BordersType_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateBordersType(ConsoleAppVisuals.Enums.BordersType)">
+  UpdateBordersType(BordersType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the border type of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateBordersType(BordersType bordersType)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bordersType</code> <a class="xref" href="ConsoleAppVisuals.Enums.BordersType.html">BordersType</a></dt>
+    <dd><p>The new border type of the prompt element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateBordersType_ConsoleAppVisuals_Enums_BordersType__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateDefaultValue_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateDefaultValue*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateDefaultValue_System_String_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateDefaultValue(System.String)">
+  UpdateDefaultValue(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the default value of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateDefaultValue(string? defaultValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new default value of the prompt element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateDefaultValue_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateMaxLength_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateMaxLength*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateMaxLength_System_Int32_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateMaxLength(System.Int32)">
+  UpdateMaxLength(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the maximum length of the response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateMaxLength(int maxLength)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>maxLength</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The new maximum length of the response.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateMaxLength_System_Int32__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p>The maximum length of the response must be greater than 0 and less than the width of the console window.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdatePlacement_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdatePlacement*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdatePlacement_ConsoleAppVisuals_Enums_Placement_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdatePlacement(ConsoleAppVisuals.Enums.Placement)">
+  UpdatePlacement(Placement)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the placement of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePlacement(Placement placement)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>placement</code> <a class="xref" href="ConsoleAppVisuals.Enums.Placement.html">Placement</a></dt>
+    <dd><p>The new placement of the prompt element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdatePlacement_ConsoleAppVisuals_Enums_Placement__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateQuestion_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateQuestion*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateQuestion_System_String_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateQuestion(System.String)">
+  UpdateQuestion(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the question of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateQuestion(string question)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>question</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new question of the prompt element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateQuestion_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateSelector_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateSelector*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateSelector_System_Char_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateSelector(System.Char)">
+  UpdateSelector(char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the selector of the prompt element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateSelector(char selector = &#39;▶&#39;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selector</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd><p>The new selector of the prompt element.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateSelector_System_Char__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+  <a id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateStyle_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateStyle*"></a>
+
+  <h3 id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateStyle_ConsoleAppVisuals_Enums_PromptInputStyle_" data-uid="ConsoleAppVisuals.InteractiveElements.Prompt.UpdateStyle(ConsoleAppVisuals.Enums.PromptInputStyle)">
+  UpdateStyle(PromptInputStyle)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/src/ConsoleAppVisuals/elements/interactive_elements/Prompt.cs"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the style of the prompt input.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdateStyle(PromptInputStyle style)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>style</code> <a class="xref" href="ConsoleAppVisuals.Enums.PromptInputStyle.html">PromptInputStyle</a></dt>
+    <dd><p>The new style of the prompt input.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section" id="ConsoleAppVisuals_InteractiveElements_Prompt_UpdateStyle_ConsoleAppVisuals_Enums_PromptInputStyle__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>For more information, consider visiting the documentation available <a href="https://morgankryze.github.io/ConsoleAppVisuals/">here</a>.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

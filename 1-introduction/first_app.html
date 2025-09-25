@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>First app | ConsoleAppVisuals </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="First app | ConsoleAppVisuals ">
+      
+      <meta name="description" content="This tutorial will show you how to create a simple console application using the ConsoleAppVisuals package. You will learn how to add elements, discover Title, Header, Footer, FakeLoadingBar, Prompt and finally EmbedText elements, how to get the response from the user and how to exit the application.">
+      <link rel="icon" href="../assets/img/svg/book.svg">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MorganKryze/ConsoleAppVisuals/blob/main/docs/1-introduction/first_app.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../assets/img/svg/book.svg" alt="ConsoleAppVisuals">
+            ConsoleAppVisuals
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="first-app">First app</h1>
+
+<p>This tutorial will show you how to create a simple console application using the <code>ConsoleAppVisuals</code> package. You will learn:</p>
+<ul>
+<li>How to add elements</li>
+<li>Discover: <code>Title</code>, <code>Header</code>, <code>Footer</code>, <code>FakeLoadingBar</code>, <code>Prompt</code> and finally <code>Dialog</code> elements</li>
+<li>How to get the response from the user</li>
+<li>How to exit the application</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>First, let's create a dummy project to work with. Please choose your method according to your preference:</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_cli" role="tab" aria-controls="tabpanel_1_cli" data-tab="cli" tabindex="0" aria-selected="true">.NET CLI</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_vs" role="tab" aria-controls="tabpanel_1_vs" data-tab="vs" tabindex="-1">Visual Studio</a>
+</li>
+</ul>
+<section id="tabpanel_1_cli" role="tabpanel" data-tab="cli">
+
+<p>Open your terminal and navigate to the folder where you want to create your project. Run the following command:</p>
+<pre><code class="lang-bash">dotnet new console --output MyApp --use-program-main
+</code></pre>
+<p>If your file structure is like this:</p>
+<pre><code class="lang-bash">Example_project  &lt;-- root
+└───MyApp
+    ├───obj
+    ├───MyApp.csproj
+    └───Program.cs
+</code></pre>
+<p>Jump into the <code>MyApp</code> folder:</p>
+<pre><code class="lang-bash">cd MyApp
+</code></pre>
+<p>Finally, run the following command to install the library:</p>
+<pre><code class="lang-bash">dotnet add package ConsoleAppVisuals
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Consider running the same command to update the package to the latest version, stay tuned!</p>
+</div>
+</section>
+<section id="tabpanel_1_vs" role="tabpanel" data-tab="vs" aria-hidden="true" hidden="hidden">
+
+<p>If you are using Visual Studio, launch the app and follow these steps in the video to create a new project:</p>
+<div class="embeddedvideo"><iframe src="https://www.youtube-nocookie.com/embed/1TqKF3ZJodk?rel=0" frameborder="0" allowfullscreen="true"></iframe></div>
+<p>Then, install the <code>ConsoleAppVisuals</code> package by following these steps in the video and searching for <code>ConsoleAppVisuals</code>.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The video is about the <code>Newtonsoft.Json</code> package. You need to search for <code>ConsoleAppVisuals</code> package instead.</p>
+</div>
+<div class="embeddedvideo"><iframe src="https://www.youtube-nocookie.com/embed/IprbRazS3b8?rel=0" frameborder="0" allowfullscreen="true"></iframe></div>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Consider updating the package often to the latest version, stay tuned! More info on this <a href="https://learn.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#update-a-package">page</a>.</p>
+</div>
+</section>
+</div>
+
+<p>Open the <code>Program.cs</code> file and ensure that the content is the following:</p>
+<pre><code class="lang-csharp">namespace MyApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(&quot;Hello World!&quot;);
+        }
+    }
+}
+</code></pre>
+<div class="tabGroup" id="tabgroup_2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_2_cli" role="tab" aria-controls="tabpanel_2_cli" data-tab="cli" tabindex="0" aria-selected="true">.NET CLI</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_2_vs" role="tab" aria-controls="tabpanel_2_vs" data-tab="vs" tabindex="-1">Visual Studio</a>
+</li>
+</ul>
+<section id="tabpanel_2_cli" role="tabpanel" data-tab="cli">
+
+<p>Let's try to run the app by typing the following command in your terminal:</p>
+<pre><code class="lang-bash">dotnet run
+</code></pre>
+</section>
+<section id="tabpanel_2_vs" role="tabpanel" data-tab="vs" aria-hidden="true" hidden="hidden">
+
+<p>Let's try to run the app by clicking on the green arrow at the top of the window.</p>
+<p><img src="../assets/img/png/first_app/run.png" alt="Run"></p>
+</section>
+</div>
+<h2 id="building-the-app">Building the app</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Add these using statements at the top of your <code>Program.cs</code> file to use the <code>ConsoleAppVisuals</code> package and its elements:</p>
+<pre><code class="lang-csharp">using ConsoleAppVisuals;
+using ConsoleAppVisuals.PassiveElements;
+using ConsoleAppVisuals.InteractiveElements;
+using ConsoleAppVisuals.AnimatedElements;
+</code></pre>
+<p>Sometimes, you will need to add more statements. All available namespaces are available in the <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/index.html">references</a> section.</p>
+</div>
+<p>Let's start by removing <code>Console.WriteLine(&quot;Hello World!&quot;);</code> instruction and adding the following line to your <code>Main</code> method to set up the console (clear and set the cursor invisible):</p>
+<pre><code class="lang-csharp">Window.Open();
+</code></pre>
+<p>Now, let's create a minimal app with a <code>Title</code>, a <code>Header</code>, a <code>Footer</code>, a <code>FakeLoadingBar</code> and finally a <code>Prompt</code> element.</p>
+<h3 id="title"><code>Title</code></h3>
+<p>Now we can use all the elements from the package. Our first <em>passive</em> element will be a <code>Title</code>. <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.PassiveElements.Title.html">Learn more</a></p>
+<pre><code class="lang-csharp">Title title = new Title(&quot;My first app&quot;);
+</code></pre>
+<p>Then we can add it to the <code>Window</code>:</p>
+<pre><code class="lang-csharp">Window.AddElement(title);
+</code></pre>
+<p>And finally, we can render the <code>Title</code> from the <code>Window</code>:</p>
+<pre><code class="lang-csharp">Window.Render(title);
+</code></pre>
+<p><img src="../assets/img/jpg/first_app/title.jpg" alt="Title"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>You may update the style of the <code>Title</code> element like the one below by giving a look at this article: <a href="https://morgankryze.github.io/ConsoleAppVisuals/5-articles/create_font.html">create and use fonts</a>.</p>
+<p><img src="../assets/img/jpg/create_font/Lil_Devil.jpg" alt="Lil_Devil"></p>
+</div>
+<h3 id="header-footer"><code>Header</code>, <code>Footer</code></h3>
+<p>Add the <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.PassiveElements.Header.html"><code>Header</code></a> and <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.PassiveElements.Footer.html"><code>Footer</code></a> <em>passive</em> elements to the <code>Window</code>:</p>
+<pre><code class="lang-csharp">Header header = new Header();
+Footer footer = new Footer();
+Window.AddElement(header, footer);
+
+Window.Render();
+</code></pre>
+<p>Instead of rendering each element separately, we rendered the <code>Title</code>, <code>Header</code> and <code>Footer</code> elements at once using the <code>Window.Render()</code> method. So you may remove the <code>Window.Render(title)</code> instruction.</p>
+<p><img src="../assets/img/jpg/first_app/header_footer.jpg" alt="Header &amp; Footer"></p>
+<h3 id="fakeloadingbar"><code>FakeLoadingBar</code></h3>
+<p>Now let's add a <code>FakeLoadingBar</code> <em>animated</em> element to your previous code and run it. <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.AnimatedElements.FakeLoadingBar.html">Learn more</a></p>
+<pre><code class="lang-csharp">FakeLoadingBar loadingBar = new FakeLoadingBar();
+Window.AddElement(loadingBar);
+
+Window.Render(loadingBar);
+</code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>As you may have noticed, we have the same output as earlier. No loading bar was rendered on the console. <strong>Passive elements</strong> are <strong>activated by default</strong> when added to the window. On the contrary, <strong>interactive and animated elements</strong> need to be <strong>activated manually</strong>.</p>
+</div>
+<p>To do so, <strong>replace</strong> the <code>Window.Render(loadingBar)</code> instruction with the following:</p>
+<pre><code class="lang-csharp">Window.ActivateElement(loadingBar);
+</code></pre>
+<p><img src="../assets/vid/gif/first_app/loading.gif" alt="LoadingBar"></p>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The method <code>Window.ActivateElement()</code> will activate the element and render it on the console. Do not forget to write <code>Window.Render()</code> before to render the other <em>passive</em> elements like <code>Title</code>, <code>Header</code> or <code>Footer</code> for example.</p>
+</div>
+<h3 id="prompt"><code>Prompt</code></h3>
+<p>Now let's add a <code>Prompt</code> <em>interactive</em> element to your previous code and run it. <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.Prompt.html">Learn more</a></p>
+<pre><code class="lang-csharp">Prompt prompt = new Prompt(&quot;What's your name?&quot;);
+Window.AddElement(prompt);
+
+Window.ActivateElement(prompt);
+</code></pre>
+<p><img src="../assets/vid/gif/first_app/prompt.gif" alt="Prompt"></p>
+<h3 id="get-response-and-dialog-element">Get response and <code>Dialog</code> element</h3>
+<p>A <code>Prompt</code> element will give you different interaction information. To get these information, let's add the following line of code after the <code>Window.ActivateElement(prompt)</code> line. <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/statements/declarations#implicitly-typed-local-variables">Learn more about <code>var</code></a></p>
+<pre><code class="lang-csharp">var response = prompt.GetResponse();
+</code></pre>
+<p>The previous line will retrieve a response object that has the following properties:</p>
+<ul>
+<li><code>Status</code>: is how the interaction ended. It can be <code>Selected</code> (pressed enter), <code>Deleted</code> (pressed delete) or <code>Escaped</code> (pressed escape). It is accessible using: <code>response?.Status</code>.</li>
+<li><code>Value</code>: is the user's response data. Its type depends on the <code>InteractiveElement</code> you are using. In this case, the <code>Prompt</code> element returns a <code>string</code>. It is accessible using: <code>response?.Value</code>.</li>
+</ul>
+<pre><code class="lang-mermaid">flowchart LR
+    A[Prompt] --&gt; B[response]
+    B --&gt;|how the user exit| C[response?.Status]
+    B --&gt;|what is output value| D[response?.Value]
+    C --&gt;|can be displayed using| E[Visual Elements]
+    D --&gt;|can be displayed using| E
+</code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Here we use the <code>?.</code> operator to avoid a <code>NullReferenceException</code> if the response is <code>null</code>.
+Meaning:</p>
+<ul>
+<li>If <code>response</code> is <code>null</code>, <code>response?.Status</code> will return <code>null</code>.</li>
+<li>If <code>response</code> is not <code>null</code>, <code>response?.Status</code> will return <code>response.Status</code>.</li>
+</ul>
+<p>If you are certain that <code>response</code> is not <code>null</code>, you can use <code>response!.Status</code> directly. This will indicate to the compiler that <code>response</code> cannot be <code>null</code> in your configuration.</p>
+</div>
+<p>Finally, let's add a <code>Dialog</code> <em>interactive</em> element to display the user's response on the console.The <code>Dialog</code> is <em>interactive</em> too and will give you a response. You may catch it if needed (as you may create an element with 0, 1 or 2 options, it will give you the selected option). <a href="https://morgankryze.github.io/ConsoleAppVisuals/3-references/ConsoleAppVisuals.InteractiveElements.Dialog.html">Learn more</a></p>
+<pre><code class="lang-csharp">Dialog text = new Dialog(
+    new List&lt;string&gt;()
+    {
+        &quot;You just wrote &quot; + response!.Value + &quot;!&quot;,
+        &quot;And you &quot; + response!.Status + &quot;!&quot;
+    },
+    null,
+    &quot;OK&quot;
+    );
+Window.AddElement(text);
+Window.ActivateElement(text);
+</code></pre>
+<p><img src="../assets/vid/gif/first_app/dialog.gif" alt="dialog"></p>
+<h3 id="exit-the-application">Exit the application</h3>
+<p>Finally, let's exit smoothly the application:</p>
+<pre><code class="lang-csharp">Window.Close();
+</code></pre>
+<p><img src="../assets/vid/gif/first_app/close.gif" alt="Close"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>And that's it! You have created your first app using the <code>ConsoleAppVisuals</code> package. You can now run the app and see the result.</p>
+<p>Here is the full code:</p>
+<pre><code class="lang-csharp">Window.Open();
+
+Title title = new Title(&quot;My first app&quot;);
+Window.AddElement(title);
+
+Header header = new Header();
+Footer footer = new Footer();
+Window.AddElement(header, footer);
+
+Window.Render();
+
+FakeLoadingBar loadingBar = new FakeLoadingBar();
+Window.AddElement(loadingBar);
+Window.ActivateElement(loadingBar);
+
+Prompt prompt = new Prompt(&quot;What's your name?&quot;);
+Window.AddElement(prompt);
+Window.ActivateElement(prompt);
+
+var response = prompt.GetResponse();
+
+Dialog text = new Dialog(
+    new List&lt;string&gt;()
+    {
+        &quot;You just wrote &quot; + response!.Value + &quot;!&quot;,
+        &quot;And you &quot; + response!.Status + &quot;!&quot;
+    },
+    null,
+    &quot;OK&quot;
+    );
+Window.AddElement(text);
+Window.ActivateElement(text);
+
+Window.Close();
+</code></pre>
+<hr>
+<p>Have a question, give a feedback or found a bug? Feel free to <a href="https://github.com/MorganKryze/ConsoleAppVisuals/issues">open an issue</a> or <a href="https://github.com/MorganKryze/ConsoleAppVisuals/discussions">start a discussion</a> on the GitHub repository.</p>
+
+</article>
+
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2024 Yann M. Vidamment (MorganKryze)
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
